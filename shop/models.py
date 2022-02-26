@@ -4,11 +4,19 @@ from django.db import models
 
 
 # Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+
 class Instrument(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField(max_length=200)
     details = models.CharField(max_length=3000)
-    image_url = models.FileField(upload_to='uploads/instrument/image/', null=True)
+    image_url = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
