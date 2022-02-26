@@ -49,3 +49,6 @@ class Order(models.Model):
     def __str__(self):
         return f'{self.order_id}<{self.instrument}>'
 
+@admin.register(Category)
+class OrderAdmin(admin.ModelAdmin):
+    pass
