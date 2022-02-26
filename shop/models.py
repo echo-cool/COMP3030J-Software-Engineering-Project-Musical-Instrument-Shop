@@ -64,6 +64,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
+    count = models.PositiveIntegerField(null=False, default=1)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -77,18 +79,18 @@ class OrderAdmin(admin.ModelAdmin):
     pass
 
 
-class OrderItem(models.Model):
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-    count = models.PositiveIntegerField(null=False)
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=False)
-
-    def __str__(self):
-        return f'{self.order_id}<{self.instrument}:{self.count}>'
-
-
-@admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
-    pass
+# class OrderItem(models.Model):
+#     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+#     count = models.PositiveIntegerField(null=False)
+#     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=False)
+#
+#     def __str__(self):
+#         return f'{self.order_id}<{self.instrument}:{self.count}>'
+#
+#
+# @admin.register(OrderItem)
+# class OrderItemAdmin(admin.ModelAdmin):
+#     pass
 
 
 class Review(models.Model):
