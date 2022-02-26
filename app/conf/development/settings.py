@@ -26,17 +26,19 @@ INSTALLED_APPS = [
     
     # Vendor apps
     'bootstrap4',
+    'fontawesomefree',
 
     # Application apps
     'main',
     'accounts',
+    'shop',
+    'management',
 
-    'fontawesomefree',
+    # API Framework
     'drf_yasg',
     'rest_framework',
 
-    'shop',
-    'management'
+
 ]
 
 MIDDLEWARE = [
@@ -72,10 +74,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
-EMAIL_HOST_USER = 'test@example.com'
-DEFAULT_FROM_EMAIL = 'test@example.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
+# EMAIL_HOST_USER = 'test@example.com'
+# DEFAULT_FROM_EMAIL = 'test@example.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.echo.cool'
+EMAIL_HOST_USER = 'wyy@echo.cool'
+DEFAULT_FROM_EMAIL = 'wyy@echo.cool'
+EMAIL_HOST_PASSWORD = 'Lkq2mapp'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 
 DATABASES = {
     'default': {
