@@ -2,6 +2,8 @@ import os
 import warnings
 from django.utils.translation import ugettext_lazy as _
 from os.path import dirname
+import fontawesomefree
+import bootstrap4
 
 warnings.simplefilter('error', DeprecationWarning)
 
