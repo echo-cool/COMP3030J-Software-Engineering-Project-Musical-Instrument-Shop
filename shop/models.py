@@ -1,21 +1,12 @@
+import django
 from django.contrib import admin
-from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
 # Create your models here.
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class User(django.contrib.auth.models.User):
     image = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
-
-    def __str__(self):
-        return f'{self.user.username} Profile'
-
-
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    pass
 
 
 class Instrument(models.Model):
@@ -25,7 +16,7 @@ class Instrument(models.Model):
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

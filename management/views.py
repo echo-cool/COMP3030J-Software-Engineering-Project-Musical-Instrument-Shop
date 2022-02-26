@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from app.utils import login_required
-from shop.models import Order, Instrument, Profile
+from shop.models import Order, Instrument
 
 
 @login_required
@@ -24,7 +24,6 @@ def order_management(request):
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
             'instrument': Instrument.objects.filter(id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(id=order_item.user.id).first()
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
