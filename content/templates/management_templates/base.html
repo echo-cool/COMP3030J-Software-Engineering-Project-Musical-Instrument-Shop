@@ -910,6 +910,7 @@
                     </ul><!-- /.breadcrumb -->
                 {% endblock %}
 
+
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
 								<span class="input-icon">
@@ -920,7 +921,19 @@
                     </form>
                 </div><!-- /.nav-search -->
             </div>
+
             <div class="page-content">
+                {% block page_header %}
+                <div class="page-header">
+                    <h1>
+                        Tables
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            Static &amp; Dynamic Tables
+                        </small>
+                    </h1>
+                </div>
+                {% endblock %}
                 <div class="ace-settings-container" id="ace-settings-container">
                     <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                         <i class="ace-icon fa fa-cog bigger-130"></i>
