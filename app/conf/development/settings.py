@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
 # EMAIL_HOST_USER = 'test@example.com'
 # DEFAULT_FROM_EMAIL = 'test@example.com'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.echo.cool'
 EMAIL_HOST_USER = 'wyy@echo.cool'
 DEFAULT_FROM_EMAIL = 'wyy@echo.cool'
