@@ -22,9 +22,9 @@ class Instrument(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField(max_length=200)
     details = models.CharField(max_length=3000)
-    image_url = models.ImageField(upload_to='uploads/instrument/image/', null=True)
-    object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True)
-    object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True)
+    image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
+    object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
+    object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -69,22 +69,27 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.order_id}<{self.instrument}>'
+        return f'{self.user}<{self.created_at}>'
 
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     pass
 
+
 class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
     count = models.PositiveIntegerField(null=False)
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=False)
 
+    def __str__(self):
+        return f'{self.order_id}<{self.instrument}:{self.count}>'
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     pass
+
 
 class Review(models.Model):
     order_id = models.ForeignKey('Order', on_delete=models.CASCADE)
