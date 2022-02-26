@@ -11,6 +11,10 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass
+
 
 class Instrument(models.Model):
     name = models.CharField(max_length=200)
