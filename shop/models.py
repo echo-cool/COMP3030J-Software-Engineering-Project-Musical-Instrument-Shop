@@ -18,6 +18,7 @@ class Instrument(models.Model):
     details = models.CharField(max_length=3000)
     image_url = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True)
+    object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
