@@ -159,14 +159,14 @@
                                     <div class="text-center">
                                         <img height="150" class="thumbnail inline no-margin-bottom"
                                              alt="Domain Owner's Avatar"
-                                             src="/static/assets/images/avatars/profile-pic.jpg">
+                                             src="/media/{{ order_item.profile.image }}">
                                         <br>
                                         <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                             <div class="inline position-relative">
                                                 <a class="user-title-label" href="#">
                                                     <i class="ace-icon fa fa-circle light-green"></i>
                                                     &nbsp;
-                                                    <span class="white">Alex M. Doe</span>
+                                                    <span class="white">{{ order_item.user.username }}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -280,15 +280,21 @@
 
                     <td>
                         <a href="#">
-
+                            Deleted
                         </a>
                     </td>
-                    <td>${{ order_item.instrument.price }}</td>
-                    <td class="hidden-480">3,330</td>
+                    <td> Deleted </td>
+                    <td class="hidden-480"> {{ order_item.order.count }} </td>
                     <td>{{ order_item.order.created_at }}</td>
 
                     <td class="hidden-480">
-                        <span class="label label-sm label-warning">To-Be-Confirmed</span>
+                        {% if order_item.order.delivery_confirmed %}
+                            <span class="label label-sm label-success">Delivery-Confirmed</span>
+                        {% elif order_item.order.shopper_confirmed %}
+                            <span class="label label-sm label-warning">Shopper-Confirmed</span>
+                        {% else %}
+                            <span class="label label-sm label-inverse arrowed-in">Unconfirmed</span>
+                        {% endif %}
                     </td>
 
                     <td>
