@@ -322,10 +322,15 @@
 
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="/static/assets/images/avatars/user.jpg" alt="Jason's Photo"/>
+                        {% if profile is not None  %}
+                            <img class="nav-user-photo" src="/media/{{ profile.image }}" alt="{{ request.user.username }}'s Photo"/>
+                        {% else %}
+                            <img class="nav-user-photo" src="/static/assets/images/avatars/user.jpg" alt="{{ request.user.username }}'s Photo"/>
+                        {% endif %}
+
                         <span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									{{ request.user.username }}
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
