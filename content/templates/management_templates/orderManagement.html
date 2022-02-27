@@ -21,7 +21,7 @@
             Order Management
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                All Orders
+                {% trans 'All Orders' %}
             </small>
         </h1>
     </div>
@@ -99,7 +99,7 @@
 
                                 <div id="dialog-confirm" class="hide">
                                     <div class="alert alert-info bigger-110">
-                                        These items will be permanently deleted and cannot be recovered.
+                                        The order will be confirmed and waiting for the buyer to confirm.
                                     </div>
 
                                     <div class="space-6"></div>
@@ -116,11 +116,11 @@
                                         resizable: false,
                                         width: '320',
                                         modal: true,
-                                        title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Empty the recycle bin?</h4></div>",
+                                        title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
                                         title_html: true,
                                         buttons: [
                                             {
-                                                html: "<i class='ace-icon fa fa-trash-o bigger-110'></i>Delete all items",
+                                                html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
                                                 "class": "btn btn-danger btn-minier",
                                                 click: function () {
                                                     $.ajax({
@@ -697,6 +697,15 @@
             dialog();
 
         })
+        {% if mode == 0 %}
+            $('li:contains(All Orders)').attr("class", "active");
+        {% elif mode == 1 %}
+            $('li:contains(Unconfirmed Orders)').attr("class", "active");
+        {% elif mode == 2 %}
+            $('li:contains(Confirmed Orders)').attr("class", "active");
+        {% elif mode == 3 %}
+            $('li:contains(Delivered Orders)').attr("class", "active");
+        {% endif %}
     </script>
 
 {% endblock %}
