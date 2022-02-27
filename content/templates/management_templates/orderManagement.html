@@ -110,6 +110,13 @@
                                             "shopper_confirmed": true
                                         },
                                         success: function (res) {
+                                            $.ajax({
+                                                url: "#",
+                                                method: "GET",
+                                                success: function (res){
+                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                }
+                                            });
                                             alert("Success!");
                                             console.log(res);
                                         }
