@@ -96,6 +96,19 @@
                         <div class="hidden-sm hidden-xs btn-group">
                             <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-check bigger-120"></i>
+
+                                <div id="dialog-confirm" class="hide">
+                                    <div class="alert alert-info bigger-110">
+                                        These items will be permanently deleted and cannot be recovered.
+                                    </div>
+
+                                    <div class="space-6"></div>
+
+                                    <p class="bigger-110 bolder center grey">
+                                        <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                                        Are you sure?
+                                    </p>
+                                </div><!-- #dialog-confirm -->
                             </button>
                             <script>
                                 $("#confirm_button-{{ order_item.order.id }}").on("click", function (res) {
@@ -107,15 +120,38 @@
                                         title_html: true,
                                         buttons: [
                                             {
-                                                html: "<i class='ace-icon fa fa-trash-o bigger-110'></i>&nbsp; Delete all items",
+                                                html: "<i class='ace-icon fa fa-trash-o bigger-110'></i>Delete all items",
                                                 "class": "btn btn-danger btn-minier",
                                                 click: function () {
+                                                    $.ajax({
+                                                        url: "/api/order/{{ order_item.order.id }}/",
+                                                        method: "PATCH",
+                                                        headers: {
+                                                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                                                        },
+                                                        data: {
+                                                            "shopper_confirmed": true
+                                                        },
+                                                        success: function (res) {
+                                                            $.ajax({
+                                                                url: "#",
+                                                                method: "GET",
+                                                                success: function (res) {
+                                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                                    table_events()
+                                                                }
+                                                            });
+                                                            {#alert("Success!");#}
+                                                            console.log(res);
+                                                        }
+                                                    })
                                                     $(this).dialog("close");
+
                                                 }
                                             }
                                             ,
                                             {
-                                                html: "<i class='ace-icon fa fa-times bigger-110'></i>&nbsp; Cancel",
+                                                html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
                                                 "class": "btn btn-minier",
                                                 click: function () {
                                                     $(this).dialog("close");
@@ -123,28 +159,7 @@
                                             }
                                         ]
                                     });
-                                    $.ajax({
-                                        url: "/api/order/{{ order_item.order.id }}/",
-                                        method: "PATCH",
-                                        headers: {
-                                            'X-CSRFTOKEN': '{{ csrf_token }}'
-                                        },
-                                        data: {
-                                            "shopper_confirmed": true
-                                        },
-                                        success: function (res) {
-                                            $.ajax({
-                                                url: "#",
-                                                method: "GET",
-                                                success: function (res) {
-                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                    table_events()
-                                                }
-                                            });
-                                            alert("Success!");
-                                            console.log(res);
-                                        }
-                                    })
+
                                 });
 
                             </script>
@@ -559,47 +574,28 @@
 
 
 
-    <div id="dialog-confirm" class="hide">
-        <div class="alert alert-info bigger-110">
-            These items will be permanently deleted and cannot be recovered.
-        </div>
-
-        <div class="space-6"></div>
-
-        <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
-    </div><!-- #dialog-confirm -->
 
 {% endblock %}
 
 {% block scripts %}
 
 
-
-    <!-- <![endif]-->
-
-    <!--[if IE]>
-{#    <script src="/static/assets/js/jquery-1.11.3.min.js"></script>#}
-    <![endif]-->
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>
-    <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>
-    <script src="/static/assets/js/buttons.flash.min.js"></script>
-    <script src="/static/assets/js/buttons.html5.min.js"></script>
-    <script src="/static/assets/js/buttons.print.min.js"></script>
-    <script src="/static/assets/js/buttons.colVis.min.js"></script>
-    <script src="/static/assets/js/dataTables.select.min.js"></script>
-    <script src="/static/assets/js/ace-elements.min.js"></script>
-    <script src="/static/assets/js/ace.min.js"></script>
-    <script src="/static/assets/js/jquery-ui.min.js"></script>
-    <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>
+    {#    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#    <script src="/static/assets/js/buttons.flash.min.js"></script>#}
+    {#    <script src="/static/assets/js/buttons.html5.min.js"></script>#}
+    {#    <script src="/static/assets/js/buttons.print.min.js"></script>#}
+    {#    <script src="/static/assets/js/buttons.colVis.min.js"></script>#}
+    {#    <script src="/static/assets/js/dataTables.select.min.js"></script>#}
+    {#    <script src="/static/assets/js/ace-elements.min.js"></script>#}
+    {#    <script src="/static/assets/js/ace.min.js"></script>#}
+    {#    <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>#}
 
     <!-- inline scripts related to this page -->
     <script type="text/javascript">
