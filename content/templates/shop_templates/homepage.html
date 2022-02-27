@@ -1,9 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-</head>
-<body>
-</body>
-</html>
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    <!-- 1. The banner starts -->
+    <div class="banner">
+        <div class="width-standard">
+            <div class="rec-nav">
+                <ul>
+                    <li><a href="/course/search/hot">Data Science <span> &gt; </span></a></li>
+                    <li><a href="/course/search/hot">Artificial Intelligence <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Soft Engineering <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Front-end Development <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Back-end Development <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Network Protocol <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Computer Graphics <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Object Oriented Design <span> &gt; </span> </a></li>
+                    <li><a href="/course/search/hot">Data Structure <span> &gt; </span> </a></li>
+                </ul>
+            </div>
+
+            <!-- 1.1 My upload courses starts -->
+            <div class="course">
+                <h2>My Upload Courses</h2>
+                <!-- If a user logins in, they will have their course space -->
+                {% if my_courses %}
+                    <!-- Using database to show the video data -->
+                    <div class="bd">
+                        <ul>
+                            <!-- Using for loop to show the courses -->
+                            {% for course in my_courses %}
+                                <li>
+                                    <h4>{{ course.title }}</h4>
+                                    <a href="/course/detail/{{ course.id }}/1">View Detail</a>
+                                </li>
+                            {% endfor %}
+                            <a href="/course/manage/unknown" class="manage">Manage Courses</a>
+                        </ul>
+                    </div>
+                    <!-- If a visitor logins in, they do not have their course space -->
+                {% else %}
+                    <!-- Using image to remind visitor to login -->
+                    <img src="/static/images/my-upload-course-empty.png" width="230px">
+                    {% if user %}
+                        <p class="not-login">You have no course, go to create one from navbar</p>
+                    {% else %}
+                        <p class="not-login">You are not login</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <!-- 1.1 My upload courses ends -->
+        </div>
+    </div>
+    <!-- 1. The banner ends -->
+
+{% endblock %}
