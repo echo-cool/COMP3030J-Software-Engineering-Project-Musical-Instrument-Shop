@@ -72,4 +72,38 @@
         {#            <a href="#" class="change-tag">Change Tags</a>#}
     </div>
     <!-- 2. Recommend Tags ends -->
+
+    <!-- 3. Recommend Course starts-->
+    <div class="rec-courses-box width-standard">
+        <div class="box-head">
+            <h3>Recommended Courses</h3>
+        </div>
+        <!-- Select courses from database to show the courses information -->
+        <div class="box-content">
+            <ul class="course-wrapper">
+                {% for course in courses %}
+                    <a href="/course/detail/{{ course.id }}/1">
+                        <li>
+                            <img src="/static/file_sources/courses/{{ course.title }}/cover.png"
+                                 alt="waiting">
+                            <h4>
+                                {{ course.title }}
+                            </h4>
+
+                            <div class="info">
+                                {{ course.like }} <span>like</span>
+                            </div>
+                            <div class="info">
+                                {{ course.collect }} <span>comments</span>
+                            </div>
+                            <div class="info">
+                                {{ course.share }} <span>forward</span>
+                            </div>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- 3. Recommend Course ends-->
 {% endblock %}
