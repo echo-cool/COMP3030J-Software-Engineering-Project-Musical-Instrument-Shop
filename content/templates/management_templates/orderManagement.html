@@ -98,8 +98,8 @@
                                 <i class="ace-icon fa fa-check bigger-120"></i>
                             </button>
                             <script>
-                                const button = $("#confirm_button-{{ order_item.order.id }}");
-                                button.on("click", function (res) {
+                                $("#confirm_button-{{ order_item.order.id }}").on("click", function (res) {
+
                                     $.ajax({
                                         url: "/api/order/{{ order_item.order.id }}/",
                                         method: "PATCH",
@@ -113,8 +113,9 @@
                                             $.ajax({
                                                 url: "#",
                                                 method: "GET",
-                                                success: function (res){
+                                                success: function (res) {
                                                     $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                    table_events()
                                                 }
                                             });
                                             alert("Success!");
@@ -129,9 +130,34 @@
                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </button>
 
-                            <button class="btn btn-xs btn-danger">
+                            <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
                             </button>
+                            <script>
+                                $("#delete_button-{{ order_item.order.id }}").on("click", function (res) {
+                                    $.ajax({
+                                        url: "/api/order/{{ order_item.order.id }}/",
+                                        method: "DELETE",
+                                        headers: {
+                                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                                        },
+                                        success: function (res) {
+                                            $.ajax({
+                                                url: "#",
+                                                method: "GET",
+                                                success: function (res) {
+                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                    table_events()
+
+                                                }
+                                            });
+                                            alert("Success!");
+                                            console.log(res);
+                                        }
+                                    })
+                                });
+
+                            </script>
 
                             <button class="btn btn-xs btn-warning">
                                 <i class="ace-icon fa fa-flag bigger-120"></i>
@@ -508,10 +534,10 @@
         </tbody>
     </table>
 
-
 {% endblock %}
 
 {% block scripts %}
+
 
 
     <!-- <![endif]-->
@@ -537,7 +563,10 @@
 
     <!-- inline scripts related to this page -->
     <script type="text/javascript">
-        jQuery(function ($) {
+
+        function table_events() {
+
+
             //initiate dataTables plugin
 
             $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
@@ -609,6 +638,10 @@
              ).css('padding-top', '12px');
              */
 
+        }
+
+        jQuery(function ($) {
+            table_events()
 
         })
     </script>
