@@ -3,60 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>3D Model (obg+mtl)</title>
-    <style type="text/css">
-        body {
-            font-family: Monospace;
-            color: #fff;
-            margin: 0px;
-            overflow: hidden;
-            background-color: #E9E9E9;
-            background-size: cover;
-            -moz-background-size: cover;
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-        }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 进度条 */
-        .progress {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        .progress .mask {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 99;
-        }
-
-        .progress .loading {
-            width: 30em;
-            height: 1em;
-            background: #fff;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
-            border-radius: 1em;
-        }
-
-        .progress .trends {
-            width: 0;
-            height: 100%;
-            background: red;
-            box-shadow: 1px 1px 10px red;
-            border-radius: 1em;
-            transition: .3s --progress;
-        }
-    </style>
 </head>
 
 <!--进度条-->
@@ -66,12 +13,6 @@
         <div class="trends"></div>
     </div>
 </div>
-{#		<script src="../three.js"></script>#}
-{#		<script src="../js/loaders/DDSLoader.js"></script>#}
-{#		<script src="../js/loaders/MTLLoader.js"></script>#}
-{#		<script src="../js/loaders/OBJLoader.js"></script>#}
-{#		<script src="../js/controls/TrackballControls.js"></script>#}
-{#		<script src="../js/Detector.js"></script>#}
 
 <script src="{{ url_for('static',filename='script/three.js') }}" rel="script"></script>
 <script src="{{ url_for('static',filename='script/OBJLoader.js') }}" rel="script"></script>
