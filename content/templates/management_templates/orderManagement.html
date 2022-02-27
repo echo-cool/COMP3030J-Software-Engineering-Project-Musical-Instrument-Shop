@@ -94,9 +94,29 @@
 
                     <td>
                         <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success">
+                            <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-check bigger-120"></i>
                             </button>
+                            <script>
+                                const button = $("#confirm_button-{{ order_item.order.id }}");
+                                button.on("click", function (res) {
+                                    $.ajax({
+                                        url: "/api/order/{{ order_item.order.id }}/",
+                                        method: "PATCH",
+                                        headers: {
+                                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                                        },
+                                        data: {
+                                            "shopper_confirmed": true
+                                        },
+                                        success: function (res) {
+                                            alert("Success!");
+                                            console.log(res);
+                                        }
+                                    })
+                                });
+
+                            </script>
 
                             <button class="btn btn-xs btn-info">
                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
@@ -135,6 +155,7 @@
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </span>
                                         </a>
+
                                     </li>
 
                                     <li>
@@ -230,7 +251,8 @@
 
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="space visible-xs"></div>
-                                    <h4 class="header blue lighter less-margin">Send a message to {{ order_item.user.username }}</h4>
+                                    <h4 class="header blue lighter less-margin">Send a message
+                                        to {{ order_item.user.username }}</h4>
 
                                     <div class="space-6"></div>
 
@@ -283,7 +305,7 @@
                             Deleted
                         </a>
                     </td>
-                    <td> Deleted </td>
+                    <td> Deleted</td>
                     <td class="hidden-480"> {{ order_item.order.count }} </td>
                     <td>{{ order_item.order.created_at }}</td>
 
@@ -299,9 +321,16 @@
 
                     <td>
                         <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success">
+                            <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-check bigger-120"></i>
                             </button>
+                            <script>
+                                const button = $("#confirm_button-{{ order_item.order.id }}");
+                                button.on("click", function (res) {
+                                    console.log(res);
+                                });
+
+                            </script>
 
                             <button class="btn btn-xs btn-info">
                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
@@ -477,12 +506,11 @@
 
 {% block scripts %}
 
-    <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
 
     <!-- <![endif]-->
 
     <!--[if IE]>
-    <script src="/static/assets/js/jquery-1.11.3.min.js"></script>
+{#    <script src="/static/assets/js/jquery-1.11.3.min.js"></script>#}
     <![endif]-->
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
