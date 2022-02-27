@@ -96,19 +96,6 @@
                         <div class="hidden-sm hidden-xs btn-group">
                             <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-check bigger-120"></i>
-
-                                <div id="dialog-confirm" class="hide">
-                                    <div class="alert alert-info bigger-110">
-                                        The order will be confirmed and waiting for the buyer to confirm.
-                                    </div>
-
-                                    <div class="space-6"></div>
-
-                                    <p class="bigger-110 bolder center grey">
-                                        <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-                                        Are you sure?
-                                    </p>
-                                </div><!-- #dialog-confirm -->
                             </button>
                             <script>
                                 $("#confirm_button-{{ order_item.order.id }}").on("click", function (res) {
@@ -572,6 +559,19 @@
 
         </tbody>
     </table>
+
+    <div id="dialog-confirm" class="hide">
+        <div class="alert alert-info bigger-110">
+            The order will be confirmed and waiting for the buyer to confirm.
+        </div>
+
+        <div class="space-6"></div>
+
+        <p class="bigger-110 bolder center grey">
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+            Are you sure?
+        </p>
+    </div><!-- #dialog-confirm -->
 
 
 

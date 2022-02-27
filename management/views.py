@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -100,7 +101,8 @@ def update_order(request, order_id):
         f = OrderForm(request.POST)
         if f.is_valid():
             f.save()
-        return redirect(reverse('management:order_management'))
+        return redirect(reverse('management:order_management_all'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         order = Order.objects.get(id=order_id)
         f = OrderForm(instance=order)

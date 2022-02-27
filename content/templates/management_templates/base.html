@@ -1084,11 +1084,6 @@
 
 <script src="/static/assets/js/jquery-ui.min.js"></script>
 
-{% block scripts %}
-
-
-{% endblock %}
-
 <script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
@@ -1105,6 +1100,11 @@
 <script src="{% static 'assets/js/jquery.flot.resize.min.js' %}"></script>
 <script src="{% static 'assets/js/ace-elements.min.js' %}"></script>
 <script src="{% static 'assets/js/ace.min.js' %}"></script>
+
+{% block scripts %}
+
+
+{% endblock %}
 
 
 <script type="text/javascript">
