@@ -1,0 +1,39 @@
+/* Style for whole Page */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f3f5f7;
+
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.width-standard {
+    width: 1200px;
+    margin: auto;
+}
+
+/* Course Wrapper */
+.course-wrapper:before, .course-wrapper:after {
+    content: "";
+    display: table;
+}
+
+.course-wrapper:after {
+    clear: both;
+}
+
+.course-wrapper {
+    *zoom: 1;
+}
+
+/* Course Wrapper End*/
