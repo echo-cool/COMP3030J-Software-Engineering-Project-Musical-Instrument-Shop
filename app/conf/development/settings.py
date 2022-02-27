@@ -2,9 +2,11 @@ import os
 import warnings
 from django.utils.translation import ugettext_lazy as _
 from os.path import dirname
+# DO NOT REMOVE THESE IMPORT !!!!!!!
 import fontawesomefree
 import bootstrap4
-
+import django_filters
+# DO NOT REMOVE THESE IMPORT !!!!!!!
 warnings.simplefilter('error', DeprecationWarning)
 
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     # API Framework
     'drf_yasg',
     'rest_framework',
+    'django_filters',
 
 
 ]
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'app.cors_middleware.CORSMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -157,3 +161,7 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
