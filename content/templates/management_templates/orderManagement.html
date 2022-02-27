@@ -164,9 +164,10 @@
 
                             </script>
 
-                            <button class="btn btn-xs btn-info">
-                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </button>
+                                <button class="btn btn-xs btn-info" onclick="window.location.href='{% url 'management:update_order' order_item.order.id %}'">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </button>
+
 
                             <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.order.id }}">
                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
