@@ -6,7 +6,7 @@ from rest_framework import viewsets, permissions
 class InstrumentsViewSet(viewsets.ModelViewSet):
     queryset = Instrument.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class = InstrumentSerializer
 
@@ -14,7 +14,7 @@ class InstrumentsViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class = CategorySerializer
 
@@ -22,6 +22,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class = OrderSerializer
