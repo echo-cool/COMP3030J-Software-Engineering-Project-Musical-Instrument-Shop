@@ -6,6 +6,7 @@ from os.path import dirname
 import fontawesomefree
 import bootstrap4
 import django_filters
+from django_seed import Seed
 # DO NOT REMOVE THESE IMPORT !!!!!!!
 warnings.simplefilter('error', DeprecationWarning)
 
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'django_filters',
+
+    # Faker
+    'django_seed',
 
 
 ]
