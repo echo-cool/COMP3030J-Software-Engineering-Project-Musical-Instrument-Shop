@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include, re_path
@@ -22,7 +23,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
     path('management/', include('management.urls'), name='management'),
