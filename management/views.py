@@ -18,8 +18,6 @@ def order_management_all(request):
     data = []
     orders = Order.objects.all()
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -41,8 +39,6 @@ def order_management_unconfirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=False)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -64,8 +60,6 @@ def order_management_confirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=True).filter(delivery_confirmed=False)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -87,8 +81,6 @@ def order_management_delivered(request):
     data = []
     orders = Order.objects.filter(delivery_confirmed=True)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
