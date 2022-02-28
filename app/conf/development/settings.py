@@ -1,6 +1,6 @@
 import os
 import warnings
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from os.path import dirname
 # DO NOT REMOVE THESE IMPORT !!!!!!!
 import fontawesomefree
@@ -194,3 +194,5 @@ CORS_ALLOW_HEADERS = (
   'x-requested-with',
   'Pragma',
 )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

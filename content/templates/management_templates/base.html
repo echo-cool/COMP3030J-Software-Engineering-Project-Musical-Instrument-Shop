@@ -17,7 +17,7 @@
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
     <title>Backend</title>
-    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css"/>
 
     <!-- bootstrap & fontawesome -->
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -326,10 +326,12 @@
 
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        {% if profile is not None  %}
-                            <img class="nav-user-photo" src="/media/{{ profile.image }}" alt="{{ request.user.username }}'s Photo"/>
+                        {% if profile is not None %}
+                            <img class="nav-user-photo" src="/media/{{ profile.image }}"
+                                 alt="{{ request.user.username }}'s Photo"/>
                         {% else %}
-                            <img class="nav-user-photo" src="/static/assets/images/avatars/user.jpg" alt="{{ request.user.username }}'s Photo"/>
+                            <img class="nav-user-photo" src="/static/assets/images/avatars/user.jpg"
+                                 alt="{{ request.user.username }}'s Photo"/>
                         {% endif %}
 
                         <span class="user-info">
@@ -431,7 +433,7 @@
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-desktop"></i>
                     <span class="menu-text">
-								UI &amp; Elements
+								Instruments
 							</span>
 
                     <b class="arrow fa fa-angle-down"></b>
@@ -951,15 +953,15 @@
 
             <div class="page-content">
                 {% block page_header %}
-                <div class="page-header">
-                    <h1>
-                        Tables
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            Static &amp; Dynamic Tables
-                        </small>
-                    </h1>
-                </div>
+                    <div class="page-header">
+                        <h1>
+                            Tables
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                Static &amp; Dynamic Tables
+                            </small>
+                        </h1>
+                    </div>
                 {% endblock %}
                 <div class="ace-settings-container" id="ace-settings-container">
                     <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -1081,7 +1083,6 @@
 </div><!-- /.main-container -->
 
 
-
 <script src="/static/assets/js/jquery-ui.min.js"></script>
 
 <script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
@@ -1182,150 +1183,151 @@
         {#        }#}
         {#    })#}
         {#}#}
-        {##}
-        {#drawPieChart(placeholder, data);#}
+            {##}
+            {#drawPieChart(placeholder, data);#}
 
-        /**
-         we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-         so that's not needed actually.
-         */
-        placeholder.data('chart', data);
-        placeholder.data('draw', drawPieChart);
+            /**
+             we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
+             so that's not needed actually.
+             */
+            placeholder.data('chart', data);
+            placeholder.data('draw', drawPieChart);
 
 
-        //pie chart tooltip example
-        var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
-        var previousPoint = null;
+            //pie chart tooltip example
+            var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
+            var previousPoint = null;
 
-        placeholder.on('plothover', function (event, pos, item) {
-            if (item) {
-                if (previousPoint != item.seriesIndex) {
-                    previousPoint = item.seriesIndex;
-                    var tip = item.series['label'] + " : " + item.series['percent'] + '%';
-                    $tooltip.show().children(0).text(tip);
+            placeholder.on('plothover', function (event, pos, item) {
+                if (item) {
+                    if (previousPoint != item.seriesIndex) {
+                        previousPoint = item.seriesIndex;
+                        var tip = item.series['label'] + " : " + item.series['percent'] + '%';
+                        $tooltip.show().children(0).text(tip);
+                    }
+                    $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
+                } else {
+                    $tooltip.hide();
+                    previousPoint = null;
                 }
-                $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
-            } else {
-                $tooltip.hide();
-                previousPoint = null;
-            }
 
-        });
-
-        /////////////////////////////////////
-        $(document).one('ajaxloadstart.page', function (e) {
-            $tooltip.remove();
-        });
-
-
-        var d1 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.5) {
-            d1.push([i, Math.sin(i)]);
-        }
-
-        var d2 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.5) {
-            d2.push([i, Math.cos(i)]);
-        }
-
-        var d3 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.2) {
-            d3.push([i, Math.tan(i)]);
-        }
-
-
-        var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '220px'});
-        $.plot("#sales-charts", [
-            {label: "Domains", data: d1},
-            {label: "Hosting", data: d2},
-            {label: "Services", data: d3}
-        ], {
-            hoverable: true,
-            shadowSize: 0,
-            series: {
-                lines: {show: true},
-                points: {show: true}
-            },
-            xaxis: {
-                tickLength: 0
-            },
-            yaxis: {
-                ticks: 10,
-                min: -2,
-                max: 2,
-                tickDecimals: 3
-            },
-            grid: {
-                backgroundColor: {colors: ["#fff", "#fff"]},
-                borderWidth: 1,
-                borderColor: '#555'
-            }
-        });
-
-
-        $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-
-        function tooltip_placement(context, source) {
-            var $source = $(source);
-            var $parent = $source.closest('.tab-content')
-            var off1 = $parent.offset();
-            var w1 = $parent.width();
-
-            var off2 = $source.offset();
-            //var w2 = $source.width();
-
-            if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
-            return 'left';
-        }
-
-
-        $('.dialogs,.comments').ace_scroll({
-            size: 300
-        });
-
-
-        //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-        //so disable dragging when clicking on label
-        var agent = navigator.userAgent.toLowerCase();
-        if (ace.vars['touch'] && ace.vars['android']) {
-            $('#tasks').on('touchstart', function (e) {
-                var li = $(e.target).closest('#tasks li');
-                if (li.length == 0) return;
-                var label = li.find('label.inline').get(0);
-                if (label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation();
             });
-        }
 
-        $('#tasks').sortable({
-                opacity: 0.8,
-                revert: true,
-                forceHelperSize: true,
-                placeholder: 'draggable-placeholder',
-                forcePlaceholderSize: true,
-                tolerance: 'pointer',
-                stop: function (event, ui) {
-                    //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-                    $(ui.item).css('z-index', 'auto');
-                }
+            /////////////////////////////////////
+            $(document).one('ajaxloadstart.page', function (e) {
+                $tooltip.remove();
+            });
+
+
+            var d1 = [];
+            for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                d1.push([i, Math.sin(i)]);
             }
-        );
-        $('#tasks').disableSelection();
-        $('#tasks input:checkbox').removeAttr('checked').on('click', function () {
-            if (this.checked) $(this).closest('li').addClass('selected');
-            else $(this).closest('li').removeClass('selected');
-        });
+
+            var d2 = [];
+            for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                d2.push([i, Math.cos(i)]);
+            }
+
+            var d3 = [];
+            for (var i = 0; i < Math.PI * 2; i += 0.2) {
+                d3.push([i, Math.tan(i)]);
+            }
 
 
-        //show the dropdowns on top or bottom depending on window height and menu position
-        $('#task-tab .dropdown-hover').on('mouseenter', function (e) {
-            var offset = $(this).offset();
+            var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '220px'});
+            $.plot("#sales-charts", [
+                {label: "Domains", data: d1},
+                {label: "Hosting", data: d2},
+                {label: "Services", data: d3}
+            ], {
+                hoverable: true,
+                shadowSize: 0,
+                series: {
+                    lines: {show: true},
+                    points: {show: true}
+                },
+                xaxis: {
+                    tickLength: 0
+                },
+                yaxis: {
+                    ticks: 10,
+                    min: -2,
+                    max: 2,
+                    tickDecimals: 3
+                },
+                grid: {
+                    backgroundColor: {colors: ["#fff", "#fff"]},
+                    borderWidth: 1,
+                    borderColor: '#555'
+                }
+            });
 
-            var $w = $(window)
-            if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
-                $(this).addClass('dropup');
-            else $(this).removeClass('dropup');
-        });
 
+            $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('.tab-content')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+                return 'left';
+            }
+
+
+            $('.dialogs,.comments').ace_scroll({
+                size: 300
+            });
+
+
+            //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
+            //so disable dragging when clicking on label
+            var agent = navigator.userAgent.toLowerCase();
+            if (ace.vars['touch'] && ace.vars['android']) {
+                $('#tasks').on('touchstart', function (e) {
+                    var li = $(e.target).closest('#tasks li');
+                    if (li.length == 0) return;
+                    var label = li.find('label.inline').get(0);
+                    if (label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation();
+                });
+            }
+
+            $('#tasks').sortable({
+                    opacity: 0.8,
+                    revert: true,
+                    forceHelperSize: true,
+                    placeholder: 'draggable-placeholder',
+                    forcePlaceholderSize: true,
+                    tolerance: 'pointer',
+                    stop: function (event, ui) {
+                        //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
+                        $(ui.item).css('z-index', 'auto');
+                    }
+                }
+            );
+            $('#tasks').disableSelection();
+            $('#tasks input:checkbox').removeAttr('checked').on('click', function () {
+                if (this.checked) $(this).closest('li').addClass('selected');
+                else $(this).closest('li').removeClass('selected');
+            });
+
+
+            //show the dropdowns on top or bottom depending on window height and menu position
+            $('#task-tab .dropdown-hover').on('mouseenter', function (e) {
+                var offset = $(this).offset();
+
+                var $w = $(window)
+                if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
+                    $(this).addClass('dropup');
+                else $(this).removeClass('dropup');
+            });
+
+        }
     })
 </script>
 </body>
