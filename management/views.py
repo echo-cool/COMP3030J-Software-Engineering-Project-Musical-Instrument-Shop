@@ -10,6 +10,7 @@ from shop.models import Order, Instrument, Profile
 from django.contrib.auth.decorators import login_required, permission_required
 
 
+@login_required
 def index(request):
     return render(request, 'management_templates/index.html')
 
@@ -23,14 +24,14 @@ def order_management_all(request):
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
             'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+                id=order_item.instrument.id).first(),
             'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+                user=order_item.user.id).first()
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
         'orders': data,
-        'profile': Profile.objects.filter(id=request.user.profile.id).first(),
+        'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 0
     })
 
@@ -51,7 +52,7 @@ def order_management_unconfirmed(request):
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
         'orders': data,
-        'profile': Profile.objects.filter(id=request.user.profile.id).first(),
+        'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 1
     })
 
@@ -72,7 +73,7 @@ def order_management_confirmed(request):
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
         'orders': data,
-        'profile': Profile.objects.filter(id=request.user.profile.id).first(),
+        'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 2
     })
 
@@ -93,7 +94,7 @@ def order_management_delivered(request):
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
         'orders': data,
-        'profile': Profile.objects.filter(id=request.user.profile.id).first(),
+        'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 3
     })
 
@@ -120,6 +121,6 @@ def instrument_management(request):
     instruments = Instrument.objects.all()
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
-        'profile': Profile.objects.filter(id=request.user.profile.id).first()
+        'profile': Profile.objects.filter(user=request.user.id).first()
     })
 
