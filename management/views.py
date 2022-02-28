@@ -19,8 +19,6 @@ def order_management_all(request):
     data = []
     orders = Order.objects.all()
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -42,8 +40,6 @@ def order_management_unconfirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=False)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -65,8 +61,6 @@ def order_management_confirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=True).filter(delivery_confirmed=False)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -88,8 +82,6 @@ def order_management_delivered(request):
     data = []
     orders = Order.objects.filter(delivery_confirmed=True)
     for order_item in orders:
-        print(order_item.instrument)
-
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
@@ -109,7 +101,8 @@ def order_management_delivered(request):
 @login_required
 def update_order(request, order_id):
     if request.method == "POST":
-        f = OrderForm(request.POST)
+        order = Order.objects.get(id=order_id)
+        f = OrderForm(request.POST, instance=order)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:order_management_all'))
@@ -117,7 +110,6 @@ def update_order(request, order_id):
     else:
         order = Order.objects.get(id=order_id)
         f = OrderForm(instance=order)
-
         return render(request, 'management_templates/update_order.html', {
             'form': f
         })
