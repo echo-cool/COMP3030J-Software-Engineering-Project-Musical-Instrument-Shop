@@ -100,14 +100,14 @@ def order_management_delivered(request):
 @login_required
 def update_order(request, order_id):
     if request.method == "POST":
-        f = OrderForm(request.POST)
+        order = Order.objects.get(id=order_id)
+        f = OrderForm(request.POST, instance=order)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:order_management'))
     else:
         order = Order.objects.get(id=order_id)
         f = OrderForm(instance=order)
-
         return render(request, 'management_templates/update_order.html', {
             'form': f
         })
