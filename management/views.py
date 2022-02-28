@@ -114,3 +114,12 @@ def update_order(request, order_id):
             'form': f
         })
 
+
+@login_required
+def instrument_management(request):
+    instruments = Instrument.objects.all()
+    return render(request, 'management_templates/instrumentManagement.html', {
+        'instruments': instruments,
+        'profile': Profile.objects.filter(id=request.user.profile.id).first()
+    })
+
