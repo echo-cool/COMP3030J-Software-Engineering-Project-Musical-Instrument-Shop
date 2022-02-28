@@ -29,7 +29,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     permission_classes = [
-        permissions.IsAuthenticated
+        permissions.AllowAny
     ]
     serializer_class = OrderSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]

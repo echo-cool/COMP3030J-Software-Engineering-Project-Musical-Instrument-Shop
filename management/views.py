@@ -7,13 +7,14 @@ from django.urls import reverse
 
 from management.forms import OrderForm
 from shop.models import Order, Instrument, Profile
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 def index(request):
     return render(request, 'management_templates/index.html')
 
 
-
+@login_required
 def order_management_all(request):
     data = []
     orders = Order.objects.all()
@@ -36,6 +37,7 @@ def order_management_all(request):
     })
 
 
+@login_required
 def order_management_unconfirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=False)
@@ -45,8 +47,10 @@ def order_management_unconfirmed(request):
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+            'profile': Profile.objects.filter(
+                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
@@ -56,6 +60,7 @@ def order_management_unconfirmed(request):
     })
 
 
+@login_required
 def order_management_confirmed(request):
     data = []
     orders = Order.objects.filter(shopper_confirmed=True).filter(delivery_confirmed=False)
@@ -65,8 +70,10 @@ def order_management_confirmed(request):
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+            'profile': Profile.objects.filter(
+                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
@@ -76,6 +83,7 @@ def order_management_confirmed(request):
     })
 
 
+@login_required
 def order_management_delivered(request):
     data = []
     orders = Order.objects.filter(delivery_confirmed=True)
@@ -85,8 +93,10 @@ def order_management_delivered(request):
         tmp = {
             'order': order_item,
             'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+            'profile': Profile.objects.filter(
+                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
@@ -96,6 +106,7 @@ def order_management_delivered(request):
     })
 
 
+@login_required
 def update_order(request, order_id):
     if request.method == "POST":
         f = OrderForm(request.POST)
@@ -110,3 +121,4 @@ def update_order(request, order_id):
         return render(request, 'management_templates/update_order.html', {
             'form': f
         })
+

@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'app.cors_middleware.CORSMiddleware'
+    'app.cors_middleware.CORSMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -165,3 +165,32 @@ LOCALE_PATHS = [
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+# Origin '*' in CORS_ORIGIN_WHITELIST is missing scheme 出现该错误则将其注释掉
+CORS_ORIGIN_WHITELIST = (
+  "*"
+)
+CORS_ALLOW_METHODS = (
+  'DELETE',
+  'GET',
+  'OPTIONS',
+  'PATCH',
+  'POST',
+  'PUT',
+  'VIEW',
+)
+CORS_ALLOW_HEADERS = (
+  'XMLHttpRequest',
+  'X_FILENAME',
+  'accept-encoding',
+  'authorization',
+  'content-type',
+  'dnt',
+  'origin',
+  'user-agent',
+  'x-csrftoken',
+  'x-requested-with',
+  'Pragma',
+)
