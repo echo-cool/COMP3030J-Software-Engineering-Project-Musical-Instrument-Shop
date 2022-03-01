@@ -1,18 +1,38 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from django.urls import reverse
 
-from management.forms import OrderForm
-from shop.models import Order, Instrument, Profile
+from management.forms import OrderForm, InstrumentForm
+from shop.models import Order, Instrument, Profile, Category, Review
 from django.contrib.auth.decorators import login_required, permission_required
 
 
 @login_required
 def index(request):
-    return render(request, 'management_templates/index.html')
+    counts = {
+        'user': User.objects.count(),
+        'instrument': Instrument.objects.count(),
+        'order': Order.objects.count(),
+        'category': Category.objects.count(),
+        'review': Review.objects.count(),
+    }
+    pie_data = {}
+    for category_item in Category.objects.all():
+        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(category=category_item.id).count()
+
+    tmp = {}
+    for instrument_item in Instrument.objects.all():
+        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+
+    return render(request, 'management_templates/index.html', {
+        'counts': counts,
+        'pie_data': pie_data,
+        'popular_instruments': popular_instruments
+    })
 
 
 @login_required
@@ -118,9 +138,50 @@ def update_order(request, order_id):
 
 @login_required
 def instrument_management(request):
-    instruments = Instrument.objects.all()
+    instrument_list = Instrument.objects.all()
+    paginator = Paginator(instrument_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+    # instruments = Instrument.objects.all()
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first()
     })
+
+
+@login_required
+def update_instrument(request, instrument_id):
+    if request.method == "POST":
+        instrument = Instrument.objects.get(id=instrument_id)
+        f = InstrumentForm(request.POST, instance=instrument)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:instrument_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        instrument = Instrument.objects.get(id=instrument_id)
+        f = InstrumentForm(instance=instrument)
+        return render(request, 'management_templates/update_instrument.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_instrument(request):
+    if request.method == "POST":
+        f = InstrumentForm(request.POST)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:instrument_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        f = InstrumentForm()
+        return render(request, 'management_templates/update_instrument.html', {
+            'form': f
+        })
 

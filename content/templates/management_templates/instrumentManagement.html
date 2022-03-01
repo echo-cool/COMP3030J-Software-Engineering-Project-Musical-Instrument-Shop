@@ -16,14 +16,14 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="page-header">
-        <h1>
+    <div class="row page-header">
+        <h1 class="col-md-10">
             Instrument Management
-            <button class="btn btn-app btn-danger btn-sm">
-                <i class="ace-icon fa fa-trash-o bigger-200"></i>
-                Delete
-            </button>
         </h1>
+        <button class="btn btn-xs btn-success pull-right"
+                onclick="window.location.href='{% url 'management:add_instrument' %}'">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
     </div>
 {% endblock %}
 
@@ -57,6 +57,7 @@
         </thead>
 
         <tbody>
+
         {% for instrument in instruments %}
             <tr>
                 <td class="center">
@@ -92,7 +93,7 @@
                     <div class="hidden-sm hidden-xs btn-group">
 
                         <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_order' instrument.id %}'">
+                                onclick="window.location.href='{% url 'management:update_instrument' instrument.id %}'">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 
@@ -114,7 +115,7 @@
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
-                                                    url: "/api/instrument/{{ instrument.id }}/",
+                                                    url: "/api/instruments/{{ instrument.id }}/",
                                                     method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
@@ -126,10 +127,11 @@
                                                             success: function (res) {
                                                                 $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
                                                                 table_events()
+                                                                {#alert("Success!");#}
 
                                                             }
                                                         });
-                                                        alert("Success!");
+
                                                         console.log(res);
                                                     }
                                                 })
@@ -310,6 +312,28 @@
             </tr>
 
         {% endfor %}
+        <div class="row">
+            <button class="btn btn-success col-md-5" id="prev_page">Previous Page</button>
+            <p class="col-md-2 border-light justify-center align-center font-weight-bold" style="font-size: 30px">{{ instruments.number }}</p>
+            <button class="btn btn-danger col-md-5" id="next_page">Next Page</button>
+        </div>
+        <script>
+            $("#prev_page").on('click', function (res) {
+                const page = (parseInt({{ instruments.next_page_number }}) - 2);
+                if (page >= 1)
+                        window.location.href = "?page=" + page
+
+            })
+            $("#next_page").on('click', function (res) {
+                const page_max = parseInt("{{ instruments.paginator.page_range }}".split(',')[1].split(")")[0]) - 1
+                console.log(page_max)
+                console.log(parseInt({{ instruments.next_page_number }}))
+                if(page_max > parseInt({{ instruments.next_page_number }}))
+                    window.location.href = "?page={{ instruments.next_page_number }}"
+
+
+            })
+        </script>
 
         </tbody>
     </table>
