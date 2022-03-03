@@ -20,6 +20,9 @@
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    {% block head_link %}
+
+    {% endblock %}
 
 </head>
 
@@ -79,7 +82,9 @@
     {% endblock %}
 
 </div>
+    {% block foot_link %}
 
+    {% endblock %}
 <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>

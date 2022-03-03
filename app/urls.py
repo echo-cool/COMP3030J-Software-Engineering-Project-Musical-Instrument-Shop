@@ -6,6 +6,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from main.views import ChangeLanguageView
+# import Pillow
 schema_view = get_schema_view(
    openapi.Info(
       title="Snippets API",
@@ -21,7 +22,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
     path('management/', include('management.urls'), name='management'),
