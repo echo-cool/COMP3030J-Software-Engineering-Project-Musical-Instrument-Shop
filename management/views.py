@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -185,3 +186,30 @@ def add_instrument(request):
             'form': f
         })
 
+
+@login_required
+def add_order(request):
+    if request.method == "POST":
+        f = OrderForm(request.POST)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:order_management_all'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        f = OrderForm()
+        return render(request, 'management_templates/update_order.html', {
+            'form': f
+        })
+
+
+@login_required
+def profile(request):
+    if request.method == "POST":
+        profile_item = Profile.objects.filter(user=request.user.id).first()
+        profile_item.image = request.FILES.get('photo')
+        profile_item.save()
+        return redirect(reverse('management:profile'))
+    else:
+        return render(request, 'management_templates/profile.html', {
+            'profile': Profile.objects.filter(user=request.user.id).first(),
+        })
