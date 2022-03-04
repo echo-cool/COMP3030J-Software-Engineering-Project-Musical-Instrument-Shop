@@ -8,3 +8,7 @@ def index(request):
 
 def create_order(request):
     return render(request, 'shop_templates/create_order.html')
+
+
+def confirm(request):
+    return render(request, 'shop_templates/confirm.html')
