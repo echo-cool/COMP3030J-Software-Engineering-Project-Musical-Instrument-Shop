@@ -1,13 +1,11 @@
 from django.urls import path
 
-from . import views
-
-from .views import create_order, confirm
+from .views import checkout, confirm, model, index
 
 app_name = 'shop'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('create_order', create_order, name='create_order'),
+    path('', index, name='index'),
+    path('checkout', checkout, name='checkout'),
     path('confirm', confirm, name='confirm'),
-    path("model", views.model, name='model'),
+    path("model", model, name='model'),
 ]
