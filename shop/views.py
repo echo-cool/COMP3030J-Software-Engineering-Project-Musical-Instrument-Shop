@@ -8,3 +8,7 @@ def index(request):
 
 def model(request):
     return render(request, 'shop_templates/3d3.html')
+
+
+def tes(request):
+    return render(request, 'shop_templates/TESLA.html')

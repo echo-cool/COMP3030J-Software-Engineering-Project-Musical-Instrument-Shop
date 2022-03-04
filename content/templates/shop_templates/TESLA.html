@@ -1,817 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<section role="none" class="option-widget cf-layout cf-layout--desk">
-    <div class="cf-asset-wrapper">
-        <div class="gallery MainGallery-gallery.FSD">
-            <div class="gallery_asset--section is-active"
-                 style="position: relative; left: 0px; top: 0px; transform: scale(1); touch-action: pan-y;">
-                <div class="asset-loader-2-video-inline" role="presentation">
-                    <video title="自动辅助导航驾驶" alt="自动辅助导航驾驶" id="video-id-自动辅助导航驾驶"
-                           data-src="https://www.tesla.com/ns_videos/model3/autopilot/navigate-on-autopilot.mp4"
-                           data-src-desktop="https://www.tesla.com/ns_videos/model3/autopilot/navigate-on-autopilot.mp4"
-                           src="https://www.tesla.com/ns_videos/model3/autopilot/navigate-on-autopilot.mp4"></video>
-                </div>
-                <div class="tds-text--500 tds-text_color--10">自动辅助导航驾驶</div>
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <style>
+        .left-box {
+            background: #a52c644a;
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            height: 500px;
+        }
+    </style>
+    <div class="container" style="height: 700px">
+        <div class="row" style="height: 100%">
+            <div class="col-8 border">
+                <div class="container left-box"></div>
             </div>
-            <div class="gallery_asset--section">
-                <div class="asset-loader-2-video-inline" role="presentation">
-                    <video title="自动辅助变道" alt="自动辅助变道" id="video-id-自动辅助变道"
-                           data-src="https://www.tesla.com/ns_videos/model3/autopilot/lane_change.mp4"
-                           data-src-desktop="https://www.tesla.com/ns_videos/model3/autopilot/lane_change.mp4"
-                           src="https://www.tesla.com/ns_videos/model3/autopilot/lane_change.mp4"></video>
-                </div>
-                <div class="tds-text--500 tds-text_color--10">自动辅助变道</div>
-            </div>
-            <div class="gallery_asset--section">
-                <div class="asset-loader-2-video-inline" role="presentation">
-                    <video title="自动泊车" alt="自动泊车" id="video-id-自动泊车"
-                           data-src="https://www.tesla.com/ns_videos/model3/autopilot/autopark.mp4"
-                           data-src-desktop="https://www.tesla.com/ns_videos/model3/autopilot/autopark.mp4"
-                           src="https://www.tesla.com/ns_videos/model3/autopilot/autopark.mp4"></video>
-                </div>
-                <div class="tds-text--500 tds-text_color--10">自动泊车</div>
-            </div>
-            <div class="gallery_asset--section">
-                <div class="asset-loader-2-video-inline" role="presentation">
-                    <video title="召唤功能" alt="召唤功能" id="video-id-召唤功能" data-src="MODEL3/UI/summon_v2.mp4"
-                           data-src-desktop="MODEL3/UI/summon_v2.mp4"
-                           src="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/summon_v2.mp4"></video>
-                </div>
-                <div class="tds-text--500 tds-text_color--10">召唤功能</div>
-            </div>
-            <button type="button" class="gallery_control" aria-label="图库控制 — 上一项">
-                <svg class="tds-icon gallery-icon-left" viewBox="0 0 30 30" style="width: 32px; height: 32px;"><title>
-                    tds-arrow</title>
-                    <description>tds-arrow</description>
-                    <path stroke="var(--tds-icon-fill-secondary)" stroke-width="1.5" d="M10.5 17.5l4.5-4 4.5 4"
-                          fill="none" stroke-linecap="round" class="arrow" transform="rotate(0 15 15)"></path>
-                </svg>
-            </button>
-            <button type="button" class="gallery_control gallery_control__next" aria-label="图库控制 — 下一项">
-                <svg class="tds-icon gallery-icon-right" viewBox="0 0 30 30" style="width: 32px; height: 32px;"><title>
-                    tds-arrow</title>
-                    <description>tds-arrow</description>
-                    <path stroke="var(--tds-icon-fill-secondary)" stroke-width="1.5" d="M10.5 17.5l4.5-4 4.5 4"
-                          fill="none" stroke-linecap="round" class="arrow" transform="rotate(0 15 15)"></path>
-                </svg>
-            </button>
-        </div>
-        <div class="gallery MainGallery-gallery.EXTERIOR is-active">
-            <div class="gallery_asset--section is-active"
-                 style="position: relative; left: 0px; top: 0px; transform: scale(1); touch-action: pan-y;">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     class="asset-loader--svg-container asset-loader-2 group--main-content--asset"
-                     id="Model_S_Front_View"
-                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1.3); height: 476px;"><title
-                        id="Model_S_Front_View">前视图：Model S 双电机全轮驱动版 版</title>
-                    <defs></defs>
-                    <image width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
-                           xlink:href="https://static-assets.tesla.cn/configurator/compositor?&amp;options=$MTS10,$PMNG,$WS90,$IBE00&amp;view=FRONT34&amp;model=ms&amp;size=1920&amp;bkba_opt=2&amp;version=v0027d202203031319&amp;crop=0,0,0,0&amp;version=v0027d202203031319"
-                           preserveAspectRatio="xMidYMid meet" alt="前视图：Model S 双电机全轮驱动版 版"></image>
-                </svg>
-            </div>
-            <div class="gallery_asset--section">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     class="asset-loader--svg-container asset-loader-2 group--main-content--asset"
-                     id="Model_S_Side_View"
-                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1.3); height: 476px;"><title
-                        id="Model_S_Side_View">侧视图：Model S 双电机全轮驱动版 版</title>
-                    <defs></defs>
-                    <image width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
-                           xlink:href="https://static-assets.tesla.cn/configurator/compositor?&amp;options=$MTS10,$PMNG,$WS90,$IBE00&amp;view=SIDE&amp;model=ms&amp;size=1920&amp;bkba_opt=2&amp;version=v0027d202203031319&amp;crop=0,0,0,0&amp;version=v0027d202203031319"
-                           preserveAspectRatio="xMidYMid meet" alt="侧视图：Model S 双电机全轮驱动版 版"></image>
-                </svg>
-            </div>
-            <div class="gallery_asset--section">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     class="asset-loader--svg-container asset-loader-2 group--main-content--asset"
-                     id="Model_S_Rear_View"
-                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1.3); height: 476px;"><title
-                        id="Model_S_Rear_View">后视图：Model S 双电机全轮驱动版 版</title>
-                    <defs></defs>
-                    <image width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
-                           xlink:href="https://static-assets.tesla.cn/configurator/compositor?&amp;options=$MTS10,$PMNG,$WS90,$IBE00&amp;view=REAR34&amp;model=ms&amp;size=1920&amp;bkba_opt=2&amp;version=v0027d202203031319&amp;crop=0,0,0,0&amp;version=v0027d202203031319"
-                           preserveAspectRatio="xMidYMid meet" alt="后视图：Model S 双电机全轮驱动版 版"></image>
-                </svg>
-            </div>
-            <div class="gallery_asset--section">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     class="asset-loader--svg-container asset-loader-2 group--main-content--asset"
-                     id="Model_S_Rim_Closeup View"
-                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1);"><title
-                        id="Model_S_Rim_Closeup View">轮圈视图：Model S 双电机全轮驱动版 版</title>
-                    <defs></defs>
-                    <image width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
-                           xlink:href="https://static-assets.tesla.cn/configurator/compositor?&amp;options=$MTS10,$PMNG,$WS90,$IBE00&amp;view=RIMCLOSEUP&amp;model=ms&amp;size=1920&amp;bkba_opt=2&amp;version=v0027d202203031319&amp;crop=0,0,0,0&amp;version=v0027d202203031319"
-                           preserveAspectRatio="xMidYMid slice" alt="轮圈视图：Model S 双电机全轮驱动版 版"></image>
-                </svg>
-            </div>
-            <div class="gallery_asset--section"></div>
-            <button type="button" class="gallery_control" aria-label="图库控制 — 上一项">
-                <svg class="tds-icon gallery-icon-left" viewBox="0 0 30 30" style="width: 32px; height: 32px;"><title>
-                    tds-arrow</title>
-                    <description>tds-arrow</description>
-                    <path stroke="var(--tds-icon-fill-secondary)" stroke-width="1.5" d="M10.5 17.5l4.5-4 4.5 4"
-                          fill="none" stroke-linecap="round" class="arrow" transform="rotate(0 15 15)"></path>
-                </svg>
-            </button>
-            <button type="button" class="gallery_control gallery_control__next" aria-label="图库控制 — 下一项">
-                <svg class="tds-icon gallery-icon-right" viewBox="0 0 30 30" style="width: 32px; height: 32px;"><title>
-                    tds-arrow</title>
-                    <description>tds-arrow</description>
-                    <path stroke="var(--tds-icon-fill-secondary)" stroke-width="1.5" d="M10.5 17.5l4.5-4 4.5 4"
-                          fill="none" stroke-linecap="round" class="arrow" transform="rotate(0 15 15)"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <div class="group-section option-widget--container">
-        <div class="group-container">
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="BATTERY_AND_DRIVE">
-                    <div class="tds--vertical_padding--6x option-widget--container"><h1
-                            class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1"><span>Model S</span>
-                    </h1>
-                        <div class="group-block specs-block tds--vertical_padding">
-                            <div class="preorder-disclaimer tds-text--caption tds--padding tds-text--center">
-                                价格和具体配置会在临近交付时发布，届时您会收到通知以选定订单。在此之前，您的订单将被视为预售订单，您可以随时取消并获得全额退款。
-                            </div>
-                            <ol class="tds-list tds-list--box" aria-live="polite" aria-atomic="true">
-                                <li class="tds-list-item">
-                                    <div class="tds-list-item_title tds-text_color--black" data-id="range">652<span
-                                            class="specs--value-label">公里</span></div>
-                                    <span class="tds-text--caption" data-id="range-label"><span>续航里程<br>预估</span></span>
-                                </li>
-                                <li class="tds-list-item">
-                                    <div class="tds-list-item_title tds-text_color--black" data-id="top-speed">250<span
-                                            class="specs--value-label">公里/时</span></div>
-                                    <span class="tds-text--caption" data-id="top-speed-label">最高时速</span></li>
-                                <li class="tds-list-item">
-                                    <div class="tds-list-item_title tds-text_color--black" data-id="acceleration">
-                                        3.2<span class="specs--value-label">秒</span></div>
-                                    <span class="tds-text--caption"
-                                          data-id="acceleration-label"><span>百公里加速</span></span></li>
-                            </ol>
-                        </div>
-                        <div class="group--child-container">
-                            <fieldset class="tds-form-fieldset">
-                                <div class="group--child-container"><h2
-                                        class="text-loader--content tds-text--h6 tds-text--start text-loader--subtitle tds-text--500 tds-text_color--30 tds--vertical_padding-10"
-                                        tabindex="-1"><span>双电机全轮驱动</span></h2>
-                                    <div class="group--detail-container">
-                                        <div class="child-group--option_details">
-                                            <div class="observer-placeholder" style="height: 100%;">
-                                                <div class="group--options_block--container" data-id="$MTS10"
-                                                     data-id-selected="true" aria-label="Model S">
-                                                    <div class="tds-form-item">
-                                                        <div class="tds-option_group"><input
-                                                                class="tds-option-input tds--is_visually_hidden"
-                                                                type="radio" name="BATTERY_AND_DRIVE"
-                                                                data-id="$MTS10-option" id="$MTS10-Model S"
-                                                                value="$MTS10" checked=""><label for="$MTS10-Model S"
-                                                                                                 class="tds-option-label tds-o-option-label">
-                                                            <div class="trim-title-container"><span
-                                                                    class="tds-label-title sr-only tds--is_visually_hidden">双电机全轮驱动</span><span
-                                                                    class="tds-label-title tds-o-label-title"><p
-                                                                    class="text-loader--content group--options_block--name"
-                                                                    tabindex="-1"><span>Model S</span></p></span><span
-                                                                    class="tds-label-descriptor tds-o-label-descriptor"><p
-                                                                    class="group--options_block-container_price text-loader--content">&ZeroWidthSpace;</p></span>
-                                                            </div>
-                                                        </label></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="group--child-container">
-                                    <div class="text-loader--content tds-text--start text-loader--subtitle tds-text--500 tds--vertical_padding-10"
-                                         tabindex="-1"><span>三电机全轮驱动</span></div>
-                                    <div class="group--detail-container">
-                                        <div class="child-group--option_details">
-                                            <div class="observer-placeholder" style="height: 100%;">
-                                                <div class="group--options_block--container" data-id="$MTS11"
-                                                     data-id-selected="false" aria-label="Model S Plaid 版">
-                                                    <div class="tds-form-item">
-                                                        <div class="tds-option_group"><input
-                                                                class="tds-option-input tds--is_visually_hidden"
-                                                                type="radio" name="BATTERY_AND_DRIVE"
-                                                                data-id="$MTS11-option" id="$MTS11-Model S Plaid 版"
-                                                                value="$MTS11"><label for="$MTS11-Model S Plaid 版"
-                                                                                      class="tds-option-label tds-o-option-label">
-                                                            <div class="trim-title-container"><span
-                                                                    class="tds-label-title sr-only tds--is_visually_hidden">三电机全轮驱动</span><span
-                                                                    class="tds-label-title tds-o-label-title"><p
-                                                                    class="text-loader--content group--options_block--name"
-                                                                    tabindex="-1"><span>Model S Plaid 版</span></p></span><span
-                                                                    class="tds-label-descriptor tds-o-label-descriptor"><p
-                                                                    class="group--options_block-container_price text-loader--content">&ZeroWidthSpace;</p></span>
-                                                            </div>
-                                                        </label></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="text-loader--content tds-text--caption text-loader--disclaimer_regulation tds-text--center tds-text--caption tds--vertical_padding-bottom"
-                                       tabindex="-1"><span>待监管机构批准。车辆性能参数均为美国测试标准。</span></p>
-                                    <div class="generic-group-description child-group--details child-group--details__ALL_WHEEL_DRIVE_TWO">
-                                        <div class="text-loader tds-text--caption text-loader--disclaimer--container"
-                                             role="presentation"></div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="tds-flex tds--vertical_padding tds-flex--justify-center cf-action-target">
-                            <div class="modal-trigger-container">
-                                <button class="modal-trigger tds-btn tds-btn--link" type="button"><span
-                                        class="text-loader--content tds-btn tds-btn--light tds-btn--small "
-                                        data-should-open="STD_FEATURES" tabindex="-1"><span>查看详情</span></span></button>
-                            </div>
-                        </div>
+            <div class="col-4 border">
+                <div class="group--detail-container">
+                    <div class="child-group--option_details tds--vertical_padding tds-flex tds-flex--row-nowrap tds-flex--center tds-flex--justify-center">
+                        <div class="observer-placeholder" style="height: 100%;"><input
+                                class="tds-btn tds-btn--link group--options_asset--container group--option--selected"
+                                data-id="$IBE00-option" data-id-selected="true" id="INTERIOR_PACKAGE_$IBE00"
+                                type="radio" aria-label="全黑色 - 包括" name="INTERIOR_PACKAGE" value="$IBE00"
+                                checked=""><label class="group--option--label" for="INTERIOR_PACKAGE_$IBE00"><span
+                                class="tds--is_visually_hidden">全黑色</span>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 class="asset-loader--svg-container asset-loader-2 group--options_asset selected"
+                                 id="Model_S_全黑色"
+                                 style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                <title id="Model_S_全黑色">全黑色</title>
+                                <defs>
+                                    <clipPath
+                                            id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319">
+                                        <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                stroke-width="0"></circle>
+                                    </clipPath>
+                                    <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319"
+                                            height="200%">
+                                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.3"></feFuncA>
+                                        </feComponentTransfer>
+                                        <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                        <feMerge>
+                                            <feMergeNode></feMergeNode>
+                                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319"
+                                       preserveAspectRatio="xMidYMid meet" alt="全黑色" x="7px" y="7px"
+                                       clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319)"></image>
+                            </svg>
+                        </label></div>
+                        <div class="observer-placeholder" style="height: 100%;"><input
+                                class="tds-btn tds-btn--link group--options_asset--container" data-id="$IWW00-option"
+                                data-id-selected="false" id="INTERIOR_PACKAGE_$IWW00" type="radio"
+                                aria-label="黑色和白色 - 包括" name="INTERIOR_PACKAGE" value="$IWW00"><label
+                                class="group--option--label" for="INTERIOR_PACKAGE_$IWW00"><span
+                                class="tds--is_visually_hidden">黑色和白色</span>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
+                                 id="Model_S_黑色和白色"
+                                 style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                <title id="Model_S_黑色和白色">黑色和白色</title>
+                                <defs>
+                                    <clipPath
+                                            id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319">
+                                        <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                stroke-width="0"></circle>
+                                    </clipPath>
+                                    <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319"
+                                            height="200%">
+                                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.3"></feFuncA>
+                                        </feComponentTransfer>
+                                        <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                        <feMerge>
+                                            <feMergeNode></feMergeNode>
+                                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319"
+                                       preserveAspectRatio="xMidYMid meet" alt="黑色和白色" x="7px" y="7px"
+                                       clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319)"></image>
+                            </svg>
+                        </label></div>
+                        <div class="observer-placeholder" style="height: 100%;"><input
+                                class="tds-btn tds-btn--link group--options_asset--container" data-id="$ICW00-option"
+                                data-id-selected="false" id="INTERIOR_PACKAGE_$ICW00" type="radio" aria-label="米色 - 包括"
+                                name="INTERIOR_PACKAGE" value="$ICW00"><label class="group--option--label"
+                                                                              for="INTERIOR_PACKAGE_$ICW00"><span
+                                class="tds--is_visually_hidden">米色</span>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
+                                 id="Model_S_米色"
+                                 style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                <title id="Model_S_米色">米色</title>
+                                <defs>
+                                    <clipPath
+                                            id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319">
+                                        <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                stroke-width="0"></circle>
+                                    </clipPath>
+                                    <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319"
+                                            height="200%">
+                                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.3"></feFuncA>
+                                        </feComponentTransfer>
+                                        <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                        <feMerge>
+                                            <feMergeNode></feMergeNode>
+                                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319"
+                                       preserveAspectRatio="xMidYMid meet" alt="米色" x="7px" y="7px"
+                                       clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319)"></image>
+                            </svg>
+                        </label></div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
                     </div>
                 </div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="PAINT">
-                    <fieldset class="tds-form-fieldset tds--vertical_margin--fieldset option-widget--container">
-                        <legend><h2 class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1">
-                            <span>选择颜色</span></h2></legend>
-                        <div class="group--detail-container">
-                            <div class="child-group--option_details tds--vertical_padding tds-flex tds-flex--row-nowrap tds-flex--center tds-flex--justify-center">
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container"
-                                        data-id="$PBSB-option" data-id-selected="false" id="PAINT_$PBSB" type="radio"
-                                        aria-label="纯黑色 - 包括" name="PAINT" value="$PBSB" checked=""><label
-                                        class="group--option--label" for="PAINT_$PBSB"><span
-                                        class="tds--is_visually_hidden">纯黑色</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                         id="Model_S_纯黑色"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_纯黑色">纯黑色</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Black.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Black.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Black.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="纯黑色" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Black.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container"
-                                        data-id="$PPSW-option" data-id-selected="false" id="PAINT_$PPSW" type="radio"
-                                        aria-label="珍珠白（多涂层） - 包括" name="PAINT" value="$PPSW"><label
-                                        class="group--option--label" for="PAINT_$PPSW"><span
-                                        class="tds--is_visually_hidden">珍珠白（多涂层）</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                         id="Model_S_珍珠白（多涂层）"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_珍珠白（多涂层）">珍珠白（多涂层）</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_White.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_White.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_White.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="珍珠白（多涂层）" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_White.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container group--option--selected"
-                                        data-id="$PMNG-option" data-id-selected="true" id="PAINT_$PMNG" type="radio"
-                                        aria-label="冷光银 - 包括" name="PAINT" value="$PMNG"><label
-                                        class="group--option--label" for="PAINT_$PMNG"><span
-                                        class="tds--is_visually_hidden">冷光银</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset selected"
-                                         id="Model_S_冷光银"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_冷光银">冷光银</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_MidnightSilver.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_MidnightSilver.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_MidnightSilver.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="冷光银" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_MidnightSilver.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container"
-                                        data-id="$PPSB-option" data-id-selected="false" id="PAINT_$PPSB" type="radio"
-                                        aria-label="深海蓝 - 包括" name="PAINT" value="$PPSB"><label
-                                        class="group--option--label" for="PAINT_$PPSB"><span
-                                        class="tds--is_visually_hidden">深海蓝</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                         id="Model_S_深海蓝"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_深海蓝">深海蓝</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Blue.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Blue.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Blue.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="深海蓝" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Blue.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container"
-                                        data-id="$PPMR-option" data-id-selected="false" id="PAINT_$PPMR" type="radio"
-                                        aria-label="中国红（多涂层） - 包括" name="PAINT" value="$PPMR"><label
-                                        class="group--option--label" for="PAINT_$PPMR"><span
-                                        class="tds--is_visually_hidden">中国红（多涂层）</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                         id="Model_S_中国红（多涂层）"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_中国红（多涂层）">中国红（多涂层）</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Red.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Paint_Red.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Red.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="中国红（多涂层）" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Paint_Red.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                            </div>
-                        </div>
-                        <div class="child-group--selected_option_details">
-                            <div class="tds-flex tds-flex--flex_cells custom-content">
-                                <div class="tds-flex-item tds-flex--auto tds-flex--justify-flex-end"><p
-                                        class="text-loader--content tds-text_color--black tds-text--500 group-option--detail-container_name"
-                                        tabindex="-1"><span>冷光银</span></p></div>
-                                <div class="tds-flex-item tds-flex--auto group-option--price"><p
-                                        class="text-loader--content group-option--detail-container_price"
-                                        data-id="PAINT-price">&ZeroWidthSpace;</p></div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="WHEELS">
-                    <fieldset class="tds-form-fieldset tds--vertical_margin--fieldset option-widget--container">
-                        <legend><h2 class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1">
-                            <span>选择轮毂</span></h2></legend>
-                        <div class="group--detail-container">
-                            <div class="child-group--option_details tds--vertical_padding tds-flex tds-flex--row-nowrap tds-flex--center tds-flex--justify-center">
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container group--option--selected"
-                                        data-id="$WS90-option" data-id-selected="true" id="WHEELS_$WS90" type="radio"
-                                        aria-label="19 英寸暴风轮毂 - 包括" name="WHEELS" value="$WS90" checked=""><label
-                                        class="group--option--label" for="WHEELS_$WS90"><span
-                                        class="tds--is_visually_hidden">19 英寸暴风轮毂</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset selected"
-                                         id="Model_S_19_英寸暴风轮毂"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_19_英寸暴风轮毂">19 英寸暴风轮毂</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODELS_UI_ui_swat_whl_tempest.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODELS_UI_ui_swat_whl_tempest.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_tempest.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="19 英寸暴风轮毂" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_tempest.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                                <div class="observer-placeholder" style="height: 100%;"><input
-                                        class="tds-btn tds-btn--link group--options_asset--container"
-                                        data-id="$WS10-option" data-id-selected="false" id="WHEELS_$WS10" type="radio"
-                                        aria-label="21 英寸蛛网轮毂 - 包括" name="WHEELS" value="$WS10"><label
-                                        class="group--option--label" for="WHEELS_$WS10"><span
-                                        class="tds--is_visually_hidden">21 英寸蛛网轮毂</span>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                         class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                         id="Model_S_21_英寸蛛网轮毂"
-                                         style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                        <title id="Model_S_21_英寸蛛网轮毂">21 英寸蛛网轮毂</title>
-                                        <defs>
-                                            <clipPath
-                                                    id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODELS_UI_21Arachnid.png_version_v0027d202203031319">
-                                                <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
-                                                        stroke-width="0"></circle>
-                                            </clipPath>
-                                            <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODELS_UI_21Arachnid.png_version_v0027d202203031319"
-                                                    height="200%">
-                                                <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
-                                                <feComponentTransfer>
-                                                    <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                </feComponentTransfer>
-                                                <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                <feMerge>
-                                                    <feMergeNode></feMergeNode>
-                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                               xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODELS/UI/21Arachnid.png?version=v0027d202203031319"
-                                               preserveAspectRatio="xMidYMid meet" alt="21 英寸蛛网轮毂" x="7px" y="7px"
-                                               clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODELS/UI/21Arachnid.png?version=v0027d202203031319)"></image>
-                                    </svg>
-                                </label></div>
-                            </div>
-                        </div>
-                        <div class="child-group--selected_option_details">
-                            <div class="tds-flex tds-flex--flex_cells custom-content">
-                                <div class="tds-flex-item tds-flex--auto tds-flex--justify-flex-end"><p
-                                        class="text-loader--content tds-text_color--black tds-text--500 group-option--detail-container_name"
-                                        tabindex="-1"><span>19 英寸暴风轮毂</span></p></div>
-                                <div class="tds-flex-item tds-flex--auto group-option--price"><p
-                                        class="text-loader--content group-option--detail-container_price"
-                                        data-id="WHEELS-price">&ZeroWidthSpace;</p></div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="TOWING"></div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="PACKAGES">
-                    <div class="tds--vertical_padding--6x option-widget--container"><h2
-                            class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1">
-                        <span>选择内饰</span></h2>
-                        <div class="group--child-container">
-                            <fieldset class="tds-form-fieldset">
-                                <div class="group--child-container">
-                                    <div class="group--detail-container">
-                                        <div class="child-group--option_details tds--vertical_padding tds-flex tds-flex--row-nowrap tds-flex--center tds-flex--justify-center">
-                                            <div class="observer-placeholder" style="height: 100%;"><input
-                                                    class="tds-btn tds-btn--link group--options_asset--container group--option--selected"
-                                                    data-id="$IBE00-option" data-id-selected="true"
-                                                    id="INTERIOR_PACKAGE_$IBE00" type="radio" aria-label="全黑色 - 包括"
-                                                    name="INTERIOR_PACKAGE" value="$IBE00" checked=""><label
-                                                    class="group--option--label" for="INTERIOR_PACKAGE_$IBE00"><span
-                                                    class="tds--is_visually_hidden">全黑色</span>
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                     class="asset-loader--svg-container asset-loader-2 group--options_asset selected"
-                                                     id="Model_S_全黑色"
-                                                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                                    <title id="Model_S_全黑色">全黑色</title>
-                                                    <defs>
-                                                        <clipPath
-                                                                id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319">
-                                                            <circle cx="50%" cy="50%" r="24" fill="#FFFFFF"
-                                                                    stroke="#3E6AE1" stroke-width="0"></circle>
-                                                        </clipPath>
-                                                        <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319"
-                                                                height="200%">
-                                                            <feGaussianBlur in="SourceAlpha"
-                                                                            stdDeviation="1"></feGaussianBlur>
-                                                            <feComponentTransfer>
-                                                                <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                            </feComponentTransfer>
-                                                            <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                            <feMerge>
-                                                                <feMergeNode></feMergeNode>
-                                                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                            </feMerge>
-                                                        </filter>
-                                                    </defs>
-                                                    <image width="40px" height="40px"
-                                                           xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                           xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319"
-                                                           preserveAspectRatio="xMidYMid meet" alt="全黑色" x="7px" y="7px"
-                                                           clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319)"></image>
-                                                </svg>
-                                            </label></div>
-                                            <div class="observer-placeholder" style="height: 100%;"><input
-                                                    class="tds-btn tds-btn--link group--options_asset--container"
-                                                    data-id="$IWW00-option" data-id-selected="false"
-                                                    id="INTERIOR_PACKAGE_$IWW00" type="radio" aria-label="黑色和白色 - 包括"
-                                                    name="INTERIOR_PACKAGE" value="$IWW00"><label
-                                                    class="group--option--label" for="INTERIOR_PACKAGE_$IWW00"><span
-                                                    class="tds--is_visually_hidden">黑色和白色</span>
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                     class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                                     id="Model_S_黑色和白色"
-                                                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                                    <title id="Model_S_黑色和白色">黑色和白色</title>
-                                                    <defs>
-                                                        <clipPath
-                                                                id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319">
-                                                            <circle cx="50%" cy="50%" r="24" fill="#FFFFFF"
-                                                                    stroke="#3E6AE1" stroke-width="0"></circle>
-                                                        </clipPath>
-                                                        <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319"
-                                                                height="200%">
-                                                            <feGaussianBlur in="SourceAlpha"
-                                                                            stdDeviation="1"></feGaussianBlur>
-                                                            <feComponentTransfer>
-                                                                <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                            </feComponentTransfer>
-                                                            <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                            <feMerge>
-                                                                <feMergeNode></feMergeNode>
-                                                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                            </feMerge>
-                                                        </filter>
-                                                    </defs>
-                                                    <image width="40px" height="40px"
-                                                           xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                           xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319"
-                                                           preserveAspectRatio="xMidYMid meet" alt="黑色和白色" x="7px"
-                                                           y="7px"
-                                                           clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319)"></image>
-                                                </svg>
-                                            </label></div>
-                                            <div class="observer-placeholder" style="height: 100%;"><input
-                                                    class="tds-btn tds-btn--link group--options_asset--container"
-                                                    data-id="$ICW00-option" data-id-selected="false"
-                                                    id="INTERIOR_PACKAGE_$ICW00" type="radio" aria-label="米色 - 包括"
-                                                    name="INTERIOR_PACKAGE" value="$ICW00"><label
-                                                    class="group--option--label" for="INTERIOR_PACKAGE_$ICW00"><span
-                                                    class="tds--is_visually_hidden">米色</span>
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                     class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
-                                                     id="Model_S_米色"
-                                                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
-                                                    <title id="Model_S_米色">米色</title>
-                                                    <defs>
-                                                        <clipPath
-                                                                id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319">
-                                                            <circle cx="50%" cy="50%" r="24" fill="#FFFFFF"
-                                                                    stroke="#3E6AE1" stroke-width="0"></circle>
-                                                        </clipPath>
-                                                        <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319"
-                                                                height="200%">
-                                                            <feGaussianBlur in="SourceAlpha"
-                                                                            stdDeviation="1"></feGaussianBlur>
-                                                            <feComponentTransfer>
-                                                                <feFuncA type="linear" slope="0.3"></feFuncA>
-                                                            </feComponentTransfer>
-                                                            <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
-                                                            <feMerge>
-                                                                <feMergeNode></feMergeNode>
-                                                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                                                            </feMerge>
-                                                        </filter>
-                                                    </defs>
-                                                    <image width="40px" height="40px"
-                                                           xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                           xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319"
-                                                           preserveAspectRatio="xMidYMid meet" alt="米色" x="7px" y="7px"
-                                                           clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319)"></image>
-                                                </svg>
-                                            </label></div>
-                                            <div class="observer-placeholder" style="height: 100%;"></div>
-                                            <div class="observer-placeholder" style="height: 100%;"></div>
-                                            <div class="observer-placeholder" style="height: 100%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="child-group--selected_option_details">
-                                        <div class="tds-flex tds-flex--flex_cells custom-content">
-                                            <div class="tds-flex-item tds-flex--auto tds-flex--justify-flex-end"><p
-                                                    class="text-loader--content tds-text_color--black tds-text--500 group-option--detail-container_name"
-                                                    tabindex="-1"><span>全黑色</span></p></div>
-                                            <div class="tds-flex-item tds-flex--auto group-option--price"><p
-                                                    class="text-loader--content group-option--detail-container_price"
-                                                    data-id="INTERIOR_PACKAGE-price">&ZeroWidthSpace;</p></div>
-                                            <div class="tds-flex-item tds-flex--justify-center group-option--recommended">
-                                                <p class="text-loader--content" tabindex="-1"><span>黑檀木饰板</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="tds-flex tds--vertical_padding tds-flex--justify-center cf-action-target">
-                            <div class="modal-trigger-container">
-                                <button class="modal-trigger tds-btn tds-btn--link" type="button"><span
-                                        class="text-loader--content tds-btn tds-btn--light tds-btn--small "
-                                        data-should-open="INTERIOR_FEATURES" tabindex="-1"><span>查看详情</span></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="AUTOPILOT_PACKAGE">
-                    <div class="tds--vertical_padding--6x option-widget--container">
-                        <div class="group--detail-container">
-                            <div class="child-group--option_details">
-                                <div class="observer-placeholder" style="height: 100%;"></div>
-                                <h2 class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1">
-                                    <span>增强版自动辅助驾驶功能</span></h2>
-                                <p class="text-loader--content tds-text--500 tds-text_color--black tds-text--center">
-                                    &ZeroWidthSpace;</p>
-                                <div class="text-loader tds-text_color--30--container tds-text_color--30"
-                                     role="presentation">
-                                    <div class="text-loader tds-text_color--30--container" role="presentation">
-                                        <ol class="tds-list tds-list--unordered text-loader--list text-loader--list_items">
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>自动辅助导航驾驶：自动驶入和驶出高速公路匝道或立交桥岔路口，超过行驶缓慢的车辆。</span></span>
-                                            </li>
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>自动辅助变道：在高速公路上自动辅助变换车道。</span></span></li>
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>自动泊车：平行泊车与垂直泊车。</span></span></li>
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>智能召唤：在合适的场景下，停在车位的车辆会响应您的召唤，驶出车位并前往您所在的位置。</span></span>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="tds-flex tds--vertical_padding tds-flex--space-between cf-action-target">
-                                    <button class="tds-btn tds-btn--blue tds-btn--small"
-                                            aria-label="选择配置 - 增强版自动辅助驾驶功能 - 包括"><span>添加此功能</span></button>
-                                    <div class="modal-trigger-container">
-                                        <button class="modal-trigger tds-btn tds-btn--link" type="button"><span
-                                                class="text-loader--content tds-btn tds-btn--light tds-btn--small "
-                                                data-should-open="EAP_FEATURES" tabindex="-1"><span>了解更多</span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="observer-placeholder" style="height: 100%;"></div>
-                                <h2 class="text-loader--content tds-text--center text-loader--subtitle" tabindex="-1">
-                                    <span>完全自动驾驶能力</span></h2>
-                                <p class="text-loader--content tds-text--500 tds-text_color--black tds-text--center">
-                                    &ZeroWidthSpace;</p>
-                                <div class="text-loader tds-text_color--30--container tds-text_color--30"
-                                     role="presentation">
-                                    <div class="text-loader tds-text_color--30--container" role="presentation">
-                                        <ol class="tds-list tds-list--unordered text-loader--list text-loader--list_items">
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>基础版辅助驾驶和增强版自动辅助驾驶的全部功能。</span></span></li>
-                                        </ol>
-                                    </div>
-                                    <div class="text-loader tds-text_color--30--container" role="presentation"><h3
-                                            class="text-loader--content text-loader--subtitle tds-text--h6 tds-text_color--30"
-                                            tabindex="-1"><span>稍后推出：</span></h3>
-                                        <ol class="tds-list tds-list--unordered text-loader--list text-loader--list_items">
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>识别交通信号灯和停车标志并做出反应。</span></span></li>
-                                            <li class="tds-list-item text-loader--list_element"><span
-                                                    class="text-loader--content text-loader--list_element--text"
-                                                    tabindex="-1"><span>在城市街道中自动辅助驾驶。</span></span></li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <p class="text-loader--content tds-text--caption text-loader--disclaimer features-copy--disclaimer"
-                                   tabindex="-1"><span>目前可用的功能需要驾驶员主动进行监控，车辆尚未实现完全自动驾驶。上述功能的激活与使用将需要数十亿英里的行驶里程的论证，以达到远超人类驾驶员的可靠性；同时还有赖于行政审批（某些司法管辖区可能会需要更长的时间）。随着上述自动驾驶功能的进化与完善，您的车辆将通过 OTA 空中软件更新而持续升级。  </span>
-                                </p>
-                                <div class="tds-flex tds--vertical_padding tds-flex--space-between cf-action-target">
-                                    <button class="tds-btn tds-btn--blue tds-btn--small"
-                                            aria-label="选择配置 - 完全自动驾驶能力 - 包括"><span>添加此功能</span></button>
-                                    <div class="modal-trigger-container">
-                                        <button class="modal-trigger tds-btn tds-btn--link" type="button"><span
-                                                class="text-loader--content tds-btn tds-btn--light tds-btn--small "
-                                                data-should-open="FSD_FEATURES" tabindex="-1"><span>了解更多</span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="aside-section side-scroll--item">
-                <div data-group-id="OPTIONS">
-                    <div class="tds--padding tds--align_center"><h2
-                            class="text-loader--content tds-text--center text-loader--subtitle cf-payment-overview__title">
-                        <span><span>订购您的 Model&nbsp;S</span></span></h2>
-                        <div class="tds-flex tds-flex--justify-center tds-o-padding_bottom-16">
-                            <button type="button"
-                                    class="tds-link action-trigger--link text-loader--content tds-btn tds-btn--blue tds-btn--full continue-to-payment-btn"
-                                    data-id="continue-to-payment-button" data-subtype="btn-navigation--payment"
-                                    tabindex="0"><span>下一步，付款</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="fade-feature is-open" style="pointer-events: none;">
-            <div class="scroll-indicator-container fade">
-                <svg width="24px" height="13px" viewBox="0 0 24 13" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" class="scroll-indicator bounce"><title>Arrow</title>
-                    <g id="SCROLL-ALTERNATIVES" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="SCROLL-INDICATOR-PATH" transform="translate(-1700.000000, -814.000000)" fill="#171A20">
-                            <path "
-                                  id="cfg-scroll-indicator-Arrow"></path>
-                        </g>
-                    </g>
-                </svg>
             </div>
         </div>
     </div>
-</section>
-</body>
-</html>
+{% endblock %}
+
+
+
+
