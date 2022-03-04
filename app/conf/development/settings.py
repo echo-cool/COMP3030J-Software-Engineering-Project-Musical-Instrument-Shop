@@ -6,6 +6,7 @@ from os.path import dirname
 import fontawesomefree
 import bootstrap4
 import django_filters
+from django_seed import Seed
 # DO NOT REMOVE THESE IMPORT !!!!!!!
 warnings.simplefilter('error', DeprecationWarning)
 
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'django_filters',
+
+    # Faker
+    'django_seed',
 
 
 ]
@@ -121,7 +125,7 @@ ENABLE_USER_ACTIVATION = True
 DISABLE_USERNAME = False
 LOGIN_VIA_EMAIL = True
 LOGIN_VIA_EMAIL_OR_USERNAME = False
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'shop:index'
 LOGIN_URL = 'accounts:log_in'
 USE_REMEMBER_ME = True
 
