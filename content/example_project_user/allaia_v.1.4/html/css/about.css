@@ -1,0 +1,184 @@
+/*============================================================================================*/
+/* ABOUT PAGE */
+/*============================================================================================*/
+.box_about {
+  background: #fff;
+  padding: 45px 45px 30px 45px;
+  margin-bottom: 25px;
+  position: relative;
+}
+@media (max-width: 991px) {
+  .box_about {
+    padding: 30px 30px 5px 30px;
+  }
+}
+.box_about h2, .box_about h3 {
+  font-weight: 500;
+  font-size: 32px;
+  font-size: 2rem;
+}
+.box_about p {
+  font-size: 16px;
+  font-size: 1rem;
+  color: #637381;
+}
+.box_about p.lead {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+.box_about .arrow_1, .box_about .arrow_2 {
+  position: absolute;
+  top: 105%;
+  right: 0;
+  z-index: 9;
+}
+@media (max-width: 1199px) {
+  .box_about .arrow_1, .box_about .arrow_2 {
+    display: none;
+  }
+}
+.box_about .arrow_2 {
+  left: 0;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -ms-filter: fliph;
+  /*IE*/
+  filter: fliph;
+  /*IE*/
+}
+
+.box_feat {
+  text-align: center;
+  background: #fff;
+  padding: 40px 30px 30px 30px;
+  -moz-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  -webkit-box-shadow: 0px 3px 0px 0px #f0f2f4;
+  -moz-box-shadow: 0px 3px 0px 0px #f0f2f4;
+  box-shadow: 0px 3px 0px 0px #f0f2f4;
+  color: #637381;
+  border: 1px solid #ededed;
+  margin-bottom: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .box_feat {
+    padding: 20px 20px 0 20px;
+  }
+}
+.box_feat:hover {
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+  transform: translateY(-10px);
+  -webkit-box-shadow: 0px 3px 0px 0px #ebedef;
+  -moz-box-shadow: 0px 3px 0px 0px #ebedef;
+  box-shadow: 0px 3px 0px 0px #ebedef;
+}
+.box_feat i {
+  font-size: 52px;
+  font-size: 3.25rem;
+  color: #004dda;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.box_feat h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+.content_general_row {
+  padding-bottom: 90px;
+}
+.content_general_row figure {
+  text-align: right;
+}
+.content_general_row p {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+.content_general_row p.lead {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+.content_general_row ul {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+.carousel_centered {
+  margin-top: 40px;
+}
+@media (max-width: 767px) {
+  .carousel_centered {
+    margin-bottom: 30px;
+  }
+}
+.carousel_centered .item .title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 9;
+}
+.carousel_centered .item .title h4 {
+  background-color: #083487;
+  background-color: #083487;
+  display: inline-block;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 16px;
+  font-size: 1rem;
+  opacity: 0;
+}
+.carousel_centered .item .title h4 em {
+  display: block;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  margin-top: 3px;
+}
+.carousel_centered .item a {
+  position: relative;
+  display: block;
+}
+
+.carousel_centered .owl-item {
+  opacity: 0.5;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 0.3s ease-in-out 0s;
+  overflow: hidden;
+}
+
+.carousel_centered .owl-item.active.center {
+  opacity: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.carousel_centered .owl-item.active.center .item .title h4 {
+  opacity: 1;
+}
