@@ -5,4 +5,5 @@ from . import views
 app_name = 'shop'
 urlpatterns = [
     path('', views.index, name='index'),
+    path("model", views.model, name='model'),
 ]

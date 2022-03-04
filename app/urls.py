@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
+    path('model/', include('shop.urls'), name="model"),
     path('management/', include('management.urls'), name='management'),
 
     path('i18n/', include('django.conf.urls.i18n')),
