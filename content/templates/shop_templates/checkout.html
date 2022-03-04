@@ -14,13 +14,13 @@
 
         <div class="container margin_30">
             <div class="page_header">
-                {#                <div class="breadcrumbs">#}
-                {#                    <ul>#}
-                {#                        <li><a href="#">Home</a></li>#}
-                {#                        <li><a href="#">Category</a></li>#}
-                {#                        <li>Page active</li>#}
-                {#                    </ul>#}
-                {#                </div>#}
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li>Page active</li>
+                    </ul>
+                </div>
                 <h1>Sign In or Create an Account</h1>
 
             </div>
@@ -280,9 +280,6 @@
 
 {% block foot_link %}
 
-<script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
-<script src="{% static 'assets/js_for_shop/main.js' %}"></script>
-
-<script src="{% static 'js/checkout.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
 
 {% endblock %}

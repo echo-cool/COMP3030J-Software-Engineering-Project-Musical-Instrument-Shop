@@ -1,7 +1,13 @@
 {% extends 'layouts/default/page.html' %}
 
+{% load static %}
 {% load i18n %}
 {% load bootstrap4 %}
+
+{% block head_link %}
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/checkout.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 
