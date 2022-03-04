@@ -1,12 +1,13 @@
 {% extends 'layouts/default/page.html' %}
+{% load static %}
 
 {% load i18n %}
 {% load bootstrap4 %}
 
 {% block head_link %}
-{#    <link href="../../assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">#}
-{#    <link href="{% static 'css/checkout.css' %}" rel="stylesheet">#}
-{#    <link href="../../assets/css/styles.css" rel="stylesheet">#}
+    {#    <link href="../../assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">#}
+    {#    <link href="{% static 'css/checkout.css' %}" rel="stylesheet">#}
+    {#    <link href="../../assets/css/styles.css" rel="stylesheet">#}
 {% endblock %}
 
 {% block content %}
@@ -14,13 +15,13 @@
 
         <div class="container margin_30">
             <div class="page_header">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li>Page active</li>
-                    </ul>
-                </div>
+                {#                <div class="breadcrumbs">#}
+                {#                    <ul>#}
+                {#                        <li><a href="#">Home</a></li>#}
+                {#                        <li><a href="#">Category</a></li>#}
+                {#                        <li>Page active</li>#}
+                {#                    </ul>#}
+                {#                </div>#}
                 <h1>Sign In or Create an Account</h1>
 
             </div>
@@ -275,18 +276,11 @@
     </main>
     <!--/main-->
 
-    <!-- COMMON SCRIPTS -->
 
-    <script>
-        // Other address Panel
-        $('#other_addr input').on("change", function () {
-            if (this.checked)
-                $('#other_addr_c').fadeIn('fast');
-            else
-                $('#other_addr_c').fadeOut('fast');
-        });
-    </script>
+{% endblock %}
 
-
-
+{% block foot_link %}
+<script src="{% static 'js/common_scripts.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/checkout.js' %}"></script>
 {% endblock %}
