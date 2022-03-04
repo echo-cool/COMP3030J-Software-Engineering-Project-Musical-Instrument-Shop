@@ -23,6 +23,13 @@
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="/static/assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/jquery.gritter.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/select2.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/bootstrap-editable.min.css" />
+
     <!-- text fonts -->
     <link href="{% static 'assets/css/fonts.googleapis.com.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/ace.min.css' %}" rel="stylesheet" class="ace-main-stylesheet" id="main-ace-style">
@@ -40,7 +47,7 @@
 
 </head>
 
-<body class="no-skin">
+<body class="no-skin" id="management_body">
 <div id="navbar" class="navbar navbar-default          ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -336,7 +343,7 @@
 
                         <span class="user-info">
 									<small>Welcome,</small>
-									{{ request.user.username }}
+									<span class="user-name">{{ request.user.username }}</span>
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -351,7 +358,7 @@
                         </li>
 
                         <li>
-                            <a href="profile.html">
+                            <a href="{% url 'management:profile' %}">
                                 <i class="ace-icon fa fa-user"></i>
                                 Profile
                             </a>
@@ -900,7 +907,6 @@
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
 
 <script src="{% static 'assets/js/jquery-ui.custom.min.js' %}"></script>

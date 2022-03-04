@@ -319,17 +319,15 @@
         </div>
         <script>
             $("#prev_page").on('click', function (res) {
-                const page = (parseInt({{ instruments.next_page_number }}) - 2);
-                if (page >= 1)
-                        window.location.href = "?page=" + page
+                {% if instruments.has_previous %}
+                    window.location.href = "?page={{ instruments.previous_page_number }}"
+                {% endif %}
 
             })
             $("#next_page").on('click', function (res) {
-                const page_max = parseInt("{{ instruments.paginator.page_range }}".split(',')[1].split(")")[0]) - 1
-                console.log(page_max)
-                console.log(parseInt({{ instruments.next_page_number }}))
-                if(page_max > parseInt({{ instruments.next_page_number }}))
+                {% if instruments.has_next %}
                     window.location.href = "?page={{ instruments.next_page_number }}"
+                {% endif %}
 
 
             })
@@ -359,7 +357,7 @@
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-    {#        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>#}
+            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     {#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
     {#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
     {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}

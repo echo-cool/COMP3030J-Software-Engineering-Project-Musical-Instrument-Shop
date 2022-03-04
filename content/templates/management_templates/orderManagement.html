@@ -16,14 +16,18 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="page-header">
-        <h1>
+    <div class="row page-header">
+        <h1 class="col-md-10">
             Order Management
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 {% trans 'All Orders' %}
             </small>
         </h1>
+        <button class="btn btn-xs btn-success pull-right"
+                onclick="window.location.href='{% url 'management:add_order' %}'">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
     </div>
 {% endblock %}
 
@@ -151,9 +155,10 @@
 
                             </script>
 
-                                <button class="btn btn-xs btn-info" onclick="window.location.href='{% url 'management:update_order' order_item.order.id %}'">
-                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                </button>
+                            <button class="btn btn-xs btn-info"
+                                    onclick="window.location.href='{% url 'management:update_order' order_item.order.id %}'">
+                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                            </button>
 
 
                             <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.order.id }}">
@@ -584,20 +589,20 @@
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-{#        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>#}
-{#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
-{#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
-{#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
-{#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
-{#        <script src="/static/assets/js/buttons.flash.min.js"></script>#}
-{#        <script src="/static/assets/js/buttons.html5.min.js"></script>#}
-{#        <script src="/static/assets/js/buttons.print.min.js"></script>#}
-{#        <script src="/static/assets/js/buttons.colVis.min.js"></script>#}
-{#        <script src="/static/assets/js/dataTables.select.min.js"></script>#}
-{#        		<script src="/static/assets/js/jquery-ui.min.js"></script>#}
-{#        <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>#}
-{#    <script src="/static/assets/js/ace-elements.min.js"></script>#}
-{#        <script src="/static/assets/js/ace.min.js"></script>#}
+            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    {#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="/static/assets/js/buttons.flash.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.html5.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.print.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.colVis.min.js"></script>#}
+    {#        <script src="/static/assets/js/dataTables.select.min.js"></script>#}
+    {#        		<script src="/static/assets/js/jquery-ui.min.js"></script>#}
+    {#        <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>#}
+    {#    <script src="/static/assets/js/ace-elements.min.js"></script>#}
+    {#        <script src="/static/assets/js/ace.min.js"></script>#}
 
 
     <!-- inline scripts related to this page -->
