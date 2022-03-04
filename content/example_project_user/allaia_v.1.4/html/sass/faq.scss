@@ -1,0 +1,108 @@
+@import 'variables';
+@import 'mixin';
+/*============================================================================================*/
+/* FAQ PAGE */
+/*============================================================================================*/
+a.box_topic {
+	text-align: center;
+	background: #fff;
+	padding: 40px 30px 15px 30px;
+	@include mobile {padding: 20px 20px 0 20px;}
+	display: block;
+	@include transition-default;
+	@include box-shadow (0px 0px 15px 0px rgba(0, 0, 0, 0.05));
+	color: $body-text-color;
+	margin-bottom: 30px;
+	overflow: hidden;
+	@include border-radius(3px);
+	&:hover {
+		@include transform (translateY(-10px));
+	}
+	i {
+		display: inline-block;
+		@include fontSize(51px);
+		color: $color-1;
+		@include border-radius(50%);
+		@include rgba(bg, $color-1, 0.05);
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		margin-bottom: 15px;
+	}
+	h3 {
+		@include fontSize(18px);
+	}
+	&.version_2 {
+		background: none;
+		padding: 0;
+		@include box-shadow (none);
+		text-align: left;
+	}
+}
+
+a.box_topic_2 {
+	padding: 30px 30px 5px 110px;
+	position: relative;
+	display: block;
+	@include transition-default;
+	color: $body-text-color;
+	margin-bottom: 30px;
+	@include border-radius(3px);
+	min-height: 165px;
+	@include tablet {min-height: inherit;}
+	border: 1px solid $border-color-1;
+	&:hover {
+		border: 1px solid transparent;
+		@include box-shadow (0px 0px 25px 0px rgba($color-1, 0.1));
+		@include transform (translateY(-10px));
+	}
+	i {
+		position: absolute;
+		left: 30px;
+		top:30px;
+		@include fontSize(52px);
+		color: $color-1;
+		margin-bottom: 10px;
+	}
+	h3 {
+		@include fontSize(18px);
+		color: $color-1;
+	}
+	p {
+		@include fontSize(16px);
+	}
+}
+
+.list_articles {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding:0;
+		li {
+			float: left;
+			width: 45%;
+			margin-right: 45px;
+			padding: 15px 0;
+			border-bottom: 1px solid $border-color-1;
+			a {
+				color: $body-text-color;
+				display: block;
+				&:hover {
+					color: $color-1;
+					@include transform (translateX(5px));
+				}
+			}
+			i {
+				margin-right: 10px;
+				@include fontSize(16px);
+				position: relative;
+				top: 2px;
+			}
+			@include tablet {
+				float: none;
+				width: 100%;
+				margin-right: 0;
+			}
+		}
+	}
+}

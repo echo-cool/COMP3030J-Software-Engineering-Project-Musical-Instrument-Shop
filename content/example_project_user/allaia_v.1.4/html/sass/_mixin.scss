@@ -1,0 +1,270 @@
+//-------------------- Font size Rem conversion --------//
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+//-------------------- Border radius --------------------//
+@mixin border-radius($top, $right, $bottom, $left) {
+  -webkit-border-radius: $top $right $bottom $left;
+     -moz-border-radius: $top $right $bottom $left;
+      -ms-border-radius: $top $right $bottom $left;
+          border-radius: $top $right $bottom $left;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+//-------------------- Transition --------------------//
+@mixin transition-default ($what: all, $length: 0.3s, $easing: "") {
+    @if ($what == transform) {
+        @if ($easing != "") {
+            -moz-transition: -moz-transform $length $easing;
+            -o-transition: -o-transform $length $easing;
+            -webkit-transition: -webkit-transform $length $easing;
+            -ms-transition: -ms-transform $length $easing;
+            transition: transform $length $easing;
+        } @else {
+            -moz-transition: -moz-transform $length;
+            -o-transition: -o-transform $length;
+            -webkit-transition: -webkit-transform $length;
+            -ms-transition: -ms-transform $length;
+            transition: transform $length;
+        }
+    } @else {
+        @if ($easing != "") {
+            -moz-transition: $what $length $easing;
+            -o-transition: $what $length $easing;
+            -webkit-transition: $what $length $easing;
+            -ms-transition: $what $length $easing;
+            transition: $what $length $easing;
+        } @else {
+            -moz-transition: $what $length ease-in-out;
+            -o-transition: $what $length ease-in-out;
+            -webkit-transition: $what $length ease-in-out;
+            -ms-transition: $what $length ease-in-out;
+            transition: $what $length ease-in-out;
+        }
+    }
+}
+@mixin transition-default-cubic-bezier ($what: all, $length:0.3s cubic-bezier(0.77, 0, 0.175, 1)) {
+  -webkit-transition: $what $length;
+  -moz-transition: $what $length;
+  -ms-transition: $what $length;
+  -o-transition: $what $length;
+  transition: $what $length;
+}
+
+//-------------------- Transform, Translate3d, TranslateX, TranslateY, Rotate --------------------//
+@mixin transform($params) {
+    -webkit-transform: $params;
+    -moz-transform: $params;
+    -ms-transform: $params;
+    -o-transform: $params;
+    transform: $params;
+}
+@mixin translate3d($val,$val2,$val3) {
+	-webkit-transform: translate3d($val, $val2, $val3);
+	-ms-transform: translate3d($val, $val2, $val3);
+	-o-transform: translate3d($val, $val2, $val3);
+	transform: translate3d($val, $val2, $val3);
+}
+@mixin translateX($val...) {
+	-webkit-transform: translateX($val);
+	-ms-transform: translateX($val);
+	-o-transform: translateX($val);
+	transform: translateX($val);
+}
+@mixin translateY($val...) {
+	-webkit-transform: translateY($val);
+	-ms-transform: translateY($val);
+	-o-transform: translateY($val);
+	transform: translateY($val);
+}
+@mixin rotate($val){
+	-webkit-transform: rotate($val);
+	-moz-transform: rotate($val);
+	-ms-transform: rotate($val);
+	-o-transform: rotate($val);
+	transform: rotate($val);
+}
+@mixin perspective($val) {
+  -webkit-perspective: $val; 
+  -moz-perspective: $val; 
+  -ms-perspective: $val; 
+  perspective: $val;
+}
+
+//-------------------- Background-size --------------------//
+@mixin background-size($background-size) {
+  -webkit-background-size: $background-size;
+     -moz-background-size: $background-size;
+       -o-background-size: $background-size;
+          background-size: $background-size;
+}
+
+//-------------------- Gradients --------------------//
+@mixin linear-gradient($from, $to) {
+  background: $to;
+	background: -moz-linear-gradient(to right, $from 0%, $to 100%);
+	background: -webkit-gradient(to right, color-stop(0%,$from), color-stop(100%,$to));
+	background: -webkit-linear-gradient(to right, $from 0%,$to 100%);
+	background: -o-linear-gradient(to right, $from 0%,$to 100%);
+	background: linear-gradient(to right, $from 0%,$to 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to})
+}
+@mixin background-gradient($start-color, $end-color, $orientation) { 
+    background: $start-color;
+    @if $orientation == 'vertical' {
+      background: -webkit-linear-gradient(top, $start-color, $end-color);
+      background: linear-gradient(to bottom, $start-color, $end-color);
+    } @else if $orientation == 'horizontal' {
+      background: -webkit-linear-gradient(left, $start-color, $end-color);
+      background: linear-gradient(to right, $start-color, $end-color);
+    } @else {
+      background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+      background: radial-gradient(ellipse at center, $start-color, $end-color);
+    }
+}
+
+//-------------------- Background color and color --------------------//
+@function solid-lighten($color, $percentage) {
+  @return lighten($color, (1-$percentage)*5%);
+}
+@function solid-darken($color, $percentage) {
+  @return darken($color, (1-$percentage)*5%);
+}
+@mixin rgba($type, $color, $percentage, $shade: ligthen) {
+  @if $shade == lighten {
+    @if $type == color {
+      color: solid-lighten($color, $percentage);
+      color: rgba($color, $percentage);
+    }
+    @if $type == bg {
+      background-color: solid-lighten($color, $percentage);
+      background-color: rgba($color, $percentage);
+    }
+  }
+  @else {
+     @if $type == color {
+      color: solid-darken($color, $percentage);
+      color: rgba($color, $percentage);
+    }
+    @if $type == bg {
+      background-color: solid-darken($color, $percentage);
+      background-color: rgba($color, $percentage);
+    }
+  }
+}
+
+//-------------------- Animation --------------------//
+@mixin animation($animationname, $time) {
+	animation: $animationname $time;
+	-webkit-animation: $animationname $time;
+	-moz-animation-name: $animationname $time;
+}
+
+@mixin animation-name($animationname) {
+	animation-name: $animationname;
+	-webkit-animation-name: $animationname;
+	-moz-animation-name: $animationname;
+}
+
+@mixin animation-duration($time) {
+	animation-duration: $time;
+	-webkit-animation-duration: $time;
+	-moz-animation-duration: $time;
+}
+
+@mixin animation-timing($timing) {
+	animation-timing-function: $timing;
+	-webkit-animation-timing-function: $timing;
+	-moz-animation-timing-function: $timing;
+}
+
+@mixin animation-delay($delay) {
+	animation-delay: $delay;
+	-webkit-animation-delay: $delay;
+	-moz-animation-delay: $delay;
+}
+
+@mixin animation-count($count) {
+	animation-iteration-count: $count;
+	-webkit-animation-iteration-count: $count;
+	-moz-animation-iteration-count: $count;
+}
+
+@mixin animation-direction($direction) {
+	animation-direction: $direction;
+	-webkit-animation-direction: $direction;
+}
+
+@mixin animation-fill($fill-mode) {
+	animation-fill-mode: $fill-mode;
+	-webkit-animation-fill-mode: $fill-mode;
+	-moz-animation-fill-mode: $fill-mode;
+}
+
+@mixin backface-visibility ($arguments) {
+  -webkit-backface-visibility: $arguments;
+     -moz-backface-visibility: $arguments;
+      -ms-backface-visibility: $arguments;
+       -o-backface-visibility: $arguments;
+          backface-visibility: $arguments;
+}
+//-------------------- Box shadow --------------------//
+@mixin box-shadow($val...) {
+-webkit-box-shadow: $val;
+-moz-box-shadow: $val;
+box-shadow: $val;
+}
+
+//--------------------  Center vertically and/or horizontally --------------------//
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
+//-------------------- Responsive --------------------//
+@mixin desktop { 
+  @media (max-width: #{$large-device-width}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$medium-device-width}) {
+    @content;
+  }
+}
+@mixin mobile {
+ @media (max-width: #{$small-device-width}) {
+    @content;
+  }
+}
+@mixin extra-small-mobile {
+  @media (max-width: #{$extra-small-device-width}) {
+    @content;
+  }
+}
