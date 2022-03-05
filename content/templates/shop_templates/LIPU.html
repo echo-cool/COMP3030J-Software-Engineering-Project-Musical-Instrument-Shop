@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="container" style="700">
+    <div class="container">
         <div class="container left-box">
             {#                    <div id="progress" class="progress col-6">#}
             {#                        <div class="mask"></div>#}
@@ -24,8 +24,14 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/EffectComposer.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OutlinePass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
     <script>
         window.onload = function () {
+
             let fileName = "design_guitar (1).gltf";
             console.log("Dianji");
             var container,
@@ -85,6 +91,7 @@
 
                 let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
                 directionalLight.position.set(-4, 8, 4);
+                directionalLight.shadow.bias = -0.001;
                 let dhelper = new THREE.DirectionalLightHelper(directionalLight, 5, 0xff0000);
 
                 let hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.4);
@@ -131,6 +138,7 @@
                 var onError = function (xhr) {
                 };
 
+
                 // 添加操作器
                 THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
                 let loader = new THREE.GLTFLoader();
@@ -171,19 +179,39 @@
                         }
                     })
 
+                    let raycaster = new THREE.Raycaster();
+                    let mouse = new THREE.Vector2();
+                    const selectHandler = function (ev) {
+                        mouse.x = (ev.clientX / window.innerWidth) * 2 - 1;
+                        mouse.y = -(ev.clientY / window.innerHeight) * 2 + 1;
+                        raycaster.setFromCamera(mouse, camera);
+                        // 这里我们只检测模型的选中情况
+                        let intersects = raycaster.intersectObjects(gltf.scene.children, true);
+                        console.log("SADASDASDASDASD", intersects);
+                        if (intersects.length > 0) {
+                            let selectedObjects = intersects[0].object;
 
+                            console.log(selectedObjects);
+                            let newMaterial = selectedObjects.material.clone();
+                            newMaterial.color = new THREE.Color('#D3C542'); //重新修改颜色
+                            selectedObjects.material = newMaterial;
+                        }
 
+                    }
                     scene.add(gltf.scene);
+                    // 车身上移动画
+
+
+                    document.body.addEventListener('dblclick', selectHandler, false);
                 }, onProgress, onError);
 
 
                 //创建一个webgl对象
                 renderer = new THREE.WebGLRenderer({
-                    antialias: false,
+                    antialias: true,
                     alpha: true // 设置透明
                 });
                 // 设置颜色
-
 
                 renderer.setClearColor(0xffffff, 0);
                 // 设置分辨率
@@ -210,6 +238,7 @@
                 requestAnimationFrame(animate);
 
             }
+
 
         }
     </script>

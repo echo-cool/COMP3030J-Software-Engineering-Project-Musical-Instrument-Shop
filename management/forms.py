@@ -13,4 +13,3 @@ class InstrumentForm(forms.ModelForm):
     class Meta:
         model = Instrument
         fields = "__all__"
-        
