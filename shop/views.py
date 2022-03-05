@@ -2,11 +2,17 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from shop.models import Instrument
+
+
 def index(request):
     return render(request, 'shop_templates/index2.html')
 
 
-def product_details(request):
+def product_details(request, product_id):
+    instrument = Instrument.objects.get(id=product_id)
+    print(instrument.price)
+    print(instrument.name)
     return render(request, 'shop_templates/product-detail-2.html')
 
 
