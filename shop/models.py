@@ -20,6 +20,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 class Instrument(models.Model):
     name = models.CharField(max_length=200)
+    # old_price = models.
     price = models.FloatField(max_length=200)
     details = models.TextField(max_length=3000)
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
@@ -38,6 +39,14 @@ class InstrumentAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'image', 'object_3d', 'object_mtl', 'posted_by', 'category', 'created_at')
 
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    Instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, default=0)
+    count = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+
 class InstrumentDetail(models.Model):
     instrument = models.OneToOneField('Instrument', on_delete=models.CASCADE)
     details = models.TextField(null=True)
@@ -52,7 +61,6 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         return f'{self.name}'
