@@ -19,10 +19,10 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 class Instrument(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default="")
     old_price = models.FloatField(max_length=200, default=0)
     price = models.FloatField(max_length=200, default=0)
-    details = models.TextField(max_length=3000)
+    details = models.TextField(max_length=3000, default="")
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
