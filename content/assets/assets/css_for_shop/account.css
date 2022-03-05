@@ -1,0 +1,51 @@
+/*============================================================================================*/
+/* ACCOUNT PAGE */
+/*============================================================================================*/
+.box_account {
+  margin-bottom: 25px;
+}
+.box_account h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  padding-left: 30px;
+  height: 30px;
+  padding-top: 5px;
+  display: inline-block;
+  color: #444;
+}
+.box_account h3.client {
+  background: url(../img/user.svg) center left no-repeat;
+}
+.box_account h3.new_client {
+  background: url(../img/new_user.svg) center left no-repeat;
+}
+.box_account .form_container {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  position: relative;
+}
+.box_account .form_container hr {
+  margin: 0 0 10px 0;
+  border-color: #ededed;
+}
+.box_account .form_container a.social_bt {
+  margin-bottom: 0;
+  min-width: inherit;
+}
+@media (max-width: 991px) {
+  .box_account .form_container a.social_bt {
+    margin-bottom: 5px;
+  }
+}
+.box_account .form_container .form-group {
+  margin-bottom: 10px;
+}
+.box_account .form_container #forgot_pw {
+  height: 100% !important;
+  min-height: inherit;
+  background-color: #f4f4f4;
+  padding: 15px;
+}

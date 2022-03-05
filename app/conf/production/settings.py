@@ -1,6 +1,6 @@
 import os
 from os.path import dirname
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CONTENT_DIR = os.path.join(BASE_DIR, 'content')
@@ -99,7 +99,7 @@ ENABLE_USER_ACTIVATION = True
 DISABLE_USERNAME = False
 LOGIN_VIA_EMAIL = False
 LOGIN_VIA_EMAIL_OR_USERNAME = True
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'shop:index'
 LOGIN_URL = 'accounts:log_in'
 USE_REMEMBER_ME = False
 

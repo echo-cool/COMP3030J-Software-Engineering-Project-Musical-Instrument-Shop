@@ -12,5 +12,7 @@ urlpatterns = [
     path('update_order/<int:order_id>/', views.update_order, name='update_order'),
     path('instrument_management/', views.instrument_management, name='instrument_management'),
     path('update_instrument/<int:instrument_id>/', views.update_instrument, name='update_instrument'),
-    path('add_instrument/', views.add_instrument, name='add_instrument')
+    path('add_instrument/', views.add_instrument, name='add_instrument'),
+    path('add_order/', views.add_order, name='add_order'),
+    path('profile/', views.profile, name='profile')
 ]

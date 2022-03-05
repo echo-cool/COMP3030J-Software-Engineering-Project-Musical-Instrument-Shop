@@ -1,4 +1,6 @@
 from dataclasses import fields
+
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail
@@ -8,7 +10,6 @@ class InstrumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Instrument
         fields = "__all__"
-        
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -38,4 +39,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 class InstrumentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = InstrumentDetail
+        fields = "__all__"
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
         fields = "__all__"
