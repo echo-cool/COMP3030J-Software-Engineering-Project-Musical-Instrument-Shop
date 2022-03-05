@@ -29,6 +29,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
     <script>
         window.onload = function () {
 
@@ -42,7 +43,8 @@
                 // 场景
                 scene,
                 // 渲染
-                renderer;
+                renderer,
+                composer;
 
             // 检测浏览器兼容
             if (Detector.webgl) {
@@ -57,6 +59,7 @@
             //初始化
             function init() {
 
+                var selectedObjects = [];
                 container = document.createElement('div');
                 document.body.appendChild(container);
                 //创建一个一个视角
@@ -102,12 +105,12 @@
                 scene.add(hemisphereLight);
 
 
-                var d_light = new THREE.DirectionalLight("#080");
-
-                d_light.castShadow = true;
-                d_light.shadowCameraVisible = true;
-                d_light.position.set(0, 26, 4);
-                scene.add(d_light);
+                {#var d_light = new THREE.DirectionalLight("#080");#}
+                {##}
+                {#d_light.castShadow = true;#}
+                {#d_light.shadowCameraVisible = true;#}
+                {#d_light.position.set(0, 26, 4);#}
+                {#scene.add(d_light);#}
 
                 //把视角放入环境
                 scene.add(camera);
@@ -156,9 +159,9 @@
                             child.frustumCulled = false;
                             //模型阴影
                             child.castShadow = true;
-                            //模型自发光
-                            child.material.emissive = child.material.color;
-                            child.material.emissiveMap = child.material.map;
+                            {#//模型自发光#}
+                            {#child.material.emissive = child.material.color;#}
+                            {#child.material.emissiveMap = child.material.map;#}
                         }
                     });
                     // 首先渲染器开启阴影
@@ -178,7 +181,6 @@
                             obj.receiveShadow = true;
                         }
                     })
-
                     let raycaster = new THREE.Raycaster();
                     let mouse = new THREE.Vector2();
                     const selectHandler = function (ev) {
@@ -189,8 +191,7 @@
                         let intersects = raycaster.intersectObjects(gltf.scene.children, true);
                         console.log("SADASDASDASDASD", intersects);
                         if (intersects.length > 0) {
-                            let selectedObjects = intersects[0].object;
-
+                            selectedObjects = intersects[0].object;
                             console.log(selectedObjects);
                             let newMaterial = selectedObjects.material.clone();
                             newMaterial.color = new THREE.Color('#D3C542'); //重新修改颜色
@@ -218,6 +219,30 @@
                 renderer.setPixelRatio(window.devicePixelRatio);
                 // 设置渲染尺寸
                 renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+                composer = new THREE.EffectComposer(renderer,
+                    selectedObjects[0]);
+                // composer = new EffectComposer(renderer);
+
+                const renderPass = new THREE.RenderPass(scene, camera);
+                composer.addPass(renderPass);
+
+                let outlinePass = new THREE.OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
+                composer.addPass(outlinePass);
+
+                let effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
+                effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+                composer.addPass(effectFXAA);
+
+                outlinePass.edgeStrength = Number(100.0); //边框的亮度
+                outlinePass.edgeGlow = Number(1); //光晕[0,1]
+                outlinePass.edgeThickness = Number(2.0); //边缘浓度
+                outlinePass.pulsePeriod = Number(0.5); //呼吸闪烁的速度 闪烁频率 ，默认0 ，值越大频率越低
+                outlinePass.usePatternTexture = false; //是否使用父级的材质
+                outlinePass.downSampleRatio = 2; // 边框弯曲度
+                outlinePass.clear = true;
+
                 container.appendChild(renderer.domElement);
                 // 自适应监听
 
@@ -236,7 +261,7 @@
                 controls.update();
                 renderer.render(scene, camera);
                 requestAnimationFrame(animate);
-
+                composer.render();
             }
 
 
