@@ -22,5 +22,9 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
+def tes(request):
+    return render(request, 'shop_templates/TESLA.html')
+
+
 def cart(request):
     return render(request, 'shop_templates/cart.html')

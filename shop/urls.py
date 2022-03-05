@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import checkout, confirm, model, index, cart, product_details
+from .views import checkout, confirm, model, index, cart, product_details, tes
 
 app_name = 'shop'
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('confirm/', confirm, name='confirm'),
     path("model/", model, name='model'),
     path('cart/', cart, name='cart'),
+    path("model2/", tes, name='tes'),
 ]
