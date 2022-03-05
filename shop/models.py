@@ -26,6 +26,7 @@ class Instrument(models.Model):
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
+    object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
     extras = models.JSONField(null=True, blank=True)
