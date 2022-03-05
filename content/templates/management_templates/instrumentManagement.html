@@ -314,7 +314,7 @@
         {% endfor %}
         <div class="row">
             <button class="btn btn-success col-md-5" id="prev_page">Previous Page</button>
-            <p class="col-md-2 border-light justify-center align-center font-weight-bold" style="font-size: 30px">{{ instruments.number }}</p>
+            <p class="col-md-2 border-light justify-center align-center font-weight-bold" style="font-size: 30px">{{ instruments.number }}/{{ instruments.paginator.num_pages }}</p>
             <button class="btn btn-danger col-md-5" id="next_page">Next Page</button>
         </div>
         <script>
