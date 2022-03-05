@@ -337,12 +337,12 @@
 	                <div class="all">
 	                    <div class="slider">
 	                        <div class="owl-carousel owl-theme main">
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/1.jpg);" class="item-box"></div>
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/2.jpg);" class="item-box"></div>
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/3.jpg);" class="item-box"></div>
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/4.jpg);" class="item-box"></div>
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/5.jpg);" class="item-box"></div>
-	                            <div style="background-image: url(../../assets/assets/img_for_shop/products/shoes/6.jpg);" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/2.jpg" %};" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/3.jpg" %};" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/4.jpg" %};" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/5.jpg" %};" class="item-box"></div>
+	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/6.jpg" %};" class="item-box"></div>
 	                        </div>
 	                        <div class="left nonl"><i class="ti-angle-left"></i></div>
 	                        <div class="right"><i class="ti-angle-right"></i></div>
@@ -410,7 +410,7 @@
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-lg-5 col-md-6">
-	                            <div class="price_main"><span class="new_price">${{ instrument.price }}</span><span class="percentage">-20%</span> <span class="old_price">$160.00</span></div>
+	                            <div class="price_main"><span class="new_price">${{ instrument.price }}</span><span class="percentage">-{{ discount }}%</span> <span class="old_price">${{ instrument.old_price }}</span></div>
 	                        </div>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
@@ -857,7 +857,7 @@
 	                            <img src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="lazy" alt="">
 	                        </figure>
 	                        <h4>1x Armor Air X Fear</h4>
-	                        <div class="price_panel"><span class="new_price">$148.00</span><span class="percentage">-20%</span> <span class="old_price">$160.00</span></div>
+	                        <div class="price_panel"><span class="new_price">$148.00</span><span class="percentage">-20%</span> <span class="old_price">${{ instrument.old_price }}</span></div>
 	                    </div>
 	                </div>
 	                <div class="col-md-5 btn_panel">
