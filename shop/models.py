@@ -41,7 +41,7 @@ class InstrumentAdmin(admin.ModelAdmin):
 
 
 class Cart(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE, default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
     count = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
