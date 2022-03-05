@@ -337,7 +337,9 @@
 	                <div class="all">
 	                    <div class="slider">
 	                        <div class="owl-carousel owl-theme main">
-	                            <div style="background-image: {{ instrument.image }}"></div>
+	                            <div>
+                                    <img class="owl-lazy" src="/media/{{ instrument.image }}" data-src="/static/assets/img_for_shop/products/shoes/4.jpg" alt="" style="opacity: 1;">
+                                </div>
 	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/2.jpg" %};" class="item-box"></div>
 	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/3.jpg" %};" class="item-box"></div>
 	                            <div style="background-image: {% static "assets/img_for_shop/products/shoes/4.jpg" %};" class="item-box"></div>
