@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Instrument
-
+from shop.models import Instrument, InstrumentDetail
 
 # Create your views here.
 from shop.models import Instrument
-
+import random
 
 def index(request):
     return render(request, 'shop_templates/index2.html')
@@ -12,10 +11,17 @@ def index(request):
 
 def product_details(request, product_id):
     instrument = Instrument.objects.get(id=product_id)
-    print(instrument.image)
+    instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
+    all_instruments = Instrument.objects.all()
+    related = []
+    for i in range(5):
+        num = random.randint(0, len(all_instruments) - 1)
+        related.append(all_instruments[num])
     return render(request, 'shop_templates/product-detail-2.html', {
         "instrument": instrument,
-        "discount": instrument.price * 100 / instrument.old_price
+        "discount": instrument.price * 100 / instrument.old_price,
+        "instrument_details": instrument_details,
+        "related": related
     })
 
 
