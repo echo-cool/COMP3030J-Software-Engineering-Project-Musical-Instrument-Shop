@@ -28,6 +28,7 @@ class Instrument(models.Model):
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
+    extras = models.JSONField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -41,7 +42,7 @@ class InstrumentAdmin(admin.ModelAdmin):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
-    instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, default=0)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
     count = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 

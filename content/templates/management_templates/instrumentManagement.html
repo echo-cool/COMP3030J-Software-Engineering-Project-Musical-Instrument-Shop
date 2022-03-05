@@ -13,6 +13,15 @@
             <a href="#">Manage Instruments</a>
         </li>
     </ul><!-- /.breadcrumb -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input"
+                                           id="nav-search-input" autocomplete="off"/>
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+        </form>
+    </div><!-- /.nav-search -->
 {% endblock %}
 
 {% block page_header %}
@@ -314,7 +323,8 @@
         {% endfor %}
         <div class="row">
             <button class="btn btn-success col-md-5" id="prev_page">Previous Page</button>
-            <p class="col-md-2 border-light justify-center align-center font-weight-bold" style="font-size: 30px">{{ instruments.number }}</p>
+            <p class="col-md-2 border-light justify-center align-center font-weight-bold"
+               style="font-size: 30px">{{ instruments.number }}/{{ instruments.paginator.num_pages }}</p>
             <button class="btn btn-danger col-md-5" id="next_page">Next Page</button>
         </div>
         <script>
@@ -357,7 +367,7 @@
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     {#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
     {#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
     {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
