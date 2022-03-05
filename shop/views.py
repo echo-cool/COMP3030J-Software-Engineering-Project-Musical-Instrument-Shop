@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from shop.models import Instrument
 
 
 # Create your views here.
@@ -16,8 +17,11 @@ def product_details(request, product_id):
     return render(request, 'shop_templates/product-detail-2.html')
 
 
-def model(request):
-    return render(request, 'shop_templates/3d3.html')
+def model_view(request, product_id):
+    instrument = get_object_or_404(Instrument, pk=product_id)
+    return render(request, 'shop_templates/3d3.html', {
+        "instrument": instrument
+    })
 
 
 def checkout(request):
