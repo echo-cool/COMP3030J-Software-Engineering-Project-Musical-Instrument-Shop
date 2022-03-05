@@ -1,0 +1,71 @@
+@import 'variables';
+@import 'mixin';
+/*============================================================================================*/
+/* LEAVE REVIEW PAGE */
+/*============================================================================================*/
+.box_general {
+	&.write_review {
+			@include box-shadow (none);
+	background-color: #f4f4f4;
+		padding-bottom: 25px;
+		h1{
+			@include fontSize(28px);
+		}
+	}
+}
+
+.rating {
+    display: inline-block;
+	position:relative;
+}
+
+.rating-input {
+	display: none;
+}
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+.rating-star,
+.rating:hover .rating-star {
+	cursor:pointer;
+    float: right;
+    display: block;
+	margin-right: 3px;
+    width: 37px;
+    height: 37px;
+    background: url(../img/stars.svg) 0 -38px;
+}
+.fileupload {
+	position: relative;
+	width: 320px;
+}
+input[type=file] {
+	background-color: #fff;
+	border: 1px solid $border-color-2;
+	padding: 5px;
+	height: auto;
+	color:#999;
+	border-radius: 3px;
+}
+
+input[type=file]::-webkit-file-upload-button, input[type=file].invalid::-webkit-file-upload-button, input[type=file].valid::-webkit-file-upload-button {
+    color: #fff;
+	font-size: 13px;
+	border: 0;
+    border-radius: 3px;
+	padding: 8px 10px 8px 38px;
+	background: $color-1 url(../img/camera.svg) 8px center no-repeat;
+	outline: none;
+}
+.latest_review {
+	>h4 {
+		font-weight: 500;
+		@include fontSize(21px);
+		margin-bottom: 20px;
+	}
+	.review_listing {
+		@include box-shadow (none);
+	}
+}
