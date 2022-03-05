@@ -22,7 +22,8 @@ def index(request):
     }
     pie_data = {}
     for category_item in Category.objects.all():
-        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(category=category_item.id).count()
+        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
+            category=category_item.id).count()
 
     tmp = {}
     for instrument_item in Instrument.objects.all():
@@ -124,7 +125,7 @@ def order_management_delivered(request):
 def update_order(request, order_id):
     if request.method == "POST":
         order = Order.objects.get(id=order_id)
-        f = OrderForm(request.POST, instance=order)
+        f = OrderForm(request.POST, request.FILES, instance=order)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:order_management_all'))
@@ -159,7 +160,7 @@ def instrument_management(request):
 def update_instrument(request, instrument_id):
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
-        f = InstrumentForm(request.POST, instance=instrument)
+        f = InstrumentForm(request.POST, request.FILES, instance=instrument)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:instrument_management'))
@@ -175,9 +176,11 @@ def update_instrument(request, instrument_id):
 @login_required
 def add_instrument(request):
     if request.method == "POST":
-        f = InstrumentForm(request.POST)
+        f = InstrumentForm(request.POST, request.FILES)
         if f.is_valid():
+            print("123")
             f.save()
+        print(f.errors)
         return redirect(reverse('management:instrument_management'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
@@ -190,7 +193,7 @@ def add_instrument(request):
 @login_required
 def add_order(request):
     if request.method == "POST":
-        f = OrderForm(request.POST)
+        f = OrderForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:order_management_all'))
