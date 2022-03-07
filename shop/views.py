@@ -19,8 +19,22 @@ def product_details(request, product_id):
 
 
 def leave_review(request, order_id, instrument_id):
-    print(request)
     return render(request, 'shop_templates/leave-review.html')
+
+
+def confirm_submit(request):
+    if request.method == "POST":
+        rating = request.POST.get("rating-input", None)
+        title = request.POST.get("title", None)
+        review = request.POST.get("review", None)
+        fileupload = request.POST.get("fileupload", None)
+        check = request.POST.get("check", None)
+        print("rating: ", rating)
+        print("title: ", title)
+        print("review: ", review)
+        print("fileupload: ", fileupload)
+        print("check: ", check)
+    return render(request, 'shop_templates/leave-review-2.html')
 
 
 def leave_review2(request):

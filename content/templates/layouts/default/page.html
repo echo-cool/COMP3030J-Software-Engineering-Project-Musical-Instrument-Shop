@@ -16,13 +16,13 @@
     <title>Allaia | Bootstrap eCommerce Template - ThemeForest</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="shortcut icon" href="{% static "/assets/img_for_shop/favicon.ico %" %}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{% static "/assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static "/assets/img_for_shop/apple-touch-icon-72x72-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-          href="img/apple-touch-icon-114x114-precomposed.png">
+          href="{% static "/assets/img_for_shop/apple-touch-icon-114x114-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-          href="img/apple-touch-icon-144x144-precomposed.png">
+          href="{% static "/assets/img_for_shop/apple-touch-icon-144x144-precomposed.png" %}">
 
     <!-- GOOGLE WEB FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
                         <!-- Mobile menu button -->
                         <div class="main-menu">
                             <div id="header_menu">
-                                <a href="index.html"><img src="img/logo_black.svg" alt="" width="100" height="35"></a>
+                                <a href="index.html"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt="" width="100" height="35"></a>
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                             </div>
                             <ul>
@@ -266,7 +266,7 @@
                                         <ul>
                                             <li>
                                                 <a href="product-detail-1.html">
-                                                    <figure><img src="img/products/product_placeholder_square_small.jpg"
+                                                    <figure><img src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
                                                                  data-src="img/products/shoes/thumb/1.jpg" alt=""
                                                                  width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Air x Fear</span>$90.00</strong>
@@ -275,7 +275,7 @@
                                             </li>
                                             <li>
                                                 <a href="product-detail-1.html">
-                                                    <figure><img src="img/products/product_placeholder_square_small.jpg"
+                                                    <figure><img src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
                                                                  data-src="img/products/shoes/thumb/2.jpg" alt=""
                                                                  width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Okwahn II</span>$110.00</strong>
