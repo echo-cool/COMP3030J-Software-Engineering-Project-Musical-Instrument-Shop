@@ -23,6 +23,10 @@ def leave_review(request, order_id, instrument_id):
     return render(request, 'shop_templates/leave-review.html')
 
 
+def leave_review2(request):
+    print(request)
+    return render(request, 'shop_templates/leave-review-2.html')
+
 
 def model_view(request, product_id):
     instrument = get_object_or_404(Instrument, pk=product_id)

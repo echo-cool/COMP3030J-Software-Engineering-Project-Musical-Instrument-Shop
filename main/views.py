@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 
 
 # class IndexPageView(TemplateView):
-#     template_name = 'main/index.html'
+#     template_name = 'main/leave-review-2.html'
 
 
 class ChangeLanguageView(TemplateView):
