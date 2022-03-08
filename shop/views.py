@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from shop.models import Instrument
+from django.http import HttpResponse
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 # Create your views here.
 from shop.models import Instrument
@@ -28,6 +30,8 @@ def leave_review2(request):
     return render(request, 'shop_templates/leave-review-2.html')
 
 
+# 表示该页面可以在相同域名页面的 frame 中展示
+@xframe_options_exempt
 def model_view(request, product_id):
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/3d3.html', {
