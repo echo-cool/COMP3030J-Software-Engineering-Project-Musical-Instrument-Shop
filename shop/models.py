@@ -50,6 +50,7 @@ class Cart(models.Model):
     def __str__(self):
         return f'{self.user}<{self.instrument}>'
 
+
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = ('user', 'instrument', 'count', 'created_at')
@@ -116,11 +117,15 @@ class Review(models.Model):
     rating = models.PositiveIntegerField(
         null=False,
         default=5,
-        validators=[MaxValueValidator(10), MinValueValidator(0)]
+        validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
+    title = models.TextField(null=True)
     review_text = models.TextField(null=True)
+    fileupload = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
+    check_selected = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'review_text')
+    list_display = ('order_id', 'user', 'rating', 'title', 'review_text', 'fileupload', 'check', 'created_at')
