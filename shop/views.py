@@ -30,13 +30,13 @@ def checkout(request):
 
 
 def confirm(request):
-    if request.POST['name'] == "":
-        return render(request, "shop_templates/checkout.html", {'alert': 'Please enter your name'})
-    else:
-        print(request.POST['payment'])
-        a_row = Order(user=request.user, count=100)
-        a_row.save()
-        return render(request, 'shop_templates/confirm.html')
+    a_row = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
+                  full_address=request.POST['full_address'], city=request.POST['city'],
+                  postal_code=request.POST['postal_code'], country=request.POST['country'],
+                  telephone=request.POST['telephone'], payment=request.POST['payment'],
+                  shipping=request.POST['shipping'])
+    a_row.save()
+    return render(request, 'shop_templates/confirm.html')
 
 
 def tes(request):
