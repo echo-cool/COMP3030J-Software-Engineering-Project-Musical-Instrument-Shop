@@ -50,6 +50,7 @@ class Cart(models.Model):
     def __str__(self):
         return f'{self.user}<{self.instrument}>'
 
+
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = ('user', 'instrument', 'count', 'created_at')
@@ -79,13 +80,34 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'created_at')
 
 
-class Order(models.Model):
+class ConfirmInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
-    count = models.PositiveIntegerField(null=False, default=1)
+
+    name = models.CharField(max_length=20, default="")
+    last_name = models.CharField(max_length=20, default="")
+    Full_Address = models.CharField(max_length=200, default="")
+    City = models.CharField(max_length=20, default="")
+    Postal_code = models.CharField(max_length=50, default="")
+    Country = models.CharField(max_length=200, default="")
+    Telephone = models.CharField(max_length=200, default="(000)000-0000")
+    Payment = models.CharField(max_length=20, default="")
+    Shipping = models.CharField(max_length=20, default="")
+
+    Order = models.ForeignKey('Order', max_length=200, null=True)
+    Newsletter = models.BooleanField(default=False)
+
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Order(models.Model):
+    Order_id = models.CharField(max_length=200, default="")
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
+    count = models.PositiveIntegerField(null=False, default=1)
+    ConfirmInfo = models.ForeignKey('ConfirmInfo', on_delete=models.CASCADE, default=0)
+
 
     def __str__(self):
         return f'{self.user}<{self.created_at}>'
