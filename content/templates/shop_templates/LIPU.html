@@ -30,6 +30,10 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+
+    {#    https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js#}
+
     <script>
         window.onload = function () {
 
@@ -160,8 +164,26 @@
                             //模型阴影
                             child.castShadow = true;
                             {#//模型自发光#}
-                            {#child.material.emissive = child.material.color;#}
-                            {#child.material.emissiveMap = child.material.map;#}
+                            child.material.emissive = child.material.color;
+                            child.material.emissiveMap = child.material.map;
+
+                            console.log("模型部件", gltf.scene);
+                            // 车身上移动画
+                            let component = gltf.scene.getObjectByName('pCube46');
+                            TweenLite.to(component.position, 1.5, {
+                                y: 5,
+                                ease: Power4.easeOut
+                            });
+                            let component2 = gltf.scene.getObjectByName('pCube45');
+                            TweenLite.to(component2.position, 1.5, {
+                                x: 5,
+                                ease: Power4.easeOut
+                            });
+                            let component3 = gltf.scene.getObjectByName('pCube48');
+                            TweenLite.to(component.position, 1.5, {
+                                z: 5,
+                                ease: Power4.easeOut
+                            });
                         }
                     });
                     // 首先渲染器开启阴影
@@ -200,9 +222,6 @@
 
                     }
                     scene.add(gltf.scene);
-                    // 车身上移动画
-
-
                     document.body.addEventListener('dblclick', selectHandler, false);
                 }, onProgress, onError);
 

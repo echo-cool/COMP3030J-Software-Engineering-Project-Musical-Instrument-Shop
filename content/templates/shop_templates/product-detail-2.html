@@ -35,6 +35,10 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
+    <style>
+        .image-size {
+        }
+    </style>
 
 </head>
 
@@ -49,7 +53,7 @@
 				<div class="row small-gutters">
 					<div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
 						<div id="logo">
-							<a href="index.html"><img src="{% static "assets/img_for_shop/logo.svg" %}" alt="" width="100" height="35"></a>
+							<a href="leave-review-2.html"><img src="{% static "assets/img_for_shop/logo.svg" %}" alt="" width="100" height="35"></a>
 						</div>
 					</div>
 					<nav class="col-xl-6 col-lg-7">
@@ -63,14 +67,14 @@
 						<!-- Mobile menu button -->
 						<div class="main-menu">
 							<div id="header_menu">
-								<a href="index.html"><img src="{% static "assets/img_for_shop/logo_black.svg" %}" alt="" width="100" height="35"></a>
+								<a href="leave-review-2.html"><img src="{% static "assets/img_for_shop/logo_black.svg" %}" alt="" width="100" height="35"></a>
 								<a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
 							</div>
 							<ul>
 								<li class="submenu">
 									<a href="javascript:void(0);" class="show-submenu">Home</a>
 									<ul>
-										<li><a href="index.html">Slider</a></li>
+										<li><a href="leave-review-2.html">Slider</a></li>
 										<li><a href="index-2.html">Video Background</a></li>
 										<li><a href="index-3.html">Vertical Slider</a></li>
 										<li><a href="index-4.html">GDPR Cookie Bar</a></li>
@@ -488,9 +492,7 @@
 	                            <div class="row justify-content-between">
 	                                <div class="col-lg-6">
 	                                    <h3>Details</h3>
-	                                    <p>Lorem ipsum dolor sit amet, in eleifend <strong>inimicus elaboraret</strong> his, harum efficiendi mel ne. Sale percipit vituperata ex mel, sea ne essent aeterno sanctus, nam ea laoreet civibus electram. Ea vis eius explicari. Quot iuvaret ad has.</p>
-	                                    <p>Vis ei ipsum conclusionemque. Te enim suscipit recusabo mea, ne vis mazim aliquando, everti insolens at sit. Cu vel modo unum quaestio, in vide dicta has. Ut his laudem explicari adversarium, nisl <strong>laboramus hendrerit</strong> te his, alia lobortis vis ea.</p>
-	                                    <p>Perfecto eleifend sea no, cu audire voluptatibus eam. An alii praesent sit, nobis numquam principes ea eos, cu autem constituto suscipiantur eam. Ex graeci elaboraret pro. Mei te omnis tantas, nobis viderer vivendo ex has.</p>
+                                        <p>{{ instrument_details.details }}</p>
 	                                </div>
 	                                <div class="col-lg-5">
 	                                    <h3>Specifications</h3>
@@ -579,7 +581,7 @@
 	                                </div>
 	                            </div>
 	                            <!-- /row -->
-	                            <p class="text-end"><a href="leave-review.html" class="btn_1">Leave a review</a></p>
+	                            <p class="text-end"><a href="{% url 'shop:leave_review' 1 1 %}" class="btn_1">Leave a review</a></p>
 	                        </div>
 	                        <!-- /card-body -->
 	                    </div>
@@ -599,20 +601,21 @@
 	            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 	        </div>
 	        <div class="owl-carousel owl-theme products_carousel">
-	            <div class="item">
+                {% for item in related %}
+                	            <div class="item">
 	                <div class="grid_item">
 	                    <span class="ribbon new">New</span>
 	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="{% static "assets/img_for_shop/products/product_placeholder_square_medium.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/4.jpg" %}" alt="">
+	                        <a href="{% url 'shop:product_details' product_id=item.id %}">
+	                            <img class="owl-lazy image-size" src="/media/{{ item.image }}" data-src="/media/{{ item.image }}" alt="">
 	                        </a>
 	                    </figure>
 	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>ACG React Terra</h3>
+	                    <a href="{% url 'shop:product_details' product_id=item.id %}">
+	                        <h3>{{ item.name }}</h3>
 	                    </a>
 	                    <div class="price_box">
-	                        <span class="new_price">$110.00</span>
+	                        <span class="new_price">${{ item.price }}</span>
 	                    </div>
 	                    <ul>
 	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
@@ -623,104 +626,7 @@
 	                <!-- /grid_item -->
 	            </div>
 	            <!-- /item -->
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon new">New</span>
-	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="{% static "assets/img_for_shop/products/product_placeholder_square_medium.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/5.jpg" %}" alt="">
-	                        </a>
-	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>Air Zoom Alpha</h3>
-	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$140.00</span>
-	                    </div>
-	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-	                    </ul>
-	                </div>
-	                <!-- /grid_item -->
-	            </div>
-	            <!-- /item -->
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon hot">Hot</span>
-	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="{% static "assets/img_for_shop/products/product_placeholder_square_medium.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/8.jpg" %}" alt="">
-	                        </a>
-	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>Air Color 720</h3>
-	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$120.00</span>
-	                    </div>
-	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-	                    </ul>
-	                </div>
-	                <!-- /grid_item -->
-	            </div>
-	            <!-- /item -->
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon off">-30%</span>
-	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="{% static "assets/img_for_shop/products/product_placeholder_square_medium.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/2.jpg" %}" alt="">
-	                        </a>
-	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>Okwahn II</h3>
-	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$90.00</span>
-	                        <span class="old_price">$170.00</span>
-	                    </div>
-	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-	                    </ul>
-	                </div>
-	                <!-- /grid_item -->
-	            </div>
-	            <!-- /item -->
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon off">-50%</span>
-	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="{% static "assets/img_for_shop/products/product_placeholder_square_medium.jpg" %}" data-src="{% static "assets/img_for_shop/products/shoes/3.jpg" %}" alt="">
-	                        </a>
-	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>Air Wildwood ACG</h3>
-	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$75.00</span>
-	                        <span class="old_price">$155.00</span>
-	                    </div>
-	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-	                    </ul>
-	                </div>
-	                <!-- /grid_item -->
-	            </div>
-	            <!-- /item -->
+                {% endfor %}
 	        </div>
 	        <!-- /products_carousel -->
 	    </div>
