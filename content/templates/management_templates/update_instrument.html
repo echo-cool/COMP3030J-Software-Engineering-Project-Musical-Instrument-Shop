@@ -28,6 +28,7 @@
 {% endblock %}
 
 {% block content %}
+    {{ form.errors }}
     <form method="post" enctype="multipart/form-data">
 
         {% csrf_token %}

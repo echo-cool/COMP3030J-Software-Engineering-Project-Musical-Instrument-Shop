@@ -297,7 +297,7 @@
 														<tbody>
                                                             {% for instrument,order_count in popular_instruments %}
                                                                 <tr>
-                                                                    <td>{{ instrument.name|truncatewords:10 }}</td>
+                                                                        <td>{{ instrument.name|truncatewords:10 }}</td>
 
                                                                     <td>
                                                                         <small>
@@ -1195,8 +1195,14 @@
         var placeholder = $('#piechart-placeholder').css({'width': '90%', 'min-height': '150px'});
         var data = [];
 
+        let num = 0;
         {% for key, value in pie_data.items %}
-            data.push({label: "{{ key }}", data: {{ value }}, color: "#68BC31"});
+            var r = parseInt(250 - num*150/{{ data_length }} );
+            var g = parseInt(50 + num*200/{{ data_length }} );
+            var b = parseInt(200 - num*150/{{ data_length }} );
+            var colorString = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+            num += 1
+            data.push({label: "{{ key|truncatewords:3 }}", data: {{ value|truncatewords:10 }}, color: colorString});
         {% endfor %}
 
 

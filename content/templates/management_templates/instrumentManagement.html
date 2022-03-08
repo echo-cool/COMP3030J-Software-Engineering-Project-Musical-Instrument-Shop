@@ -14,13 +14,70 @@
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
-        <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input"
-                                           id="nav-search-input" autocomplete="off"/>
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
+        <form class="form-search" id="instrument-search">
+            <span class="input-icon">
+                <input type="text" placeholder="Search ..." class="nav-search-input"
+                       id="nav-search-input" autocomplete="off"/>
+                <i class="ace-icon fa fa-search nav-search-icon"></i>
+            </span>
         </form>
+        <script>
+            function addUrlPara(url, key, value) {
+            var returnUrl = ''
+            if (url.indexOf('?') == -1) {
+                returnUrl += url + '?' + key + '=' + value
+            } else {
+                if (url.indexOf('?' + key + '=') == -1 && url.indexOf('&' + key + '=') == -1) {
+                    returnUrl += url + '&' + key + '=' + value
+                } else {
+                    var isDone = false
+                    var startIndex = 0
+                    var endIndex = url.length - 1
+                    var parm = '?' + key + '='
+                    for (var i = 0; i < url.length; i++) {
+                        if (url.substr(i, parm.length) == parm) {
+                            startIndex = i + parm.length
+                            for (var j = startIndex; j < url.length; j++) {
+                                if (url[j] == '&') {
+                                    endIndex = j
+                                    break
+                                } else if (j == url.length - 1) {
+                                    endIndex = url.length
+                                }
+                            }
+                            isDone = true
+                            break
+                        }
+                    }
+                    if (!isDone) {
+                        parm = '&' + key + '='
+                        for (var i = 0; i < url.length; i++) {
+                            if (url.substr(i, parm.length) == parm) {
+                                startIndex = i + parm.length
+                                for (var j = startIndex; j < url.length; j++) {
+                                    if (url[j] == '&') {
+                                        endIndex = j
+                                        break
+                                    } else if (j == url.length - 1) {
+                                        endIndex = url.length
+                                    }
+                                }
+                                break
+                            }
+                        }
+                    }
+                    var parmKeyValue = parm + url.substring(startIndex, endIndex)
+                    returnUrl = url.replace(parmKeyValue, parm + value)
+                }
+            }
+            return returnUrl
+        }
+
+            $('#instrument-search').on('submit', function () {
+                window.location.href = addUrlPara(window.location.href, 'search', $('#nav-search-input').val())
+                return false;
+            })
+        </script>
     </div><!-- /.nav-search -->
 {% endblock %}
 
@@ -87,7 +144,7 @@
 
                 <td>
                     <a href="#">
-                        {{ instrument.name }}
+                        {{ instrument.name | truncatewords:3 }}
                     </a>
                 </td>
                 <td>${{ instrument.price }}</td>
@@ -330,13 +387,13 @@
         <script>
             $("#prev_page").on('click', function (res) {
                 {% if instruments.has_previous %}
-                    window.location.href = "?page={{ instruments.previous_page_number }}"
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})
                 {% endif %}
 
             })
             $("#next_page").on('click', function (res) {
                 {% if instruments.has_next %}
-                    window.location.href = "?page={{ instruments.next_page_number }}"
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})
                 {% endif %}
 
 

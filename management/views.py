@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -33,7 +34,8 @@ def index(request):
     return render(request, 'management_templates/index.html', {
         'counts': counts,
         'pie_data': pie_data,
-        'popular_instruments': popular_instruments
+        'popular_instruments': popular_instruments,
+        'data_length': len(pie_data)
     })
 
 
@@ -140,7 +142,11 @@ def update_order(request, order_id):
 
 @login_required
 def instrument_management(request):
-    instrument_list = Instrument.objects.all()
+    search = request.GET.get("search")
+    if search is not None:
+        instrument_list = Instrument.objects.filter(Q(name__contains=search) | Q(details__contains=search))
+    else:
+        instrument_list = Instrument.objects.all()
     paginator = Paginator(instrument_list, 10, 0)
     page = request.GET.get("page")
     try:
@@ -178,11 +184,12 @@ def add_instrument(request):
     if request.method == "POST":
         f = InstrumentForm(request.POST, request.FILES)
         if f.is_valid():
-            print("123")
             f.save()
-        print(f.errors)
+        else:
+            return render(request, 'management_templates/update_instrument.html', {
+                'form': f
+            })
         return redirect(reverse('management:instrument_management'))
-        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         f = InstrumentForm()
         return render(request, 'management_templates/update_instrument.html', {
@@ -196,6 +203,10 @@ def add_order(request):
         f = OrderForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
+        else:
+            return render(request, 'management_templates/update_order.html', {
+                'form': f
+            })
         return redirect(reverse('management:order_management_all'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
