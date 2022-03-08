@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from shop.models import Instrument
 
 # Create your views here.
-from shop.models import Instrument
+from shop.models import Instrument, Order
 
 
 def index(request):
@@ -30,7 +30,13 @@ def checkout(request):
 
 
 def confirm(request):
-    return render(request, 'shop_templates/confirm.html')
+    if request.POST['name'] == "":
+        return render(request, "shop_templates/checkout.html", {'alert': 'Please enter your name'})
+    else:
+        print(request.POST['payment'])
+        a_row = Order(user=request.user, count=100)
+        a_row.save()
+        return render(request, 'shop_templates/confirm.html')
 
 
 def tes(request):
