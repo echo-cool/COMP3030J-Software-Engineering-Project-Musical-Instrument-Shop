@@ -80,7 +80,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'created_at')
 
 
-class ConfirmInfo(models.Model):
+class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
 
     name = models.CharField(max_length=20, default="")
@@ -92,22 +92,12 @@ class ConfirmInfo(models.Model):
     Telephone = models.CharField(max_length=200, default="(000)000-0000")
     Payment = models.CharField(max_length=20, default="")
     Shipping = models.CharField(max_length=20, default="")
-
-    Order = models.ForeignKey('Order', max_length=200, null=True)
+    Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
     Newsletter = models.BooleanField(default=False)
-
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Order(models.Model):
-    Order_id = models.CharField(max_length=200, default="")
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
-    count = models.PositiveIntegerField(null=False, default=1)
-    ConfirmInfo = models.ForeignKey('ConfirmInfo', on_delete=models.CASCADE, default=0)
-
 
     def __str__(self):
         return f'{self.user}<{self.created_at}>'
@@ -115,7 +105,21 @@ class Order(models.Model):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'instrument', 'count', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+    list_display = (
+    'user', 'name', 'last_name', 'Full_Address', 'City', 'Postal_code', 'Country', 'Telephone', 'Payment', 'Shipping',
+    'Item', 'Newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+
+
+class Item(models.Model):
+    Item_id = models.CharField(max_length=200, default="")
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
+    count = models.PositiveIntegerField(null=False, default=1)
+    Order = models.ForeignKey('Order', on_delete=models.CASCADE, default=0)
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('Item_id', 'instrument', 'count', 'Order')
 
 
 # class OrderItem(models.Model):
