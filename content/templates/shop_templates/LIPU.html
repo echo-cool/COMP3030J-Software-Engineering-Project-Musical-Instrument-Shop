@@ -1,0 +1,271 @@
+{% extends 'layouts/default/page.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="container left-box">
+            {#                    <div id="progress" class="progress col-6">#}
+            {#                        <div class="mask"></div>#}
+            {#                        <div class="loading">#}
+            {#                            <div class="trends"></div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block foot_link %}
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/EffectComposer.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OutlinePass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
+    <script>
+        window.onload = function () {
+
+            let fileName = "design_guitar (1).gltf";
+            console.log("Dianji");
+            var container,
+                // 控制器
+                controls;
+            // 镜头
+            var camera,
+                // 场景
+                scene,
+                // 渲染
+                renderer,
+                composer;
+
+            // 检测浏览器兼容
+            if (Detector.webgl) {
+                //alert('浏览器支持');
+                init();
+                animate();
+            } else {
+                alert('浏览器不支持');
+            }
+
+
+            //初始化
+            function init() {
+
+                var selectedObjects = [];
+                container = document.createElement('div');
+                document.body.appendChild(container);
+                //创建一个一个视角
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+                camera.position.z = 15;
+                //控制器
+                controls = new THREE.TrackballControls(camera);
+                //设置旋转速度
+                controls.rotateSpeed = 3;
+
+                // 使动画循环使用时阻尼或自转 意思是否有惯性
+                controls.enableDamping = true;
+                //是否可以缩放
+                controls.enableZoom = true;
+                //是否自动旋转
+                controls.autoRotate = true;
+                //设置相机距离原点的最远距离
+                controls.minDistance = 1;
+                //设置相机距离原点的最远距离
+                controls.maxDistance = 50;
+                //是否开启右键拖拽
+                controls.enablePan = true;
+
+                // scene 创建一个场景
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xB3CEFB);
+                scene.fog = new THREE.Fog(scene.background, 1, 100);
+                // 设置场景背景色
+                // scene.background = new THREE.Color( 0xffffff);
+                {#scene.fog = new THREE.Fog(0x000, 1000, 4000);#}
+
+
+                let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+                directionalLight.position.set(-4, 8, 4);
+                directionalLight.shadow.bias = -0.001;
+                let dhelper = new THREE.DirectionalLightHelper(directionalLight, 5, 0xff0000);
+
+                let hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.4);
+                hemisphereLight.position.set(0, 8, 0);
+                let hHelper = new THREE.HemisphereLightHelper(hemisphereLight, 5);
+
+                scene.add(directionalLight);
+                scene.add(hemisphereLight);
+
+
+                {#var d_light = new THREE.DirectionalLight("#080");#}
+                {##}
+                {#d_light.castShadow = true;#}
+                {#d_light.shadowCameraVisible = true;#}
+                {#d_light.position.set(0, 26, 4);#}
+                {#scene.add(d_light);#}
+
+                //把视角放入环境
+                scene.add(camera);
+
+
+                let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1);
+                let floorMaterial = new THREE.MeshPhongMaterial({
+                    color: 0x77F28F,
+                    shininess: 0,
+                    // wireframe: true
+                });
+                let floor = new THREE.Mesh(floorGeometry, floorMaterial);
+                floor.rotation.x = -0.5 * Math.PI;
+                floor.position.y = -2.1;
+
+                scene.add(floor);
+
+                // model  开始创建模型
+                //进度通知
+                var onProgress = function (xhr) {
+                    console.log(xhr)
+                    if (xhr.lengthComputable) {
+                        var percentComplete = xhr.loaded / xhr.total * 100;
+                        {#console.log(Math.round(percentComplete, 2) + '% downloaded');#}
+                    }
+                };
+                //报错通知
+                var onError = function (xhr) {
+                };
+
+
+                // 添加操作器
+                THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+                let loader = new THREE.GLTFLoader();
+                loader.load("{% static "assets/design_model/" %}" + fileName, function (gltf) {
+                    {#console.log('控制台查看加载gltf文件返回的对象结构', gltf)#}
+                    {#console.log('gltf对象场景属性', gltf.scene)#}
+                    {#console.log('gltf对象相机属性', gltf.cameras)#}
+                    // 返回的场景对象gltf.scene插入到threejs场景中
+                    gltf.scene.traverse(function (child) {
+                        if (child.isMesh) {
+                            {#if (child.name.includes('ere')) {#}
+                            {#    child.material.color.set("rgb(67, 160, 71)")#}
+                            {#\}#}
+                            {#console.log("模型部件", child.name);#}
+                            child.frustumCulled = false;
+                            //模型阴影
+                            child.castShadow = true;
+                            {#//模型自发光#}
+                            {#child.material.emissive = child.material.color;#}
+                            {#child.material.emissiveMap = child.material.map;#}
+                        }
+                    });
+                    // 首先渲染器开启阴影
+                    renderer.shadowMap.enabled = true;
+
+                    // 光源开启阴影
+                    directionalLight.castShadow = true;
+                    directionalLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
+
+                    // 地板接受阴影开启
+                    floor.receiveShadow = true;
+
+                    // 模型Mesh开启阴影
+                    gltf.scene.traverse(obj => {
+                        if (obj.isMesh) {
+                            obj.castShadow = true;
+                            obj.receiveShadow = true;
+                        }
+                    })
+                    let raycaster = new THREE.Raycaster();
+                    let mouse = new THREE.Vector2();
+                    const selectHandler = function (ev) {
+                        mouse.x = (ev.clientX / window.innerWidth) * 2 - 1;
+                        mouse.y = -(ev.clientY / window.innerHeight) * 2 + 1;
+                        raycaster.setFromCamera(mouse, camera);
+                        // 这里我们只检测模型的选中情况
+                        let intersects = raycaster.intersectObjects(gltf.scene.children, true);
+                        console.log("SADASDASDASDASD", intersects);
+                        if (intersects.length > 0) {
+                            selectedObjects = intersects[0].object;
+                            console.log(selectedObjects);
+                            let newMaterial = selectedObjects.material.clone();
+                            newMaterial.color = new THREE.Color('#D3C542'); //重新修改颜色
+                            selectedObjects.material = newMaterial;
+                        }
+
+                    }
+                    scene.add(gltf.scene);
+                    // 车身上移动画
+
+
+                    document.body.addEventListener('dblclick', selectHandler, false);
+                }, onProgress, onError);
+
+
+                //创建一个webgl对象
+                renderer = new THREE.WebGLRenderer({
+                    antialias: true,
+                    alpha: true // 设置透明
+                });
+                // 设置颜色
+
+                renderer.setClearColor(0xffffff, 0);
+                // 设置分辨率
+                renderer.setPixelRatio(window.devicePixelRatio);
+                // 设置渲染尺寸
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+                composer = new THREE.EffectComposer(renderer,
+                    selectedObjects[0]);
+                // composer = new EffectComposer(renderer);
+
+                const renderPass = new THREE.RenderPass(scene, camera);
+                composer.addPass(renderPass);
+
+                let outlinePass = new THREE.OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
+                composer.addPass(outlinePass);
+
+                let effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
+                effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+                composer.addPass(effectFXAA);
+
+                outlinePass.edgeStrength = Number(100.0); //边框的亮度
+                outlinePass.edgeGlow = Number(1); //光晕[0,1]
+                outlinePass.edgeThickness = Number(2.0); //边缘浓度
+                outlinePass.pulsePeriod = Number(0.5); //呼吸闪烁的速度 闪烁频率 ，默认0 ，值越大频率越低
+                outlinePass.usePatternTexture = false; //是否使用父级的材质
+                outlinePass.downSampleRatio = 2; // 边框弯曲度
+                outlinePass.clear = true;
+
+                container.appendChild(renderer.domElement);
+                // 自适应监听
+
+                window.addEventListener('resize', resize, false);
+            }
+
+            // 监听窗口自适应
+            function resize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            // 时刻渲染
+            function animate() {
+                controls.update();
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+                composer.render();
+            }
+
+
+        }
+    </script>
+{% endblock %}
+
