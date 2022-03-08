@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+from shop.models import Instrument, InstrumentDetail
+from management.forms import ReviewForm
 from shop.models import Instrument
-from django.http import HttpResponse
-from django.views.decorators.clickjacking import xframe_options_exempt
-
 # Create your views here.
 from shop.models import Instrument
+import random
+from shop.models import Instrument, Review
 
 
 def index(request):
@@ -13,16 +14,44 @@ def index(request):
 
 def product_details(request, product_id):
     instrument = Instrument.objects.get(id=product_id)
-    print(instrument.image)
+    instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
+    all_instruments = Instrument.objects.all()
+    related = []
+    for i in range(5):
+        num = random.randint(0, len(all_instruments) - 1)
+        related.append(all_instruments[num])
     return render(request, 'shop_templates/product-detail-2.html', {
         "instrument": instrument,
-        "discount": instrument.price * 100 / instrument.old_price
+        "discount": instrument.price * 100 / instrument.old_price,
+        "instrument_details": instrument_details,
+        "related": related
     })
 
 
 def leave_review(request, order_id, instrument_id):
-    print(request)
     return render(request, 'shop_templates/leave-review.html')
+
+
+def confirm_submit(request):
+    if request.method == "POST":
+        rating = request.POST.get("rating-input", None)
+        title = request.POST.get("title", None)
+        review_text = request.POST.get("review", None)
+        fileupload = request.POST.get("fileupload", None)
+        check_selected = request.POST.get("check", None)
+        print("rating: ", rating)
+        print("title: ", title)
+        print("review_text: ", review_text)
+        print("fileupload: ", fileupload)
+        print("check_selected: ", check_selected)
+        # f = ReviewForm(request.POST, request.FILES)
+        # if f.is_valid():
+        #     f.save()
+        # print(f.errors)
+        new_review = Review(order_id=1, user_id=1, rating=rating, title=title,
+                            review_text=review_text, fileupload=fileupload, check_selected=check_selected)
+        new_review.save()
+    return render(request, 'shop_templates/leave-review-2.html')
 
 
 def leave_review2(request):
@@ -30,8 +59,6 @@ def leave_review2(request):
     return render(request, 'shop_templates/leave-review-2.html')
 
 
-# 表示该页面可以在相同域名页面的 frame 中展示
-@xframe_options_exempt
 def model_view(request, product_id):
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/3d3.html', {
@@ -48,7 +75,7 @@ def confirm(request):
 
 
 def tes(request):
-    return render(request, 'shop_templates/LIPU.html')
+    return render(request, 'shop_templates/TESLA.html')
 
 
 def cart(request):

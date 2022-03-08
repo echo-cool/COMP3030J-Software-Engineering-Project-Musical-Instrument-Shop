@@ -178,7 +178,6 @@ def add_instrument(request):
     if request.method == "POST":
         f = InstrumentForm(request.POST, request.FILES)
         if f.is_valid():
-            print("123")
             f.save()
         print(f.errors)
         return redirect(reverse('management:instrument_management'))
