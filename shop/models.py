@@ -91,10 +91,21 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
-    count = models.PositiveIntegerField(null=False, default=1)
+
+    name = models.CharField(max_length=20, default="")
+    last_name = models.CharField(max_length=20, default="")
+    full_address = models.CharField(max_length=200, default="")
+    city = models.CharField(max_length=20, default="")
+    postal_code = models.CharField(max_length=50, default="")
+    country = models.CharField(max_length=200, default="")
+    telephone = models.CharField(max_length=200, default="(000)000-0000")
+    payment = models.CharField(max_length=20, default="")
+    shipping = models.CharField(max_length=20, default="")
+    Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
+    newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -103,7 +114,21 @@ class Order(models.Model):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'instrument', 'count', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+    list_display = (
+        'user', 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
+        'shipping', 'Item', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+
+
+class Item(models.Model):
+    item_id = models.CharField(max_length=200, default="")
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
+    count = models.PositiveIntegerField(null=False, default=1)
+    Order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True)
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('item_id', 'instrument', 'count', 'Order')
 
 
 # class OrderItem(models.Model):

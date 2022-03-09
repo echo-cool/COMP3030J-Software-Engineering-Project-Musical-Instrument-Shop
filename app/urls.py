@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+
+import blog
 from main.views import ChangeLanguageView
 # import Pillow
 schema_view = get_schema_view(
@@ -22,6 +24,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls'), name="blog"),
+
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
     path('management/', include('management.urls'), name='management'),
