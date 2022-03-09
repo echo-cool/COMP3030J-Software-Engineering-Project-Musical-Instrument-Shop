@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Instrument, InstrumentDetail
+from shop.models import Instrument, InstrumentDetail, Category
 from management.forms import ReviewForm
 from shop.models import Instrument
 # Create your views here.
@@ -9,7 +9,14 @@ from shop.models import Instrument, Order, Review
 
 
 def index(request):
-    return render(request, 'shop_templates/index2.html')
+    instruments = Instrument.objects.all()
+    categories = Category.objects.all()
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+    return render(request, 'shop_templates/index2.html',{
+        "instruments": instruments,
+        "categories": categories
+    })
 
 
 def product_details(request, product_id):
