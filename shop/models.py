@@ -3,6 +3,15 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class Activation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    code = models.CharField(max_length=20, unique=True)
+    email = models.EmailField(blank=True)
 
 # Create your models here.
 class Profile(models.Model):
@@ -26,6 +35,7 @@ class Instrument(models.Model):
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
+    object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
     extras = models.JSONField(null=True, blank=True)
@@ -48,6 +58,7 @@ class Cart(models.Model):
 
     def __str__(self):
         return f'{self.user}<{self.instrument}>'
+
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
@@ -115,11 +126,15 @@ class Review(models.Model):
     rating = models.PositiveIntegerField(
         null=False,
         default=5,
-        validators=[MaxValueValidator(10), MinValueValidator(0)]
+        validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
+    title = models.TextField(null=True)
     review_text = models.TextField(null=True)
+    fileupload = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
+    check_selected = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'review_text')
+    list_display = ('order_id', 'user', 'rating', 'title', 'review_text', 'fileupload', 'check', 'created_at')
