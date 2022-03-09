@@ -1,15 +1,22 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Instrument, InstrumentDetail
+from shop.models import Instrument, InstrumentDetail, Category
 from management.forms import ReviewForm
 from shop.models import Instrument
 # Create your views here.
 from shop.models import Instrument
 import random
-from shop.models import Instrument, Review
+from shop.models import Instrument, Order, Review
 
 
 def index(request):
-    return render(request, 'shop_templates/index2.html')
+    instruments = Instrument.objects.all()
+    categories = Category.objects.all()
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+    return render(request, 'shop_templates/index2.html',{
+        "instruments": instruments,
+        "categories": categories
+    })
 
 
 def product_details(request, product_id):
@@ -71,6 +78,12 @@ def checkout(request):
 
 
 def confirm(request):
+    a_row = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
+                  full_address=request.POST['full_address'], city=request.POST['city'],
+                  postal_code=request.POST['postal_code'], country=request.POST['country'],
+                  telephone=request.POST['telephone'], payment=request.POST['payment'],
+                  shipping=request.POST['shipping'])
+    a_row.save()
     return render(request, 'shop_templates/confirm.html')
 
 

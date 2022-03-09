@@ -8,7 +8,61 @@
 <head>
     <meta charset="UTF-8">
     <title>3D Model (obg+mtl)</title>
+    <style type="text/css">
+        body {
+            font-family: Monospace;
+            color: #fff;
+            margin: 0px;
+            overflow: hidden;
+            background-color: #E9E9E9;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+        }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 进度条 */
+        .progress {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        .progress .mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+
+        .progress .loading {
+            width: 30em;
+            height: 1em;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            border-radius: 1em;
+        }
+
+        .progress .trends {
+            width: 0;
+            height: 100%;
+            background: red;
+            box-shadow: 1px 1px 10px red;
+            border-radius: 1em;
+            transition: .3s --progress;
+        }
+
+    </style>
 </head>
 
 <!--进度条-->
@@ -18,14 +72,10 @@
         <div class="trends"></div>
     </div>
 </div>
-<div style="position: absolute;z-index: 999">
-    <button onclick="changeModel(0)">111</button>
-    <button onclick="changeModel(1)">222</button>
-    <button onclick="changeModel(2)">333</button>
-    <button onclick="changeModel(3)">444</button>
-</div>
+
 
 <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+
 <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
@@ -35,7 +85,23 @@
 
 <script>
     // 设置名称
-    let fileName = "design_guitar (1).gltf";
+    var path, pathName;
+    path = "../static/";
+
+    let arr = window.location.href.split('/');
+
+    function detectionNum() {
+        return arr[arr.length - 1];
+    }
+
+    if (detectionNum() === "1") {
+        pathName = "design_guitar (1).gltf";
+    } else if (detectionNum() === "2") {
+        pathName = "design_guitar (2).gltf";
+    } else if (detectionNum() === "3") {
+        pathName = "design_guitar (3).gltf";
+    }
+    // 容器
     var container,
         // 控制器
         controls;
@@ -78,7 +144,7 @@
         //设置相机距离原点的最远距离
         controls.minDistance = 1;
         //设置相机距离原点的最远距离
-        controls.maxDistance = 50;
+        controls.maxDistance = 100;
         //是否开启右键拖拽
         controls.enablePan = true;
 
@@ -86,23 +152,15 @@
         scene = new THREE.Scene();
         // 设置场景背景色
         // scene.background = new THREE.Color( 0xffffff);
-        {#scene.fog = new THREE.Fog(0x000, 1000, 4000);#}
+        scene.fog = new THREE.Fog(0x000, 1000, 4000);
 
         console.log(scene)
         //创建一个环境灯光
-        var ambientLight = new THREE.AmbientLight(0xffffff);
+        var ambientLight = new THREE.AmbientLight(0x666666);
         scene.add(ambientLight);
         // 从上到下的平行光
         var direction = new THREE.DirectionalLight(0x666666);
         scene.add(direction);
-
-
-        var d_light = new THREE.DirectionalLight("#080");
-
-        d_light.castShadow = true;
-        d_light.shadowCameraVisible = true;
-        d_light.position.set(0, 26, 4);
-        scene.add(d_light);
 
         //把视角放入环境
         scene.add(camera);
@@ -113,7 +171,7 @@
             console.log(xhr)
             if (xhr.lengthComputable) {
                 var percentComplete = xhr.loaded / xhr.total * 100;
-                {#console.log(Math.round(percentComplete, 2) + '% downloaded');#}
+                console.log(Math.round(percentComplete, 2) + '% downloaded');
                 play(Math.round(percentComplete, 2))
             }
         };
@@ -122,10 +180,10 @@
         };
 
         // 添加操作器
-        console.log("加载文件名", fileName);
-        THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
-        let loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + fileName, function (gltf) {
+        var loader = new THREE.GLTFLoader();
+
+
+        loader.load("{% static "assets/design_model/" %}" + pathName, function (gltf) {
             {#console.log('控制台查看加载gltf文件返回的对象结构', gltf)#}
             {#console.log('gltf对象场景属性', gltf.scene)#}
             {#console.log('gltf对象相机属性', gltf.cameras)#}
@@ -139,17 +197,16 @@
                     child.frustumCulled = false;
                     //模型阴影
                     child.castShadow = true;
-                    //模型自发光
+                    {#//模型自发光#}
                     child.material.emissive = child.material.color;
                     child.material.emissiveMap = child.material.map;
                 }
             });
-            {#gltf.position.set(0, 0, 0 );#}
-            {#gltf.scene.scale.set(1, 1, 1);#}
-            {#let box = new THREE.Box();#}
-            {#box.setObjectFrom('物体');#}
-            {#console.log("sdasdsad", box.min, box.max);#}
-            {#gltf.scene.scale.set(1 * fileNames.indexOf(fileName), 1 * fileNames.indexOf(fileName), 1 * fileNames.indexOf(fileName)) // scale here#}
+            console.log('控制台查看加载gltf文件返回的对象结构', gltf)
+            console.log('gltf对象场景属性', gltf.scene)
+            console.log('gltf对象相机属性', gltf.cameras)
+            // 返回的场景对象gltf.scene插入到threejs场景中
+            gltf.scene.scale.set(10, 10, 10) // scale here
             scene.add(gltf.scene);
         }, onProgress, onError);
 
@@ -218,8 +275,6 @@
         } else {
             document.getElementById("progress").style.display = "none";
         }
-
     }
-
 </script>
 </html>
