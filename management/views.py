@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from django.urls import reverse
 
-from management.forms import OrderForm, InstrumentForm
+from management.forms import OrderForm, InstrumentForm, ReviewForm
 from shop.models import Order, Instrument, Profile, Category, Review
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -35,7 +35,8 @@ def index(request):
         'counts': counts,
         'pie_data': pie_data,
         'popular_instruments': popular_instruments,
-        'data_length': len(pie_data)
+        'data_length': len(pie_data),
+        'profile': Profile.objects.filter(user=request.user.id).first()
     })
 
 
@@ -155,10 +156,21 @@ def instrument_management(request):
         instruments = paginator.page(1)
     except EmptyPage:
         instruments = paginator.page(paginator.num_pages)
-    # instruments = Instrument.objects.all()
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages+1)]
+    elif p <= int(part_num/2) + 1:
+        part_pages = [i for i in range(1, part_num+1)]
+    elif p + int((part_num-1)/2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages-part_num+1, paginator.num_pages+1)]
+    else:
+        part_pages = [i for i in range(p-int(part_num/2), p + int((part_num-1)/2) + 1)]
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
-        'profile': Profile.objects.filter(user=request.user.id).first()
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
     })
 
 
@@ -226,4 +238,72 @@ def profile(request):
     else:
         return render(request, 'management_templates/profile.html', {
             'profile': Profile.objects.filter(user=request.user.id).first(),
+        })
+
+
+@login_required
+def review_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        review_list = Review.objects.filter(Q(user__username__contains=search) | Q(title__contains=search))
+    else:
+        review_list = Review.objects.all()
+    paginator = Paginator(review_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        reviews = paginator.page(page)
+    except PageNotAnInteger:
+        reviews = paginator.page(1)
+    except EmptyPage:
+        reviews = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+    return render(request, 'management_templates/reviewManagement.html', {
+        'reviews': reviews,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
+
+
+@login_required
+def update_review(request, review_id):
+    if request.method == "POST":
+        review = Review.objects.get(id=review_id)
+        f = ReviewForm(request.POST, request.FILES, instance=review)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:review_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        review = Review.objects.get(id=review_id)
+        f = ReviewForm(instance=review)
+        return render(request, 'management_templates/update_review.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_review(request):
+    if request.method == "POST":
+        f = Review(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_review.html', {
+                'form': f
+            })
+        return redirect(reverse('management:review_management'))
+    else:
+        f = Review()
+        return render(request, 'management_templates/update_review.html', {
+            'form': f
         })
