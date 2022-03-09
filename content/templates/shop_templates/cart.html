@@ -31,13 +31,13 @@
                         Product
                     </th>
                     <th>
-                        Price
+                        Price($)
                     </th>
                     <th>
                         Quantity
                     </th>
                     <th>
-                        Subtotal
+                        Subtotal($)
                     </th>
                     <th>
 
@@ -54,17 +54,25 @@
                         <span class="item_cart">Armor Air x Fear</span>
                     </td>
                     <td>
-                        <strong>$140.00</strong>
+                        <input value="140.00" class="price">
                     </td>
+                    <script type="text/javascript">
+                        var id;
+                        function subtotal(id) {
+                            var z = $(".qty2")[id].value;
+                            $(".Subtotal")[id].value = z * parseFloat($(".price")[id].value);
+                        }
+                        console.log(id);
+                    </script>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1">
+                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1" onchange="subtotal(0)">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$140.00</strong>
+                        <input value="140.00" class="Subtotal">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -79,17 +87,17 @@
                         <span class="item_cart">Armor Okwahn II</span>
                     </td>
                     <td>
-                        <strong>$110.00</strong>
+                        <input value="110.00" class="price">
                     </td>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2">
+                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2" onchange="subtotal(1)">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$110.00</strong>
+                        <input value="110.00" class="Subtotal">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -104,18 +112,18 @@
                         <span class="item_cart">Armor Air Wildwood ACG</span>
                     </td>
                     <td>
-                        <strong>$90.00</strong>
+                        <input value="90.00" class="price">
                     </td>
 
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3">
+                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3" onchange="subtotal(2)">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$90.00</strong>
+                        <input value="90.00" class="Subtotal">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
