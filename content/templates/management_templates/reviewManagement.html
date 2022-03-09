@@ -10,11 +10,11 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Manage Instruments</a>
+            <a href="#">Manage Reviews</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
-        <form class="form-search" id="instrument-search">
+        <form class="form-search" id="review-search">
             <span class="input-icon">
                 <input type="text" placeholder="Search ..." class="nav-search-input"
                        id="nav-search-input" autocomplete="off"/>
@@ -24,7 +24,7 @@
         <script src="{% static 'assets/js/add_url.js' %}"></script>
         <script>
 
-            $('#instrument-search').on('submit', function () {
+            $('#review-search').on('submit', function () {
                 window.location.href = addUrlPara(window.location.href, 'search', $('#nav-search-input').val())
                 return false;
             })
@@ -35,10 +35,10 @@
 {% block page_header %}
     <div class="row page-header">
         <h1 class="col-md-10">
-            Instrument Management
+            Review Management
         </h1>
         <button class="btn btn-xs btn-success pull-right"
-                onclick="window.location.href='{% url 'management:add_instrument' %}'">
+                onclick="window.location.href='{% url 'management:add_review' %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
@@ -56,8 +56,8 @@
                 </label>
             </th>
             <th class="detail-col">Details</th>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Instrument</th>
+            <th>Rating</th>
             <th class="hidden-480">
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                 Posted by
@@ -67,7 +67,7 @@
                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                 Created At
             </th>
-            <th class="hidden-480">Category</th>
+            <th class="hidden-480">Content</th>
 
             <th></th>
         </tr>
@@ -75,7 +75,7 @@
 
         <tbody>
 
-        {% for instrument in instruments %}
+        {% for review in reviews %}
             <tr>
                 <td class="center">
                     <label class="pos-rel">
@@ -95,31 +95,31 @@
 
                 <td>
                     <a href="#">
-                        {{ instrument.name | truncatewords:3 }}
+                        {{ review.order.instrumrnt.name | truncatewords:3 }}
                     </a>
                 </td>
-                <td>${{ instrument.price }}</td>
-                <td class="hidden-480">{{ instrument.posted_by }}</td>
-                <td>{{ instrument.created_at }}</td>
+                <td>{{ review.rating }}</td>
+                <td class="hidden-480">{{ review.user.username }}</td>
+                <td>{{ review.created_at }}</td>
 
                 <td class="hidden-480">
-                    {{ instrument.category }}
+                    {{ review.review_text }}
                 </td>
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
 
                         <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_instrument' instrument.id %}'">
+                                onclick="window.location.href='{% url 'management:update_review' review.id %}'">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 
 
-                        <button class="btn btn-xs btn-danger" id="delete_button-{{ instrument.id }}">
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ review.id }}">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                         <script>
-                            $("#delete_button-{{ instrument.id }}").on("click", function (res) {
+                            $("#delete_button-{{ review.id }}").on("click", function (res) {
                                 $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
                                     width: '320',
@@ -132,7 +132,7 @@
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
-                                                    url: "/api/instruments/{{ instrument.id }}/",
+                                                    url: "/api/review/{{ review.id }}/",
                                                     method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
@@ -225,14 +225,14 @@
                                 <div class="text-center">
                                     <img height="150" class="thumbnail inline no-margin-bottom"
                                          alt="Domain Owner's Avatar"
-                                         src="/media/{{ instrument.image }}">
+                                         src="/media/{{ review.order.instrument.image }}">
                                     <br>
                                     <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                         <div class="inline position-relative">
                                             <a class="user-title-label" href="#">
                                                 <i class="ace-icon fa fa-circle light-green"></i>
                                                 &nbsp;
-                                                <span class="white">{{ instrument.name }}</span>
+                                                <span class="white">{{ review.order.instrument.name }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -244,10 +244,10 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Name</div>
+                                        <div class="profile-info-name"> Posted by</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ instrument.name }}</span>
+                                            <span>{{ review.user.username }}</span>
                                         </div>
                                     </div>
 
@@ -331,8 +331,8 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >Page: {{ instruments.number }} Total: {{ instruments.paginator.num_pages }}</span>
-            {% if instruments.has_previous %}
+            >Page: {{ reviews.number }} Total: {{ reviews.paginator.num_pages }}</span>
+            {% if reviews.has_previous %}
                 <button id="first_page" class="btn btn-round btn-success">First Page</button>
 
             {% endif %}
@@ -341,7 +341,7 @@
             </button>
 
             {% for pg in part_pages %}
-                {% if pg == instruments.number %}
+                {% if pg == reviews.number %}
                     <button class="btn btn-round btn-pink page-button">{{ pg }}</button>
                 {% else %}
                     <button class="btn btn-round page-button">{{ pg }}</button>
@@ -349,7 +349,7 @@
             {% endfor %}
 
 
-            {% if instruments.has_next %}
+            {% if reviews.has_next %}
                 <button id="next_page" class="btn btn-round btn-info">
                     Next Page
                 </button>
@@ -362,25 +362,25 @@
         </div>
         <script>
             $("#prev_page").on('click', function (res) {
-                {% if instruments.has_previous %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})
+                {% if reviews.has_previous %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.previous_page_number }})
                 {% endif %}
 
             })
             $("#next_page").on('click', function (res) {
-                {% if instruments.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.next_page_number }})
                 {% endif %}
 
             })
             $("#first_page").on('click', function (res) {
-                {% if instruments.has_next %}
+                {% if reviews.has_next %}
                     window.location.href = addUrlPara(window.location.href, 'page', 1)
                 {% endif %}
             })
             $("#last_page").on('click', function (res) {
-                {% if instruments.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.paginator.num_pages }})
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.paginator.num_pages }})
                 {% endif %}
             })
             $(".page-button").on('click', function (res) {
@@ -396,7 +396,7 @@
 
     <div id="dialog-delete" class="hide">
         <div class="alert alert-info bigger-110">
-            The instrument will be deleted and the operation can not be revoked
+            The review will be deleted and the operation can not be revoked
         </div>
 
         <div class="space-6"></div>
@@ -532,7 +532,7 @@
 
         })
 
-        $('li:contains(Instruments)').attr("class", "active");
+        $('li:contains(Reviews)').attr("class", "active");
 
     </script>
 
