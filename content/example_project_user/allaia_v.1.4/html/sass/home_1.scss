@@ -1,0 +1,433 @@
+@import 'variables';
+@import 'mixin';
+/*============================================================================================*/
+/* HOME */
+/*============================================================================================*/
+ul#banners_grid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	li {
+		position: relative;
+		width: 33.33%;
+		float: left;
+		border-top: 5px solid #fff;
+		border-right: 5px solid #fff;
+		&:last-child {
+			border-right: none;
+		}
+		@include mobile {
+			width: 100%;
+			float: none;
+			border-right: none;
+		}
+		a.img_container {
+			position: relative;
+			overflow: hidden;
+			z-index: 0;
+			display: block;
+			width: 100%;
+			height: 250px;
+			@include mobile {
+				width: 100%;
+				float: none;
+				height: 210px;
+			}
+			img {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				@include transform (translate(-50%, -50%) scale(1.1));
+				@include transition-default;
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+				@include backface-visibility (hidden);
+				@include desktop {
+				height: 100%;
+					width: auto;
+					max-width: inherit;
+			}
+				@include mobile {
+				width: 100%;
+				height: auto;
+			}
+			}
+			&:hover img {
+				@include transform (translate(-50%, -50%) scale(1.02));
+			}
+			.short_info {
+				position: absolute;
+				left: 0;
+				top: 0%;
+				width: 100%;
+				box-sizing: border-box;
+				color: #fff;
+				padding: 0 15px;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				@include transition-default (all, 0.4s, ease);
+				text-align: center;
+				h3 {
+					color: #fff;
+					@include fontSize(24px);
+					margin: 0;
+					padding: 0;
+					font-weight: 400;
+					text-transform: uppercase;
+					font-weight: 900;
+					@include mobile {
+						margin-top: -20px;
+					}
+				}
+				div {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					@include transform (translateY(-25px));
+					text-align: center;
+					width: 100%;
+					visibility: hidden;
+					display: table;
+					opacity: 0;
+					@include transition-default (all, 0.4s, ease);
+					.btn_1 {
+						padding: 10px 22px;
+						@include fontSize(13px);
+					}
+					@include mobile {
+						opacity: 1;
+						visibility: visible;
+						@include transform (translateY(-50px));
+					}
+				}
+				&:hover {
+					div {
+						visibility: visible;
+						opacity: 1;
+						@include transform (translateY(-50px));
+					}
+				}
+			}
+		}
+	}
+}
+.categories_grid {
+	a {
+		display: block;
+		position: relative;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		@include mobile {height: 180px; margin-bottom: 10px;}
+		.wrapper {
+			width: 100%;
+			@include background-gradient(transparent, #000, 'vertical');
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			line-height: 1;
+			padding: 100px 20px 20px 20px;
+			h2 {
+				color: #fff;
+				text-transform: uppercase;
+				font-weight: 900;
+				@include fontSize(21px);
+				margin: 0;
+				@include transform (translateY(20px) translateZ(0));
+				@include transition-default-cubic-bezier;
+			}
+			p {
+				color: #fff;
+				opacity: 0;
+				margin: 0;
+				@include fontSize(14px);
+				font-weight: 500;
+				@include transform (translateY(20px) translateZ(0));
+				@include transition-default-cubic-bezier;
+				
+			}
+		}
+		
+		img {
+			@include transition-default;
+			 @include transform (scale(1.05));
+			
+			
+		}
+		&:hover img {
+			 @include transform (scale(1));
+			
+		}
+		&:hover h2 {
+			@include transform (translateY(-5px) translateZ(0));
+			
+		}
+		&:hover p {
+			opacity: 0.8;
+			transition-delay: 0.2s;
+			@include transform (translateY(0) translateZ(0));
+			
+			
+		}
+	}
+}
+
+/* Home video background*/
+.header-video {
+	position: relative;
+	overflow: hidden;
+	background-color: lightgray;
+	height: 600px!important;
+	@include tablet {height: 480px!important;}
+}
+#hero_video {
+	position: relative;
+	background-size: cover;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+}
+video {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+#hero_video iframe {
+	height: 100%;
+	width: 100%;
+}
+video {
+	width: 100%;
+}
+.teaser-video {
+	width: 100%;
+	height: auto;
+}
+.header-video--media {
+	width: 100%;
+	height: auto;
+}
+@media (max-width: 1024px) {
+	#hero_video {
+		background: lightgray url(../img/slides/slide_home_1.jpg);
+		@include background-size(cover);
+		background-position: center;
+	}
+	.header-video {
+		background: none;
+	}
+}
+
+#icon_drag_mobile{
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	background: url(../img/drag_icon.svg) 0 0 no-repeat;
+	width: 50px;
+	height: 30px;
+	opacity: 0.6;
+	z-index: 99;
+	display: none;
+	@include mobile {display: block;}
+}
+
+.isotope_filter {
+	ul {
+		list-style: none;
+		text-align: center;
+		margin: 0 0 30px 0;
+		padding: 0;
+		li {
+			text-align: center;
+			display: inline-block;
+			border-right: 1px solid $border-color-2;
+			line-height: 1;
+			padding-right: 13px;
+			padding-left: 10px;
+			&:last-child{
+				border-right: none;
+	
+			}
+			a {
+				text-transform: uppercase;
+				font-weight: 700;
+				@include fontSize(16px);
+				&.selected {
+					color: #444;
+				}
+			}
+		}
+	}
+}
+
+.featured {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 400px;
+	color: #fff;
+	@include fontSize(18px);
+	overflow: hidden;
+	h3, p, .feat_text_block {
+		@include transform (translateX(20px));
+		opacity: 0;
+		visibility: hidden;
+		@include transition-default (all,0.05s, ease);
+	}
+	.animated h3, .animated p, .animated .feat_text_block{
+		 @include transform (none);
+		opacity: 1;
+		visibility: visible;
+		@include transition-default (all,0.5s, ease);
+	}
+	.animated h3{
+		transition-delay: 0.2s;
+			-webkit-transition-delay: 0.2s;
+			-moz-transition-delay: 0.2s;
+			-o-transition-delay: 0.2s;
+	}
+	.animated p{
+		transition-delay: 0.35s;
+			-webkit-transition-delay: 0.35s;
+			-moz-transition-delay: 0.35s;
+			-o-transition-delay: 0.35s;
+	}
+	.animated .feat_text_block{
+		transition-delay: 0.5s;
+			-webkit-transition-delay: 0.5s;
+			-moz-transition-delay: 0.5s;
+			-o-transition-delay: 0.5s;
+	}
+	h3 {
+		color: #fff;
+		font-weight: 900;
+		text-transform: uppercase;
+		line-height: 1;
+		@include fontSize(36px);
+		&.animated {
+			transition-delay: 0.2s;
+			-webkit-transition-delay: 0.2s;
+			-moz-transition-delay: 0.2s;
+			-o-transition-delay: 0.2s;
+		}
+	}
+	.price_box {
+		display: inline-block;
+		margin-right: 15px;
+		float: left;
+		.new_price {
+			@include fontSize(32px);
+			color: #fff;
+		}
+		.old_price {
+			@include fontSize(18px);
+		}
+	}
+}
+
+a.box_news {
+	position: relative;
+	display: block;
+	padding-left: 230px;
+	color: $body-text-color;
+	margin-bottom: 30px;
+	min-height: 150px;
+	@include extra-small-mobile {
+		min-height: inherit;
+		padding-left: 0;
+	}
+	figure {
+		width: 200px;
+		height: 150px;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		top: 0;
+		@include extra-small-mobile {
+			position: relative;
+			width: auto;
+			height: 200px;
+		}
+		img {
+			width: 250px;
+			height: auto;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			@include transform (translate(-50%, -50%) scale(1.1));
+			@include transition-default;
+			@include backface-visibility (hidden);
+			@include extra-small-mobile {
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+			}
+		}
+		figcaption {
+			background-color: $color-5;
+			text-align: center;
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: inline-block;
+			color: #fff;
+			width: 60px;
+			height: 60px;
+			padding: 15px;
+			line-height: $line-height-none;
+			strong {
+				font-weight: 900;
+				display: block;
+				@include fontSize(21px);
+			}
+		}
+	}
+	h4 {
+		@include fontSize(18px);
+		margin-bottom: 10px;
+		@include extra-small-mobile {margin-bottom: 5px;}
+	}
+	&:hover {
+		img {
+			@include transform (translate(-50%, -50%) scale(1));
+		}
+		h4 {
+			color: $color-1;
+			@include transition-default;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 10px 0 0 0;
+		@include extra-small-mobile {padding: 0;}
+		li {
+			display: inline-block;
+			font-weight: 500;
+			color: #999;
+			@include fontSize(12px);
+			margin-right: 5px;
+			&:last-child {
+				margin-right: 0;
+				&:after {
+					content: '';
+					margin: 0;
+				}
+			}
+			&:after {
+				content: '-';
+				margin: 0 0 0 10px;
+			}
+		}
+	}
+}

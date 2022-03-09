@@ -1,0 +1,296 @@
+{% extends 'layouts/default/page.html' %}
+{% load static %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/checkout.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <main class="bg_gray">
+
+        <div class="container margin_30">
+            <div class="page_header">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li>Page active</li>
+                    </ul>
+                </div>
+                <h1>Sign In or Create an Account</h1>
+
+            </div>
+            <!-- /page_header -->
+            <form method="post" action="/confirm/">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="step first">
+                            <h3>1. User Info and Billing address</h3>
+                            <ul class="nav nav-tabs" id="tab_checkout" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#tab_1"
+                                       role="tab"
+                                       aria-controls="tab_1" aria-selected="true">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#tab_2" role="tab"
+                                       aria-controls="tab_2" aria-selected="false">Login</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content checkout">
+                                <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
+                                     aria-labelledby="tab_1">
+                                    <div class="form-group">
+                                        <input name="register_email" type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="register_password" type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <hr>
+                                    <div class="row no-gutters">
+                                        <div class="col-6 form-group pr-1">
+                                            <input name="name" type="text" class="form-control" placeholder="Name">
+                                        </div>
+                                        <div class="col-6 form-group pl-1">
+                                            <input name="last_name" type="text" class="form-control" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <!-- /row -->
+                                    <div class="form-group">
+                                        <input name="full_address" type="text" class="form-control" placeholder="Full Address">
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-6 form-group pr-1">
+                                            <input name="city" type="text" class="form-control" placeholder="City">
+                                        </div>
+                                        <div class="col-6 form-group pl-1">
+                                            <input name="postal_code" type="text" class="form-control" placeholder="Postal code">
+                                        </div>
+                                    </div>
+                                    <!-- /row -->
+                                    <div class="row no-gutters">
+                                        <div class="col-md-12 form-group">
+                                            <div class="custom-select-form">
+                                                <select class="wide add_bottom_15" name="country" id="country">
+                                                    <option value="" selected>Country</option>
+                                                    <option value="Europe">Europe</option>
+                                                    <option value="United states">United states</option>
+                                                    <option value="Asia">Asia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row -->
+                                    <div class="form-group">
+                                        <input name="telephone" type="text" class="form-control" placeholder="Telephone">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="container_check" id="other_addr">Other billing address
+                                            <input name="checkbox" type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div id="other_addr_c" class="pt-2">
+                                        <div class="row no-gutters">
+                                            <div class="col-6 form-group pr-1">
+                                                <input name="name_2" type="text" class="form-control" placeholder="Name">
+                                            </div>
+                                            <div class="col-6 form-group pl-1">
+                                                <input name="last_name_2" type="text" class="form-control" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                        <!-- /row -->
+                                        <div class="form-group">
+                                            <input name="full_address_2" type="text" class="form-control" placeholder="Full Address">
+                                        </div>
+                                        <div class="row no-gutters">
+                                            <div class="col-6 form-group pr-1">
+                                                <input name="city_2" type="text" class="form-control" placeholder="City">
+                                            </div>
+                                            <div class="col-6 form-group pl-1">
+                                                <input name="postal_code_2" type="text" class="form-control" placeholder="Postal code">
+                                            </div>
+                                        </div>
+                                        <!-- /row -->
+                                        <div class="row no-gutters">
+                                            <div class="col-md-12 form-group">
+                                                <div class="custom-select-form">
+                                                    <select class="wide add_bottom_15" name="country" id="country_2">
+                                                        <option value="" selected>Country</option>
+                                                        <option value="Europe">Europe</option>
+                                                        <option value="United states">United states</option>
+                                                        <option value="Asia">Asia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /row -->
+                                        <div class="form-group">
+                                            <input name="telephone_2" type="text" class="form-control" placeholder="Telephone">
+                                        </div>
+                                    </div>
+                                    <!-- /other_addr_c -->
+                                    <hr>
+                                </div>
+                                <!-- /tab_1 -->
+                                <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="tab_2"
+                                     style="position: relative;">
+                                    <a href="#0" class="social_bt facebook">Login con Facebook</a>
+                                    <a href="#0" class="social_bt google">Login con Google</a>
+                                    <div class="form-group">
+                                        <input name="login_email" type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="login_password" type="login_password" class="form-control" placeholder="Password"
+                                               id="login_password">
+                                    </div>
+                                    <div class="clearfix add_bottom_15">
+                                        <div class="checkboxes float-start">
+                                            <label class="container_check">Remember me
+                                                <input name="remember_me" type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="float-end"><a id="forgot" href="#0">Lost Password?</a></div>
+                                    </div>
+                                    <div id="forgot_pw">
+                                        <div class="form-group">
+                                            <input name="email_forgot" type="email" class="form-control"
+                                                   id="email_forgot"
+                                                   placeholder="Type your email">
+                                        </div>
+                                        <p>A new password will be sent shortly.</p>
+                                        <div class="text-center"><input type="submit" value="Reset Password"
+                                                                        class="btn_1">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <input type="submit" class="btn_1 full-width" value="Login">
+                                </div>
+                                <!-- /tab_2 -->
+                            </div>
+                        </div>
+                        <!-- /step -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="step middle payments">
+                            <h3>2. Payment and Shipping</h3>
+                            <ul>
+                                <li>
+                                    <label class="container_radio">Credit Card<a href="#0" class="info"
+                                                                                 data-bs-toggle="modal"
+                                                                                 data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="payment" value="Credit Card" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_radio">Paypal<a href="#0" class="info"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="payment" value="Paypal">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_radio">Cash on delivery<a href="#0" class="info"
+                                                                                      data-bs-toggle="modal"
+                                                                                      data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="payment" value="Cash on delivery">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_radio">Bank Transfer<a href="#0" class="info"
+                                                                                   data-bs-toggle="modal"
+                                                                                   data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="payment" value="Bank Transfer">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="payment_info d-none d-sm-block">
+                                <figure><img src="img/cards_all.svg" alt=""></figure>
+                                <p>Sensibus reformidans interpretaris sit ne, nec errem nostrum et, te nec meliore
+                                    philosophia. At vix quidam periculis. Solet tritani ad pri, no iisque definitiones
+                                    sea.</p></div>
+
+                            <h6 class="pb-2">Shipping Method</h6>
+
+
+                            <ul>
+                                <li>
+                                    <label class="container_radio">Standard shipping<a href="#0" class="info"
+                                                                                       data-bs-toggle="modal"
+                                                                                       data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="shipping" value="Standard shipping" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_radio">Express shipping<a href="#0" class="info"
+                                                                                      data-bs-toggle="modal"
+                                                                                      data-bs-target="#payments_method"></a>
+                                        <input type="radio" name="shipping" value="Express shipping">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <!-- /step -->
+
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="step last">
+                            <h3>3. Order Summary</h3>
+                            <div class="box_general summary">
+                                <ul>
+                                    <li class="clearfix"><em>1x Armor Air X Fear</em> <span>$145.00</span></li>
+                                    <li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li>
+                                </ul>
+                                <ul>
+                                    <li class="clearfix"><em><strong>Subtotal</strong></em> <span>$450.00</span></li>
+                                    <li class="clearfix"><em><strong>Shipping</strong></em> <span>$0</span></li>
+
+                                </ul>
+                                <div class="total clearfix">TOTAL <span>$450.00</span></div>
+                                <div class="form-group">
+                                    <label class="container_check">Register to the Newsletter.
+                                        <input name="newsletter" type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn_1 full-width">Confirm and Pay</button>
+                            </div>
+                            <!-- /box_general -->
+                        </div>
+                        <!-- /step -->
+                    </div>
+                </div>
+                <!-- /row -->
+            </form>
+
+        </div>
+        <!-- /container -->
+    </main>
+    <!--/main-->
+    <script>
+        // Other address Panel
+    </script>
+
+{% endblock %}
+
+{% block foot_link %}
+
+    <script src="{% static 'js/checkout.js' %}"></script>
+
+{% endblock %}

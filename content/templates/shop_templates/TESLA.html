@@ -1,0 +1,217 @@
+{% extends 'layouts/default/page.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+    <style type="text/css">
+        body {
+            font-family: Monospace;
+            color: #fff;
+            margin: 0px;
+            overflow: hidden;
+            background-color: #ffffff;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 进度条 */
+        .progress {
+            position: fixed;
+        }
+
+        .progress .mask {
+            position: absolute;
+            background: rgb(255, 255, 255);
+            z-index: 99;
+        }
+
+        .progress .loading {
+            height: 1em;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            border-radius: 1em;
+        }
+
+        .progress .trends {
+            width: 0;
+            height: 100%;
+            background: red;
+            box-shadow: 1px 1px 10px red;
+            border-radius: 1em;
+            transition: .3s --progress;
+        }
+
+    </style>
+    <style>
+        .left-box {
+            background: rgba(24, 17, 21, 0.29);
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            height: 700px;
+
+
+        .model-wrapper {
+            position: absolute;
+        }
+    </style>
+    <div class="container" style="height: 1000px">
+        <div class="row" style="height: 100%">
+            <div class="col-8 border">
+                <div class="container left-box">
+                    {#                    <div id="progress" class="progress col-6">#}
+                    {#                        <div class="mask"></div>#}
+                    {#                        <div class="loading">#}
+                    {#                            <div class="trends"></div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                </div>
+            </div>
+            <div class="col-4 border">
+                <div class="group--detail-container">
+                    <div class="child-group--option_details tds--vertical_padding tds-flex tds-flex--row-nowrap tds-flex--center tds-flex--justify-center">
+                        <div class="observer-placeholder" onclick="changeModel(0)" style="height: 100%;">
+                            <input class="tds-btn tds-btn--link group--options_asset--container group--option--selected"
+                                   data-id="$IBE00-option" data-id-selected="true" id="INTERIOR_PACKAGE_$IBE00"
+                                   type="radio" aria-label="全黑色 - 包括" name="INTERIOR_PACKAGE" value="$IBE00"
+                                   checked="">
+                            <label class="group--option--label" for="INTERIOR_PACKAGE_$IBE00">
+                                <span class="tds--is_visually_hidden">全黑色</span>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     class="asset-loader--svg-container asset-loader-2 group--options_asset selected"
+                                     id="Model_S_全黑色"
+                                     style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                    <title id="Model_S_全黑色">全黑色</title>
+                                    <defs>
+                                        <clipPath
+                                                id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319">
+                                            <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                    stroke-width="0"></circle>
+                                        </clipPath>
+                                        <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Black.png_version_v0027d202203031319"
+                                                height="200%">
+                                            <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                            <feComponentTransfer>
+                                                <feFuncA type="linear" slope="0.3"></feFuncA>
+                                            </feComponentTransfer>
+                                            <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                            <feMerge>
+                                                <feMergeNode></feMergeNode>
+                                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                           xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319"
+                                           preserveAspectRatio="xMidYMid meet" alt="全黑色" x="7px" y="7px"
+                                           clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Black.png?version=v0027d202203031319)"></image>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="observer-placeholder" onclick="changeModel(1)" style="height: 100%;">
+                            <input class="tds-btn tds-btn--link group--options_asset--container"
+                                   data-id="$IWW00-option"
+                                   data-id-selected="false" id="INTERIOR_PACKAGE_$IWW00" type="radio"
+                                   aria-label="黑色和白色 - 包括" name="INTERIOR_PACKAGE" value="$IWW00">
+                            <span class="tds--is_visually_hidden">黑色和白色</span>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
+                                 id="Model_S_黑色和白色"
+                                 style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                <title id="Model_S_黑色和白色">黑色和白色</title>
+                                <defs>
+                                    <clipPath
+                                            id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319">
+                                        <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                stroke-width="0"></circle>
+                                    </clipPath>
+                                    <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_White.png_version_v0027d202203031319"
+                                            height="200%">
+                                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.3"></feFuncA>
+                                        </feComponentTransfer>
+                                        <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                        <feMerge>
+                                            <feMergeNode></feMergeNode>
+                                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319"
+                                       preserveAspectRatio="xMidYMid meet" alt="黑色和白色" x="7px" y="7px"
+                                       clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_White.png?version=v0027d202203031319)"></image>
+                            </svg>
+                        </div>
+                        <div class="observer-placeholder" onclick="changeModel(2)" style="height: 100%;">
+                            <input
+                                    class="tds-btn tds-btn--link group--options_asset--container"
+                                    data-id="$ICW00-option"
+                                    data-id-selected="false" id="INTERIOR_PACKAGE_$ICW00" type="radio"
+                                    aria-label="米色 - 包括"
+                                    name="INTERIOR_PACKAGE" value="$ICW00">
+                            <span
+                                    class="tds--is_visually_hidden">米色</span>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 class="asset-loader--svg-container asset-loader-2 group--options_asset shadow"
+                                 id="Model_S_米色"
+                                 style="overflow: hidden; cursor: inherit; opacity: 1; transform: scale(1); height: 54px;">
+                                <title id="Model_S_米色">米色</title>
+                                <defs>
+                                    <clipPath
+                                            id="clip_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319">
+                                        <circle cx="50%" cy="50%" r="24" fill="#FFFFFF" stroke="#3E6AE1"
+                                                stroke-width="0"></circle>
+                                    </clipPath>
+                                    <filter id="filter_https:__static-assets.tesla.cn_share_tesla_design_studio_assets_MODEL3_UI_Interior_Cream.png_version_v0027d202203031319"
+                                            height="200%">
+                                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"></feGaussianBlur>
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.3"></feFuncA>
+                                        </feComponentTransfer>
+                                        <feOffset dx="1.3" dy="1.5" result="offsetblur"></feOffset>
+                                        <feMerge>
+                                            <feMergeNode></feMergeNode>
+                                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <image width="40px" height="40px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       xlink:href="https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319"
+                                       preserveAspectRatio="xMidYMid meet" alt="米色" x="7px" y="7px"
+                                       clip-path="url(#clip_https://static-assets.tesla.cn/share/tesla_design_studio_assets/MODEL3/UI/Interior_Cream.png?version=v0027d202203031319)"></image>
+                            </svg>
+                        </div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
+                        <div class="observer-placeholder" style="height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block foot_link %}
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/select.js" %}"></script>
+{% endblock %}
