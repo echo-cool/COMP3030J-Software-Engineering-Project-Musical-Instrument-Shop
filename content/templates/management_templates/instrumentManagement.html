@@ -334,11 +334,11 @@
             >Page: {{ instruments.number }} Total: {{ instruments.paginator.num_pages }}</span>
             {% if instruments.has_previous %}
                 <button id="first_page" class="btn btn-round btn-success">First Page</button>
-
+                <button id="prev_page" class="btn btn-round btn-info">
+                    Previous Page
+                </button>
             {% endif %}
-            <button id="prev_page" class="btn btn-round btn-info">
-                Previous Page
-            </button>
+
 
             {% for pg in part_pages %}
                 {% if pg == instruments.number %}
