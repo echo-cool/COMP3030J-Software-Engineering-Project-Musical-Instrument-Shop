@@ -72,24 +72,24 @@ def model_view(request, product_id):
 
 
 def checkout(request):
-    a_row = Item(item_id=0)
-    a_row.save()
+    new_item = Item(item_id=0)
+    new_item.save()
     return render(request, 'shop_templates/checkout.html', {
-        "item_id": a_row.item_id,
+        "id": new_item.id,
     })
 
 
 def confirm(request):
-    a_row = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
-                  full_address=request.POST['full_address'], city=request.POST['city'],
-                  postal_code=request.POST['postal_code'], country=request.POST['country'],
-                  telephone=request.POST['telephone'], payment=request.POST['payment'],
-                  shipping=request.POST['shipping'])
-    a_row.save()
+    new_order = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
+                      full_address=request.POST['full_address'], city=request.POST['city'],
+                      postal_code=request.POST['postal_code'], country=request.POST['country'],
+                      telephone=request.POST['telephone'], payment=request.POST['payment'],
+                      shipping=request.POST['shipping'])
+    new_order.save()
     # b_row = Item.objects.get(id=request.POST['item_id'])
-    # b_row.Order = a_row
+    # b_row.Order = new_order
     # b_row.save()
-    Item.objects.filter(item_id=request.POST['item_id']).update(Order=a_row)
+    Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
     return render(request, 'shop_templates/confirm.html')
 
 
