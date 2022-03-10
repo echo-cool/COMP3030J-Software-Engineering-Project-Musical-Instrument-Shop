@@ -3,7 +3,7 @@
         <div class="col-sm-4">
             <figure>
                 <span class="ribbon off">-30%</span>
-                <a href="product-detail-1.html">
+                <a href="{% url "shop:product_details" product_id=instrument_s.id %}">
                     <img class="img-fluid lazy"
                          src="{{ instrument_s.image }}"
                          data-src="{{ instrument_s.image }}" alt="">
@@ -12,11 +12,13 @@
             </figure>
         </div>
         <div class="col-sm-8">
-            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                    class="icon-star voted"></i><i class="icon-star voted"></i><i
-                    class="icon-star"></i>
+            <div class="rating"><i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star"></i>
             </div>
-            <a href="product-detail-1.html">
+            <a href="{% url "shop:product_details" product_id=instrument_s.id %}">
                 <h3>{{ instrument_s.name }}</h3>
             </a>
             <p>{{ instrument_s.details }}</p>
