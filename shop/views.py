@@ -104,8 +104,14 @@ def product_search(request):
         search_name = request.POST.get("search_name", None)
         print(search_name)
         f.search_name = search_name
-        render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
-            'form': f
+
+        instruments = Instrument.objects.filter(name__contains=search_name)
+        # categories = Category.objects.all()
+        for i in instruments:
+            i.percentage = round(i.price * 100 / i.old_price, 2)
+        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+            'form': f,
+            "instruments": instruments,
         })
     else:
         f = SearchForm()
