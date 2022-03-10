@@ -1,6 +1,8 @@
 # Create your views here.
+import json
 import random
 
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
@@ -95,16 +97,42 @@ def model_design(request):
     return render(request, 'shop_templates/model_design.html')
 
 
-def product_search(request):
-    if request.method == "POST":
-        f = SearchForm(request.POST)
-        # if f.is_valid():
-        #
-        # else:
-        search_name = request.POST.get("search_name", None)
-        print(search_name)
-        f.search_name = search_name
+# search instruments by category
+def product_search_by_category(request):
+    if request.method == "GET":
+        category_li = request.GET.get("checked_category", None)
+        print(category_li)
+        category_list = [ch for ch in category_li]
+        print(category_list)
+        i = 0
+        instruments = []
+        while i < len(category_list):
+            print(category_list[i] == str(1))
+            if category_list[i] == str(1):
+                searched_instruments = Instrument.objects.filter(category_id=i + 1)
+                for j in searched_instruments:
+                    instruments.append(j)
+                print(len(instruments))
+            i = i + 1
+        response = render(request, 'shop_templates/searched_product_list.html', {
+            "instruments_searched": instruments,
+        })
+        return response
 
+
+# search instruments by keyword
+def product_search(request, keyword):
+    if request.method == "POST":
+        print("pst")
+        print("pst")
+        print("pst")
+        print("pst")
+        print("pst")
+
+    else:
+        f = SearchForm(initial={'search_name': keyword})
+        search_name = keyword
+        print(search_name)
         instruments = Instrument.objects.filter(name__contains=search_name)
         # categories = Category.objects.all()
         for i in instruments:
@@ -113,10 +141,22 @@ def product_search(request):
             'form': f,
             "instruments": instruments,
         })
+
+
+# search instruments by keyword
+def empty_search(request):
+    if request.method == "POST":
+        print("reditrara", request.POST.get("search_name", None))
+        redirect('shop:product_search', keyword=request.POST.get("search_name", None))
     else:
         f = SearchForm()
+        instruments = Instrument.objects.filter(name__contains="")
+        # categories = Category.objects.all()
+        for i in instruments:
+            i.percentage = round(i.price * 100 / i.old_price, 2)
         return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
-            'form': f
+            'form': f,
+            "instruments": instruments,
         })
 
 
