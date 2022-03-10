@@ -60,7 +60,7 @@
                         var id;
                         function subtotal(id) {
                             var z = $(".qty2")[id].value;
-                            $(".Subtotal")[id].value = z * parseFloat($(".price")[id].value);
+                            $(".subtotal")[id].value = z * parseFloat($(".price")[id].value);
                             console.log(z);
                         }
 
@@ -70,22 +70,25 @@
                             for (var i = 0; i < $(".subtotal").length; i++) {
                                 sum += parseFloat($(".subtotal")[i].value);
                             }
-                            $("#total").val(sum);
+                            $("#subtotal_all")[0].value = sum;
                         }
+
 
                         function total() {
                             $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
                         }
+
+
                     </script>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1" onchange="subtotal(0)">
+                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1" onchange="subtotal(0); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <input value="140.00" class="Subtotal">
+                        <input value="140.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -104,13 +107,13 @@
                     </td>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2" onchange="subtotal(1)">
+                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2" onchange="subtotal(1); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <input value="110.00" class="Subtotal">
+                        <input value="110.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -130,13 +133,13 @@
 
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3" onchange="subtotal(2)">
+                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3" onchange="subtotal(2); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <input value="90.00" class="Subtotal">
+                        <input value="90.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
