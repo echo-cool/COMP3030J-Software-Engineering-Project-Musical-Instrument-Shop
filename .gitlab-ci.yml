@@ -36,5 +36,7 @@ before_script:
 # and then adding `--settings app.settings.ci` (or similar) to the test command
 
 test:
+  tags:
+    - shell
   script:
     - python manage.py test
