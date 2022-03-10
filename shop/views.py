@@ -1,11 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from shop.models import Instrument, InstrumentDetail, Category
-from management.forms import ReviewForm
-from shop.models import Instrument
 # Create your views here.
-from shop.models import Instrument
 import random
-from shop.models import Instrument, Order, Review
+
+from django.shortcuts import render, get_object_or_404
+
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Item
 
 
 def index(request):
@@ -74,6 +72,8 @@ def model_view(request, product_id):
 
 
 def checkout(request):
+    a_row = Item(item_id=0)
+    a_row.save()
     return render(request, 'shop_templates/checkout.html')
 
 
@@ -84,6 +84,8 @@ def confirm(request):
                   telephone=request.POST['telephone'], payment=request.POST['payment'],
                   shipping=request.POST['shipping'])
     a_row.save()
+    b_row = Item(order=a_row)
+    b_row.save()
     return render(request, 'shop_templates/confirm.html')
 
 
