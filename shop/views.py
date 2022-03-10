@@ -87,8 +87,8 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
-def tes(request):
-    return render(request, 'shop_templates/back/MODEL_green background.html')
+def model_design(request):
+    return render(request, 'shop_templates/back/model_design.html')
 
 
 def cart(request):
