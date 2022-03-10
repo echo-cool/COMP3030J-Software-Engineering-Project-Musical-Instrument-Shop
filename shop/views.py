@@ -74,7 +74,9 @@ def model_view(request, product_id):
 def checkout(request):
     a_row = Item(item_id=0)
     a_row.save()
-    return render(request, 'shop_templates/checkout.html')
+    return render(request, 'shop_templates/checkout.html', {
+        "item_id": a_row.item_id,
+    })
 
 
 def confirm(request):
@@ -84,8 +86,10 @@ def confirm(request):
                   telephone=request.POST['telephone'], payment=request.POST['payment'],
                   shipping=request.POST['shipping'])
     a_row.save()
-    b_row = Item(order=a_row)
-    b_row.save()
+    # b_row = Item.objects.get(id=request.POST['item_id'])
+    # b_row.Order = a_row
+    # b_row.save()
+    Item.objects.filter(item_id=request.POST['item_id']).update(Order=a_row)
     return render(request, 'shop_templates/confirm.html')
 
 
