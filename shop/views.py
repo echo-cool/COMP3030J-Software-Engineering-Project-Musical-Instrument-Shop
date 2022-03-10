@@ -128,8 +128,8 @@ def product_search(request, keyword):
         print("pst")
         print("pst")
         print("pst")
-
     else:
+        print("show result here", request.POST.get("search_name", None))
         f = SearchForm(initial={'search_name': keyword})
         search_name = keyword
         print(search_name)
@@ -146,11 +146,12 @@ def product_search(request, keyword):
 # search instruments by keyword
 def empty_search(request):
     if request.method == "POST":
-        print("reditrara", request.POST.get("search_name", None))
-        redirect('shop:product_search', keyword=request.POST.get("search_name", None))
+        print("redirect from Empty", request.POST.get("search_name", None))
+        return redirect('shop:product_search', keyword=request.POST.get("search_name", None))
     else:
+        # search homepage, show all instruments
         f = SearchForm()
-        instruments = Instrument.objects.filter(name__contains="")
+        instruments = Instrument.objects.all()
         # categories = Category.objects.all()
         for i in instruments:
             i.percentage = round(i.price * 100 / i.old_price, 2)
