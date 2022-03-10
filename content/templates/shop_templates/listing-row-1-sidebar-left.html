@@ -404,29 +404,69 @@
                     <div class="filter_col">
                         <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
                         <div class="filter_type version_2">
-                            <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Categories</a></h4>
-                            <div class="collapse show" id="filter_1">
+                            <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Wide Categories</a>
+                            </h4>
+                            <div class="collapse show category_search" id="filter_1">
                                 <ul>
                                     <li>
-                                        <label class="container_check">Men <small>12</small>
+                                        <label class="container_check">String
+                                            Instruments<small>12</small>
+                                            <input type="checkbox" name="category_1" id="category_1">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container_check">Woodwind
+                                            Instruments<small>24</small>
+                                            <input type="checkbox" name="category_2" id="category_2">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container_check">Percussion Instruments <small>23</small>
+                                            <input type="checkbox" name="category_3" id="category_3">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container_check">Keyboard Instruments<small>11</small>
+                                            <input type="checkbox" name="category_4" id="category_4">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_check"> Brass Instruments<small>11</small>
+                                            <input type="checkbox" name="category_5" id="category_5">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /filter_type -->
+                        </div>
+                        <div class="filter_type version_2">
+                            <h4><a href="#filter_2" data-bs-toggle="collapse" class="opened">Specific Categories</a>
+                            </h4>
+                            <div class="collapse show" id="filter_2">
+                                <ul>
+                                    <li>
+                                        <label class="container_check">Guitar <small>12</small>
                                             <input type="checkbox">
                                             <span class="checkmark"></span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="container_check">Women <small>24</small>
+                                        <label class="container_check">Piano <small>24</small>
                                             <input type="checkbox">
                                             <span class="checkmark"></span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="container_check">Running <small>23</small>
+                                        <label class="container_check">Violin <small>23</small>
                                             <input type="checkbox">
                                             <span class="checkmark"></span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="container_check">Training <small>11</small>
+                                        <label class="container_check">Bass<small>11</small>
                                             <input type="checkbox">
                                             <span class="checkmark"></span>
                                         </label>
@@ -437,8 +477,8 @@
                         </div>
                         <!-- /filter_type -->
                         <div class="filter_type version_2">
-                            <h4><a href="#filter_2" data-bs-toggle="collapse" class="opened">Color</a></h4>
-                            <div class="collapse show" id="filter_2">
+                            <h4><a href="#filter_3" data-bs-toggle="collapse" class="opened">Color</a></h4>
+                            <div class="collapse show" id="filter_3">
                                 <ul>
                                     <li>
                                         <label class="container_check">Blue <small>06</small>
@@ -469,8 +509,8 @@
                         </div>
                         <!-- /filter_type -->
                         <div class="filter_type version_2">
-                            <h4><a href="#filter_3" data-bs-toggle="collapse" class="closed">Brands</a></h4>
-                            <div class="collapse" id="filter_3">
+                            <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">Brands</a></h4>
+                            <div class="collapse" id="filter_4">
                                 <ul>
                                     <li>
                                         <label class="container_check">Adidas <small>11</small>
@@ -501,8 +541,8 @@
                         </div>
                         <!-- /filter_type -->
                         <div class="filter_type version_2">
-                            <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">Price</a></h4>
-                            <div class="collapse" id="filter_4">
+                            <h4><a href="#filter_5" data-bs-toggle="collapse" class="closed">Price</a></h4>
+                            <div class="collapse" id="filter_5">
                                 <ul>
                                     <li>
                                         <label class="container_check">$0 — $50<small>11</small>
@@ -538,9 +578,8 @@
                     </div>
                 </aside>
                 <!-- /col -->
-                <div class="col-lg-9">
+                <div class="col-lg-9 product-list-ajax">
                     {% for instrument in instruments %}
-
                         <div class="row row_item">
                             <div class="col-sm-4">
                                 <figure>
@@ -764,12 +803,12 @@
 <div id="toTop"></div><!-- Back to top button -->
 
 <!-- COMMON SCRIPTS -->
-<script src="js/common_scripts.min.js"></script>
-<script src="js/main.js"></script>
+<script src="../static/assets/js_for_shop/common_scripts.min.js"></script>
+<script src="../static/assets/js_for_shop/main.js"></script>
 
 <!-- SPECIFIC SCRIPTS -->
-<script src="js/sticky_sidebar.min.js"></script>
-<script src="js/specific_listing.js"></script>
+<script src="../static/assets/js_for_shop/sticky_sidebar.min.js"></script>
+<script src="../static/assets/js_for_shop/specific_listing.js"></script>
 
 </body>
 </html>
