@@ -1,8 +1,10 @@
 # Create your views here.
 import random
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
+from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Item
 
 
@@ -90,7 +92,26 @@ def confirm(request):
 
 
 def model_design(request):
-    return render(request, 'shop_templates/back/model_design.html')
+    return render(request, 'shop_templates/model_design.html')
+
+
+def product_search(request):
+    if request.method == "POST":
+        f = SearchForm(request.POST)
+        # if f.is_valid():
+        #
+        # else:
+        search_name = request.POST.get("search_name", None)
+        print(search_name)
+        f.search_name = search_name
+        render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+            'form': f
+        })
+    else:
+        f = SearchForm()
+        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+            'form': f
+        })
 
 
 def cart(request):

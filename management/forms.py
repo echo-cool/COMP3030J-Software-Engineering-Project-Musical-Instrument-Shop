@@ -19,3 +19,7 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = "__all__"
+
+
+class SearchForm(forms.Form):
+    search_name = forms.CharField(max_length=20, placeholder="Search over 10.000 products")
