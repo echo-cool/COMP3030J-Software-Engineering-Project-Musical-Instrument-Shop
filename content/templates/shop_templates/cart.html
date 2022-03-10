@@ -61,8 +61,21 @@
                         function subtotal(id) {
                             var z = $(".qty2")[id].value;
                             $(".Subtotal")[id].value = z * parseFloat($(".price")[id].value);
+                            console.log(z);
                         }
-                        console.log(id);
+
+
+                        function sum() {
+                            var sum = 0;
+                            for (var i = 0; i < $(".subtotal").length; i++) {
+                                sum += parseFloat($(".subtotal")[i].value);
+                            }
+                            $("#total").val(sum);
+                        }
+
+                        function total() {
+                            $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
+                        }
                     </script>
                     <td>
                         <div class="numbers-row">
@@ -161,13 +174,13 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <ul>
                             <li>
-                                <span>Subtotal</span> $240.00
+                                <span>Subtotal:</span>$<input id="subtotal_all" value="240.00" onchange="total()">
                             </li>
                             <li>
-                                <span>Shipping</span> $7.00
+                                <span>Shipping</span>$<input id="shipping" value="7.00" onchange="total()">
                             </li>
                             <li>
-                                <span>Total</span> $247.00
+                                <span>Total</span>$<input id="total" value="247.00">
                             </li>
                         </ul>
                         <a href="../checkout" class="btn_1 full-width cart">Proceed to Checkout</a>
