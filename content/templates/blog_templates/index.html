@@ -45,13 +45,13 @@
                             <div class="col-md-6">
                                 <article class="blog">
                                     <figure>
-                                        <a href="view.html"><img src="{{ post.main_image.url }}" alt="">
+                                        <a href="{% url "blog:view" post_id=post.id %}"><img src="{{ post.main_image.url }}" alt="">
                                             <div class="preview"><span>Read more</span></div>
                                         </a>
                                     </figure>
                                     <div class="post_info">
                                         <small>{{ post.created_on }}</small>
-                                        <h2><a href="view.html">{{ post.title }}</a></h2>
+                                        <h2><a href="{% url "blog:view" post_id=post.id %}">{{ post.title }}</a></h2>
                                         <p>{{ post.body }}</p>
                                         <ul>
                                             <li>
