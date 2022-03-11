@@ -96,15 +96,32 @@
 
     {# model  #}
     var deposite = new function () {
+        this.merge_model = function () {
+            // find the mesh of loaded model to iterater
+            scene.children[2].children[0].children[0].children.forEach(function (mesh) {
+                if (mesh.name === 'guitar_face') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        z: 0,
+                        ease: Power4.easeOut
+                    });
+                } else if (mesh.name === 'guitar_back') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        z: -0.5,
+                        ease: Power4.easeOut
+                    });
+                } else if (mesh.name === 'guitar_wrap') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        x: -2,
+                        ease: Power4.easeOut
+                    });
+                }
+            })
+        }
         this.split_model = function () {
             console.log("model spilted");
             console.log("scene.children[2].children[0].children", scene.children[2].children[0].children[0].children);
             // find the mesh of loaded model to iterater
             scene.children[2].children[0].children[0].children.forEach(function (mesh) {
-                console.log("scene", mesh);
-                {#let component = mesh.getObjectByName('guitar_face');#}
-                {#console.log("DADASDadad finded", mesh);#}
-
                 if (mesh.name === 'guitar_face') {
                     TweenLite.to(mesh.position, 1.5, {
                         z: 1,
@@ -117,16 +134,16 @@
                     });
                 } else if (mesh.name === 'guitar_wrap') {
                     TweenLite.to(mesh.position, 1.5, {
-                        x: 1,
+                        x: -4,
                         ease: Power4.easeOut
                     });
                 }
-
             })
         }
         this.select_color = "#ffffff" // CSS string
     };
     gui.add(deposite, 'split_model');
+    gui.add(deposite, 'merge_model');
     var colorController = gui.addColor(deposite, "select_color");
 
     //对应控制项值改变时响应
