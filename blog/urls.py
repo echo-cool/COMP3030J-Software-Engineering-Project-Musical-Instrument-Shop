@@ -8,10 +8,10 @@
 
 from django.urls import path
 
-from blog.views import index
+from blog.views import index, view
 
 app_name = 'blog'
 urlpatterns = [
     path('', index, name='index'),
-
+    path('view/<int:post_id>', view, name='view')
 ]
