@@ -96,18 +96,23 @@
 
     {# model  #}
     var deposite = new function () {
-        this.hello = function () {
-            alert("model spilted");
+        this.split_model = function () {
+            console.log("model spilted");
+            state_changeColor = true;
         }
-        this.color0 = "#ffae23"; // CSS string
+        this.select_color = "#ffffff" // CSS string
     };
-    gui.add(deposite, 'split the model');
-    var colorController = gui.addColor(deposite, "select color");
+    gui.add(deposite, 'split_model');
+    var colorController = gui.addColor(deposite, "select_color");
 
     //对应控制项值改变时响应
     colorController.onChange(function (value) {
-        console.log("onChange for selected color:" + value);
-        selectedObjects.material.color = value;
+        console.log("onChange for selected color:", selectedObjects, value);
+        {#selectedObjects[0].material.color = value;#}
+
+        let newMaterial = selectedObjects[0].material.clone();
+        newMaterial.color = new THREE.Color(value); //重新修改颜色
+        selectedObjects[0].material = newMaterial;
     });
 
     gui.add(params, 'edgeStrength', 0.01, 10).onChange(function (value) {
@@ -237,27 +242,33 @@
         {#    return cube;#}
         {#/}#}
         {##}
-        {#        var loader = new THREE.GLTFLoader();#}
-        {#        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {#}
-        {#            gltf.scene.traverse(function (child) {#}
-        {#                if (child.isMesh) {#}
-        {#if (child.name.includes('ere')) {#}
-        {#    child.material.color.set("rgb(67, 160, 71)")#}
-        {#\}#}
-        {#console.log("模型部件", child.name);#}
-        {#                    child.frustumCulled = false;#}
-        {#                    //模型阴影#}
-        {#                    child.castShadow = true;#}
-        {#//模型自发光#}
-        {#                    child.material.emissive = child.material.color;#}
-        {#                    child.material.emissiveMap = child.material.map;#}
-        {#                }#}
-        {#            });#}
-        {#            gltf.scene.scale.set(1, 1, 1) // scale here#}
-        {#scene.add(gltf);#}
-        {#            obj3d.add(gltf.scene);#}
-        {#obj3d.add(gltf.scene);#}
-        {#        });#}
+
+        var loader = new THREE.GLTFLoader();
+        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {
+            gltf.scene.traverse(function (child) {
+                if (child.isMesh) {
+                    {#if (child.name.includes('ere')) {#}
+                    {#    child.material.color.set("rgb(67, 160, 71)")#}
+                    {#\}#}
+                    {#console.log("模型部件", child.name);#}
+                    child.frustumCulled = false;
+                    //模型阴影
+                    child.castShadow = true;
+                    {#//模型自发光#}
+                    child.material.emissive = child.material.color;
+                    child.material.emissiveMap = child.material.map;
+                    if (state_changeColor == true) {
+                        console.log("oh yes, split!");
+                    } else {
+                        console.log("oh yes, split!");
+                    }
+                }
+            });
+            gltf.scene.scale.set(1, 1, 1) // scale here
+            {#scene.add(gltf);#}
+            obj3d.add(gltf.scene);
+            {#obj3d.add(gltf.scene);#}
+        });
 
 
         {#var loader = new THREE.OBJLoader2(manager);#}
@@ -345,6 +356,8 @@
         window.addEventListener('mousemove', onTouchMove);
         window.addEventListener('touchmove', onTouchMove);
 
+        {#window.addEventListener('click', onTouchMove);#}
+
         function onTouchMove(event) {
             var x, y;
             if (event.changedTouches) {
@@ -354,7 +367,6 @@
                 x = event.clientX;
                 y = event.clientY;
             }
-
             mouse.x = (x / window.innerWidth) * 2 - 1;
             mouse.y = -(y / window.innerHeight) * 2 + 1;
             checkIntersection();
@@ -363,11 +375,10 @@
         function addSelectedObject(object) {
             selectedObjects = [];
             selectedObjects.push(object);
-            if (selectedObjects.length !== 0)
-                state_changeColor = true;
-
-            else
-                state_changeColor = false;
+            {#if (selectedObjects.length !== 0)#}
+            {#    state_changeColor = true;#}
+            {#else#}
+            {#    state_changeColor = false;#}
         }
 
         function checkIntersection() {
@@ -379,7 +390,6 @@
                 outlinePass.selectedObjects = selectedObjects;
             } else {
                 // outlinePass.selectedObjects = [];
-
             }
 
         }
