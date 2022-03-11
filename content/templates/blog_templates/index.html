@@ -108,27 +108,15 @@
                             <h4>Latest Post</h4>
                         </div>
                         <ul class="comments-list">
+                            {% for post_tmp in latest3Posts %}
                             <li>
                                 <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
+                                    <a href="{% url "blog:view" post_id=post_tmp.id %}"><img src="{{ post_tmp.main_image.url }}" alt=""></a>
                                 </div>
-                                <small>Category - 11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                                <small>{{ post_tmp.created_on }}</small>
+                                <h3><a href="#" title="">{{ post_tmp.title }}</a></h3>
                             </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-                                </div>
-                                <small>Category - 11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-                                </div>
-                                <small>Category - 11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <!-- /widget -->
