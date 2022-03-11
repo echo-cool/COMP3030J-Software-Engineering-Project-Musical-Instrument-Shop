@@ -10,15 +10,15 @@
     <title>Allaia | Bootstrap eCommerce Template - ThemeForest</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="static/assets/img_for_shop/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/assets/img_for_shop/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon"
-          href="static/assets/img_for_shop/apple-touch-icon-57x57-precomposed.png">
+          href="/static/assets/img_for_shop/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-          href="static/assets/img_for_shop/apple-touch-icon-72x72-precomposed.png">
+          href="/static/assets/img_for_shop/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-          href="static/assets/img_for_shop/apple-touch-icon-114x114-precomposed.png">
+          href="/static/assets/img_for_shop/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-          href="static/assets/img_for_shop/apple-touch-icon-144x144-precomposed.png">
+          href="/static/assets/img_for_shop/apple-touch-icon-144x144-precomposed.png">
 
     <!-- GOOGLE WEB FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,14 +26,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
-    <link href="static/assets/css_for_shop/style.css" rel="stylesheet">
+    <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
+    <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
-    <link href="static/assets/css_for_shop/home_1.css" rel="stylesheet">
+    <link href="/static/assets/css_for_shop/home_1.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="static/assets/css_for_shop/custom.css" rel="stylesheet">
+    <link href="/static/assets/css_for_shop/custom.css" rel="stylesheet">
 
 </head>
 
@@ -46,8 +46,8 @@
                 <div class="row small-gutters">
                     <div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
                         <div id="logo">
-                            <a href="leave-review-2.html">
-                                <img src="static/assets/img_for_shop/logo.svg" alt="" width="100"
+                            <a href="{%  url "shop:index" %}">
+                                <img src="/static/assets/img_for_shop/logo.svg" alt="" width="100"
                                      height="35"></a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <!-- Mobile menu button -->
                         <div class="main-menu">
                             <div id="header_menu">
-                                <a href="leave-review-2.html"><img src="static/assets/img_for_shop/logo_black.svg"
+                                <a href="{%  url "shop:index" %}"><img src="/static/assets/img_for_shop/logo_black.svg"
                                                                    alt=""
                                                                    width="100" height="35"></a>
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
@@ -71,7 +71,7 @@
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="show-submenu">Home</a>
                                     <ul>
-                                        <li><a href="leave-review-2.html">Slider</a></li>
+                                        <li><a href="{%  url "shop:index" %}">Slider</a></li>
                                         <li><a href="index-2.html">Video Background</a></li>
                                         <li><a href="index-3.html">Vertical Slider</a></li>
                                         <li><a href="index-4.html">GDPR Cookie Bar</a></li>
@@ -130,7 +130,7 @@
                                                 <div class="banner_menu">
                                                     <a href="#0">
                                                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                                             data-src="static/assets/img_for_shop/banner_menu.jpg"
+                                                             data-src="/static/assets/img_for_shop/banner_menu.jpg"
                                                              width="400" height="550"
                                                              alt="" class="img-fluid lazy">
                                                     </a>
@@ -158,7 +158,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="{% url "blog:index" %}">Blog</a>
                                 </li>
                                 <li>
                                     <a href="#0">Buy Template</a>
@@ -270,8 +270,8 @@
                                             <li>
                                                 <a href="product_details/1">
                                                     <figure><img
-                                                            src="static/assets/img_for_shop/products/product_placeholder_square_small.jpg"
-                                                            data-src="static/assets/img_for_shop/products/shoes/thumb/shoe1.jpg"
+                                                            src="/static/assets/img_for_shop/products/product_placeholder_square_small.jpg"
+                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/shoe1.jpg"
                                                             alt=""
                                                             width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Air x Fear</span>$90.00</strong>
@@ -281,8 +281,8 @@
                                             <li>
                                                 <a href="product_details/1">
                                                     <figure><img
-                                                            src="static/assets/img_for_shop/products/product_placeholder_square_small.jpg"
-                                                            data-src="static/assets/img_for_shop/products/shoes/thumb/shoe2.jpg"
+                                                            src="/static/assets/img_for_shop/products/product_placeholder_square_small.jpg"
+                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/shoe2.jpg"
                                                             alt=""
                                                             width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Okwahn II</span>$110.00</strong>
@@ -370,9 +370,9 @@
                     </div>
                 </div>
             </div>
-            <img src="static/assets/img_for_shop/video_fix.png" alt="" class="header-video--media"
-                 data-video-src="static/assets/video_for_shop/intro.mp4"
-                 data-teaser-source="static/assets/video_for_shop/intro" data-provider="" data-video-width="1920"
+            <img src="/static/assets/img_for_shop/video_fix.png" alt="" class="header-video--media"
+                 data-video-src="/static/assets/video_for_shop/intro.mp4"
+                 data-teaser-source="/static/assets/video_for_shop/intro" data-provider="" data-video-width="1920"
                  data-video-height="960">
         </div>
         <!-- /header-video -->
@@ -416,8 +416,8 @@
             <div class="row small-gutters categories_grid">
                 <div class="col-sm-12 col-md-6">
                     <a href="listing-grid-1-full.html">
-                        <img src="static/assets/img_for_shop/img_cat_home_1_placeholder.png"
-                             data-src="static/assets/img_for_shop/img_cat_home_1.jpg" alt=""
+                        <img src="/static/assets/img_for_shop/img_cat_home_1_placeholder.png"
+                             data-src="/static/assets/img_for_shop/img_cat_home_1.jpg" alt=""
                              class="img-fluid lazy">
                         <div class="wrapper">
                             <h2>Life Style</h2>
@@ -429,8 +429,8 @@
                     <div class="row small-gutters mt-md-0 mt-sm-2">
                         <div class="col-sm-6">
                             <a href="listing-grid-1-full.html">
-                                <img src="static/assets/img_for_shop/img_cat_home_2_placeholder.png"
-                                     data-src="static/assets/img_for_shop/img_cat_home_2.jpg" alt=""
+                                <img src="/static/assets/img_for_shop/img_cat_home_2_placeholder.png"
+                                     data-src="/static/assets/img_for_shop/img_cat_home_2.jpg" alt=""
                                      class="img-fluid lazy">
                                 <div class="wrapper">
                                     <h2>Running</h2>
@@ -440,8 +440,8 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="listing-grid-1-full.html">
-                                <img src="static/assets/img_for_shop/img_cat_home_2_placeholder.png"
-                                     data-src="static/assets/img_for_shop/img_cat_home_3.jpg" alt=""
+                                <img src="/static/assets/img_for_shop/img_cat_home_2_placeholder.png"
+                                     data-src="/static/assets/img_for_shop/img_cat_home_3.jpg" alt=""
                                      class="img-fluid lazy">
                                 <div class="wrapper">
                                     <h2>Football</h2>
@@ -451,8 +451,8 @@
                         </div>
                         <div class="col-sm-12 mt-sm-2">
                             <a href="listing-grid-1-full.html">
-                                <img src="static/assets/img_for_shop/img_cat_home_4_placeholder.png"
-                                     data-src="static/assets/img_for_shop/img_cat_home_4.jpg" alt=""
+                                <img src="/static/assets/img_for_shop/img_cat_home_4_placeholder.png"
+                                     data-src="/static/assets/img_for_shop/img_cat_home_4.jpg" alt=""
                                      class="img-fluid lazy">
                                 <div class="wrapper">
                                     <h2>Training</h2>
@@ -534,11 +534,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar1.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar1.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar2.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar2.png" alt="">#}
                     {#                                </a>#}
                     {#                                <div data-countdown="2019/05/10" class="countdown"></div>#}
                     {#                            </figure>#}
@@ -573,11 +573,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar4.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar4.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar4.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar4.png" alt="">#}
                     {#                                </a>#}
                     {#                                <div data-countdown="2019/05/21" class="countdown"></div>#}
                     {#                            </figure>#}
@@ -612,11 +612,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar3.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar3.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/guitar3.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/guitar3.png" alt="">#}
                     {#                                </a>#}
                     {#                            </figure>#}
                     {#                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i#}
@@ -649,11 +649,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano1.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano1.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano1.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano1.png" alt="">#}
                     {#                                </a>#}
                     {#                            </figure>#}
                     {#                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i#}
@@ -686,11 +686,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano2.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano2.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano2.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano2.png" alt="">#}
                     {#                                </a>#}
                     {#                            </figure>#}
                     {#                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i#}
@@ -723,11 +723,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano3.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano3.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano3.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano3.png" alt="">#}
                     {#                                </a>#}
                     {#                            </figure>#}
                     {#                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i#}
@@ -760,11 +760,11 @@
                     {#                            <figure>#}
                     {#                                <a href="product_details/1">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano4.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano4.png" alt="">#}
                     {#                                    <img class="img-fluid lazy"#}
-                    {#                                         src="static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
-                    {#                                         data-src="static/assets/img_for_shop/products/shoes/piano4.png" alt="">#}
+                    {#                                         src="/static/assets/img_for_shop/products/product_placeholder_square_medium.jpg"#}
+                    {#                                         data-src="/static/assets/img_for_shop/products/shoes/piano4.png" alt="">#}
                     {#                                </a>#}
                     {#                            </figure>#}
                     {#                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i#}
@@ -798,7 +798,7 @@
         </div>
         <!-- /container -->
 
-        <div class="featured lazy" data-bg="url(static/assets/img_for_shop/featured_home.jpg)">
+        <div class="featured lazy" data-bg="url(/static/assets/img_for_shop/featured_home.jpg)">
             <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <div class="container margin_60">
                     <div class="row justify-content-center justify-content-md-start">
@@ -823,33 +823,33 @@
             <div class="container margin_30">
                 <div id="brands" class="owl-carousel owl-theme">
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_1.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_1.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_2.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_2.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_3.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_3.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_4.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_4.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_5.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_5.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                     <div class="item">
-                        <a href="#0"><img src="static/assets/img_for_shop/brands/placeholder_brands.png"
-                                          data-src="static/assets/img_for_shop/brands/logo_6.png"
+                        <a href="#0"><img src="/static/assets/img_for_shop/brands/placeholder_brands.png"
+                                          data-src="/static/assets/img_for_shop/brands/logo_6.png"
                                           alt="" class="owl-lazy"></a>
                     </div><!-- /item -->
                 </div><!-- /carousel -->
@@ -865,10 +865,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
+                    <a class="box_news" href="{% url "blog:index" %}">
                         <figure>
-                            <img src="static/assets/img_for_shop/blog-thumb-placeholder.jpg"
-                                 data-src="static/assets/img_for_shop/blog-thumb-1.jpg" alt="" width="400"
+                            <img src="/static/assets/img_for_shop/blog-thumb-placeholder.jpg"
+                                 data-src="/static/assets/img_for_shop/blog-thumb-1.jpg" alt="" width="400"
                                  height="266" class="lazy">
                             <figcaption><strong>28</strong>Dec</figcaption>
                         </figure>
@@ -883,10 +883,10 @@
                 </div>
                 <!-- /box_news -->
                 <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
+                    <a class="box_news" href="{% url "blog:index" %}">
                         <figure>
-                            <img src="static/assets/img_for_shop/blog-thumb-placeholder.jpg"
-                                 data-src="static/assets/img_for_shop/blog-thumb-2.jpg" alt="" width="400"
+                            <img src="/static/assets/img_for_shop/blog-thumb-placeholder.jpg"
+                                 data-src="/static/assets/img_for_shop/blog-thumb-2.jpg" alt="" width="400"
                                  height="266" class="lazy">
                             <figcaption><strong>28</strong>Dec</figcaption>
                         </figure>
@@ -901,10 +901,10 @@
                 </div>
                 <!-- /box_news -->
                 <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
+                    <a class="box_news" href="{% url "blog:index" %}">
                         <figure>
-                            <img src="static/assets/img_for_shop/blog-thumb-placeholder.jpg"
-                                 data-src="static/assets/img_for_shop/blog-thumb-3.jpg" alt="" width="400"
+                            <img src="/static/assets/img_for_shop/blog-thumb-placeholder.jpg"
+                                 data-src="/static/assets/img_for_shop/blog-thumb-3.jpg" alt="" width="400"
                                  height="266" class="lazy">
                             <figcaption><strong>28</strong>Dec</figcaption>
                         </figure>
@@ -919,10 +919,10 @@
                 </div>
                 <!-- /box_news -->
                 <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
+                    <a class="box_news" href="{% url "blog:index" %}">
                         <figure>
-                            <img src="static/assets/img_for_shop/blog-thumb-placeholder.jpg"
-                                 data-src="static/assets/img_for_shop/blog-thumb-4.jpg" alt="" width="400"
+                            <img src="/static/assets/img_for_shop/blog-thumb-placeholder.jpg"
+                                 data-src="/static/assets/img_for_shop/blog-thumb-4.jpg" alt="" width="400"
                                  height="266" class="lazy">
                             <figcaption><strong>28</strong>Dec</figcaption>
                         </figure>
@@ -955,7 +955,7 @@
                             <li><a href="help.html">Faq</a></li>
                             <li><a href="help.html">Help</a></li>
                             <li><a href="account.html">My account</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="{% url "blog:index" %}">Blog</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                         </ul>
                     </div>
@@ -999,19 +999,19 @@
                             <ul>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="static/assets/img_for_shop/twitter_icon.svg" alt="" class="lazy"></a>
+                                        data-src="/static/assets/img_for_shop/twitter_icon.svg" alt="" class="lazy"></a>
                                 </li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="static/assets/img_for_shop/facebook_icon.svg" alt="" class="lazy"></a>
+                                        data-src="/static/assets/img_for_shop/facebook_icon.svg" alt="" class="lazy"></a>
                                 </li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="static/assets/img_for_shop/instagram_icon.svg" alt=""
+                                        data-src="/static/assets/img_for_shop/instagram_icon.svg" alt=""
                                         class="lazy"></a></li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="static/assets/img_for_shop/youtube_icon.svg" alt="" class="lazy"></a>
+                                        data-src="/static/assets/img_for_shop/youtube_icon.svg" alt="" class="lazy"></a>
                                 </li>
                             </ul>
                         </div>
@@ -1043,7 +1043,7 @@
                         </li>
                         <li><img
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                data-src="static/assets/img_for_shop/cards_all.svg" alt="" width="198" height="30"
+                                data-src="/static/assets/img_for_shop/cards_all.svg" alt="" width="198" height="30"
                                 class="lazy"></li>
                     </ul>
                 </div>
@@ -1064,12 +1064,12 @@
 <div id="toTop"></div><!-- Back to top button -->
 
 <!-- COMMON SCRIPTS -->
-<script src="static/assets/js_for_shop/common_scripts.min.js"></script>
-<script src="static/assets/js_for_shop/main.js"></script>
+<script src="/static/assets/js_for_shop/common_scripts.min.js"></script>
+<script src="/static/assets/js_for_shop/main.js"></script>
 
 <!-- SPECIFIC SCRIPTS -->
-<script src="static/assets/js_for_shop/modernizr.js"></script>
-<script src="static/assets/js_for_shop/video_header.min.js"></script>
+<script src="/static/assets/js_for_shop/modernizr.js"></script>
+<script src="/static/assets/js_for_shop/video_header.min.js"></script>
 <script>
     // Video Header
     HeaderVideo.init({
@@ -1079,7 +1079,7 @@
         autoPlayVideo: true
     });
 </script>
-<script src="static/assets/js_for_shop/isotope.min.js"></script>
+<script src="/static/assets/js_for_shop/isotope.min.js"></script>
 <script>
     // Isotope filter
     $(window).on('load', function () {
