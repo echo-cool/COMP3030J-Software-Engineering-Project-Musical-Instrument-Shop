@@ -484,14 +484,16 @@
     </div>
 </div>
 
-{% block foot_link %}
 
-{% endblock %}
 <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
 <script src="{% static 'assets/js_for_shop/main.js' %}"></script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+
+{% block foot_link %}
+
+{% endblock %}
 </body>
 </html>

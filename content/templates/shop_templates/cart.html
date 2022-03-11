@@ -31,13 +31,13 @@
                         Product
                     </th>
                     <th>
-                        Price
+                        Price($)
                     </th>
                     <th>
                         Quantity
                     </th>
                     <th>
-                        Subtotal
+                        Subtotal($)
                     </th>
                     <th>
 
@@ -54,17 +54,41 @@
                         <span class="item_cart">Armor Air x Fear</span>
                     </td>
                     <td>
-                        <strong>$140.00</strong>
+                        <input value="140.00" class="price">
                     </td>
+                    <script type="text/javascript">
+                        var id;
+                        function subtotal(id) {
+                            var z = $(".qty2")[id].value;
+                            $(".subtotal")[id].value = z * parseFloat($(".price")[id].value);
+                            console.log(z);
+                        }
+
+
+                        function sum() {
+                            var sum = 0;
+                            for (var i = 0; i < $(".subtotal").length; i++) {
+                                sum += parseFloat($(".subtotal")[i].value);
+                            }
+                            $("#subtotal_all")[0].value = sum;
+                        }
+
+
+                        function total() {
+                            $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
+                        }
+
+
+                    </script>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1">
+                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1" onchange="subtotal(0); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$140.00</strong>
+                        <input value="140.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -79,17 +103,17 @@
                         <span class="item_cart">Armor Okwahn II</span>
                     </td>
                     <td>
-                        <strong>$110.00</strong>
+                        <input value="110.00" class="price">
                     </td>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2">
+                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2" onchange="subtotal(1); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$110.00</strong>
+                        <input value="110.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -104,18 +128,18 @@
                         <span class="item_cart">Armor Air Wildwood ACG</span>
                     </td>
                     <td>
-                        <strong>$90.00</strong>
+                        <input value="90.00" class="price">
                     </td>
 
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3">
+                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3" onchange="subtotal(2); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
                     </td>
                     <td>
-                        <strong>$90.00</strong>
+                        <input value="90.00" class="subtotal" onchange="sum()">
                     </td>
                     <td class="options">
                         <a href="#"><i class="ti-trash"></i></a>
@@ -153,13 +177,13 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <ul>
                             <li>
-                                <span>Subtotal</span> $240.00
+                                <span>Subtotal:</span>$<input id="subtotal_all" value="240.00" onchange="total()">
                             </li>
                             <li>
-                                <span>Shipping</span> $7.00
+                                <span>Shipping</span>$<input id="shipping" value="7.00" onchange="total()">
                             </li>
                             <li>
-                                <span>Total</span> $247.00
+                                <span>Total</span>$<input id="total" value="247.00">
                             </li>
                         </ul>
                         <a href="../checkout" class="btn_1 full-width cart">Proceed to Checkout</a>
