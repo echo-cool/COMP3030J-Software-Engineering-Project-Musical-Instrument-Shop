@@ -1,0 +1,159 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <!-- BASE CSS -->
+    <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{% static "assets/css_for_shop/blog.css" %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <main class="bg_gray">
+        <div class="container margin_30">
+            <div class="page_header">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li>Page active</li>
+                    </ul>
+                </div>
+                <h1>Allaia Blog &amp; News</h1>
+            </div>
+            <!-- /page_header -->
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="widget search_blog d-block d-sm-block d-md-block d-lg-none">
+                        <div class="form-group">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search..">
+                            <button type="submit"><i class="ti-search"></i></button>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+                    <div class="row">
+                        {% for post in posts %}
+                            <div class="col-md-6">
+                                <article class="blog">
+                                    <figure>
+                                        <a href="{% url "blog:view" post_id=post.id %}"><img src="{{ post.main_image.url }}" alt="">
+                                            <div class="preview"><span>Read more</span></div>
+                                        </a>
+                                    </figure>
+                                    <div class="post_info">
+                                        <small>{{ post.created_on }}</small>
+                                        <h2><a href="{% url "blog:view" post_id=post.id %}">{{ post.title }}</a></h2>
+                                        <p>{{ post.body }}</p>
+                                        <ul>
+                                            <li>
+                                                <div class="thumb"><img src="img/avatar.jpg" alt=""></div>
+                                                Admin
+                                            </li>
+                                            <li><i class="ti-comment"></i>20</li>
+                                        </ul>
+                                    </div>
+                                </article>
+                                <!-- /article -->
+                            </div>
+                            <!-- /col -->
+                        {% endfor %}
+
+
+                    </div>
+                    <!-- /row -->
+
+                    <div class="pagination__wrapper no_border add_bottom_30">
+                        <ul class="pagination">
+                            <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
+                            <li>
+                                <a href="#0" class="active">1</a>
+                            </li>
+                            <li>
+                                <a href="#0">2</a>
+                            </li>
+                            <li>
+                                <a href="#0">3</a>
+                            </li>
+                            <li>
+                                <a href="#0">4</a>
+                            </li>
+                            <li><a href="#0" class="next" title="next page">&#10095;</a></li>
+                        </ul>
+                    </div>
+                    <!-- /pagination -->
+
+                </div>
+                <!-- /col -->
+
+                <aside class="col-lg-3">
+                    <div class="widget search_blog d-none d-sm-none d-md-none d-lg-block">
+                        <div class="form-group">
+                            <input type="text" name="search" id="search_blog" class="form-control"
+                                   placeholder="Search..">
+                            <button type="submit"><i class="ti-search"></i></button>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Latest Post</h4>
+                        </div>
+                        <ul class="comments-list">
+                            {% for post_tmp in latest3Posts %}
+                            <li>
+                                <div class="alignleft">
+                                    <a href="{% url "blog:view" post_id=post_tmp.id %}"><img src="{{ post_tmp.main_image.url }}" alt=""></a>
+                                </div>
+                                <small>{{ post_tmp.created_on }}</small>
+                                <h3><a href="#" title="">{{ post_tmp.title }}</a></h3>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- /widget -->
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Categories</h4>
+                        </div>
+                        <ul class="cats">
+                            <li><a href="#">Food <span>(12)</span></a></li>
+                            <li><a href="#">Places to visit <span>(21)</span></a></li>
+                            <li><a href="#">New Places <span>(44)</span></a></li>
+                            <li><a href="#">Suggestions and guides <span>(31)</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- /widget -->
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Popular Tags</h4>
+                        </div>
+                        <div class="tags">
+                            <a href="#">Food</a>
+                            <a href="#">Bars</a>
+                            <a href="#">Cooktails</a>
+                            <a href="#">Shops</a>
+                            <a href="#">Best Offers</a>
+                            <a href="#">Transports</a>
+                            <a href="#">Restaurants</a>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+                </aside>
+                <!-- /aside -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </main>
+    <!--/main-->
+{% endblock %}
+
