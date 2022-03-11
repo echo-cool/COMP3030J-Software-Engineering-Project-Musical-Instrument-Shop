@@ -93,6 +93,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
 
+    # This is used to solve the problem of one order has more than one instrument
+    order_id = models.IntegerField(max_length=200, default=0)
+
     name = models.CharField(max_length=20, default="")
     last_name = models.CharField(max_length=20, default="")
     full_address = models.CharField(max_length=200, default="")
@@ -102,7 +105,10 @@ class Order(models.Model):
     telephone = models.CharField(max_length=200, default="(000)000-0000")
     payment = models.CharField(max_length=20, default="")
     shipping = models.CharField(max_length=20, default="")
+
+    # Please REMOVE this field.
     Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
+
     newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
@@ -122,9 +128,10 @@ class OrderAdmin(admin.ModelAdmin):
 
 class Item(models.Model):
     item_id = models.CharField(max_length=200, default="")
+    Order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True)
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
     count = models.PositiveIntegerField(null=False, default=1)
-    Order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True)
+
 
 
 @admin.register(Item)
