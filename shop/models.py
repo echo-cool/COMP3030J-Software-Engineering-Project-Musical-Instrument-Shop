@@ -101,7 +101,9 @@ class Order(models.Model):
     telephone = models.CharField(max_length=200, default="(000)000-0000")
     payment = models.CharField(max_length=20, default="")
     shipping = models.CharField(max_length=20, default="")
-    Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
+    count = models.PositiveIntegerField(null=False, default=1)
+    # Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
     newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
@@ -116,7 +118,7 @@ class Order(models.Model):
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'user', 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
-        'shipping', 'Item', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'shipping', 'instrument', 'count', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 
 class Item(models.Model):
