@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>three.js webgl - post processing - Outline Pass</title>
+    <title>Instrument Design</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style>
@@ -98,7 +98,31 @@
     var deposite = new function () {
         this.split_model = function () {
             console.log("model spilted");
-            state_changeColor = true;
+            console.log("scene.children[2].children[0].children", scene.children[2].children[0].children[0].children);
+            // find the mesh of loaded model to iterater
+            scene.children[2].children[0].children[0].children.forEach(function (mesh) {
+                console.log("scene", mesh);
+                {#let component = mesh.getObjectByName('guitar_face');#}
+                {#console.log("DADASDadad finded", mesh);#}
+
+                if (mesh.name === 'guitar_face') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        z: 1,
+                        ease: Power4.easeOut
+                    });
+                } else if (mesh.name === 'guitar_back') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        z: -1,
+                        ease: Power4.easeOut
+                    });
+                } else if (mesh.name === 'guitar_wrap') {
+                    TweenLite.to(mesh.position, 1.5, {
+                        x: 1,
+                        ease: Power4.easeOut
+                    });
+                }
+
+            })
         }
         this.select_color = "#ffffff" // CSS string
     };
@@ -109,34 +133,22 @@
     colorController.onChange(function (value) {
         console.log("onChange for selected color:", selectedObjects, value);
         {#selectedObjects[0].material.color = value;#}
-
         let newMaterial = selectedObjects[0].material.clone();
         newMaterial.color = new THREE.Color(value); //重新修改颜色
         selectedObjects[0].material = newMaterial;
     });
 
     gui.add(params, 'edgeStrength', 0.01, 10).onChange(function (value) {
-
         outlinePass.edgeStrength = Number(value);
-
     });
-
     gui.add(params, 'edgeGlow', 0.0, 1).onChange(function (value) {
-
         outlinePass.edgeGlow = Number(value);
-
     });
-
     gui.add(params, 'edgeThickness', 1, 4).onChange(function (value) {
-
         outlinePass.edgeThickness = Number(value);
-
     });
-
     gui.add(params, 'pulsePeriod', 0.0, 5).onChange(function (value) {
-
         outlinePass.pulsePeriod = Number(value);
-
     });
 
     gui.add(params, 'rotate');
@@ -244,7 +256,7 @@
         {##}
 
         var loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {
+        loader.load("{% static "assets/design_model/" %}" + "guitar_design.gltf", function (gltf) {
             gltf.scene.traverse(function (child) {
                 if (child.isMesh) {
                     {#if (child.name.includes('ere')) {#}
@@ -255,13 +267,8 @@
                     //模型阴影
                     child.castShadow = true;
                     {#//模型自发光#}
-                    child.material.emissive = child.material.color;
-                    child.material.emissiveMap = child.material.map;
-                    if (state_changeColor == true) {
-                        console.log("oh yes, split!");
-                    } else {
-                        console.log("oh yes, split!");
-                    }
+                    {#child.material.emissive = child.material.color;#}
+                    {#child.material.emissiveMap = child.material.map;#}
                 }
             });
             gltf.scene.scale.set(1, 1, 1) // scale here
