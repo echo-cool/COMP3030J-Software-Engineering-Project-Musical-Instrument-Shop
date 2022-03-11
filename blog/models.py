@@ -11,8 +11,10 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
+    main_image = models.ImageField(default='default.jpg', upload_to='uploads/blog/image/')
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    # post_by = models.ForeignKey
 
     def __str__(self):
         return self.title
