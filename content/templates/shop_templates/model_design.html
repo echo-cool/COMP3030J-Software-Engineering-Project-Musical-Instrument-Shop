@@ -93,6 +93,18 @@
 
     var gui = new dat.GUI({width: 300});
 
+
+    {# model  #}
+    var deposite = new function () {
+        this.hello = function () {
+            alert("model spilted");
+        }
+        this.color0 = "#ffae23"; // CSS string
+    };
+    gui.add(deposite, 'split the model');
+    gui.addColor(deposite, "select color");
+
+
     gui.add(params, 'edgeStrength', 0.01, 10).onChange(function (value) {
 
         outlinePass.edgeStrength = Number(value);
@@ -148,8 +160,10 @@
 
     init();
     animate();
+    let state_changeColor = false;
 
     function init() {
+
 
         container = document.createElement('div');
         document.body.appendChild(container);
@@ -174,7 +188,6 @@
         controls.enableDamping = true;
         controls.dampingFactor = 0.25;
 
-        //
 
         scene.add(new THREE.AmbientLight(0xaaaaaa, 0.2));
 
@@ -220,28 +233,30 @@
         {#    scene.add(cube);#}
         {#    return cube;#}
         {#/}#}
-
-        var loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {
-            gltf.scene.traverse(function (child) {
-                if (child.isMesh) {
+{##}
+{#        var loader = new THREE.GLTFLoader();#}
+{#        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {#}
+{#            gltf.scene.traverse(function (child) {#}
+{#                if (child.isMesh) {#}
                     {#if (child.name.includes('ere')) {#}
                     {#    child.material.color.set("rgb(67, 160, 71)")#}
                     {#\}#}
                     {#console.log("模型部件", child.name);#}
-                    child.frustumCulled = false;
-                    //模型阴影
-                    child.castShadow = true;
+{#                    child.frustumCulled = false;#}
+{#                    //模型阴影#}
+{#                    child.castShadow = true;#}
                     {#//模型自发光#}
-                    child.material.emissive = child.material.color;
-                    child.material.emissiveMap = child.material.map;
-                }
-            });
-            gltf.scene.scale.set(1, 1, 1) // scale here
+{#                    child.material.emissive = child.material.color;#}
+{#                    child.material.emissiveMap = child.material.map;#}
+{#                }#}
+{#            });#}
+{#            gltf.scene.scale.set(1, 1, 1) // scale here#}
             {#scene.add(gltf);#}
-            obj3d.add(gltf.scene);
+{#            obj3d.add(gltf.scene);#}
             {#obj3d.add(gltf.scene);#}
-        });
+{#        });#}
+
+
         {#var loader = new THREE.OBJLoader2(manager);#}
         {#loader.load('models/obj/tree.obj', function (object) {#}
         {##}
@@ -312,16 +327,10 @@
         composer.addPass(outlinePass);
 
         var onLoad = function (texture) {
-
             outlinePass.patternTexture = texture;
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
-
         };
-
-        {#var loader = new THREE.TextureLoader();#}
-        {##}
-        {#loader.load('textures/tri_pattern.jpg', onLoad);#}
 
         effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
         effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
@@ -334,49 +343,38 @@
         window.addEventListener('touchmove', onTouchMove);
 
         function onTouchMove(event) {
-
             var x, y;
-
             if (event.changedTouches) {
-
                 x = event.changedTouches[0].pageX;
                 y = event.changedTouches[0].pageY;
-
             } else {
-
                 x = event.clientX;
                 y = event.clientY;
-
             }
 
             mouse.x = (x / window.innerWidth) * 2 - 1;
             mouse.y = -(y / window.innerHeight) * 2 + 1;
-
             checkIntersection();
-
         }
 
         function addSelectedObject(object) {
-
             selectedObjects = [];
             selectedObjects.push(object);
+            if (selectedObjects.length !== 0)
+                state_changeColor = true;
 
+            else
+                state_changeColor = false;
         }
 
         function checkIntersection() {
-
             raycaster.setFromCamera(mouse, camera);
-
             var intersects = raycaster.intersectObjects([scene], true);
-
             if (intersects.length > 0) {
-
                 var selectedObject = intersects[0].object;
                 addSelectedObject(selectedObject);
                 outlinePass.selectedObjects = selectedObjects;
-
             } else {
-
                 // outlinePass.selectedObjects = [];
 
             }
@@ -386,7 +384,6 @@
     }
 
     function onWindowResize() {
-
         var width = window.innerWidth;
         var height = window.innerHeight;
 
@@ -401,25 +398,15 @@
     }
 
     function animate() {
-
         requestAnimationFrame(animate);
-
         stats.begin();
-
         var timer = performance.now();
-
         if (params.rotate) {
-
             group.rotation.y = timer * 0.0001;
-
         }
-
         controls.update();
-
         composer.render();
-
         stats.end();
-
     }
 
 </script>
