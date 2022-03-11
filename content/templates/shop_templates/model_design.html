@@ -102,8 +102,13 @@
         this.color0 = "#ffae23"; // CSS string
     };
     gui.add(deposite, 'split the model');
-    gui.addColor(deposite, "select color");
+    var colorController = gui.addColor(deposite, "select color");
 
+    //对应控制项值改变时响应
+    colorController.onChange(function (value) {
+        console.log("onChange for selected color:" + value);
+        selectedObjects.material.color = value;
+    });
 
     gui.add(params, 'edgeStrength', 0.01, 10).onChange(function (value) {
 
@@ -138,10 +143,8 @@
     });
 
     var Configuration = function () {
-
         this.visibleEdgeColor = '#ffffff';
         this.hiddenEdgeColor = '#190a05';
-
     };
 
     var conf = new Configuration();
@@ -233,28 +236,28 @@
         {#    scene.add(cube);#}
         {#    return cube;#}
         {#/}#}
-{##}
-{#        var loader = new THREE.GLTFLoader();#}
-{#        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {#}
-{#            gltf.scene.traverse(function (child) {#}
-{#                if (child.isMesh) {#}
-                    {#if (child.name.includes('ere')) {#}
-                    {#    child.material.color.set("rgb(67, 160, 71)")#}
-                    {#\}#}
-                    {#console.log("模型部件", child.name);#}
-{#                    child.frustumCulled = false;#}
-{#                    //模型阴影#}
-{#                    child.castShadow = true;#}
-                    {#//模型自发光#}
-{#                    child.material.emissive = child.material.color;#}
-{#                    child.material.emissiveMap = child.material.map;#}
-{#                }#}
-{#            });#}
-{#            gltf.scene.scale.set(1, 1, 1) // scale here#}
-            {#scene.add(gltf);#}
-{#            obj3d.add(gltf.scene);#}
-            {#obj3d.add(gltf.scene);#}
-{#        });#}
+        {##}
+        {#        var loader = new THREE.GLTFLoader();#}
+        {#        loader.load("{% static "assets/design_model/" %}" + "design_guitar (1).gltf", function (gltf) {#}
+        {#            gltf.scene.traverse(function (child) {#}
+        {#                if (child.isMesh) {#}
+        {#if (child.name.includes('ere')) {#}
+        {#    child.material.color.set("rgb(67, 160, 71)")#}
+        {#\}#}
+        {#console.log("模型部件", child.name);#}
+        {#                    child.frustumCulled = false;#}
+        {#                    //模型阴影#}
+        {#                    child.castShadow = true;#}
+        {#//模型自发光#}
+        {#                    child.material.emissive = child.material.color;#}
+        {#                    child.material.emissiveMap = child.material.map;#}
+        {#                }#}
+        {#            });#}
+        {#            gltf.scene.scale.set(1, 1, 1) // scale here#}
+        {#scene.add(gltf);#}
+        {#            obj3d.add(gltf.scene);#}
+        {#obj3d.add(gltf.scene);#}
+        {#        });#}
 
 
         {#var loader = new THREE.OBJLoader2(manager);#}
