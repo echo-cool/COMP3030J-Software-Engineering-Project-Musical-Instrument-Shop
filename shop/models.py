@@ -94,7 +94,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
 
     # This is used to solve the problem of one order has more than one instrument
-    order_id = models.IntegerField(max_length=200, default=0)
+    order_id = models.IntegerField(default=0)
 
     name = models.CharField(max_length=20, default="")
     last_name = models.CharField(max_length=20, default="")
@@ -131,7 +131,6 @@ class Item(models.Model):
     Order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True)
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
     count = models.PositiveIntegerField(null=False, default=1)
-
 
 
 @admin.register(Item)
