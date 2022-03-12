@@ -7,7 +7,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review
+from management.forms import SearchForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 
 
 def index(request):
@@ -180,7 +181,6 @@ def product_search(request, keyword):
         })
 
 
-
 # search instruments by keyword
 def empty_search(request):
     if request.method == "POST":
@@ -200,4 +200,24 @@ def empty_search(request):
 
 
 def cart(request):
-    return render(request, 'shop_templates/cart.html')
+    carts = Cart.objects.all()
+    each_cart = {}
+    for each_cart in carts:
+        each_cart.total_money = each_cart.count * each_cart.instrument.price
+    return render(request, 'shop_templates/cart.html', {
+        "carts": carts,
+    })
+
+
+def product_add_cart(request, instrument_id):
+    instrument = Instrument.objects.filter(id=instrument_id).first()
+    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+    if exist_cart:
+        exist_cart.count = exist_cart.count + 1
+        exist_cart.save()
+    else:
+        new_cart = Cart(user=request.user.id, instrument=instrument, count=1, user_id=1)
+        new_cart.save()
+    return redirect('shop:cart')
+
+# remove 之后用ajax 请求 api写更方便些
