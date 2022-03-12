@@ -17,5 +17,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('review_management/', views.review_management, name='review_management'),
     path('update_review/<int:review_id>/', views.update_review, name='update_review'),
-    path('add_review/', views.add_review, name='add_review')
+    path('add_review/', views.add_review, name='add_review'),
+    path('order_state/<order_id>', views.order_state, name='order_state')
 ]

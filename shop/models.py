@@ -13,6 +13,7 @@ class Activation(models.Model):
     code = models.CharField(max_length=20, unique=True)
     email = models.EmailField(blank=True)
 
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -90,7 +91,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+
+    # This is used to solve the problem of one order has more than one instrument
+    order_id = models.IntegerField(default=0)
 
     name = models.CharField(max_length=20, default="")
     last_name = models.CharField(max_length=20, default="")
@@ -101,7 +105,9 @@ class Order(models.Model):
     telephone = models.CharField(max_length=200, default="(000)000-0000")
     payment = models.CharField(max_length=20, default="")
     shipping = models.CharField(max_length=20, default="")
-    Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
+    count = models.PositiveIntegerField(null=False, default=1)
+    # Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
     newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
@@ -115,51 +121,24 @@ class Order(models.Model):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        'user', 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
-        'shipping', 'Item', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
-
-
-class Item(models.Model):
-    item_id = models.CharField(max_length=200, default="")
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
-    count = models.PositiveIntegerField(null=False, default=1)
-    Order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True)
-
-
-@admin.register(Item)
-class ItemAdmin(admin.ModelAdmin):
-    list_display = ('item_id', 'instrument', 'count', 'Order')
-
-
-# class OrderItem(models.Model):
-#     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-#     count = models.PositiveIntegerField(null=False)
-#     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=False)
-#
-#     def __str__(self):
-#         return f'{self.order_id}<{self.instrument}:{self.count}>'
-#
-#
-# @admin.register(OrderItem)
-# class OrderItemAdmin(admin.ModelAdmin):
-#     pass
+        'user', "order_id", 'name', 'last_name', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 
 class Review(models.Model):
-    order = models.OneToOneField('Order', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order = models.OneToOneField('Order', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     rating = models.PositiveIntegerField(
         null=False,
         default=5,
         validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
-    title = models.CharField(null=True, max_length=30)
+    # title = models.CharField(null=True, max_length=30)
     review_text = models.TextField(null=True)
-    fileupload = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
+    file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/')
     check_selected = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'title', 'review_text', 'fileupload', 'check', 'created_at')
+    list_display = ('order_id', 'user', 'rating', 'review_text', 'file_upload', 'check', 'created_at')

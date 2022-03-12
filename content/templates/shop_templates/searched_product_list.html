@@ -1,0 +1,42 @@
+{% for instrument_s in instruments_searched %}
+    <div class="row row_item">
+        <div class="col-sm-4">
+            <figure>
+                <span class="ribbon off">-30%</span>
+                <a href="{% url "shop:product_details" product_id=instrument_s.id %}">
+                    <img class="img-fluid lazy"
+                         src="{{ instrument_s.image }}"
+                         data-src="{{ instrument_s.image }}" alt="">
+                </a>
+                <div data-countdown="2019/05/15" class="countdown"></div>
+            </figure>
+        </div>
+        <div class="col-sm-8">
+            <div class="rating"><i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star voted"></i>
+                <i class="icon-star"></i>
+            </div>
+            <a href="{% url "shop:product_details" product_id=instrument_s.id %}">
+                <h3>{{ instrument_s.name }}</h3>
+            </a>
+            <p>{{ instrument_s.details }}</p>
+            <div class="price_box">
+                <span class="new_price">{{ instrument_s.price }}</span>
+                <span class="old_price">{{ instrument_s.old_price }}</span>
+            </div>
+            <ul>
+                <li><a href="#0" class="btn_1">Add to cart</a></li>
+                <li><a href="#0" class="btn_1 gray tooltip-1" data-bs-toggle="tooltip"
+                       data-bs-placement="top" title="Add to favorites"><i
+                        class="ti-heart"></i><span>Add to favorites</span></a>
+                </li>
+                <li><a href="#0" class="btn_1 gray tooltip-1" data-bs-toggle="tooltip"
+                       data-bs-placement="top" title="Add to compare"><i
+                        class="ti-control-shuffle"></i><span>Add to compare</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endfor %}
