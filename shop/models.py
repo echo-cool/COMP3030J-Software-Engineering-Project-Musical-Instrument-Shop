@@ -78,6 +78,7 @@ class InstrumentDetailAdmin(admin.ModelAdmin):
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    main_image = models.ImageField(default="default.png", upload_to='uploads/category/image/', null=True)
     description = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -87,7 +88,7 @@ class Category(models.Model):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'created_at')
+    list_display = ('name', 'description', 'created_at', 'main_image')
 
 
 class Order(models.Model):
@@ -96,19 +97,19 @@ class Order(models.Model):
     # This is used to solve the problem of one order has more than one instrument
     order_id = models.IntegerField(default=0)
 
-    name = models.CharField(max_length=20, default="")
-    last_name = models.CharField(max_length=20, default="")
-    full_address = models.CharField(max_length=200, default="")
-    city = models.CharField(max_length=20, default="")
-    postal_code = models.CharField(max_length=50, default="")
-    country = models.CharField(max_length=200, default="")
-    telephone = models.CharField(max_length=200, default="(000)000-0000")
-    payment = models.CharField(max_length=20, default="")
-    shipping = models.CharField(max_length=20, default="")
+    name = models.CharField(max_length=20, default="", null=True, blank=True)
+    last_name = models.CharField(max_length=20, default="", null=True, blank=True)
+    full_address = models.CharField(max_length=200, default="", null=True, blank=True)
+    city = models.CharField(max_length=20, default="", null=True, blank=True)
+    postal_code = models.CharField(max_length=50, default="", null=True, blank=True)
+    country = models.CharField(max_length=200, default="", null=True, blank=True)
+    telephone = models.CharField(max_length=200, default="(000)000-0000", null=True, blank=True)
+    payment = models.CharField(max_length=20, default="", null=True, blank=True)
+    shipping = models.CharField(max_length=20, default="", null=True, blank=True)
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
     count = models.PositiveIntegerField(null=False, default=1)
     # Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
-    newsletter = models.BooleanField(default=False)
+    newsletter = models.BooleanField(default=False, null=True, blank=True)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
 
@@ -132,12 +133,11 @@ class Review(models.Model):
         default=5,
         validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
-    # title = models.CharField(null=True, max_length=30)
     review_text = models.TextField(null=True)
-    file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/')
+    file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'review_text', 'file_upload', 'check', 'created_at')
+    list_display = ('order_id', 'user', 'rating', 'review_text', 'file_upload', 'created_at')
