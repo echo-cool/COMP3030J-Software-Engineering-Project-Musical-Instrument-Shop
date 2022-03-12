@@ -56,7 +56,7 @@ def confirm_submit(request):
     if request.method == "POST":
         rating = request.POST.get("rating-input", None)
         review_text = request.POST.get("review", None)
-        fileupload = request.POST.get("fileupload", None)
+        fileupload = request.FILES.get("fileupload", None)
         # check_selected = request.POST.get("check", None)
         print("rating: ", rating)
         print("review_text: ", review_text)
@@ -67,7 +67,7 @@ def confirm_submit(request):
         #     f.save()
         # print(f.errors)
         new_review = Review(order_id=1, user_id=1, rating=rating,
-                            review_text=review_text, fileupload=fileupload)
+                            review_text=review_text, file_upload=fileupload)
         new_review.save()
     return render(request, 'shop_templates/product-detail.html')
 

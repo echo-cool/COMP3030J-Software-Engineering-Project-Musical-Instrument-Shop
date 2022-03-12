@@ -47,7 +47,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form action="/confirm_submit/" method="post">
+                    <form action="/confirm_submit/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="write_review">
                             <h1>Write a review for XX</h1>
