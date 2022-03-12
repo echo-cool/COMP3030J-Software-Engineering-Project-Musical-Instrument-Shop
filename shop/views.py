@@ -71,6 +71,7 @@ def product_details(request, product_id):
 
 
 def leave_review(request, order_id, instrument_id):
+
     return render(request, 'shop_templates/leave-review.html')
 
 
@@ -100,6 +101,7 @@ def leave_review2(request):
 
 
 def model_view(request, product_id):
+
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/3d3.html', {
         "instrument": instrument,
