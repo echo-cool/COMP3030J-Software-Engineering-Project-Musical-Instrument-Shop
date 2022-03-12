@@ -135,7 +135,6 @@ class Review(models.Model):
     # title = models.CharField(null=True, max_length=30)
     review_text = models.TextField(null=True)
     file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/')
-    check_selected = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
 

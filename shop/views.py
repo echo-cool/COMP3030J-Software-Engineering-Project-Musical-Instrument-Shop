@@ -69,7 +69,7 @@ def confirm_submit(request):
         new_review = Review(order_id=1, user_id=1, rating=rating,
                             review_text=review_text, fileupload=fileupload)
         new_review.save()
-    return render(request, 'shop_templates/product-detail-2.html')
+    return render(request, 'shop_templates/confirm.html')
 
 
 def leave_review2(request):
