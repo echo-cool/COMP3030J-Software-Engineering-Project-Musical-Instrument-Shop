@@ -17,6 +17,6 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path("model_design/", model_design, name='model_design'),
     path("product_search/category/", product_search_by_category, name='search_by_category'),
-    path("product_search/<keyword>", product_search, name='product_search'),
+    path("product_search/<str:keyword>", product_search, name='product_search'),
     path("product_search/", empty_search, name='empty_search'),
 ]
