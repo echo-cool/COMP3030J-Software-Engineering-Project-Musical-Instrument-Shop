@@ -99,22 +99,7 @@
         this.merge_model = function () {
             // find the mesh of loaded model to iterater
             scene.children[2].children[0].children[0].children.forEach(function (mesh) {
-                if (mesh.name === 'guitar_face') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        z: 0,
-                        ease: Power4.easeOut
-                    });
-                } else if (mesh.name === 'guitar_back') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        z: -0.5,
-                        ease: Power4.easeOut
-                    });
-                } else if (mesh.name === 'guitar_wrap') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        x: -2,
-                        ease: Power4.easeOut
-                    });
-                }
+                specific_model_merge(mesh);
             })
         }
         this.split_model = function () {
@@ -122,26 +107,80 @@
             console.log("scene.children[2].children[0].children", scene.children[2].children[0].children[0].children);
             // find the mesh of loaded model to iterater
             scene.children[2].children[0].children[0].children.forEach(function (mesh) {
-                if (mesh.name === 'guitar_face') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        z: 1,
-                        ease: Power4.easeOut
-                    });
-                } else if (mesh.name === 'guitar_back') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        z: -1,
-                        ease: Power4.easeOut
-                    });
-                } else if (mesh.name === 'guitar_wrap') {
-                    TweenLite.to(mesh.position, 1.5, {
-                        x: -4,
-                        ease: Power4.easeOut
-                    });
-                }
+                specific_model_split(mesh);
             })
         }
         this.select_color = "#ffffff" // CSS string
     };
+
+    function specific_model_split(mesh) {
+        if (mesh.name === 'guitar_face') {
+            TweenLite.to(mesh.position, 1.5, {
+                z: 1,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_back') {
+            TweenLite.to(mesh.position, 1.5, {
+                z: -1,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_wrap') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: -4,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_head') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: 3,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_line') {
+            TweenLite.to(mesh.position, 1.5, {
+                y: 1,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_center') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: -2,
+                ease: Power4.easeOut
+            });
+        }
+    }
+
+    function specific_model_merge(mesh) {
+        if (mesh.name === 'guitar_face') {
+            TweenLite.to(mesh.position, 1.5, {
+                z: -0.05,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_back') {
+            TweenLite.to(mesh.position, 1.5, {
+                z: -0.4,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_wrap') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: -2,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_head') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: 1.4,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_line') {
+            TweenLite.to(mesh.position, 1.5, {
+                y: -0.1,
+                ease: Power4.easeOut
+            });
+        } else if (mesh.name === 'guitar_center') {
+            TweenLite.to(mesh.position, 1.5, {
+                x: -1.25,
+                ease: Power4.easeOut
+            });
+        }
+    }
+
     gui.add(deposite, 'split_model');
     gui.add(deposite, 'merge_model');
     var colorController = gui.addColor(deposite, "select_color");
@@ -177,7 +216,7 @@
     });
 
     var Configuration = function () {
-        this.visibleEdgeColor = '#ffffff';
+        this.visibleEdgeColor = '#fdeaa1';
         this.hiddenEdgeColor = '#190a05';
     };
 
@@ -213,7 +252,13 @@
         renderer.setSize(width, height);
         document.body.appendChild(renderer.domElement);
 
+        {#scene = new THREE.Scene();#}
+
+        // scene 创建一个场景
         scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xB3CEFB);
+        scene.fog = new THREE.Fog(scene.background, 1, 100);
+
 
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
         camera.position.set(0, 0, 8);
@@ -273,7 +318,7 @@
         {##}
 
         var loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + "guitar_design.gltf", function (gltf) {
+        loader.load("{% static "assets/design_model/" %}" + "model_design_guitar.gltf", function (gltf) {
             gltf.scene.traverse(function (child) {
                 if (child.isMesh) {
                     {#if (child.name.includes('ere')) {#}
@@ -332,8 +377,11 @@
         group.add(obj3d);
 
         //
-        var floorMaterial = new THREE.MeshLambertMaterial({side: THREE.DoubleSide});
-
+        var floorMaterial = new THREE.MeshLambertMaterial({
+            color: 0x77F28F,
+            shininess: 0,
+            // wireframe: true
+        });
         var floorGeometry = new THREE.PlaneBufferGeometry(12, 12);
         var floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
         floorMesh.rotation.x -= Math.PI * 0.5;
