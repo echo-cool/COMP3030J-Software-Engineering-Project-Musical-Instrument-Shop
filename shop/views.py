@@ -1,11 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-from shop.models import Instrument, InstrumentDetail, Category
-from management.forms import ReviewForm
-from shop.models import Instrument
 # Create your views here.
-from shop.models import Instrument
+import json
 import random
-from shop.models import Instrument, Order, Review
+
+from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
+from management.forms import InstrumentForm, SearchForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review
 
 
 def index(request):
@@ -13,7 +15,7 @@ def index(request):
     categories = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
-    return render(request, 'shop_templates/index2.html',{
+    return render(request, 'shop_templates/index2.html', {
         "instruments": instruments,
         "categories": categories
     })
@@ -72,23 +74,95 @@ def model_view(request, product_id):
         "instrument": instrument,
     })
 
+#
+# def checkout(request):
+#     new_item = Item(item_id=0)
+#     new_item.save()
+#     return render(request, 'shop_templates/checkout.html', {
+#         "id": new_item.id,
+#     })
+#
+#
+# def confirm(request):
+#     new_order = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
+#                       full_address=request.POST['full_address'], city=request.POST['city'],
+#                       postal_code=request.POST['postal_code'], country=request.POST['country'],
+#                       telephone=request.POST['telephone'], payment=request.POST['payment'],
+#                       shipping=request.POST['shipping'])
+#     new_order.save()
+#     # b_row = Item.objects.get(id=request.POST['item_id'])
+#     # b_row.Order = new_order
+#     # b_row.save()
+#     Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
+#     return render(request, 'shop_templates/confirm.html')
 
-def checkout(request):
-    return render(request, 'shop_templates/checkout.html')
+
+def model_design(request):
+    return render(request, 'shop_templates/model_design.html')
 
 
-def confirm(request):
-    a_row = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
-                  full_address=request.POST['full_address'], city=request.POST['city'],
-                  postal_code=request.POST['postal_code'], country=request.POST['country'],
-                  telephone=request.POST['telephone'], payment=request.POST['payment'],
-                  shipping=request.POST['shipping'])
-    a_row.save()
-    return render(request, 'shop_templates/confirm.html')
+# search instruments by category
+def product_search_by_category(request):
+    if request.method == "GET":
+        category_li = request.GET.get("checked_category", None)
+        print(category_li)
+        category_list = [ch for ch in category_li]
+        print(category_list)
+        i = 0
+        instruments = []
+        while i < len(category_list):
+            print(category_list[i] == str(1))
+            if category_list[i] == str(1):
+                searched_instruments = Instrument.objects.filter(category_id=i + 1)
+                for j in searched_instruments:
+                    instruments.append(j)
+                print(len(instruments))
+            i = i + 1
+        response = render(request, 'shop_templates/searched_product_list.html', {
+            "instruments_searched": instruments,
+        })
+        return response
 
 
-def tes(request):
-    return render(request, 'shop_templates/TESLA.html')
+# search instruments by keyword
+def product_search(request, keyword):
+    if request.method == "POST":
+        print("pst")
+        print("pst")
+        print("pst")
+        print("pst")
+        print("pst")
+    else:
+        print("show result here", request.POST.get("search_name", None))
+        f = SearchForm(initial={'search_name': keyword})
+        search_name = keyword
+        print(search_name)
+        instruments = Instrument.objects.filter(name__contains=search_name)
+        # categories = Category.objects.all()
+        for i in instruments:
+            i.percentage = round(i.price * 100 / i.old_price, 2)
+        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+            'form': f,
+            "instruments": instruments,
+        })
+
+
+# search instruments by keyword
+def empty_search(request):
+    if request.method == "POST":
+        print("redirect from Empty", request.POST.get("search_name", None))
+        return redirect('shop:product_search', keyword=request.POST.get("search_name", None))
+    else:
+        # search homepage, show all instruments
+        f = SearchForm()
+        instruments = Instrument.objects.all()
+        # categories = Category.objects.all()
+        for i in instruments:
+            i.percentage = round(i.price * 100 / i.old_price, 2)
+        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+            'form': f,
+            "instruments": instruments,
+        })
 
 
 def cart(request):
