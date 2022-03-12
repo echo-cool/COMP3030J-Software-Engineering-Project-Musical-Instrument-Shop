@@ -106,7 +106,7 @@ def order_management_confirmed(request):
 @login_required
 def order_management_delivered(request):
     data = []
-    orders = Order.objects.filter(delivery_confirmed=True)
+    orders = Order.objects.filter(delivery_confirmed=True).filter(shopper_confirmed=True)
     for order_item in orders:
         tmp = {
             'order': order_item,
@@ -160,13 +160,13 @@ def instrument_management(request):
     part_num = 9
     p = int(page or 1)
     if paginator.num_pages <= part_num:
-        part_pages = [i for i in range(1, paginator.num_pages+1)]
-    elif p <= int(part_num/2) + 1:
-        part_pages = [i for i in range(1, part_num+1)]
-    elif p + int((part_num-1)/2) >= paginator.num_pages:
-        part_pages = [i for i in range(paginator.num_pages-part_num+1, paginator.num_pages+1)]
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
-        part_pages = [i for i in range(p-int(part_num/2), p + int((part_num-1)/2) + 1)]
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -307,3 +307,12 @@ def add_review(request):
         return render(request, 'management_templates/update_review.html', {
             'form': f
         })
+
+
+@login_required
+def order_state(request, order_id):
+    order = Order.objects.filter(id=order_id).first()
+    return render(request, 'management_templates/order_state.html', {
+        'order': order,
+        'profile': Profile.objects.filter(user=request.user.id).first()
+    })
