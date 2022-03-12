@@ -20,8 +20,18 @@ def index(request):
         "categories": categories
     })
 
+def category_view(request, category_id):
+    categories = Category.objects.all()
+    category = get_object_or_404(Category, pk=category_id)
+    instruments = Instrument.objects.filter(category=category)
+    return render(request, 'shop_templates/category/category_view.html', {
+        "category": category,
+        "instruments": instruments,
+        "categories": categories
+    })
 
 def product_details(request, product_id):
+    categories = Category.objects.all()
     instrument = Instrument.objects.get(id=product_id)
     instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
     all_instruments = Instrument.objects.all()
@@ -33,7 +43,8 @@ def product_details(request, product_id):
         "instrument": instrument,
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,
-        "related": related
+        "related": related,
+        'categories': categories
     })
 
 
