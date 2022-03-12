@@ -55,21 +55,19 @@ def leave_review(request, order_id, instrument_id):
 def confirm_submit(request):
     if request.method == "POST":
         rating = request.POST.get("rating-input", None)
-        title = request.POST.get("title", None)
         review_text = request.POST.get("review", None)
         fileupload = request.POST.get("fileupload", None)
-        check_selected = request.POST.get("check", None)
+        # check_selected = request.POST.get("check", None)
         print("rating: ", rating)
-        print("title: ", title)
         print("review_text: ", review_text)
         print("fileupload: ", fileupload)
-        print("check_selected: ", check_selected)
+        # print("check_selected: ", check_selected)
         # f = ReviewForm(request.POST, request.FILES)
         # if f.is_valid():
         #     f.save()
         # print(f.errors)
-        new_review = Review(order_id=1, user_id=1, rating=rating, title=title,
-                            review_text=review_text, fileupload=fileupload, check_selected=check_selected)
+        new_review = Review(order_id=1, user_id=1, rating=rating,
+                            review_text=review_text, fileupload=fileupload)
         new_review.save()
     return render(request, 'shop_templates/leave-review-2.html')
 
