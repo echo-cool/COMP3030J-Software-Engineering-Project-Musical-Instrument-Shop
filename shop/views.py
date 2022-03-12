@@ -2,6 +2,7 @@
 import json
 import random
 
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -66,7 +67,7 @@ def confirm_submit(request):
         # if f.is_valid():
         #     f.save()
         # print(f.errors)
-        new_review = Review(order_id=1, user_id=1, rating=rating,
+        new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
                             review_text=review_text, file_upload=fileupload)
         new_review.save()
     return render(request, 'shop_templates/product-detail.html')
