@@ -17,8 +17,10 @@
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico %" %}" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{% static "assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static "assets/img_for_shop/apple-touch-icon-72x72-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon"
+          href="{% static "assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
+          href="{% static "assets/img_for_shop/apple-touch-icon-72x72-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
           href="{% static "assets/img_for_shop/apple-touch-icon-114x114-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
@@ -49,7 +51,8 @@
                 <div class="row small-gutters">
                     <div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
                         <div id="logo">
-                            <a href="{% url 'shop:index' %}"><img src="{% static 'assets/img_for_shop/logo.svg' %}" alt="" width="100" height="35"></a>
+                            <a href="{% url 'shop:index' %}"><img src="{% static 'assets/img_for_shop/logo.svg' %}"
+                                                                  alt="" width="100" height="35"></a>
                         </div>
                     </div>
                     <nav class="col-xl-6 col-lg-7">
@@ -63,7 +66,8 @@
                         <!-- Mobile menu button -->
                         <div class="main-menu">
                             <div id="header_menu">
-                                <a href="index.html"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt="" width="100" height="35"></a>
+                                <a href="index.html"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt=""
+                                                          width="100" height="35"></a>
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                             </div>
                             <ul>
@@ -129,7 +133,8 @@
                                                 <div class="banner_menu">
                                                     <a href="#0">
                                                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                                             data-src="/static/assets/img_for_shop/banner_menu.jpg" width="400" height="550"
+                                                             data-src="/static/assets/img_for_shop/banner_menu.jpg"
+                                                             width="400" height="550"
                                                              alt="" class="img-fluid lazy">
                                                     </a>
                                                 </div>
@@ -194,8 +199,8 @@
                                     <div id="menu">
                                         <ul>
                                             {% for category in categories %}
-                                            <li><span><a href="/category/{{ category.id }}">{{ category.name }}</a></span>
-                                            </li>
+                                                <li><span><a href="/category/{{ category.id }}">{{ category.name }}</a></span>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -204,10 +209,17 @@
                         </nav>
                     </div>
                     <div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
-                        <div class="custom-search-input">
-                            <input type="text" placeholder="Search over 10.000 products">
-                            <button type="submit"><i class="header-icon_search_custom"></i></button>
-                        </div>
+                        <form id="search_form" action="/product_search/" method="post" class="navbar-form navbar-left">
+                            {% csrf_token %}
+                            <div class="custom-search-input">
+                                <input type="text" name="search_name" placeholder="Search over 10.000 products">
+                                <button type="submit"><i class="header-icon_search_custom"></i></button>
+                            </div>
+                        </form>
+                        {#                        <div class="custom-search-input">#}
+                        {#                            <input type="text" placeholder="Search over 10.000 products">#}
+                        {#                            <button type="submit"><i class="header-icon_search_custom"></i></button>#}
+                        {#                        </div>#}
                     </div>
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <ul class="top_tools">
@@ -218,18 +230,22 @@
                                         <ul>
                                             <li>
                                                 <a href="product-detail-1.html">
-                                                    <figure><img src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
-                                                                 data-src="/static/assets/img_for_shop/products/shoes/thumb/1.jpg" alt=""
-                                                                 width="50" height="50" class="lazy"></figure>
+                                                    <figure><img
+                                                            src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
+                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/1.jpg"
+                                                            alt=""
+                                                            width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Air x Fear</span>$90.00</strong>
                                                 </a>
                                                 <a href="#0" class="action"><i class="ti-trash"></i></a>
                                             </li>
                                             <li>
                                                 <a href="product-detail-1.html">
-                                                    <figure><img src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
-                                                                 data-src="/static/assets/img_for_shop/products/shoes/thumb/2.jpg" alt=""
-                                                                 width="50" height="50" class="lazy"></figure>
+                                                    <figure><img
+                                                            src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
+                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/2.jpg"
+                                                            alt=""
+                                                            width="50" height="50" class="lazy"></figure>
                                                     <strong><span>1x Armor Okwahn II</span>$110.00</strong>
                                                 </a>
                                                 <a href="0" class="action"><i class="ti-trash"></i></a>
@@ -357,16 +373,20 @@
                             <ul>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="/static/assets/img_for_shop/twitter_icon.svg" alt="" class="lazy"></a></li>
+                                        data-src="/static/assets/img_for_shop/twitter_icon.svg" alt="" class="lazy"></a>
+                                </li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="/static/assets/img_for_shop/facebook_icon.svg" alt="" class="lazy"></a></li>
+                                        data-src="/static/assets/img_for_shop/facebook_icon.svg" alt=""
+                                        class="lazy"></a></li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="/static/assets/img_for_shop/instagram_icon.svg" alt="" class="lazy"></a></li>
+                                        data-src="/static/assets/img_for_shop/instagram_icon.svg" alt=""
+                                        class="lazy"></a></li>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="/static/assets/img_for_shop/youtube_icon.svg" alt="" class="lazy"></a></li>
+                                        data-src="/static/assets/img_for_shop/youtube_icon.svg" alt="" class="lazy"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -397,7 +417,8 @@
                         </li>
                         <li><img
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                data-src="/static/assets/img_for_shop/cards_all.svg" alt="" width="198" height="30" class="lazy"></li>
+                                data-src="/static/assets/img_for_shop/cards_all.svg" alt="" width="198" height="30"
+                                class="lazy"></li>
                     </ul>
                 </div>
                 <div class="col-lg-6">

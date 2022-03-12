@@ -318,7 +318,7 @@
         {##}
 
         var loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + "model_design_guitar.gltf", function (gltf) {
+        loader.load("{% static "assets/design_model/" %}" + "model_design_guitar2.gltf", function (gltf) {
             gltf.scene.traverse(function (child) {
                 if (child.isMesh) {
                     {#if (child.name.includes('ere')) {#}
