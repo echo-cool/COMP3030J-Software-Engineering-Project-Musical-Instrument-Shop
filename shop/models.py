@@ -122,7 +122,7 @@ class Order(models.Model):
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'user', 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
-        'shipping', 'Item', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'shipping', 'instrument', 'count', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 
 class Item(models.Model):
