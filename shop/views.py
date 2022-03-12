@@ -60,7 +60,7 @@ def product_details(request, product_id):
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
-    return render(request, 'shop_templates/product-detail-2.html', {
+    return render(request, 'shop_templates/product-detail.html', {
         "instrument": instrument,
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,
@@ -90,7 +90,7 @@ def confirm_submit(request):
         new_review = Review(order_id=1, user_id=1, rating=rating,
                             review_text=review_text, fileupload=fileupload)
         new_review.save()
-    return render(request, 'shop_templates/product-detail-2.html')
+    return render(request, 'shop_templates/product-detail.html')
 
 
 def leave_review2(request):
@@ -129,7 +129,7 @@ def model_view(request, product_id):
 
 
 def model_design(request):
-    return render(request, 'shop_templates/model_design.html')
+    return render(request, 'shop_templates/model-design.html')
 
 
 # search instruments by category
@@ -149,7 +149,7 @@ def product_search_by_category(request):
                     instruments.append(j)
                 print(len(instruments))
             i = i + 1
-        response = render(request, 'shop_templates/searched_product_list.html', {
+        response = render(request, 'shop_templates/searched-product-list.html', {
             "instruments_searched": instruments,
         })
         return response
@@ -172,7 +172,7 @@ def product_search(request, keyword):
         # categories = Category.objects.all()
         for i in instruments:
             i.percentage = round(i.price * 100 / i.old_price, 2)
-        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+        return render(request, 'shop_templates/product-search.html', {
             'form': f,
             "instruments": instruments,
         })
@@ -190,7 +190,7 @@ def empty_search(request):
         # categories = Category.objects.all()
         for i in instruments:
             i.percentage = round(i.price * 100 / i.old_price, 2)
-        return render(request, 'shop_templates/listing-row-1-sidebar-left.html', {
+        return render(request, 'shop_templates/product-search.html', {
             'form': f,
             "instruments": instruments,
         })
