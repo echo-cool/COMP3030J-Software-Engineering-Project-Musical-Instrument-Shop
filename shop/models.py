@@ -150,8 +150,8 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class Review(models.Model):
-    order = models.OneToOneField('Order', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order = models.OneToOneField('Order', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     rating = models.PositiveIntegerField(
         null=False,
         default=5,

@@ -44,12 +44,10 @@ def leave_review(request, order_id, instrument_id):
 def confirm_submit(request):
     if request.method == "POST":
         rating = request.POST.get("rating-input", None)
-        title = request.POST.get("title", None)
         review_text = request.POST.get("review", None)
         fileupload = request.POST.get("fileupload", None)
         # check_selected = request.POST.get("check", None)
         print("rating: ", rating)
-        print("title: ", title)
         print("review_text: ", review_text)
         print("fileupload: ", fileupload)
         # print("check_selected: ", check_selected)
