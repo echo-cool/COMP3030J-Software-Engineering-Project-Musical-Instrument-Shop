@@ -3,7 +3,7 @@ import random
 
 from django.shortcuts import render, get_object_or_404
 
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Item
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review
 
 
 def index(request):
@@ -72,24 +72,27 @@ def model_view(request, product_id):
 
 
 def checkout(request):
-    new_item = Item(item_id=0)
-    new_item.save()
+    order_id = random.randint(0, 10000)
+    for i in range(3):
+        new_order = Order(user=request.user, order_id=order_id)
+        new_order.save()
+        print(new_order)
     return render(request, 'shop_templates/checkout.html', {
-        "id": new_item.id,
+        "order_id": order_id
     })
 
 
 def confirm(request):
-    new_order = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
-                      full_address=request.POST['full_address'], city=request.POST['city'],
-                      postal_code=request.POST['postal_code'], country=request.POST['country'],
-                      telephone=request.POST['telephone'], payment=request.POST['payment'],
-                      shipping=request.POST['shipping'])
-    new_order.save()
+    current_order = Order.objects.filter(order_id=request.POST['order_id'])
+    current_order.update(name=request.POST['name'], last_name=request.POST['last_name'],
+                         full_address=request.POST['full_address'], city=request.POST['city'],
+                         postal_code=request.POST['postal_code'], country=request.POST['country'],
+                         telephone=request.POST['telephone'], payment=request.POST['payment'],
+                         shipping=request.POST['shipping'])
     # b_row = Item.objects.get(id=request.POST['item_id'])
     # b_row.Order = new_order
     # b_row.save()
-    Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
+    # Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
     return render(request, 'shop_templates/confirm.html')
 
 
