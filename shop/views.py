@@ -15,7 +15,7 @@ def index(request):
     categories = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
-    return render(request, 'shop_templates/index2.html', {
+    return render(request, 'shop_templates/index.html', {
         "instruments": instruments,
         "categories": categories
     })
