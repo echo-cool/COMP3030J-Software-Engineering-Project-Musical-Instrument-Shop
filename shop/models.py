@@ -93,6 +93,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0, null=False)
 
+    # This is used to solve the problem of one order has more than one instrument
+    order_id = models.IntegerField(default=0)
+
     name = models.CharField(max_length=20, default="")
     last_name = models.CharField(max_length=20, default="")
     full_address = models.CharField(max_length=200, default="")
@@ -119,7 +122,7 @@ class Order(models.Model):
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'user', 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
-        'shipping', 'instrument', 'count', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'shipping', 'Item', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 
 class Item(models.Model):
