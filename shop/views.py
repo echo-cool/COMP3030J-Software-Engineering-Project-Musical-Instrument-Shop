@@ -13,12 +13,32 @@ from shop.models import Instrument, InstrumentDetail, Category, Order, Review
 def index(request):
     instruments = Instrument.objects.all()
     categories = Category.objects.all()
+    index_categories = {
+        'left_700_604': {
+            'category': Category.objects.get(id=1),
+            'count': Instrument.objects.filter(category=1).count()
+        },
+        "right_bottom_800_343": {
+            'category': Category.objects.get(id=2),
+            'count': Instrument.objects.filter(category=2).count()
+        },
+        "right_top1_500_480": {
+            'category': Category.objects.get(id=2),
+            'count': Instrument.objects.filter(category=2).count()
+        },
+        "right_top2_500_480": {
+            'category': Category.objects.get(id=1),
+            'count': Instrument.objects.filter(category=1).count()
+        },
+    }
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
     return render(request, 'shop_templates/index.html', {
         "instruments": instruments,
-        "categories": categories
+        "categories": categories,
+        "index_categories": index_categories
     })
+
 
 def category_view(request, category_id):
     categories = Category.objects.all()
@@ -29,6 +49,7 @@ def category_view(request, category_id):
         "instruments": instruments,
         "categories": categories
     })
+
 
 def product_details(request, product_id):
     categories = Category.objects.all()
@@ -82,6 +103,7 @@ def model_view(request, product_id):
     return render(request, 'shop_templates/3d3.html', {
         "instrument": instrument,
     })
+
 
 #
 # def checkout(request):

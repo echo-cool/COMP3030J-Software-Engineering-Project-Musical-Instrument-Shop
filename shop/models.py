@@ -78,6 +78,7 @@ class InstrumentDetailAdmin(admin.ModelAdmin):
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    main_image = models.ImageField(default="default.png", upload_to='uploads/category/image/', null=True)
     description = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -87,7 +88,7 @@ class Category(models.Model):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'created_at')
+    list_display = ('name', 'description', 'created_at', 'main_image')
 
 
 class Order(models.Model):
