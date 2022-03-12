@@ -586,8 +586,8 @@
                                     <span class="ribbon off">-30%</span>
                                     <a href="{% url "shop:product_details" product_id=instrument.id %}">
                                         <img class="img-fluid lazy"
-                                             src="{{ instrument.image }}"
-                                             data-src="{{ instrument.image }}" alt="">
+                                             src="{{ instrument.image.url }}"
+                                             data-src="{{ instrument.image.url }}" alt="">
                                     </a>
                                     <div data-countdown="2019/05/15" class="countdown"></div>
                                 </figure>

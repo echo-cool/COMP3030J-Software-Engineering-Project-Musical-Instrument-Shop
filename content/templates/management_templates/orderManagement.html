@@ -96,12 +96,18 @@
                     <td>{{ order_item.order.created_at }}</td>
 
                     <td class="hidden-480">
-                        {% if order_item.order.delivery_confirmed %}
+                        {% if order_item.order.delivery_confirmed and order_item.order.shopper_confirmed %}
+                            <a href="{% url 'management:order_state' order_item.order.id %}">
                             <span class="label label-sm label-success">Delivery-Confirmed</span>
+                            </a>
                         {% elif order_item.order.shopper_confirmed %}
+                            <a href="{% url 'management:order_state' order_item.order.id %}">
                             <span class="label label-sm label-warning">Shopper-Confirmed</span>
+                            </a>
                         {% else %}
+                            <a href="{% url 'management:order_state' order_item.order.id %}">
                             <span class="label label-sm label-inverse arrowed-in">Unconfirmed</span>
+                            </a>
                         {% endif %}
                     </td>
 
@@ -383,12 +389,18 @@
                     <td>{{ order_item.order.created_at }}</td>
 
                     <td class="hidden-480">
-                        {% if order_item.order.delivery_confirmed %}
+                        {% if order_item.order.delivery_confirmed and order_item.order.shopper_conformed %}
+                            <a href="{% url 'management:order_state' order_item.order.id %}">
                             <span class="label label-sm label-success">Delivery-Confirmed</span>
+                            </a>
                         {% elif order_item.order.shopper_confirmed %}
+                            <a href="{% url 'management:order_state' order_item.order.id %}">
                             <span class="label label-sm label-warning">Shopper-Confirmed</span>
+                            </a>
                         {% else %}
+                            <a href="{% url 'management:order_state' order_item.id %}">
                             <span class="label label-sm label-inverse arrowed-in">Unconfirmed</span>
+                            </a>
                         {% endif %}
                     </td>
 
