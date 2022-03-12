@@ -3,7 +3,7 @@ from dataclasses import fields
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart
 
 
 class InstrumentSerializer(serializers.ModelSerializer):
@@ -45,4 +45,10 @@ class InstrumentDetailSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
+        fields = "__all__"
+
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
         fields = "__all__"
