@@ -219,5 +219,3 @@ def product_add_cart(request, instrument_id):
         new_cart = Cart(user=request.user.id, instrument=instrument, count=1, user_id=1)
         new_cart.save()
     return redirect('shop:cart')
-
-# remove 之后用ajax 请求 api写更方便些
