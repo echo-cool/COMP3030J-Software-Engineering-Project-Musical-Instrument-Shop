@@ -57,3 +57,19 @@ function remove_cart_item(id) {
     })
     fetchHeaderCartList();
 }
+
+
+function subtotal(id) {
+    let id_for_number = "#quantity-" + id;
+    let id_for_price = "#price-" + id;
+    let id_for_total = "#total-" + id;
+    $(id_for_total)[0].value = parseFloat($(id_for_number)[0].value) * parseFloat($(id_for_price)[0].value);
+}
+
+
+
+
+function total() {
+    $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
+}
+

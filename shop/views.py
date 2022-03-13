@@ -106,6 +106,10 @@ def model_view(request, product_id):
     })
 
 
+def wishlist(request):
+    return render(request, 'shop_templates/wishlist.html')
+
+
 def checkout(request):
     order_id = random.randint(0, 10000)
     for i in range(3):

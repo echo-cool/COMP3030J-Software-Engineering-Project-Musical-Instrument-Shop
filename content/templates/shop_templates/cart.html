@@ -47,6 +47,19 @@
                 <tbody>
 
                 {% if carts %}
+                    <script>
+                            function sum() {
+                                var sum = 0;
+                                for (var id = 1; id <= {{ carts.count }}; id++) {
+                                    let id_for_total = "#total-" + id;
+                                    {#console.log(5555555555555);#}
+                                    {#console.log(id_for_total)#}
+                                    {#console.log(6666666666666);#}
+                                    sum += parseFloat($(id_for_total)[0].value);
+                                }
+                                $("#subtotal_all")[0].value = sum;
+                            }
+                    </script>
                     {% for cart in carts %}
                         <tr id="cart-{{ cart.id }}">
                             <td>
@@ -64,12 +77,11 @@
                                 <div class="numbers-row">
                                     <input type="text" value="{{ cart.count }}" id="quantity-{{ cart.instrument.id }}"
                                            class="qty2" name="quantity_3"
-                                           onchange="count_change('{{ cart.id }}'); subtotal('{{ cart.id }}'); sum(); total();">
+                                           onchange="count_change('{{ cart.instrument.id }}'); subtotal('{{ cart.instrument.id }}'); sum(); total();">
                                     {# Kao, don't use '\n' here, will influence the js file #}
-                                    <div class="inc button_inc" onclick="count_change_add('{{ cart.instrument.id }}')">+
+                                    <div class="inc button_inc" onclick="count_change_add('{{ cart.instrument.id }}'); sum(); total();">+
                                     </div>
-                                    <div class="dec button_inc"
-                                         onclick="count_change_minus('{{ cart.instrument.id }}')">-
+                                    <div class="dec button_inc" onclick="count_change_minus('{{ cart.instrument.id }}'); sum(); total();">-
                                     </div>
                                 </div>
                             </td>
@@ -79,7 +91,7 @@
                             </td>
                             <td class="options">
                                 <a href="#">
-                                    <i onclick="remove_cart_item('{{ cart.id }}')" class="ti-trash"></i>
+                                    <i onclick="remove_cart_item('{{ cart.instrument.id }}')" class="ti-trash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -87,108 +99,7 @@
                 {% endif %}
 
 
-                <tr>
-                    <td>
-                        <div class="thumb_cart">
-                            <img src="img/products/product_placeholder_square_small.jpg"
-                                 data-src="img/products/shoes/1.jpg" class="lazy" alt="Image">
-                        </div>
-                        <span class="item_cart">Armor Air x Fear</span>
-                    </td>
-                    <td>
-                        <input value="140.00" class="price">
-                    </td>
-                    <script type="text/javascript">
-                        var id;
 
-                        function subtotal(id) {
-                            var z = $(".qty2")[id].value;
-                            $(".subtotal")[id].value = z * parseFloat($(".price")[id].value);
-                            console.log(z);
-                        }
-
-                        function sum() {
-                            var sum = 0;
-                            for (var i = 0; i < $(".subtotal").length; i++) {
-                                sum += parseFloat($(".subtotal")[i].value);
-                            }
-                            $("#subtotal_all")[0].value = sum;
-                        }
-
-                        function total() {
-                            $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
-                        }
-
-
-                    </script>
-                    <td>
-                        <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1"
-                                   onchange="subtotal(0); sum(); total()">
-                            <div class="inc button_inc">+</div>
-                            <div class="dec button_inc">-</div>
-                        </div>
-                    </td>
-                    <td>
-                        <input value="140.00" class="subtotal" onchange="sum()">
-                    </td>
-                    <td class="options">
-                        <a href="#"><i class="ti-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumb_cart">
-                            <img src="img/products/product_placeholder_square_small.jpg"
-                                 data-src="img/products/shoes/2.jpg" class="lazy" alt="Image">
-                        </div>
-                        <span class="item_cart">Armor Okwahn II</span>
-                    </td>
-                    <td>
-                        <input value="110" class="price">
-                    </td>
-                    <td>
-                        <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2"
-                                   onchange="subtotal(1); sum(); total()">
-                            <div class="inc button_inc">+</div>
-                            <div class="dec button_inc">-</div>
-                        </div>
-                    </td>
-                    <td>
-                        <input value="110.00" class="subtotal" onchange="sum()">
-                    </td>
-                    <td class="options">
-                        <a href="#"><i class="ti-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumb_cart">
-                            <img src="img/products/product_placeholder_square_small.jpg"
-                                 data-src="img/products/shoes/3.jpg" class="lazy" alt="Image">
-                        </div>
-                        <span class="item_cart">Armor Air Wildwood ACG</span>
-                    </td>
-                    <td>
-                        <input value="90.00" class="price">
-                    </td>
-
-                    <td>
-                        <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3"
-                                   onchange="subtotal(2); sum(); total()">
-                            <div class="inc button_inc">+</div>
-                            <div class="dec button_inc">-</div>
-                        </div>
-                    </td>
-                    <td>
-                        <input value="90.00" class="subtotal" onchange="sum()">
-                    </td>
-                    <td class="options">
-                        <a href="#"><i class="ti-trash"></i></a>
-                    </td>
-                </tr>
                 </tbody>
             </table>
 
