@@ -57,14 +57,30 @@
 
 
 <div id="info">
-    <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - Outline Pass by <a
-        href="http://eduperiment.com" target="_blank" rel="noopener">Prashant Sharma</a> and <a href="https://clara.io"
-                                                                                                target="_blank"
-                                                                                                rel="noopener">Ben
-    Houston</a><br/><br/>
+    <a href="http://threejs.org" target="_blank" rel="noopener">Develop based on three.js</a> - Instrument Model Design
+    by <a
+        href="http://eduperiment.com" target="_blank" rel="noopener">Group 8</a><br/><br/>
 </div>
 
-<script>
+<script type="text/javascript">
+    let model_id = 1;
+    model_id = String({{ model_id|safe }});
+
+
+    if (model_id === "1") {
+        model_name = "model_design_guitar.gltf";
+    } else if (model_id === "2") {
+        model_name = "model_design_guitar2.gltf";
+    } else if (model_id === "3") {
+        model_name = "model_design_guitar3.gltf";
+    } else if (model_id === "4") {
+        model_name = "model_design_piano.gltf";
+    } else {
+        console.log(model_id);
+        alert("Please visit by model_design/<int:>");
+        model_name = "model_design_piano.gltf";
+    }
+
 
     if (!Detector.webgl) Detector.addGetWebGLMessage();
 
@@ -318,7 +334,7 @@
         {##}
 
         var loader = new THREE.GLTFLoader();
-        loader.load("{% static "assets/design_model/" %}" + "model_design_guitar2.gltf", function (gltf) {
+        loader.load("{% static "assets/design_model/" %}" + model_name, function (gltf) {
             gltf.scene.traverse(function (child) {
                 if (child.isMesh) {
                     {#if (child.name.includes('ere')) {#}
@@ -425,10 +441,10 @@
 
         window.addEventListener('resize', onWindowResize, false);
 
-        window.addEventListener('mousemove', onTouchMove);
-        window.addEventListener('touchmove', onTouchMove);
+        {#window.addEventListener('mousemove', onTouchMove);#}
+        {#window.addEventListener('touchmove', onTouchMove);#}
 
-        {#window.addEventListener('click', onTouchMove);#}
+        window.addEventListener('click', onTouchMove);
 
         function onTouchMove(event) {
             var x, y;
@@ -493,6 +509,7 @@
         composer.render();
         stats.end();
     }
+
 
 </script>
 </body>
