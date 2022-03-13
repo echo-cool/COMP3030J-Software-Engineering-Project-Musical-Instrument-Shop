@@ -64,6 +64,10 @@
 </div>
 
 <script type="text/javascript">
+    console.log("访问格式：http://127.0.0.1:8000/model_design/guitar_style_1" + "\n" +
+        "http://127.0.0.1:8000/model_design/guitar_style_2" + "\n" +
+        "http://127.0.0.1:8000/model_design/guitar_style_3" + "\n" +
+        "http://127.0.0.1:8000/model_design/piano_style_1");
     let model_id = "guitar_style_3";
     model_id = "{{ model_id|safe }}";
 
@@ -77,8 +81,12 @@
     } else if (model_id === "piano_style_1") {
         model_name = "model_design_piano.gltf";
     } else {
-        console.log(model_id);
-        alert("Please visit by model_design/<int:>");
+        let info = "访问格式：http://127.0.0.1:8000/model_design/guitar_style_1" + "\n" +
+            "http://127.0.0.1:8000/model_design/guitar_style_2" + "\n" +
+            "http://127.0.0.1:8000/model_design/guitar_style_3" + "\n" +
+            "http://127.0.0.1:8000/model_design/piano_style_1";
+        console.log(model_id, info);
+        alert(info);
         model_name = "model_design_piano.gltf";
     }
 
