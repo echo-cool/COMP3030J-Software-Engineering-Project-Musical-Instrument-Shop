@@ -57,21 +57,24 @@
                                 <span class="item_cart">{{ cart.instrument.name }}</span>
                             </td>
                             <td>
-                                <input value="{{ cart.instrument.price }}" id="price-{{ cart.id }}" class="price">
+                                <input value="{{ cart.instrument.price }}" id="price-{{ cart.instrument.id }}"
+                                       class="price">
                             </td>
-
                             <td>
                                 <div class="numbers-row">
-                                    <input type="text" value="{{ cart.count }}" id="quantity-{{ cart.id }}"
+                                    <input type="text" value="{{ cart.count }}" id="quantity-{{ cart.instrument.id }}"
                                            class="qty2" name="quantity_3"
                                            onchange="count_change('{{ cart.id }}'); subtotal('{{ cart.id }}'); sum(); total();">
                                     {# Kao, don't use '\n' here, will influence the js file #}
-                                    <div class="inc button_inc" onclick="count_change_add('{{ cart.id }}')">+</div>
-                                    <div class="dec button_inc" onclick="count_change_minus('{{ cart.id }}')">-</div>
+                                    <div class="inc button_inc" onclick="count_change_add('{{ cart.instrument.id }}')">+
+                                    </div>
+                                    <div class="dec button_inc"
+                                         onclick="count_change_minus('{{ cart.instrument.id }}')">-
+                                    </div>
                                 </div>
                             </td>
                             <td>
-                                <input value="{{ cart.total_money }}" id="total-{{ cart.id }}"
+                                <input value="{{ cart.total_money }}" id="total-{{ cart.instrument.id }}"
                                        class="subtotal" onchange="sum()">
                             </td>
                             <td class="options">
@@ -237,64 +240,14 @@
     </main>
     <!--/main-->
 
-    <script>
-        {#    之后移动到Cart.js   #}
 
-        function count_change(id) {
-            let id_for_number = "#quantity-" + id;
-            let id_for_price = "#price-" + id;
-            let id_for_total = "#total-" + id;
-            let total = parseFloat($(id_for_number).val()) * parseFloat($(id_for_price).val())
-            console.log("count total for item", total)
-            $(id_for_total).val(total);
-        }
-
-        function count_change_add(id) {
-            let id_for_number = "#quantity-" + id;
-            let id_for_price = "#price-" + id;
-            let id_for_total = "#total-" + id;
-            let total = (parseFloat($(id_for_number).val()) + 1) * parseFloat($(id_for_price).val())
-            console.log("count total for item", total)
-            $(id_for_total).val(total);
-        }
-
-        function count_change_minus(id) {
-            let id_for_number = "#quantity-" + id;
-            let id_for_price = "#price-" + id;
-            let id_for_total = "#total-" + id;
-            let total = 0;
-            if (parseFloat($(id_for_number).val()) > 1) {
-                total = (parseFloat($(id_for_number).val()) - 1) * parseFloat($(id_for_price).val());
-            } else {
-                total = 0;
-            }
-            console.log("count total for item", total)
-            $(id_for_total).val(parseFloat(String(total)));
-        }
-
-        function remove_cart_item(id) {
-            {#let id = this.id;#}
-            console.log("delete", id);
-            $.ajax({
-                url: "/api/cart/" + id + "/",
-                method: "DELETE",
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                success: function (res) {
-                    let id_for_delete = "#cart-" + id;
-                    $(id_for_delete).remove();
-                },
-                error: function (res) {
-                    console.log("ji", id, res);
-                }
-            })
-        }
-    </script>
 {% endblock %}
 
 {% block foot_link %}
 
     <script src="{% static 'js/cart.js' %}"></script>
+    <script>
+        {#    之后移动到Cart.js   #}
 
+    </script>
 {% endblock %}

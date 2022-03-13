@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     leave_review2, \
-    confirm_submit, product_search, product_search_by_category, empty_search, category_view, product_add_cart
+    confirm_submit, product_search, product_search_by_category, empty_search, category_view, product_add_cart, \
+    product_minus_cart
 
 app_name = 'shop'
 urlpatterns = [
@@ -16,6 +17,7 @@ urlpatterns = [
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
     path("cart/product_add_cart/<int:instrument_id>", product_add_cart, name='product_add_cart'),
+    path("cart/product_minus_cart/<int:instrument_id>", product_minus_cart, name='product_minus_cart'),
     path("model_design/", model_design, name='model_design'),
     path("product_search/category/", product_search_by_category, name='search_by_category'),
     path("product_search/<str:keyword>", product_search, name='product_search'),

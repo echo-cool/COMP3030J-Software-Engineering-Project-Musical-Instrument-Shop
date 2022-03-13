@@ -1,60 +1,62 @@
+function fetchHeaderCartList() {
+    console.log("fetched_carts");
+    let fetched_carts = {};
+    let header = $(".header-cart");
+    header.innerHTML = '<ul>';
+    $.ajax({
+        url: "/api/cart",
+        method: "GET",
+        success: function (res) {
+            fetched_carts = res;
+            let total = 0;
+            let reached_cart = [];
+            for (let fetched_cart of fetched_carts) {
+                //用来确认遍历结束
+                // 不知道如何通过外键直接获取值，可以省去这些ajax
+                $.ajax({
+                    url: "/api/instruments/" + fetched_cart.instrument,
+                    method: "GET",
+                    success: function (res) {
+                        fetched_cart.instrument = res;
+                        // console.log(fetched_cart);
+                        // console.log("foreign key search", total, fetched_cart.instrument.price);
+                        total = total + (Number(fetched_cart.instrument.price) * fetched_cart.count);
+                        let header_cart_item =
+                            "   <li>" +
+                            "            <a href=\"/product-detail/" + fetched_cart.instrument.id + "\">" +
+                            "                <figure><img" +
+                            "                    src=\"" + fetched_cart.instrument.image + "\"" +
+                            "                    data-src=\"" + fetched_cart.instrument.image + "\"" +
+                            "                    alt=\"\"" +
+                            "                    width=\"50\" height=\"50\" className=\"lazy\"></figure>" +
+                            "                <strong><span>" + fetched_cart.count + "x " + fetched_cart.instrument.name + "</span>" + fetched_cart.instrument.price + "" +
+                            "                </strong>" +
+                            // "            <i onclick=\"remove_cart_item('{{ cart.id }}')\" class=\"ti-trash\"></i>" +
+                            "            </a>" +
+                            "        </li>";
+                        header.innerHTML = header.innerHTML + header_cart_item;
+                        reached_cart.push(fetched_cart);
+                        if (fetched_carts.length === reached_cart.length) {
+                            header.innerHTML = header.innerHTML + "</ul>";
+                            header.innerHTML = header.innerHTML +
+                                "<div class=\"total_drop\">" +
+                                "   <div class=\"clearfix\"><strong>Total</strong><span>$" + total + "</span></div>" +
+                                "   <a href=\"/cart\" class=\"btn_1 outline\">View Cart</a><a href=\"checkout.html\" class=\"btn_1\">Checkout</a>" +
+                                "</div>"
+                            ;
+                            header.html(header.innerHTML);
+                        }
+                        console.log(fetched_carts.indexOf(fetched_cart), fetched_carts.length, reached_cart.length, header.innerHTML);
+                    }
+                });
+            }
+        }
+    });
+
+}
+
 (function ($) {
     fetchHeaderCartList();
-
-    function fetchHeaderCartList() {
-        console.log("fetched_carts");
-        let fetched_carts = {};
-        let header = $(".header-cart");
-        header.innerHTML = '<ul>';
-        $.ajax({
-            url: "/api/cart",
-            method: "GET",
-            success: function (res) {
-                fetched_carts = res;
-                for (let fetched_cart of fetched_carts) {
-                    let total = 0;
-                    // 不知道如何通过外键直接获取值，可以省去这些ajax
-                    $.ajax({
-                        url: "/api/instruments/" + fetched_cart.instrument,
-                        method: "GET",
-                        success: function (res) {
-                            fetched_cart.instrument = res;
-                            console.log(fetched_cart);
-                            console.log("foreign key search", total, fetched_cart.instrument.price);
-                            total = total + (Number(fetched_cart.instrument.price) * fetched_cart.count);
-                            let header_cart_item =
-                                "   <li>" +
-                                "            <a href=\"/product-detail/" + fetched_cart.instrument.id + "\">" +
-                                "                <figure><img" +
-                                "                    src=\"" + fetched_cart.instrument.image + "\"" +
-                                "                    data-src=\"" + fetched_cart.instrument.image + "\"" +
-                                "                    alt=\"\"" +
-                                "                    width=\"50\" height=\"50\" className=\"lazy\"></figure>" +
-                                "                <strong><span>" + fetched_cart.count + "x " + fetched_cart.instrument.name + "</span>" + fetched_cart.instrument.price + "" +
-                                "                </strong>" +
-                                // "            <i onclick=\"remove_cart_item('{{ cart.id }}')\" class=\"ti-trash\"></i>" +
-                                "            </a>" +
-                                "        </li>";
-                            header.innerHTML = header.innerHTML + header_cart_item;
-                            if (fetched_carts.indexOf(fetched_cart) === fetched_carts.length - 1) {
-                                header.innerHTML = header.innerHTML + "</ul>";
-                                header.innerHTML = header.innerHTML +
-                                    "<div class=\"total_drop\">" +
-                                    "   <div class=\"clearfix\"><strong>Total</strong><span>$" + total + "</span></div>" +
-                                    "   <a href=\"/cart\" class=\"btn_1 outline\">View Cart</a><a href=\"checkout.html\" class=\"btn_1\">Checkout</a>" +
-                                    "</div>"
-                                ;
-                                header.html(header.innerHTML);
-                            }
-                            console.log(fetched_carts.indexOf(fetched_cart), header.innerHTML);
-                        }
-                    });
-                }
-            }
-        });
-
-    }
-
 
     "use strict";
 
@@ -261,14 +263,14 @@
         var oldValue = $button.parent().find("input").val();
         let newVal = 0;
         console.log(this, $button.text(), $button.text() === "+")
-        if ($button.text() === "+") {
+        if ($button.text().includes('+')) {
             newVal = parseFloat(oldValue) + 1;
         } else {
             // Don't allow decrementing below zero
-            if (oldValue > 1) {
+            if (oldValue > 2) {
                 newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         $button.parent().find("input").val(newVal);

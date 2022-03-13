@@ -216,6 +216,17 @@ def product_add_cart(request, instrument_id):
         exist_cart.count = exist_cart.count + 1
         exist_cart.save()
     else:
-        new_cart = Cart(user=request.user.id, instrument=instrument, count=1, user_id=1)
+        new_cart = Cart(user=request.user, instrument=instrument, count=1, user_id=1)
         new_cart.save()
+    return redirect('shop:cart')
+
+
+def product_minus_cart(request, instrument_id):
+    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+    if exist_cart.count > 1:
+        exist_cart.count = exist_cart.count - 1
+        exist_cart.save()
+    else:
+        exist_cart.delete()
+        exist_cart.save()
     return redirect('shop:cart')
