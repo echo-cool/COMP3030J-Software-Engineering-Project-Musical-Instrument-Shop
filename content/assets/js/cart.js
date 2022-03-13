@@ -25,7 +25,7 @@ function count_change_minus(id) {
     let id_for_price = "#price-" + id;
     let id_for_total = "#total-" + id;
     let total = 1;
-    if (parseFloat($(id_for_number).val()) > 2) {
+    if (parseFloat($(id_for_number).val()) > 1) {
         $.get("/cart/product_minus_cart/" + id,);
         total = (parseFloat($(id_for_number).val()) - 1) * parseFloat($(id_for_price).val());
         $(id_for_total).val(parseFloat(String(total)));

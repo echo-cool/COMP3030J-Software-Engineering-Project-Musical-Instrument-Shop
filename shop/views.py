@@ -131,8 +131,10 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
-def model_design(request):
-    return render(request, 'shop_templates/model-design.html')
+def model_design(request, model_id):
+    return render(request, 'shop_templates/model-design.html', {
+        "model_id": model_id,
+    })
 
 
 # search instruments by category
