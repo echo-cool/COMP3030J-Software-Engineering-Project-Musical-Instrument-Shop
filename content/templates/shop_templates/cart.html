@@ -64,6 +64,7 @@
                             }
                     </script>
                     {% for cart in carts %}
+                        <input value="{{ cart.instrument.id }}" name="instrument-{{ cart.instrument.id }}">
                         <tr id="cart-{{ cart.id }}">
                             <td>
                                 <div class="thumb_cart">
