@@ -119,7 +119,7 @@
                                             <div class="col-lg-3">
                                                 <h3>Other pages</h3>
                                                 <ul>
-                                                    <li><a href="cart.html">Cart Page</a></li>
+                                                    <li><a href="/cart">Cart Page</a></li>
                                                     <li><a href="checkout.html">Check Out Page</a></li>
                                                     <li><a href="confirm.html">Confirm Purchase Page</a></li>
                                                     <li><a href="account.html">Create Account Page</a></li>
@@ -225,37 +225,9 @@
                         <ul class="top_tools">
                             <li>
                                 <div class="dropdown dropdown-cart">
-                                    <a href="cart.html" class="cart_bt"><strong>2</strong></a>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li>
-                                                <a href="product-detail-1.html">
-                                                    <figure><img
-                                                            src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
-                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/1.jpg"
-                                                            alt=""
-                                                            width="50" height="50" class="lazy"></figure>
-                                                    <strong><span>1x Armor Air x Fear</span>$90.00</strong>
-                                                </a>
-                                                <a href="#0" class="action"><i class="ti-trash"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-detail-1.html">
-                                                    <figure><img
-                                                            src="{% static 'assets/img_for_shop/products/product_placeholder_square_small.jpg' %}"
-                                                            data-src="/static/assets/img_for_shop/products/shoes/thumb/2.jpg"
-                                                            alt=""
-                                                            width="50" height="50" class="lazy"></figure>
-                                                    <strong><span>1x Armor Okwahn II</span>$110.00</strong>
-                                                </a>
-                                                <a href="0" class="action"><i class="ti-trash"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="total_drop">
-                                            <div class="clearfix"><strong>Total</strong><span>$200.00</span></div>
-                                            <a href="cart.html" class="btn_1 outline">View Cart</a><a
-                                                href="checkout.html" class="btn_1">Checkout</a>
-                                        </div>
+                                    <a href="/cart" class="cart_bt"><strong>2</strong></a>
+                                    <div class="dropdown-menu header-cart">
+                                        {#    内容通过main.js 的函数实现  fetchHeaderCartList(刷新同理)  #}
                                     </div>
                                 </div>
                                 <!-- /dropdown-cart-->
