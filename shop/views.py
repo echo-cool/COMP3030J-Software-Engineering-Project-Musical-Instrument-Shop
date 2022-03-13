@@ -112,7 +112,9 @@ def wishlist(request):
 
 def checkout(request):
     order_id = random.randint(0, 10000)
-    for i in range(3):
+    carts_count = request.POST['carts_count']
+    count = int(carts_count)
+    for i in range(count):
         new_order = Order(user=request.user, order_id=order_id)
         new_order.save()
         print(new_order)

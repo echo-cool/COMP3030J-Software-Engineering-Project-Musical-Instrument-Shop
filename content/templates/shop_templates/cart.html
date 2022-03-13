@@ -12,6 +12,8 @@
 {% block content %}
 
     <main class="bg_gray">
+        <form method="POST" action="/checkout/">
+        {% csrf_token %}
         <div class="container margin_30">
             <div class="page_header">
                 <div class="breadcrumbs">
@@ -47,6 +49,7 @@
                 <tbody>
 
                 {% if carts %}
+                    <input value="{{ carts.count }}" name="carts_count">
                     <script>
                             function sum() {
                                 var sum = 0;
@@ -141,13 +144,13 @@
                                 <span>Total</span>$<input id="total" value="247.00">
                             </li>
                         </ul>
-                        <a href="../checkout" class="btn_1 full-width cart">Proceed to Checkout</a>
+                        <button type="submit" class="btn_1 full-width cart">Proceed to Checkout</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /box_cart -->
-
+        </form>
     </main>
     <!--/main-->
 

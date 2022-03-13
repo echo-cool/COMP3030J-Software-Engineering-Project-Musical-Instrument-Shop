@@ -67,8 +67,6 @@ function subtotal(id) {
 }
 
 
-
-
 function total() {
     $("#total")[0].value = parseFloat($("#subtotal_all")[0].value) + parseFloat($("#shipping")[0].value);
 }
