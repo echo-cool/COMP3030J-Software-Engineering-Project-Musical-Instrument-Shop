@@ -57,7 +57,7 @@
                                 <span class="item_cart">{{ cart.instrument.name }}</span>
                             </td>
                             <td>
-                                <input value="{{ cart.instrument.price }}" id="price-{{ cart.id }}" class=" price">
+                                <input value="{{ cart.instrument.price }}" id="price-{{ cart.id }}" class="price">
                             </td>
 
                             <td>
@@ -142,7 +142,7 @@
                         <span class="item_cart">Armor Okwahn II</span>
                     </td>
                     <td>
-                        <input value="110.00" class="price">
+                        <input value="110" class="price">
                     </td>
                     <td>
                         <div class="numbers-row">
@@ -269,14 +269,14 @@
                 total = 0;
             }
             console.log("count total for item", total)
-            $(id_for_total).val(total);
+            $(id_for_total).val(parseFloat(String(total)));
         }
 
         function remove_cart_item(id) {
             {#let id = this.id;#}
             console.log("delete", id);
             $.ajax({
-                url: "/api/cart/{" + id + "}/",
+                url: "/api/cart/" + id + "/",
                 method: "DELETE",
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
