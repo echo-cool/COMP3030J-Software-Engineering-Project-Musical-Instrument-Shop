@@ -74,7 +74,7 @@
         model_name = "model_design_guitar2.gltf";
     } else if (model_id === "guitar_style_3") {
         model_name = "model_design_guitar3.gltf";
-    } else if (model_id === "guitar_style_1") {
+    } else if (model_id === "piano_style_1") {
         model_name = "model_design_piano.gltf";
     } else {
         console.log(model_id);
@@ -114,15 +114,15 @@
     var deposite = new function () {
         this.merge_model = function () {
             // find the mesh of loaded model to iterater
-            scene.children[2].children[0].children[0].children.forEach(function (mesh) {
+            scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
                 specific_model_merge(mesh, model_id);
             })
         }
         this.split_model = function () {
-            console.log("model spilted");
-            console.log("scene.children[2].children[0].children", scene.children[2].children[0].children[0].children);
+            {#console.log("model spilted");#}
+            {#console.log("scene.children[2].children[0].children", scene.children[scene.children.length - 1].children[0].children[0].children);#}
             // find the mesh of loaded model to iterater
-            scene.children[2].children[0].children[0].children.forEach(function (mesh) {
+            scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
                 specific_model_split(mesh, model_id);
             })
         }
@@ -186,7 +186,7 @@
     let state_changeColor = false;
 
     {#gui.remember(deposite);#}
-    gui.domElement.style = 'height:100%';
+    {#gui.domElement.style = 'height:100%';#}
 
     function init() {
 
