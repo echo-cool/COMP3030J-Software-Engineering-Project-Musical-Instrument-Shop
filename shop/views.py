@@ -7,8 +7,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from management.forms import InstrumentForm, SearchForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review
+from management.forms import SearchForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 
 
 def index(request):
@@ -108,27 +108,29 @@ def model_view(request, product_id):
     })
 
 
-#
-# def checkout(request):
-#     new_item = Item(item_id=0)
-#     new_item.save()
-#     return render(request, 'shop_templates/checkout.html', {
-#         "id": new_item.id,
-#     })
-#
-#
-# def confirm(request):
-#     new_order = Order(user=request.user, name=request.POST['name'], last_name=request.POST['last_name'],
-#                       full_address=request.POST['full_address'], city=request.POST['city'],
-#                       postal_code=request.POST['postal_code'], country=request.POST['country'],
-#                       telephone=request.POST['telephone'], payment=request.POST['payment'],
-#                       shipping=request.POST['shipping'])
-#     new_order.save()
-#     # b_row = Item.objects.get(id=request.POST['item_id'])
-#     # b_row.Order = new_order
-#     # b_row.save()
-#     Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
-#     return render(request, 'shop_templates/confirm.html')
+def checkout(request):
+    order_id = random.randint(0, 10000)
+    for i in range(3):
+        new_order = Order(user=request.user, order_id=order_id)
+        new_order.save()
+        print(new_order)
+    return render(request, 'shop_templates/checkout.html', {
+        "order_id": order_id
+    })
+
+
+def confirm(request):
+    current_order = Order.objects.filter(order_id=request.POST['order_id'])
+    current_order.update(name=request.POST['name'], last_name=request.POST['last_name'],
+                         full_address=request.POST['full_address'], city=request.POST['city'],
+                         postal_code=request.POST['postal_code'], country=request.POST['country'],
+                         telephone=request.POST['telephone'], payment=request.POST['payment'],
+                         shipping=request.POST['shipping'])
+    # b_row = Item.objects.get(id=request.POST['item_id'])
+    # b_row.Order = new_order
+    # b_row.save()
+    # Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
+    return render(request, 'shop_templates/confirm.html')
 
 
 def model_design(request):
@@ -159,26 +161,16 @@ def product_search_by_category(request):
 
 
 # search instruments by keyword
-def product_search(request, keyword):
-    if request.method == "POST":
-        print("pst")
-        print("pst")
-        print("pst")
-        print("pst")
-        print("pst")
-    else:
-        print("show result here", request.POST.get("search_name", None))
-        f = SearchForm(initial={'search_name': keyword})
-        search_name = keyword
-        print(search_name)
-        instruments = Instrument.objects.filter(name__contains=search_name)
-        # categories = Category.objects.all()
-        for i in instruments:
-            i.percentage = round(i.price * 100 / i.old_price, 2)
-        return render(request, 'shop_templates/product-search.html', {
-            'form': f,
-            "instruments": instruments,
-        })
+def product_search(request):
+
+    search_text = request.GET.get("search", "")
+    instruments = Instrument.objects.filter(name__contains=search_text)
+    # categories = Category.objects.all()
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+    return render(request, 'shop_templates/product-search.html', {
+        "instruments": instruments,
+    })
 
 
 # search instruments by keyword
@@ -200,4 +192,24 @@ def empty_search(request):
 
 
 def cart(request):
-    return render(request, 'shop_templates/cart.html')
+    carts = Cart.objects.all()
+    each_cart = {}
+    for each_cart in carts:
+        each_cart.total_money = each_cart.count * each_cart.instrument.price
+    return render(request, 'shop_templates/cart.html', {
+        "carts": carts,
+    })
+
+
+def product_add_cart(request, instrument_id):
+    instrument = Instrument.objects.filter(id=instrument_id).first()
+    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+    if exist_cart:
+        exist_cart.count = exist_cart.count + 1
+        exist_cart.save()
+    else:
+        new_cart = Cart(user=request.user.id, instrument=instrument, count=1, user_id=1)
+        new_cart.save()
+    return redirect('shop:cart')
+
+# remove 之后用ajax 请求 api写更方便些

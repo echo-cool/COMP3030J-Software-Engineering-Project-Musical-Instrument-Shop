@@ -97,19 +97,19 @@ class Order(models.Model):
     # This is used to solve the problem of one order has more than one instrument
     order_id = models.IntegerField(default=0)
 
-    name = models.CharField(max_length=20, default="", null=True, blank=True)
-    last_name = models.CharField(max_length=20, default="", null=True, blank=True)
-    full_address = models.CharField(max_length=200, default="", null=True, blank=True)
-    city = models.CharField(max_length=20, default="", null=True, blank=True)
-    postal_code = models.CharField(max_length=50, default="", null=True, blank=True)
-    country = models.CharField(max_length=200, default="", null=True, blank=True)
-    telephone = models.CharField(max_length=200, default="(000)000-0000", null=True, blank=True)
-    payment = models.CharField(max_length=20, default="", null=True, blank=True)
-    shipping = models.CharField(max_length=20, default="", null=True, blank=True)
-    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
+    name = models.CharField(max_length=20, default="")
+    last_name = models.CharField(max_length=20, default="")
+    full_address = models.CharField(max_length=200, default="")
+    city = models.CharField(max_length=20, default="")
+    postal_code = models.CharField(max_length=50, default="")
+    country = models.CharField(max_length=200, default="")
+    telephone = models.CharField(max_length=200, default="(000)000-0000")
+    payment = models.CharField(max_length=20, default="")
+    shipping = models.CharField(max_length=20, default="")
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
     count = models.PositiveIntegerField(null=False, default=1)
-    # Item = models.ForeignKey('Item', max_length=200, on_delete=models.CASCADE, null=True)
-    newsletter = models.BooleanField(default=False, null=True, blank=True)
+
+    newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
     delivery_confirmed = models.BooleanField(default=False)
 
@@ -122,12 +122,27 @@ class Order(models.Model):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        'user', "order_id", 'name', 'last_name', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
+        'shipping', 'instrument', 'count', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+
+
+# class OrderItem(models.Model):
+#     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+#     count = models.PositiveIntegerField(null=False)
+#     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=False)
+#
+#     def __str__(self):
+#         return f'{self.order_id}<{self.instrument}:{self.count}>'
+#
+#
+# @admin.register(OrderItem)
+# class OrderItemAdmin(admin.ModelAdmin):
+#     pass
 
 
 class Review(models.Model):
-    order = models.OneToOneField('Order', on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    order = models.OneToOneField('Order', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(
         null=False,
         default=5,

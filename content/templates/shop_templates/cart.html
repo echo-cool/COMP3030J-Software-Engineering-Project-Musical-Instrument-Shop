@@ -45,6 +45,42 @@
                 </tr>
                 </thead>
                 <tbody>
+
+                {% if carts %}
+                    {% for cart in carts %}
+                        <tr>
+                            <td>
+                                <div class="thumb_cart">
+                                    <img src="{{ cart.instrument.img.url }}"
+                                         data-src="{{ cart.instrument.img.url }}" class="lazy" alt="Image">
+                                </div>
+                                <span class="item_cart">{{ cart.instrument.name }}</span>
+                            </td>
+                            <td>
+                                <input value="{{ cart.instrument.price }}" class="price">
+                            </td>
+
+                            <td>
+                                <div class="numbers-row">
+                                    <input type="text" value="{{ cart.count }}" id="quantity_3" class="qty2"
+                                           name="quantity_3"
+                                           onchange="subtotal(2); sum(); total()">
+                                    <div class="inc button_inc">+</div>
+                                    <div class="dec button_inc">-</div>
+                                </div>
+                            </td>
+                            <td>
+                                <input value="{{ cart.total_money }}" class="subtotal" onchange="sum()">
+                            </td>
+                            <td class="options">
+                                <a href="#"><i class="ti-trash"></i></a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                {% endif %}
+
+
                 <tr>
                     <td>
                         <div class="thumb_cart">
@@ -58,6 +94,7 @@
                     </td>
                     <script type="text/javascript">
                         var id;
+
                         function subtotal(id) {
                             var z = $(".qty2")[id].value;
                             $(".subtotal")[id].value = z * parseFloat($(".price")[id].value);
@@ -82,7 +119,8 @@
                     </script>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1" onchange="subtotal(0); sum(); total()">
+                            <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1"
+                                   onchange="subtotal(0); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
@@ -107,7 +145,8 @@
                     </td>
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2" onchange="subtotal(1); sum(); total()">
+                            <input type="text" value="1" id="quantity_2" class="qty2" name="quantity_2"
+                                   onchange="subtotal(1); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
@@ -133,7 +172,8 @@
 
                     <td>
                         <div class="numbers-row">
-                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3" onchange="subtotal(2); sum(); total()">
+                            <input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3"
+                                   onchange="subtotal(2); sum(); total()">
                             <div class="inc button_inc">+</div>
                             <div class="dec button_inc">-</div>
                         </div>
@@ -200,6 +240,6 @@
 
 {% block foot_link %}
 
-<script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
 
 {% endblock %}

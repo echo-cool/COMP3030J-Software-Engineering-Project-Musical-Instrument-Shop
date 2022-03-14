@@ -84,7 +84,8 @@
                     <a href="{% url "shop:category_view" category_id=index_categories.left_700_604.category.id %}">
                         <img src="{{ index_categories.left_700_604.category.main_image.url }}"
                              data-src="{{ index_categories.left_700_604.category.main_image.url }}" alt=""
-                             class="img-fluid lazy">
+                             class="img-fluid lazy"
+                        style="height: 100%; width: 100%">
                         <div class="wrapper">
                             <h2>{{ index_categories.left_700_604.category.name }}</h2>
                             <p>{{ index_categories.left_700_604.count }} Products</p>
@@ -97,7 +98,8 @@
                             <a href="{% url "shop:category_view" category_id=index_categories.right_top1_500_480.category.id %}">
                                 <img src="{{ index_categories.right_top1_500_480.category.main_image.url }}"
                                      data-src="{{ index_categories.right_top1_500_480.category.main_image.url }}" alt=""
-                                     class="img-fluid lazy">
+                                     class="img-fluid lazy"
+                                style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_top1_500_480.category.name }}</h2>
                                     <p>{{ index_categories.right_top1_500_480.count }} Products</p>
@@ -108,7 +110,8 @@
                             <a href="{% url "shop:category_view" category_id=index_categories.right_top2_500_480.category.id %}">
                                 <img src="{{ index_categories.right_top2_500_480.category.main_image.url }}"
                                      data-src="{{ index_categories.right_top2_500_480.category.main_image.url }}" alt=""
-                                     class="img-fluid lazy">
+                                     class="img-fluid lazy"
+                                style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_top2_500_480.category.name }}</h2>
                                     <p>{{ index_categories.right_top2_500_480.count }} Products</p>
@@ -118,8 +121,10 @@
                         <div class="col-sm-12 mt-sm-2">
                             <a href="{% url "shop:category_view" category_id=index_categories.right_bottom_800_343.category.id %}">
                                 <img src="{{ index_categories.right_bottom_800_343.category.main_image.url }}"
-                                     data-src="{{ index_categories.right_bottom_800_343.category.main_image.url }}" alt=""
-                                     class="img-fluid lazy">
+                                     data-src="{{ index_categories.right_bottom_800_343.category.main_image.url }}"
+                                     alt=""
+                                     class="img-fluid lazy"
+                                style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_bottom_800_343.category.name }}</h2>
                                     <p>{{ index_categories.right_bottom_800_343.count }} Products</p>
@@ -163,7 +168,7 @@
                                              src="{{ instrument.image.url }}"
                                              data-src="{{ instrument.image.url }}" alt="">
                                     </a>
-{#                                    <div data-countdown="2019/05/15" class="countdown"></div>#}
+                                    {#                                    <div data-countdown="2019/05/15" class="countdown"></div>#}
                                 </figure>
                                 <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
                                         class="icon-star voted"></i><i class="icon-star voted"></i><i
@@ -177,13 +182,16 @@
                                     <span class="old_price">${{ instrument.old_price }}</span>
                                 </div>
                                 <ul>
-                                    <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    <li><a href="/product_add_favorite" class="tooltip-1" data-bs-toggle="tooltip"
+                                           data-bs-placement="left"
                                            title="Add to favorites"><i
                                             class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                    <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    <li><a href="/product_add_compare" class="tooltip-1" data-bs-toggle="tooltip"
+                                           data-bs-placement="left"
                                            title="Add to compare"><i
                                             class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                                    <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    <li><a href="/cart/product_add_cart/{{ instrument.id }}" class="tooltip-1" data-bs-toggle="tooltip"
+                                           data-bs-placement="left"
                                            title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
                                     </li>
                                 </ul>
@@ -615,33 +623,33 @@
 <!-- page -->
 {% block foot_link %}
 
-<!-- COMMON SCRIPTS -->
-<script src="/static/assets/js_for_shop/common_scripts.min.js"></script>
-<script src="/static/assets/js_for_shop/main.js"></script>
+    <!-- COMMON SCRIPTS -->
+    <script src="/static/assets/js_for_shop/common_scripts.min.js"></script>
+    <script src="/static/assets/js_for_shop/main.js"></script>
 
-<!-- SPECIFIC SCRIPTS -->
-<script src="/static/assets/js_for_shop/modernizr.js"></script>
-<script src="/static/assets/js_for_shop/video_header.min.js"></script>
-<script>
-    // Video Header
-    HeaderVideo.init({
-        container: $('.header-video'),
-        header: $('.header-video--media'),
-        videoTrigger: $("#video-trigger"),
-        autoPlayVideo: true
-    });
-</script>
-<script src="/static/assets/js_for_shop/isotope.min.js"></script>
-<script>
-    // Isotope filter
-    $(window).on('load', function () {
-        var $container = $('.isotope-wrapper');
-        $container.isotope({itemSelector: '.isotope-item', layoutMode: 'masonry'});
-    });
-    $('.isotope_filter').on('click', 'a', 'change', function () {
-        var selector = $(this).attr('data-filter');
-        $('.isotope-wrapper').isotope({filter: selector});
-    });
-</script>
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="/static/assets/js_for_shop/modernizr.js"></script>
+    <script src="/static/assets/js_for_shop/video_header.min.js"></script>
+    <script>
+        // Video Header
+        HeaderVideo.init({
+            container: $('.header-video'),
+            header: $('.header-video--media'),
+            videoTrigger: $("#video-trigger"),
+            autoPlayVideo: true
+        });
+    </script>
+    <script src="/static/assets/js_for_shop/isotope.min.js"></script>
+    <script>
+        // Isotope filter
+        $(window).on('load', function () {
+            var $container = $('.isotope-wrapper');
+            $container.isotope({itemSelector: '.isotope-item', layoutMode: 'masonry'});
+        });
+        $('.isotope_filter').on('click', 'a', 'change', function () {
+            var selector = $(this).attr('data-filter');
+            $('.isotope-wrapper').isotope({filter: selector});
+        });
+    </script>
 
 {% endblock %}
