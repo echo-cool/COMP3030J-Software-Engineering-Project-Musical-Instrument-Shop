@@ -120,6 +120,7 @@ def checkout(request):
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
+        "orders"
         "order_id": order_id
     })
 
@@ -209,7 +210,7 @@ def empty_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.all()
+    carts = Cart.objects.filter(user=request.user)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price
