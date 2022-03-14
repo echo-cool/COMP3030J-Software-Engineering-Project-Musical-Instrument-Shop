@@ -64,7 +64,8 @@
                             }
                     </script>
                     {% for cart in carts %}
-                        <input value="{{ cart.instrument.id }}" name="instrument-{{ cart.instrument.id }}">
+                        <input type="hidden" value="{{ forloop.counter }}" name="cart-{{ forloop.counter }}">
+                        <input type="hidden" value="{{ cart.instrument.id }}" name="instrument-{{ forloop.counter }}">
                         <tr id="cart-{{ cart.id }}">
                             <td>
                                 <div class="thumb_cart">
@@ -74,28 +75,28 @@
                                 <span class="item_cart">{{ cart.instrument.name }}</span>
                             </td>
                             <td>
-                                <input value="{{ cart.instrument.price }}" id="price-{{ cart.instrument.id }}"
+                                <input value="{{ cart.instrument.price }}" id="price-{{ forloop.counter }}"
                                        class="price">
                             </td>
                             <td>
                                 <div class="numbers-row">
-                                    <input type="text" value="{{ cart.count }}" id="quantity-{{ cart.instrument.id }}"
+                                    <input type="text" value="{{ cart.count }}" id="quantity-{{ forloop.counter }}"
                                            class="qty2" name="quantity_3"
-                                           onchange="count_change('{{ cart.instrument.id }}'); subtotal('{{ cart.instrument.id }}'); sum(); total();">
+                                           onchange="count_change('{{ forloop.counter }}'); subtotal('{{ forloop.counter }}'); sum(); total();">
                                     {# Kao, don't use '\n' here, will influence the js file #}
-                                    <div class="inc button_inc" onclick="count_change_add('{{ cart.instrument.id }}'); sum(); total();">+
+                                    <div class="inc button_inc" onclick="count_change_add('{{ forloop.counter }}'); sum(); total();">+
                                     </div>
-                                    <div class="dec button_inc" onclick="count_change_minus('{{ cart.instrument.id }}'); sum(); total();">-
+                                    <div class="dec button_inc" onclick="count_change_minus('{{ forloop.counter }}'); sum(); total();">-
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <input value="{{ cart.total_money }}" id="total-{{ cart.instrument.id }}"
+                                <input value="{{ cart.total_money }}" id="total-{{ forloop.counter }}"
                                        class="subtotal" onchange="sum()">
                             </td>
                             <td class="options">
                                 <a href="#">
-                                    <i onclick="remove_cart_item('{{ cart.instrument.id }}')" class="ti-trash"></i>
+                                    <i onclick="remove_cart_item('{{ forloop.counter }}')" class="ti-trash"></i>
                                 </a>
                             </td>
                         </tr>
