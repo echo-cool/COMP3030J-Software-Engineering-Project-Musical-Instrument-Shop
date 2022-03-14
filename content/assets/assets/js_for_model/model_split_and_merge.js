@@ -145,13 +145,13 @@ function specific_model_merge(mesh) {
             switch (mesh.name) {
                 case'guitar_face':
                     TweenLite.to(mesh.position, 1.5, {
-                        z: -0.05,
+                        z: 0.02,
                         ease: Power4.easeOut
                     });
                     break;
                 case 'guitar_back':
                     TweenLite.to(mesh.position, 1.5, {
-                        z: -0.4,
+                        z: -0.45,
                         ease: Power4.easeOut
                     });
                     break;
