@@ -25,4 +25,5 @@ urlpatterns = [
     path("product_search/<str:keyword>", product_search, name='product_search'),
     path("product_search/", empty_search, name='empty_search'),
     path("category/<str:category_id>", category_view, name='category_view'),
+    path('wishlist/', wishlist, name='wishlist'),
 ]
