@@ -103,7 +103,7 @@ def leave_review2(request):
 def model_view(request, product_id):
 
     instrument = get_object_or_404(Instrument, pk=product_id)
-    return render(request, 'shop_templates/3d3.html', {
+    return render(request, 'shop_templates/product-detail-model.html', {
         "instrument": instrument,
     })
 
@@ -115,15 +115,21 @@ def wishlist(request):
 def checkout(request):
     order_id = random.randint(0, 10000)
     carts_count = request.POST['carts_count']
+    shipping = request.POST['shipping']
+    subtotal_all = request.POST['subtotal_all']
+    total = request.POST['total']
     count = int(carts_count)
     for i in range(1, count+1):
         instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument)
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument, quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
-        "orders"
-        "order_id": order_id
+        "orders": Order.objects.filter(user=request.user, order_id=order_id),
+        "order_id": order_id,
+        "shipping": shipping,
+        "subtotal_all": subtotal_all,
+        "total": total
     })
 
 
@@ -234,3 +240,21 @@ def product_minus_cart(request, instrument_id):
         exist_cart.delete()
         exist_cart.save()
     return redirect('shop:cart')
+
+
+def product_details_test_model(request, product_id):
+    categories = Category.objects.all()
+    instrument = Instrument.objects.get(id=product_id)
+    instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
+    all_instruments = Instrument.objects.all()
+    related = []
+    for i in range(5):
+        num = random.randint(0, len(all_instruments) - 1)
+        related.append(all_instruments[num])
+    return render(request, 'shop_templates/product-detail-2.html', {
+        "instrument": instrument,
+        "discount": instrument.price * 100 / instrument.old_price,
+        "instrument_details": instrument_details,
+        "related": related,
+        'categories': categories
+    })
