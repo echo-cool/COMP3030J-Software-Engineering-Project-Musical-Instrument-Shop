@@ -1,7 +1,14 @@
 {% extends 'layouts/default/page.html' %}
 
-{% load bootstrap4 %}
+{% load static %}
 {% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <!-- BASE CSS -->
+    <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 
@@ -16,4 +23,8 @@
 
     </form>
 
+{% endblock %}
+{% block foot_link %}
+<script src="/static/assets/js_for_shop/modernizr.js"></script>
+<script src="/static/assets/js_for_shop/video_header.min.js"></script>
 {% endblock %}

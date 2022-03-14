@@ -151,15 +151,17 @@ def model_design(request, model_id):
 def product_search_by_category(request):
     if request.method == "GET":
         category_li = request.GET.get("checked_category", None)
+        search_text = request.GET.get("search", "")
         print(category_li)
         category_list = [ch for ch in category_li]
         print(category_list)
         i = 0
+        instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
         instruments = []
         while i < len(category_list):
             print(category_list[i] == str(1))
             if category_list[i] == str(1):
-                searched_instruments = Instrument.objects.filter(category_id=i + 1)
+                searched_instruments = instruments_by_search_bar.filter(category=i+1)
                 for j in searched_instruments:
                     instruments.append(j)
                 print(len(instruments))
@@ -184,21 +186,21 @@ def product_search(request):
 
 
 # search instruments by keyword
-def empty_search(request):
-    if request.method == "POST":
-        print("redirect from Empty", request.POST.get("search_name", None))
-        return redirect('shop:product_search', keyword=request.POST.get("search_name", None))
-    else:
-        # search homepage, show all instruments
-        f = SearchForm()
-        instruments = Instrument.objects.all()
-        # categories = Category.objects.all()
-        for i in instruments:
-            i.percentage = round(i.price * 100 / i.old_price, 2)
-        return render(request, 'shop_templates/product-search.html', {
-            'form': f,
-            "instruments": instruments,
-        })
+# def empty_search(request):
+#     if request.method == "POST":
+#         print("redirect from Empty", request.POST.get("search_name", None))
+#         return redirect('shop:product_search', keyword=request.POST.get("search_name", None))
+#     else:
+#         # search homepage, show all instruments
+#         f = SearchForm()
+#         instruments = Instrument.objects.all()
+#         # categories = Category.objects.all()
+#         for i in instruments:
+#             i.percentage = round(i.price * 100 / i.old_price, 2)
+#         return render(request, 'shop_templates/product-search.html', {
+#             'form': f,
+#             "instruments": instruments,
+#         })
 
 
 def cart(request):
