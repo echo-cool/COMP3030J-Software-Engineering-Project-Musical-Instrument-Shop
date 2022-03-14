@@ -97,7 +97,7 @@ class Order(models.Model):
     # This is used to solve the problem of one order has more than one instrument
     order_id = models.IntegerField(default=0)
 
-    name = models.CharField(max_length=20, default="")
+    name = models.CharField(max_length=20, default="", null=True)
     last_name = models.CharField(max_length=20, default="")
     full_address = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=20, default="")
@@ -107,7 +107,8 @@ class Order(models.Model):
     payment = models.CharField(max_length=20, default="")
     shipping = models.CharField(max_length=20, default="")
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True)
-    count = models.PositiveIntegerField(null=False, default=1)
+    quantity = models.PositiveIntegerField(null=False, default=1)
+    subtotal = models.FloatField(null=False, default=0)
 
     newsletter = models.BooleanField(default=False)
     shopper_confirmed = models.BooleanField(default=False)
@@ -122,8 +123,8 @@ class Order(models.Model):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment',
-        'shipping', 'instrument', 'count', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment', 'subtotal',
+        'shipping', 'instrument', 'quantity', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 
 # class OrderItem(models.Model):

@@ -115,15 +115,21 @@ def wishlist(request):
 def checkout(request):
     order_id = random.randint(0, 10000)
     carts_count = request.POST['carts_count']
+    shipping = request.POST['shipping']
+    subtotal_all = request.POST['subtotal_all']
+    total = request.POST['total']
     count = int(carts_count)
     for i in range(1, count+1):
         instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument)
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument, quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
-        "orders"
-        "order_id": order_id
+        "orders": Order.objects.filter(user=request.user, order_id=order_id),
+        "order_id": order_id,
+        "shipping": shipping,
+        "subtotal_all": subtotal_all,
+        "total": total
     })
 
 

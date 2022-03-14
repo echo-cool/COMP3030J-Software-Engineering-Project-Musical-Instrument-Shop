@@ -254,16 +254,14 @@
                             <div class="box_general summary">
                                 <ul>
                                     {% for order in orders %}
-                                    <li class="clearfix"><em>1x Armor Air X Fear</em> <span>$145.00</span></li>
-                                    <li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li>
+                                    <li class="clearfix"><em>{{ order.quantity }}x {{ order.instrument.name }}</em> <span>${{ order.subtotal }}</span></li>
                                     {% endfor %}
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><em><strong>Subtotal</strong></em> <span>${{ order_id }}</span></li>
-                                    <li class="clearfix"><em><strong>Shipping</strong></em> <span>${{ order_id }}</span></li>
-
+                                    <li class="clearfix"><em><strong>Subtotal</strong></em> <span>${{ shipping }}</span></li>
+                                    <li class="clearfix"><em><strong>Shipping</strong></em> <span>${{ subtotal_all }}</span></li>
                                 </ul>
-                                <div class="total clearfix">TOTAL <span>${{ order_id }}</span></div>
+                                <div class="total clearfix">TOTAL <span>${{ total }}</span></div>
                                 <div class="form-group">
                                     <label class="container_check">Register to the Newsletter.
                                         <input name="newsletter" type="checkbox" checked>
