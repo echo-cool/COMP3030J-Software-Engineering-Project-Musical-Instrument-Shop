@@ -108,13 +108,21 @@ def model_view(request, product_id):
     })
 
 
+def wishlist(request):
+    return render(request, 'shop_templates/wishlist.html')
+
+
 def checkout(request):
     order_id = random.randint(0, 10000)
-    for i in range(3):
-        new_order = Order(user=request.user, order_id=order_id)
+    carts_count = request.POST['carts_count']
+    count = int(carts_count)
+    for i in range(1, count+1):
+        instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument)
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
+        "orders"
         "order_id": order_id
     })
 
@@ -133,8 +141,10 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
-def model_design(request):
-    return render(request, 'shop_templates/model-design.html')
+def model_design(request, model_id):
+    return render(request, 'shop_templates/model-design.html', {
+        "model_id": model_id,
+    })
 
 
 # search instruments by category
@@ -192,7 +202,7 @@ def empty_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.all()
+    carts = Cart.objects.filter(user=request.user)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price
@@ -208,8 +218,17 @@ def product_add_cart(request, instrument_id):
         exist_cart.count = exist_cart.count + 1
         exist_cart.save()
     else:
-        new_cart = Cart(user=request.user.id, instrument=instrument, count=1, user_id=1)
+        new_cart = Cart(user=request.user, instrument=instrument, count=1, user_id=1)
         new_cart.save()
     return redirect('shop:cart')
 
-# remove 之后用ajax 请求 api写更方便些
+
+def product_minus_cart(request, instrument_id):
+    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+    if exist_cart.count > 1:
+        exist_cart.count = exist_cart.count - 1
+        exist_cart.save()
+    else:
+        exist_cart.delete()
+        exist_cart.save()
+    return redirect('shop:cart')
