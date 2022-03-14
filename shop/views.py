@@ -71,6 +71,7 @@ def product_details(request, product_id):
 
 
 def leave_review(request, order_id, instrument_id):
+
     return render(request, 'shop_templates/leave-review.html')
 
 
@@ -100,20 +101,35 @@ def leave_review2(request):
 
 
 def model_view(request, product_id):
+
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/product-detail-model.html', {
         "instrument": instrument,
     })
 
 
+def wishlist(request):
+    return render(request, 'shop_templates/wishlist.html')
+
+
 def checkout(request):
     order_id = random.randint(0, 10000)
-    for i in range(3):
-        new_order = Order(user=request.user, order_id=order_id)
+    carts_count = request.POST['carts_count']
+    shipping = request.POST['shipping']
+    subtotal_all = request.POST['subtotal_all']
+    total = request.POST['total']
+    count = int(carts_count)
+    for i in range(1, count+1):
+        instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument, quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
-        "order_id": order_id
+        "orders": Order.objects.filter(user=request.user, order_id=order_id),
+        "order_id": order_id,
+        "shipping": shipping,
+        "subtotal_all": subtotal_all,
+        "total": total
     })
 
 
@@ -161,26 +177,16 @@ def product_search_by_category(request):
 
 
 # search instruments by keyword
-def product_search(request, keyword):
-    if request.method == "POST":
-        print("pst")
-        print("pst")
-        print("pst")
-        print("pst")
-        print("pst")
-    else:
-        print("show result here", request.POST.get("search_name", None))
-        f = SearchForm(initial={'search_name': keyword})
-        search_name = keyword
-        print(search_name)
-        instruments = Instrument.objects.filter(name__contains=search_name)
-        # categories = Category.objects.all()
-        for i in instruments:
-            i.percentage = round(i.price * 100 / i.old_price, 2)
-        return render(request, 'shop_templates/product-search.html', {
-            'form': f,
-            "instruments": instruments,
-        })
+def product_search(request):
+
+    search_text = request.GET.get("search", "")
+    instruments = Instrument.objects.filter(name__contains=search_text)
+    # categories = Category.objects.all()
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+    return render(request, 'shop_templates/product-search.html', {
+        "instruments": instruments,
+    })
 
 
 # search instruments by keyword
@@ -202,7 +208,7 @@ def empty_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.all()
+    carts = Cart.objects.filter(user=request.user)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price
