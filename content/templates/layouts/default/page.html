@@ -78,7 +78,7 @@
                         <!-- Mobile menu button -->
                         <div class="main-menu">
                             <div id="header_menu">
-                                <a href="index.html"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt=""
+                                <a href="{% url 'shop:index' %}"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt=""
                                                           width="100" height="35"></a>
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                             </div>
@@ -86,7 +86,7 @@
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="show-submenu">Home</a>
                                     <ul>
-                                        <li><a href="index.html">Slider</a></li>
+                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>
                                         <li><a href="index-2.html">Video Background</a></li>
                                         <li><a href="index-3.html">Vertical Slider</a></li>
                                         <li><a href="index-4.html">GDPR Cookie Bar</a></li>
@@ -225,7 +225,7 @@
                         <form id="search_form" action="/product_search/" method="post" class="navbar-form navbar-left">
                             {% csrf_token %}
                             <div class="custom-search-input">
-                                <input type="text" name="search_name" placeholder="Search over 10.000 products">
+                                <input type="text" name="search_name" id="search_text" placeholder="Search over 10.000 products">
                                 <button type="submit"><i class="header-icon_search_custom"></i></button>
                             </div>
                         </form>
@@ -238,7 +238,7 @@
                         <ul class="top_tools">
                             <li>
                                 <div class="dropdown dropdown-cart">
-                                    <a href="/cart" class="cart_bt"><strong>2</strong></a>
+                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>
                                     <div class="dropdown-menu header-cart">
                                         {#    内容通过main.js 的函数实现  fetchHeaderCartList(刷新同理)  #}
                                     </div>
@@ -512,6 +512,17 @@
 	}, 300);
 	{% endfor %}{% endif %}
 </script>
+<script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+<script src="{% static 'assets/js/add_url.js' %}"></script>
+<script>
+    jQuery(function ($) {
+        $('#search_form').on('submit', function (e) {
+            window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
+            return false;
+        });
+    })
+</script>
+
 {% block foot_link %}
 
 {% endblock %}

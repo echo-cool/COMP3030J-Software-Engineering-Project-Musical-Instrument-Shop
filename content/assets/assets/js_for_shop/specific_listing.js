@@ -15,6 +15,12 @@ function sticktothetop() {
     }
 }
 
+function getQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return decodeURIComponent(r[2]); return null;
+}
+
 jQuery(function ($) {
     $(window).scroll(sticktothetop);
     sticktothetop();
@@ -78,6 +84,7 @@ function activateCategorySearch() {
                     // headers: {"X-CSRFToken": csrf_token},
                     data: {
                         "checked_category": checked_list.join(""),
+                        "search_keyword": getQueryString("search"),
                     },
                     success: function (data) {
                         console.log(data);

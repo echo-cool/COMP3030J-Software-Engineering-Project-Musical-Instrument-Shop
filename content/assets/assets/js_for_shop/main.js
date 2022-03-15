@@ -46,7 +46,7 @@ function fetchHeaderCartList() {
                             ;
                             header.html(header.innerHTML);
                         }
-                        console.log(fetched_carts.indexOf(fetched_cart), fetched_carts.length, reached_cart.length, header.innerHTML);
+                        // console.log(fetched_carts.indexOf(fetched_cart), fetched_carts.length, reached_cart.length, header.innerHTML);
                     }
                 });
             }
