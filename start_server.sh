@@ -5,4 +5,4 @@ python3 -m pip install -r requirements.txt
 #python3 manage.py migrate shop
 
 
-python3 manage.py runserver 0.0.0.0:8881
+python3 manage.py runserver 0.0.0.0:5008
