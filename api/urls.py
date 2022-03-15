@@ -1,6 +1,6 @@
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
-    ProfileViewSet, UserViewSet
+    ProfileViewSet, UserViewSet, CartViewSet
 
 router = routers.DefaultRouter()
 router.register('instruments', InstrumentsViewSet, 'instruments')
@@ -10,5 +10,6 @@ router.register('review', ReviewViewSet, 'review')
 router.register('instrumentDetail', InstrumentDetailViewSet, 'instrumentDetail')
 router.register('profile', ProfileViewSet, 'profile')
 router.register('user', UserViewSet, 'user')
+router.register('cart', CartViewSet, 'cart')
 # print(router.urls)
 urlpatterns = router.urls

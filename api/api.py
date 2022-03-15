@@ -1,9 +1,9 @@
 import django_filters
 from django.contrib.auth.models import User
 
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
-    InstrumentDetailSerializer, UserSerializer
+    InstrumentDetailSerializer, UserSerializer, CartSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -73,3 +73,11 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
+
+class CartViewSet(viewsets.ModelViewSet):
+    queryset = Cart.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = CartSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
