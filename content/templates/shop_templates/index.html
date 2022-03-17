@@ -183,10 +183,11 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <a class="tooltip-1" data-bs-toggle="tooltip"
+                                        <a class="tooltip-1 wishlist-{{ instrument.id }}" id="add-wishlist-item"
+                                           data-bs-toggle="tooltip"
                                            data-bs-placement="left"
                                            title="Add to favorites">
-                                            <i onclick="add_wishlist_item({{ instrument.id }})" class="ti-heart"></i>
+                                            <i class="ti-heart"></i>
                                             <span>Add to favorites</span>
                                         </a>
                                     </li>
@@ -659,6 +660,10 @@
         $('.isotope_filter').on('click', 'a', 'change', function () {
             var selector = $(this).attr('data-filter');
             $('.isotope-wrapper').isotope({filter: selector});
+        });
+        $("#add-wishlist-item").on("click", function () {
+            let id = this.className.remove("tooltip-1 wishlist-");
+            console.log("print id addded to wishlist", id);
         });
     </script>
 
