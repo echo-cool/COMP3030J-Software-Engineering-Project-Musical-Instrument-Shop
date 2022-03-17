@@ -111,7 +111,7 @@ def model_view(request, product_id):
 def wishlist(request):
     carts = Cart.objects.filter(user=1)
     return render(request, 'shop_templates/wishlist.html', {
-        "wishlist": carts,
+        "wishlists": carts,
     })
 
 

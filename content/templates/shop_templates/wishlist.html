@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block content %}
+    {% if wishlists %}
+        {% for wishlist in wishlists %}
+            {{ wishlists.id }}
+        {% endfor %}
+    {% endif %}
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
