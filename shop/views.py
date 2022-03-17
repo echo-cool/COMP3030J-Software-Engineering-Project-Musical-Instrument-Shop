@@ -2,6 +2,7 @@
 import json
 import random
 
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -34,6 +35,7 @@ def index(request):
     }
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
+
     return render(request, 'shop_templates/index.html', {
         "instruments": instruments,
         "categories": categories,
