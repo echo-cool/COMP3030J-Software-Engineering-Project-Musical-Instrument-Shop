@@ -29,7 +29,7 @@
             border-radius: 4px;
         }
 
-        .table td[class="remove-pr"] a {
+        .table td[class="remove-pr"] div {
             color: white;
             position: relative;
             width: 65%;
@@ -83,7 +83,7 @@
                             <tbody>
                             {% if wishlists %}
                                 {% for wishlist in wishlists %}
-                                    <tr>
+                                    <tr id="wish-{{ wishlist.id }}">
                                         <td class="thumbnail-img" style="width: 20%;">
                                             <a href="/product-detail/{{ wishlist.instrument.id }}">
                                                 <img class="img-fluid"
@@ -104,9 +104,11 @@
                                                 Add to Cart</a>
                                         </td>
                                         <td class="remove-pr">
-                                            <a class="btn hvr-hover" href="/api/wishlist/{{ wishlist.instrument.id }}">
-                                                <i class="fas fa-times">Remove from Wishlist</i>
-                                            </a>
+                                            <div class="btn hvr-hover">
+                                                <i class="fas fa-times"
+                                                   onclick="remove_wishlist_item({{ forloop.counter }})">Remove from
+                                                    Wishlist</i>
+                                            </div>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -150,5 +152,25 @@
 {% block foot_link %}
 
     <script src="{% static 'js/wishlist.js' %}"></script>
+    <script>
+        function remove_wishlist_item(id) {
+            console.log("delete", id);
+            $.ajax({
+                url: "/api/wishlist/" + id,
+                method: "DELETE",
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    let id_for_delete = "#wish-" + id;
+                    $(id_for_delete).remove();
+                },
+                error: function (res) {
+                    console.log("ji", id, res);
+                }
+            })
+            fetchHeaderCartList();
+        }
+    </script>
 
 {% endblock %}

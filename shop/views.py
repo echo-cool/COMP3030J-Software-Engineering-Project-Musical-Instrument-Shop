@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import SearchForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
 
 
 def index(request):
@@ -109,9 +109,9 @@ def model_view(request, product_id):
 
 
 def wishlist(request):
-    carts = Cart.objects.filter(user=1)
+    wishlists = Wishlist.objects.filter(user=1)
     return render(request, 'shop_templates/wishlist.html', {
-        "wishlists": carts,
+        "wishlists": wishlists,
     })
 
 
