@@ -6,6 +6,40 @@
 
 {% block head_link %}
     <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <style>
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table td p {
+            margin-bottom: 0px;
+        }
+
+        .table td[class="name-pr"] a {
+            font-size: large;
+            color: olivedrab;
+        }
+
+        .table td[class="add-pr"] a {
+        {#background: lightblue;#} color: white;
+            position: relative;
+            width: 65%;
+            cursor: pointer;
+            background: #5dc9ee;
+            border-radius: 4px;
+        }
+
+        .table td[class="remove-pr"] a {
+            color: white;
+            position: relative;
+            width: 65%;
+            cursor: pointer;
+            background: lightpink;
+            border-radius: 4px;
+        {#font-size: small; #}{#    color: lightpink;#}
+        }
+
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -35,7 +69,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-main table-responsive">
-                        <table class="table">
+                        <table class="table" style="text-align-last: center;">
                             <thead>
                             <tr>
                                 <th>Images</th>
@@ -50,7 +84,7 @@
                             {% if wishlists %}
                                 {% for wishlist in wishlists %}
                                     <tr>
-                                        <td class="thumbnail-img">
+                                        <td class="thumbnail-img" style="width: 20%;">
                                             <a href="/product-detail/{{ wishlist.instrument.id }}">
                                                 <img class="img-fluid"
                                                      src="{{ wishlist.instrument.image.url }}" alt=""/>
@@ -58,11 +92,11 @@
                                         </td>
                                         <td class="name-pr">
                                             <a href="/product-detail/{{ wishlist.instrument.id }}">
-                                                {{ cart.instrument.name }}
+                                                {{ wishlist.instrument.name }}
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p>$ {{ cart.instrument.price }}</p>
+                                            <p>$ {{ wishlist.instrument.price }}</p>
                                         </td>
                                         <td class="quantity-box">In Stock</td>
                                         <td class="add-pr">
@@ -70,8 +104,8 @@
                                                 Add to Cart</a>
                                         </td>
                                         <td class="remove-pr">
-                                            <a href="/api/wishlist/{{ wishlist.instrument.id }}">
-                                                <i class="fas fa-times"></i>
+                                            <a class="btn hvr-hover" href="/api/wishlist/{{ wishlist.instrument.id }}">
+                                                <i class="fas fa-times">Remove from Wishlist</i>
                                             </a>
                                         </td>
                                     </tr>
