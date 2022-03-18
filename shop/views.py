@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import SearchForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
 
 
 def index(request):
@@ -73,7 +73,6 @@ def product_details(request, product_id):
 
 
 def leave_review(request, order_id, instrument_id):
-
     return render(request, 'shop_templates/leave-review.html')
 
 
@@ -103,7 +102,6 @@ def leave_review2(request):
 
 
 def model_view(request, product_id):
-
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/product-detail-model.html', {
         "instrument": instrument,
@@ -111,7 +109,10 @@ def model_view(request, product_id):
 
 
 def wishlist(request):
-    return render(request, 'shop_templates/wishlist.html')
+    wishlists = Wishlist.objects.filter(user=1)
+    return render(request, 'shop_templates/wishlist.html', {
+        "wishlists": wishlists,
+    })
 
 
 def checkout(request):
@@ -121,9 +122,10 @@ def checkout(request):
     subtotal_all = request.POST['subtotal_all']
     total = request.POST['total']
     count = int(carts_count)
-    for i in range(1, count+1):
+    for i in range(1, count + 1):
         instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument, quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
+                          quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
         new_order.save()
         print(new_order)
     return render(request, 'shop_templates/checkout.html', {
@@ -169,7 +171,7 @@ def product_search_by_category(request):
         while i < len(category_list):
             print(category_list[i] == str(1))
             if category_list[i] == str(1):
-                searched_instruments = instruments_by_search_bar.filter(category=i+1)
+                searched_instruments = instruments_by_search_bar.filter(category=i + 1)
                 for j in searched_instruments:
                     instruments.append(j)
                 print(len(instruments))
@@ -182,7 +184,6 @@ def product_search_by_category(request):
 
 # search instruments by keyword
 def product_search(request):
-
     search_text = request.GET.get("search", "")
     instruments = Instrument.objects.filter(name__contains=search_text)
     # categories = Category.objects.all()
@@ -212,7 +213,7 @@ def product_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.filter(user=request.user)
+    carts = Cart.objects.filter(user=1)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price

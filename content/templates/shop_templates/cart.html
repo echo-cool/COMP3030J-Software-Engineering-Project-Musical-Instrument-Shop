@@ -13,144 +13,162 @@
 
     <main class="bg_gray">
         <form method="POST" action="/checkout/">
-        {% csrf_token %}
-        <div class="container margin_30">
-            <div class="page_header">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li>Page active</li>
-                    </ul>
+            {% csrf_token %}
+            <div class="container margin_30">
+                <div class="page_header">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Category</a></li>
+                            <li>Page active</li>
+                        </ul>
+                    </div>
+                    <h1>Cart page</h1>
                 </div>
-                <h1>Cart page</h1>
-            </div>
-            <!-- /page_header -->
-            <table class="table table-striped cart-list">
-                <thead>
-                <tr>
-                    <th>
-                        Product
-                    </th>
-                    <th>
-                        Price($)
-                    </th>
-                    <th>
-                        Quantity
-                    </th>
-                    <th>
-                        Subtotal($)
-                    </th>
-                    <th>
+                <!-- /page_header -->
+                <table class="table table-striped cart-list">
+                    <thead>
+                    <tr>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Price($)
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Subtotal($)
+                        </th>
+                        <th>
 
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                {% if carts %}
-                    <input value="{{ carts.count }}" name="carts_count">
-                    <script>
+                    {% if carts %}
+                        {#  <input value="{{ carts.count }}" name="carts_count">#}
+                        <script>
                             function sum() {
                                 var sum = 0;
                                 for (var id = 1; id <= {{ carts.count }}; id++) {
                                     let id_for_total = "#total-" + id;
-                                    {#console.log(5555555555555);#}
-                                    {#console.log(id_for_total)#}
-                                    {#console.log(6666666666666);#}
                                     sum += parseFloat($(id_for_total)[0].value);
                                 }
-                                $("#subtotal_all")[0].value = sum;
+                                let subtotal_all = $("#subtotal_all");
+                                let total = $("#total");
+
+                                let sub_content = subtotal_all.html();
+                                let to_content = total.html();
+
+                                console.log("ssd", sub_content);
+                                subtotal_all.html(sub_content.split("$")[0] + "$ " + sum);
+                                total.html(to_content.split("$")[0] + "$ " + sum);
+
                             }
-                    </script>
-                    {% for cart in carts %}
-                        <input type="hidden" value="{{ forloop.counter }}" name="cart-{{ forloop.counter }}">
-                        <input type="hidden" value="{{ cart.instrument.id }}" name="instrument-{{ forloop.counter }}">
-                        <tr id="cart-{{ cart.id }}">
-                            <td>
-                                <div class="thumb_cart">
-                                    <img src="{{ cart.instrument.image.url }}"
-                                         data-src="{{ cart.instrument.image.url }}" class="lazy" alt="Image">
-                                </div>
-                                <span class="item_cart">{{ cart.instrument.name }}</span>
-                            </td>
-                            <td>
-                                <input value="{{ cart.instrument.price }}" id="price-{{ forloop.counter }}"
-                                       class="price">
-                            </td>
-                            <td>
-                                <div class="numbers-row">
-                                    <input type="text" value="{{ cart.count }}" id="quantity-{{ forloop.counter }}"
-                                           class="qty2" name="quantity-{{ forloop.counter }}"
-                                           onchange="count_change('{{ forloop.counter }}'); subtotal('{{ forloop.counter }}'); sum(); total();">
-                                    {# Kao, don't use '\n' here, will influence the js file #}
-                                    <div class="inc button_inc" onclick="count_change_add('{{ forloop.counter }}'); sum(); total();">+
+                        </script>
+                        {% for cart in carts %}
+                            <input type="hidden" value="{{ forloop.counter }}" name="cart-{{ forloop.counter }}">
+                            <input type="hidden" value="{{ cart.instrument.id }}"
+                                   name="instrument-{{ forloop.counter }}">
+                            <tr id="cart-{{ cart.id }}">
+                                <td>
+                                    <div class="thumb_cart">
+                                        <img src="{{ cart.instrument.image.url }}"
+                                             data-src="{{ cart.instrument.image.url }}" class="lazy" alt="Image">
                                     </div>
-                                    <div class="dec button_inc" onclick="count_change_minus('{{ forloop.counter }}'); sum(); total();">-
+                                    <span class="item_cart">{{ cart.instrument.name }}</span>
+                                </td>
+                                <td>
+                                    <input value="{{ cart.instrument.price }}" id="price-{{ forloop.counter }}"
+                                           class="price">
+                                </td>
+                                <td>
+                                    <div class="numbers-row">
+                                        <input type="text" value="{{ cart.count }}" id="quantity-{{ forloop.counter }}"
+                                               class="qty2" name="quantity-{{ forloop.counter }}"
+                                               onchange="count_change('{{ forloop.counter }}'); subtotal('{{ forloop.counter }}'); sum(); total();">
+                                        {# Kao, don't use '\n' here, will influence the js file #}
+                                        <div class="inc button_inc"
+                                             onclick="count_change_add('{{ forloop.counter }}'); sum(); total();">+
+                                        </div>
+                                        <div class="dec button_inc"
+                                             onclick="count_change_minus('{{ forloop.counter }}'); sum(); total();">-
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input value="{{ cart.total_money }}" id="total-{{ forloop.counter }}" class="subtotal" name="subtotal-{{ forloop.counter }}" onchange="sum()">
-                            </td>
-                            <td class="options">
-                                <a href="#">
-                                    <i onclick="remove_cart_item('{{ forloop.counter }}')" class="ti-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
+                                </td>
+                                <td>
+                                    <input value="{{ cart.total_money }}" id="total-{{ forloop.counter }}"
+                                           class="subtotal" name="subtotal-{{ forloop.counter }}" onchange="sum()">
+                                </td>
+                                <td class="options">
+                                    <a >
+                                        <i onclick="remove_cart_item('{{ forloop.counter }}')" class="ti-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
 
 
+                    </tbody>
+                </table>
 
-                </tbody>
-            </table>
-
-            <div class="row add_top_30 flex-sm-row-reverse cart_actions">
-                <div class="col-sm-4 text-end">
-                    <button type="button" class="btn_1 gray">Update Cart</button>
-                </div>
-                <div class="col-sm-8">
-                    <div class="apply-coupon">
-                        <div class="form-group">
-                            <div class="row g-2">
-                                <div class="col-md-6"><input type="text" name="coupon-code" value=""
-                                                             placeholder="Promo code" class="form-control"></div>
-                                <div class="col-md-4">
-                                    <button type="button" class="btn_1 outline">Apply Coupon</button>
+                <div class="row add_top_30 flex-sm-row-reverse cart_actions">
+                    <div class="col-sm-4 text-end">
+                        <button type="button" class="btn_1 gray">Update Cart</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="apply-coupon">
+                            <div class="form-group">
+                                <div class="row g-2">
+                                    <div class="col-md-6"><input type="text" name="coupon-code" value=""
+                                                                 placeholder="Promo code" class="form-control"></div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn_1 outline">Apply Coupon</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- /cart_actions -->
+
             </div>
-            <!-- /cart_actions -->
+            <!-- /container -->
 
-        </div>
-        <!-- /container -->
-
-        <div class="box_cart">
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <ul>
-                            <li>
-                                <span>Subtotal:</span>$<input id="subtotal_all" name="subtotal_all" value="240.00" onchange="total()">
-                            </li>
-                            <li>
-                                <span>Shipping</span>$<input id="shipping" name="shipping" value="7.00" onchange="total()">
-                            </li>
-                            <li>
-                                <span>Total</span>$<input id="total" name="total" value="247.00">
-                            </li>
-                        </ul>
-                        <button type="submit" class="btn_1 full-width cart">Proceed to Checkout</button>
+            <div class="box_cart">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <ul>
+                                <li id="subtotal_all" name="subtotal_all">
+                                    <span>Subtotal:</span>$ 240
+                                </li>
+                                <li id="shipping" name="shipping">
+                                    <span>Shipping:</span>$ 0
+                                </li>
+                                <li id="total" name="total">
+                                    <span>Total:</span>$ 240
+                                </li>
+                                {#                            <li>#}
+                                {#                                <span>Subtotal:</span>$<input id="subtotal_all" name="subtotal_all" value="240.00" onchange="total()">#}
+                                {#                            </li>#}
+                                {#                            <li>#}
+                                {#                                <span>Shipping</span>$<input id="shipping" name="shipping" value="7.00" onchange="total()">#}
+                                {#                            </li>#}
+                                {#                            <li>#}
+                                {#                                <span>Total</span>$<input id="total" name="total" value="247.00">#}
+                                {#                            </li>#}
+                            </ul>
+                            <button type="submit" class="btn_1 full-width cart">Proceed to Checkout</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /box_cart -->
+            <!-- /box_cart -->
         </form>
     </main>
     <!--/main-->

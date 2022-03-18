@@ -85,7 +85,7 @@
                         <img src="{{ index_categories.left_700_604.category.main_image.url }}"
                              data-src="{{ index_categories.left_700_604.category.main_image.url }}" alt=""
                              class="img-fluid lazy"
-                        style="height: 100%; width: 100%">
+                             style="height: 100%; width: 100%">
                         <div class="wrapper">
                             <h2>{{ index_categories.left_700_604.category.name }}</h2>
                             <p>{{ index_categories.left_700_604.count }} Products</p>
@@ -99,7 +99,7 @@
                                 <img src="{{ index_categories.right_top1_500_480.category.main_image.url }}"
                                      data-src="{{ index_categories.right_top1_500_480.category.main_image.url }}" alt=""
                                      class="img-fluid lazy"
-                                style="height: 100%; width: 100%">
+                                     style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_top1_500_480.category.name }}</h2>
                                     <p>{{ index_categories.right_top1_500_480.count }} Products</p>
@@ -111,7 +111,7 @@
                                 <img src="{{ index_categories.right_top2_500_480.category.main_image.url }}"
                                      data-src="{{ index_categories.right_top2_500_480.category.main_image.url }}" alt=""
                                      class="img-fluid lazy"
-                                style="height: 100%; width: 100%">
+                                     style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_top2_500_480.category.name }}</h2>
                                     <p>{{ index_categories.right_top2_500_480.count }} Products</p>
@@ -124,7 +124,7 @@
                                      data-src="{{ index_categories.right_bottom_800_343.category.main_image.url }}"
                                      alt=""
                                      class="img-fluid lazy"
-                                style="height: 100%; width: 100%">
+                                     style="height: 100%; width: 100%">
                                 <div class="wrapper">
                                     <h2>{{ index_categories.right_bottom_800_343.category.name }}</h2>
                                     <p>{{ index_categories.right_bottom_800_343.count }} Products</p>
@@ -182,18 +182,28 @@
                                     <span class="old_price">${{ instrument.old_price }}</span>
                                 </div>
                                 <ul>
-                                    <li><a href="/product_add_favorite" class="tooltip-1" data-bs-toggle="tooltip"
-                                           data-bs-placement="left"
-                                           title="Add to favorites"><i
-                                            class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                    <li><a href="/product_add_compare" class="tooltip-1" data-bs-toggle="tooltip"
-                                           data-bs-placement="left"
-                                           title="Add to compare"><i
-                                            class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                                    <li><a href="/cart/product_add_cart/{{ instrument.id }}" class="tooltip-1"
+                                    <li>
+                                        <a class="tooltip-1 wishlist-{{ instrument.id }}" id="add-wishlist-item"
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="left"
-                                           title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
+                                           title="Add to favorites">
+                                            <i class="ti-heart"></i>
+                                            <span>Add to favorites</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/product_add_compare" class="tooltip-1"
+                                           data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare">
+                                            <i class="ti-control-shuffle"></i>
+                                            <span>Add to compare</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/cart/product_add_cart/{{ instrument.id }}" class="tooltip-1"
+                                           data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart">
+                                            <i class="ti-shopping-cart"></i>
+                                            <span>Add to cart</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -650,6 +660,10 @@
         $('.isotope_filter').on('click', 'a', 'change', function () {
             var selector = $(this).attr('data-filter');
             $('.isotope-wrapper').isotope({filter: selector});
+        });
+        $("#add-wishlist-item").on("click", function () {
+            let id = this.className.remove("tooltip-1 wishlist-");
+            console.log("print id addded to wishlist", id);
         });
     </script>
 
