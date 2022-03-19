@@ -34,10 +34,10 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">
 	<!-- SPECIFIC CSS -->
-    <link href={% static "assets/css_for_shop/home_1.css"%} rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/home_1.css"%}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href={% static "assets/css_for_shop/custom.css"%} rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/custom.css"%}" rel="stylesheet">
 
     {% block head_link %}
 
@@ -259,7 +259,10 @@
                                 <div class="dropdown dropdown-access">
 
                                     {% if user.is_authenticated %}
-                                        <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>
+                                        <a href="{% url "shop:personal_profile" %}" class="">
+                                            <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 40px;"
+                                                                                                  src="/media/{{ request.user.profile.image }}"
+                                 alt="{{ request.user.username }}'s Photo"/></a>
                                     {% else %}
                                         <a href="{% url "accounts:log_in" %}" class="access_link"><span>Account</span></a>
                                     {% endif %}

@@ -9,11 +9,7 @@
     <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
 
-    <!-- SPECIFIC CSS -->
-    <link href="/static/assets/css_for_shop/home_1.css" rel="stylesheet">
-
     <!-- YOUR CUSTOM CSS -->
-    <link href="/static/assets/css_for_shop/custom.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/listing.css" rel="stylesheet">
 {% endblock %}
 
@@ -347,13 +343,6 @@
                             <li><a href="#0" class="next" title="next page">&#10095;</a></li>
                         </ul>
                     </div>
-                    <!-- COMMON SCRIPTS -->
-                    <script src="../static/assets/js_for_shop/common_scripts.min.js"></script>
-                    <script src="../static/assets/js_for_shop/main.js"></script>
-
-                    <!-- SPECIFIC SCRIPTS -->
-                    <script src="../static/assets/js_for_shop/sticky_sidebar.min.js"></script>
-                    <script src="../static/assets/js_for_shop/specific_listing.js"></script>
                 </div>
                 <!-- /col -->
             </div>
@@ -365,7 +354,9 @@
 {% endblock %}
 
 {% block foot_link %}
-<!-- COMMON SCRIPTS -->
+<!-- SPECIFIC SCRIPTS -->
+<script src="../static/assets/js_for_shop/sticky_sidebar.min.js"></script>
+<script src="../static/assets/js_for_shop/specific_listing.js"></script>
 <script>
     jQuery(function ($) {
         $('#search_form').on('submit', function (e) {
