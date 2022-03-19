@@ -312,7 +312,10 @@ def add_review(request):
 @login_required
 def order_state(request, order_id):
     order = Order.objects.filter(id=order_id).first()
+    f = OrderForm(instance=order)
     return render(request, 'management_templates/order_state.html', {
         'order': order,
-        'profile': Profile.objects.filter(user=request.user.id).first()
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'form': f,
+        'users': User.objects.all()
     })
