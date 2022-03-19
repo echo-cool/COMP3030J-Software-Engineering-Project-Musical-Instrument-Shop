@@ -570,35 +570,17 @@ THREE.TrackballControls = function (object, domElement) {
         event.preventDefault();
     }
 
-    this.dispose = function () {
-
-        this.domElement.removeEventListener('contextmenu', contextmenu, false);
-        this.domElement.removeEventListener('mousedown', mousedown, false);
-        // this.domElement.removeEventListener('wheel', mousewheel, false);
-
-        this.domElement.removeEventListener('touchstart', touchstart, false);
-        this.domElement.removeEventListener('touchend', touchend, false);
-        this.domElement.removeEventListener('touchmove', touchmove, false);
-
-        document.removeEventListener('mousemove', mousemove, false);
-        document.removeEventListener('mouseup', mouseup, false);
-
-        window.removeEventListener('keydown', keydown, false);
-        window.removeEventListener('keyup', keyup, false);
-
-    };
-
-    this.domElement.addEventListener('contextmenu', contextmenu, false);
-    this.domElement.addEventListener('mousedown', mousedown, false);
+    window.document.querySelector(".progress").addEventListener('contextmenu', contextmenu, false);
+    window.document.querySelector(".progress").addEventListener('mousedown', mousedown, false);
     window.document.querySelector(".model-zoom-in").addEventListener('click', modelZoomIn, false);
     window.document.querySelector(".model-zoom-out").addEventListener('click', modelZoomOut, false);
 
-    this.domElement.addEventListener('touchstart', touchstart, false);
-    this.domElement.addEventListener('touchend', touchend, false);
-    this.domElement.addEventListener('touchmove', touchmove, false);
+    window.document.querySelector(".progress").addEventListener('touchstart', touchstart, false);
+    window.document.querySelector(".progress").addEventListener('touchend', touchend, false);
+    window.document.querySelector(".progress").addEventListener('touchmove', touchmove, false);
 
-    window.addEventListener('keydown', keydown, false);
-    window.addEventListener('keyup', keyup, false);
+    window.document.querySelector(".progress").addEventListener('keydown', keydown, false);
+    window.document.querySelector(".progress").addEventListener('keyup', keyup, false);
 
     this.handleResize();
 
