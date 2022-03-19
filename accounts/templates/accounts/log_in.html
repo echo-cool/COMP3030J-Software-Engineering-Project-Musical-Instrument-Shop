@@ -1,33 +1,90 @@
 {% extends 'layouts/default/page.html' %}
+{% load static %}
 
-{% load bootstrap4 %}
 {% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <!-- BASE CSS -->
+    <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{% static 'assets/css_for_shop/account.css' %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
+    <main class="bg_gray">
 
-    <h4>{% trans 'Log in' %}</h4>
+        <div class="container margin_30">
+            <div class="page_header">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li>Page active</li>
+                    </ul>
+                </div>
+                <h1>Login to your account</h1>
+            </div>
+            <!-- /page_header -->
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-6 col-md-8">
+                    <div class="box_account">
+                        <div class="form_container">
+                            <div class="private box">
+                                <form action="" method="post">
 
-    <form method="post">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form %}
 
-        {% csrf_token %}
-        {% bootstrap_form form %}
+                                    <div class="text-center">
+                                        <input type="submit" id="submit"
+                                               value="{% trans "Login" %}"
+                                               class="btn_1 full-width">
+                                    </div>
 
-        <button class="btn btn-primary">{% trans 'Log in' %}</button>
+                                </form>
 
-    </form>
+                            </div>
+                            <hr>
+                        </div>
+                        <!-- /form_container -->
+                    </div>
+                    <!-- /box_account -->
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </main>
+    <!--/main-->
 
-    <hr>
+    <!--/footer-->
+    <!-- page -->
 
-    <ul>
-        <li>
-            <a href="{% url 'accounts:restore_password' %}">{% trans 'Forgot your password?' %}</a>
-        </li>
-        <li>
-            <a href="{% url 'accounts:remind_username' %}">{% trans 'Forgot your username?' %}</a>
-        </li>
-        <li>
-            <a href="{% url 'accounts:resend_activation_code' %}">{% trans 'Resend an activation code' %}</a>
-        </li>
-    </ul>
+    <div id="toTop"></div><!-- Back to top button -->
+{% endblock %}
+
+{% block foot_link %}
+    <script src="{% static "/assets/js_for_shop/common_scripts.min.js" %}"></script>
+    <script src="{% static "/assets/js_for_shop/main.js" %}"></script>
+    <script>
+        {#$(document).ready(function () {#}
+        {#    $('#submit').on('click', function (e) {#}
+        {#        if ($('#checkbox').is(':checked')) {#}
+        {#            return true;#}
+        {#        } else {#}
+        {#            e.preventDefault();#}
+        {#            $('#hide_message').removeClass('text-hide');#}
+        {#            console.log('not checked');#}
+        {#            return false;#}
+        {#        }#}
+        {#    });#}
+        {#});#}
+    </script>
 
 {% endblock %}
