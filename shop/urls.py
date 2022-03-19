@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import model_view, index, cart, product_details, model_design, leave_review, product_details_test_model, \
     confirm_submit, product_add_cart, product_minus_cart, product_search_by_category, product_search, category_view, \
-    wishlist
+    wishlist, checkout, confirm
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     leave_review2, \
     confirm_submit, product_search, product_search_by_category, category_view, product_add_cart, \
@@ -20,8 +20,8 @@ urlpatterns = [
     # path("leave_review2/", leave_review2, name="leave_review2"),
     path("confirm_submit/", confirm_submit, name="confirm_submit"),
     path("personal_profile/", personal_profile, name="personal_profile"),
-    # path('checkout/', checkout, name='checkout'),
-    # path('confirm/', confirm, name='confirm'),
+    path('checkout/', checkout, name='checkout'),
+    path('confirm/', confirm, name='confirm'),
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
     path("cart/product_add_cart/<int:instrument_id>", product_add_cart, name='product_add_cart'),
