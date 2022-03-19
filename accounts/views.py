@@ -6,7 +6,7 @@ from django.contrib.auth.views import (
     LogoutView as BaseLogoutView, PasswordChangeView as BasePasswordChangeView,
     PasswordResetDoneView as BasePasswordResetDoneView, PasswordResetConfirmView as BasePasswordResetConfirmView,
 )
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.crypto import get_random_string
 from django.utils.decorators import method_decorator
 from django.utils.http import url_has_allowed_host_and_scheme
@@ -19,7 +19,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import View, FormView
 from django.conf import settings
 
-from shop.models import Activation
+from shop.models import Activation, Profile
 from .utils import (
     send_activation_email, send_reset_password_email, send_forgotten_username_email, send_activation_change_email,
 )
@@ -143,13 +143,15 @@ class ActivateView(View):
         user = act.user
         user.is_active = True
         user.save()
+        profile = Profile(user=user)
+        profile.save()
 
         # Remove the activation record
         act.delete()
 
         messages.success(request, _('You have successfully activated your account!'))
 
-        return redirect('accounts:log_in')
+        return redirect('shop:index')
 
 
 class ResendActivationCodeView(GuestOnlyView, FormView):
@@ -330,3 +332,4 @@ class RestorePasswordDoneView(BasePasswordResetDoneView):
 
 class LogOutView(LoginRequiredMixin, BaseLogoutView):
     template_name = 'accounts/log_out.html'
+

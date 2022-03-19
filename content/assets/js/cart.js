@@ -4,10 +4,11 @@ function count_change(id) {
     let id_for_total = "#total-" + id;
     let total = parseFloat($(id_for_number).val()) * parseFloat($(id_for_price).val())
     console.log("count total for item", total)
-    $(id_for_total).val(total);
+    $(id_for_total).val(total_round_2(total));
     fetchHeaderCartList();
 }
 
+// 点加号的时候触发
 function count_change_add(id) {
     let id_for_number = "#quantity-" + id;
     let id_for_price = "#price-" + id;
@@ -15,11 +16,21 @@ function count_change_add(id) {
     let total = (parseFloat($(id_for_number).val()) + 1) * parseFloat($(id_for_price).val())
     console.log("count total for item", total)
     $.get("/cart/product_add_cart/" + id,);
-    $(id_for_total).val(total);
+    $(id_for_total).val(total_round_2(total));
     fetchHeaderCartList();
+}
+
+// 加个小数点，好看
+function total_round_2(raw) {
+    if (raw.toString().includes(".")) {
+        return Math.floor(Number(raw) * 100) / 100
+    } else {
+        return raw + ".0";
+    }
 
 }
 
+// 点减号的时候触发
 function count_change_minus(id) {
     let id_for_number = "#quantity-" + id;
     let id_for_price = "#price-" + id;
@@ -28,7 +39,7 @@ function count_change_minus(id) {
     if (parseFloat($(id_for_number).val()) > 1) {
         $.get("/cart/product_minus_cart/" + id,);
         total = (parseFloat($(id_for_number).val()) - 1) * parseFloat($(id_for_price).val());
-        $(id_for_total).val(parseFloat(String(total)));
+        $(id_for_total).val(total_round_2(total));
     } else {
         total = 1;
     }

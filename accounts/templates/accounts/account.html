@@ -100,15 +100,15 @@
 
                                     {% csrf_token %}
                                     {% bootstrap_form form %}
+                                    {{ form.errors }}
 
                                     <div class="form-group">
                                 <label class="container_check">Accept <a href="#0">Terms and conditions</a>
-                                    <input type="checkbox" id="checkbox">
+                                    <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <div id="hide_message" class="text-hide text-danger">Please confirm the conditions!</div>
                             </div>
-                            <div class="text-center"><input type="submit" id="submit" value="{% trans "Register" %}" class="btn_1 full-width">
+                            <div class="text-center"><input type="submit" value="{% trans "Register" %}" class="btn_1 full-width">
                             </div>
 
                                 </form>
@@ -137,19 +137,5 @@
 {% block foot_link %}
     <script src="{% static "/assets/js_for_shop/common_scripts.min.js" %}"></script>
     <script src="{% static "/assets/js_for_shop/main.js" %}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#submit').on('click', function (e) {
-                if ($('#checkbox').is(':checked')) {
-                    return true;
-                } else {
-                    e.preventDefault();
-                    $('#hide_message').removeClass('text-hide');
-                    console.log('not checked');
-                    return false;
-                }
-            });
-        });
-    </script>
 
 {% endblock %}

@@ -33,6 +33,11 @@
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">
+	<!-- SPECIFIC CSS -->
+    <link href={% static "assets/css_for_shop/home_1.css"%} rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href={% static "assets/css_for_shop/custom.css"%} rel="stylesheet">
 
     {% block head_link %}
 
@@ -43,6 +48,13 @@
 <body>
 
 <div id="page">
+{#    {% if messages %}#}
+{#    <ul class="messages">#}
+{#        {% for message in messages %}#}
+{#        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#    {% endif %}#}
 
     <header class="version_1">
         <div class="layer"></div><!-- Mobile menu overlay mask -->
@@ -240,7 +252,7 @@
                                 <div class="dropdown dropdown-access">
                                     <a href="account.html" class="access_link"><span>Account</span></a>
                                     <div class="dropdown-menu">
-                                        <a href="account.html" class="btn_1">Sign In or Sign Up</a>
+                                        <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
                                         <ul>
                                             <li>
                                                 <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
@@ -290,6 +302,58 @@
     {% block content %}
         No content.
     {% endblock %}
+
+	<!-- Sign In Modal -->
+	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+		<div class="modal_header">
+			<h3>Sign In</h3>
+		</div>
+		<form action="/api/login/" method="post">
+            {% csrf_token %}
+			<div class="sign-in-wrapper">
+				<a href="#0" class="social_bt facebook">Login with Facebook</a>
+				<a href="#0" class="social_bt google">Login with Google</a>
+				<div class="divider"><span>Or</span></div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" class="form-control" name="username" id="email">
+					<i class="ti-email"></i>
+				</div>
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" name="password" id="password" value="">
+					<i class="ti-lock"></i>
+				</div>
+				<div class="clearfix add_bottom_15">
+					<div class="checkboxes float-start">
+						<label class="container_check">Remember me
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+				</div>
+				<div class="text-center">
+					<input type="submit" value="Log In" class="btn_1 full-width">
+					Don’t have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a>
+				</div>
+				<div id="forgot_pw">
+					<div class="form-group">
+						<label>Please confirm login email below</label>
+						<input type="email" class="form-control" name="email_forgot" id="email_forgot">
+						<i class="ti-email"></i>
+					</div>
+					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
+					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+				</div>
+			</div>
+		</form>
+		<!--form -->
+	</div>
+	<!-- /Sign In Modal -->
+
+
+
 
     <footer>
         <div class="container">
@@ -437,11 +501,23 @@
 <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
 <script src="{% static 'assets/js_for_shop/main.js' %}"></script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+<script src="{% static "assets/js_for_shop/carousel-home.js"%}"></script>
+<script src="{% static "assets/js/hullabaloo.js"%}"></script>
+<script type="text/javascript">
+	$.hulla = new hullabaloo();
+	{% if messages %}
+    {% for message in messages %}
+	setTimeout(function() {
+	  $.hulla.send("{{ message }}", "{{ message.tags }}");
+	}, 300);
+	{% endfor %}{% endif %}
+</script>
+<script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 <script src="{% static 'assets/js/add_url.js' %}"></script>
 <script>
     jQuery(function ($) {
         $('#search_form').on('submit', function (e) {
-            window.location.href = addUrlPara(window.location.href, 'search', $('#search_text').val());
+            window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
             return false;
         });
     })
