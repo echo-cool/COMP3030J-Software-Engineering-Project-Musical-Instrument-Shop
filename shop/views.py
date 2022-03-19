@@ -10,6 +10,8 @@ from django.urls import reverse
 
 from management.forms import SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
+from management.forms import InstrumentForm, SearchForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
 
 def index(request):
