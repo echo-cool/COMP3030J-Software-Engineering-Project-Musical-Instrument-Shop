@@ -105,9 +105,15 @@ def personal_profile(request):
     user = request.user
     username = user.username
     email = user.email
+    prof = Profile.objects.filter(user=user).first()
+    print(prof)
+    phone = prof.phone
+    address = prof.address
     form = UpdateProfileForm({
         'username': username,
-        'email': email
+        'email': email,
+        'phone': phone,
+        'address': address
     })
     # print(form)
     return render(request, 'shop_templates/personal_profile.html', {
