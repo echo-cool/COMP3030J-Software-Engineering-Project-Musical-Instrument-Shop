@@ -3,7 +3,6 @@ from django.urls import path
 from .views import model_view, index, cart, product_details, model_design, leave_review, product_details_test_model, \
     confirm_submit, product_add_cart, product_minus_cart, product_search_by_category, product_search, category_view, \
     wishlist, checkout, confirm
-    wishlist
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     leave_review2, \
     confirm_submit, product_search, product_search_by_category, category_view, product_add_cart, \
