@@ -9,6 +9,8 @@ from django.urls import reverse
 
 from management.forms import SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from management.forms import InstrumentForm, SearchForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
 
 def index(request):
@@ -93,6 +95,18 @@ def confirm_submit(request):
                             review_text=review_text, file_upload=fileupload)
         new_review.save()
     return render(request, 'shop_templates/product-detail.html')
+
+
+def personal_profile(request):
+    if request.method == "POST":
+        profile_item = Profile.objects.filter(user=request.user.id).first()
+        profile_item.image = request.FILES.get('photo')
+        profile_item.save()
+        return redirect(reverse('shop:personal_profile'))
+    else:
+        return render(request, 'shop_templates/personal_profile.html', {
+            'profile': Profile.objects.filter(user=request.user.id).first(),
+        })
 
 
 def leave_review2(request):
