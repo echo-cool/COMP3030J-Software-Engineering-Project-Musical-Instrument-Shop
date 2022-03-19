@@ -12,6 +12,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import Post, Category, Tag
 from django.contrib import messages
 
+
 def login(request):
     if request.method == 'GET':
         return redirect('shop:index')

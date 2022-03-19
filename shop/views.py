@@ -9,7 +9,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import SearchForm
+from shop.forms import UpdateProfileForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
@@ -98,6 +100,21 @@ def confirm_submit(request):
     return render(request, 'shop_templates/product-detail.html')
 
 
+def personal_profile(request):
+    user = request.user
+    username = user.username
+    email = user.email
+    form = UpdateProfileForm({
+        'username': username,
+        'email': email
+    })
+    # print(form)
+    return render(request, 'shop_templates/personal_profile.html', {
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'form': form
+    })
+
+
 def leave_review2(request):
     print(request)
     return render(request, 'shop_templates/leave-review-2.html')
@@ -164,14 +181,11 @@ def product_search_by_category(request):
     if request.method == "GET":
         category_li = request.GET.get("checked_category", None)
         search_text = request.GET.get("search", "")
-        print(category_li)
         category_list = [ch for ch in category_li]
-        print(category_list)
         i = 0
         instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
         instruments = []
         while i < len(category_list):
-            print(category_list[i] == str(1))
             if category_list[i] == str(1):
                 searched_instruments = instruments_by_search_bar.filter(category=i + 1)
                 for j in searched_instruments:
@@ -187,12 +201,23 @@ def product_search_by_category(request):
 # search instruments by keyword
 def product_search(request):
     search_text = request.GET.get("search", "")
-    instruments = Instrument.objects.filter(name__contains=search_text)
-    # categories = Category.objects.all()
+    search_category_text = request.GET.get("category", None)
+    all_instruments = Instrument.objects.filter(name__contains=search_text)
+    if search_category_text:
+        search_category_list = search_category_text.split("|")
+        search_category = [int(i) for i in search_category_list]
+        instruments = all_instruments.filter(category__in=search_category)
+    else:
+        instruments = all_instruments
+    categories = {}
+    category_list = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
+    for category in category_list:
+        categories[category] = instruments.filter(category=category).count()
     return render(request, 'shop_templates/product-search.html', {
         "instruments": instruments,
+        'categories': categories,
     })
 
 
@@ -215,13 +240,16 @@ def product_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.filter(user=1)
-    each_cart = {}
-    for each_cart in carts:
-        each_cart.total_money = each_cart.count * each_cart.instrument.price
-    return render(request, 'shop_templates/cart.html', {
-        "carts": carts,
-    })
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+        each_cart = {}
+        for each_cart in carts:
+            each_cart.total_money = each_cart.count * each_cart.instrument.price
+        return render(request, 'shop_templates/cart.html', {
+            "carts": carts,
+        })
+    else:
+        return redirect('accounts:log_in')
 
 
 def product_add_cart(request, instrument_id):

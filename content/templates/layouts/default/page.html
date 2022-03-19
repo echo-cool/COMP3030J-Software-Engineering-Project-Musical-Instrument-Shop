@@ -27,9 +27,9 @@
           href="{% static "assets/img_for_shop/apple-touch-icon-144x144-precomposed.png" %}">
 
     <!-- GOOGLE WEB FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+{#    <link rel="preconnect" href="https://fonts.googleapis.com">#}
+{#    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">#}
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">
@@ -237,22 +237,41 @@
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <ul class="top_tools">
                             <li>
-                                <div class="dropdown dropdown-cart">
-                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>
-                                    <div class="dropdown-menu header-cart">
+{#                                 <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>#}
+                                <a href="/cart/" class="cart_bt"><strong>n</strong></a>
+{#                                <div class="dropdown dropdown-cart">#}
+{#                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>#}
+{#                                    <div class="dropdown-menu header-cart">#}
                                         {#    内容通过main.js 的函数实现  fetchHeaderCartList(刷新同理)  #}
-                                    </div>
-                                </div>
+{#                                    </div>#}
+{#                                </div>#}
                                 <!-- /dropdown-cart-->
                             </li>
                             <li>
-                                <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                {% if user.is_authenticated %}
+                                         <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                    {% else %}
+                                         <a href="{% url "accounts:log_in" %}" class="wishlist"><span>Wishlist</span></a>
+                                    {% endif %}
+
                             </li>
                             <li>
                                 <div class="dropdown dropdown-access">
-                                    <a href="account.html" class="access_link"><span>Account</span></a>
+
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>
+                                    {% else %}
+                                        <a href="{% url "accounts:log_in" %}" class="access_link"><span>Account</span></a>
+                                    {% endif %}
+
+{#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>#}
                                     <div class="dropdown-menu">
-                                        <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url "api:logout" %}" class="btn btn-primary">Logout</a>
+                                        {% else %}
+                                            <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
+                                        {% endif %}
+
                                         <ul>
                                             <li>
                                                 <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
