@@ -4,6 +4,7 @@ import random
 
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.db.models import Max
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -143,38 +144,47 @@ def wishlist(request):
 
 
 def checkout(request):
-    order_id = random.randint(0, 10000)
-    carts_count = request.POST['carts_count']
-    shipping = request.POST['shipping']
-    subtotal_all = request.POST['subtotal_all']
-    total = request.POST['total']
-    count = int(carts_count)
-    for i in range(1, count + 1):
-        instrument = Instrument.objects.filter(id=request.POST['instrument-' + str(i)]).first()
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
-                          quantity=request.POST['quantity-' + str(i)], subtotal=request.POST['subtotal-' + str(i)])
-        new_order.save()
-        print(new_order)
-    return render(request, 'shop_templates/checkout.html', {
-        "orders": Order.objects.filter(user=request.user, order_id=order_id),
-        "order_id": order_id,
-        "shipping": shipping,
-        "subtotal_all": subtotal_all,
-        "total": total
-    })
+    # get or post
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    else:
+        subtotal_all = 0
+        carts = Cart.objects.filter(user=request.user)
+        for cart in carts:
+            subtotal_all += cart.instrument.price * cart.count
+        shipping = 7.0
+        total = subtotal_all + shipping
+        return render(request, 'shop_templates/checkout.html', {
+            "carts": Cart.objects.filter(user=request.user),
+            "subtotal_all": subtotal_all,
+            "shipping": shipping,
+            "total": total,
+        })
 
 
 def confirm(request):
-    current_order = Order.objects.filter(order_id=request.POST['order_id'])
-    current_order.update(name=request.POST['name'], last_name=request.POST['last_name'],
-                         full_address=request.POST['full_address'], city=request.POST['city'],
-                         postal_code=request.POST['postal_code'], country=request.POST['country'],
-                         telephone=request.POST['telephone'], payment=request.POST['payment'],
-                         shipping=request.POST['shipping'])
-    # b_row = Item.objects.get(id=request.POST['item_id'])
-    # b_row.Order = new_order
-    # b_row.save()
-    # Item.objects.filter(id=request.POST['item_id']).update(Order=new_order)
+    # get current max order_id
+    if Order.objects.all().count() == 0:
+        order_id = 1
+    else:
+        order_id = Order.objects.all().aggregate(Max('order_id'))['order_id__max'] + 1
+    carts = Cart.objects.filter(user=request.user)
+    subtotal_all = 0
+    for cart in carts:
+        instrument = cart.instrument
+        quantity = cart.count
+        subtotal = quantity * instrument.price
+        subtotal_all += subtotal
+        new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
+                          quantity=quantity, subtotal=subtotal, name=request.POST['name'],
+                          last_name=request.POST['last_name'],
+                          full_address=request.POST['full_address'], city=request.POST['city'],
+                          postal_code=request.POST['postal_code'], country=request.POST['country'],
+                          telephone=request.POST['telephone'], payment=request.POST['payment'],
+                          shipping=request.POST['shipping'])
+        new_order.save()
+        cart.delete()
     return render(request, 'shop_templates/confirm.html')
 
 
