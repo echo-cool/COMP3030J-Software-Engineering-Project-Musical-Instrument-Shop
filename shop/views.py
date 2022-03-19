@@ -162,14 +162,11 @@ def product_search_by_category(request):
     if request.method == "GET":
         category_li = request.GET.get("checked_category", None)
         search_text = request.GET.get("search", "")
-        print(category_li)
         category_list = [ch for ch in category_li]
-        print(category_list)
         i = 0
         instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
         instruments = []
         while i < len(category_list):
-            print(category_list[i] == str(1))
             if category_list[i] == str(1):
                 searched_instruments = instruments_by_search_bar.filter(category=i + 1)
                 for j in searched_instruments:
@@ -185,12 +182,23 @@ def product_search_by_category(request):
 # search instruments by keyword
 def product_search(request):
     search_text = request.GET.get("search", "")
-    instruments = Instrument.objects.filter(name__contains=search_text)
-    # categories = Category.objects.all()
+    search_category_text = request.GET.get("category", None)
+    all_instruments = Instrument.objects.filter(name__contains=search_text)
+    if search_category_text:
+        search_category_list = search_category_text.split("|")
+        search_category = [int(i) for i in search_category_list]
+        instruments = all_instruments.filter(category__in=search_category)
+    else:
+        instruments = all_instruments
+    categories = {}
+    category_list = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
+    for category in category_list:
+        categories[category] = instruments.filter(category=category).count()
     return render(request, 'shop_templates/product-search.html', {
         "instruments": instruments,
+        'categories': categories,
     })
 
 
