@@ -183,7 +183,7 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <a class="tooltip-1 wishlist-{{ instrument.id }}" id="add-wishlist-item"
+                                        <a class="tooltip-1 add-wishlist-item" id="wishlist-{{ instrument.id }}"
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="left"
                                            title="Add to favorites">
@@ -661,10 +661,42 @@
             var selector = $(this).attr('data-filter');
             $('.isotope-wrapper').isotope({filter: selector});
         });
-        $("#add-wishlist-item").on("click", function () {
-            let id = this.className.remove("tooltip-1 wishlist-");
-            console.log("print id addded to wishlist", id);
+        $(".add-wishlist-item").each(function () {
+            console.log("t", this, this.className);
+            this.addEventListener("click", function () {
+                let id = this.id.replace("wishlist-", '');
+                console.log("Id added to wishlist: ", id);
+                if (id) {
+                    add_wishlist_item(id);
+                }
+            });
+
         });
+
+        function add_wishlist_item(id) {
+            $.ajax({
+                url: "/api/wishlist/",
+                method: "POST",
+                contentType: "application/json", //必须这样写
+                dataType: "json",
+                data: JSON.stringify({
+                    //TODO: 替換成用戶
+                    "user": 1,
+                    "instrument": id
+                }),
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    console.log("WISHLIST: ", id + "  已被加入购物车");
+                },
+                error: function (res) {
+                    console.log("ji", id, res);
+                }
+            })
+            fetchHeaderCartList();
+        }
+
     </script>
 
 {% endblock %}
