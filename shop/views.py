@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import InstrumentForm, SearchForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
 
 def index(request):
@@ -73,7 +73,15 @@ def confirm_submit(request):
 
 
 def personal_profile(request):
-    return render(request, 'shop_templates/personal_profile.html')
+    if request.method == "POST":
+        profile_item = Profile.objects.filter(user=request.user.id).first()
+        profile_item.image = request.FILES.get('photo')
+        profile_item.save()
+        return redirect(reverse('shop:personal_profile'))
+    else:
+        return render(request, 'shop_templates/personal_profile.html', {
+            'profile': Profile.objects.filter(user=request.user.id).first(),
+        })
 
 
 def leave_review2(request):
