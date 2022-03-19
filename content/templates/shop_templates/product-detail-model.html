@@ -45,14 +45,19 @@
 
 <!--进度条-->
 {#<div class="owl-item active" style="width: 583px;">#}
-
-<p id="model-place">
-<div id="progress" class="progress">
-    <div class="mask"></div>
-    <div class="loading">
-        <div class="trends"></div>
-    </div>
+<div id="model-place">
+    <button class="model-zoom-in">+</button>
+    <button class="model-zoom-out">-</button>
+    <div id="progress" class="progress"></div>
 </div>
+
+{#<p id="model-place">#}
+{#<div id="progress" class="progress">#}
+{#    <div class="mask"></div>#}
+{#    <div class="loading">#}
+{#        <div class="trends"></div>#}
+{#    </div>#}
+{#</div>#}
 </p>
 {#</div>#}
 
@@ -207,7 +212,7 @@
         controls.update();
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
-
+        scene.children[scene.children.length - 1].rotateY(0.001 * 5);//旋转角速度0.001弧度每毫秒
     }
 
     // 获取参数

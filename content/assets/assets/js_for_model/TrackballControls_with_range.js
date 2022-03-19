@@ -6,7 +6,6 @@
  */
 
 THREE.TrackballControls = function (object, domElement) {
-
     var _this = this;
     var STATE = {NONE: -1, ROTATE: 0, ZOOM: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_ZOOM_PAN: 4};
 
@@ -464,36 +463,26 @@ THREE.TrackballControls = function (object, domElement) {
 
     }
 
-    function mousewheel(event) {
+    function modelZoomIn() {
+        console.log("zoom in from", _zoomStart.y);
+        // if (_this.enabled === false) return;
+        // _zoomStart.y -= event.deltaY * 0.00025;
+        //     _zoomStart.y -= event.deltaY * 0.025;
+        _zoomStart.y -= 2 * 0.01;
+        console.log("zoom in to", _zoomStart.y);
+        _this.dispatchEvent(startEvent);
+        _this.dispatchEvent(endEvent);
+    }
 
-        if (checkIn($('.progress').get(0))) {
-            if (_this.enabled === false) return;
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            switch (event.deltaMode) {
-
-                case 2:
-                    // Zoom in pages
-                    _zoomStart.y -= event.deltaY * 0.025;
-                    break;
-
-                case 1:
-                    // Zoom in lines
-                    _zoomStart.y -= event.deltaY * 0.01;
-                    break;
-
-                default:
-                    // undefined, 0, assume pixels
-                    _zoomStart.y -= event.deltaY * 0.00025;
-                    break;
-
-            }
-
-            _this.dispatchEvent(startEvent);
-            _this.dispatchEvent(endEvent);
-        }
+    function modelZoomOut() {
+        console.log("zoom in from", _zoomStart.y);
+        // if (_this.enabled === false) return;
+        // _zoomStart.y -= event.deltaY * 0.00025;
+        //     _zoomStart.y -= event.deltaY * 0.025;
+        _zoomStart.y += 2 * 0.01;
+        console.log("zoom in to", _zoomStart.y);
+        _this.dispatchEvent(startEvent);
+        _this.dispatchEvent(endEvent);
     }
 
     function touchstart(event) {
@@ -577,18 +566,15 @@ THREE.TrackballControls = function (object, domElement) {
     }
 
     function contextmenu(event) {
-
         if (_this.enabled === false) return;
-
         event.preventDefault();
-
     }
 
     this.dispose = function () {
 
         this.domElement.removeEventListener('contextmenu', contextmenu, false);
         this.domElement.removeEventListener('mousedown', mousedown, false);
-        this.domElement.removeEventListener('wheel', mousewheel, false);
+        // this.domElement.removeEventListener('wheel', mousewheel, false);
 
         this.domElement.removeEventListener('touchstart', touchstart, false);
         this.domElement.removeEventListener('touchend', touchend, false);
@@ -604,7 +590,8 @@ THREE.TrackballControls = function (object, domElement) {
 
     this.domElement.addEventListener('contextmenu', contextmenu, false);
     this.domElement.addEventListener('mousedown', mousedown, false);
-    this.domElement.addEventListener('wheel', mousewheel, false);
+    window.document.querySelector(".model-zoom-in").addEventListener('click', modelZoomIn, false);
+    window.document.querySelector(".model-zoom-out").addEventListener('click', modelZoomOut, false);
 
     this.domElement.addEventListener('touchstart', touchstart, false);
     this.domElement.addEventListener('touchend', touchend, false);
@@ -615,7 +602,7 @@ THREE.TrackballControls = function (object, domElement) {
 
     this.handleResize();
 
-    // force an update at start
+// force an update at start
     this.update();
 
 };
@@ -643,4 +630,17 @@ function checkIn(obj) {
         return false;
     }
 }
+
+// window.onmousewheel = function () {
+//     return false;
+// }
+// if (checkIn($('.progress').get(0))) {
+//     //return false禁用鼠标滚动页面
+//
+// }
+// //return true启用鼠标滚动页面
+// window.onmousewheel = function () {
+//     return true
+// }
+//
 
