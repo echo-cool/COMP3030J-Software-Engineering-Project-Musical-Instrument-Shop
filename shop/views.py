@@ -72,6 +72,10 @@ def confirm_submit(request):
     return render(request, 'shop_templates/product-detail.html')
 
 
+def personal_profile(request):
+    return render(request, 'shop_templates/personal_profile.html')
+
+
 def leave_review2(request):
     print(request)
     return render(request, 'shop_templates/leave-review-2.html')
