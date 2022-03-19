@@ -73,36 +73,44 @@
                             </h4>
                             <div class="collapse show category_search" id="filter_1">
                                 <ul>
-                                    <li>
-                                        <label class="container_check">String
-                                            Instruments<small>12</small>
-                                            <input type="checkbox" name="category_1" id="category_1" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Woodwind
-                                            Instruments<small>24</small>
-                                            <input type="checkbox" name="category_2" id="category_2" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Percussion Instruments <small>23</small>
-                                            <input type="checkbox" name="category_3" id="category_3" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Keyboard Instruments<small>11</small>
-                                            <input type="checkbox" name="category_4" id="category_4" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="container_check"> Brass Instruments<small>11</small>
-                                            <input type="checkbox" name="category_5" id="category_5" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
+                                    {% for category, count in categories.items %}
+                                        <li>
+                                            <label class="container_check">{{ category.name }}<small>{{ count }}</small>
+                                                <input type="checkbox" class="category-checkbox" id="category__{{ category.id }}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    {% endfor %}
+{#                                    <li>#}
+{#                                        <label class="container_check">String#}
+{#                                            Instruments<small>12</small>#}
+{#                                            <input type="checkbox" name="category_1" id="category_1" checked>#}
+{#                                            <span class="checkmark"></span>#}
+{#                                        </label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <label class="container_check">Woodwind#}
+{#                                            Instruments<small>24</small>#}
+{#                                            <input type="checkbox" name="category_2" id="category_2" checked>#}
+{#                                            <span class="checkmark"></span>#}
+{#                                        </label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <label class="container_check">Percussion Instruments <small>23</small>#}
+{#                                            <input type="checkbox" name="category_3" id="category_3" checked>#}
+{#                                            <span class="checkmark"></span>#}
+{#                                        </label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <label class="container_check">Keyboard Instruments<small>11</small>#}
+{#                                            <input type="checkbox" name="category_4" id="category_4" checked>#}
+{#                                            <span class="checkmark"></span>#}
+{#                                        </label>#}
+{#                                        <label class="container_check"> Brass Instruments<small>11</small>#}
+{#                                            <input type="checkbox" name="category_5" id="category_5" checked>#}
+{#                                            <span class="checkmark"></span>#}
+{#                                        </label>#}
+{#                                    </li>#}
                                 </ul>
                             </div>
                             <!-- /filter_type -->
@@ -356,12 +364,16 @@
     <!-- /main -->
 {% endblock %}
 
-{#{% block foot_link %}#}
-{#<!-- COMMON SCRIPTS -->#}
-{#<script src="../static/assets/js_for_shop/common_scripts.min.js"></script>#}
-{#<script src="../static/assets/js_for_shop/main.js"></script>#}
-{##}
-{#<!-- SPECIFIC SCRIPTS -->#}
-{#<script src="../static/assets/js_for_shop/sticky_sidebar.min.js"></script>#}
-{#<script src="../static/assets/js_for_shop/specific_listing.js"></script>#}
-{#{% endblock %}#}
+{% block foot_link %}
+<!-- COMMON SCRIPTS -->
+<script>
+    jQuery(function ($) {
+        $('#search_form').on('submit', function (e) {
+            window.location.href = addUrlPara(window.location.href, 'search', $('#search_text').val());
+            return false;
+        });
+    })
+</script>
+
+
+{% endblock %}
