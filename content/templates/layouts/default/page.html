@@ -248,11 +248,23 @@
                                 <!-- /dropdown-cart-->
                             </li>
                             <li>
-                                <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                {% if user.is_authenticated %}
+                                         <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                    {% else %}
+                                         <a href="{% url "accounts:log_in" %}" class="wishlist"><span>Wishlist</span></a>
+                                    {% endif %}
+
                             </li>
                             <li>
                                 <div class="dropdown dropdown-access">
-                                    <a href="account.html" class="access_link"><span>Account</span></a>
+
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>
+                                    {% else %}
+                                        <a href="{% url "accounts:log_in" %}" class="access_link"><span>Account</span></a>
+                                    {% endif %}
+
+{#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>#}
                                     <div class="dropdown-menu">
                                         {% if user.is_authenticated %}
                                             <a href="{% url "api:logout" %}" class="btn btn-primary">Logout</a>
