@@ -124,7 +124,11 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="post">
+
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Full Name</h6>
