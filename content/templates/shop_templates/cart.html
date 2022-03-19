@@ -49,7 +49,7 @@
                     <tbody>
 
                     {% if carts %}
-                        {#  <input value="{{ carts.count }}" name="carts_count">#}
+                        <input value="{{ carts.count }}" name="carts_count">
                         <script>
                             function sum() {
                                 var sum = 0;
@@ -82,15 +82,13 @@
                                     <span class="item_cart">{{ cart.instrument.name }}</span>
                                 </td>
                                 <td>
-                                    <input value="{{ cart.instrument.price }}" id="price-{{ forloop.counter }}"
-                                           class="price">
+                                    <strong id="price-{{ forloop.counter }}" class="price"> {{ cart.instrument.price }} </strong>
                                 </td>
                                 <td>
                                     <div class="numbers-row">
                                         <input type="text" value="{{ cart.count }}" id="quantity-{{ forloop.counter }}"
                                                class="qty2" name="quantity-{{ forloop.counter }}"
                                                onchange="count_change('{{ forloop.counter }}'); subtotal('{{ forloop.counter }}'); sum(); total();">
-                                        {# Kao, don't use '\n' here, will influence the js file #}
                                         <div class="inc button_inc"
                                              onclick="count_change_add('{{ forloop.counter }}'); sum(); total();">+
                                         </div>
@@ -100,8 +98,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input value="{{ cart.total_money }}" id="total-{{ forloop.counter }}"
-                                           class="subtotal" name="subtotal-{{ forloop.counter }}" onchange="sum()">
+                                    <strong id="total-{{ forloop.counter }}" class="subtotal"
+                                            name="subtotal-{{ forloop.counter }}" onchange="sum()"> {{ cart.total_money }} </strong>
                                 </td>
                                 <td class="options">
                                     <a >
@@ -153,15 +151,6 @@
                                 <li id="total" name="total">
                                     <span>Total:</span>$ 240
                                 </li>
-                                {#                            <li>#}
-                                {#                                <span>Subtotal:</span>$<input id="subtotal_all" name="subtotal_all" value="240.00" onchange="total()">#}
-                                {#                            </li>#}
-                                {#                            <li>#}
-                                {#                                <span>Shipping</span>$<input id="shipping" name="shipping" value="7.00" onchange="total()">#}
-                                {#                            </li>#}
-                                {#                            <li>#}
-                                {#                                <span>Total</span>$<input id="total" name="total" value="247.00">#}
-                                {#                            </li>#}
                             </ul>
                             <button type="submit" class="btn_1 full-width cart">Proceed to Checkout</button>
                         </div>
