@@ -10,6 +10,7 @@ from django.urls import reverse
 
 from management.forms import SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
@@ -98,12 +99,25 @@ def confirm_submit(request):
     return render(request, 'shop_templates/product-detail.html')
 
 
+def personal_profile(request):
+    if request.method == "POST":
+        profile_item = Profile.objects.filter(user=request.user.id).first()
+        profile_item.image = request.FILES.get('photo')
+        profile_item.save()
+        return redirect(reverse('shop:personal_profile'))
+    else:
+        return render(request, 'shop_templates/personal_profile.html', {
+            'profile': Profile.objects.filter(user=request.user.id).first(),
+        })
+
+
 def leave_review2(request):
     print(request)
     return render(request, 'shop_templates/leave-review-2.html')
 
 
 def model_view(request, product_id):
+
     instrument = get_object_or_404(Instrument, pk=product_id)
     return render(request, 'shop_templates/product-detail-model.html', {
         "instrument": instrument,
@@ -183,6 +197,7 @@ def product_search_by_category(request):
 
 # search instruments by keyword
 def product_search(request):
+
     search_text = request.GET.get("search", "")
     search_category_text = request.GET.get("category", None)
     all_instruments = Instrument.objects.filter(name__contains=search_text)
@@ -223,7 +238,7 @@ def product_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.filter(user=1)
+    carts = Cart.objects.filter(user=request.user)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price

@@ -1,5 +1,3 @@
-activateCategorySearch();
-
 // Secondary nav sticky
 function sticktothetop() {
     var $positionSticky = $('#stick_here');
@@ -15,14 +13,8 @@ function sticktothetop() {
     }
 }
 
-function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return decodeURIComponent(r[2]);
-    return null;
-}
-
 jQuery(function ($) {
+    activateCategorySearch();
     $(window).scroll(sticktothetop);
     sticktothetop();
 });
@@ -47,9 +39,21 @@ $('a.open_filters').on("click", function () {
 });
 
 //Filters collapse
+var $headingFilters = $('.filter_type h4 a');
+$headingFilters.on('click', function () {
+    $(this).toggleClass('opened');
+})
+$headingFilters.on('click', function () {
+    $(this).toggleClass('closed');
+});
 
-// post with ajax need csrf-token, use this function to create one
-// Reference: https://www.cnblogs.com/2mei/p/9251868.html
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]);
+    return null;
+}
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -95,64 +99,3 @@ function activateCategorySearch() {
 
     });
 }
-
-// function activateCategorySearch() {
-//     console.log("activate category search");
-//     $(function () {
-//         $("#filter_1 input[type='checkbox']").each(function (i, item) {
-//             console.log("search_list", item);
-//             item.addEventListener('click', function () {
-//                 let checked_list = [];
-//                 $("#filter_1 input[type='checkbox']").each(function (i, item) {
-//                     checked_list.push(item.checked ? 1 : 0);
-//                 });
-//                 console.log("search_list", checked_list);
-//                 $.ajax({
-//                     url: "/product_search/category/",
-//                     type: "GET",
-//                     // dataType: "json",
-//                     // headers: {"X-CSRFToken": csrf_token},
-//                     data: {
-//                         "checked_category": checked_list.join(""),
-//                         "search_keyword": getQueryString("search"),
-//                     },
-//                     success: function (data) {
-//                         console.log(data);
-//                         // console.log(data.status);
-//                         // console.log(data.message);
-//                         $(".product-list-ajax").html(data)
-//                     },
-//                 });
-//             });
-//         });
-//     });
-// }
-//
-// function activateCategoryState() {
-//
-//     var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
-//     var $checkboxes = $(".category-checkbox");
-//
-//     $checkboxes.on("change", function () {
-//         $checkboxes.each(function () {
-//             checkboxValues[this.id] = this.checked;
-//         });
-//         localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-//         console.log(checkboxValues);
-//     });
-//
-//     $.each(checkboxValues, function (key, value) {
-//         $("#" + key).prop('checked', value);
-//     });
-// }
-
-// function searched_list() {
-//     var $headingFilters = $('.filter_type h4 a');
-//     $headingFilters.on('click', function () {
-//         $(this).toggleClass('opened');
-//     })
-//     $headingFilters.on('click', function () {
-//         $(this).toggleClass('closed');
-//     });
-//
-// }
