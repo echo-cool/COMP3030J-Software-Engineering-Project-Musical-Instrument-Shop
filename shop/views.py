@@ -106,6 +106,8 @@ def personal_profile(request):
     email = user.email
     prof = Profile.objects.filter(user=user).first()
     print(prof)
+    if prof is None:
+        prof = Profile()
     phone = prof.phone
     address = prof.address
     form = UpdateProfileForm({
