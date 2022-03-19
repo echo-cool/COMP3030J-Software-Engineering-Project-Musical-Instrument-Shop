@@ -46,8 +46,11 @@
 <!--进度条-->
 {#<div class="owl-item active" style="width: 583px;">#}
 <div id="model-place">
-    <button class="model-zoom-in">+</button>
-    <button class="model-zoom-out">-</button>
+    <button class="model-zoom-in">Zoom In</button>
+    <button class="model-zoom-out">Zoom Out</button>
+    <button class="model-zoom-out"
+            onclick=switchRotate()>Rotate
+    </button>
     <div id="progress" class="progress"></div>
 </div>
 
@@ -71,6 +74,11 @@
 
 
 <script>
+    function switchRotate() {
+        console.log(rotate_avail);
+        rotate_avail = !rotate_avail
+    };
+    var rotate_avail = true;
     // 设置名称
     var path, pathName;
     path = "../static/";
@@ -212,7 +220,9 @@
         controls.update();
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
-        scene.children[scene.children.length - 1].rotateY(0.001 * 5);//旋转角速度0.001弧度每毫秒
+        if (rotate_avail) {
+            scene.children[scene.children.length - 1].rotateY(0.001 * 5);//旋转角速度0.001弧度每毫秒
+        }
     }
 
     // 获取参数
