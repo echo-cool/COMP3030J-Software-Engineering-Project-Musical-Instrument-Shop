@@ -238,13 +238,16 @@ def product_search(request):
 
 
 def cart(request):
-    carts = Cart.objects.filter(user=request.user)
-    each_cart = {}
-    for each_cart in carts:
-        each_cart.total_money = each_cart.count * each_cart.instrument.price
-    return render(request, 'shop_templates/cart.html', {
-        "carts": carts,
-    })
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+        each_cart = {}
+        for each_cart in carts:
+            each_cart.total_money = each_cart.count * each_cart.instrument.price
+        return render(request, 'shop_templates/cart.html', {
+            "carts": carts,
+        })
+    else:
+        return redirect('accounts:log_in')
 
 
 def product_add_cart(request, instrument_id):
