@@ -31,7 +31,9 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
+    <style>
 
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -43,13 +45,16 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="all">
+                        <!--加载模型，默认不显示  -->
+                        <div id="progress" class="progress" style="display:none;">
+                            <button class="model-zoom-in">Zoom Out</button>
+                            <button class="model-zoom-out">Zoom In</button>
+                            <button class="model-zoom-out"
+                                    onclick=switchRotate()>Rotate
+                            </button>
+                        </div>
                         <div class="slider">
                             <div class="owl-carousel owl-theme main">
-{#                                {% include 'shop_templates/product-detail-model.html' %}#}
-                                {#                                <div>#}
-                                {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
-                                {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
-                                {#                                </div>#}
                                 <div>
                                     <img class="owl-lazy" src="/media/{{ instrument.image }}"
                                          data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
@@ -532,16 +537,8 @@
         </div>
     </footer>
     <!--/footer-->
-    </div>
-    <!-- page -->
 
     <div id="toTop"></div><!-- Back to top button -->
-	</main>
-	<!-- /main -->
-	</div>
-	<!-- page -->
-
-	<div id="toTop"></div><!-- Back to top button -->
 
     <div class="top_panel">
         <div class="container header_panel">
@@ -725,4 +722,15 @@
     <!-- SPECIFIC SCRIPTS -->
     <script src="{% static "assets/js_for_shop/carousel_with_thumbs.js" %}"></script>
 
+    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>#}
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>#}
+    <!-- 需要修复main 的buttom错误-->
+    <script>
+        $(".main").style = "margin-bottom: 0px;";
+    </script>
 {% endblock %}

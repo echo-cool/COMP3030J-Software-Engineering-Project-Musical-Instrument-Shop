@@ -7,9 +7,10 @@
 
     /* 进度条 */
     .progress {
-    {#margin-top: 3%;#} position: absolute;
+        margin-top: 3%;
+        position: absolute;
         width: 96%;
-        height: 36%;
+        height: 35%;
     }
 
     .progress .mask {
@@ -43,26 +44,13 @@
 
 </style>
 
-<button class="model-zoom-in">Zoom Out</button>
-<button class="model-zoom-out">Zoom In</button>
-<button class="model-zoom-out"
-        onclick=switchRotate()>Rotate
-</button>
-<!--进度条-->
-{#<div class="owl-item active" style="width: 583px;">#}
 <div id="progress" class="progress">
-    {#    <div id="progress" class="progress"></div>#}
+    <button class="model-zoom-in">Zoom Out</button>
+    <button class="model-zoom-out">Zoom In</button>
+    <button class="model-zoom-out"
+            onclick=switchRotate()>Rotate
+    </button>
 </div>
-
-{#<p id="model-place">#}
-{#<div id="progress" class="progress">#}
-{#    <div class="mask"></div>#}
-{#    <div class="loading">#}
-{#        <div class="trends"></div>#}
-{#    </div>#}
-{#</div>#}
-{#</p>#}
-{#</div>#}
 
 
 <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
@@ -264,6 +252,4 @@
         }
     }
 
-    {#document.getElementById("progress").addEventListener('focus', function (e) {#}
-    {#\}); //passive 参数不能省略，用来兼容ios和android#}
 </script>
