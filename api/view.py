@@ -6,6 +6,8 @@
 @IDE ：PyCharm
 """
 from django.contrib import auth
+from django.contrib.auth.models import User
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
@@ -17,11 +19,12 @@ def login(request):
     if request.method == 'GET':
         return redirect('shop:index')
     elif request.method == 'POST':
-        username = request.POST.get('username')
+        email_or_username = request.POST.get('username')
         password = request.POST.get('password')
         #       Use Django's built-in authentication system
-        print(username, password)
-        user = auth.authenticate(username=username, password=password)
+        print(email_or_username, password)
+        tmp_user = User.objects.filter(Q(username=email_or_username) | Q(email__iexact=email_or_username)).first()
+        user = auth.authenticate(username=tmp_user.username, password=password)
         if user is not None and user.is_active:
             auth.login(request, user)
             messages.add_message(request, messages.INFO, 'Login Successfully!')
