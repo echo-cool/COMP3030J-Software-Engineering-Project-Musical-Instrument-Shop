@@ -570,6 +570,7 @@ THREE.TrackballControls = function (object, domElement) {
         event.preventDefault();
     }
 
+  // if ($(".model-zoom-in") !== null) {
     window.document.querySelector(".progress").addEventListener('contextmenu', contextmenu, false);
     window.document.querySelector(".progress").addEventListener('mousedown', mousedown, false);
     window.document.querySelector(".model-zoom-in").addEventListener('click', modelZoomIn, false);
@@ -578,9 +579,9 @@ THREE.TrackballControls = function (object, domElement) {
     window.document.querySelector(".progress").addEventListener('touchstart', touchstart, false);
     window.document.querySelector(".progress").addEventListener('touchend', touchend, false);
     window.document.querySelector(".progress").addEventListener('touchmove', touchmove, false);
-
     window.document.querySelector(".progress").addEventListener('keydown', keydown, false);
     window.document.querySelector(".progress").addEventListener('keyup', keyup, false);
+    // }
 
     this.handleResize();
 

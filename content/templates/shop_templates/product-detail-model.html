@@ -42,12 +42,12 @@
     }
 
 </style>
-
-<button class="model-zoom-in">Zoom Out</button>
-<button class="model-zoom-out">Zoom In</button>
-<button class="model-zoom-out"
-        onclick=switchRotate()>Rotate
-</button>
+{##}
+{#<button class="model-zoom-in">Zoom Out</button>#}
+{#<button class="model-zoom-out">Zoom In</button>#}
+{#<button class="model-zoom-out"#}
+{#        onclick=switchRotate()>Rotate#}
+{#</button>#}
 <div id="progress" class="progress">
 </div>
 
@@ -161,6 +161,7 @@
 
         // 添加操作器
         var loader = new THREE.GLTFLoader();
+        console.log("url", "{% static "assets/detail_model/" %}");
         loader.load("{% static "assets/detail_model/" %}" + pathName, function (gltf) {
             {#console.log('控制台查看加载gltf文件返回的对象结构', gltf)#}
             {#console.log('gltf对象场景属性', gltf.scene)#}

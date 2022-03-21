@@ -8,7 +8,7 @@ var rotate_avail = true;
 var path, pathName;
 path = "../static/";
 
-pathName = "model_detail_piano11.glb";
+pathName = "model_detail_piano2.glb";
 // 容器
 var container,
     // 控制器
@@ -89,14 +89,13 @@ function init() {
 
     // 添加操作器
     var loader = new THREE.GLTFLoader();
-    loader.load("../static/assets/assets/detail_model/" + pathName, function (gltf) {
+    loader.load("../static/assets/detail_model/" + pathName, function (gltf) {
             console.log('控制台查看加载gltf文件返回的对象结构', gltf)
             console.log('gltf对象场景属性', gltf.scene)
             console.log('gltf对象相机属性', gltf.cameras)
             // 返回的场景对象gltf.scene插入到threejs场景中
             gltf.scene.traverse(function (child) {
                 if (child.isMesh) {
-
                     console.log("模型部件", child.name);
                     child.frustumCulled = false;
                     //模型阴影
@@ -115,8 +114,7 @@ function init() {
             gltf.scene.scale.set(10, 10, 10) // scale here
             scene.add(gltf.scene);
         }, onProgress, onError
-    )
-    ;
+    );
 
 
     //创建一个webgl对象
@@ -129,7 +127,9 @@ function init() {
     // 设置分辨率
     renderer.setPixelRatio(window.devicePixelRatio);
     // 设置渲染尺寸
-    renderer.setSize(580, 700);
+    renderer.setSize(600, 700);
+    renderer.domElement.className = "model-canvas";
+    renderer.domElement.style = "width:100%; height:90%; position: absolute;z-index: 2;height: 572px;background: white;";
     container.appendChild(renderer.domElement);
     // 自适应监听
     window.addEventListener('resize', resize, false);
