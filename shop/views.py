@@ -194,6 +194,12 @@ def model_design(request, model_id):
     })
 
 
+def model_design2(request, model_id):
+    return render(request, 'shop_templates/model-design2.html', {
+        "model_id": model_id,
+    })
+
+
 # search instruments by category
 def product_search_by_category(request):
     if request.method == "GET":
