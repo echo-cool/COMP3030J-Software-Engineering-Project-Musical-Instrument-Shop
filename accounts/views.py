@@ -19,7 +19,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import View, FormView
 from django.conf import settings
 
-from shop.models import Activation
+from shop.models import Activation, Profile
 from .utils import (
     send_activation_email, send_reset_password_email, send_forgotten_username_email, send_activation_change_email,
 )
@@ -143,13 +143,15 @@ class ActivateView(View):
         user = act.user
         user.is_active = True
         user.save()
+        profile = Profile(user=user)
+        profile.save()
 
         # Remove the activation record
         act.delete()
 
         messages.success(request, _('You have successfully activated your account!'))
 
-        return redirect('accounts:log_in')
+        return redirect('shop:index')
 
 
 class ResendActivationCodeView(GuestOnlyView, FormView):
@@ -331,6 +333,3 @@ class RestorePasswordDoneView(BasePasswordResetDoneView):
 class LogOutView(LoginRequiredMixin, BaseLogoutView):
     template_name = 'accounts/log_out.html'
 
-
-def sign_up(request):
-    return render(request, 'accounts/account.html')

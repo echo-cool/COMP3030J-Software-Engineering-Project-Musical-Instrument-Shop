@@ -26,7 +26,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class Comment(models.Model):
-    author = models.CharField(max_length=60)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)

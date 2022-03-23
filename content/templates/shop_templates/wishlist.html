@@ -6,9 +6,48 @@
 
 {% block head_link %}
     <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <style>
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table td p {
+            margin-bottom: 0px;
+        }
+
+        .table td[class="name-pr"] a {
+            font-size: large;
+            color: olivedrab;
+        }
+
+        .table td[class="add-pr"] a {
+        {#background: lightblue;#} color: white;
+            position: relative;
+            width: 65%;
+            cursor: pointer;
+            background: #5dc9ee;
+            border-radius: 4px;
+        }
+
+        .table td[class="remove-pr"] div {
+            color: white;
+            position: relative;
+            width: 65%;
+            cursor: pointer;
+            background: lightpink;
+            border-radius: 4px;
+        {#font-size: small; #}{#    color: lightpink;#}
+        }
+
+    </style>
 {% endblock %}
 
 {% block content %}
+    {% if wishlists %}
+        {% for wishlist in wishlists %}
+            {{ wishlists.id }}
+        {% endfor %}
+    {% endif %}
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
@@ -30,90 +69,74 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-main table-responsive">
-                        <table class="table">
+                        <table class="table" style="text-align-last: center;">
                             <thead>
-                                <tr>
-                                    <th>Images</th>
-                                    <th>Product Name</th>
-                                    <th>Unit Price </th>
-                                    <th>Stock</th>
-                                    <th>Add Item</th>
-                                    <th>Remove</th>
-                                </tr>
+                            <tr>
+                                <th>Images</th>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Stock</th>
+                                <th>Add Item</th>
+                                <th>Remove</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="quantity-box">In Stock</td>
-                                    <td class="add-pr">
-                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 60.0</p>
-                                    </td>
-                                    <td class="quantity-box">In Stock</td>
-                                    <td class="add-pr">
-                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 30.0</p>
-                                    </td>
-                                    <td class="quantity-box">In Stock</td>
-                                    <td class="add-pr">
-                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
+                            {% if wishlists %}
+                                {% for wishlist in wishlists %}
+                                    <tr id="wish-{{ wishlist.id }}">
+                                        <td class="thumbnail-img" style="width: 20%;">
+                                            <a href="/product-detail/{{ wishlist.instrument.id }}">
+                                                <img class="img-fluid"
+                                                     src="{{ wishlist.instrument.image.url }}" alt=""/>
+                                            </a>
+                                        </td>
+                                        <td class="name-pr">
+                                            <a href="/product-detail/{{ wishlist.instrument.id }}">
+                                                {{ wishlist.instrument.name }}
+                                            </a>
+                                        </td>
+                                        <td class="price-pr">
+                                            <p>$ {{ wishlist.instrument.price }}</p>
+                                        </td>
+                                        <td class="quantity-box">In Stock</td>
+                                        <td class="add-pr">
+                                            <a class="btn hvr-hover" href="/api/cart/{{ wishlist.instrument.id }}">
+                                                Add to Cart</a>
+                                        </td>
+                                        <td class="remove-pr">
+                                            <div class="btn hvr-hover">
+                                                <i class="fas fa-times"
+                                                   onclick="remove_wishlist_item({{ forloop.counter }})">Remove from
+                                                    Wishlist</i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                                <tr>#}
+                            {#                                    <td class="thumbnail-img">#}
+                            {#                                        <a href="#">#}
+                            {#									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />#}
+                            {#								</a>#}
+                            {#                                    </td>#}
+                            {#                                    <td class="name-pr">#}
+                            {#                                        <a href="#">#}
+                            {#									Lorem ipsum dolor sit amet#}
+                            {#								</a>#}
+                            {#                                    </td>#}
+                            {#                                    <td class="price-pr">#}
+                            {#                                        <p>$ 80.0</p>#}
+                            {#                                    </td>#}
+                            {#                                    <td class="quantity-box">In Stock</td>#}
+                            {#                                    <td class="add-pr">#}
+                            {#                                        <a class="btn hvr-hover" href="#">Add to Cart</a>#}
+                            {#                                    </td>#}
+                            {#                                    <td class="remove-pr">#}
+                            {#                                        <a href="#">#}
+                            {#									<i class="fas fa-times"></i>#}
+                            {#								</a>#}
+                            {#                                    </td>#}
+                            {#                                </tr>#}
                             </tbody>
                         </table>
                     </div>
@@ -129,5 +152,25 @@
 {% block foot_link %}
 
     <script src="{% static 'js/wishlist.js' %}"></script>
+    <script>
+        function remove_wishlist_item(id) {
+            console.log("delete", id);
+            $.ajax({
+                url: "/api/wishlist/" + id,
+                method: "DELETE",
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    let id_for_delete = "#wish-" + id;
+                    $(id_for_delete).remove();
+                },
+                error: function (res) {
+                    console.log("ji", id, res);
+                }
+            })
+            fetchHeaderCartList();
+        }
+    </script>
 
 {% endblock %}

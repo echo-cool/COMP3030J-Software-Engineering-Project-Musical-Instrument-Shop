@@ -201,8 +201,8 @@
                             <h3>3. Order Summary</h3>
                             <div class="box_general summary">
                                 <ul>
-                                    {% for order in orders %}
-                                    <li class="clearfix"><em>{{ order.quantity }}x {{ order.instrument.name }}</em> <span>${{ order.subtotal }}</span></li>
+                                    {% for cart in carts %}
+                                    <li class="clearfix"><em>{{ cart.count }}x {{ cart.instrument.name }}</em> <span>${{ cart.count }}*{{ cart.instrument.price }}</span></li>
                                     {% endfor %}
                                 </ul>
                                 <ul>

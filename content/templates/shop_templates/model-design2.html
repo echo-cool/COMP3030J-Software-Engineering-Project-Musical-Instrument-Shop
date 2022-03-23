@@ -1,0 +1,683 @@
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+<html lang="en">
+<head>
+    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "assets/css_for_shop/bootstrap.custom.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css_for_shop/custom.css" %}">
+    <link rel="stylesheet" href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}">
+
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/LoaderSupport.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OBJLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/EffectComposer.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OutlinePass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TweenLite.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OrbitControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/dat.gui.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/stats.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/jquery.simplecolorpicker.js" %}"></script>
+
+    <script>
+        var document = window.document,
+            nativeColorPicker = {
+                // initialized flag
+                started: false,
+
+                // start color
+                color: '#000000',
+
+                // inputs where plugin was initialized
+                inputs: {},
+
+                // flag to know if color input is supported
+                hasNativeColorSupport: false,
+
+                // inits the plugin on specified input
+                init: function (inputId) {
+                    // start the plugin
+                    this.start();
+
+                    if (this.hasNativeColorSupport) {
+                        return;
+                    }
+
+                    if (typeof inputId !== 'string') {
+                        throw 'inputId have to be a string id selector';
+                    }
+
+                    // set the input
+                    this.input = (this.inputs[inputId] = this.inputs[inputId]) || document.getElementById(inputId);
+
+                    if (!this.input) {
+                        throw 'There was no input found with id: "' + inputId + '"';
+                    }
+
+                    // input defaults
+                    this.input.value = this.color;
+                    this.input.unselectable = 'on';
+                    this.css(this.input, {
+                        backgroundColor: this.color,
+                        borderWidth: '0.4em 0.3em',
+                        width: '3em',
+                        cursor: 'default'
+                    });
+
+                    // register input event
+                    this.input.onfocus = function () {
+                        nativeColorPicker.onFocus(this.id);
+                    };
+                },
+
+                // initialize once
+                start: function () {
+                    // is already started
+                    if (this.started) {
+                        return;
+                    }
+
+                    // test if browser has native support for color input
+                    try {
+                        this.hasNativeColorSupport = !!(document.createElement('input').type = 'color');
+                    } catch (e) {
+                    }
+                    ;
+
+                    // no native support...
+                    if (!this.hasNativeColorSupport) {
+                        // create object element
+                        var object_element = document.createElement('object');
+                        object_element.classid = 'clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b';
+                        // set attributes
+                        object_element.id = 'colorHelperObj';
+                        this.css(object_element, {
+                            width: '0',
+                            height: '0'
+                        });
+                        document.body.appendChild(object_element);
+                    }
+                    // mark as started
+                    this.started = true;
+                },
+
+                // destroys the plugin
+                destroy: function (inputId) {
+                    var i;
+                    // destroy one input or all the plugin if no input id
+                    if (typeof inputId === 'string') {
+                        this.off(this.inputs[inputId]);
+                    } else {
+                        // remove helper object
+                        document.body.removeChild(document.getElementById('colorHelperObj'));
+                        // remove input events and styles
+                        for (i in this.inputs) {
+                            this.off(this.inputs[i]);
+                        }
+                        // mark not started
+                        this.started = false;
+                    }
+                },
+
+                off: function (input) {
+                    input.onfocus = null;
+                    this.css(input, {
+                        backgroundColor: '',
+                        borderWidth: '',
+                        width: '',
+                        cursor: ''
+                    });
+                },
+
+                // input focus function
+                onFocus: function (inputId) {
+                    this.input = this.inputs[inputId];
+                    this.color = this.getColor();
+                    this.input.value = this.color;
+                    nativeColorPicker.css(this.input, {
+                        backgroundColor: this.color,
+                        color: this.color
+                    });
+                    this.input.blur();
+                },
+
+                // gets the color from the object
+                // and normalize it
+                getColor: function () {
+                    // get decimal color, (passing the previous one)
+                    // and change to hex
+                    var hex = colorHelperObj.ChooseColorDlg(this.color.replace(/#/, '')).toString(16);
+
+                    // add extra zeroes if hex number is less than 6 digits
+                    if (hex.length < 6) {
+                        var tmpstr = '000000'.substring(0, 6 - hex.length);
+                        hex = tmpstr.concat(hex);
+                    }
+
+                    return '#' + hex;
+                },
+
+                // set css properties
+                css: function (el, props) {
+                    for (var prop in props) {
+                        el.style[prop] = props[prop];
+                    }
+                }
+            };
+        // expose to global
+        window.nativeColorPicker = nativeColorPicker;
+    </script>
+
+    <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
+</head>
+
+<style>
+    .svg-colors {
+        cursor: pointer;
+        opacity: 1;
+        height: 54px;
+        width: 54px;
+    }
+</style>
+<body>
+<!-- Start Top Nav -->
+{#<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">#}
+{#    <div class="container text-light">#}
+{#        <div class="w-100 d-flex justify-content-between">#}
+{#            <a href="http://threejs.org" target="_blank" rel="noopener">Develop based on three.js</a> -#}
+{#            Instrument Model#}
+{#            Design#}
+{#            by <a#}
+{#                href="http://eduperiment.com" target="_blank" rel="noopener">Group 8</a><br/><br/>#}
+{#            #}
+{#        </div>#}
+{#    </div>#}
+{#</nav>#}
+<!-- Close Top Nav -->
+
+<div class="container-fluid">
+    {#    <div class="row model-page-wrapper">#}
+    {#        <div id="info">#}
+    {#            <a href="http://threejs.org" target="_blank" rel="noopener">Develop based on three.js</a> - Instrument Model#}
+    {#            Design#}
+    {#            by <a#}
+    {#                href="http://eduperiment.com" target="_blank" rel="noopener">Group 8</a><br/><br/>#}
+    {#        </div>#}
+    {#    </div>#}
+    <div class="row" style="height: 100%">
+        <div class="col-8 model-show-wrapper"></div>
+        <div class="col-4 model-design-wrapper" style="background: #f8f8f8">
+            <h1>Welcome to Model Design!</h1>
+            <div>Now raw model: Guitar - 1</div>
+            <p>In here, you can design your own musical instrument.</p>
+            <div class="container">
+                <h3>Feature</h3>
+                <div>
+                    <img onclick="splitModel()" style="cursor: pointer" width="40px" height="40px"
+                         src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument
+                    explode
+                </div>
+                <div><img onclick="mergeModel()" style="cursor: pointer" width="40px" height="40px"
+                          src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument
+                    combine
+                </div>
+                <div class="row">
+                    <h3>Recommend Colour</h3>
+                    <div style="cursor: pointer">
+                        <img onclick="changeColor('#000000')" width="40px" height="40px"
+                             src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">
+                        <img onclick="changeColor('#ffffff')" width="40px" height="40px"
+                             src="{% static "assets/img_for_shop/color/Paint_White.png" %}">
+                        <img onclick="changeColor('#4d4f55')" width="40px" height="40px"
+                             src="{% static "assets/img_for_shop/color/Paint_MidnightSilver.png" %}">
+                        <img onclick="changeColor('#093373')" width="40px" height="40px"
+                             src="{% static "assets/img_for_shop/color/Paint_Blue.png" %}">
+                        <img onclick="changeColor('#9e0909')" width="40px" height="40px"
+                             src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">
+                    </div>
+                    <div>
+                        <h3>Long list of colors</h3>
+                        colorpicker-longlist:
+                        <select name="colorpicker-longlist">
+                            <option value="#ac725e">#ac725e</option>
+                            <option value="#d06b64">#d06b64</option>
+                            <option value="#f83a22">#f83a22</option>
+                            <option value="#fa573c">#fa573c</option>
+                            <option value="#ff7537">#ff7537</option>
+                            <option value="#ffad46">#ffad46</option>
+                            <option value="#42d692">#42d692</option>
+                            <option value="#16a765">#16a765</option>
+                            <option value="#7bd148">#7bd148</option>
+                            <option value="#b3dc6c">#b3dc6c</option>
+                            <option value="#fbe983">#fbe983</option>
+                            <option value="#fad165">#fad165</option>
+                            <option value="#92e1c0">#92e1c0</option>
+                            <option value="#9fe1e7">#9fe1e7</option>
+                            <option value="#9fc6e7">#9fc6e7</option>
+                            <option value="#4986e7">#4986e7</option>
+                            <option value="#9a9cff">#9a9cff</option>
+                            <option value="#b99aff">#b99aff</option>
+                            <option value="#c2c2c2">#c2c2c2</option>
+                            <option value="#cabdbf">#cabdbf</option>
+                            <option value="#cca6ac">#cca6ac</option>
+                            <option value="#f691b2">#f691b2</option>
+                            <option value="#cd74e6">#cd74e6</option>
+                            <option value="#a47ae2">#a47ae2</option>
+                        </select>
+                    </div>
+                    <div><input id="color" type="color"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Start Script -->
+
+<script type="text/javascript">
+
+    {#$(document).ready(function () {#}
+    console.log("访问格式：http://127.0.0.1:8000/model_design/guitar_style_1" + "\n" +
+        "http://127.0.0.1:8000/model_design/guitar_style_2" + "\n" +
+        "http://127.0.0.1:8000/model_design/guitar_style_3" + "\n" +
+        "http://127.0.0.1:8000/model_design/piano_style_1");
+    let model_id = "guitar_style_3";
+    model_id = "{{ model_id|safe }}";
+    console.log("加载的模型是：", model_id)
+    let model_name = "model_design_piano.gltf";
+
+    if (model_id === "guitar_style_1") {
+        model_name = "model_design_guitar.gltf";
+    } else if (model_id === "guitar_style_2") {
+        model_name = "model_design_guitar2.gltf";
+    } else if (model_id === "guitar_style_3") {
+        model_name = "model_design_guitar3.gltf";
+    } else if (model_id === "piano_style_1") {
+        model_name = "model_design_piano.gltf";
+    } else {
+        let info = "访问格式：http://127.0.0.1:8000/model_design/guitar_style_1" + "\n" +
+            "http://127.0.0.1:8000/model_design/guitar_style_2" + "\n" +
+            "http://127.0.0.1:8000/model_design/guitar_style_3" + "\n" +
+            "http://127.0.0.1:8000/model_design/piano_style_1";
+        console.log(model_id, info);
+        alert(info);
+        model_name = "model_design_piano.gltf";
+    }
+    if (!Detector.webgl) Detector.addGetWebGLMessage();
+    let stats;
+    var camera, scene, renderer, controls;
+    let raycaster = new THREE.Raycaster();
+
+    let mouse = new THREE.Vector2();
+    let selectedObjects = [];
+
+    let composer, effectFXAA, outlinePass;
+    let obj3d = new THREE.Object3D();
+
+    let group = new THREE.Group();
+
+    let params = {
+        edgeStrength: 3.0,
+        edgeGlow: 0.0,
+        edgeThickness: 1.0,
+        pulsePeriod: 0,
+        rotate: false,
+        usePatternTexture: false
+    };
+
+    // Init gui
+    function mergeModel() {
+        // find the mesh of loaded model to iterater
+        scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
+            specific_model_merge(mesh, model_id);
+        })
+    }
+
+    function splitModel() {
+        scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
+            specific_model_split(mesh, model_id);
+        })
+    }
+
+    function changeColor(new_color) {
+        console.log("onChange for selected color:", selectedObjects, new_color);
+        {#selectedObjects[0].material.color = value;#}
+        let newMaterial = selectedObjects[0].material.clone();
+        newMaterial.color = new THREE.Color(new_color); //重新修改颜色
+        selectedObjects[0].material = newMaterial;
+    }
+
+
+    init();
+    animate();
+    let state_changeColor = false;
+
+    {#gui.remember(deposite);#}
+    {#gui.domElement.style = 'height:100%';#}
+
+    function init() {
+
+        container = document.createElement('div');
+        $(".model-show-wrapper").append(container);
+
+        let width = (window.innerWidth / 3) * 2;
+        let height = window.innerHeight;
+        renderer = new THREE.WebGLRenderer({antialias: false});
+        renderer.shadowMap.enabled = true;
+        renderer.setSize(width, height);
+        container.append(renderer.domElement);
+
+        {#scene = new THREE.Scene();#}
+
+        // scene 创建一个场景
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xB3CEFB);
+        scene.fog = new THREE.Fog(scene.background, 1, 100);
+
+
+        camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+        camera.position.set(0, 0, 8);
+
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.minDistance = 5;
+        controls.maxDistance = 20;
+        controls.enablePan = false;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+
+
+        scene.add(new THREE.AmbientLight(0xaaaaaa, 0.6));
+
+        var light = new THREE.DirectionalLight(0xddffdd, 0.7);
+        light.position.set(1, 1, 1);
+
+        light.castShadow = true;
+
+        light.shadow.mapSize.width = 1024;
+        light.shadow.mapSize.height = 1024;
+
+        var d = 10;
+
+        light.shadow.camera.left = -d;
+        light.shadow.camera.right = d;
+        light.shadow.camera.top = d;
+        light.shadow.camera.bottom = -d;
+
+        light.shadow.camera.far = 1000;
+
+        scene.add(light);
+
+
+        var light2 = new THREE.DirectionalLight(0xddffdd, 0.4);
+        light2.position.set(-1, 0.1, 0);
+
+        light2.castShadow = false;
+
+        light2.shadow.mapSize.width = 1024;
+        light2.shadow.mapSize.height = 1024;
+
+        var d = 10;
+
+        light2.shadow.camera.left = -d;
+        light2.shadow.camera.right = d;
+        light2.shadow.camera.top = d;
+        light2.shadow.camera.bottom = -d;
+
+        light2.shadow.camera.far = 1000;
+
+        scene.add(light2);
+
+        {##}
+        var light3 = new THREE.DirectionalLight(0xddffdd, 0.2);
+        light3.position.set(0.5, -0.2, 0);
+
+        light3.castShadow = false;
+
+        light3.shadow.mapSize.width = 1024;
+        light3.shadow.mapSize.height = 1024;
+
+        var d = 10;
+
+        light3.shadow.camera.left = -d;
+        light3.shadow.camera.right = d;
+        light3.shadow.camera.top = d;
+        light3.shadow.camera.bottom = -d;
+
+        light3.shadow.camera.far = 1000;
+
+        scene.add(light3);
+
+        // model
+
+        var manager = new THREE.LoadingManager();
+        manager.onProgress = function (item, loaded, total) {
+            console.log(item, loaded, total);
+        };
+
+        {#cubeDr(4, 0, 2, 0)#}
+        {#cubeDr(4, 0, 2, 0)#}
+        {#cubeDr(4, 5, 2, 0)#}
+        {#cubeDr(4, -4, 2, 0)#}
+        {##}
+        {#function cubeDr(a, x, y, z) {#}
+        {#    var cubeGeo = new THREE.BoxGeometry(a, a, a);#}
+        {#    var cubeMat = new THREE.MeshPhongMaterial({#}
+        {#        color: 0xfff000 * Math.random()#}
+        {#    });#}
+        {#    var cube = new THREE.Mesh(cubeGeo, cubeMat);#}
+        {#    cube.position.set(x, y, z);#}
+        {#    cube.castShadow = true;#}
+        {#    scene.add(cube);#}
+        {#    return cube;#}
+        {#/}#}
+        {##}
+
+        var loader = new THREE.GLTFLoader();
+        loader.load("{% static "assets/design_model/" %}" + model_name, function (gltf) {
+            gltf.scene.traverse(function (child) {
+                if (child.isMesh) {
+                    {#if (child.name.includes('ere')) {#}
+                    {#    child.material.color.set("rgb(67, 160, 71)")#}
+                    {#\}#}
+                    {#console.log("模型部件", child.name);#}
+                    child.frustumCulled = false;
+                    //模型阴影
+                    child.castShadow = true;
+                    {#//模型自发光#}
+                    {#child.material.emissive = child.material.color;#}
+                    {#child.material.emissiveMap = child.material.map;#}
+                }
+            });
+            gltf.scene.scale.set(1, 1, 1) // scale here
+            {#scene.add(gltf);#}
+            obj3d.add(gltf.scene);
+            {#obj3d.add(gltf.scene);#}
+        });
+
+
+        {#var loader = new THREE.OBJLoader2(manager);#}
+        {#loader.load('models/obj/tree.obj', function (object) {#}
+        {##}
+        {#    var scale = 1.0;#}
+        {##}
+        {#    object.traverse(function (child) {#}
+        {##}
+        {#        if (child instanceof THREE.Mesh) {#}
+        {##}
+        {#            child.geometry.center();#}
+        {#            child.geometry.computeBoundingSphere();#}
+        {#            scale = 0.2 * child.geometry.boundingSphere.radius;#}
+        {##}
+        {#            var phongMaterial = new THREE.MeshPhongMaterial({#}
+        {#                color: 0xffffff,#}
+        {#                specular: 0x111111,#}
+        {#                shininess: 5#}
+        {#            });#}
+        {#            child.material = phongMaterial;#}
+        {#            child.receiveShadow = true;#}
+        {#            child.castShadow = true;#}
+        {##}
+        {#        }#}
+        {##}
+        {#    });#}
+        {##}
+        {#    object.position.y = 1;#}
+        {#    object.scale.divideScalar(scale);#}
+        {#    obj3d.add(object);#}
+        {##}
+        {#\});#}
+
+        scene.add(group);
+
+        group.add(obj3d);
+
+        //
+        var floorMaterial = new THREE.MeshLambertMaterial({
+            color: 0x77F28F,
+            shininess: 0,
+            // wireframe: true
+        });
+        var floorGeometry = new THREE.PlaneBufferGeometry(500, 500);
+        var floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+        floorMesh.rotation.x -= Math.PI * 0.5;
+        floorMesh.position.y -= 1.5;
+        group.add(floorMesh);
+        floorMesh.receiveShadow = true;
+
+        {#var geometry = new THREE.TorusBufferGeometry(1, 0.3, 16, 100);#}
+        {#var material = new THREE.MeshPhongMaterial({color: 0xffaaff});#}
+        {#var torus = new THREE.Mesh(geometry, material);#}
+        {#torus.position.z = -4;#}
+        {#group.add(torus);#}
+        {#torus.receiveShadow = true;#}
+        {#torus.castShadow = true;#}
+
+        //
+
+        stats = new Stats();
+        container.appendChild(stats.dom);
+
+        // postprocessing
+
+        composer = new THREE.EffectComposer(renderer);
+
+        var renderPass = new THREE.RenderPass(scene, camera);
+        composer.addPass(renderPass);
+
+        outlinePass = new THREE.OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
+        composer.addPass(outlinePass);
+
+        var onLoad = function (texture) {
+            outlinePass.patternTexture = texture;
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+        };
+
+        effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
+        effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+        effectFXAA.renderToScreen = true;
+        composer.addPass(effectFXAA);
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        {#window.addEventListener('mousemove', onTouchMove);#}
+        {#window.addEventListener('touchmove', onTouchMove);#}
+
+        window.addEventListener('click', onTouchMove);
+
+        function onTouchMove(event) {
+            var x, y;
+            if (event.changedTouches) {
+                x = event.changedTouches[0].pageX;
+                y = event.changedTouches[0].pageY;
+            } else {
+                x = event.clientX;
+                y = event.clientY;
+            }
+            mouse.x = (x / ((window.innerWidth / 3) * 2)) * 2 - 1;
+            mouse.y = -(y / window.innerHeight) * 2 + 1;
+            checkIntersection();
+        }
+
+        function addSelectedObject(object) {
+            selectedObjects = [];
+            selectedObjects.push(object);
+            {#if (selectedObjects.length !== 0)#}
+            {#    state_changeColor = true;#}
+            {#else#}
+            {#    state_changeColor = false;#}
+        }
+
+        function checkIntersection() {
+            raycaster.setFromCamera(mouse, camera);
+            var intersects = raycaster.intersectObjects([scene], true);
+            {#console.log("mesh selected:", intersects);#}
+            if (intersects.length > 0) {
+                var selectedObject = intersects[0].object;
+                if (intersects[0].object.name.replace(" ", "") !== "") {
+                    addSelectedObject(selectedObject);
+                    outlinePass.selectedObjects = selectedObjects;
+                }
+            } else {
+                // outlinePass.selectedObjects = [];
+            }
+
+        }
+
+    }
+
+    function onWindowResize() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(width, height);
+        composer.setSize(width, height);
+
+        effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        stats.begin();
+        var timer = performance.now();
+        if (params.rotate) {
+            group.rotation.y = timer * 0.0001;
+        }
+        controls.update();
+        composer.render();
+        stats.end();
+    }
+
+
+    $('select[name="colorpicker-longlist"]').simplecolorpicker();
+    $('select[name="colorpicker-longlist"]').change(function () {
+        console.log(this.value);
+        changeColor(this.value);
+    })
+</script>
+
+
+<!-- End Script -->
+
+
+</body>
+</html>
