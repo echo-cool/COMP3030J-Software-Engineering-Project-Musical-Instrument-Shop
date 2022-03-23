@@ -1,4 +1,4 @@
-//受不了了，每个参数都要自己调，吐了吐了
+// 好起来了，只要写一遍，认了认了
 function specific_model_split(mesh, model_id) {
     switch (model_id) {
         case "guitar_style_1":

@@ -188,10 +188,11 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
-def model_design(request, model_id):
-    return render(request, 'shop_templates/model-design.html', {
-        "model_id": model_id,
-    })
+# model design with params
+def model_design(request):
+    name = request.GET.get('p1')
+    style = request.GET.get('p2')
+    return render(request, 'shop_templates/model-design.html')
 
 
 def model_design2(request, model_id):
