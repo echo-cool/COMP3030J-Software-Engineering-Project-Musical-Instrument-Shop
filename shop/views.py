@@ -190,8 +190,8 @@ def confirm(request):
 
 # model design with params
 def model_design(request):
-    name = request.GET.get('p1')
-    style = request.GET.get('p2')
+    name = request.GET.get('name')
+    style = request.GET.get('style')
     return render(request, 'shop_templates/model-design.html')
 
 

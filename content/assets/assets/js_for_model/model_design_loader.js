@@ -27,13 +27,17 @@ let model_name = "model_design_piano.gltf";
 console.log("加载的模型是：", model_id);
 
 if (model_id === "guitar_style_1") {
-    model_name = "model_design_guitar.gltf";
+    model_name = "model_design_guitar1.gltf";
 } else if (model_id === "guitar_style_2") {
     model_name = "model_design_guitar2.gltf";
 } else if (model_id === "guitar_style_3") {
     model_name = "model_design_guitar3.gltf";
+} else if (model_id === "guitar_style_4") {
+    model_name = "model_design_guitar4.gltf";
 } else if (model_id === "piano_style_1") {
     model_name = "model_design_piano.gltf";
+} else if (model_id === "guitar_style_5") {
+    model_name = "model_design_drumSet.glb";
 } else {
     let info = "访问格式：http://127.0.0.1:8000/model_design/color?name=guitar&style=1";
     console.log(model_id, info);
@@ -60,16 +64,27 @@ let params = {
     rotate: false,
     usePatternTexture: false
 };
+var model_state = "default";
 
 // Init gui
 function mergeModel() {
     // find the mesh of loaded model to iterater
+    if (model_state === "split") {
+        return;
+    } else {
+        model_state = "split";
+    }
     scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
         specific_model_merge(mesh, model_id);
     })
 }
 
 function splitModel() {
+    if (model_state === "merge") {
+        return;
+    } else {
+        model_state = "merge";
+    }
     scene.children[scene.children.length - 1].children[0].children[0].children.forEach(function (mesh) {
         specific_model_split(mesh, model_id);
     })
@@ -195,12 +210,13 @@ function init() {
                 //child.material.emissiveMap = child.material.map;
             }
         });
+        // 输出模型各面
+        console.log(gltf);
         gltf.scene.scale.set(1, 1, 1) // scale here
         obj3d.add(gltf.scene);
     });
 
     scene.add(group);
-
     group.add(obj3d);
 
     //
@@ -242,6 +258,7 @@ function init() {
 
     window.addEventListener('click', onTouchMove);
 
+    // T-O-D-O: 模型部件多选（判断 SHIFT / CTRL 按下），懒，之后写
     function onTouchMove(event) {
         var x, y;
         if (event.changedTouches) {
@@ -251,8 +268,12 @@ function init() {
             x = event.clientX;
             y = event.clientY;
         }
-        mouse.x = (x / ((window.innerWidth / 3) * 2)) * 2 - 1;
-        mouse.y = -(y / window.innerHeight) * 2 + 1;
+        let mainCanvas = renderer.domElement;
+        // mainCanvas 就是 canvas元素（renderer.domElement）
+        mouse.x = ((event.clientX - mainCanvas.getBoundingClientRect().left) / mainCanvas.offsetWidth) * 2 - 1;// 标准设备横坐标
+        mouse.y = -((event.clientY - mainCanvas.getBoundingClientRect().top) / mainCanvas.offsetHeight) * 2 + 1;// 标准设备纵坐标
+        // mouse.x = (x / window.innerWidth) * 2 - 1;
+        // mouse.y = -(y / window.innerHeight) * 2 + 1;
         checkIntersection();
     }
 
