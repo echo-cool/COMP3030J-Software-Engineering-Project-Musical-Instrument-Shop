@@ -18,6 +18,8 @@ class Activation(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='uploads/avatar/image/')
+    phone = models.CharField(max_length=20, unique=True)
+    address = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -64,6 +66,20 @@ class Cart(models.Model):
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = ('user', 'instrument', 'count', 'created_at')
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user}<{self.instrument}>'
+
+
+@admin.register(Wishlist)
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ('user', 'instrument', 'created_at')
 
 
 class InstrumentDetail(models.Model):
@@ -123,7 +139,8 @@ class Order(models.Model):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone', 'payment', 'subtotal',
+        'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone',
+        'payment', 'subtotal',
         'shipping', 'instrument', 'quantity', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
 
 

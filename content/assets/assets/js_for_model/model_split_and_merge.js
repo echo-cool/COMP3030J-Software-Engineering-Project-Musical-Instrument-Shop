@@ -139,7 +139,7 @@ function specific_model_split(mesh, model_id) {
     }
 }
 
-function specific_model_merge(mesh) {
+function specific_model_merge(mesh, model_id) {
     switch (model_id) {
         case "guitar_style_1":
             switch (mesh.name) {
