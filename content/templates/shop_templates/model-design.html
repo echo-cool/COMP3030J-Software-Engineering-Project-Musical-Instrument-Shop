@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +9,14 @@
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/style2.css" %}" rel="stylesheet">
     <link href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}" rel="stylesheet">
+
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="{% static "assets/js_for_model/fotorama.js" %}" id="js-reload"></script>
+
+
     <!-- SPECIFIC CSS -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display"/>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins"/>
@@ -18,7 +27,7 @@
     <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">
 
 
-    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
+    {#    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>#}
     <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
@@ -48,43 +57,16 @@
             <li><a href="#">Men</a></li>
             <li class="active">Bouble Fabric Blazer</li>
         </ul>
+        <!-- Model Design Part Start -->
         <div class="product-details-content container-fluid">
             <div class="col-md-8 col-sm-6">
                 <div class="product-img-box">
                     <a id="image-view" class="model-show-wrapper" title="Product Image">
                     </a>
-                    {#                    <div class="product-thumb">#}
-                    {#                        <ul class="thumb-content">#}
-                    {#                            <li class="thumb"><a#}
-                    {#                                    href="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    title="thumb product view1"#}
-                    {#                                    onclick="swap(this);return false;"><img#}
-                    {#                                    src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    alt="thumb product1"/></a></li>#}
-                    {#                            <li class="thumb"><a#}
-                    {#                                    href="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    title="thumb product view1"#}
-                    {#                                    onclick="swap(this);return false;"><img#}
-                    {#                                    src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    alt="thumb product1"/></a></li>#}
-                    {#                            <li class="thumb"><a#}
-                    {#                                    href="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    title="thumb product view1"#}
-                    {#                                    onclick="swap(this);return false;"><img#}
-                    {#                                    src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    alt="thumb product1"/></a></li>#}
-                    {#                            <li class="thumb"><a#}
-                    {#                                    href="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    title="thumb product view1"#}
-                    {#                                    onclick="swap(this);return false;"><img#}
-                    {#                                    src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"#}
-                    {#                                    alt="thumb product1"/></a></li>#}
-                    {#                        </ul>#}
-                    {#                    </div>#}
                 </div>
                 <!-- End product-img-box -->
             </div>
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6 model_design_controls">
                 <div class="product-name space-30">
                     <h2>MODEL DESIGN </h2>
                     <h2>- YOUR OWN INSTRUMENT</h2>
@@ -103,7 +85,6 @@
                 <div class=" wrap-price"></div>
                 <!-- End product-name -->
                 <div class="rating space-padding-tb-30 ">
-
                     <div class="overflow-h">
                         <ul>
                             <li>Now raw model</li>
@@ -224,6 +205,18 @@
                 </div>
             </div>
         </div>
+        <!-- Model Design Part Start -->
+
+        <!-- Picture cut Part Start -->
+        <div class="container">
+            <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
+        </div>
+        {#        <div class="col-md-4 col-sm-6 container model-img-list">#}
+        {#            <div> Shot your model freely</div>#}
+        {#            <div class="fotorama model-img-append" id="fotorama" data-nav="thumbs">#}
+        {#            </div>#}
+        {#        </div>#}
+
         <div class="col-sm-12 col-md-6 col-md-offset-1">
             <div class="section-title">
                 <h3 class="lead">Design Masters</h3>
@@ -231,9 +224,6 @@
             </div>
         </div>
 
-        {#        <div class="">#}
-        {#            <h3></h3>#}
-        {#        </div>#}
         <div class="hoz-tab-container space-padding-tb-10">
             <ul class="tabs">
                 <li class="item" rel="master1">Dale Wilson</li>
@@ -250,7 +240,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -289,7 +280,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master2.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master2.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -328,7 +320,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master3.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master3.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -367,7 +360,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master4.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master4.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -406,7 +400,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master5.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master5.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -445,7 +440,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -484,7 +480,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -523,7 +520,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="help-item help-left">
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
                                      alt="Help"></div>
                         </div>
                         <div class="col-lg-6">
@@ -655,7 +653,7 @@
 
     </div>
     <!-- End MainContent -->
-
+</div>
 </body>
 
 
@@ -679,10 +677,72 @@
 <script type="text/javascript" src="{% static "assets/js_for_model/stats.min.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/jquery.simplecolorpicker.js" %}"></script>
 
-
 <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
 
+
+<script type="text/javascript" src="{% static "assets/js_for_model/ekko-lightbox.js" %}"></script>
+
+<script>
+    // 截图
+    function convertCanvasToImage(canvas) {
+        let image = new Image();
+        image.src = canvas.toDataURL("image/png");
+        return image.src;
+    }
+
+    // 图片下载
+    // imgUrl = canvas.toDataURL("image/png");
+    function downloadImage(imgUrl) {
+        let a = $("<a></a>").attr("href", imgUrl).attr("download", "img.png").appendTo("body");
+        a[0].click();
+        a.remove();
+    }
+
+    $('.add-to-cart').click(function (e) {
+        let biggest_wrapper = $(".model_design_controls");
+        biggest_wrapper.html();
+        biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");
+        console.log("jia  class", this);
+        img_holder = $(".model-img-list");
+        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"
+        biggest_wrapper.html(html);
+    });
+
+
+    let img_holder;
+    let model_img_list = [];
+    $('.toCanvas').click(function (e) {
+        let model_wrapper = $(".model-wrapper");
+        img_holder.html("");
+        let canvas = model_wrapper.get(0);
+        let src = convertCanvasToImage(canvas);
+
+
+        let single_img_html = "<a href=\"2.jpg\"><img src=\"" + src + "\"></a>";
+        model_img_list.push(single_img_html)
+
+        let mul_img_string = model_img_list.join("\n")
+
+        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
+            mul_img_string +
+            "</div>";
+        img_holder.html(html);
+
+        console.log(model_img_list);
+        loadJs("{% static "assets/js_for_model/fotorama.js" %}", "js-reload");
+
+        function loadJs(file, id) {
+            $("#" + id).remove();
+            $("<scri" + "pt >" + "</scr" + "ipt>").attr({
+                id: id,
+                src: file,
+                type: 'text/javascript'
+            }).appendTo($('body'));
+        }
+    });
+
+</script>
 
 </html>
 
