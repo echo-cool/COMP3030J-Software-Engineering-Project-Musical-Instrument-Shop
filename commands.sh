@@ -17,3 +17,5 @@ python manage.py createsuperuser
 
 
 python manage.py seed shop --number=15
+
+python manage.py runserver

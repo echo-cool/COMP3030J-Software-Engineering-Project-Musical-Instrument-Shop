@@ -1,0 +1,486 @@
+
+/*=====================================*/
+           /* Header and Nav */
+/*=====================================*/
+
+.header{
+    position: relative;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+}
+.navigation{
+    position: relative;
+    width: 100%;
+    padding: 50px 0px;
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+#flexmenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    min-width: 150px;
+}
+.logo a{
+    display: block;
+}
+.logo img{
+    max-width: 100%;
+}
+.header-bottom{
+    position: relative;
+    padding: 75px 0px;
+}
+#flexmenu .nav-inner ul{
+    padding: 0px;
+}
+#flexmenu .nav-inner > ul.main-menu{
+    margin-bottom: 0px;
+}
+/* keep the drop-downs from being hidden by content wrappers etc */
+#flexmenu .nav-inner ul li .sub-menu {
+    position: absolute;
+    min-width: 200px;
+    z-index: 1234;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+
+/* General Menu Styling */
+#flexmenu .nav-inner li,
+#flexmenu .nav-inner li a{
+    font-family: 'Oswald', sans-serif;
+    border: 0;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #13191f;
+    text-align: center;
+}
+#flexmenu .nav-inner li.active > a,
+#flexmenu .nav-inner li a:hover{
+    color: #59815b;
+}
+#flexmenu .nav-inner ul.main-menu li {
+    padding: 0px 32px;
+}
+#flexmenu .nav-inner ul.main-menu li:first-child{
+    padding-left: 0px;
+}
+#flexmenu .nav-inner ul.main-menu li:last-child{
+    padding-right: 0px;
+}
+
+#flexmenu .nav-inner > ul.main-menu > li > a:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 15px;
+    width: 2px;
+    height: 0px;
+    background: #59815b;
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    transition: height 0.25s ease-out;
+}
+#flexmenu .nav-inner > ul.main-menu > li.active > a:before,
+#flexmenu .nav-inner > ul.main-menu > li > a:hover:before {
+    height: 60px;
+    transition: height 0.25s ease-in;
+}
+#flexmenu .nav-inner > ul.main-menu > li > a.active:before,
+#flexmenu .nav-inner > ul.main-menu > li > a:hover:before {
+    height: 60px;
+    transition: height 0.25s ease-in;
+}
+
+#flexmenu .nav-inner > ul.main-menu > li.menu-item-has-children > a i{
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#flexmenu .nav-inner ul.main-menu ul > li.menu-item-has-children:hover > a:before {
+    top: 17px;
+    height: 0;
+}
+/* Submenu default states, removed by hover gives the animation */
+/* Submenu default states, removed by hover gives the animation */
+#flexmenu .nav-inner ul.main-menu > ul {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    min-width: 220px;
+    padding-left: 0px;
+}
+#flexmenu .nav-inner > ul.main-menu  li > ul {
+    background: transparent;
+    padding-top: 40px;
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+#flexmenu .nav-inner ul.main-menu li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    padding-top: 25px;
+}
+#flexmenu .nav-inner ul.main-menu li li:hover > ul {
+    padding-top: 0px;
+}
+#flexmenu .nav-inner ul.main-menu ul li {
+    width: 100%;
+    padding: 0px 0px;
+}
+#flexmenu .nav-inner ul.main-menu ul li.menu-item-has-children > a i{
+    font-size: 14px;
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+#flexmenu .nav-inner ul.main-menu ul li.menu-item-has-children > a i{
+    transform: rotate(-90deg);
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+
+/* tertiary menu */
+#flexmenu .nav-inner ul.main-menu ul ul {
+    left: 100%;
+    top: 0;
+    -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+#flexmenu .nav-inner ul.main-menu ul ul ul,
+#flexmenu .nav-inner ul.main-menu ul ul ul ul{
+  left: auto;
+  right: 100%;
+  -webkit-transition: 0.8s all ease;
+    -moz-transition: 0.8s all ease;
+    transition: 0.8s all ease;
+}
+#flexmenu .nav-inner ul.main-menu ul li a {
+    padding: 10px 20px;
+    background-color: #59815b;
+    color: #ffffff;
+    width: 100%;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to right, rgb(255 255 255 / 0.3) 20%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 4px 1px;
+    background-repeat: repeat-x;
+}
+#flexmenu .nav-inner ul.main-menu ul li:last-child a{
+    background-image: none;
+}
+#flexmenu .nav-inner ul.main-menu ul li.active a,
+#flexmenu .nav-inner ul.main-menu ul li a:hover{
+    background-color: #6f8d71;
+}
+#flexmenu .nav-inner ul.main-menu ul li:last-child a{
+    border-bottom: 0px;
+}
+.mobile-btn{
+    display: none;
+}
+
+/*--- Header 1 ---*/
+.header_1 .navigation{
+    padding: 50px 90px;
+}
+
+/*--- Header 2 ---*/
+.header_2.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+@media screen and (min-width: 786px) {
+    .header_2 #flexmenu .nav-inner ul.main-menu > li, 
+    .header_2 #flexmenu .nav-inner ul.main-menu > li > a{
+        color: #ffffff;
+    }
+    .header_2 #flexmenu .nav-inner ul.main-menu > li.active > a, 
+    .header_2 #flexmenu .nav-inner ul.main-menu > li > a:hover {
+        color: #59815b;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header_1 .navigation{
+        padding: 50px 130px;
+    }
+}
+
+/*--- Media Query ---*/
+
+@media screen and (max-width: 1024px){
+    #flexmenu .nav-inner ul.main-menu li {
+        padding: 0px 20px;
+    }
+}
+@media screen and (max-width: 785px){
+    .header_1.header{
+        width: 100%;
+    }
+    .header_1 .navigation{
+        padding: 20px 20px;
+    }
+    .navigation{
+        padding: 20px 0px;
+    }
+    .logo{
+        margin-right: 0px;
+    }
+    #flexmenu{
+        position: relative;
+        display: block;
+    }
+    #flexmenu .nav-inner{
+        padding: 0px 0px;
+    }
+    #flexmenu .nav-inner ul,
+    #flexmenu .nav-inner > ul.main-menu li > ul,
+    #flexmenu .nav-inner ul.main-menu ul ul{
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+    #flexmenu .nav-inner > ul.main-menu > li.menu-item-has-children > a i{
+        display: none;
+    }
+  /* Hamburger */
+    .mobile-btn {
+        display: block;
+        width: 45px;
+        height: 35px;
+        position: relative;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+        z-index: 9;
+        margin-left: auto;
+        margin-top: -30px;
+        transition: none;
+    }
+    .mobile-btn:before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 13px;
+        display: block;
+        height: 2px;
+        width: 20px;
+        background: #fff;
+        transition: all .3s ease;
+    }
+    .mobile-btn:after {
+        content: '';
+        position: absolute;
+        top: 16px;
+        right: 13px;
+        display: block;
+        height: 8px;
+        width: 20px;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transition: all .3s ease;
+    }
+  /* Turn it into an X when open */
+    .mobile-btn.menu-opened{
+        background: #59815b;
+    }
+    .mobile-btn.menu-opened:before {
+        top: 16px;
+        background: #fff;
+        width: 20px;
+        height: 2px;
+        transform: rotate(-45deg);
+    }
+    .mobile-btn.menu-opened:after { 
+        top: 16px;
+        border: 0;
+        width: 20px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(45deg);
+    }
+  /* reset horizontal styles */
+    #flexmenu .nav-inner ul.main-menu {
+        display: none;
+        width: 100%;
+    }
+    #flexmenu .nav-inner > ul.main-menu{
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background: #ffffff;
+    }
+    .header_2.header #flexmenu .nav-inner > ul.main-menu{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #flexmenu .nav-inner > ul.main-menu > li > ul,
+    .header.sticky #flexmenu .nav-inner > ul.main-menu > li ul{
+        padding-top: 0px;
+    }
+    #flexmenu .nav-inner > ul.main-menu > li ul,
+    #flexmenu .nav-inner ul.main-menu li:hover > ul{
+        padding-top: 0px;
+    }
+
+    #flexmenu .nav-inner ul.main-menu ul{
+        opacity: 1;
+        visibility: visible;
+    }
+    #flexmenu .nav-inner ul.main-menu li,
+    #flexmenu .nav-inner ul.main-menu li a,
+    #flexmenu .nav-inner ul.main-menu ul li a{
+        width: 100%;
+    }
+    #flexmenu .nav-inner ul.main-menu li{
+        padding: 0px;
+    }
+    #flexmenu .nav-inner ul.main-menu li a,
+    #flexmenu .nav-inner ul.main-menu ul li a {
+        text-align: left;
+        width: 100%;
+        padding: 10px 0px;
+        border-radius: 0px;
+        border: 0;
+        border-bottom: 1px solid rgba(229, 232, 236, 0.3);
+    }
+    #flexmenu .nav-inner > ul.main-menu > li > a:before{
+        display: none;
+    }
+    #flexmenu .nav-inner > ul.main-menu > li > a.active,
+    #flexmenu .nav-inner > ul.main-menu > li > a:hover{
+        border-radius: 0px;
+        border: 0;
+        border-bottom: 1px solid rgba(229, 232, 236, 0.3);
+    }
+    #flexmenu .nav-inner ul.main-menu ul li,
+    #flexmenu .nav-inner li:hover > ul > li {
+        height: auto;  
+    }
+    #flexmenu .nav-inner ul.main-menu ul li a{
+        padding-left: 25px;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul li a{
+        padding-left: 35px;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul ul li a{
+        padding-left: 45px;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul ul ul li a{
+        padding-left: 55px;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul ul ul ul li a {
+        padding-left: 65px;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul ul ul ul ul li a {
+        padding-left: 75px;
+    }
+
+    #flexmenu .nav-inner ul.main-menu ul,
+    #flexmenu .nav-inner ul.main-menu ul ul {
+        position: relative;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul ul ul{
+      left: 0;
+      right: auto;
+    }
+    #flexmenu .nav-inner ul.main-menu ul ul li a.active {
+        border-left: none;
+    }
+    #flexmenu .nav-inner > ul.main-menu > li.menu-item-has-children > ul > li.focus > a,
+    #flexmenu .nav-inner > ul.main-menu ul > li.menu-item-has-children > ul > li.focus > a {
+        background: #262626;
+    }
+  /* remove cross when menu item is toggled */
+    #flexmenu .nav-inner > ul.main-menu > li.menu-item-has-children > a:after,
+    #flexmenu .nav-inner > ul.main-menu > li.menu-item-has-children > a:before,
+    #flexmenu .nav-inner ul.main-menu ul > li.menu-item-has-children > a:after,
+    #flexmenu .nav-inner ul.main-menu ul > li.menu-item-has-children > a:before {
+        display: none;
+    }
+
+  /* submenu toggles */
+    #flexmenu .submenu-button {
+        position: absolute;
+        z-index: 99;
+        right: 0;
+        top: 2px;
+        display: block;
+        border: none;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+    }
+
+    #flexmenu .submenu-button:after {
+        position: absolute;
+        top: 19px;
+        right: 16px;
+        width: 8px;
+        height: 2px;
+        display: block;
+        background: #fff;
+        content: '';
+    }
+    #flexmenu .submenu-button.submenu-opened:after {
+        background: #fff;
+    }
+    #flexmenu .submenu-button:before {
+        position: absolute;
+        top: 16px;
+        right: 19px;
+        display: block;
+        width: 2px;
+        height: 8px;
+        background: #fff;
+        content: ''
+    }
+    #flexmenu .submenu-button.submenu-opened:before {
+        display: none;
+    }
+
+    #flexmenu .submenu-button, .mobile-btn {
+        background: #59815b;
+    }
+    #flexmenu .nav-inner ul.main-menu ul.sub-menu li > a{
+        background: transparent;
+        color: #59815b;
+        border-bottom: 1px solid rgba(229, 232, 236, 0.3);
+        background-image: none;
+    }
+}
+

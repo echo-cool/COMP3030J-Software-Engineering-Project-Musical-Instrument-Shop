@@ -1,24 +1,3 @@
-function add_wishlist_item(id) {
-    $.ajax({
-        url: "/api/wishlist/" + id + "/",
-        method: "POST",
-        data: {
-            "user": 0,
-            "instrument": id
-        },
-        headers: {
-            'X-CSRFTOKEN': '{{ csrf_token }}'
-        },
-        success: function (res) {
-            console.log("WISHLIST: ", id + "  已被加入购物车");
-        },
-        error: function (res) {
-            console.log("ji", id, res);
-        }
-    })
-    fetchHeaderCartList();
-}
-
 function fetchHeaderCartList() {
     console.log("fetched_carts");
     let fetched_carts = {};
