@@ -48,6 +48,17 @@ def index(request):
     })
 
 
+def home(request):
+
+    return render(request, 'shop_templates/homepage.html', {
+        "ten": range(10),
+        "three": range(3),
+        "two": range(2),
+        "eight": range(8),
+        "six": range(6)
+    })
+
+
 def category_view(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, pk=category_id)
@@ -107,6 +118,8 @@ def personal_profile(request):
     email = user.email
     prof = Profile.objects.filter(user=user).first()
     print(prof)
+    if prof is None:
+        prof = Profile()
     phone = prof.phone
     address = prof.address
     form = UpdateProfileForm({
@@ -186,8 +199,15 @@ def confirm(request):
     return render(request, 'shop_templates/confirm.html')
 
 
-def model_design(request, model_id):
-    return render(request, 'shop_templates/model-design.html', {
+# model design with params
+def model_design(request):
+    name = request.GET.get('name')
+    style = request.GET.get('style')
+    return render(request, 'shop_templates/model-design.html')
+
+
+def model_design2(request, model_id):
+    return render(request, 'shop_templates/model-design2.html', {
         "model_id": model_id,
     })
 
