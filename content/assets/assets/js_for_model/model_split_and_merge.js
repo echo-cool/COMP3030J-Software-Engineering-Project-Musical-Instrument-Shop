@@ -67,7 +67,41 @@ function specific_model_split(mesh, model_id) {
                 break;
         }
     } else if (model_id.includes("piano")) {
+        console.log(mesh);
         switch (model_id) {
+            case "piano_style_1":
+                switch (mesh.name) {
+                    case "wrap":
+                        ModelTo(mesh, "z", -1, 1.5);
+                        break;
+                    case "foot":
+                        ModelTo(mesh, "z", 1.8, 1.5);
+                        break;
+                    case "leg":
+                        ModelTo(mesh, "z", 1.5, 1.5);
+                        break;
+                    case 'face':
+                        ModelTo(mesh, "y", 0.6, 1);
+                        ModelTo(mesh, "z", 0.6, 1);
+                        break;
+                    case 'face_2':
+                        ModelTo(mesh, "y", 0.6, 1);
+                        ModelTo(mesh, "z", 0.8, 1);
+                        break;
+                    case 'head':
+                        ModelTo(mesh, "y", 0.8, 1.5);
+                        break;
+                    case 'line':
+                        ModelTo(mesh, "y", 1, 1.5);
+                        break;
+                    case 'key_under':
+                        ModelTo(mesh, "z", 0.2, 1.5);
+                        break;
+                    case 'forbid_key':
+                        ModelTo(mesh, "z", 1.1, 1.5);
+                        break;
+                }
+                break;
             case "piano_style_2":
                 // console.log(mesh.name);
                 switch (mesh.name) {
@@ -103,6 +137,7 @@ function specific_model_split(mesh, model_id) {
                         ModelTo(mesh, "z", 1, 1.5);
                         break;
                 }
+                break;
         }
     } else {
         console.log("unable");
@@ -175,8 +210,40 @@ function specific_model_merge(mesh, model_id) {
         }
     } else if (model_id.includes("piano")) {
         switch (model_id) {
+            case "piano_style_1":
+                switch (mesh.name) {
+                    case "wrap":
+                        ModelTo(mesh, "z", 1, 1.5);
+                        break;
+                    case "foot":
+                        ModelTo(mesh, "z", -1.8, 1.5);
+                        break;
+                    case "leg":
+                        ModelTo(mesh, "z", -1.5, 1.5);
+                        break;
+                    case 'face':
+                        ModelTo(mesh, "y", -0.6, 1);
+                        ModelTo(mesh, "z", -0.6, 1);
+                        break;
+                    case 'face_2':
+                        ModelTo(mesh, "y", -0.6, 1);
+                        ModelTo(mesh, "z", -0.8, 1);
+                        break;
+                    case 'head':
+                        ModelTo(mesh, "y", -0.8, 1.5);
+                        break;
+                    case 'line':
+                        ModelTo(mesh, "y", -1, 1.5);
+                        break;
+                    case 'key_under':
+                        ModelTo(mesh, "z", -0.2, 1.5);
+                        break;
+                    case 'forbid_key':
+                        ModelTo(mesh, "z", -1.1, 1.5);
+                        break;
+                }
+                break;
             case "piano_style_2":
-                // console.log(mesh.name);
                 switch (mesh.name) {
                     case 'forbid_keyboard':
                         // ModelTo(mesh, "x", 4, 1.5);
@@ -210,6 +277,7 @@ function specific_model_merge(mesh, model_id) {
                         ModelTo(mesh, "z", -1, 1.5);
                         break;
                 }
+                break;
         }
     } else {
         console.log("unable");
