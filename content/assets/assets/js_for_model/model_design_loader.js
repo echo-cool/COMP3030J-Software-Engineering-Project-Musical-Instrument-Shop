@@ -26,6 +26,7 @@ let model_name = "model_design_piano.gltf";
 
 console.log("加载的模型是：", model_id);
 
+// guitar
 if (model_id === "guitar_style_1") {
     model_name = "model_design_guitar1.gltf";
 } else if (model_id === "guitar_style_2") {
@@ -34,16 +35,19 @@ if (model_id === "guitar_style_1") {
     model_name = "model_design_guitar3.gltf";
 } else if (model_id === "guitar_style_4") {
     model_name = "model_design_guitar4.gltf";
-} else if (model_id === "piano_style_1") {
+}
+// piano
+else if (model_id === "piano_style_1") {
     model_name = "model_design_piano1.gltf";
 } else if (model_id === "piano_style_2") {
     model_name = "model_design_piano2.gltf";
-} else if (model_id === "guitar_style_5") {
-    model_name = "model_design_drumSet.glb";
 } else if (model_id === "piano_style_3") {
     model_name = "model_design_piano3.gltf";
-} else if (model_id === "piano_style_4") {
-    model_name = "model_design_piano11.gltf";
+}
+
+//other
+else if (model_id === "guitar_style_5") {
+    model_name = "model_design_drumSet.glb";
 } else {
     let info = "访问格式：http://127.0.0.1:8000/model_design/color?name=guitar&style=1";
     console.log(model_id, info);
