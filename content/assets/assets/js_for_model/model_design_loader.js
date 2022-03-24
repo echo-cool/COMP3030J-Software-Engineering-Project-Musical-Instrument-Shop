@@ -40,7 +40,7 @@ if (model_id === "guitar_style_1") {
 else if (model_id === "piano_style_1") {
     model_name = "model_design_piano1.gltf";
 } else if (model_id === "piano_style_2") {
-    model_name = "model_design_piano2.gltf";
+    model_name = "model_design_piano2.glb";
 } else if (model_id === "piano_style_3") {
     model_name = "model_design_piano3.gltf";
 }
@@ -53,6 +53,7 @@ else if (model_id === "guitar_style_5") {
     console.log(model_id, info);
     model_name = "model_design_piano.gltf";
 }
+
 if (!Detector.webgl) Detector.addGetWebGLMessage();
 let stats;
 var camera, scene, renderer, controls;
