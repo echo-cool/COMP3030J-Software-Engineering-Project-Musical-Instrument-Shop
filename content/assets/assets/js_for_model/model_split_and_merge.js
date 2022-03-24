@@ -126,6 +126,42 @@ function specific_model_split(mesh, model_id) {
                         ModelTo(mesh, "y", 0.8, 1.5);
                         ModelTo(mesh, "z", -0.4, 1.5);
                         break;
+                    case 'wrap':
+                        ModelTo(mesh, "z", -1.5, 1.5);
+                        break;
+                    case 'leg':
+                        ModelTo(mesh, "z", -1, 1.5);
+                        break;
+                    case 'forbid_leg':
+                    case 'leg_center':
+                        ModelTo(mesh, "z", 1, 1.5);
+                        break;
+                }
+                break;
+            case "piano_style_3":
+                // console.log(mesh.name);
+                switch (mesh.name) {
+                    case 'forbid_keyboard':
+                        // ModelTo(mesh, "x", 4, 1.5);
+                        break;
+                    case 'head':
+                        ModelTo(mesh, "y", 1, 1.5);
+                        break;
+                    case 'center':
+                        ModelTo(mesh, "y", 0.6, 1.5);
+                        ModelTo(mesh, "z", -0.5, 1.5);
+                        break;
+                    case 'face':
+                        ModelTo(mesh, "y", 1, 1);
+                        ModelTo(mesh, "z", 1, 1);
+                        break;
+                    case 'logo':
+                        ModelTo(mesh, "z", 1.2, 1);
+                        break;
+                    case 'face_high':
+                        ModelTo(mesh, "y", 0.8, 1.5);
+                        ModelTo(mesh, "z", -0.4, 1.5);
+                        break;
                     case 'wrap_end':
                         ModelTo(mesh, "z", -1.5, 1.5);
                         break;
@@ -243,7 +279,43 @@ function specific_model_merge(mesh, model_id) {
                         break;
                 }
                 break;
+
             case "piano_style_2":
+                switch (mesh.name) {
+                    case 'forbid_keyboard':
+                        // ModelTo(mesh, "x", 4, 1.5);
+                        break;
+                    case 'head':
+                        ModelTo(mesh, "y", -1, 1.5);
+                        break;
+                    case 'center':
+                        ModelTo(mesh, "y", -0.6, 1.5);
+                        ModelTo(mesh, "z", 0.5, 1.5);
+                        break;
+                    case 'face':
+                        ModelTo(mesh, "y", -1, 1);
+                        ModelTo(mesh, "z", -1, 1);
+                        break;
+                    case 'logo':
+                        ModelTo(mesh, "z", -1.2, 1);
+                        break;
+                    case 'face_high':
+                        ModelTo(mesh, "y", -0.8, 1.5);
+                        ModelTo(mesh, "z", 0.4, 1.5);
+                        break;
+                    case 'wrap':
+                        ModelTo(mesh, "z", 1.5, 1.5);
+                        break;
+                    case 'leg':
+                        ModelTo(mesh, "z", 1, 1.5);
+                        break;
+                    case 'forbid_leg':
+                    case 'leg_center':
+                        ModelTo(mesh, "z", -1, 1.5);
+                        break;
+                }
+                break;
+            case "piano_style_3":
                 switch (mesh.name) {
                     case 'forbid_keyboard':
                         // ModelTo(mesh, "x", 4, 1.5);

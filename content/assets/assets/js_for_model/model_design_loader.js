@@ -116,15 +116,22 @@ let state_changeColor = false;
 
 function init() {
     container = document.createElement('div');
+
     $(".model-show-wrapper").append(container);
 
     let width = (window.innerWidth / 3) * 2;
     let height = window.innerHeight;
-    renderer = new THREE.WebGLRenderer({antialias: false});
+    renderer = new THREE.WebGLRenderer({
+        antialias: false,
+        //是否保留缓冲区直到手动清除或覆盖
+        preserveDrawingBuffer: true
+    });
     renderer.shadowMap.enabled = true;
     renderer.setSize(width, height);
     let cssStyle = "width:100%; height:100%";
     renderer.domElement.style = cssStyle;
+    renderer.domElement.className = "model-wrapper";
+    renderer.domElement.id = "model-wrapper";
     container.append(renderer.domElement);
 
     scene = new THREE.Scene();
@@ -244,8 +251,8 @@ function init() {
     stats = new Stats();
     container.appendChild(stats.dom);
 
-    // postprocessing
 
+    // postprocessing
     composer = new THREE.EffectComposer(renderer);
 
     var renderPass = new THREE.RenderPass(scene, camera);
@@ -253,6 +260,7 @@ function init() {
 
     outlinePass = new THREE.OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
     composer.addPass(outlinePass);
+
 
     var onLoad = function (texture) {
         outlinePass.patternTexture = texture;
@@ -347,3 +355,10 @@ function activeColorList() {
         changeColor(this.value);
     })
 }
+
+
+$(document).on('click', 'a[data-toggle="lightbox"]', function (event) {
+    event.preventDefault();
+    console.log("WEREWRWRWEr", this);
+    $(this).ekkoLightbox();
+});
