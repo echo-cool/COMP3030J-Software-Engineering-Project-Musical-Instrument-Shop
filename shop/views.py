@@ -48,6 +48,17 @@ def index(request):
     })
 
 
+def home(request):
+
+    return render(request, 'shop_templates/homepage.html', {
+        "ten": range(10),
+        "three": range(3),
+        "two": range(2),
+        "eight": range(8),
+        "six": range(6)
+    })
+
+
 def category_view(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, pk=category_id)

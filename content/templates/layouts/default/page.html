@@ -260,7 +260,7 @@
 
                                     {% if user.is_authenticated %}
                                         <a href="{% url "shop:personal_profile" %}" class="">
-                                            <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 40px;"
+                                            <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
                                                                                                   src="/media/{{ request.user.profile.image }}"
                                  alt="{{ request.user.username }}'s Photo"/></a>
                                     {% else %}
