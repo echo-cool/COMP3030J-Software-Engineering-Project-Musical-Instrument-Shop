@@ -11,16 +11,14 @@
     <link href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}" rel="stylesheet">
 
     <!-- jQuery 1.8 or later, 33 KB -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "assets/js_for_model/jquery1.11.1.min.js" %}"></script>
     <!-- Fotorama from CDNJS, 19 KB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <link href="{% static "assets/js_for_model/fotorama.css" %}" rel="stylesheet">
     <script src="{% static "assets/js_for_model/fotorama.js" %}" id="js-reload"></script>
 
 
     <!-- SPECIFIC CSS -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display"/>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins"/>
-
+    <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
@@ -37,15 +35,81 @@
     <script src="{% static "assets/js/hullabaloo.js" %}"></script>
     <script src="{% static "assets/js_for_shop/owl.carousel.js" %}"></script>
     <script src="{% static "assets/js_for_shop/store.js" %}"></script>
+
+
+    <script src="{% static "assets/js_for_shop/main.js" %}"></script>
     {#    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/jquery.elevatezoom.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/store.js"></script>#}
     <title>Model Design</title>
 </head>
 <style>
-    .color-list-1 {
-        margin-bottom: 0px !important;
+    .wrapper-hidden {
+        display: none;
     }
+
+    .model_design_controls .model-img-list-wrapper {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        bottom: 0;
+        height: 57%;
+        text-align: left;
+        padding: 10px 0 0;
+        background-color: #fff;
+    }
+
+    .model_design_controls .model-img-list-wrapper .cart-product-image img {
+        width: 100%;
+    }
+
+    .model_design_controls .model-img-list-wrapper ul {
+        padding: 0 20px;
+    }
+
+    .model_design_controls .model-img-list-wrapper li {
+        padding: 20px 0;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .model_design_controls .model-img-list-wrapper li a {
+        margin-right: 20px;
+    }
+
+    .model_design_controls .model-img-list-wrapper li:last-child {
+        border-bottom: none;
+    }
+
+
+    .bottom_checks {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+    }
+
+    .model_design_controls .model-img-list-wrapper .bottom_checks .return-design, .model-checkout {
+        display: inline-block;
+        width: 50%;
+        padding: 20px 0px;
+        text-align: center;
+        background: #000;
+        color: #ba933e;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    .model_design_controls .model-img-list-wrapper .bottom_checks .return-design:hover, .model-checkout {
+        background: #ba933e;
+        color: #fff;
+    }
+
+    .model_design_controls .model-img-list-wrapper a {
+        display: inline-block;
+        position: relative;
+    }
+
 
 </style>
 <body>
@@ -67,17 +131,45 @@
                 <!-- End product-img-box -->
             </div>
             <div class="col-md-4 col-sm-6 model_design_controls">
+                <div class="model-img-list-wrapper wrapper-hidden">
+                    <div class="container">
+                        <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
+                    </div>
+                    {#                    <ul class="list">#}
+                    {#                        <li class="images">#}
+                    {#                            <a href="#" title="" class="cart-product-image">#}
+                    {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
+                    {#                            <div class="text">#}
+                    {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
+                    {#                                <p class="product-price">$ 69.90</p>#}
+                    {#                            </div>#}
+                    {#                        </li>#}
+                    {#                        <li class="images">#}
+                    {#                            <a href="#" title="" class="cart-product-image">#}
+                    {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
+                    {#                            <div class="text">#}
+                    {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
+                    {#                                <p class="product-price">$ 69.90</p>#}
+                    {#                            </div>#}
+                    {#                        </li>#}
+                    {#                    </ul>#}
+                    <div class="col-md-4 col-sm-6 container model-img-list">
+                        <div class="fotorama model-img-append" id="fotorama">
+                        </div>
+                    </div>
+                    <div class="bottom_checks">
+                        <a class="return-design" href="javascript:void(0);">Return Design</a>
+                        <a class="model-checkout" href="javascript:void(0);">Check Out</a>
+                    </div>
+                </div>
                 <div class="product-name space-30">
                     <h2>MODEL DESIGN </h2>
-                    <h2>- YOUR OWN INSTRUMENT</h2>
-
+                    {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
                     <h1></h1>
                     <div>
-                        Introduction:
-                        <p>What you need to do is:</p>
-                        <p style="text-align: center;">Choose Part of Model -> Select Color </p>
-                        <br>
-                        <p>For easier select part, you can explode the model :></p>
+                        <p>Fotorama’s dimensions are the dimensions of the first image. Other pictures are scaled
+                            proportionally to fit. To reserve the space on the page before the first image is loaded,
+                            use data-width and data-height:</p>
                     </div>
                     <p>
                     </p>
@@ -89,7 +181,7 @@
                         <ul>
                             <li>Now raw model</li>
                             <li><a href="#" title="add your rating">Guitar - 1</a>
-                                <div class="" style="position: absolute;top: 36%;right: 6%;">
+                                <div class="" style="position: absolute;top: 29%;right: 6%;">
                                     <p class="price" style="font-size:24px;">Price: <span
                                             style="color: #e3b757">$ 69.90</span></p>
                                 </div>
@@ -101,40 +193,42 @@
 
                 <!-- End Price -->
                 <div class="options">
+                    {#                    <div class="title-product">#}
+                    {#                        <h3>Features</h3>#}
+                    {#                    </div>#}
+                    {#                    <div style="display: flex;justify-content: space-evenly;  margin-bottom: 20px">#}
+                    {#                        <span>#}
+                    {#                        <img onclick="splitModel()" style="cursor: pointer" width="40px" height="40px"#}
+                    {#                             src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument#}
+                    {#                        explode#}
+                    {#                       </span>#}
+                    {#                        <span>#}
+                    {#                        <img onclick="mergeModel()" style="cursor: pointer" width="40px" height="40px"#}
+                    {#                             src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument#}
+                    {#                        combine#}
+                    {#                        </span>#}
+                    {#                    </div>#}
+
                     <div class="title-product">
-                        <h3>Features</h3>
-                    </div>
-                    <div style="display: flex;justify-content: space-evenly;  margin-bottom: 20px">
-                        <span>
-                        <img onclick="splitModel()" style="cursor: pointer" width="40px" height="40px"
-                             src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument
-                        explode
-                       </span>
-                        <span>
-                        <img onclick="mergeModel()" style="cursor: pointer" width="40px" height="40px"
-                             src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument
-                        combine
-                        </span>
+                        <h3>Part Colors</h3>
                     </div>
                     <form class="form-horizontal">
-                        <div class="form-group col-md-12 color-list-1">
-                            <label class=" control-label" for="inputName">Recommend Colour</label>
-                            <div style="text-align: center;cursor: pointer">
-
-                                <img onclick="changeColor('#000000')" width="40px" height="40px"
-                                     src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">
-                                <img onclick="changeColor('#ffffff')" width="40px" height="40px"
-                                     src="{% static "assets/img_for_shop/color/Paint_White.png" %}">
-                                <img onclick="changeColor('#4d4f55')" width="40px" height="40px"
-                                     src="{% static "assets/img_for_shop/color/Paint_MidnightSilver.png" %}">
-                                <img onclick="changeColor('#093373')" width="40px" height="40px"
-                                     src="{% static "assets/img_for_shop/color/Paint_Blue.png" %}">
-                                <img onclick="changeColor('#9e0909')" width="40px" height="40px"
-                                     src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">
-                            </div>
-                        </div>
+                        {#                        <div class="form-group col-md-12 color-list-1">#}
+                        {#                            <label class=" control-label" for="inputName">Recommend Colour</label>#}
+                        {#                            <div style="text-align: center;cursor: pointer">#}
+                        {#                                <img onclick="changeColor('#000000')" width="40px" height="40px"#}
+                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">#}
+                        {#                                <img onclick="changeColor('#ffffff')" width="40px" height="40px"#}
+                        {#                                     src="{% static "assets/img_for_shop/color/Paint_White.png" %}">#}
+                        {#                                <img onclick="changeColor('#4d4f55')" width="40px" height="40px"#}
+                        {#                                     src="{% static "assets/img_for_shop/color/Paint_MidnightSilver.png" %}">#}
+                        {#                                <img onclick="changeColor('#093373')" width="40px" height="40px"#}
+                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Blue.png" %}">#}
+                        {#                                <img onclick="changeColor('#9e0909')" width="40px" height="40px"#}
+                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                         <div class="form-group">
-                            <label class=" control-label" for="inputName">Long list of colors</label>
                             <select name="color-long-list">
                                 <option value="#ac725e">#ac725e</option>
                                 <option value="#d06b64">#d06b64</option>
@@ -154,49 +248,44 @@
                                 <option value="#4986e7">#4986e7</option>
                                 <option value="#9a9cff">#9a9cff</option>
                                 <option value="#b99aff">#b99aff</option>
-                                <option value="#c2c2c2">#c2c2c2</option>
-                                <option value="#cabdbf">#cabdbf</option>
-                                <option value="#cca6ac">#cca6ac</option>
-                                <option value="#f691b2">#f691b2</option>
-                                <option value="#cd74e6">#cd74e6</option>
-                                <option value="#a47ae2">#a47ae2</option>
-                                <!--color more-->
-                                <option value="#9a9cff">#9a9cff</option>
-                                <option value="#b99aff">#b99aff</option>
-                                <option value="#c2c2c2">#c2c2c2</option>
-                                <option value="#cabdbf">#cabdbf</option>
-                                <option value="#cca6ac">#cca6ac</option>
-                                <option value="#f691b2">#f691b2</option>
-                                <option value="#cd74e6">#cd74e6</option>
-                                <option value="#a47ae2">#a47ae2</option>
-                                <option value="#9a9cff">#9a9cff</option>
-                                <option value="#b99aff">#b99aff</option>
-                                <option value="#c2c2c2">#c2c2c2</option>
-                                <option value="#cabdbf">#cabdbf</option>
-                                <option value="#cca6ac">#cca6ac</option>
-                                <option value="#f691b2">#f691b2</option>
-                                <option value="#cd74e6">#cd74e6</option>
-                                <option value="#a47ae2">#a47ae2</option>
-
                             </select>
-                            {#                            <input id="color" type="color">#}
+                            <input id="color" type="color" style="width: 5%;position: absolute;top: 4px;right: 5px;">
                         </div>
                         {#                        <div >#}
                         {##}
                         {#                        </div>#}
                     </form>
-                    {#                    <div class="quantity space-30">#}
-                    {#                        <p class="color-red">Repuired Fiields *</p>#}
-                    {#                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity"#}
-                    {#                               max="100" min="1" step="1">#}
-                    {#                        <span class="price"></span>#}
-                    {#                    </div>#}
+                    <div class="title-product">
+                        <h3>Sizes*</h3>
+                    </div>
+                    <div class="custom-select-form">
+                        <select class="wide form-control">
+                            <option value="" selected>- Please select -</option>
+                            <option value="">Small (S)</option>
+                            <option value="">M</option>
+                            <option value=" ">L</option>
+                            <option value=" ">XL</option>
+                        </select>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+
+                    <div class="title-product">
+                        <h3>Number*</h3>
+                    </div>
+                    <div class="quantity space-30">
+                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity"
+                               max="100" min="1" step="1">
+                        <span class="price"></span>
+                    </div>
                     <!-- End quanity -->
                 </div>
                 <!-- End Options -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
                 <div class="products" style="text-align:end;">
                     <div class="product product-details">
-                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <a href="javascript:void(0);" class="add-to-cart">Add to Cart</a>
                         {#                        <div class="action">#}
                         {#                            <a title="Like" href="#"><i class="fa fa-heart-o"></i></a>#}
                         {#                            <a title="View" href="#"><i class="fa fa-compress"></i></a>#}
@@ -208,15 +297,8 @@
         <!-- Model Design Part Start -->
 
         <!-- Picture cut Part Start -->
-        <div class="container">
-            <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
-        </div>
-        {#        <div class="col-md-4 col-sm-6 container model-img-list">#}
-        {#            <div> Shot your model freely</div>#}
-        {#            <div class="fotorama model-img-append" id="fotorama" data-nav="thumbs">#}
-        {#            </div>#}
-        {#        </div>#}
 
+        <!-- Design Master Part Start -->
         <div class="col-sm-12 col-md-6 col-md-offset-1">
             <div class="section-title">
                 <h3 class="lead">Design Masters</h3>
@@ -681,8 +763,6 @@
 <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
 
 
-<script type="text/javascript" src="{% static "assets/js_for_model/ekko-lightbox.js" %}"></script>
-
 <script>
     // 截图
     function convertCanvasToImage(canvas) {
@@ -700,31 +780,37 @@
     }
 
     $('.add-to-cart').click(function (e) {
-        let biggest_wrapper = $(".model_design_controls");
-        biggest_wrapper.html();
-        biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");
-        console.log("jia  class", this);
+        {#let biggest_wrapper = $(".model_design_controls");#}
+        {#biggest_wrapper.html();#}
+        {#biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");#}
+        {#console.log("jia  class", this);#}
+        let img_list_wrapper = $(".model-img-list-wrapper");
+        img_list_wrapper.toggleClass("wrapper-hidden");
         img_holder = $(".model-img-list");
-        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"
-        biggest_wrapper.html(html);
+        {#let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"#}
+        {#img_list_wrapper.html(html);#}
     });
 
+    $(".return-design").click(function (e) {
+        let img_list_wrapper = $(".model-img-list-wrapper");
+        img_list_wrapper.toggleClass("wrapper-hidden");
+    });
 
     let img_holder;
     let model_img_list = [];
     $('.toCanvas').click(function (e) {
         let model_wrapper = $(".model-wrapper");
-        img_holder.html("");
+        {#img_holder.html("");#}
         let canvas = model_wrapper.get(0);
         let src = convertCanvasToImage(canvas);
-
 
         let single_img_html = "<a href=\"2.jpg\"><img src=\"" + src + "\"></a>";
         model_img_list.push(single_img_html)
 
         let mul_img_string = model_img_list.join("\n")
 
-        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
+        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + " " +
+            " data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
             mul_img_string +
             "</div>";
         img_holder.html(html);
