@@ -125,6 +125,35 @@
         <div class="product-details-content container-fluid">
             <div class="col-md-8 col-sm-6">
                 <div class="product-img-box">
+                    <div class="show-controls"
+                         style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
+                        <div class="model-zoom-in">
+                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                            zoom in
+                        </div>
+                        <div class="model-zoom-out">
+                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
+                            zoom out
+                        </div>
+                        <div onclick=switchRotate()>
+                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
+                            rotate
+                        </div>
+                    </div>
+                    <div class="show-controls2"
+                         style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
+                        <div>
+                            <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
+                                 height="40px"
+                                 src="{% static "assets/img_for_shop/design/design-combine.png" %}">
+                            combine
+                        </div>
+                        <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
+                                  height="40px"
+                                  src="{% static "assets/img_for_shop/design/design-explode.png" %}">
+                            explode
+                        </div>
+                    </div>
                     <a id="image-view" class="model-show-wrapper" title="Product Image">
                     </a>
                 </div>
@@ -197,16 +226,18 @@
                     {#                        <h3>Features</h3>#}
                     {#                    </div>#}
                     {#                    <div style="display: flex;justify-content: space-evenly;  margin-bottom: 20px">#}
+                    {#                                            <span>#}
+                    {#                                            <img onclick="splitModel()" style="cursor: pointer" width="40px"#}
+                    {#                                                 height="40px"#}
+                    {#                                                 src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument#}
+                    {#                                            explode#}
+                    {#                                           </span>#}
                     {#                        <span>#}
-                    {#                        <img onclick="splitModel()" style="cursor: pointer" width="40px" height="40px"#}
-                    {#                             src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument#}
-                    {#                        explode#}
-                    {#                       </span>#}
-                    {#                        <span>#}
-                    {#                        <img onclick="mergeModel()" style="cursor: pointer" width="40px" height="40px"#}
-                    {#                             src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument#}
-                    {#                        combine#}
-                    {#                        </span>#}
+                    {#                                            <img onclick="mergeModel()" style="cursor: pointer" width="40px"#}
+                    {#                                                 height="40px"#}
+                    {#                                                 src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument#}
+                    {#                                            combine#}
+                    {#                                            </span>#}
                     {#                    </div>#}
 
                     <div class="title-product">
@@ -732,7 +763,6 @@
             </div>
         </div>
         <!-- End container -->
-
     </div>
     <!-- End MainContent -->
 </div>
@@ -761,6 +791,7 @@
 
 <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
 
 
 <script>
