@@ -2,7 +2,11 @@ from dataclasses import fields
 
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from rest_framework.fields import CharField
+from rest_framework.generics import get_object_or_404
+from rest_framework.serializers import ModelSerializer
 
+from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
 
 
@@ -58,3 +62,28 @@ class WishlistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wishlist
         fields = "__all__"
+
+
+class UserModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username',)
+
+
+class MessageModelSerializer(ModelSerializer):
+    user = CharField(source='user.username', read_only=True)
+    recipient = CharField(source='recipient.username')
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        recipient = get_object_or_404(
+            User, username=validated_data['recipient']['username'])
+        msg = MessageModel(recipient=recipient,
+                           body=validated_data['body'],
+                           user=user)
+        msg.save()
+        return msg
+
+    class Meta:
+        model = MessageModel
+        fields = ('id', 'user', 'recipient', 'timestamp', 'body')
