@@ -32,16 +32,19 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
     <style>
-
+        .wrapper-hidden {
+            display: none;
+        }
     </style>
+
 {% endblock %}
+
+
+
 
 {% block content %}
     <main>
         <div class="container margin_30">
-            <div class="countdown_inner">-20% This offer ends in
-                <div data-countdown="2019/05/15" class="countdown"></div>
-            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="all">
@@ -50,7 +53,8 @@
                             <img style="padding: 24%;" id="3d-icon"
                                  src="{% static "assets/img_for_shop/3d-icon.svg" %}">
                         </div>
-                        <div class="show-controls" style="display: none">
+                        <div class="show-controls wrapper-hidden"
+                             style="bottom: 0;position: absolute;z-index:3;width:4%">
                             <div class="model-zoom-in"><img style="width: 100%;"
                                                             src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
                             </div>
@@ -168,9 +172,10 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-5 col-md-6">
-                                <div class="price_main"><span class="new_price">${{ instrument.price }}</span><span
-                                        class="percentage">-{{ discount }}%</span> <span
-                                        class="old_price">${{ instrument.old_price }}</span></div>
+                                <div class="price_main"><span class="new_price">${{ instrument.price }}</span>
+                                    {#                                    TODO: 红色太丑了 #}
+                                    <span class="percentag">-{{ discount }}%</span>
+                                    <span class="old_price">${{ instrument.old_price }}</span></div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="btn_add_to_cart"><a href="/cart/product_add_cart/{{ instrument.id }}"
@@ -746,11 +751,11 @@
             console.log("youwu", $(".model-zoom-in"));
             let img = $("#3d-icon");
             if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.svg" %}") {
-                $(".show-controls").attr("style", "bottom: 0%;display:none;position: absolute;z-index:3;width:10%");
+                $(".show-controls").toggle("wrapper-hidden");
                 $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.svg" %}");
                 $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
             } else {
-                $(".show-controls").attr("style", "bottom: 0%;display:block;position: absolute;z-index:3;width:10%");
+                $(".show-controls").toggle("wrapper-hidden");
                 $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.svg" %}");
                 $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
             }

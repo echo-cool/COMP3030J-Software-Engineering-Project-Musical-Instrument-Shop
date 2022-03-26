@@ -954,8 +954,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 	$.support.pointer=window.navigator.pointerEnabled; /*pointer support*/
 	$.support.msPointer=window.navigator.msPointerEnabled; /*MSPointer support*/
 	/*plugin dependencies*/
-	var _dlp=("https:"==document.location.protocol) ? "https:" : "http:";
-	$.event.special.mousewheel || document.write('<script src="'+_dlp+'//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js"><\/script>');
+	$.event.special.mousewheel || document.write('<script src="/static/assets/js_for_homepage/jquery.mousewheel.min.js/"><\/script>');
 	/*plugin fn*/
 	$.fn.mCustomScrollbar=function(method){
 		if(methods[method]){

@@ -49,7 +49,6 @@ def index(request):
 
 
 def home(request):
-
     return render(request, 'shop_templates/homepage.html', {
         "ten": range(10),
         "three": range(3),
@@ -288,6 +287,7 @@ def cart(request):
         return redirect('accounts:log_in')
 
 
+#
 def product_add_cart(request, instrument_id):
     instrument = Instrument.objects.filter(id=instrument_id).first()
     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
@@ -300,15 +300,15 @@ def product_add_cart(request, instrument_id):
     return redirect('shop:cart')
 
 
-def product_minus_cart(request, instrument_id):
-    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
-    if exist_cart.count > 1:
-        exist_cart.count = exist_cart.count - 1
-        exist_cart.save()
-    else:
-        exist_cart.delete()
-        exist_cart.save()
-    return redirect('shop:cart')
+# def product_minus_cart(request, instrument_id):
+#     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+#     if exist_cart.count > 1:
+#         exist_cart.count = exist_cart.count - 1
+#         exist_cart.save()
+#     else:
+#         exist_cart.delete()
+#         exist_cart.save()
+#     return redirect('shop:cart')
 
 
 def product_details_test_model(request, product_id):
@@ -326,4 +326,12 @@ def product_details_test_model(request, product_id):
         "instrument_details": instrument_details,
         "related": related,
         'categories': categories
+    })
+
+
+def orders(request, user_id):
+    all_orders = Order.objects.filter(user_id=user_id)
+    return render(request, 'shop_templates/orders.html', {
+        "orders": all_orders,
+        "profile": request.user.profile
     })
