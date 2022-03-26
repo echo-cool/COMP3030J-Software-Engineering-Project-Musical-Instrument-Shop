@@ -1,0 +1,22 @@
+{% extends 'layouts/default/page.html' %}
+{% load static %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <!-- BASE CSS -->
+    <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+
+	<!-- SPECIFIC CSS -->
+    <link href="{% static 'assets/css_for_shop/account.css' %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}

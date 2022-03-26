@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'shop',
     'management',
     'blog',
+    'chat',
 
     # API Framework
     'drf_yasg',

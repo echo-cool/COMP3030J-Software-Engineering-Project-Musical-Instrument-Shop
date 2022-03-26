@@ -26,6 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls'), name="blog"),
 
+    path('chat/', include('chat.urls'), name="chat"),
+
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
     path('management/', include('management.urls'), name='management'),
