@@ -39,12 +39,12 @@ class MessageModel(models.Model):
         new = self.id
         self.body = self.body.strip()  # Trimming whitespaces from the body
         super(MessageModel, self).save(*args, **kwargs)
-        if new is None:
-            self.notify_ws_clients()
+        # if new is None:
+        #     self.notify_ws_clients()
 
     # Meta
     class Meta:
-        app_label = 'core'
+        app_label = 'chat'
         verbose_name = 'message'
         verbose_name_plural = 'messages'
         ordering = ('-timestamp',)

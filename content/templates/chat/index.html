@@ -15,8 +15,18 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/chat_js/static/js/jquery.min.js' %}"></script>
+    {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
+    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/font-awesome.min.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/litewebchat.css' %}"/>
+
+
     <!-- SPECIFIC JS -->
-{#    <script src="{% static 'assets/chat_js/gun.js' %}"></script>#}
+    {#    <script src="{% static 'assets/chat_js/gun.js' %}"></script>#}
 {% endblock %}
 
 {% block content %}
@@ -43,9 +53,11 @@
                         <h4 class="panel-title">Chat</h4>
                     </div>
                     <div>
-                        <ul id="messages" class="messages">
-                            {# Messages go here #}
-                        </ul>
+                        <div class="lite-chatbox">
+                            <ul id="messages" class="messages">
+                                {# Messages go here #}
+                            </ul>
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <div class="input-group">
@@ -66,102 +78,135 @@
             </div>
         </div>
     </div>
+    <script>
+        let sessionKey = '{{ request.session.session_key }}';
+        let currentUser = '{{ request.user.username }}';
+    </script>
+    <script>
+        let currentRecipient = '';
+        let chatInput = $('#chat-input');
+        let chatButton = $('#btn-send');
+        let userList = $('#user-list');
+        let messageList = $('#messages');
+        let chat_history = 0;
 
-<script>
-let currentRecipient = '';
-let chatInput = $('#chat-input');
-let chatButton = $('#btn-send');
-let userList = $('#user-list');
-let messageList = $('#messages');
-function updateUserList() {
-    $.getJSON('/api/user/', function (data) {
-        userList.children('.user').remove();
-        for (let i = 0; i < data.length; i++) {
-            const userItem = `<a class="list-group-item user">${data[i]['username']}</a>`;
-            $(userItem).appendTo('#user-list');
+        function updateUserList() {
+            $.getJSON('/api/user/', function (data) {
+                userList.children('.user').remove();
+                for (let i = 0; i < data.length; i++) {
+                    const userItem = `<a class="list-group-item user">${data[i]['username']}</a>`;
+                    $(userItem).appendTo('#user-list');
+                }
+                $('.user').click(function () {
+                    userList.children('.active').removeClass('active');
+                    let selected = event.target;
+                    $(selected).addClass('active');
+                    setCurrentRecipient(selected.text);
+                });
+            });
         }
-        $('.user').click(function () {
-            userList.children('.active').removeClass('active');
-            let selected = event.target;
-            $(selected).addClass('active');
-            setCurrentRecipient(selected.text);
-        });
-    });
-}
 
-function drawMessage(message) {
-    let position = 'left';
-    const date = new Date(message.timestamp);
-    if (message.user === currentUser) position = 'right';
-    const messageItem = `
+        function drawMessage(message) {
+            let position = 'left';
+            let position_new = 'cleft';
+            const date = new Date(message.timestamp);
+            if (message.user === currentUser) position = 'right';
+            if (message.user === currentUser) position_new = 'cright';
+            const messageItem = `
+
             <li class="message ${position}">
                 <div class="avatar">${message.user}</div>
+
                     <div class="text_wrapper">
+
                         <div class="text">${message.body}<br>
                             <span class="small">${date}</span>
                     </div>
                 </div>
             </li>`;
-    $(messageItem).appendTo('#messages');
-}
-
-
-function getConversation(recipient) {
-    $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-        messageList.children('.message').remove();
-        for (let i = data['results'].length - 1; i >= 0; i--) {
-            drawMessage(data['results'][i]);
+            $(messageItem).appendTo('#messages');
         }
-        messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-    });
 
-}
 
-function getMessageById(message) {
-    id = JSON.parse(message).message
-    $.getJSON(`/api/message/${id}/`, function (data) {
-        if (data.user === currentRecipient ||
-            (data.recipient === currentRecipient && data.user == currentUser)) {
-            drawMessage(data);
+        function getConversation(recipient) {
+            $.getJSON(`/api/message/?target=${recipient}`, function (data) {
+                if (data['results'].length != chat_history) {
+                    chat_history = data['results'].length;
+                    messageList.children('.message').remove();
+                    for (let i = data['results'].length - 1; i >= 0; i--) {
+                        drawMessage(data['results'][i]);
+                    }
+                    messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+                }
+
+            });
+
         }
-        messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-    });
-}
 
-function sendMessage(recipient, body) {
-    $.post('/api/message/', {
-        recipient: recipient,
-        body: body
-    }).fail(function () {
-        alert('Error! Check console!');
-    });
-}
+        function getMessageById(message) {
+            id = JSON.parse(message).message
+            $.getJSON(`/api/message/${id}/`, function (data) {
+                if (data.user === currentRecipient ||
+                    (data.recipient === currentRecipient && data.user == currentUser)) {
+                    drawMessage(data);
+                }
+                messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+            });
+        }
 
-function setCurrentRecipient(username) {
-    currentRecipient = username;
-    getConversation(currentRecipient);
-    enableInput();
-}
+        function sendMessage(recipient, body) {
+            $.post('/api/message/', {
+                recipient: recipient,
+                body: body
+            }).fail(function () {
+                alert('Error! Check console!');
+            });
+        }
 
-
-function enableInput() {
-    chatInput.prop('disabled', false);
-    chatButton.prop('disabled', false);
-    chatInput.focus();
-}
-
-function disableInput() {
-    chatInput.prop('disabled', true);
-    chatButton.prop('disabled', true);
-}
-
-$(document).ready(function () {
-    updateUserList();
-
-});
+        function setCurrentRecipient(username) {
+            currentRecipient = username;
+            getConversation(currentRecipient);
+            enableInput();
+        }
 
 
-</script>
+        function enableInput() {
+            chatInput.prop('disabled', false);
+            chatButton.prop('disabled', false);
+            chatInput.focus();
+        }
+
+        function disableInput() {
+            chatInput.prop('disabled', true);
+            chatButton.prop('disabled', true);
+        }
+
+        $(document).ready(function () {
+            updateUserList();
+            disableInput();
+
+            chatInput.keypress(function (e) {
+                if (e.keyCode == 13)
+                    chatButton.click();
+            });
+
+            chatButton.click(function () {
+                if (chatInput.val().length > 0) {
+                    sendMessage(currentRecipient, chatInput.val());
+                    chatInput.val('');
+                }
+            });
+
+            setInterval(function () {
+                if (currentRecipient.length > 0) {
+                    getConversation(currentRecipient);
+                }
+            }, 500);
+
+        });
+
+
+    </script>
 {% endblock %}
 
 
