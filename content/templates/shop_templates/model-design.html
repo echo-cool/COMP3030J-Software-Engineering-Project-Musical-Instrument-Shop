@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
+
+    <link href="{% static "assets/js_for_model/3d_progress.css" %}" rel="stylesheet">
+
     <link href="{% static "assets/css_for_shop/style2.css" %}" rel="stylesheet">
     <link href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}" rel="stylesheet">
 
@@ -124,34 +127,74 @@
         <!-- Model Design Part Start -->
         <div class="product-details-content container-fluid">
             <div class="col-md-8 col-sm-6">
+                <div class="container progress-wrapper"
+                     style="min-height: 750px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
+                    <header>
+                        <h1>Model<strong>3D</strong> Design</h1>
+                        <p>please just wait for a short time ...</p>
+                    </header>
+                    <section>
+                        <article>
+                            {#                            <input type="radio" name="switch-color" id="red" checked>#}
+                            {#                            <input type="radio" name="switch-color" id="cyan">#}
+                            {#                            <input type="radio" name="switch-color" id="lime">#}
+                            <div class="chart">
+                                <div class="bar bar-0 white">
+                                    <div class="face top">
+                                        <div class="growing-bar"></div>
+                                    </div>
+                                    <div class="face side-0">
+                                        <div class="growing-bar"></div>
+                                    </div>
+                                    <div class="face floor">
+                                        <div class="growing-bar"></div>
+                                    </div>
+                                    <div class="face side-a"></div>
+                                    <div class="face side-b"></div>
+                                    <div class="face side-1">
+                                        <div class="growing-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {#                            <p>Try another color :)</p>#}
+                            {#                            <nav class="actions">#}
+                            {#                                <label for="red">Red</label>#}
+                            {#                                <label for="cyan">Cyan</label>#}
+                            {#                                <label for="lime">Lime</label>#}
+                            {#                            </nav>#}
+                        </article>
+                    </section>
+                </div>
                 <div class="product-img-box">
-                    <div class="show-controls"
+                    <div class="show-controls wrapper-hidden"
                          style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
                         <div class="model-zoom-in">
-                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
-                            zoom in
+                            <img onclick="zoomIn()" style="width: 100%;"
+                                 src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                            {#                            zoom in#}
                         </div>
                         <div class="model-zoom-out">
-                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
-                            zoom out
+                            <img onclick="zoomOut()" style="width: 100%;"
+                                 src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
+                            {#                            zoom out#}
                         </div>
                         <div onclick=switchRotate()>
                             <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
-                            rotate
+                            {#                            rotate#}
                         </div>
                     </div>
-                    <div class="show-controls2"
+                    <div class="show-controls2 wrapper-hidden"
                          style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
                         <div>
                             <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
                                  height="40px"
                                  src="{% static "assets/img_for_shop/design/design-combine.png" %}">
-                            combine
+                            {#                            combine#}
                         </div>
                         <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
                                   height="40px"
                                   src="{% static "assets/img_for_shop/design/design-explode.png" %}">
-                            explode
+                            {#                            explode#}
                         </div>
                     </div>
                     <a id="image-view" class="model-show-wrapper" title="Product Image">
@@ -791,7 +834,7 @@
 
 <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
 <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
+{#<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>#}
 
 
 <script>
