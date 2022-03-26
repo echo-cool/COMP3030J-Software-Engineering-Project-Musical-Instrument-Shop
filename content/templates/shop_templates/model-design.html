@@ -1,13 +1,12 @@
+{% extends 'layouts/default/page.html' %}
 {% load static %}
 {% load bootstrap4 %}
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+{% load i18n %}
+
+{% block head_link %}
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
 
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
     <link href="{% static "assets/js_for_model/3d_progress.css" %}" rel="stylesheet">
 
     <link href="{% static "assets/css_for_shop/style2.css" %}" rel="stylesheet">
@@ -19,890 +18,896 @@
     <link href="{% static "assets/js_for_model/fotorama.css" %}" rel="stylesheet">
     <script src="{% static "assets/js_for_model/fotorama.js" %}" id="js-reload"></script>
 
-
     <!-- SPECIFIC CSS -->
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
 
-    <!-- YOUR CUSTOM CSS -->
+    <!-- CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">
-
+    <link href="{% static "assets/css_for_shop/model-design-img-list.css" %}" rel="stylesheet">
 
     {#    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>#}
-    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
+    {#    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>#}
+    {#    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>#}
     {#    <script src="{% static 'assets/js_for_shop/jquery.elevatezoom.js' %}"></script>#}
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
-    <script src="{% static "assets/js_for_shop/carousel-home.js" %}"></script>
-    <script src="{% static "assets/js/hullabaloo.js" %}"></script>
-    <script src="{% static "assets/js_for_shop/owl.carousel.js" %}"></script>
+    {#    <script src="{% static "assets/js_for_shop/carousel-home.js" %}"></script>#}
+    {#    <script src="{% static "assets/js/hullabaloo.js" %}"></script>#}
+    {#    <script src="{% static "assets/js_for_shop/owl.carousel.js" %}"></script>#}
     <script src="{% static "assets/js_for_shop/store.js" %}"></script>
 
 
-    <script src="{% static "assets/js_for_shop/main.js" %}"></script>
+    {#    <script src="{% static "assets/js_for_shop/main.js" %}"></script>#}
     {#    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/jquery.elevatezoom.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/store.js"></script>#}
     <title>Model Design</title>
-</head>
-<style>
-    .wrapper-hidden {
-        display: none;
-    }
 
-    .model_design_controls .model-img-list-wrapper {
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        position: absolute;
-        z-index: 3;
-        width: 100%;
-        bottom: 0;
-        height: 57%;
-        text-align: left;
-        padding: 10px 0 0;
-        background-color: #fff;
-    }
-
-    .model_design_controls .model-img-list-wrapper .cart-product-image img {
-        width: 100%;
-    }
-
-    .model_design_controls .model-img-list-wrapper ul {
-        padding: 0 20px;
-    }
-
-    .model_design_controls .model-img-list-wrapper li {
-        padding: 20px 0;
-        border-bottom: 1px solid #eeeeee;
-    }
-
-    .model_design_controls .model-img-list-wrapper li a {
-        margin-right: 20px;
-    }
-
-    .model_design_controls .model-img-list-wrapper li:last-child {
-        border-bottom: none;
-    }
-
-
-    .bottom_checks {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        display: flex;
-    }
-
-    .model_design_controls .model-img-list-wrapper .bottom_checks .return-design, .model-checkout {
-        display: inline-block;
-        width: 50%;
-        padding: 20px 0px;
-        text-align: center;
-        background: #000;
-        color: #ba933e;
-        text-transform: uppercase;
-        font-size: 18px;
-    }
-
-    .model_design_controls .model-img-list-wrapper .bottom_checks .return-design:hover, .model-checkout {
-        background: #ba933e;
-        color: #fff;
-    }
-
-    .model_design_controls .model-img-list-wrapper a {
-        display: inline-block;
-        position: relative;
-    }
-
-
-</style>
-<body>
-
-<div class="main-content">
-    <div class="container-fluid" style="padding-left: 5%;padding-right: 5%">
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Men</a></li>
-            <li class="active">Bouble Fabric Blazer</li>
-        </ul>
-        <!-- Model Design Part Start -->
-        <div class="product-details-content container-fluid">
-            <div class="col-md-8 col-sm-6">
-                <div class="container progress-wrapper"
-                     style="min-height: 750px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
-                    <header>
-                        <h1>Model<strong>3D</strong> Design</h1>
-                        <p>please just wait for a short time ...</p>
-                    </header>
-                    <section>
-                        <article>
-                            {#                            <input type="radio" name="switch-color" id="red" checked>#}
-                            {#                            <input type="radio" name="switch-color" id="cyan">#}
-                            {#                            <input type="radio" name="switch-color" id="lime">#}
-                            <div class="chart">
-                                <div class="bar bar-0 white">
-                                    <div class="face top">
-                                        <div class="growing-bar"></div>
-                                    </div>
-                                    <div class="face side-0">
-                                        <div class="growing-bar"></div>
-                                    </div>
-                                    <div class="face floor">
-                                        <div class="growing-bar"></div>
-                                    </div>
-                                    <div class="face side-a"></div>
-                                    <div class="face side-b"></div>
-                                    <div class="face side-1">
-                                        <div class="growing-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            {#                            <p>Try another color :)</p>#}
-                            {#                            <nav class="actions">#}
-                            {#                                <label for="red">Red</label>#}
-                            {#                                <label for="cyan">Cyan</label>#}
-                            {#                                <label for="lime">Lime</label>#}
-                            {#                            </nav>#}
-                        </article>
-                    </section>
-                </div>
-                <div class="product-img-box">
-                    <div class="show-controls wrapper-hidden"
-                         style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                        <div class="model-zoom-in">
-                            <img onclick="zoomIn()" style="width: 100%;"
-                                 src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
-                            {#                            zoom in#}
-                        </div>
-                        <div class="model-zoom-out">
-                            <img onclick="zoomOut()" style="width: 100%;"
-                                 src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
-                            {#                            zoom out#}
-                        </div>
-                        <div onclick=switchRotate()>
-                            <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
-                            {#                            rotate#}
-                        </div>
-                    </div>
-                    <div class="show-controls2 wrapper-hidden"
-                         style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                        <div>
-                            <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
-                                 height="40px"
-                                 src="{% static "assets/img_for_shop/design/design-combine.png" %}">
-                            {#                            combine#}
-                        </div>
-                        <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
-                                  height="40px"
-                                  src="{% static "assets/img_for_shop/design/design-explode.png" %}">
-                            {#                            explode#}
-                        </div>
-                    </div>
-                    <a id="image-view" class="model-show-wrapper" title="Product Image">
-                    </a>
-                </div>
-                <!-- End product-img-box -->
-            </div>
-            <div class="col-md-4 col-sm-6 model_design_controls">
-                <div class="model-img-list-wrapper wrapper-hidden">
-                    <div class="container">
-                        <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
-                    </div>
-                    {#                    <ul class="list">#}
-                    {#                        <li class="images">#}
-                    {#                            <a href="#" title="" class="cart-product-image">#}
-                    {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
-                    {#                            <div class="text">#}
-                    {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
-                    {#                                <p class="product-price">$ 69.90</p>#}
-                    {#                            </div>#}
-                    {#                        </li>#}
-                    {#                        <li class="images">#}
-                    {#                            <a href="#" title="" class="cart-product-image">#}
-                    {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
-                    {#                            <div class="text">#}
-                    {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
-                    {#                                <p class="product-price">$ 69.90</p>#}
-                    {#                            </div>#}
-                    {#                        </li>#}
-                    {#                    </ul>#}
-                    <div class="col-md-4 col-sm-6 container model-img-list">
-                        <div class="fotorama model-img-append" id="fotorama">
-                        </div>
-                    </div>
-                    <div class="bottom_checks">
-                        <a class="return-design" href="javascript:void(0);">Return Design</a>
-                        <a class="model-checkout" href="javascript:void(0);">Check Out</a>
-                    </div>
-                </div>
-                <div class="product-name space-30">
-                    <h2>MODEL DESIGN </h2>
-                    {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
-                    <h1></h1>
-                    <div>
-                        <p>Fotorama’s dimensions are the dimensions of the first image. Other pictures are scaled
-                            proportionally to fit. To reserve the space on the page before the first image is loaded,
-                            use data-width and data-height:</p>
-                    </div>
-                    <p>
-                    </p>
-                </div>
-                <div class=" wrap-price"></div>
-                <!-- End product-name -->
-                <div class="rating space-padding-tb-30 ">
-                    <div class="overflow-h">
-                        <ul>
-                            <li>Now raw model</li>
-                            <li><a href="#" title="add your rating">Guitar - 1</a>
-                                <div class="" style="position: absolute;top: 29%;right: 6%;">
-                                    <p class="price" style="font-size:24px;">Price: <span
-                                            style="color: #e3b757">$ 69.90</span></p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Rating -->
-
-                <!-- End Price -->
-                <div class="options">
-                    {#                    <div class="title-product">#}
-                    {#                        <h3>Features</h3>#}
-                    {#                    </div>#}
-                    {#                    <div style="display: flex;justify-content: space-evenly;  margin-bottom: 20px">#}
-                    {#                                            <span>#}
-                    {#                                            <img onclick="splitModel()" style="cursor: pointer" width="40px"#}
-                    {#                                                 height="40px"#}
-                    {#                                                 src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument#}
-                    {#                                            explode#}
-                    {#                                           </span>#}
-                    {#                        <span>#}
-                    {#                                            <img onclick="mergeModel()" style="cursor: pointer" width="40px"#}
-                    {#                                                 height="40px"#}
-                    {#                                                 src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument#}
-                    {#                                            combine#}
-                    {#                                            </span>#}
-                    {#                    </div>#}
-
-                    <div class="title-product">
-                        <h3>Part Colors</h3>
-                    </div>
-                    <form class="form-horizontal">
-                        {#                        <div class="form-group col-md-12 color-list-1">#}
-                        {#                            <label class=" control-label" for="inputName">Recommend Colour</label>#}
-                        {#                            <div style="text-align: center;cursor: pointer">#}
-                        {#                                <img onclick="changeColor('#000000')" width="40px" height="40px"#}
-                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">#}
-                        {#                                <img onclick="changeColor('#ffffff')" width="40px" height="40px"#}
-                        {#                                     src="{% static "assets/img_for_shop/color/Paint_White.png" %}">#}
-                        {#                                <img onclick="changeColor('#4d4f55')" width="40px" height="40px"#}
-                        {#                                     src="{% static "assets/img_for_shop/color/Paint_MidnightSilver.png" %}">#}
-                        {#                                <img onclick="changeColor('#093373')" width="40px" height="40px"#}
-                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Blue.png" %}">#}
-                        {#                                <img onclick="changeColor('#9e0909')" width="40px" height="40px"#}
-                        {#                                     src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">#}
-                        {#                            </div>#}
-                        {#                        </div>#}
-                        <div class="form-group">
-                            <select name="color-long-list">
-                                <option value="#ac725e">#ac725e</option>
-                                <option value="#d06b64">#d06b64</option>
-                                <option value="#f83a22">#f83a22</option>
-                                <option value="#fa573c">#fa573c</option>
-                                <option value="#ff7537">#ff7537</option>
-                                <option value="#ffad46">#ffad46</option>
-                                <option value="#42d692">#42d692</option>
-                                <option value="#16a765">#16a765</option>
-                                <option value="#7bd148">#7bd148</option>
-                                <option value="#b3dc6c">#b3dc6c</option>
-                                <option value="#fbe983">#fbe983</option>
-                                <option value="#fad165">#fad165</option>
-                                <option value="#92e1c0">#92e1c0</option>
-                                <option value="#9fe1e7">#9fe1e7</option>
-                                <option value="#9fc6e7">#9fc6e7</option>
-                                <option value="#4986e7">#4986e7</option>
-                                <option value="#9a9cff">#9a9cff</option>
-                                <option value="#b99aff">#b99aff</option>
-                            </select>
-                            <input id="color" type="color" style="width: 5%;position: absolute;top: 4px;right: 5px;">
-                        </div>
-                        {#                        <div >#}
-                        {##}
-                        {#                        </div>#}
-                    </form>
-                    <div class="title-product">
-                        <h3>Sizes*</h3>
-                    </div>
-                    <div class="custom-select-form">
-                        <select class="wide form-control">
-                            <option value="" selected>- Please select -</option>
-                            <option value="">Small (S)</option>
-                            <option value="">M</option>
-                            <option value=" ">L</option>
-                            <option value=" ">XL</option>
-                        </select>
-                    </div>
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
-
-                    <div class="title-product">
-                        <h3>Number*</h3>
-                    </div>
-                    <div class="quantity space-30">
-                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity"
-                               max="100" min="1" step="1">
-                        <span class="price"></span>
-                    </div>
-                    <!-- End quanity -->
-                </div>
-                <!-- End Options -->
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div class="products" style="text-align:end;">
-                    <div class="product product-details">
-                        <a href="javascript:void(0);" class="add-to-cart">Add to Cart</a>
-                        {#                        <div class="action">#}
-                        {#                            <a title="Like" href="#"><i class="fa fa-heart-o"></i></a>#}
-                        {#                            <a title="View" href="#"><i class="fa fa-compress"></i></a>#}
-                        {#                        </div>#}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Model Design Part Start -->
-
-        <!-- Picture cut Part Start -->
-
-        <!-- Design Master Part Start -->
-        <div class="col-sm-12 col-md-6 col-md-offset-1">
-            <div class="section-title">
-                <h3 class="lead">Design Masters</h3>
-                <div class="border-style"></div>
-            </div>
-        </div>
-
-        <div class="hoz-tab-container space-padding-tb-10">
-            <ul class="tabs">
-                <li class="item" rel="master1">Dale Wilson</li>
-                <li class="item" rel="master2">Paul Waller</li>
-                <li class="item" rel="master3">Jason Smith</li>
-                <li class="item" rel="master4">Yuriy Shishkov</li>
-                <li class="item" rel="master5">Todd Krause</li>
-                <li class="item" rel="master6">Dennis Galuszka</li>
-                <li class="item" rel="master7">Greg Fessler</li>
-                <li class="item" rel="master8">John Cruz</li>
-            </ul>
-            <div class="tab-container">
-                <div id="master1" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master2" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master2.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master3" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master3.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master4" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master4.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master5" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master5.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master6" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master7" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="master8" class="tab-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="help-item help-left">
-                                <img style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                     alt="Help"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="help-item">
-                                <div class="help-right">
-                                    <h2>Master: Dale Wilson</h2>
-                                    <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                        Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                        他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                        定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
-                                    </p>
-                                    <p>
-                                        随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                        ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                        吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                        Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                        把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
-                                    <div class="help-inner-left">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                    <div class="help-inner-right">
-                                        <ul>
-                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- tab-container -->
-            <div class="title-product">
-                <h3>upsell products</h3>
-            </div>
-            <div class="upsell-product products grid_full">
-                <div class="item-inner">
-                    <div class="product">
-                        <a class="product-images" href="#" title="">
-                            <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                            <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                        </a>
-                        <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                        <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        <p class="product-price">$ 650.99</p>
-                        <a class="add-to-cart" href="#">Add to Cart</a>
-                        <div class="action">
-                            <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                            <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-inner">
-                    <div class="product">
-                        <a class="product-images" href="#" title="">
-                            <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                            <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                        </a>
-                        <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                        <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        <p class="product-price">$ 650.99</p>
-                        <a class="add-to-cart" href="#">Add to Cart</a>
-                        <div class="action">
-                            <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                            <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-inner">
-                    <div class="product sale">
-                        <span class="sale lable">Sale</span>
-                        <a class="product-images" href="#" title="">
-                            <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                            <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                        </a>
-                        <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                        <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        <div class="product-price">
-                            <p class="content-star">
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star"></i>
-                            </p>
-                            <span class="price">$ 650.99</span>
-                            <span class="price-old">$ 670.99</span>
-                        </div>
-                        <a class="add-to-cart" href="#">Add to Cart</a>
-                        <div class="action">
-                            <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                            <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-inner">
-                    <div class="product ">
-                        <span class="new lable">New</span>
-                        <a class="product-images" href="#" title="">
-                            <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                            <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                        </a>
-                        <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                        <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        <p class="product-price">$ 650.99</p>
-                        <a class="add-to-cart" href="#">Add to Cart</a>
-                        <div class="action">
-                            <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                            <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End container -->
-    </div>
-    <!-- End MainContent -->
-</div>
-</body>
-
-
-<!-- Start Script -->
-<script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/LoaderSupport.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/OBJLoader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/EffectComposer.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/OutlinePass.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/TweenLite.min.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/OrbitControls.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/dat.gui.min.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/stats.min.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/jquery.simplecolorpicker.js" %}"></script>
-
-<script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
-{#<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>#}
-
-
-<script>
-    // 截图
-    function convertCanvasToImage(canvas) {
-        let image = new Image();
-        image.src = canvas.toDataURL("image/png");
-        return image.src;
-    }
-
-    // 图片下载
-    // imgUrl = canvas.toDataURL("image/png");
-    function downloadImage(imgUrl) {
-        let a = $("<a></a>").attr("href", imgUrl).attr("download", "img.png").appendTo("body");
-        a[0].click();
-        a.remove();
-    }
-
-    $('.add-to-cart').click(function (e) {
-        {#let biggest_wrapper = $(".model_design_controls");#}
-        {#biggest_wrapper.html();#}
-        {#biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");#}
-        {#console.log("jia  class", this);#}
-        let img_list_wrapper = $(".model-img-list-wrapper");
-        img_list_wrapper.toggleClass("wrapper-hidden");
-        img_holder = $(".model-img-list");
-        {#let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"#}
-        {#img_list_wrapper.html(html);#}
-    });
-
-    $(".return-design").click(function (e) {
-        let img_list_wrapper = $(".model-img-list-wrapper");
-        img_list_wrapper.toggleClass("wrapper-hidden");
-    });
-
-    let img_holder;
-    let model_img_list = [];
-    $('.toCanvas').click(function (e) {
-        let model_wrapper = $(".model-wrapper");
-        {#img_holder.html("");#}
-        let canvas = model_wrapper.get(0);
-        let src = convertCanvasToImage(canvas);
-
-        let single_img_html = "<a href=\"2.jpg\"><img src=\"" + src + "\"></a>";
-        model_img_list.push(single_img_html)
-
-        let mul_img_string = model_img_list.join("\n")
-
-        let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + " " +
-            " data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
-            mul_img_string +
-            "</div>";
-        img_holder.html(html);
-
-        console.log(model_img_list);
-        loadJs("{% static "assets/js_for_model/fotorama.js" %}", "js-reload");
-
-        function loadJs(file, id) {
-            $("#" + id).remove();
-            $("<scri" + "pt >" + "</scr" + "ipt>").attr({
-                id: id,
-                src: file,
-                type: 'text/javascript'
-            }).appendTo($('body'));
+    <style>
+        .wrapper-hidden {
+            display: none;
         }
-    });
 
-</script>
+        .model_design_controls .model-img-list-wrapper {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            position: absolute;
+            z-index: 3;
+            width: 100%;
+            bottom: 0;
+            height: 57%;
+            text-align: left;
+            padding: 10px 0 0;
+            background-color: #fff;
+        }
 
-</html>
+        .model_design_controls .model-img-list-wrapper .cart-product-image img {
+            width: 100%;
+        }
 
+        .model_design_controls .model-img-list-wrapper ul {
+            padding: 0 20px;
+        }
+
+        .model_design_controls .model-img-list-wrapper li {
+            padding: 20px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .model_design_controls .model-img-list-wrapper li a {
+            margin-right: 20px;
+        }
+
+        .model_design_controls .model-img-list-wrapper li:last-child {
+            border-bottom: none;
+        }
+
+
+        .bottom_checks {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+        }
+
+        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design, .model-checkout {
+            display: inline-block;
+            width: 50%;
+            padding: 20px 0px;
+            text-align: center;
+            background: #000;
+            color: #ba933e;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design:hover, .model-checkout {
+            background: #ba933e;
+            color: #fff;
+        }
+
+        .model_design_controls .model-img-list-wrapper a {
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+    {#    <main>#}
+    <div class="main-content">
+        <div class="container-fluid" style="padding-left: 5%;padding-right: 5%">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Men</a></li>
+                <li class="active">Bouble Fabric Blazer</li>
+            </ul>
+            <!-- Model Design Part Start -->
+            <div class="product-details-content container-fluid">
+                <div class="col-md-8 col-sm-6">
+                    <div class="progress-container progress-wrapper"
+                         style="min-height: 750px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
+                        <header>
+                            <h1>Model<strong>3D</strong> Design</h1>
+                            <p>please just wait for a short time ...</p>
+                        </header>
+                        <section>
+                            <article>
+                                {#                            <input type="radio" name="switch-color" id="red" checked>#}
+                                {#                            <input type="radio" name="switch-color" id="cyan">#}
+                                {#                            <input type="radio" name="switch-color" id="lime">#}
+                                <div class="chart">
+                                    <div class="bar bar-0 white">
+                                        <div class="face top">
+                                            <div class="growing-bar"></div>
+                                        </div>
+                                        <div class="face side-0">
+                                            <div class="growing-bar"></div>
+                                        </div>
+                                        <div class="face floor">
+                                            <div class="growing-bar"></div>
+                                        </div>
+                                        <div class="face side-a"></div>
+                                        <div class="face side-b"></div>
+                                        <div class="face side-1">
+                                            <div class="growing-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#                            <p>Try another color :)</p>#}
+                                {#                            <nav class="actions">#}
+                                {#                                <label for="red">Red</label>#}
+                                {#                                <label for="cyan">Cyan</label>#}
+                                {#                                <label for="lime">Lime</label>#}
+                                {#                            </nav>#}
+                            </article>
+                        </section>
+                    </div>
+                    <div class="product-img-box">
+                        <div class="show-controls wrapper-hidden"
+                             style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
+                            <div class="model-zoom-in">
+                                <img onclick="zoomIn()" style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                                {#                            zoom in#}
+                            </div>
+                            <div class="model-zoom-out">
+                                <img onclick="zoomOut()" style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
+                                {#                            zoom out#}
+                            </div>
+                            <div onclick=switchRotate()>
+                                <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
+                                {#                            rotate#}
+                            </div>
+                        </div>
+                        <div class="show-controls2 wrapper-hidden"
+                             style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
+                            <div>
+                                <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-combine.png" %}">
+                                {#                            combine#}
+                            </div>
+                            <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
+                                      height="40px"
+                                      src="{% static "assets/img_for_shop/design/design-explode.png" %}">
+                                {#                            explode#}
+                            </div>
+                        </div>
+                        <a id="image-view" class="model-show-wrapper" title="Product Image">
+                        </a>
+                    </div>
+                    <!-- End product-img-box -->
+                </div>
+                <div class="col-md-4 col-sm-6 model_design_controls">
+                    <div class="model-img-list-wrapper wrapper-hidden">
+                        <div class="container">
+                            <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
+                        </div>
+                        {#                    <ul class="list">#}
+                        {#                        <li class="images">#}
+                        {#                            <a href="#" title="" class="cart-product-image">#}
+                        {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
+                        {#                            <div class="text">#}
+                        {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
+                        {#                                <p class="product-price">$ 69.90</p>#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        {#                        <li class="images">#}
+                        {#                            <a href="#" title="" class="cart-product-image">#}
+                        {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
+                        {#                            <div class="text">#}
+                        {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
+                        {#                                <p class="product-price">$ 69.90</p>#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        {#                    </ul>#}
+                        <div class="col-md-4 col-sm-6 container model-img-list">
+                            <div class="fotorama model-img-append" id="fotorama">
+                            </div>
+                        </div>
+                        <div class="bottom_checks">
+                            <a class="return-design" href="javascript:void(0);">Return Design</a>
+                            <a class="model-checkout" href="javascript:void(0);">Check Out</a>
+                        </div>
+                    </div>
+                    <div class="product-name space-30">
+                        <h2>MODEL DESIGN </h2>
+                        {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
+                        <h1></h1>
+                        <div>
+                            <p>Fotorama’s dimensions are the dimensions of the first image. Other pictures are
+                                scaled
+                                proportionally to fit. To reserve the space on the page before the first image is
+                                loaded,
+                                use data-width and data-height:</p>
+                        </div>
+                        <p>
+                        </p>
+                    </div>
+                    <div class=" wrap-price"></div>
+                    <!-- End product-name -->
+                    <div class="rating space-padding-tb-30 ">
+                        <div class="overflow-h">
+                            <ul>
+                                <li>Now raw model</li>
+                                <li><a href="#" title="add your rating">Guitar - 1</a>
+                                    <div class="" style="position: absolute;top: 29%;right: 6%;">
+                                        <p class="price" style="font-size:24px;">Price: <span
+                                                style="color: #e3b757">$ 69.90</span></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Rating -->
+
+                    <!-- End Price -->
+                    <div class="options">
+                        {#                    <div class="title-product">#}
+                        {#                        <h3>Features</h3>#}
+                        {#                    </div>#}
+                        {#                    <div style="display: flex;justify-content: space-evenly;  margin-bottom: 20px">#}
+                        {#                                            <span>#}
+                        {#                                            <img onclick="splitModel()" style="cursor: pointer" width="40px"#}
+                        {#                                                 height="40px"#}
+                        {#                                                 src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument#}
+                        {#                                            explode#}
+                        {#                                           </span>#}
+                        {#                        <span>#}
+                        {#                                            <img onclick="mergeModel()" style="cursor: pointer" width="40px"#}
+                        {#                                                 height="40px"#}
+                        {#                                                 src="{% static "assets/img_for_shop/design/design-combine.png" %}">Instrument#}
+                        {#                                            combine#}
+                        {#                                            </span>#}
+                        {#                    </div>#}
+
+                        <div class="title-product">
+                            <h3>Part Colors</h3>
+                        </div>
+                        <form class="form-horizontal">
+                            {#                        <div class="form-group col-md-12 color-list-1">#}
+                            {#                            <label class=" control-label" for="inputName">Recommend Colour</label>#}
+                            {#                            <div style="text-align: center;cursor: pointer">#}
+                            {#                                <img onclick="changeColor('#000000')" width="40px" height="40px"#}
+                            {#                                     src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">#}
+                            {#                                <img onclick="changeColor('#ffffff')" width="40px" height="40px"#}
+                            {#                                     src="{% static "assets/img_for_shop/color/Paint_White.png" %}">#}
+                            {#                                <img onclick="changeColor('#4d4f55')" width="40px" height="40px"#}
+                            {#                                     src="{% static "assets/img_for_shop/color/Paint_MidnightSilver.png" %}">#}
+                            {#                                <img onclick="changeColor('#093373')" width="40px" height="40px"#}
+                            {#                                     src="{% static "assets/img_for_shop/color/Paint_Blue.png" %}">#}
+                            {#                                <img onclick="changeColor('#9e0909')" width="40px" height="40px"#}
+                            {#                                     src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">#}
+                            {#                            </div>#}
+                            {#                        </div>#}
+                            <div class="form-group">
+                                <select name="color-long-list">
+                                    <option value="#ac725e">#ac725e</option>
+                                    <option value="#d06b64">#d06b64</option>
+                                    <option value="#f83a22">#f83a22</option>
+                                    <option value="#fa573c">#fa573c</option>
+                                    <option value="#ff7537">#ff7537</option>
+                                    <option value="#ffad46">#ffad46</option>
+                                    <option value="#42d692">#42d692</option>
+                                    <option value="#16a765">#16a765</option>
+                                    <option value="#7bd148">#7bd148</option>
+                                    <option value="#b3dc6c">#b3dc6c</option>
+                                    <option value="#fbe983">#fbe983</option>
+                                    <option value="#fad165">#fad165</option>
+                                    <option value="#92e1c0">#92e1c0</option>
+                                    <option value="#9fe1e7">#9fe1e7</option>
+                                    <option value="#9fc6e7">#9fc6e7</option>
+                                    <option value="#4986e7">#4986e7</option>
+                                    <option value="#9a9cff">#9a9cff</option>
+                                    <option value="#b99aff">#b99aff</option>
+                                </select>
+                                <input id="color" type="color"
+                                       style="width: 5%;position: absolute;top: 4px;right: 5px;">
+                            </div>
+                            {#                        <div >#}
+                            {##}
+                            {#                        </div>#}
+                        </form>
+                        <div class="title-product">
+                            <h3>Sizes*</h3>
+                        </div>
+                        <div class="custom-select-form">
+                            <select class="wide form-control">
+                                <option value="" selected>- Please select -</option>
+                                <option value="">Small (S)</option>
+                                <option value="">M</option>
+                                <option value=" ">L</option>
+                                <option value=" ">XL</option>
+                            </select>
+                        </div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+
+                        <div class="title-product">
+                            <h3>Number*</h3>
+                        </div>
+                        <div class="quantity space-30">
+                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1"
+                                   name="quantity"
+                                   max="100" min="1" step="1">
+                            <span class="price"></span>
+                        </div>
+                        <!-- End quanity -->
+                    </div>
+                    <!-- End Options -->
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div class="products" style="text-align:end;">
+                        <div class="product product-details">
+                            <a href="javascript:void(0);" class="add-to-cart">Add to Cart</a>
+                            {#                        <div class="action">#}
+                            {#                            <a title="Like" href="#"><i class="fa fa-heart-o"></i></a>#}
+                            {#                            <a title="View" href="#"><i class="fa fa-compress"></i></a>#}
+                            {#                        </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Model Design Part Start -->
+
+            <!-- Picture cut Part Start -->
+
+            <!-- Design Master Part Start -->
+            <div class="col-sm-12 col-md-6 col-md-offset-1">
+                <div class="section-title">
+                    <h3 class="lead">Design Masters</h3>
+                    <div class="border-style"></div>
+                </div>
+            </div>
+
+            <div class="hoz-tab-container space-padding-tb-10">
+                <ul class="tabs">
+                    <li class="item" rel="master1">Dale Wilson</li>
+                    <li class="item" rel="master2">Paul Waller</li>
+                    <li class="item" rel="master3">Jason Smith</li>
+                    <li class="item" rel="master4">Yuriy Shishkov</li>
+                    <li class="item" rel="master5">Todd Krause</li>
+                    <li class="item" rel="master6">Dennis Galuszka</li>
+                    <li class="item" rel="master7">Greg Fessler</li>
+                    <li class="item" rel="master8">John Cruz</li>
+                </ul>
+                <div class="tab-container">
+                    <div id="master1" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master2" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master2.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master3" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master3.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master4" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master4.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master5" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master5.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master6" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master7" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="master8" class="tab-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="help-item help-left">
+                                    <img style="width: 100%;"
+                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                         alt="Help"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="help-item">
+                                    <div class="help-right">
+                                        <h2>Master: Dale Wilson</h2>
+                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
+                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
+                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
+                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        </p>
+                                        <p>
+                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
+                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
+                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
+                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
+                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                        <div class="help-inner-left">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                        <div class="help-inner-right">
+                                            <ul>
+                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- tab-container -->
+                <div class="title-product">
+                    <h3>upsell products</h3>
+                </div>
+                <div class="upsell-product products grid_full">
+                    <div class="item-inner">
+                        <div class="product">
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
+                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product">
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
+                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product sale">
+                            <span class="sale lable">Sale</span>
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
+                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <div class="product-price">
+                                <p class="content-star">
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star"></i>
+                                </p>
+                                <span class="price">$ 650.99</span>
+                                <span class="price-old">$ 670.99</span>
+                            </div>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product ">
+                            <span class="new lable">New</span>
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
+                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End container -->
+        </div>
+        <!-- End MainContent -->
+    </div>
+    {#    </main>#}
+{% endblock %}
+
+
+{% block foot_link %}
+    <!-- Start Script -->
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/LoaderSupport.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OBJLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/EffectComposer.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OutlinePass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/RenderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/CopyShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/ShaderPass.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/FXAAShader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TweenLite.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/OrbitControls.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/dat.gui.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/stats.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/jquery.simplecolorpicker.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
+    {#<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>#}
+
+
+    <script>
+        // 截图
+        function convertCanvasToImage(canvas) {
+            let image = new Image();
+            image.src = canvas.toDataURL("image/png");
+            return image.src;
+        }
+
+        // 图片下载
+        // imgUrl = canvas.toDataURL("image/png");
+        function downloadImage(imgUrl) {
+            let a = $("<a></a>").attr("href", imgUrl).attr("download", "img.png").appendTo("body");
+            a[0].click();
+            a.remove();
+        }
+
+        $('.add-to-cart').click(function (e) {
+            {#let biggest_wrapper = $(".model_design_controls");#}
+            {#biggest_wrapper.html();#}
+            {#biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");#}
+            {#console.log("jia  class", this);#}
+            let img_list_wrapper = $(".model-img-list-wrapper");
+            img_list_wrapper.toggleClass("wrapper-hidden");
+            img_holder = $(".model-img-list");
+            {#let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"#}
+            {#img_list_wrapper.html(html);#}
+        });
+
+        $(".return-design").click(function (e) {
+            let img_list_wrapper = $(".model-img-list-wrapper");
+            img_list_wrapper.toggleClass("wrapper-hidden");
+        });
+
+        let img_holder;
+        let model_img_list = [];
+        $('.toCanvas').click(function (e) {
+            let model_wrapper = $(".model-wrapper");
+            {#img_holder.html("");#}
+            let canvas = model_wrapper.get(0);
+            let src = convertCanvasToImage(canvas);
+
+            let single_img_html = "<a href=\"2.jpg\"><img src=\"" + src + "\"></a>";
+            model_img_list.push(single_img_html)
+
+            let mul_img_string = model_img_list.join("\n")
+
+            let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + " " +
+                " data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
+                mul_img_string +
+                "</div>";
+            img_holder.html(html);
+
+            console.log(model_img_list);
+            loadJs("{% static "assets/js_for_model/fotorama.js" %}", "js-reload");
+
+            function loadJs(file, id) {
+                $("#" + id).remove();
+                $("<scri" + "pt >" + "</scr" + "ipt>").attr({
+                    id: id,
+                    src: file,
+                    type: 'text/javascript'
+                }).appendTo($('body'));
+            }
+        });
+
+    </script>
+
+{% endblock %}
