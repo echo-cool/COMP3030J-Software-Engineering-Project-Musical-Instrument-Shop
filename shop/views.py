@@ -202,7 +202,10 @@ def confirm(request):
 def model_design(request):
     name = request.GET.get('name')
     style = request.GET.get('style')
-    return render(request, 'shop_templates/model-design.html')
+    return render(request, 'shop_templates/model-design.html', {
+        "name": name,
+        "style": style
+    })
 
 
 def model_design2(request, model_id):
