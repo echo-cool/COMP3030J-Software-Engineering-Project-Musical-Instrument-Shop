@@ -240,11 +240,11 @@ function init() {
     // progress load
     let progress_number = 0;
     var timer = setInterval(function () {
-        if (progress_number > progress) {
-        } else {
+        if (progress_number < progress || progress >= 99) {
             progress_number = Number(progress_number) + 1;
+        } else {
         }
-        if (progress_number > 110) {
+        if (progress_number > 105) {
             clearInterval(timer);
             sleep(500).then(() => {
                 $(".show-controls").toggleClass("wrapper-hidden");

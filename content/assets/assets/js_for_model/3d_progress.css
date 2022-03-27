@@ -16,18 +16,18 @@ section article {
     margin-bottom: 2em;
 }
 
-section article p, section article:last-of-type {
+section article p[id="pro"], section article:last-of-type {
     margin-bottom: 0;
 }
 
-p {
+p[id="pro"] {
     line-height: 1.5em;
     max-width: 20em;
     margin: 1.5em auto 2em;
     padding-bottom: 1.5em;
 }
 
-p span {
+p[id="pro"] span {
     display: block;
 }
 

@@ -55,9 +55,9 @@
             z-index: 3;
             width: 100%;
             bottom: 0;
-            height: 57%;
+            height: 72%;
             text-align: left;
-            padding: 10px 0 0;
+            padding: 0;
             background-color: #fff;
         }
 
@@ -131,7 +131,7 @@
                          style="min-height: 750px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
                         <header>
                             <h1>Model<strong>3D</strong> Design</h1>
-                            <p>please just wait for a short time ...</p>
+                            <p id="pro">please just wait for a short time ...</p>
                         </header>
                         <section>
                             <article>
@@ -204,9 +204,9 @@
                 </div>
                 <div class="col-md-4 col-sm-6 model_design_controls">
                     <div class="model-img-list-wrapper wrapper-hidden">
-                        <div class="container">
-                            <h2 class="toCanvas"><a href="javascript:void(0);"> 转成canvas </a></h2>
-                        </div>
+                        {#                        <div class="container">#}
+                        {#                           #}
+                        {#                        </div>#}
                         {#                    <ul class="list">#}
                         {#                        <li class="images">#}
                         {#                            <a href="#" title="" class="cart-product-image">#}
@@ -225,7 +225,19 @@
                         {#                            </div>#}
                         {#                        </li>#}
                         {#                    </ul>#}
-                        <div class="col-md-4 col-sm-6 container model-img-list">
+                        <h2 class="add-img" style="position: absolute;left: 2%; top: 2%;z-index: 10">
+                            <a href="javascript:void(0);">
+                                <img width="40px" height="40px"
+                                     src="{% static "assets/images/icons/add-img.png" %}">
+                            </a>
+                        </h2>
+                        <h2 class="delete-img" style="position: absolute; right: 2%; top: 2%; z-index: 10">
+                            <a href="javascript:void(0);">
+                                <img width="40px" height="40px"
+                                     src="{% static "assets/images/icons/delete-img.png" %}">
+                            </a>
+                        </h2>
+                        <div class="container-fluid model-img-list" style="padding-left: 0; padding-right: 0;">
                             <div class="fotorama model-img-append" id="fotorama">
                             </div>
                         </div>
@@ -254,10 +266,10 @@
                         <div class="overflow-h">
                             <ul>
                                 <li>Now raw model</li>
-                                <li><a href="#" title="add your rating">Guitar - 1</a>
+                                <li><a href="#" title="add your rating">{{ model }} - {{ type }}</a>
                                     <div class="" style="position: absolute;top: 29%;right: 6%;">
                                         <p class="price" style="font-size:24px;">Price: <span
-                                                style="color: #e3b757">$ 69.90</span></p>
+                                                style="color: #e3b757">$ 9999.99</span></p>
                                     </div>
                                 </li>
                             </ul>
@@ -363,7 +375,7 @@
                     <div>&nbsp;</div>
                     <div class="products" style="text-align:end;">
                         <div class="product product-details">
-                            <a href="javascript:void(0);" class="add-to-cart">Add to Cart</a>
+                            <a href="javascript:void(0);" class="add-to-cart">Start to Save</a>
                             {#                        <div class="action">#}
                             {#                            <a title="Like" href="#"><i class="fa fa-heart-o"></i></a>#}
                             {#                            <a title="View" href="#"><i class="fa fa-compress"></i></a>#}
@@ -871,43 +883,61 @@
             {#img_list_wrapper.html(html);#}
         });
 
-        $(".return-design").click(function (e) {
+
+        $(".return-design").click(function () {
+            model_img_list = [];
+            reloadList();
             let img_list_wrapper = $(".model-img-list-wrapper");
             img_list_wrapper.toggleClass("wrapper-hidden");
         });
 
         let img_holder;
         let model_img_list = [];
-        $('.toCanvas').click(function (e) {
+        $('.add-img').click(function () {
             let model_wrapper = $(".model-wrapper");
-            {#img_holder.html("");#}
             let canvas = model_wrapper.get(0);
             let src = convertCanvasToImage(canvas);
 
-            let single_img_html = "<a href=\"2.jpg\"><img src=\"" + src + "\"></a>";
-            model_img_list.push(single_img_html)
+            let single_img_html = "<a><img src=\"" + src + "\"></a>";
+            model_img_list.push(single_img_html);
+            reloadList();
+        });
 
+        $('.delete-img').click(function () {
+            let single_img_removed = $(".fotorama__active").children().children().attr("src");
+            if (single_img_removed === undefined) {
+                model_img_list = [];
+            } else {
+                console.log("BEFPRE", model_img_list);
+                let single_img_html = "<a><img src=\"" + single_img_removed + "\"></a>";
+                model_img_list = model_img_list.filter(function (item) {
+                    return item !== single_img_html;
+                });
+                console.log("ASDASD", model_img_list);
+            }
+            reloadList();
+        });
+
+        function reloadList() {
             let mul_img_string = model_img_list.join("\n")
-
-            let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + " " +
-                " data-nav=\"thumbs\" data-arrows=\"true\" data-allowfullscreen=\"true\" data-swipe=\"false\"> " +
+            let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + "data-width=\"110%\"   "
+                + " data-allowfullscreen=\"true\"  " +
+                " data-nav=\"thumbs\" data-swipe=\"true\"> " +
                 mul_img_string +
                 "</div>";
             img_holder.html(html);
-
             console.log(model_img_list);
             loadJs("{% static "assets/js_for_model/fotorama.js" %}", "js-reload");
+        }
 
-            function loadJs(file, id) {
-                $("#" + id).remove();
-                $("<scri" + "pt >" + "</scr" + "ipt>").attr({
-                    id: id,
-                    src: file,
-                    type: 'text/javascript'
-                }).appendTo($('body'));
-            }
-        });
-
+        function loadJs(file, id) {
+            $("#" + id).remove();
+            $("<scri" + "pt >" + "</scr" + "ipt>").attr({
+                id: id,
+                src: file,
+                type: 'text/javascript'
+            }).appendTo($('body'));
+        }
     </script>
 
 {% endblock %}
