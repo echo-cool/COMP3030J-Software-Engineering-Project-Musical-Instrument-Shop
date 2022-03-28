@@ -145,13 +145,13 @@ class MessageModelViewSet(ModelViewSet):
         return Response(serializer.data)
 
 
-class UserModelViewSet(ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserModelSerializer
-    allowed_methods = ('GET', 'HEAD', 'OPTIONS')
-    pagination_class = None  # Get all user
-
-    def list(self, request, *args, **kwargs):
-        # Get all users except yourself
-        self.queryset = self.queryset.exclude(id=request.user.id)
-        return super(UserModelViewSet, self).list(request, *args, **kwargs)
+# class UserModelViewSet(ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserModelSerializer
+#     allowed_methods = ('GET', 'HEAD', 'OPTIONS')
+#     pagination_class = None  # Get all user
+#
+#     def list(self, request, *args, **kwargs):
+#         # Get all users except yourself
+#         self.queryset = self.queryset.exclude(id=request.user.id)
+#         return super(UserModelViewSet, self).list(request, *args, **kwargs)

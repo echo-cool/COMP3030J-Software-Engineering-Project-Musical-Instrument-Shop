@@ -16,7 +16,7 @@
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">
+{#        <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">#}
     <script src="{% static 'assets/chat_js/static/js/jquery.min.js' %}"></script>
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
@@ -33,7 +33,8 @@
 
 
     <div class="container">
-        <div class="page-header">
+
+        <div class="card-header">
             <h1>Welcome to ChatApp
                 <small>Pick a user and start chatting!</small>
             </h1>
@@ -48,18 +49,19 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Chat</h4>
+                <div class="card bg-light">
+                    <div class="card-heading">
+                        <h4 class="card-title">Chat</h4>
+
                     </div>
                     <div>
-                        <div class="lite-chatbox">
+                        <div class="lite-chatbox bg-light">
                             <ul id="messages" class="messages">
                                 {# Messages go here #}
                             </ul>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="card-footer">
                         <div class="input-group">
                             <input id="chat-input" type="text"
                                    class="form-control input"
@@ -78,6 +80,7 @@
             </div>
         </div>
     </div>
+
     <script>
         let sessionKey = '{{ request.session.session_key }}';
         let currentUser = '{{ request.user.username }}';
