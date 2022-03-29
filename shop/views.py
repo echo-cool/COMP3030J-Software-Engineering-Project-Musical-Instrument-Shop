@@ -49,7 +49,6 @@ def index(request):
 
 
 def home(request):
-
     return render(request, 'shop_templates/homepage.html', {
         "ten": range(10),
         "three": range(3),
@@ -203,7 +202,10 @@ def confirm(request):
 def model_design(request):
     name = request.GET.get('name')
     style = request.GET.get('style')
-    return render(request, 'shop_templates/model-design.html')
+    return render(request, 'shop_templates/model-design.html', {
+        "name": name,
+        "style": style
+    })
 
 
 def model_design2(request, model_id):
@@ -288,6 +290,7 @@ def cart(request):
         return redirect('accounts:log_in')
 
 
+#
 def product_add_cart(request, instrument_id):
     instrument = Instrument.objects.filter(id=instrument_id).first()
     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
@@ -300,15 +303,15 @@ def product_add_cart(request, instrument_id):
     return redirect('shop:cart')
 
 
-def product_minus_cart(request, instrument_id):
-    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
-    if exist_cart.count > 1:
-        exist_cart.count = exist_cart.count - 1
-        exist_cart.save()
-    else:
-        exist_cart.delete()
-        exist_cart.save()
-    return redirect('shop:cart')
+# def product_minus_cart(request, instrument_id):
+#     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+#     if exist_cart.count > 1:
+#         exist_cart.count = exist_cart.count - 1
+#         exist_cart.save()
+#     else:
+#         exist_cart.delete()
+#         exist_cart.save()
+#     return redirect('shop:cart')
 
 
 def product_details_test_model(request, product_id):

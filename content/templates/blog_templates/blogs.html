@@ -1,70 +1,74 @@
-﻿<!DOCTYPE html>
-<html lang="zxx">
-    <head>
-        <!-- Meta Tags -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <meta name="description" content="Multipages HTML5 Template">
-        <meta name="author" content="">
+﻿{% extends 'layouts/default/shopper_base.html' %}
 
-        <!-- Page Title -->
-        <title>Multipages HTML5 Template</title>
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
 
-        <!-- Favicon and touch Icons -->
-        <link href="images/favicon.png" rel="shortcut icon" type="image/png">
-        <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
-        <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-        <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-        <link href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+{% block style %}
 
-        <!-- Lead Style -->
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-    </head>
+    <!-- Favicon and touch Icons -->
+    <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon" sizes="144x144">
+    <!-- Lead Style -->
+    <link href="{% static '/assets/css_for_shop/google_font.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/ionicons/css/ionicons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/aos/aos.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/swiper/swiper.css' %}" rel="stylesheet" type="text/css">
 
-    <body>
-		<div id="preloader" class="loader_show">
-			<div class="loader-wrap">
-			<div class="loader">
-				<div class="loader-inner"></div>
-			</div>
-			</div>
-		</div>
-		
+    <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
+
+{% endblock %}
+
+{% block content %}
+
+{#		<div id="preloader" class="loader_show">#}
+{#			<div class="loader-wrap">#}
+{#			<div class="loader">#}
+{#				<div class="loader-inner"></div>#}
+{#			</div>#}
+{#			</div>#}
+{#		</div>#}
+
 		<!-- pointer start -->
 		<div class="pointer bnz-pointer" id="bnz-pointer"></div>
 		
 		<div class="content">
     		<div class="top_part">
 	        	<!-- Start Header -->
-				<header id="header" class="header_1 header">
-					<div class="navigation">
-						<nav id="flexmenu">
-							<div class="logo">
-								<a href="index.html"><img src="images/logo.png" alt="logo"></a>
-							</div>
-							<div class="nav-inner">
-								<div id="mobile-toggle" class="mobile-btn"></div>
-								<ul class="main-menu">
-									<li class="menu-item active"><a href="index.html">Home</a>
-										<ul class="sub-menu">
-											<li class="menu-item active"><a href="index-2.html">Home 2</a></li>
-											<li class="menu-item"><a href="index-3.html">Home 3</a></li>
-										</ul>
-									</li>
-									<li class="menu-item"><a href="#">Posts</a>
-										<ul class="sub-menu">
-											<li class="menu-item"><a href="blog-details.html">Blog Details</a></li>
-											<li class="menu-item"><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
-										</ul>
-									</li>
-									<li class="menu-item"><a href="about.html">About Author</a></li>
-									<li class="menu-item"><a href="contact.html">Contact Us</a></li>
-								</ul>
-							</div>
-						</nav>
-					</div>
-		        </header>
+{#				<header id="header" class="header_1 header">#}
+{#					<div class="navigation">#}
+{#						<nav id="flexmenu">#}
+{#							<div class="logo">#}
+{#								<a href="index.html"><img src="images/logo.png" alt="logo"></a>#}
+{#							</div>#}
+{#							<div class="nav-inner">#}
+{#								<div id="mobile-toggle" class="mobile-btn"></div>#}
+{#								<ul class="main-menu">#}
+{#									<li class="menu-item active"><a href="index.html">Home</a>#}
+{#										<ul class="sub-menu">#}
+{#											<li class="menu-item active"><a href="index-2.html">Home 2</a></li>#}
+{#											<li class="menu-item"><a href="index-3.html">Home 3</a></li>#}
+{#										</ul>#}
+{#									</li>#}
+{#									<li class="menu-item"><a href="#">Posts</a>#}
+{#										<ul class="sub-menu">#}
+{#											<li class="menu-item"><a href="blog-details.html">Blog Details</a></li>#}
+{#											<li class="menu-item"><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>#}
+{#										</ul>#}
+{#									</li>#}
+{#									<li class="menu-item"><a href="about.html">About Author</a></li>#}
+{#									<li class="menu-item"><a href="contact.html">Contact Us</a></li>#}
+{#								</ul>#}
+{#							</div>#}
+{#						</nav>#}
+{#					</div>#}
+{#		        </header>#}
 
 				<div class="top-social-1 social_links">
 					<ul class="top-social">
@@ -167,7 +171,7 @@
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
 										<div class="slide_img" data-swiper="overlay-left">
-											<img src="images/slider/1.jpg" alt="img">
+											<img src="{% static 'assets/images/home_1/blog/1.jpg' %}" alt="img">
 										</div>
 									</div>
 									<div class="swiper-slide">
@@ -234,296 +238,153 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
-							<div class="blog_list" data-aos="fade-up" data-aos-duration="700">
-								<article class="blog_post">
-									<div class="post_img" data-aos="overlay-left">
-										<a href="#"><img src="images/blog/1.jpg" alt="blog"></a>
-										<div class="calendar">
-											<a href="#"><span class="date">30</span><br>May</a>
-										</div>
-									</div>
-									<div class="post_content">
-										<div class="post_header">
-											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-											<h2 class="post_title">
-												<a href="#">Live with no excuses & travel with no regrets</a>
-											</h2>
-										</div>
-										<div class="post_intro">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-												et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>
-										</div>
-										<div class="post_footer">
-											<div class="read_more" data-aos="fade-up" data-aos-duration="700">
-												<a href="blog-details.html">Continue Reading</a>
-											</div>
-											<div class="post_share">
-												<ul class="share_list">
-													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</article>
-								
-								<article class="blog_post">
-									<div class="post_img" data-aos="overlay-right">
-										<a href="#"><img src="images/blog/2.jpg" alt="blog"></a>
-										<div class="calendar">
-											<a href="#"><span class="date">27</span><br>May</a>
-										</div>
-									</div>
-									<div class="post_content">
-										<div class="post_header">
-											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-											<h2 class="post_title">
-												<a href="#">50 travel essentials you must have</a>
-											</h2>
-										</div>
-										<div class="post_intro">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-												et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>
-										</div>
-										<div class="post_footer">
-											<div class="read_more" data-aos="fade-up" data-aos-duration="700">
-												<a href="blog-details.html">Continue Reading</a>
-											</div>
-											<div class="post_share">
-												<ul class="share_list">
-													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</article>
-							</div>
+{#							<div class="blog_list" data-aos="fade-up" data-aos-duration="700">#}
+{#								<article class="blog_post">#}
+{#									<div class="post_img" data-aos="overlay-left">#}
+{#										<a href="#"><img src="images/blog/1.jpg" alt="blog"></a>#}
+{#										<div class="calendar">#}
+{#											<a href="#"><span class="date">30</span><br>May</a>#}
+{#										</div>#}
+{#									</div>#}
+{#									<div class="post_content">#}
+{#										<div class="post_header">#}
+{#											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>#}
+{#											<h2 class="post_title">#}
+{#												<a href="#">Live with no excuses & travel with no regrets</a>#}
+{#											</h2>#}
+{#										</div>#}
+{#										<div class="post_intro">#}
+{#											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore #}
+{#												et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>#}
+{#										</div>#}
+{#										<div class="post_footer">#}
+{#											<div class="read_more" data-aos="fade-up" data-aos-duration="700">#}
+{#												<a href="blog-details.html">Continue Reading</a>#}
+{#											</div>#}
+{#											<div class="post_share">#}
+{#												<ul class="share_list">#}
+{#													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>#}
+{#												</ul>#}
+{#											</div>#}
+{#										</div>#}
+{#									</div>#}
+{#								</article>#}
+{#								#}
+{#								<article class="blog_post">#}
+{#									<div class="post_img" data-aos="overlay-right">#}
+{#										<a href="#"><img src="images/blog/2.jpg" alt="blog"></a>#}
+{#										<div class="calendar">#}
+{#											<a href="#"><span class="date">27</span><br>May</a>#}
+{#										</div>#}
+{#									</div>#}
+{#									<div class="post_content">#}
+{#										<div class="post_header">#}
+{#											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>#}
+{#											<h2 class="post_title">#}
+{#												<a href="#">50 travel essentials you must have</a>#}
+{#											</h2>#}
+{#										</div>#}
+{#										<div class="post_intro">#}
+{#											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore #}
+{#												et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>#}
+{#										</div>#}
+{#										<div class="post_footer">#}
+{#											<div class="read_more" data-aos="fade-up" data-aos-duration="700">#}
+{#												<a href="blog-details.html">Continue Reading</a>#}
+{#											</div>#}
+{#											<div class="post_share">#}
+{#												<ul class="share_list">#}
+{#													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>#}
+{#													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>#}
+{#												</ul>#}
+{#											</div>#}
+{#										</div>#}
+{#									</div>#}
+{#								</article>#}
+{#							</div>#}
 
-							<div class="newsletter bg_image_2" data-aos="fade-up" data-aos-duration="700">
-								<div class="row">
-									<div class="col-lg-10 offset-lg-1">
-										<form class="newsletter_form" method="post" action="subscription.php">
-											<div class="newsletter_header">
-												<p><i class="ion-email"></i>Subscribe to newsletter</p>
-												<h3>Get each & every new blogs through your e-mail</h3>
-											</div>
-											<div class="form_group">
-												<input class="form-control" type="email" placeholder="Your Email Address" name="ne" required="">
-												<input type="submit" class="button" value="Subscribe">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
+{#							<div class="newsletter bg_image_2" data-aos="fade-up" data-aos-duration="700">#}
+{#								<div class="row">#}
+{#									<div class="col-lg-10 offset-lg-1">#}
+{#										<form class="newsletter_form" method="post" action="subscription.php">#}
+{#											<div class="newsletter_header">#}
+{#												<p><i class="ion-email"></i>Subscribe to newsletter</p>#}
+{#												<h3>Get each & every new blogs through your e-mail</h3>#}
+{#											</div>#}
+{#											<div class="form_group">#}
+{#												<input class="form-control" type="email" placeholder="Your Email Address" name="ne" required="">#}
+{#												<input type="submit" class="button" value="Subscribe">#}
+{#											</div>#}
+{#										</form>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
 							
 							<div class="more_posts">
 								<div class="row">
-									<div class="col-lg-4 col-md-4">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="700">
-											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="images/blog/sm1.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">27</span><br>May</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-													<h2 class="post_title">
-														<a href="#">With age, comes wisdom. With travel, comes understanding</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
 
-									<div class="col-lg-4 col-md-4">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-top">
-												<a href="#"><img src="images/blog/sm2.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">27</span><br>May</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-													<h2 class="post_title">
-														<a href="#">I am not the same having seen the moon shineon the sky</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-4 col-md-4">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="1100">
-											<div class="post_img" data-aos="overlay-right">
-												<a href="#"><img src="images/blog/sm3.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">24</span><br>May</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-													<h2 class="post_title">
-														<a href="#">Travel and change of place impart new vigor to the mind</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
+                                    {% for post in posts %}
 
 									<div class="col-lg-4 col-md-4">
 										<article class="blog_post" data-aos="fade-up" data-aos-duration="700">
 											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="images/blog/sm4.jpg" alt="blog"></a>
+												<a href="{% url 'blog:view' post_id=post.id %}"><img src="{{ post.main_image.url }}" alt="blog"></a>
 												<div class="calendar">
-													<a href="#"><span class="date">22</span><br>May</a>
+													<a href="{% url 'blog:view' post_id=post.id %}"><span class="date">{{ post.created_on.day }}</span><br>{{ post.created_on | date:"M" }}</a>
 												</div>
 											</div>
 											<div class="post_content">
 												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
+													<div class="author"><a href="#"><i class="ion-android-create"></i> By {{ post.author }}</a></div>
 													<h2 class="post_title">
-														<a href="#">A journey is best measured in friends, rather than miles</a>
+														<a href="{% url 'blog:view' post_id=post.id %}">{{ post.title }}</a>
 													</h2>
 												</div>
 											</div>
 										</article>
 									</div>
 
-									<div class="col-lg-4 col-md-4">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-bottom">
-												<a href="#"><img src="images/blog/sm5.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">20</span><br>May</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-													<h2 class="post_title">
-														<a href="#">He who would travel happily must travel light</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
+                                    {% endfor %}
 
-									<div class="col-lg-4 col-md-4">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="1100">
-											<div class="post_img" data-aos="overlay-right">
-												<a href="#"><img src="images/blog/sm6.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">07</span><br>May</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>
-													<h2 class="post_title">
-														<a href="#">You will see what a tiny place occupy in the world</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
+
 								</div>
 							</div>
 
 							<div class="pagination-div">
 								<ul class="pagination">
-									<li><a class="page-number current" href="#">1</a></li>
-									<li><a class="page-number" href="#">2</a></li>
-									<li><a class="page-number" href="#">3</a></li>
-									<li><a href="#">Older Post</a></li>
+                                    {% for pg in part_pages %}
+                                        {% if pg == posts.number %}
+                                            <li><a class="page-number current">{{ pg }}</a></li>
+                                        {% else %}
+                                            <li><a class="page-number">{{ pg }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
 								</ul>
 							</div>
+                        <script src="{% static 'assets/js/add_url.js' %}"></script>
+                        <script>
+                            $(".page-number").on('click', function (res) {window.location.href = addUrlPara(window.location.href, 'page', $(this).text())})
+                        </script>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<footer class="footer" data-aos="fade-up" data-aos-duration="700">
-				<div class="footer-above">
-					<div class="footer-logo">
-						<a href="#"><img src="images/logo-white.png" alt="logo"></a>
-					</div>
-					<div class="footer-social">
-						<ul>
-							<li><a href="#"><i class="ion-social-facebook"></i></a></li>
-							<li><a href="#"><i class="ion-social-instagram"></i></a></li>
-							<li><a href="#"><i class="ion-social-twitter"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="footer-middle">
-					<div class="container">
-						<div class="footer_widget_wrapper">
-							<div class="row">
-								<div class="col-lg-6 col-md-6">
-									<div class="footer_widget">
-										<div class="widget-title">
-											<h4>Instagram</h4>
-										</div>
-										<div class="instagram">
-											<ul>
-												<li><a href="#"><img src="images/insta/1.jpg" alt="insta"></a></li>
-												<li><a href="#"><img src="images/insta/2.jpg" alt="insta"></a></li>
-												<li><a href="#"><img src="images/insta/3.jpg" alt="insta"></a></li>
-												<li><a href="#"><img src="images/insta/4.jpg" alt="insta"></a></li>
-												<li><a href="#"><img src="images/insta/5.jpg" alt="insta"></a></li>
-												<li><a href="#"><img src="images/insta/6.jpg" alt="insta"></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6">
-									<div class="footer_widget pd_lt">
-										<div class="blend-logo">
-											<a href="#"><img src="images/logo-big.png" alt="logo"></a>
-										</div>
-										<div class="footer_nav">
-											<ul>
-												<li class="menu-item"><a href="#">Home</a></li>
-												<li class="menu-item"><a href="#">About Author</a></li>
-												<li class="menu-item"><a href="#">Travel</a></li>
-												<li class="menu-item"><a href="#">Posts</a></li>
-												<li class="menu-item"><a href="#">Contact Us</a></li>
-												<li class="menu-item"><a href="#">Photography</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-bottom">
-					<div class="container">
-						<div class="copyright">
-							<p> &copy; 2020 - Benzo Blog. Created by WP ThemeBooster. All Rights <a href="http://www.bootstrapmb.com/">Reserved</a>.</p>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 
-        <!-- All JavaScript Files
-        ================================================== -->
-		<script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="plugins/swiper/swiper.min.js"></script>
-		<script src="js/menu.js"></script>
-        <script src="plugins/aos/aos.js"></script>
-        <script src="js/custom.js"></script>
-	</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+
+
+    <script src="{% static '/assets/js_for_shop/js/bootstrap.min.js' %} " ></script>
+    <script src="{% static '/assets/plugins/swiper/swiper.min.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
+    <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+
+{% endblock %}

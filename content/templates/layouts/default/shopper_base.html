@@ -4,3 +4,389 @@
 
 {% get_current_language as language_code %}
 
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {% block title %} <title>Index</title> {% endblock %}
+    {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
+    {#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.carousel.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.theme.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/responsive.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/theme.css" %}" media="all"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/footer.css" %}" media="all"/>
+
+
+    {% block style %}
+    {% endblock %}
+
+</head>
+<body class="home-page">
+<div class="wrap">
+    <div id="header">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-5 col-xs-12">
+                        <div class="top-support">
+                            <ul class="list-inline">
+                                <li><a href="#" class="top-support-link">Help </a></li>
+                                <li><a href="#" class="top-support-link">Services</a></li>
+                                <li><a href="#" class="top-support-link">USD</a></li>
+                                <li><a href="#" class="top-support-link"><img
+                                        src="{% static 'assets/images/home_2/icon-flag.png' %}" alt=""/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-7 col-xs-12">
+                        <div class="top-info">
+                            <ul class="list-inline text-right">
+                                <li><a href="#" class="top-info-link"><i class="fa fa-user"></i> My Account</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-heart"></i> Wishlist</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-refresh"></i> Compare</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-sign-out"></i> Check out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="logo">
+                            <a href="index.html"><img src="{% static 'assets/images/home_2/logo.png' %}" alt=""/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="phone-info">
+                            <label>Call Us Now</label>
+                            <h2 class="phone-number">Toll free : (+00) 66 55 819</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="top-cart block-cart box">
+                            <a href="#">
+                                <h2>shopping Cart</h2>
+                                <p>0 Item(s) - $0.00</p>
+                            </a>
+                            <div class="block-content box-inner">
+                                <div class="inner">
+                                    <p class="block-subtitle">Recently added item(s)</p>
+                                    <ol class="mini-products-list" id="cart-sidebar">
+                                        <li class="item odd">
+                                            <a class="product-image" href="#">
+                                                <img width="70" height="84" alt=""
+                                                     src="{% static 'assets/images/home_1/img-cart.gif' %}">
+                                            </a>
+                                            <a class="btn-remove" href="">X</a>
+                                            <a class="btn-edit" href="#">Edit</a>
+                                            <div class="product-details">
+                                                <p class="product-name">
+                                                    <a href="#">Bath Minerals and Salt</a>
+                                                </p>
+                                                <span class="price">$25.00</span>
+                                                <strong>1</strong>
+                                            </div>
+                                        </li>
+                                        <li class="item last even">
+                                            <a class="product-image" href="#">
+                                                <img width="70" height="84" alt=""
+                                                     src="{% static 'assets/images/home_1/img-cart.gif' %}">
+                                            </a>
+                                            <a class="btn-remove" href="#">X</a>
+                                            <a class="btn-edit" href="#">Edit</a>
+                                            <div class="product-details">
+                                                <p class="product-name">
+                                                    <a href="#">Large Camera Bag</a>
+                                                </p>
+                                                <span class="price">$20.00</span>
+                                                <strong>1</strong>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                    <div class="summary">
+                                        <p class="subtotal">
+                                            <span class="label">Subtotal:</span>
+                                            <span class="price">$45.00</span>
+                                        </p>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="a-inner">
+                                            <a href="#" class="btn-mycart">view my cart</a>
+                                            <a class="btn-checkout" href="#">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12 col-xs-2">
+                        <nav class="main-nav main-nav2">
+                            <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="#" class="active">Home <i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="#">Home 1</a></li>
+                                        <li><a href="#">Home 2</a></li>
+                                        <li><a href="#">Home 3</a></li>
+                                        <li><a href="#">List</a></li>
+                                        <li><a href="#">Grid</a></li>
+                                        <li><a href="#">Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-mega-menu">
+                                    <a href="#">Corssbody <i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <div class="wrap-mega-menu">
+                                                <div class="mega-menu-list-product">
+                                                    <h2 class="title-mega-menu">Collection</h2>
+                                                    <div class="wrap-item">
+                                                        {% for i in ten %}
+                                                            <div class="item">
+                                                                <div class="inner-item">
+                                                                    <div class="mega-slide-thumb">
+                                                                        <a href="#"><img
+                                                                                src="{% static 'assets/images/product_home1/1.jpg' %}"
+                                                                                alt=""/></a>
+                                                                    </div>
+                                                                    <div class="mega-slide-text">
+                                                                        <span>$45.99</span>
+                                                                        <del>$69.71</del>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="owl-direct-nav">
+                                                        <a class="prev" href="#"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a class="next" href="#"><i
+                                                                class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                <!-- End Sub Mega Menu Slide-->
+                                                <div class="mega-menu-simple-banner text-inner">
+                                                    <div class="mega-menu-simple-thumb">
+                                                        <a href="#"><img
+                                                                src="{% static 'assets/images/home_1/mega-menu-banner.png' %}"
+                                                                alt=""/></a>
+                                                    </div>
+                                                    <div class="mega-menu-simple-text">
+                                                        <p class="simple-text1">big sale on canifa shop</p>
+                                                        <p class="simple-text2">up to<br/>80% off</p>
+                                                    </div>
+                                                </div>
+                                                <!-- End Mega Menu Simple Banner -->
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-mega-menu">
+                                    <a href="#">Satchel Totes <i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <div class="wrap-mega-menu">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="mega-menu-simple-banner text-outer">
+                                                            <div class="mega-menu-simple-thumb">
+                                                                <a href="#"><img
+                                                                        src="{% static 'assets/images/home_1/mega-menu-women.png' %}"
+                                                                        alt=""/></a>
+                                                            </div>
+                                                            <div class="mega-menu-simple-text">
+                                                                <p class="mega-menu-text-intro"><strong>Women
+                                                                    fashion</strong>
+                                                                    <span>|  Lorem ipsum dolor sit amet</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Mega Menu Simple Banner -->
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                                        <div class="mega-menu-list-category">
+                                                            <h2>Categories</h2>
+                                                            <ul>
+                                                                <li><a href="#">Tops</a></li>
+                                                                <li><a href="#">Sweaters</a></li>
+                                                                <li><a href="#">Bottoms</a></li>
+                                                                <li><a href="#">Dresses</a></li>
+                                                                <li><a href="#">Coats &amp; Jackets</a></li>
+                                                                <li><a href="#">Scarves</a></li>
+                                                                <li><a href="#">Pants</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                                        <div class="mega-menu-slider-brand">
+                                                            <h2>Style-Brands</h2>
+                                                            <div class="wrap-item">
+                                                                {% for i in three %}
+                                                                    <div class="item">
+                                                                        <div class="inner-brand">
+                                                                            <a href="#"><img
+                                                                                    src="{% static 'assets/images/banner/logo-brand-01.png' %}"
+                                                                                    alt=""/></a>
+                                                                            <a href="#"><img
+                                                                                    src="{% static 'assets/images/banner/logo-brand-02.png' %}"
+                                                                                    alt=""/></a>
+                                                                            <a href="#"><img
+                                                                                    src="{% static 'assets/images/banner/logo-brand-03.png' %}"
+                                                                                    alt=""/></a>
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                            <div class="owl-direct-nav">
+                                                                <a class="prev" href="#"><i
+                                                                        class="fa fa-arrow-circle-left"></i></a>
+                                                                <a class="next" href="#"><i
+                                                                        class="fa fa-arrow-circle-right"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="#">Kids</a></li>
+                                <li class="menu-item-has-children"><a href="#">Accessories</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                            <a href="#" class="btn-mobile-menu"></a>
+                        </nav>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-10">
+                        <div class="search-form search-form2">
+                            <input type="text" value="Enter your keyword..."
+                                   onfocus="if (this.value==this.defaultValue) this.value = ''"
+                                   onblur="if (this.value=='') this.value = this.defaultValue"/>
+                            <input type="submit" value=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- End Content -->
+    <footer id="footer">
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="newsletter-intro">
+                    <span class="envalope-icon"><i class="fa fa-envelope-o"></i></span>
+                    <p>SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br/>UPDATES, AND ANOTHER STUFF BY EMAIL.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form method="post">
+                        <input type="text" name="newsletter" value="Enter your email..."
+                               onfocus="if (this.value==this.defaultValue) this.value = ''"
+                               onblur="if (this.value=='') this.value = this.defaultValue"/>
+                        <input type="submit" value="subscribe"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter -->
+        <div class="footer-quick-search">
+            <div class="container">
+                <div class="content-quick-search">
+                    <label>Quick link:</label>
+                    <a href="#">#</a>
+                    <a href="#">A</a>
+                    <a href="#">B</a>
+                    <a href="#">C</a>
+                    <a href="#">D</a>
+                    <a href="#">E</a>
+                    <a href="#">F</a>
+                    <a href="#">G</a>
+                    <a href="#">H</a>
+                    <a href="#">I</a>
+                    <a href="#">J</a>
+                    <a href="#">K</a>
+                    <a href="#">L</a>
+                    <a href="#">M</a>
+                    <a href="#">N</a>
+                    <a href="#">O</a>
+                    <a href="#">P</a>
+                    <a href="#">Q</a>
+                    <a href="#">R</a>
+                    <a href="#">S</a>
+                    <a href="#">U</a>
+                    <a href="#">V</a>
+                    <a href="#">W</a>
+                    <a href="#">X</a>
+                    <a href="#">Y</a>
+                    <a href="#">Z</a>
+                </div>
+            </div>
+        </div>
+        <!-- End Quick Search -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-6 col-xs-12">
+                        <div class="logo-footer"><a href="#"><img src="{% static 'assets/images/home_1/logo.png' %}"
+                                                                  alt=""/></a></div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="copy-right">
+                            <p>© 2015 <a href="#" class="privacy-policy">Privacy Policy</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="contact-footer">
+                            <p>My Company , Glasgow D04 89GR<br/>Call us now: 800-2345-6789</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="social-footer">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-rss"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/modernizr.custom.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
+
+    {% block scripts %}
+    {% endblock %}
+</div>
+</body>
+</html>
