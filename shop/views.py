@@ -58,6 +58,10 @@ def home(request):
     })
 
 
+def about(request):
+    return render(request, 'shop_templates/company-profile.html')
+
+
 def category_view(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, pk=category_id)
@@ -202,7 +206,10 @@ def confirm(request):
 def model_design(request):
     name = request.GET.get('name')
     style = request.GET.get('style')
-    return render(request, 'shop_templates/model-design.html')
+    return render(request, 'shop_templates/model-design.html', {
+        "name": name,
+        "style": style
+    })
 
 
 def model_design2(request, model_id):
