@@ -43,12 +43,20 @@
             <div class="col-md-4 col-xl-3 chat">
                 <div class="card mb-sm-3 mb-md-0 contacts_card">
                     <div class="card mb-sm-3 mb-md-0 contacts_card">
-                        <div id="user-list" class="card-body contacts_body">
-                            <ui class="contacts">
-                                <h4 class="list-group-item-heading">Users</h4>
-                                {# Users go here #}
-                            </ui>
+                        <div class="card-header">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search..." name="" class="form-control search">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                                </div>
+                            </div>
                         </div>
+                        <div class="card-body contacts_body">
+                            <div id="user-list" class="contacts">
+                                {# Users go here #}
+                            </div>
+                        </div>
+                        <div class="card-footer"></div>
                     </div>
                 </div>
             </div>
@@ -105,7 +113,16 @@
             $.getJSON('/api/user/', function (data) {
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
-                    const userItem = `<a class="list-group-item user">${data[i]['username']}</a>`;
+                    const userItem = `
+
+
+
+<a href="#" class="user user_info">${data[i]['username']}<br />
+
+						</a>
+
+
+`;
                     $(userItem).appendTo('#user-list');
                 }
                 $('.user').click(function () {
