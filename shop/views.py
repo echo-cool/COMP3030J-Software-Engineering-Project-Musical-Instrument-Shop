@@ -333,5 +333,4 @@ def orders(request, user_id):
     all_orders = Order.objects.filter(user_id=user_id)
     return render(request, 'shop_templates/orders.html', {
         "orders": all_orders,
-        "profile": request.user.profile
     })
