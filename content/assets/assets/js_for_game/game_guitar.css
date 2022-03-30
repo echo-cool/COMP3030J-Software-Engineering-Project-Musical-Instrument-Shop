@@ -1,0 +1,164 @@
+.guitar_center_box {
+    margin-top: 3%;
+    position: relative;
+    text-align: center;
+}
+
+
+.guitar-button {
+    background-color: antiquewhite;
+    /*border: none;*/
+    border: solid 1px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: 0.5s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.guitar-button:hover {
+    background-color: #585858;
+    color: white;
+}
+
+.notes {
+    display: flex;
+    height: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.notes .note {
+    height: 132px;
+}
+
+.notes .note > div {
+    height: 100%;
+    width: 32px;
+    border-radius: 16px;
+    background-color: #D8D8D8;
+    color: #541F5D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px 0;
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.16);
+}
+
+.notes .note:hover div {
+    background-color: #FF6545;
+    color: #fff;
+}
+
+.notes .note.key {
+    height: 172px;
+}
+
+.notes .note.key > div {
+    background-color: #ECDCCA;
+}
+
+.notes .note.key:hover > div {
+    background-color: #FF6545;
+    color: #fff;
+}
+
+.notes .note:not(:first-child) > div {
+    margin-left: 8px;
+}
+
+.notes .note:not(:last-child) > div {
+    margin-right: 8px;
+}
+
+.notes .note span {
+    font-size: 0.7em;
+}
+
+.guitar {
+    width: 96%;
+    min-width: 772px;
+    /*position: fixed;*/
+    bottom: 0;
+    right: 0;
+}
+
+.guitar.visible {
+    transition: opacity 0.5s ease;
+}
+
+.guitar img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.guitar .circle {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/switch.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 5vw;
+    height: 5vw;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    left: 55.5%;
+    top: 45%;
+    /* bottom: 71%; */
+    cursor: pointer;
+}
+
+.guitar .circle.rock {
+    background-position: 0 100%;
+}
+
+.guitar .circle.rock:before {
+    color: #FFF;
+}
+
+.guitar .circle.rock:after {
+    color: #C17CA4;
+}
+
+.guitar .circle:before, .guitar .circle:after {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.guitar .circle:before {
+    content: "ROCK";
+    top: -14px;
+    color: #C17CA4;
+}
+
+.guitar .circle:after {
+    content: "BLUES";
+    top: 100%;
+    color: #FFF;
+    position: absolute;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.guitar-wrapper {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/bluesman_background.svg), linear-gradient(-180deg, #242150 5%, #572250 91%);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Roboto', sans-serif;
+}

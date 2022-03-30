@@ -1,0 +1,42 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/cart.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/js_for_game/game_piano.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="flex-column">
+            <div class="piano-wrapper container">
+                {% include "shop_templates/game_piano.html" %}
+            </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div class="guitar-wrapper container">
+                {% include "shop_templates/game_guitar.html" %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block foot_link %}
+
+    <script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>
+    <script src="{% static 'assets/js_for_game/game_piano.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script>
+    </script>
+{% endblock %}
