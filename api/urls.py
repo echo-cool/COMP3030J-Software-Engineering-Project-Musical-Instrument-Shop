@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
-    ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, UserModelViewSet
+    ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet
 from .view import login,logout
 
 app_name = 'api'
@@ -13,7 +13,9 @@ router.register('order', OrderViewSet, 'order')
 router.register('review', ReviewViewSet, 'review')
 router.register('instrumentDetail', InstrumentDetailViewSet, 'instrumentDetail')
 router.register('profile', ProfileViewSet, 'profile')
-router.register('user', UserModelViewSet, basename='user')
+router.register('user', UserViewSet, basename='user')
+
+# router.register('user_chat', UserModelViewSet, basename='user_chat')
 
 router.register('cart', CartViewSet, 'cart')
 router.register('wishlist', WishlistViewSet, 'wishlist')

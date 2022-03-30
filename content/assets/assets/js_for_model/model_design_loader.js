@@ -55,8 +55,8 @@ else if (model_id === "guitar_style_5") {
 }
 
 if (!Detector.webgl) Detector.addGetWebGLMessage();
-let stats;
-var camera, scene, renderer, controls;
+// let stats;
+let camera, scene, renderer, controls;
 let raycaster = new THREE.Raycaster();
 
 let mouse = new THREE.Vector2();
@@ -77,10 +77,26 @@ let params = {
 };
 var model_state = "default";
 
+function zoomIn() {
+    camera.fov = camera.fov + 5;
+}
+
+function zoomOut() {
+    camera.fov = camera.fov - 5;
+}
+
+
+var rotate_avail = false;
+
+function switchRotate() {
+    console.log(rotate_avail);
+    rotate_avail = !rotate_avail
+};
+
 // Init gui
 function mergeModel() {
     // find the mesh of loaded model to iterater
-    if (model_state === "split") {
+    if (model_state === "split" || model_state === "default") {
         return;
     } else {
         model_state = "split";
@@ -210,9 +226,48 @@ function init() {
 
     scene.add(light3);
 
+    // 加载进度
     var manager = new THREE.LoadingManager();
     manager.onProgress = function (item, loaded, total) {
         console.log(item, loaded, total);
+
+    };
+
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    // progress load
+    let progress_number = 0;
+    var timer = setInterval(function () {
+        if (progress_number < progress || progress >= 99) {
+            progress_number = Number(progress_number) + 1;
+        } else {
+        }
+        if (progress_number > 105) {
+            clearInterval(timer);
+            sleep(500).then(() => {
+                $(".show-controls").toggleClass("wrapper-hidden");
+                $(".show-controls2").toggleClass("wrapper-hidden");
+                $(".progress-wrapper").toggleClass("wrapper-hidden");
+            })
+            return;
+        }
+        $(".bar").attr("class", "bar white bar-" + String(progress_number));
+    }, 50)
+
+
+    var progress = 0;
+    //进度通知
+    let onProgress = function (xhr) {
+        if (xhr.lengthComputable) {
+            let percentComplete = xhr.loaded / xhr.total * 100;
+            // console.log("progress:", Math.round(percentComplete, 2));
+            progress = Math.ceil(percentComplete);
+        }
+    };
+    //报错通知
+    let onError = function (xhr) {
     };
 
 
@@ -232,7 +287,7 @@ function init() {
         console.log(gltf);
         gltf.scene.scale.set(1, 1, 1) // scale here
         obj3d.add(gltf.scene);
-    });
+    }, onProgress, onError());
 
     scene.add(group);
     group.add(obj3d);
@@ -248,8 +303,8 @@ function init() {
     group.add(floorMesh);
     floorMesh.receiveShadow = true;
 
-    stats = new Stats();
-    container.appendChild(stats.dom);
+    // stats = new Stats();
+    // container.appendChild(stats.dom);
 
 
     // postprocessing
@@ -335,14 +390,20 @@ function onWindowResize() {
 
 function animate() {
     requestAnimationFrame(animate);
-    stats.begin();
+    // stats.begin();
     var timer = performance.now();
     if (params.rotate) {
         group.rotation.y = timer * 0.0001;
     }
+
+    if (rotate_avail) {
+        scene.children[scene.children.length - 1].rotateY(0.001 * 5);//旋转角速度0.001弧度每毫秒
+    }
+    camera.updateProjectionMatrix();
     controls.update();
     composer.render();
-    stats.end();
+
+    // stats.end();
 }
 
 activeColorList();

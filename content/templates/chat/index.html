@@ -16,7 +16,7 @@
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">
+    {#        <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">#}
     <script src="{% static 'assets/chat_js/static/js/jquery.min.js' %}"></script>
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
@@ -32,44 +32,59 @@
 {% block content %}
 
 
-    <div class="container">
-        <div class="page-header">
+    <div class="container-fluid h-100">
+
+        <div class="card-header">
             <h1>Welcome to ChatApp
                 <small>Pick a user and start chatting!</small>
             </h1>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div id="user-list" class="list-group">
-                    <a href="" class="list-group-item disabled">
-                        <h4 class="list-group-item-heading">Users</h4>
-                        {# Users go here #}
-                    </a>
+        <div class="row justify-content-center h-100">
+            <div class="col-md-4 col-xl-3 chat">
+                <div class="card mb-sm-3 mb-md-0 contacts_card">
+                    <div class="card mb-sm-3 mb-md-0 contacts_card">
+                        <div class="card-header">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search..." name="" class="form-control search">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body contacts_body">
+                            <div id="user-list" class="contacts">
+                                {# Users go here #}
+                            </div>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Chat</h4>
+            <div class="col-md-8 col-xl-6 chat">
+                <div class="card">
+                    <div class="card-header msg_head">
+                        <h4 class="card-title">Chat</h4>
                     </div>
-                    <div>
-                        <div class="lite-chatbox">
-                            <ul id="messages" class="messages">
-                                {# Messages go here #}
-                            </ul>
-                        </div>
+                    <div id="messages" class="card-body msg_card_body">
+                        {# Messages go here #}
                     </div>
-                    <div class="panel-footer">
+
+                    <div class="card-footer">
                         <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text attach_btn"><i
+                                        {#                                        class="fas fa-paperclip"#}
+                                >File</i></span>
+                            </div>
                             <input id="chat-input" type="text"
-                                   class="form-control input"
+                                   class="form-control type_msg"
                                    placeholder="Type your message here ..."
                                    maxlength="500">
-                            <span class="input-group-btn">
-                            <button class="btn btn-info btn"
-                                    id="btn-send">
-                                Send</button>
-                        </span>
+                            <div class="input-group-append">
+                                <span class="input-group-text send_btn"><i
+                                        {#                                        class="fas fa-location-arrow"#}
+                                        id="btn-send">Send</i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,6 +93,10 @@
             </div>
         </div>
     </div>
+
+
+    </div>
+
     <script>
         let sessionKey = '{{ request.session.session_key }}';
         let currentUser = '{{ request.user.username }}';
@@ -94,7 +113,16 @@
             $.getJSON('/api/user/', function (data) {
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
-                    const userItem = `<a class="list-group-item user">${data[i]['username']}</a>`;
+                    const userItem = `
+
+
+
+<a href="#" class="user user_info">${data[i]['username']}<br />
+
+						</a>
+
+
+`;
                     $(userItem).appendTo('#user-list');
                 }
                 $('.user').click(function () {
@@ -107,23 +135,29 @@
         }
 
         function drawMessage(message) {
-            let position = 'left';
+            let position = 'start';
             let position_new = 'cleft';
+            let messageItem = '';
             const date = new Date(message.timestamp);
-            if (message.user === currentUser) position = 'right';
+            if (message.user === currentUser) position = 'end';
             if (message.user === currentUser) position_new = 'cright';
-            const messageItem = `
-
-            <li class="message ${position}">
-                <div class="avatar">${message.user}</div>
-
-                    <div class="text_wrapper">
-
-                        <div class="text">${message.body}<br>
-                            <span class="small">${date}</span>
-                    </div>
-                </div>
-            </li>`;
+            if (message.user === currentUser) {
+                messageItem = `
+            <div class="d-flex justify-content-${position} mb-4 ">
+				<div class="msg_cotainer">${message.body}<br>
+					<span class="msg_time">${date}</span>
+				</div>
+                <div class="img_cont_msg">${message.user}</div>
+            </div>`;
+            } else {
+                messageItem = `
+            <div class="d-flex justify-content-${position} mb-4 ">
+                <div class="img_cont_msg">${message.user}</div>
+				<div class="msg_cotainer_send">${message.body}<br>
+					<span class="msg_time">${date}</span>
+				</div>
+            </div>`;
+            }
             $(messageItem).appendTo('#messages');
         }
 
@@ -182,28 +216,29 @@
         }
 
         $(document).ready(function () {
-            updateUserList();
-            disableInput();
+                updateUserList();
+                disableInput();
 
-            chatInput.keypress(function (e) {
-                if (e.keyCode == 13)
-                    chatButton.click();
-            });
+                chatInput.keypress(function (e) {
+                    if (e.keyCode == 13)
+                        chatButton.click();
+                });
 
-            chatButton.click(function () {
-                if (chatInput.val().length > 0) {
-                    sendMessage(currentRecipient, chatInput.val());
-                    chatInput.val('');
-                }
-            });
+                chatButton.click(function () {
+                    if (chatInput.val().length > 0) {
+                        sendMessage(currentRecipient, chatInput.val());
+                        chatInput.val('');
+                    }
+                });
 
-            setInterval(function () {
-                if (currentRecipient.length > 0) {
-                    getConversation(currentRecipient);
-                }
-            }, 500);
+                setInterval(function () {
+                    if (currentRecipient.length > 0) {
+                        getConversation(currentRecipient);
+                    }
+                }, 500);
 
-        });
+            }
+        );
 
 
     </script>
