@@ -45,7 +45,7 @@
     {% endblock %}
 <style>
     .full-height {
-        height: 100vh;
+        min-height: 100vh;
     }
 </style>
 </head>
@@ -189,8 +189,7 @@
                         <!--/main-menu -->
                     </nav>
                     <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-                        <a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>+94
-                            423-23-221</strong></a>
+                        <a class="phone_top" href="{% url "shop:about" %}"><strong><span>Need Help?</span></strong></a>
                     </div>
                 </div>
                 <!-- /row -->
