@@ -1,0 +1,140 @@
+
+.piano-button {
+    background-color: transparent;
+    border: solid 1px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: 0.5s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.piano-button:hover {
+    background-color: #585858;
+    color: white;
+}
+
+.notes_list li {
+    display: inline-block;
+    border-right: solid 1px;
+    padding: 2px 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.notes_list li:hover {
+    background-color: #e1e1e1;
+}
+
+.notes_list li.playing {
+    background-color: #d5d5d5;
+}
+
+.notes_list li .time {
+    font-size: 8px;
+    opacity: 0.3;
+}
+
+.notes_list li .num {
+    font-size: 16px;
+}
+
+.center_box {
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    text-align: center;
+    width: 100%;
+}
+
+.keyboard {
+    box-shadow: 0px 0px 40px -5px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.piano_key {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+
+.white.playing {
+    background-color: #d5d5d5;
+    transform: translate(0px, 0px);
+}
+
+.black.playing {
+    background-color: #727272;
+    transform: translate(0px, 0px);
+}
+
+.white {
+    width: 44px;
+    height: 300px;
+    border: solid 1px #eee;
+    transform: translate(-3px, -3px);
+    transition: 0.1s;
+}
+
+.white:hover {
+    transform: translate(0px, 0px);
+    background-color: #eee;
+}
+
+.white[type="hover"] {
+    transform: translate(0px, 0px);
+    background-color: #eee;
+}
+
+.black[type="hover"] {
+    transform: translate(0px, 0px);
+    background-color: #3f3f3f;
+}
+
+.black {
+    /*position: absolute;*/
+    top: 0px;
+    width: 22px;
+    height: 165px;
+    background-color: #585858;
+    margin-left: -11px;
+    margin-right: -11px;
+    z-index: 20;
+    transform: translate(-3px, -3px);
+    transition: 0.1s;
+}
+
+.black:hover {
+    transform: translate(0px, 0px);
+    background-color: #3f3f3f;
+}
+
+.label {
+    position: absolute;
+    color: rgba(88, 88, 88, 0.5);
+    bottom: -25px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 8px;
+}
+
+i {
+    margin-left: 5px;
+    margin-right: 0px;
+    margin-top: 3px;
+}
+
+i.fa-circle {
+    color: #cc0000;
+}
+
+
+.piano-wrapper {
+    background: white;
+    margin: 0;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Roboto', sans-serif;
+}
