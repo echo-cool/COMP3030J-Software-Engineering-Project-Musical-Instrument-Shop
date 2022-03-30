@@ -3,6 +3,7 @@ import json
 import random
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Max
 from django.http import JsonResponse
@@ -62,6 +63,10 @@ def about(request):
     return render(request, 'shop_templates/company-profile.html')
 
 
+def game(request):
+    return render(request, 'shop_templates/game.html')
+
+
 def category_view(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, pk=category_id)
@@ -90,11 +95,11 @@ def product_details(request, product_id):
         'categories': categories
     })
 
-
+@login_required
 def leave_review(request, order_id, instrument_id):
     return render(request, 'shop_templates/leave-review.html')
 
-
+@login_required
 def confirm_submit(request):
     if request.method == "POST":
         rating = request.POST.get("rating-input", None)
@@ -114,7 +119,7 @@ def confirm_submit(request):
         new_review.save()
     return render(request, 'shop_templates/product-detail.html')
 
-
+@login_required
 def personal_profile(request):
     user = request.user
     username = user.username
@@ -137,7 +142,7 @@ def personal_profile(request):
         'form': form
     })
 
-
+@login_required
 def leave_review2(request):
     print(request)
     return render(request, 'shop_templates/leave-review-2.html')
@@ -149,14 +154,14 @@ def model_view(request, product_id):
         "instrument": instrument,
     })
 
-
+@login_required
 def wishlist(request):
     wishlists = Wishlist.objects.filter(user=1)
     return render(request, 'shop_templates/wishlist.html', {
         "wishlists": wishlists,
     })
 
-
+@login_required
 def checkout(request):
     # get or post
     # check if user is not logged in
@@ -176,7 +181,7 @@ def checkout(request):
             "total": total,
         })
 
-
+@login_required
 def confirm(request):
     # get current max order_id
     if Order.objects.all().count() == 0:
@@ -280,7 +285,7 @@ def product_search(request):
 #             "instruments": instruments,
 #         })
 
-
+@login_required
 def cart(request):
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)
@@ -294,7 +299,7 @@ def cart(request):
         return redirect('accounts:log_in')
 
 
-#
+@login_required
 def product_add_cart(request, instrument_id):
     instrument = Instrument.objects.filter(id=instrument_id).first()
     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
@@ -336,9 +341,16 @@ def product_details_test_model(request, product_id):
     })
 
 
-def orders(request, user_id):
-    all_orders = Order.objects.filter(user_id=user_id)
+@login_required
+def orders(request):
+    user = request.user
+    all_orders = Order.objects.filter(user_id=user.id)
+    count = {
+        "order": Order.objects.filter(user_id=user.id).count(),
+        "cart": Cart.objects.filter(user_id=user.id).count(),
+        "wishlist": Wishlist.objects.filter(user_id=user.id).count(),
+    }
     return render(request, 'shop_templates/orders.html', {
         "orders": all_orders,
-        "profile": request.user.profile
+        "count": count,
     })

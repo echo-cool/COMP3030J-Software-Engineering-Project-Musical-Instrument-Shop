@@ -43,7 +43,11 @@
     {% block head_link %}
 
     {% endblock %}
-
+<style>
+    .full-height {
+        min-height: 100vh;
+    }
+</style>
 </head>
 
 <body>
@@ -84,14 +88,14 @@
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                             </div>
                             <ul>
-                                <li class="submenu">
-                                    <a href="javascript:void(0);" class="show-submenu">Home</a>
-                                    <ul>
-                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>
-                                        <li><a href="index-2.html">Video Background</a></li>
-                                        <li><a href="index-3.html">Vertical Slider</a></li>
-                                        <li><a href="index-4.html">GDPR Cookie Bar</a></li>
-                                    </ul>
+                                <li class="no-submenu">
+                                    <a href="{% url "shop:index" %}" class="show-submenu">Home</a>
+{#                                    <ul>#}
+{#                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>#}
+{#                                        <li><a href="index-2.html">Video Background</a></li>#}
+{#                                        <li><a href="index-3.html">Vertical Slider</a></li>#}
+{#                                        <li><a href="index-4.html">GDPR Cookie Bar</a></li>#}
+{#                                    </ul>#}
                                 </li>
                                 <li class="megamenu submenu">
                                     <a href="javascript:void(0);" class="show-submenu-mega">Pages</a>
@@ -137,7 +141,7 @@
                                                     <li><a href="/confirm">Confirm Purchase Page</a></li>
                                                     <li><a href="/wishlist">Wishlist Page</a></li>
                                                     <li><a href="account.html">Create Account Page</a></li>
-                                                    <li><a href="track-order.html">Track Order</a></li>
+                                                    <li><a href="{% url "shop:orders" %}">Track Order</a></li>
                                                     <li><a href="help.html">Help Page</a></li>
                                                     <li><a href="help-2.html">Help Page 2</a></li>
                                                     <li><a href="leave-review.html">Leave a Review</a></li>
@@ -175,18 +179,17 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="{% url "blog:index" %}">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Buy Template</a>
+                                    <a href="{% url "shop:about" %}">About</a>
                                 </li>
                             </ul>
                         </div>
                         <!--/main-menu -->
                     </nav>
                     <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-                        <a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>+94
-                            423-23-221</strong></a>
+                        <a class="phone_top" href="{% url "shop:about" %}"><strong><span>Need Help?</span></strong></a>
                     </div>
                 </div>
                 <!-- /row -->
@@ -278,16 +281,16 @@
 
                                         <ul>
                                             <li>
-                                                <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
+                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your Order</a>
+                                            </li>
+{#                                            <li>#}
+{#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
+{#                                            </li>#}
+                                            <li>
+                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My Profile</a>
                                             </li>
                                             <li>
-                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>
-                                            </li>
-                                            <li>
-                                                <a href="account.html"><i class="ti-user"></i>My Profile</a>
-                                            </li>
-                                            <li>
-                                                <a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>Help and Faq</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -321,10 +324,11 @@
         <!-- /main_nav -->
     </header>
     <!-- /header -->
-
+    <div class="full-height">
     {% block content %}
         No content.
     {% endblock %}
+    </div>
 
 	<!-- Sign In Modal -->
 	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
