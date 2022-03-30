@@ -58,6 +58,10 @@ def home(request):
     })
 
 
+def about(request):
+    return render(request, 'shop_templates/company-profile.html')
+
+
 def category_view(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, pk=category_id)
