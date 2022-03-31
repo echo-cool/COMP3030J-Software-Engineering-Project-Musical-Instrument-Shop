@@ -1,3 +1,10 @@
+body {
+    height: 100%;
+    margin: 0;
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+}
 
 .chat {
     margin-top: auto;
@@ -116,6 +123,7 @@
     position: relative;
     height: 70px;
     width: 70px;
+    pointer-events: none;
 }
 
 .img_cont_msg {
@@ -144,16 +152,19 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 15px;
+    pointer-events: none;
 }
 
 .user_info span {
     font-size: 20px;
     color: white;
+    pointer-events: none;
 }
 
 .user_info p {
     font-size: 10px;
     color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
 }
 
 .video_cam {
@@ -176,6 +187,7 @@
     background-color: #82ccdd;
     padding: 10px;
     position: relative;
+    min-width: 150px;
 }
 
 .msg_cotainer_send {
@@ -186,10 +198,11 @@
     background-color: #78e08f;
     padding: 10px;
     position: relative;
+    min-width: 150px;
 }
 
 .msg_time {
-    /*position: absolute;*/
+    position: absolute;
     bottom: -20px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 10px;
