@@ -65,8 +65,9 @@
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
-                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                     class="rounded-circle user_img">
+                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                                     src="/media/{{ request.user.profile.image }}"
+                                     alt="{{ request.user.username }}'s Photo"/>
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
@@ -180,16 +181,21 @@
             if (message.user === currentUser) {
                 messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
-				<div class="msg_cotainer">${message.body}<br>
+				<div class="msg_cotainer_send">${message.body}<br>
 					<span class="msg_time">${date}</span>
 				</div>
-                <div class="img_cont_msg">${message.user}</div>
+                <div class="img_cont_msg">
+                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                                     src="/media/{{ request.user.profile.image }}"
+                                     alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
                 messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
-                <div class="img_cont_msg">${message.user}</div>
-				<div class="msg_cotainer_send">${message.body}<br>
+                <div class="img_cont_msg">
+					<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
 				</div>
             </div>`;
