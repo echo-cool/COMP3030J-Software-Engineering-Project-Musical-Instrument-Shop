@@ -2,6 +2,7 @@
 import json
 import random
 
+import django
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -11,7 +12,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import SearchForm
-from shop.forms import UpdateProfileForm
+from shop.forms import UpdateProfileForm, ReviewForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 from management.forms import InstrumentForm, SearchForm
@@ -84,6 +85,8 @@ def product_details(request, product_id):
     instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
     all_instruments = Instrument.objects.all()
     related = []
+    # Get 4 random reviews
+    review = Review.objects.filter(instrument=instrument).order_by('?')[:4]
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
@@ -92,32 +95,53 @@ def product_details(request, product_id):
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,
         "related": related,
-        'categories': categories
+        'categories': categories,
+        "review_left": review[:1],
+        "review_right": review[1:]
     })
 
-@login_required
-def leave_review(request, order_id, instrument_id):
-    return render(request, 'shop_templates/leave-review.html')
 
 @login_required
-def confirm_submit(request):
+def leave_review(request, instrument_id):
+    form = ReviewForm()
     if request.method == "POST":
-        rating = request.POST.get("rating-input", None)
-        review_text = request.POST.get("review", None)
-        fileupload = request.FILES.get("fileupload", None)
-        # check_selected = request.POST.get("check", None)
-        print("rating: ", rating)
-        print("review_text: ", review_text)
-        print("fileupload: ", fileupload)
-        # print("check_selected: ", check_selected)
-        # f = ReviewForm(request.POST, request.FILES)
-        # if f.is_valid():
-        #     f.save()
-        # print(f.errors)
-        new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
-                            review_text=review_text, file_upload=fileupload)
-        new_review.save()
-    return render(request, 'shop_templates/product-detail.html')
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.instrument = Instrument.objects.get(id=instrument_id)
+            review.save()
+            messages.success(request, "Review submitted successfully")
+            return redirect(reverse('product-details', args=[instrument_id]))
+        else:
+            messages.error(request, "Error submitting review")
+            return redirect(reverse('product-details', args=[instrument_id]))
+
+    return render(request, 'shop_templates/leave-review.html',{
+        "instrument": Instrument.objects.get(id=instrument_id),
+        "form": form
+    })
+
+
+# @login_required
+# def confirm_submit(request):
+#     if request.method == "POST":
+#         rating = request.POST.get("rating-input", None)
+#         review_text = request.POST.get("review", None)
+#         fileupload = request.FILES.get("fileupload", None)
+#         # check_selected = request.POST.get("check", None)
+#         print("rating: ", rating)
+#         print("review_text: ", review_text)
+#         print("fileupload: ", fileupload)
+#         # print("check_selected: ", check_selected)
+#         # f = ReviewForm(request.POST, request.FILES)
+#         # if f.is_valid():
+#         #     f.save()
+#         # print(f.errors)
+#         new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
+#                             review_text=review_text, file_upload=fileupload)
+#         new_review.save()
+#     return render(request, 'shop_templates/product-detail.html')
+
 
 @login_required
 def personal_profile(request):
@@ -142,6 +166,7 @@ def personal_profile(request):
         'form': form
     })
 
+
 @login_required
 def leave_review2(request):
     print(request)
@@ -154,12 +179,14 @@ def model_view(request, product_id):
         "instrument": instrument,
     })
 
+
 @login_required
 def wishlist(request):
     wishlists = Wishlist.objects.filter(user=1)
     return render(request, 'shop_templates/wishlist.html', {
         "wishlists": wishlists,
     })
+
 
 @login_required
 def checkout(request):
@@ -180,6 +207,7 @@ def checkout(request):
             "shipping": shipping,
             "total": total,
         })
+
 
 @login_required
 def confirm(request):
