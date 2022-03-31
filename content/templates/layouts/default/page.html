@@ -27,39 +27,39 @@
           href="{% static "assets/img_for_shop/apple-touch-icon-144x144-precomposed.png" %}">
 
     <!-- GOOGLE WEB FONT -->
-{#    <link rel="preconnect" href="https://fonts.googleapis.com">#}
-{#    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>#}
-{#    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">#}
+    {#    <link rel="preconnect" href="https://fonts.googleapis.com">#}
+    {#    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>#}
+    {#    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">#}
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">
-	<!-- SPECIFIC CSS -->
-    <link href="{% static "assets/css_for_shop/home_1.css"%}" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="{% static "assets/css_for_shop/home_1.css" %}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="{% static "assets/css_for_shop/custom.css"%}" rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
     <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
 
     {% block head_link %}
 
     {% endblock %}
-<style>
-    .full-height {
-        min-height: 100vh;
-    }
-</style>
+    <style>
+        .full-height {
+            min-height: 100vh;
+        }
+    </style>
 </head>
 
 <body>
 
 <div id="page">
-{#    {% if messages %}#}
-{#    <ul class="messages">#}
-{#        {% for message in messages %}#}
-{#        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-{#    {% endif %}#}
+    {#    {% if messages %}#}
+    {#    <ul class="messages">#}
+    {#        {% for message in messages %}#}
+    {#        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+    {#        {% endfor %}#}
+    {#    </ul>#}
+    {#    {% endif %}#}
 
     <header class="version_1">
         <div class="layer"></div><!-- Mobile menu overlay mask -->
@@ -83,19 +83,20 @@
                         <!-- Mobile menu button -->
                         <div class="main-menu">
                             <div id="header_menu">
-                                <a href="{% url 'shop:index' %}"><img src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt=""
-                                                          width="100" height="35"></a>
+                                <a href="{% url 'shop:index' %}"><img
+                                        src="{% static 'assets/img_for_shop/logo_black.svg' %}" alt=""
+                                        width="100" height="35"></a>
                                 <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                             </div>
                             <ul>
                                 <li class="no-submenu">
                                     <a href="{% url "shop:index" %}" class="show-submenu">Home</a>
-{#                                    <ul>#}
-{#                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>#}
-{#                                        <li><a href="index-2.html">Video Background</a></li>#}
-{#                                        <li><a href="index-3.html">Vertical Slider</a></li>#}
-{#                                        <li><a href="index-4.html">GDPR Cookie Bar</a></li>#}
-{#                                    </ul>#}
+                                    {#                                    <ul>#}
+                                    {#                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>#}
+                                    {#                                        <li><a href="index-2.html">Video Background</a></li>#}
+                                    {#                                        <li><a href="index-3.html">Vertical Slider</a></li>#}
+                                    {#                                        <li><a href="index-4.html">GDPR Cookie Bar</a></li>#}
+                                    {#                                    </ul>#}
                                 </li>
                                 <li class="megamenu submenu">
                                     <a href="javascript:void(0);" class="show-submenu-mega">Pages</a>
@@ -229,7 +230,8 @@
                         <form id="search_form" action="/product_search/" method="post" class="navbar-form navbar-left">
                             {% csrf_token %}
                             <div class="custom-search-input">
-                                <input type="text" name="search_name" id="search_text" placeholder="Search over 10.000 products">
+                                <input type="text" name="search_name" id="search_text"
+                                       placeholder="Search over 10.000 products">
                                 <button type="submit"><i class="header-icon_search_custom"></i></button>
                             </div>
                         </form>
@@ -241,22 +243,22 @@
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <ul class="top_tools">
                             <li>
-{#                                 <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>#}
+                                {#                                 <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>#}
                                 <a href="/cart/" class="cart_bt"><strong>n</strong></a>
-{#                                <div class="dropdown dropdown-cart">#}
-{#                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>#}
-{#                                    <div class="dropdown-menu header-cart">#}
-                                        {#    内容通过main.js 的函数实现  fetchHeaderCartList(刷新同理)  #}
-{#                                    </div>#}
-{#                                </div>#}
+                                {#                                <div class="dropdown dropdown-cart">#}
+                                {#                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>#}
+                                {#                                    <div class="dropdown-menu header-cart">#}
+                                {#    内容通过main.js 的函数实现  fetchHeaderCartList(刷新同理)  #}
+                                {#                                    </div>#}
+                                {#                                </div>#}
                                 <!-- /dropdown-cart-->
                             </li>
                             <li>
                                 {% if user.is_authenticated %}
-                                         <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
-                                    {% else %}
-                                         <a href="{% url "accounts:log_in" %}" class="wishlist"><span>Wishlist</span></a>
-                                    {% endif %}
+                                    <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                {% else %}
+                                    <a href="{% url "accounts:log_in" %}" class="wishlist"><span>Wishlist</span></a>
+                                {% endif %}
 
                             </li>
                             <li>
@@ -265,13 +267,14 @@
                                     {% if user.is_authenticated %}
                                         <a href="{% url "shop:personal_profile" %}" class="">
                                             <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
-                                                                                                  src="/media/{{ request.user.profile.image }}"
-                                 alt="{{ request.user.username }}'s Photo"/></a>
+                                                 src="/media/{{ request.user.profile.image }}"
+                                                 alt="{{ request.user.username }}'s Photo"/></a>
                                     {% else %}
-                                        <a href="{% url "accounts:log_in" %}" class="access_link"><span>Account</span></a>
+                                        <a href="{% url "accounts:log_in" %}"
+                                           class="access_link"><span>Account</span></a>
                                     {% endif %}
 
-{#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>#}
+                                    {#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>#}
                                     <div class="dropdown-menu">
                                         {% if user.is_authenticated %}
                                             <a href="{% url "api:logout" %}" class="btn btn-primary">Logout</a>
@@ -281,13 +284,15 @@
 
                                         <ul>
                                             <li>
-                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your Order</a>
+                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your
+                                                    Order</a>
                                             </li>
-{#                                            <li>#}
-{#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
-{#                                            </li>#}
+                                            {#                                            <li>#}
+                                            {#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
+                                            {#                                            </li>#}
                                             <li>
-                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My Profile</a>
+                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My
+                                                    Profile</a>
                                             </li>
                                             <li>
                                                 <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>Help and Faq</a>
@@ -325,61 +330,60 @@
     </header>
     <!-- /header -->
     <div class="full-height">
-    {% block content %}
-        No content.
-    {% endblock %}
+        {% block content %}
+            No content.
+        {% endblock %}
     </div>
 
-	<!-- Sign In Modal -->
-	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-		<div class="modal_header">
-			<h3>Sign In</h3>
-		</div>
-		<form action="/api/login/" method="post">
+    <!-- Sign In Modal -->
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+        <div class="modal_header">
+            <h3>Sign In</h3>
+        </div>
+        <form action="/api/login/" method="post">
             {% csrf_token %}
-			<div class="sign-in-wrapper">
-				<a href="#0" class="social_bt facebook">Login with Facebook</a>
-				<a href="#0" class="social_bt google">Login with Google</a>
-				<div class="divider"><span>Or</span></div>
-				<div class="form-group">
-					<label>Email</label>
-					<input type="text" class="form-control" name="username" id="email">
-					<i class="ti-email"></i>
-				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input type="password" class="form-control" name="password" id="password" value="">
-					<i class="ti-lock"></i>
-				</div>
-				<div class="clearfix add_bottom_15">
-					<div class="checkboxes float-start">
-						<label class="container_check">Remember me
-						  <input type="checkbox">
-						  <span class="checkmark"></span>
-						</label>
-					</div>
-					<div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
-				</div>
-				<div class="text-center">
-					<input type="submit" value="Log In" class="btn_1 full-width">
-					Don’t have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a>
-				</div>
-				<div id="forgot_pw">
-					<div class="form-group">
-						<label>Please confirm login email below</label>
-						<input type="email" class="form-control" name="email_forgot" id="email_forgot">
-						<i class="ti-email"></i>
-					</div>
-					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
-					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
-				</div>
-			</div>
-		</form>
-		<!--form -->
-	</div>
-	<!-- /Sign In Modal -->
-
-
+            <div class="sign-in-wrapper">
+                <a href="#0" class="social_bt facebook">Login with Facebook</a>
+                <a href="#0" class="social_bt google">Login with Google</a>
+                <div class="divider"><span>Or</span></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="username" id="email">
+                    <i class="ti-email"></i>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="password" value="">
+                    <i class="ti-lock"></i>
+                </div>
+                <div class="clearfix add_bottom_15">
+                    <div class="checkboxes float-start">
+                        <label class="container_check">Remember me
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Log In" class="btn_1 full-width">
+                    Don’t have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a>
+                </div>
+                <div id="forgot_pw">
+                    <div class="form-group">
+                        <label>Please confirm login email below</label>
+                        <input type="email" class="form-control" name="email_forgot" id="email_forgot">
+                        <i class="ti-email"></i>
+                    </div>
+                    <p>You will receive an email containing a link allowing you to reset your password to a new
+                        preferred one.</p>
+                    <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+                </div>
+            </div>
+        </form>
+        <!--form -->
+    </div>
+    <!-- /Sign In Modal -->
 
 
     <footer>
@@ -522,22 +526,21 @@
 </div>
 
 
-
 <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
 <script src="{% static 'assets/js_for_shop/main.js' %}"></script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
-<script src="{% static "assets/js_for_shop/carousel-home.js"%}"></script>
-<script src="{% static "assets/js/hullabaloo.js"%}"></script>
+<script src="{% static "assets/js_for_shop/carousel-home.js" %}"></script>
+<script src="{% static "assets/js/hullabaloo.js" %}"></script>
 <script type="text/javascript">
-	$.hulla = new hullabaloo();
-	{% if messages %}
+    $.hulla = new hullabaloo();
+    {% if messages %}
     {% for message in messages %}
-	setTimeout(function() {
-	  $.hulla.send("{{ message }}", "{{ message.tags }}");
-	}, 300);
-	{% endfor %}{% endif %}
+    setTimeout(function () {
+        $.hulla.send("{{ message }}", "{{ message.tags }}");
+    }, 300);
+    {% endfor %}{% endif %}
 </script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 <script src="{% static 'assets/js/add_url.js' %}"></script>
