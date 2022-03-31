@@ -159,13 +159,15 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class Review(models.Model):
-    order = models.OneToOneField('Order', on_delete=models.CASCADE)
+    order = models.OneToOneField('Order', on_delete=models.CASCADE, null=True, blank=True)
+    instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(
         null=False,
         default=5,
         validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
+    title = models.TextField(null=True, blank=True)
     review_text = models.TextField(null=True)
     file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
