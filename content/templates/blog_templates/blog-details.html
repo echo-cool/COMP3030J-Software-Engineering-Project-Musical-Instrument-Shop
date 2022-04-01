@@ -1,0 +1,547 @@
+﻿{% extends 'layouts/default/shopper_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block style %}
+
+    <!-- Favicon and touch Icons -->
+    <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon"
+          sizes="72x72">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon"
+          sizes="114x114">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon"
+          sizes="144x144">
+    <!-- Lead Style -->
+    <link href="{% static '/assets/css_for_shop/google_font.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/ionicons/css/ionicons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/aos/aos.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/swiper/swiper.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
+
+{% endblock %}
+
+{% block content %}
+    <!-- pointer start -->
+    <div class="pointer bnz-pointer" id="bnz-pointer"></div>
+
+    <div class="content">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <div class="container">
+                    <h2 class="heading">Blog</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrapper m_tp_0">
+            <div class="container">
+                <div class="blog_details">
+                    <div class="post_img" data-aos="overlay-left">
+                        <img src="{{ post.main_image.url }}" alt="blog">
+                        <div class="calendar">
+                            <a href="#"><span class="date">{{ post.created_on.day }}</span><br>{{ post.created_on | date:"M" }}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-7 details_with_sidebar">
+                            <article class="blog_post post_expand">
+                                <div class="post_content">
+                                    <div class="post_header">
+                                        <h2 class="post_title">
+                                            <a href="#">Live with no excuses and travel with no regrets</a>
+                                        </h2>
+                                    </div>
+                                    <div class="post_fulltext">
+                                        <div class="fulltext_section">
+                                            <p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis
+                                                nostrum exercitationem mo
+                                                sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex
+                                                aleisequatur? Quis autem
+                                                vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                                blanditiis praesentium volup
+                                                tatum deleniti atque corrupti quos dolores et quas molestias excepturi.
+                                            </p>
+                                            <p>Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum
+                                                et dolorum fuga. Et harumquid
+                                                em rerum facilis est et expedita distinctio. Nam libero tempore cum
+                                                soluta nobis est eligendioptio cum
+                                                que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim
+                                                ipsam voluptatem quia
+                                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                                dolores eosratione volptatem
+                                                sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet consectetur, adipisci
+                                                velit tempor lorem ipsum dolor.
+                                            </p>
+
+                                            <blockquote>
+                                                "Consectetur adipiscing elit, sed do num eiusmod tempor incididunt
+                                                magina aliqua. Quis ipsum secto suspendise ultrces gravida"
+                                            </blockquote>
+
+                                            <p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis
+                                                nostrum exercitationem mo
+                                                sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex
+                                                aleisequatur? Quis autem
+                                                vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                                blanditiis praesentium volup
+                                                tatum deleniti atque corrupti quos dolores et quas molestias excepturi.
+                                            </p>
+                                            <p>Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum
+                                                et dolorum fuga. Et harumquid
+                                                em rerum facilis est et expedita distinctio. Nam libero tempore cum
+                                                soluta nobis est eligendioptio cum
+                                                que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim
+                                                ipsam voluptatem quia
+                                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                                dolores eosratione volptatem
+                                                sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet consectetur, adipisci
+                                                velit tempor lorem ipsum dolor.
+                                            </p>
+                                        </div>
+                                        <div class="post_gallery">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 img_box"
+                                                     data-aos="overlay-right">
+                                                    <img src="../../assets/assets/img_for_shop/images/blog/post1.jpg"
+                                                         alt="img">
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 img_box" data-aos="overlay-left">
+                                                    <img src="../../assets/assets/img_for_shop/images/blog/post2.jpg"
+                                                         alt="img">
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 img_box" data-aos="overlay-left">
+                                                    <img src="../../assets/assets/img_for_shop/images/blog/post3.jpg"
+                                                         alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fulltext_section">
+                                            <p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis
+                                                nostrum exercitationem mo
+                                                sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex
+                                                aleisequatur? Quis autem
+                                                vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                                blanditiis praesentium volup
+                                                tatum deleniti atque corrupti quos dolores et quas molestias excepturi.
+                                            </p>
+                                            <p>Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum
+                                                et dolorum fuga. Et harumquid
+                                                em rerum facilis est et expedita distinctio. Nam libero tempore cum
+                                                soluta nobis est eligendioptio cum
+                                                que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim
+                                                ipsam voluptatem quia
+                                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                                dolores eosratione volptatem
+                                                sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet consectetur, adipisci
+                                                velit tempor lorem ipsum dolor.
+                                            </p>
+                                            <ul class="point_order">
+                                                <li>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam
+                                                </li>
+                                                <li>Sequatu autem vel eum iure veniam quis nostrum exercitationm
+                                                    corporis
+                                                </li>
+                                                <li>Vel eum. At vero eos et accusamus et iusto odio dignissimos
+                                                    ducimus
+                                                </li>
+                                                <li>Tatum deleniti atque corrupti quos dolores et quas molestias
+                                                    excepturi.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="post_video">
+                                            <iframe class="vid" id="yt" src="" frameborder="0" autoplay="1"
+                                                    allowfullscreen></iframe>
+                                            <div id="content">
+                                                <img id="alternative"
+                                                     src="../../assets/assets/img_for_shop/images/blog/poster.jpg"
+                                                     alt="img">
+                                                <div class="play_btn"><i class="ion-ios-play"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="fulltext_section">
+                                            <p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis
+                                                nostrum exercitationem mo
+                                                sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex
+                                                aleisequatur? Quis autem
+                                                vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                                blanditiis praesentium volup
+                                                tatum deleniti atque corrupti quos dolores et quas molestias excepturi.
+                                            </p>
+                                            <p>Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum
+                                                et dolorum fuga. Et harumquid
+                                                em rerum facilis est et expedita distinctio. Nam libero tempore cum
+                                                soluta nobis est eligendioptio cum
+                                                que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim
+                                                ipsam voluptatem quia
+                                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                                dolores eosratione volptatem
+                                                sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet consectetur, adipisci
+                                                velit tempor lorem ipsum dolor.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="post_footer">
+                                        <div class="post_share" data-aos="fade-up" data-aos-duration="700">
+                                            <ul class="share_list">
+                                                <li>Share:</li>
+                                                <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
+                                                        class="ion-social-facebook"></i></a></li>
+                                                <li data-aos="fade-up" data-aos-duration="700"><a href="#"><i
+                                                        class="ion-social-twitter"></i></a></li>
+                                                <li data-aos="fade-up" data-aos-duration="900"><a href="#"><i
+                                                        class="ion-social-dribbble"></i></a></li>
+                                                <li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i
+                                                        class="ion-social-instagram"></i></a></li>
+                                                <li data-aos="fade-up" data-aos-duration="1300"><a href="#"><i
+                                                        class="ion-social-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="post_tag" data-aos="fade-up" data-aos-duration="900">
+                                            <ul class="tag_list">
+                                                <li><a href="#">#Photography</a></li>
+                                                <li><a href="#">#Travel</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <div class="author_div" data-aos="fade-up" data-aos-duration="700">
+                                <div class="author">
+                                    <img alt="img" src="{{ post.author.profile.image.url }}"
+                                         class="avatar">
+                                </div>
+                                <div class="author-block">
+                                    <h5 class="author_name">Patricia Doe</h5>
+                                    <p class="author_intro">Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima
+                                        veniam, quis nostrum<br/>
+                                        exercitatonem mosequatu autem vel eum ivenia.</p>
+                                    <div class="social_media">
+                                        <ul class="social_list">
+                                            <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
+                                                    class="ion-social-facebook"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="700"><a href="#"><i
+                                                    class="ion-social-twitter"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="900"><a href="#"><i
+                                                    class="ion-social-dribbble"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i
+                                                    class="ion-social-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="related_posts" data-aos="fade-up" data-aos-duration="900">
+                                <div class="sec_title">
+                                    <h1>Similar Posts</h1>
+                                </div>
+                                <div class="more_posts">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
+                                                <div class="post_img" data-aos="overlay-left">
+                                                    <a href="#"><img
+                                                            src="../../assets/assets/img_for_shop/images/blog/related1.jpg"
+                                                            alt="blog"></a>
+                                                </div>
+                                                <div class="post_content">
+                                                    <div class="post_header">
+                                                        <h2 class="post_title">
+                                                            <a href="#">To me Life is either a daring adventure or
+                                                                nothing</a>
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
+                                                <div class="post_img" data-aos="overlay-left">
+                                                    <a href="#"><img
+                                                            src="../../assets/assets/img_for_shop/images/blog/related2.jpg"
+                                                            alt="blog"></a>
+                                                </div>
+                                                <div class="post_content">
+                                                    <div class="post_header">
+                                                        <h2 class="post_title">
+                                                            <a href="#">Life begins at the end of your comfort zone</a>
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="comment_sec" data-aos="fade-up" data-aos-duration="700">
+                                        <div class="contact_title">
+                                            <h3>Comments</h3>
+                                            <div class="title_line"></div>
+                                        </div>
+                                        <ul class="comment_area">
+                                            <li class="blog_comment_user">
+                                                <div class="commenter_div">
+                                                    <div class="commenter">
+                                                        <img alt="img"
+                                                             src="../../assets/assets/img_for_shop/images/blog/commenter.png"
+                                                             class="avatar">
+                                                    </div>
+                                                    <div class="comment_block">
+                                                        <h4>Indie Rossi <span class="reply"><a href="#" class="reply">Reply <i
+                                                                class="ion-chevron-right"></i><i
+                                                                class="ion-chevron-right"></i></a></span></h4>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima
+                                                            veniam
+                                                            quis nostrum exercitationem mosequatu autem.</p>
+                                                        <h6>17 Apr 2020</h6>
+                                                    </div>
+                                                </div>
+
+                                                <ul class="children">
+                                                    <li class="blog_comment_user">
+                                                        <div class="commenter_div">
+                                                            <div class="commenter">
+                                                                <img alt="admin"
+                                                                     src="../../assets/assets/img_for_shop/images/blog/commenter2.png"
+                                                                     class="avatar">
+                                                            </div>
+                                                            <div class="comment_block">
+                                                                <h4>Patricia Doe <span class="reply"><a href="#"
+                                                                                                        class="reply">Reply <i
+                                                                        class="ion-chevron-right"></i><i
+                                                                        class="ion-chevron-right"></i></a></span></h4>
+                                                                <p>Repository-hosted Themes are required to support
+                                                                    display of comments on static Pages as well as on
+                                                                    single blog Posts.</p>
+                                                                <h6>19 Apr 2020</h6>
+                                                            </div>
+                                                        </div>
+                                                    </li><!-- #comment-## -->
+                                                </ul><!-- .children -->
+                                            </li><!-- #comment-## -->
+                                            <li class="blog_comment_user">
+                                                <div class="commenter_div">
+                                                    <div class="commenter">
+                                                        <img alt="admin"
+                                                             src="../../assets/assets/img_for_shop/images/blog/commenter.png"
+                                                             class="avatar">
+                                                    </div>
+                                                    <div class="comment_block">
+                                                        <h4>Indie Rossi <span class="reply"><a href="#" class="reply">Reply <i
+                                                                class="ion-chevron-right"></i><i
+                                                                class="ion-chevron-right"></i></a></span></h4>
+                                                        <p>Repository-hosted Themes are required to support display of
+                                                            comments on static Pages as well as on single blog
+                                                            Posts.</p>
+                                                        <h6>14 Apr 2020</h6>
+                                                    </div>
+                                                </div>
+                                            </li><!-- #comment-## -->
+                                        </ul>
+                                        <div class="comments-pagination comment">
+                                            <a class="page-numbers" href="#">1</a>
+                                            <span aria-current="page" class="page-numbers current">2</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact" data-aos="fade-up" data-aos-duration="900">
+                                        <div class="contact_title">
+                                            <h3>Make A Comment</h3>
+                                            <div class="title_line"></div>
+                                        </div>
+                                        <form class="contact_form" action="register.php" method="post">
+                                            <div class="form-container">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <textarea type="text" name="message" class="form-control"
+                                                                      placeholder="Your Comment Here*"
+                                                                      required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="name" class="form-control"
+                                                                   placeholder="Name*" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" class="form-control"
+                                                                   placeholder="E-mail*" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <input class="button" type="submit" value="Submit"
+                                                                   name="submit">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5">
+                            <div class="sidebar" data-aos="fade-up">
+                                <div id="custom_1" class="widget widget_custom">
+                                    <h4 class="widget_title">About Author</h4>
+                                    <div class="sidebar_author">
+                                        <img src="{{ post.author.profile.image.url }}" alt="img">
+                                        <p class="intro">Lorem ipsum dolor sit amet consec adipiscing elit, sed do
+                                            eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum
+                                            suspendise</p>
+
+                                        <div class="social_profile">
+                                            <div class="social_media">
+                                                <a href="#">
+                                                    <i class="ion-social-facebook"></i>
+                                                    <div class="name">Facebook</div>
+                                                    <div class="off_text">45k Likes</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="social_media">
+                                                <a href="#">
+                                                    <i class="ion-social-twitter"></i>
+                                                    <div class="name">Twitter</div>
+                                                    <div class="off_text">21k Follower</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="social_media">
+                                                <a href="#">
+                                                    <i class="ion-social-instagram"></i>
+                                                    <div class="name">Instagram</div>
+                                                    <div class="off_text">23k Follower</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="recent-posts-1" class="widget widget_recent_posts">
+                                    <h4 class="widget_title">Recent Posts</h4>
+                                    <div class="sidebar_recent_posts">
+                                        <ul>
+                                            <li><a href="#">Let’s escape in the cityscape</a></li>
+                                            <li><a href="#">Failure doesn’t define anything</a></li>
+                                            <li><a href="#">Bohemian mountain towards Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="custom_2" class="widget widget_custom">
+                                    <div class="sidebar_add">
+                                        <img src="../../assets/assets/img_for_shop/images/add.png" alt="add">
+                                    </div>
+                                </div>
+
+                                <div id="categories-1" class="widget widget_categories">
+                                    <h4 class="widget_title">Categories</h4>
+                                    <div class="sidebar_categories">
+                                        <ul class="category_list">
+                                            <li><a href="#">Travel Hacks</a> (5)</li>
+                                            <li><a href="#">South Asia</a> (7)</li>
+                                            <li><a href="#">Travel Photography</a> (4)</li>
+                                            <li><a href="#">Wildlife Adventure</a> (2)</li>
+                                            <li><a href="#">Road Trips</a> (4)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="popular-1" class="widget widget_popular_posts">
+                                    <h4 class="widget_title">Most Read Blogs</h4>
+                                    <div class="sidebar_popular_posts">
+                                        <div class="popular_post_item">
+                                            <div class="popular_post_item_wrapper">
+                                                <img src="../../assets/assets/img_for_shop/images/popular/1.jpg"
+                                                     alt="img">
+                                                <div class="popular_post_item_content">
+                                                    <h4 class="popular_post_item_title"><a href="#">Beautiful afternoon
+                                                        boating in Morine Lake</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="popular_post_item">
+                                            <div class="popular_post_item_wrapper">
+                                                <img src="../../assets/assets/img_for_shop/images/popular/2.jpg"
+                                                     alt="img">
+                                                <div class="popular_post_item_content">
+                                                    <h4 class="popular_post_item_title"><a href="#">Sudden trip to grand
+                                                        Canyons</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="popular_post_item">
+                                            <div class="popular_post_item_wrapper">
+                                                <img src="../../assets/assets/img_for_shop/images/popular/3.jpg"
+                                                     alt="img">
+                                                <div class="popular_post_item_content">
+                                                    <h4 class="popular_post_item_title"><a href="#">First Snow
+                                                        Experience of my life</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tags-1" class="widget widget_tag_cloud">
+                                    <h4 class="widget_title">Tag Cloud</h4>
+                                    <div class="tagcloud">
+                                        <a href="#">Travel</a>
+                                        <a href="#">PHOTOGRAPHY</a>
+                                        <a href="#">FASHION</a>
+                                        <a href="#">Travel</a>
+                                        <a href="#">HOBBY</a>
+                                        <a href="#">PHOTOGRAPHY</a>
+                                        <a href="#">NATURE</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+    <script src="{% static '/assets/js_for_shop/js/bootstrap.min.js' %} "></script>
+    <script src="{% static '/assets/plugins/swiper/swiper.min.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
+    <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+
+{% endblock %}
+
+

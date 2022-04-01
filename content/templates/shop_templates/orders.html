@@ -61,26 +61,31 @@
         <div class="col-lg-12 my-lg-0 my-1">
             <div id="main-content" class="bg-white border">
                 <div class="d-flex flex-column">
-                    <div class="h5">Hello Jhon,</div>
-                    <div>Logged in as: someone@gmail.com</div>
+                    {% if user.is_authenticated %}
+                    <div class="h5">Hello {{ user.username }},</div>
+                    <div>Logged in as: {{ user.email }}</div>
+                    {% else %}
+                    <div class="h5">Hello Guest,</div>
+                    <div>You are not logged in</div>
+                    {% endif %}
                 </div>
                 <div class="d-flex my-4 flex-wrap">
                     <div class="box me-4 my-1 bg-light"> <img src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
                         <div class="d-flex align-items-center mt-2">
                             <div class="tag">Orders placed</div>
-                            <div class="ms-auto number">10</div>
+                            <div class="ms-auto number">{{ count.order }}</div>
                         </div>
                     </div>
                     <div class="box me-4 my-1 bg-light"> <img src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="">
                         <div class="d-flex align-items-center mt-2">
                             <div class="tag">Items in Cart</div>
-                            <div class="ms-auto number">10</div>
+                            <div class="ms-auto number">{{ count.cart }}</div>
                         </div>
                     </div>
                     <div class="box me-4 my-1 bg-light"> <img src="{% static 'assets/images/icons/love-heart.png' %}" alt="">
                         <div class="d-flex align-items-center mt-2">
                             <div class="tag">Wishlist</div>
-                            <div class="ms-auto number">10</div>
+                            <div class="ms-auto number">{{ count.wishlist }}</div>
                         </div>
                     </div>
                 </div>

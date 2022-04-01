@@ -14,3 +14,9 @@ class UpdateProfileForm(forms.Form):
     email = forms.EmailField(required=False)
     phone = forms.CharField(max_length=20, required=False)
     address = forms.CharField(max_length=100, required=False)
+
+
+class ReviewForm(forms.Form):
+    title = forms.CharField(max_length=50, required=True)
+    content = forms.CharField(max_length=500, required=True)
+    rating = forms.IntegerField(required=True)

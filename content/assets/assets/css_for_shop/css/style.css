@@ -13,13 +13,6 @@
 #09  Others
 -----------------------------------------------------------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;1,500&family=Muli:wght@400;500&family=Oswald:wght@400;600;700&display=swap');
-@import "font-awesome/css/font-awesome.min.css";
-@import "ionicons/css/ionicons.css";
-@import "bootstrap.css";
-@import "menu.css";
-@import "../../plugins/aos/aos.css";
-@import "../../plugins/swiper/swiper.css";
 
 *{
   margin:0;
@@ -135,19 +128,19 @@ img{
     color: #9a9a9a;
 }
 .bg_image_1{
-    background-image: url(../images/bg1.png);
+    background-image: url(/static/assets/images/bg1.png);
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bg_image_2{
-    background-image: url(../images/bg2.png);
+    background-image: url(/static/assets/images/bg2.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bg_image_3{
-    background-image: url(../images/bg3.jpg);
+    background-image: url(/static/assets/images/bg3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -160,9 +153,13 @@ img{
     margin-top: 0px;
 }
 
+.main-nav.main-nav2 > ul > li > a {
+    color: #6610f2;
+}
+
 .page-header .page-header-content {
     position: relative;
-    background-image: url(../images/bg5.jpg);
+    background-image: url(/static/assets/images/bg5.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -205,7 +202,7 @@ img{
     padding-bottom: 60px;
 }
 .slider_text .blog_post{
-    background: url(../images/slider/texture.png);
+    background: url(/static/assets/images/slider/texture.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -826,7 +823,7 @@ blockquote{
     font-weight: 600;
     line-height: 30px;
     color: #59815b;
-    background: url(../images/blockquote_bg.png);
+    background: url(/static/assets/images/blockquote_bg.png);
     padding: 40px 30px;
     background-position: center;
     background-repeat: no-repeat;
@@ -834,7 +831,7 @@ blockquote{
     margin: 30px 50px;
 }
 blockquote:after{
-    content: url(../images/comma.png);
+    content: url(/static/assets/images/comma.png);
     position: absolute;
     right: 15px;
     bottom: -15px;
@@ -1119,85 +1116,7 @@ iframe{
  * Shortcode: Newsletter
  * -----------------------------------------------
 */
-.newsletter{
-    text-align: center;
-    padding: 75px 0px;
-    margin: 50px 0px;
-}
-.newsletter.more_padding{
-    padding: 100px 0px;
-}
-.newsletter .newsletter_header p{
-    font-family: 'Cormorant', serif;
-    font-size: 20px;
-    font-weight: 500;
-    font-style: italic;
-    color: #59815b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-}
-.newsletter .newsletter_header p i{
-    font-size: 30px;
-    margin-right: 15px;
-}
-.newsletter .newsletter_header h3{
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-.newsletter .newsletter_form {
-    padding: 0px 20px;
-}
-.newsletter.more_padding .newsletter_form {
-    padding: 0px 50px;
-}
-.newsletter .newsletter_form .form_group{
-    position: relative;
-}
-.newsletter .newsletter_form .form-control {
-    width: 100%;
-	height: 50px;
-    background: #ffffff;
-    border: 0px solid #fff;
-    padding: 10px 25px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-    border-radius: 0px;
-    -webkit-box-shadow: 10px 13px 15px rgba(89, 129, 91, 0.19);
-    box-shadow: 10px 13px 15px rgba(89, 129, 91, 0.19);
-}
-.newsletter .newsletter_form .form-control:focus {
-    outline: none;
-    box-shadow: none;
-}
-.newsletter .newsletter_form .button{
-    font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    background: #59815b;
-    color: #fff;
-    border: 0px solid #59815b;
-    padding: 0 50px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 50px;
-    cursor: pointer;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-}
-.newsletter .newsletter_form .button:focus {outline: none;}
 
-@media screen and (max-width: 480px){
-    .newsletter .newsletter_form .button{
-        position: relative;
-        margin-top: 15px;
-    }
-}
 
 
 
@@ -1778,226 +1697,16 @@ ul.comment_area .comment_block .reply i{
  * Shortcode: Footer
  * -----------------------------------------------
 */
-.footer{
-    position: relative;
-    overflow: hidden;
+#footer{
+    font-family: 'Lato', sans-serif;
+    font-size: 14px
 }
-.footer:before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../images/bg4.jpg);
-    background-repeat: no-repeat;
-    background-size: 45% 100%;
-    z-index: -1;
+
+.pagination>li>a, .pagination>li>span {
+    padding: 0;
+    border: 0;
 }
-.footer .footer-above{
-    position: absolute;
-    left: 6%;
-    top: 70px;
-    height: 100%;
-}
-@media screen and (max-width: 1400px) {
-    .footer .footer-above{
-        left: 3%;
-    }
-}
-.footer .footer-social{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-}
-.footer .footer-social:after{
-    content: '';
-    position: absolute;
-    top: calc(100% + 40px);
-    background: #59815b;
-    width: 1px;
-    height: 150%;
-}
-.footer .footer-social ul li a{
-    font-size: 24px;
-    color: #fff;
-    padding: 20px 0px;
-    display: inline-block;
-}
-.footer .footer-social ul li:first-child a{
-    padding-top: 0px;
-}
-.footer .footer-social ul li:last-child a{
-    padding-bottom: 0px;
-}
-.footer .footer-middle{
-    margin-top: 160px;
-}
-.footer .footer_widget_wrapper {
-    position: relative;
-    padding: 100px 0px;
-}
-.footer .footer_widget_wrapper:before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 140%;
-    height: 100%;
-    background: url(../images/bg3.jpg);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
-    z-index: -1;
-}
-.footer ul{
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-}
-.footer .footer_widget{
-    position: relative;
-}
-.footer .footer_widget.pd_lt{
-    padding-left: 35px;
-}
-.footer .widget-title{
-    display: inline-block;
-    position: absolute;
-    bottom: -65px;
-    transform: rotate(-90deg);
-    background: #59815b;
-    color: #ffffff;
-    height: 70px;
-    line-height: 70px;
-    padding: 0px 96px;
-    transform-origin: 0% 0%;
-    border-radius: 40px;
-}
-.footer .widget-title h4{
-    font-size: 28px;
-    line-height: 42px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-.footer .instagram{
-    text-align: right;
-}
-.footer .instagram ul li{
-    display: inline-block;
-    max-width: 150px;
-    margin: 4px 4px;
-}
-.footer .instagram ul li a{
-    display: block;
-}
-.footer .footer_nav{
-    margin-top: 65px;
-}
-.footer .footer_nav ul li{
-    display: inline-block;
-    width: 32%;
-    padding: 20px 0px;
-}
-.footer .footer_nav ul li a{
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-}
-.footer .footer-bottom .copyright{
-    padding: 35px 0px 30px 0px;
-    text-align: right;
-}
-.footer .footer-bottom .copyright p{
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: #93a094;
-    margin: 0px;
-}
-@media screen and (max-width: 1024px) {
-    .footer:before{
-        background-size: 100% 100%;
-    }
-    .footer .footer-above{
-        position: relative;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .footer .footer-social{
-        position: relative;
-        top: 0;
-        transform: none;
-    }
-    .footer .footer-social ul{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .footer .footer-social ul li a{
-        padding: 0px 20px;
-    }
-    .footer .footer-social ul li:first-child{
-        padding-left: 0px;
-    }
-    .footer .footer-social ul li:last-child{
-        padding-right: 0px;
-    }
-    .footer .footer-social:after{
-        display: none;
-    }
-    .footer .footer-bottom .copyright{
-        text-align: center;
-    }
-    .footer .widget-title{
-        position: relative;
-        bottom: 0px;
-        transform: rotate(0deg);
-        background: transparent;
-        padding: 0px 30px;
-        width: 100%;
-        text-align: center;
-    }
-    .footer .widget-title h4{
-        margin-top: 0px;
-    }
-    .footer .instagram{
-        text-align: center;
-    }
-    .footer .instagram ul li{
-        max-width: 100px;
-    }
-}
-@media screen and (max-width: 991px) {
-    .footer .footer_nav ul li{
-        width: 48%;
-    }
-}
-@media screen and (max-width: 767px) {
-    .footer .footer_nav ul li{
-        padding: 10px 0px;
-    }
-    .footer .footer_widget_wrapper{
-        padding: 30px 30px;
-    }
-    .footer .footer_widget_wrapper:before{
-        width: 100%;
-    }
-    .instagram{
-        margin-bottom: 50px;
-    }
-    .footer .footer_widget.pd_lt{
-        padding-left: 0px;
-    }
-}
-@media screen and (max-width: 380px) {
-    .footer .footer_nav ul li{
-        width: 100%;
-    }
-}
+
 
 /*
  * Shortcode: Contact
@@ -2054,7 +1763,7 @@ ul.comment_area .comment_block .reply i{
 .contact .form-group{
     margin-bottom: 30px;
 }
-select, input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea.form-control {
+select, input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea.form-control {
     display: block;
     width: 100%;
     height: 54px;
@@ -2076,14 +1785,14 @@ select, input[type="text"], input[type="email"], input[type="url"], input[type="
 textarea.form-control {
     height: 175px;
 }
-input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea.form-control:focus {
+input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea.form-control:focus {
     border-color: rgba(89, 129, 91, 1);
     outline: none;
     outline-offset: 0px;
     box-shadow: none;
     color: #59815b;
 }
-input[type="button"], input[type="reset"], input[type="submit"]{
+input[type="button"], input[type="reset"]{
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     background: #59815b;
