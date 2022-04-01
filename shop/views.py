@@ -2,7 +2,9 @@
 import json
 import random
 
+import django
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Max
 from django.http import JsonResponse
@@ -10,7 +12,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from management.forms import SearchForm
-from shop.forms import UpdateProfileForm
+from shop.forms import UpdateProfileForm, ReviewForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
 from management.forms import InstrumentForm, SearchForm
@@ -83,6 +85,8 @@ def product_details(request, product_id):
     instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
     all_instruments = Instrument.objects.all()
     related = []
+    # Get 4 random reviews
+    review = Review.objects.filter(instrument=instrument).order_by('?')[:4]
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
@@ -91,34 +95,55 @@ def product_details(request, product_id):
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,
         "related": related,
-        'categories': categories
+        'categories': categories,
+        "review_left": review[:1],
+        "review_right": review[1:]
     })
 
 
-def leave_review(request, order_id, instrument_id):
-    return render(request, 'shop_templates/leave-review.html')
-
-
-def confirm_submit(request):
+@login_required
+def leave_review(request, instrument_id):
+    form = ReviewForm()
     if request.method == "POST":
-        rating = request.POST.get("rating-input", None)
-        review_text = request.POST.get("review", None)
-        fileupload = request.FILES.get("fileupload", None)
-        # check_selected = request.POST.get("check", None)
-        print("rating: ", rating)
-        print("review_text: ", review_text)
-        print("fileupload: ", fileupload)
-        # print("check_selected: ", check_selected)
-        # f = ReviewForm(request.POST, request.FILES)
-        # if f.is_valid():
-        #     f.save()
-        # print(f.errors)
-        new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
-                            review_text=review_text, file_upload=fileupload)
-        new_review.save()
-    return render(request, 'shop_templates/product-detail.html')
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.instrument = Instrument.objects.get(id=instrument_id)
+            review.save()
+            messages.success(request, "Review submitted successfully")
+            return redirect(reverse('product-details', args=[instrument_id]))
+        else:
+            messages.error(request, "Error submitting review")
+            return redirect(reverse('product-details', args=[instrument_id]))
+
+    return render(request, 'shop_templates/leave-review.html',{
+        "instrument": Instrument.objects.get(id=instrument_id),
+        "form": form
+    })
 
 
+# @login_required
+# def confirm_submit(request):
+#     if request.method == "POST":
+#         rating = request.POST.get("rating-input", None)
+#         review_text = request.POST.get("review", None)
+#         fileupload = request.FILES.get("fileupload", None)
+#         # check_selected = request.POST.get("check", None)
+#         print("rating: ", rating)
+#         print("review_text: ", review_text)
+#         print("fileupload: ", fileupload)
+#         # print("check_selected: ", check_selected)
+#         # f = ReviewForm(request.POST, request.FILES)
+#         # if f.is_valid():
+#         #     f.save()
+#         # print(f.errors)
+#         new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
+#                             review_text=review_text, file_upload=fileupload)
+#         new_review.save()
+#     return render(request, 'shop_templates/product-detail.html')
+
+
+@login_required
 def personal_profile(request):
     user = request.user
     username = user.username
@@ -142,6 +167,7 @@ def personal_profile(request):
     })
 
 
+@login_required
 def leave_review2(request):
     print(request)
     return render(request, 'shop_templates/leave-review-2.html')
@@ -154,6 +180,7 @@ def model_view(request, product_id):
     })
 
 
+@login_required
 def wishlist(request):
     wishlists = Wishlist.objects.filter(user=1)
     return render(request, 'shop_templates/wishlist.html', {
@@ -161,6 +188,7 @@ def wishlist(request):
     })
 
 
+@login_required
 def checkout(request):
     # get or post
     # check if user is not logged in
@@ -181,6 +209,7 @@ def checkout(request):
         })
 
 
+@login_required
 def confirm(request):
     # get current max order_id
     if Order.objects.all().count() == 0:
@@ -284,7 +313,7 @@ def product_search(request):
 #             "instruments": instruments,
 #         })
 
-
+@login_required
 def cart(request):
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)
@@ -298,7 +327,7 @@ def cart(request):
         return redirect('accounts:log_in')
 
 
-#
+@login_required
 def product_add_cart(request, instrument_id):
     instrument = Instrument.objects.filter(id=instrument_id).first()
     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
@@ -340,9 +369,16 @@ def product_details_test_model(request, product_id):
     })
 
 
-def orders(request, user_id):
-    all_orders = Order.objects.filter(user_id=user_id)
+@login_required
+def orders(request):
+    user = request.user
+    all_orders = Order.objects.filter(user_id=user.id)
+    count = {
+        "order": Order.objects.filter(user_id=user.id).count(),
+        "cart": Cart.objects.filter(user_id=user.id).count(),
+        "wishlist": Wishlist.objects.filter(user_id=user.id).count(),
+    }
     return render(request, 'shop_templates/orders.html', {
         "orders": all_orders,
-        "profile": request.user.profile
+        "count": count,
     })

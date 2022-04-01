@@ -14,8 +14,8 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
-
-
+    <link href="{% static 'assets/chat_css/chat.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/fontawesome.css' %}" rel="stylesheet">
     {#        <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">#}
     <script src="{% static 'assets/chat_js/static/js/jquery.min.js' %}"></script>
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
@@ -63,7 +63,31 @@
             <div class="col-md-8 col-xl-6 chat">
                 <div class="card">
                     <div class="card-header msg_head">
-                        <h4 class="card-title">Chat</h4>
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                                     src="/media/{{ request.user.profile.image }}"
+                                     alt="{{ request.user.username }}'s Photo"/>
+                                <span class="online_icon"></span>
+                            </div>
+                            <div class="user_info">
+                                Chat with <span id="chat_with"></span>
+                                <p>1767 Messages(temp)</p>
+                            </div>
+                            <div class="video_cam">
+                                <span><i class="fas fa-video"></i></span>
+                                <span><i class="fas fa-phone"></i></span>
+                            </div>
+                        </div>
+                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="action_menu">
+                            <ul>
+                                <li><i class="fas fa-user-circle"></i> View profile</li>
+                                <li><i class="fas fa-users"></i> Add to close friends</li>
+                                <li><i class="fas fa-plus"></i> Add to group</li>
+                                <li><i class="fas fa-ban"></i> Block</li>
+                            </ul>
+                        </div>
                     </div>
                     <div id="messages" class="card-body msg_card_body">
                         {# Messages go here #}
@@ -108,6 +132,8 @@
         let userList = $('#user-list');
         let messageList = $('#messages');
         let chat_history = 0;
+        let chat_with;
+        let chat_with_current;
 
         function updateUserList() {
             $.getJSON('/api/user/', function (data) {
@@ -115,21 +141,31 @@
                 for (let i = 0; i < data.length; i++) {
                     const userItem = `
 
-
-
-<a href="#" class="user user_info">${data[i]['username']}<br />
-
-						</a>
-
+                        <li class="user" value=${data[i]['username']}>
+							<div class="d-flex bd-highlight" style="pointer-events: none">
+								<div class="img_cont">
+									<img src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>${data[i].username}</span>
+									<p>${data[i].email}</p>
+								</div>
+							</div>
+						</li>
 
 `;
                     $(userItem).appendTo('#user-list');
+                    (data[i].username);
                 }
                 $('.user').click(function () {
-                    userList.children('.active').removeClass('active');
+                    $('.active').removeClass('active');
                     let selected = event.target;
+                    console.log(selected);
                     $(selected).addClass('active');
-                    setCurrentRecipient(selected.text);
+                    chat_with_current = $(selected).attr('value');
+                    setCurrentRecipient(chat_with_current);
+                    $('#chat_with').text(chat_with_current);
                 });
             });
         }
@@ -138,22 +174,28 @@
             let position = 'start';
             let position_new = 'cleft';
             let messageItem = '';
-            const date = new Date(message.timestamp);
+            let date = new Date(message.timestamp);
+            date = date.toLocaleString();
             if (message.user === currentUser) position = 'end';
             if (message.user === currentUser) position_new = 'cright';
             if (message.user === currentUser) {
                 messageItem = `
-            <div class="d-flex justify-content-${position} mb-4 ">
-				<div class="msg_cotainer">${message.body}<br>
+            <div class="message d-flex justify-content-${position} mb-4 ">
+				<div class="msg_cotainer_send">${message.body}<br>
 					<span class="msg_time">${date}</span>
 				</div>
-                <div class="img_cont_msg">${message.user}</div>
+                <div class="img_cont_msg">
+                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                                     src="/media/{{ request.user.profile.image }}"
+                                     alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
                 messageItem = `
-            <div class="d-flex justify-content-${position} mb-4 ">
-                <div class="img_cont_msg">${message.user}</div>
-				<div class="msg_cotainer_send">${message.body}<br>
+            <div class="message d-flex justify-content-${position} mb-4 ">
+                <div class="img_cont_msg">
+					<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
 				</div>
             </div>`;
@@ -164,7 +206,13 @@
 
         function getConversation(recipient) {
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-                if (data['results'].length != chat_history) {
+
+                if (chat_with != chat_with_current || data['results'].length != chat_history) {
+                    {#console.log(chat_with);#}
+                    {#console.log(chat_with_current);#}
+                    chat_with_current = chat_with;
+                    {#console.log(data['results'].length)#}
+                    {#console.log(chat_history)#}
                     chat_history = data['results'].length;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
@@ -199,7 +247,9 @@
 
         function setCurrentRecipient(username) {
             currentRecipient = username;
+            console.log(currentRecipient)
             getConversation(currentRecipient);
+
             enableInput();
         }
 
@@ -239,7 +289,11 @@
 
             }
         );
-
+        $(document).ready(function () {
+            $('#action_menu_btn').click(function () {
+                $('.action_menu').toggle();
+            });
+        });
 
     </script>
 {% endblock %}

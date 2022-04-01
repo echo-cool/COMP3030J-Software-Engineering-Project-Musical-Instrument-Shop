@@ -1,964 +1,702 @@
+{% extends 'layouts/default/shopper_base.html' %}
+
 {% load static %}
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Index</title>
-{#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
-{#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
-	<link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/bootstrap.min.css" %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/bootstrap-theme.css" %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.carousel.css" %}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.theme.css" %}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/style.css" %}" media="all"/>
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/responsive.css" %}" media="all"/>
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/theme.css" %}" media="all"/>
+{% load i18n %}
+{% load bootstrap4 %}
 
-</head>
-<body class="home-page">
-<div class="wrap">
-	<div id="header">
-		<div class="top-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-sm-5 col-xs-12">
-						<div class="top-support">
-							<ul class="list-inline">
-								<li><a href="#" class="top-support-link">Help </a></li>
-								<li><a href="#" class="top-support-link">Services</a></li>
-								<li><a href="#" class="top-support-link">USD</a></li>
-								<li><a href="#" class="top-support-link"><img src="{% static 'assets/images/home_2/icon-flag.png' %}" alt="" /></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-7 col-xs-12">
-						<div class="top-info">
-							<ul class="list-inline text-right">
-								<li><a href="#" class="top-info-link"><i class="fa fa-user"></i> My Account</a></li>
-								<li><a href="#" class="top-info-link"><i class="fa fa-heart"></i> Wishlist</a></li>
-								<li><a href="#" class="top-info-link"><i class="fa fa-refresh"></i> Compare</a></li>
-								<li><a href="#" class="top-info-link"><i class="fa fa-sign-out"></i> Check out</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="main-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="logo">
-							<a href="index.html"><img src="{% static 'assets/images/home_2/logo.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-6">
-						<div class="phone-info">
-							<label>Call Us Now</label>
-							<h2 class="phone-number">Toll free : (+00) 66 55 819</h2>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-6">
-						<div class="top-cart block-cart box">
-							<a href="#">
-								<h2>shopping Cart</h2>
-								<p>0 Item(s) - $0.00</p>
-							</a>
-							<div class="block-content box-inner">
-								<div class="inner">
-									<p class="block-subtitle">Recently added item(s)</p>
-									<ol class="mini-products-list" id="cart-sidebar">
-										<li class="item odd">
-											<a class="product-image" href="#">
-											<img width="70" height="84" alt="" src="{% static 'assets/images/home_1/img-cart.gif' %}">
-											</a>
-											<a class="btn-remove" href="">X</a>
-											<a class="btn-edit" href="#">Edit</a>
-											<div class="product-details">
-												<p class="product-name">
-													<a href="#">Bath Minerals and Salt</a>
-												</p>
-												<span class="price">$25.00</span>          
-												<strong>1</strong> 
-											</div>
-										</li>
-										<li class="item last even">
-											<a class="product-image" href="#">
-											<img width="70" height="84" alt="" src="{% static 'assets/images/home_1/img-cart.gif' %}">
-											</a>
-											<a class="btn-remove" href="#">X</a>
-											<a class="btn-edit" href="#">Edit</a>
-											<div class="product-details">
-												<p class="product-name">
-													<a href="#">Large Camera Bag</a>
-												</p>
-												<span class="price">$20.00</span>                         
-												<strong>1</strong> 
-											</div>
-										</li>
-									</ol>
-									<div class="summary">
-										<p class="subtotal">
-											<span class="label">Subtotal:</span> 
-											<span class="price">$45.00</span>                                                                        
-										</p>
-									</div>
-									<div class="actions">
-										<div class="a-inner">
-											<a href="#" class="btn-mycart">view my cart</a>
-											<a class="btn-checkout" href="#">Checkout</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="header-nav">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9 col-sm-12 col-xs-2">
-						<nav class="main-nav main-nav2">
-							<ul>
-								<li class="menu-item-has-children">
-									<a href="#" class="active">Home <i class="fa fa-angle-down"></i></a>
-									<ul class="sub-menu">
-										<li><a href="#">Home 1</a></li>
-										<li><a href="#">Home 2</a></li>
-										<li><a href="#">Home 3</a></li>
-										<li><a href="#">List</a></li>
-										<li><a href="#">Grid</a></li>
-										<li><a href="#">Detail</a></li>
-									</ul>
-								</li>
-								<li class="has-mega-menu">
-									<a href="#">Corssbody <i class="fa fa-angle-down"></i></a>
-									<ul class="sub-menu">
-										<li>
-											<div class="wrap-mega-menu">
-												<div class="mega-menu-list-product">
-													<h2 class="title-mega-menu">Collection</h2>
-													<div class="wrap-item">
-                                                        {% for i in ten %}
-														<div class="item">
-															<div class="inner-item">
-																<div class="mega-slide-thumb">
-																	<a href="#"><img src="{% static 'assets/images/product_home1/1.jpg' %}" alt="" /></a>
-																</div>
-																<div class="mega-slide-text">
-																	<span>$45.99</span>
-																	<del>$69.71</del>
-																</div>
-															</div>
-														</div>
-														{% endfor %}
-													</div>
-													<div class="owl-direct-nav">
-														<a class="prev" href="#"><i class="fa fa-arrow-circle-left"></i></a>
-														<a class="next" href="#"><i class="fa fa-arrow-circle-right"></i></a>
-													</div>
-												</div>
-												<!-- End Sub Mega Menu Slide-->
-												<div class="mega-menu-simple-banner text-inner">
-													<div class="mega-menu-simple-thumb">
-														<a href="#"><img src="{% static 'assets/images/home_1/mega-menu-banner.png' %}" alt="" /></a>
-													</div>
-													<div class="mega-menu-simple-text">
-														<p class="simple-text1">big sale on canifa shop</p>
-														<p class="simple-text2">up to<br/>80% off</p>
-													</div>
-												</div>
-												<!-- End Mega Menu Simple Banner -->
-											</div>
-										</li>
-									</ul>
-								</li>
-								<li class="has-mega-menu">
-									<a href="#">Satchel Totes <i class="fa fa-angle-down"></i></a>
-									<ul class="sub-menu">
-										<li>
-											<div class="wrap-mega-menu">
-												<div class="row">
-													<div class="col-md-6 col-sm-6 col-xs-12">
-														<div class="mega-menu-simple-banner text-outer">
-															<div class="mega-menu-simple-thumb">
-																<a href="#"><img src="{% static 'assets/images/home_1/mega-menu-women.png' %}" alt="" /></a>
-															</div>
-															<div class="mega-menu-simple-text">
-																<p class="mega-menu-text-intro"><strong>Women fashion</strong>  <span>|  Lorem ipsum dolor sit amet</span></p>
-															</div>
-														</div>
-														<!-- End Mega Menu Simple Banner -->
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-12">
-														<div class="mega-menu-list-category">
-															<h2>Categories</h2>
-															<ul>
-																<li><a href="#">Tops</a></li>
-																<li><a href="#">Sweaters</a></li>
-																<li><a href="#">Bottoms</a></li>
-																<li><a href="#">Dresses</a></li>
-																<li><a href="#">Coats &amp; Jackets</a></li>
-																<li><a href="#">Scarves</a></li>
-																<li><a href="#">Pants</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-12">
-														<div class="mega-menu-slider-brand">
-															<h2>Style-Brands</h2>
-															<div class="wrap-item">
-                                                                {% for i in three %}
-																<div class="item">
-																	<div class="inner-brand">
-																		<a href="#"><img src="{% static 'assets/images/banner/logo-brand-01.png' %}" alt=""/></a>
-																		<a href="#"><img src="{% static 'assets/images/banner/logo-brand-02.png' %}" alt=""/></a>
-																		<a href="#"><img src="{% static 'assets/images/banner/logo-brand-03.png' %}" alt=""/></a>
-																	</div>
-																</div>
-                                                                {% endfor %}
-															</div>
-															<div class="owl-direct-nav">
-																<a class="prev" href="#"><i class="fa fa-arrow-circle-left"></i></a>
-																<a class="next" href="#"><i class="fa fa-arrow-circle-right"></i></a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children"><a href="#">Kids</a></li>
-								<li class="menu-item-has-children"><a href="#">Accessories</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-							<a href="#" class="btn-mobile-menu"></a>
-						</nav>
-					</div>
-					<div class="col-md-3 col-sm-12 col-xs-10">
-						<div class="search-form search-form2">
-							<input type="text" value="Enter your keyword..." onfocus="if (this.value==this.defaultValue) this.value = ''" onblur="if (this.value=='') this.value = this.defaultValue" />
-							<input type="submit" value="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Header -->
-	<div id="content">
-		<div class="content-top">
-			<div class="container">
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.carousel.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.theme.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/style.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/responsive.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
+
+{% endblock %}
+
+{% block content %}
+
+    <div id="content">
+        <div class="content-top">
+            <div class="container">
 
 
+                <div class=" text-left box-info box-info-1606671744b1519c3f-1"
+                     style="margin-bottom: 26%; margin-top: 10%;">
+                    <div class="box-title1 box-title1-1606671744b1519c3f-1  animated">
 
+                        <h3 class="title-small mb-0" style="color:#ffffff;">STYLE DESTINATION</h3>
 
-            <div class=" text-left box-info box-info-1606671744b1519c3f-1"style="margin-bottom: 26%; margin-top: 10%;" >
-                <div class="box-title1 box-title1-1606671744b1519c3f-1  animated">
+                    </div>
+                    <div class="box-title box-title-1606671744b1519c3f-1 animated">
 
-                  <h3 class="title-small mb-0" style="color:#ffffff;">STYLE DESTINATION</h3>
+                        <h3 class="titlebig mb-0" style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">Starter Drum Kit</h3>
 
-                </div>
-                <div class="box-title box-title-1606671744b1519c3f-1 animated" >
+                    </div>
+                    <div class="box-title2 box-title2-1606671744b1519c3f-1  animated">
 
-                  <h3 class="titlebig mb-0" style="color:#ffffff; line-height: 1;margin-top: 0px;
-margin-bottom: 0px;">Starter Drum Kit</h3>
+                        <h3 class="title-small mb-0" style="color:#ffffff;">Stunning appearance, both inside and
+                            out</h3>
 
-                </div>
-                <div class="box-title2 box-title2-1606671744b1519c3f-1  animated">
+                    </div>
 
-                  <h3 class="title-small mb-0" style="color:#ffffff;">Stunning appearance, both inside and out</h3>
+                    <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all"
+                       style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
+                        SHOP NOW
+                    </a>
 
                 </div>
 
-                <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all" style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
-                  SHOP NOW
-                </a>
 
-              </div>
-
-
-
-				<div class="banner-box-adv">
-					<div class="row">
+                <div class="banner-box-adv">
+                    <div class="row">
                         {% for i in two %}
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="inner-box-banner-adv odd bottom-right">
-								<a href="#" class="banner-adv-thumb-link"><img src="{% static 'assets/images/home_1/ad_01.png' %}" alt="" /></a>
-								<div class="text-adv-intro">
-									<h2>Men’s</h2>
-									<h3>Collection</h3>
-								</div>
-								<div class="box-search-adv">
-									
-								</div>
-								<a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
-								<div class="text-adv-hidden">
-									<p>Many students are cash conteos</p>
-								</div>
-							</div>
-						</div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-right">
+                                    <a href="#" class="banner-adv-thumb-link"><img
+                                            src="{% static 'assets/images/home_1/ad_01.png' %}" alt=""/></a>
+                                    <div class="text-adv-intro">
+                                        <h2>Men’s</h2>
+                                        <h3>Collection</h3>
+                                    </div>
+                                    <div class="box-search-adv">
+
+                                    </div>
+                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
+                                    <div class="text-adv-hidden">
+                                        <p>Many students are cash conteos</p>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
 
-					</div>
-					<div class="row">
-						{% for i in two %}
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="inner-box-banner-adv odd bottom-right">
-								<a href="#" class="banner-adv-thumb-link"><img src="{% static 'assets/images/home_1/ad_02.png' %}" alt="" /></a>
-								<div class="text-adv-intro">
-									<h2>Men’s</h2>
-									<h3>Collection</h3>
-								</div>
-								<div class="box-search-adv">
+                    </div>
+                    <div class="row">
+                        {% for i in two %}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-right">
+                                    <a href="#" class="banner-adv-thumb-link"><img
+                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>
+                                    <div class="text-adv-intro">
+                                        <h2>Men’s</h2>
+                                        <h3>Collection</h3>
+                                    </div>
+                                    <div class="box-search-adv">
 
-								</div>
-								<a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
-								<div class="text-adv-hidden">
-									<p>Many students are cash conteos</p>
-								</div>
-							</div>
-						</div>
+                                    </div>
+                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
+                                    <div class="text-adv-hidden">
+                                        <p>Many students are cash conteos</p>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Content Top -->
-		<div class="new-arrival-product">
-			<div class="container">
-				<div class="title-box-default">
-					<a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
-					<span class="title-tab">New Arrivals</span>
-					<a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
-				</div>
-				<!-- End Title Slider -->
-				<div class="content-product-slider">
-					<div class="wrap-item">
-						<div class="item">
-							<div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Top -->
+        <div class="new-arrival-product">
+            <div class="container">
+                <div class="title-box-default">
+                    <a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
+                    <span class="title-tab">New Arrivals</span>
+                    <a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+                <!-- End Title Slider -->
+                <div class="content-product-slider">
+                    <div class="wrap-item">
+                        <div class="item">
+                            <div class="row">
                                 {% for i in eight %}
-								<div class="col-md-3 col-sm-6 col-xs-12">
-									<div class="item-product">
-										<div class="item-thumb-product">
-											<img src="{% static 'assets/images/product_home1/1.jpg' %}" alt="" class="product-thumb-front" />
-											<img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt="" class="product-thumb-behind" />
-											<div class="info-product-cart">
-												<div class="inner-info-product-cart">
-													<ul>
-														<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-														<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-														<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-													</ul>
-													<a href="#" class="link-product-add-cart">Add to cart</a>
-												</div>
-											</div>
-											<span class="status-product-new">New</span>
-										</div>
-										<div class="item-info-product">
-											<h3><a href="#">Chemise SLimFit</a></h3>
-											<div class="info-product-price">
-												<span>$45.99</span>
-												<del>$69.71</del>
-											</div>
-											<div class="product-rating-star">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-						<!-- End Item -->
-						<div class="item">
-							<div class="row">
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <div class="item-product">
+                                            <div class="item-thumb-product">
+                                                <img src="{% static 'assets/images/product_home1/1.jpg' %}" alt=""
+                                                     class="product-thumb-front"/>
+                                                <img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt=""
+                                                     class="product-thumb-behind"/>
+                                                <div class="info-product-cart">
+                                                    <div class="inner-info-product-cart">
+                                                        <ul>
+                                                            <li><a href="#" class="link-wishlist"><i
+                                                                    class="fa fa-heart"></i></a></li>
+                                                            <li><a href="#" class="link-quick-view"><i
+                                                                    class="fa fa-search"></i></a></li>
+                                                            <li><a href="#" class="link-compare"><i
+                                                                    class="fa fa-external-link-square"></i></a></li>
+                                                        </ul>
+                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                    </div>
+                                                </div>
+                                                <span class="status-product-new">New</span>
+                                            </div>
+                                            <div class="item-info-product">
+                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <div class="info-product-price">
+                                                    <span>$45.99</span>
+                                                    <del>$69.71</del>
+                                                </div>
+                                                <div class="product-rating-star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- End Item -->
+                        <div class="item">
+                            <div class="row">
                                 {% for i in eight %}
-								<div class="col-md-3 col-sm-6 col-xs-12">
-									<div class="item-product">
-										<div class="item-thumb-product">
-											<img src="{% static 'assets/images/product_home1/9.jpg' %}" alt="" class="product-thumb-front" />
-											<img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt="" class="product-thumb-behind" />
-											<div class="info-product-cart">
-												<div class="inner-info-product-cart">
-													<ul>
-														<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-														<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-														<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-													</ul>
-													<a href="#" class="link-product-add-cart">Add to cart</a>
-												</div>
-											</div>
-											<span class="status-product-new">New</span>
-										</div>
-										<div class="item-info-product">
-											<h3><a href="#">Chemise SLimFit</a></h3>
-											<div class="info-product-price">
-												<span>$45.99</span>
-												<del>$69.71</del>
-											</div>
-											<div class="product-rating-star">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Content Slider Product -->
-			</div>
-		</div>
-		<!-- End New Arrival Product -->
-		<div class="banner-grid-adv">
-			<div class="clearfix">
-				<div class="banner-grid-left">
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <div class="item-product">
+                                            <div class="item-thumb-product">
+                                                <img src="{% static 'assets/images/product_home1/9.jpg' %}" alt=""
+                                                     class="product-thumb-front"/>
+                                                <img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt=""
+                                                     class="product-thumb-behind"/>
+                                                <div class="info-product-cart">
+                                                    <div class="inner-info-product-cart">
+                                                        <ul>
+                                                            <li><a href="#" class="link-wishlist"><i
+                                                                    class="fa fa-heart"></i></a></li>
+                                                            <li><a href="#" class="link-quick-view"><i
+                                                                    class="fa fa-search"></i></a></li>
+                                                            <li><a href="#" class="link-compare"><i
+                                                                    class="fa fa-external-link-square"></i></a></li>
+                                                        </ul>
+                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                    </div>
+                                                </div>
+                                                <span class="status-product-new">New</span>
+                                            </div>
+                                            <div class="item-info-product">
+                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <div class="info-product-price">
+                                                    <span>$45.99</span>
+                                                    <del>$69.71</del>
+                                                </div>
+                                                <div class="product-rating-star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Content Slider Product -->
+            </div>
+        </div>
+        <!-- End New Arrival Product -->
+        <div class="banner-grid-adv">
+            <div class="clearfix">
+                <div class="banner-grid-left">
                     {% for i in three %}
-					<div class="wrap-grid-adv-box clearfix">
-						<div class="grid-image-box">
-							<a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt="" /></a>
-						</div>
-						<div class="grid-text-box gray-box">
-							<div class="inner-grid-text-box">
-								<h3>Women’s</h3>
-								<h2>Live style</h2>
-								<h3>Danlien Polosa</h3>
-							</div>
-						</div>
-					</div>
+                        <div class="wrap-grid-adv-box clearfix">
+                            <div class="grid-image-box">
+                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
+                            </div>
+                            <div class="grid-text-box gray-box">
+                                <div class="inner-grid-text-box">
+                                    <h3>Women’s</h3>
+                                    <h2>Live style</h2>
+                                    <h3>Danlien Polosa</h3>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
 
-				</div>
-				<div class="banner-grid-right">
-					<div class="grid-image-box">
-						<a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt="" /></a>
-					</div>
-					<div class="grid-text-box active">
-						<div class="inner-grid-text-box">
-							<h3>Collection</h3>
-							<h2>Jewerly</h2>
-							<h3>For Girl</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Banner Grid Adv -->
-		<div class="new-arrival-product">
-			<div class="container">
-				<div class="title-box-default">
-					<a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
-					<ul class="list-inline list-title-tab nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab">POPULAR</a></li>
-						<li role="presentation"><a href="#seller" aria-controls="seller" role="tab" data-toggle="tab">BEST SELLERS</a></li>
-						<li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">SPECIALS</a></li>
-				    </ul>
-					<a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
-				</div>
-				<!-- End Title Slider -->
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="popular">
-						<div class="content-product-slider">
-							<div class="wrap-item">
-								<div class="item">
-									<div class="row">
+                </div>
+                <div class="banner-grid-right">
+                    <div class="grid-image-box">
+                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
+                    </div>
+                    <div class="grid-text-box active">
+                        <div class="inner-grid-text-box">
+                            <h3>Collection</h3>
+                            <h2>Jewerly</h2>
+                            <h3>For Girl</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Grid Adv -->
+        <div class="new-arrival-product">
+            <div class="container">
+                <div class="title-box-default">
+                    <a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
+                    <ul class="list-inline list-title-tab nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#popular" aria-controls="popular" role="tab"
+                                                                  data-toggle="tab">POPULAR</a></li>
+                        <li role="presentation"><a href="#seller" aria-controls="seller" role="tab" data-toggle="tab">BEST
+                            SELLERS</a></li>
+                        <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">SPECIALS</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+                <!-- End Title Slider -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="popular">
+                        <div class="content-product-slider">
+                            <div class="wrap-item">
+                                <div class="item">
+                                    <div class="row">
                                         {% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/1.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-													<span class="status-product-new">New</span>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										{% endfor %}
-									</div>
-								</div>
-								<!-- End Item -->
-								<div class="item">
-									<div class="row">
-										{% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/21.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/21-21.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-													<span class="status-product-new">New</span>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/1.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/1-1.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="status-product-new">New</span>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {% endfor %}
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End Content Slider Product -->
-					</div>
-					<div role="tabpanel" class="tab-pane" id="seller">
-						<div class="content-product-slider">
-							<div class="wrap-item">
-								<div class="item">
-									<div class="row">
+                                    </div>
+                                </div>
+                                <!-- End Item -->
+                                <div class="item">
+                                    <div class="row">
                                         {% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/9.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-													<span class="status-product-new">New</span>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										{% endfor %}
-									</div>
-								</div>
-								<!-- End Item -->
-								<div class="item">
-									<div class="row">
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/21.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/21-21.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="status-product-new">New</span>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Content Slider Product -->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="seller">
+                        <div class="content-product-slider">
+                            <div class="wrap-item">
+                                <div class="item">
+                                    <div class="row">
                                         {% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/18-18.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/18-18.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/9.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/9-9.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="status-product-new">New</span>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- End Item -->
+                                <div class="item">
+                                    <div class="row">
+                                        {% for i in eight %}
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/18-18.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/18-18.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {% endfor %}
 
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End Content Slider Product -->
-					</div>
-					<div role="tabpanel" class="tab-pane" id="special">
-						<div class="content-product-slider">
-							<div class="wrap-item">
-								<div class="item">
-									<div class="row">
-										{% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/18-18.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/18-18.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Content Slider Product -->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="special">
+                        <div class="content-product-slider">
+                            <div class="wrap-item">
+                                <div class="item">
+                                    <div class="row">
+                                        {% for i in eight %}
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/18-18.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/18-18.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {% endfor %}
-									</div>
-								</div>
-								<div class="item">
-									<div class="row">
-										{% for i in eight %}
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<div class="item-product">
-												<div class="item-thumb-product">
-													<img src="{% static 'assets/images/product_home1/18.jpg' %}" alt="" class="product-thumb-front" />
-													<img src="{% static 'assets/images/product_home1/18-18.jpg' %}" alt="" class="product-thumb-behind" />
-													<div class="info-product-cart">
-														<div class="inner-info-product-cart">
-															<ul>
-																<li><a href="#" class="link-wishlist"><i class="fa fa-heart"></i></a></li>
-																<li><a href="#" class="link-quick-view"><i class="fa fa-search"></i></a></li>
-																<li><a href="#" class="link-compare"><i class="fa fa-external-link-square"></i></a></li>
-															</ul>
-															<a href="#" class="link-product-add-cart">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="item-info-product">
-													<h3><a href="#">Chemise SLimFit</a></h3>
-													<div class="info-product-price">
-														<span>$45.99</span>
-														<del>$69.71</del>
-													</div>
-													<div class="product-rating-star">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
-														<i class="fa fa-star-o"></i>
-													</div>
-												</div>
-											</div>
-										</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+                                        {% for i in eight %}
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="item-product">
+                                                    <div class="item-thumb-product">
+                                                        <img src="{% static 'assets/images/product_home1/18.jpg' %}"
+                                                             alt="" class="product-thumb-front"/>
+                                                        <img src="{% static 'assets/images/product_home1/18-18.jpg' %}"
+                                                             alt="" class="product-thumb-behind"/>
+                                                        <div class="info-product-cart">
+                                                            <div class="inner-info-product-cart">
+                                                                <ul>
+                                                                    <li><a href="#" class="link-wishlist"><i
+                                                                            class="fa fa-heart"></i></a></li>
+                                                                    <li><a href="#" class="link-quick-view"><i
+                                                                            class="fa fa-search"></i></a></li>
+                                                                    <li><a href="#" class="link-compare"><i
+                                                                            class="fa fa-external-link-square"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a href="#" class="link-product-add-cart">Add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product">
+                                                        <h3><a href="#">Chemise SLimFit</a></h3>
+                                                        <div class="info-product-price">
+                                                            <span>$45.99</span>
+                                                            <del>$69.71</del>
+                                                        </div>
+                                                        <div class="product-rating-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {% endfor %}
-									</div>
-								</div>
-								<!-- End Item -->
-							</div>
-						</div>
-						<!-- End Content Slider Product -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Slider Product Tab -->
-		<div class="news-scroll">
-			<div class="container">
-				<h2 class="title-news-scroll">latest news</h2>
-				<div class="content-news-scroll">
-					<div class="row">
+                                    </div>
+                                </div>
+                                <!-- End Item -->
+                            </div>
+                        </div>
+                        <!-- End Content Slider Product -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Slider Product Tab -->
+        <div class="news-scroll">
+            <div class="container">
+                <h2 class="title-news-scroll">latest news</h2>
+                <div class="content-news-scroll">
+                    <div class="row">
                         {% for i in eight %}
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
-								<div class="item-news">
-									<div class="item-news-thumb">
-										<div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>18 Dec, 2016 </span></div>
-										<a href="#" class="news-thumb-link">
-											<img src="{% static 'assets/images/home_2/news3.png' %}" alt="" />
-										</a>
-									</div>
-									<div class="item-news-info">
-										<h3><a href="#">Quam tortor eleifend etE neque eget</a></h3>
-										<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut labore et dolore magna aliqua. Etiam non neque eros cetquis benlater</p>
-										<span>Jane Doe - Stylish Manager</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End News Scroll -->
-		<div class="category-leading">
-			<div class="container">
-				<div class="thumb-category-leading">
-					<a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>
-					<div class="text-category-leading">
-						<span>New</span>
-						<h2>Collection</h2>
-					</div>
-				</div>
-				<div class="content-category-leading">
-					{% for i in ten %}
-                    <div class="item-product-category-leading">
-						<div class="item-thumb-product">
-							<a class="product-thumb-link" href="#">
-								<img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">
-							</a>
-							<div class="leading-info-product-cart">
-								<a class="product-thumb-link" href="#">
-									<img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">
-								</a>
-								<div class="info-product-cart">
-									<div class="inner-info-product-cart">
-										<ul>
-											<li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a></li>
-											<li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a></li>
-											<li><a class="link-compare" href="#"><i class="fa fa-external-link-square"></i></a></li>
-										</ul>
-										<a class="link-product-add-cart" href="#">Add to cart</a>
-										<div class="info-product-price">
-											<span>$489.99</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-		<!-- End Category Leading -->
-		<div class="custom-services">
-			<div class="container">
-				<div class="title-box-default">
-					<h2><span class="title-tab">custom services</span></h2>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="item-service-box">
-							<h3>idea Design</h3>
-							<a href="#" class="item-service-link"><img src="{% static 'assets/images/home_1/icon_pen.png' %}" alt="" /></a>
-							<p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="item-service-box">
-							<h3>Confection</h3>
-							<a href="#" class="item-service-link"><img src="{% static 'assets/images/home_1/icon_keo.png' %}" alt="" /></a>
-							<p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="item-service-box">
-							<h3>Confection</h3>
-							<a href="#" class="item-service-link"><img src="{% static 'assets/images/home_1/icon_camera.png' %}" alt="" /></a>
-							<p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras. </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Custom Services -->
-		<div class="from-our-blog">
-			<div class="container">
-				<div class="title-box-default white-arrow-style">
-					<h2><span class="title-tab">FROM OUR BLOG</span></h2>
-				</div>
-				<div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
+                                    <div class="item-news">
+                                        <div class="item-news-thumb">
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>18 Dec, 2016 </span>
+                                            </div>
+                                            <a href="#" class="news-thumb-link">
+                                                <img src="{% static 'assets/images/home_2/news3.png' %}" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="item-news-info">
+                                            <h3><a href="#">Quam tortor eleifend etE neque eget</a></h3>
+                                            <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut
+                                                labore et dolore magna aliqua. Etiam non neque eros cetquis benlater</p>
+                                            <span>Jane Doe - Stylish Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End News Scroll -->
+        <div class="category-leading">
+            <div class="container">
+                <div class="thumb-category-leading">
+                    <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>
+                    <div class="text-category-leading">
+                        <span>New</span>
+                        <h2>Collection</h2>
+                    </div>
+                </div>
+                <div class="content-category-leading">
+                    {% for i in ten %}
+                        <div class="item-product-category-leading">
+                            <div class="item-thumb-product">
+                                <a class="product-thumb-link" href="#">
+                                    <img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">
+                                </a>
+                                <div class="leading-info-product-cart">
+                                    <a class="product-thumb-link" href="#">
+                                        <img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">
+                                    </a>
+                                    <div class="info-product-cart">
+                                        <div class="inner-info-product-cart">
+                                            <ul>
+                                                <li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a>
+                                                </li>
+                                                <li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a>
+                                                </li>
+                                                <li><a class="link-compare" href="#"><i
+                                                        class="fa fa-external-link-square"></i></a></li>
+                                            </ul>
+                                            <a class="link-product-add-cart" href="#">Add to cart</a>
+                                            <div class="info-product-price">
+                                                <span>$489.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- End Category Leading -->
+        <div class="custom-services">
+            <div class="container">
+                <div class="title-box-default">
+                    <h2><span class="title-tab">custom services</span></h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>idea Design</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
+                                yoleacene anritv antacus.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>Confection</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
+                                Santac us uisque nuaderas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>Confection</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
+                                Santacus isque nulladeras. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Custom Services -->
+        <div class="from-our-blog">
+            <div class="container">
+                <div class="title-box-default white-arrow-style">
+                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>
+                </div>
+                <div class="row">
                     {% for i in six %}
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="item-our-blog">
-							<div class="our-blog-thumb">
-								<a href="#">
-									<img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt="" />
-								</a>
-							</div>
-							<div class="our-blog-info">
-								<div class="inner-our-blog-info">
-									<span>Jun 23 2014</span>
-									<h3><a href="#">Cupidatat none proident amet</a></h3>
-									<span>9 Comments</span>
-									<div class="post-extra-link">
-										<a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}" alt="" /></a>
-										<a href="#"><i class="fa fa-link"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-		<!-- End From our blog -->
-	</div>
-	<!-- End Content -->
-	<footer id="footer">
-		<div class="footer-newsletter">
-			<div class="container">
-				<div class="newsletter-intro">
-					<span class="envalope-icon"><i class="fa fa-envelope-o"></i></span>
-					<p>SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br/>UPDATES, AND ANOTHER STUFF BY EMAIL.</p>
-				</div>
-				<div class="newsletter-form">
-					<form method="post">
-						<input type="text" name="newsletter" value="Enter your email..." onfocus="if (this.value==this.defaultValue) this.value = ''" onblur="if (this.value=='') this.value = this.defaultValue"  />
-						<input type="submit" value="subscribe" />
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- End Newsletter -->
-		<div class="footer-quick-search">
-			<div class="container">
-				<div class="content-quick-search">
-					<label>Quick link:</label>
-					<a href="#">#</a>     
-					<a href="#">A</a>        
-					<a href="#">B</a>
-					<a href="#">C</a>
-					<a href="#">D</a>
-					<a href="#">E</a>
-					<a href="#">F</a>
-					<a href="#">G</a>
-					<a href="#">H</a>
-					<a href="#">I</a>
-					<a href="#">J</a>
-					<a href="#">K</a>
-					<a href="#">L</a>
-					<a href="#">M</a>
-					<a href="#">N</a>
-					<a href="#">O</a>
-					<a href="#">P</a>
-					<a href="#">Q</a>
-					<a href="#">R</a>
-					<a href="#">S</a>
-					<a href="#">U</a>
-					<a href="#">V</a>
-					<a href="#">W</a>
-					<a href="#">X</a>
-					<a href="#">Y</a>
-					<a href="#">Z</a>
-				</div>
-			</div>
-		</div>
-		<!-- End Quick Search -->
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2 col-sm-6 col-xs-12">
-						<div class="logo-footer"><a href="#"><img src="{% static 'assets/images/home_1/logo.png' %}" alt="" /></a></div>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="copy-right">
-							<p>© 2015        <a href="#" class="privacy-policy">Privacy Policy</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="contact-footer">
-							<p>My Company , Glasgow D04 89GR<br/>Call us now: 800-2345-6789</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="social-footer">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-							<a href="#"><i class="fa fa-rss"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End Footer -->
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/modernizr.custom.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
-	<script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
-</div>	
-</body>
-</html>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="item-our-blog">
+                                <div class="our-blog-thumb">
+                                    <a href="#">
+                                        <img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt=""/>
+                                    </a>
+                                </div>
+                                <div class="our-blog-info">
+                                    <div class="inner-our-blog-info">
+                                        <span>Jun 23 2014</span>
+                                        <h3><a href="#">Cupidatat none proident amet</a></h3>
+                                        <span>9 Comments</span>
+                                        <div class="post-extra-link">
+                                            <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"
+                                                             alt=""/></a>
+                                            <a href="#"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- End From our blog -->
+    </div>
+
+{% endblock %}
