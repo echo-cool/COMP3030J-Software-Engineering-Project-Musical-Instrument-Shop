@@ -1,0 +1,257 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+{% endblock %}
+
+{% block content %}
+
+    <div class="main-content shopping-cart">
+        <form method="POST" action="/checkout/">
+            {% csrf_token %}
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Shopping cart</li>
+                </ul>
+                <div class="title-product">
+                    <h3>Shopping Cart</h3>
+                </div>
+                <!-- End title product -->
+                <table class="table space-80">
+                    <thead>
+                    <tr>
+                        <th class="product-photo">Product Photo</th>
+                        <th class="produc-name">Product Name</th>
+                        <th class="description">Description</th>
+                        <th class="product-price">Price</th>
+                        <th class="product-quantity">Quantity</th>
+                        <th class="total-price">Total price</th>
+                        <th class="product-remove"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if carts %}
+                        {% for cart in carts %}
+                            <tr id="cart-{{ forloop.counter }}" class=" item_cart cart_item_single"
+                                data-id="{{ cart.id }}"
+                                data-price="{{ cart.instrument.price }}">
+                                <td class="product-photo">
+                                    <div class="thumb_cart">
+                                        <img src="{{ cart.instrument.image.url }}"
+                                             data-src="{{ cart.instrument.image.url }}" class="lazy" alt="Image">
+                                    </div>
+                                </td>
+                                <td class="produc-name"><a href="#" title="">
+                                    <span class="item_cart">{{ cart.instrument.name }}</span>
+                                </a></td>
+                                <td class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </td>
+                                <td class="product-price">
+                                    <strong id="price-{{ forloop.counter }}"
+                                            class="price"> {{ cart.instrument.price }} </strong>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="numbers-row">
+                                        <input type="text" value="{{ cart.count }}" id="quantity-input"
+                                               class="qty2" data-id="{{ cart.id }}">
+                                        <div class="inc button_inc" data-id="{{ cart.id }}">
+                                            +
+                                        </div>
+                                        <div class="dec button_inc" data-id="{{ cart.id }}">
+                                            -
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="total-price"><strong id="total-input"
+                                                                class="subtotal"> {{ cart.total_money }} </strong>
+                                </td>
+                                <td class="product-remove options">
+                                    <a>
+                                        <i id="remove-button" class="ti-trash" data-id="{{ cart.id }}"
+                                           data-count="{{ forloop.counter }}"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+                <div class="shipping-total">
+                    <div class="col-md-4 caculate-shipping">
+                        <div class="title-product">
+                            <h3>Caculate shipping</h3>
+                        </div>
+                        <div class="contact-form">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class=" control-label" for="inputconttry">Select your Counttry</label>
+                                    <input type="text" class="form-control" id="inputconttry"
+                                           placeholder="United States (USA)...">
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputstate" class="control-label">Select your State</label>
+                                        <select id="inputstate" class="form-control inputstate">
+                                            <option value="">State / City...</option>
+                                            <option value="City1">City1</option>
+                                            <option value="City2">City2</option>
+                                            <option value="City3">City3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class=" control-label" for="inputzipcode">Zip Code</label>
+                                        <input type="text" class="form-control" id="inputzipcode"
+                                               placeholder="Zip code...">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">Update
+                                        Shipping
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End contact form -->
+                    </div>
+                    <!-- End col-md-4 -->
+                    <div class="col-md-4 coupon">
+                        <div class="title-product">
+                            <h3>Coupon code</h3>
+                        </div>
+                        <p>
+                            You can find coupon code from our Activities !
+                        </p>
+                        <div class="contact-form">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    {#                                    <label class=" control-label" for="inputfname">Coupon code</label>#}
+                                    <input type="text" class="form-control" id="inputfname"
+                                           placeholder="Enter your Coupon code...">
+                                </div>
+                                <div class="form-group">
+                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">REdeem
+                                        code
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End col-md-4 -->
+                    <div class="col-md-4 cart-totals text-price">
+                        <div class="title-product">
+                            <h3>Cart totals</h3>
+                        </div>
+                        <ul>
+                            <li id="subtotal-all"><span class="text">Cart Subtotal</span><span
+                                    class="number">$ 1,990.00</span></li>
+                            <li><span class="text">Shipping and Handling</span><span
+                                    class="number">$ 50.00</span></li>
+                            <li id="all-total"><span class="text">Cart Totals</span><span
+                                    class="number">$ 2,040.00</span></li>
+                        </ul>
+                        <button class="btn link-button" href="#" title="Proceed to checkout">Proceed to checkout
+                        </button>
+                    </div>
+                    <!-- End col-md-4 -->
+                </div>
+                <!-- End shipping-total -->
+            </div>
+            <!-- End conainer -->
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block foot_link %}
+
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script>
+        function update_total_money() {
+            let cart_items = $(".cart_item_single");
+            let all_total_money = 0;
+            for (let i = 0; i < cart_items.length; i++) {
+                let cart_item = cart_items[i];
+                let id = cart_item.getAttribute("data-id");
+                let price = cart_item.getAttribute("data-price");
+                let quantity = $(cart_item).find("#quantity-input").val();
+                console.log(id, price, quantity);
+                let total_money = price * quantity;
+                $(cart_item).find("#total-input").text(total_money.toFixed(1));
+                all_total_money += total_money;
+                {#let total_money_element = document.getElementById("total-" + id);#}
+                {#total_money_element.innerHTML = total_money;#}
+            }
+
+
+            $("#subtotal-all").html("<span class=\"text\">Cart Subtotal</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
+            $("#all-total").html("<span class=\"text\">Cart Totals</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
+        }
+
+        $(document).ready(function () {
+            update_total_money();
+            $(".button_inc").on("click", function () {
+                let id = $(this)[0].getAttribute("data-id");
+                let quantity = $(this).parent().find("#quantity-input").val();
+                $.ajax({
+                    url: "/api/cart/" + id + "/",
+                    type: "PATCH",
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    data: {
+                        "count": quantity
+                    },
+                    success: function (data) {
+                        update_total_money();
+                    }
+                });
+
+            });
+            $(".qty2").on("input", function () {
+                let id = $(this)[0].getAttribute("data-id");
+                let quantity = $(this).parent().find("#quantity-input").val();
+                $.ajax({
+                    url: "/api/cart/" + id + "/",
+                    type: "PATCH",
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    data: {
+                        "count": quantity
+                    },
+                    success: function (data) {
+                        update_total_money();
+                    }
+                });
+            });
+
+            $(".ti-trash").on("click", function () {
+                {# Use API to remove cart item #}
+                let that = this;
+                $.ajax({
+                    url: "/api/cart/" + $(this).attr("data-id"),
+                    type: "DELETE",
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    success: function (data) {
+                        console.log($("#cart-" + $(that).attr("data-count")))
+                        $("#cart-" + $(that).attr("data-count")).remove();
+                        update_total_money();
+                    }
+                });
+            });
+        });
+
+
+    </script>
+{% endblock %}
