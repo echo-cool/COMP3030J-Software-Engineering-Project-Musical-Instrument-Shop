@@ -7,7 +7,7 @@
 {% block head_link %}
     <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    {#    <link rel="preconnect" href="https://fonts.googleapis.com">#}
 {% endblock %}
 
 {% block content %}
@@ -74,9 +74,10 @@
                                                                 class="subtotal"> {{ cart.total_money }} </strong>
                                 </td>
                                 <td class="product-remove options">
-                                    <a>
+                                    <a style="cursor: pointer;">
                                         <i id="remove-button" class="ti-trash" data-id="{{ cart.id }}"
-                                           data-count="{{ forloop.counter }}"></i>
+                                           data-count="{{ forloop.counter }}">
+                                        </i>
                                     </a>
                                 </td>
                             </tr>
