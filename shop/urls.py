@@ -4,7 +4,7 @@ from .views import model_view, index, cart, product_details, model_design, leave
     product_details_test_model, wishlist, personal_profile, \
     checkout, confirm, model_design2, home, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    product_add_cart, about, game, cart2
+    product_add_cart, about, game, cart2, wishlist2
 
 app_name = 'shop'
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path("product_search/", product_search, name='product_search'),
     path("category/<str:category_id>", category_view, name='category_view'),
     path('wishlist/', wishlist, name='wishlist'),
+    path('wishlist2/', wishlist2, name='wishlist2'),
     path('orders/', orders, name='orders'),
     path('home', home, name='home'),
     path('about', about, name='about'),
