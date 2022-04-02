@@ -8,22 +8,22 @@ pipeline {
     stages {
         stage('Pre-Tesks') { 
             steps {
-                sh 'ls' 
+                sh 'pip install -r 	requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple' 
             }
         }
         stage('Build') { 
             steps {
-                sh 'ls' 
+                sh 'python manage.py' 
             }
         }
         stage('Test') { 
             steps {
-                sh 'ls' 
+                sh 'python manage.py test' 
             }
         }
         stage('Post-Tasks') { 
             steps {
-                sh 'ls' 
+                sh 'echo Done' 
             }
         }
     }
