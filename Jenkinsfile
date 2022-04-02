@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'registry.cn-hangzhou.aliyuncs.com/acs/python:3.9' 
+            image '8dtbzru4.mirror.aliyuncs.com/python:3.9' 
             args '-v /root/.m2:/root/.m2' 
         }
     }
