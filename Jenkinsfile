@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Post-Tasks') { 
             steps {
-                sh 'echo Done' 
+                sh 'echo Done!' 
             }
         }
     }
