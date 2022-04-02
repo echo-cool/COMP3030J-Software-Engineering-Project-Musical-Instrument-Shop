@@ -116,7 +116,7 @@ def leave_review(request, instrument_id):
             messages.error(request, "Error submitting review")
             return redirect(reverse('product-details', args=[instrument_id]))
 
-    return render(request, 'shop_templates/leave-review.html',{
+    return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form
     })
@@ -321,6 +321,20 @@ def cart(request):
         for each_cart in carts:
             each_cart.total_money = each_cart.count * each_cart.instrument.price
         return render(request, 'shop_templates/cart.html', {
+            "carts": carts,
+        })
+    else:
+        return redirect('accounts:log_in')
+
+
+@login_required
+def cart2(request):
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+        each_cart = {}
+        for each_cart in carts:
+            each_cart.total_money = each_cart.count * each_cart.instrument.price
+        return render(request, 'shop_templates/cart2.html', {
             "carts": carts,
         })
     else:
