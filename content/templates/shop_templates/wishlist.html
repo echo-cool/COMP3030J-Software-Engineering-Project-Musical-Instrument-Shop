@@ -7,16 +7,30 @@
 {% block head_link %}
     <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sofia" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
 {% endblock %}
 
 {% block content %}
+    <div class="wrap-bread-crumb breadcrumb_collection2">
+        <div class="text-center bg-breadcrumb"
+             style="background-image : url({% static '/assets/img_for_shop/banner_wishlist.jpg' %})">
+            <div class="title-page">
+                <h2 class="">Wishlist</h2>
+            </div>
+            <div class="bread-crumb">
+                <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <strong>Your Wishlist</strong>
+            </div>
+        </div>
+    </div>
     <div class="main-content wishlist">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Shopping cart</li>
+                {#                <li><a href="#">Home</a></li>#}
+                {#                <li class="active">Shopping cart</li>#}
             </ul>
             <div class="title-product">
                 <h3>Your wishlist</h3>
