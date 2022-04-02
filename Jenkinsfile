@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image '8dtbzru4.mirror.aliyuncs.com/python:3.9' 
+            image 'python:3.9-buster' 
             args '-v /root/.m2:/root/.m2' 
         }
     }
