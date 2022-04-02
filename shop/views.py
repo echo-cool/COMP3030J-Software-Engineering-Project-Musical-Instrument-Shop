@@ -186,12 +186,6 @@ def wishlist(request):
     return render(request, 'shop_templates/wishlist.html', {
         "wishlists": wishlists,
     })
-@login_required
-def wishlist2(request):
-    wishlists = Wishlist.objects.filter(user=1)
-    return render(request, 'shop_templates/wishlist2.html', {
-        "wishlists": wishlists,
-    })
 
 
 @login_required
