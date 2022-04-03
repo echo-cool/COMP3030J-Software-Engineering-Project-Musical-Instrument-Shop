@@ -15,9 +15,9 @@ $(document).ready(function(){
 
  $(function () {
 
- 	echarts_1();
- 	echarts_2();
- 	echarts_3();
+ 	// echarts_1();
+ 	// echarts_2();
+ 	// echarts_3();
 
  	function echarts_1() {
  		var myChart = echarts.init(document.getElementById('echart1'));

@@ -9,7 +9,7 @@
     var ___=window;
     //模板
     var $defaultTitle=["距离","开始","还有"];
-    var $template="<span class=\"active-time pull-right\"><em class=\"time_d sd\"></em><span class=\"sd\">天</span><em class=\"time_h sh\"></em><span class=\"sh\">时</span><em class=\"time_m sm\"></em><span class=\"sm\">分</span><em class=\"time_s\"></em>秒";
+    var $template="<span class=\"active-time pull-right\"><em class=\"time_d sd\"></em><span class=\"sd\"> D </span><em class=\"time_h sh\"></em><span class=\"sh\"> H </span><em class=\"time_m sm\"></em><span class=\"sm\"> M </span><em class=\"time_s\"></em> S ";
 
     //事件
     var events={
