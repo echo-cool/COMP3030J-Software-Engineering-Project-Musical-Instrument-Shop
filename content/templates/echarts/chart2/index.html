@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Data Visualization System</title>
+
+    <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/assets/echarts_static/chart2/css/comon0.css">
+    <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/echarts.min.js"></script>
+    <script src="/static/assets/echarts_static/chart2/js/jquery.liMarquee.js"></script>
+    <script language="JavaScript" src="/static/assets/echarts_static/chart2/js/js.js"></script>
+    <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.countup.min.js"></script>
+    <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.waypoints.min.js"></script>
+    <script src="/static/assets/echarts_static/chart2/js/countDown.js"></script>
+    <style>
+        .new-font{
+            font-family: "Sofia", Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="loading">
+    <div class="loadbox"><img src="images/loading.gif">Loading...</div>
+</div>
+<div class="head">
+    <h1><a class="new-font">Data Visualization System</a></h1>
+</div>
+<div class="mainbox">
+    <ul class="clearfix">
+        <li>
+            <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
+                <div class="tit04 new-font">Users</div>
+                <div class="boxnav nav04">
+
+                    <div class="listhead listhead2">
+                        <span class="new-font">Username</span>
+                        <span class="new-font">Active</span>
+                        <span class="new-font">Date Joined</span>
+
+                    </div>
+
+                    <div class="listnav listnav2 scrollDiv">
+
+                        <ul class="smjl">
+                            {% for user in users %}
+                                <li>
+                                    <span>{{ user.username }}</span>
+                                    <span class="text-green">{{ user.is_active }}</span>
+                                    <span>{{ user.date_joined | date:"Y/m/d" }}</span>
+
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="boxfoot"></div>
+            </div>
+
+        </li>
+        <li>
+
+            <div class="boxall" style="height:calc(33.33333% - .25rem)">
+                <div class="tit02 new-font">Order</div>
+                <div class="boxnav nav02">
+                    <div>
+                        <p class="p1 new-font">All Order Count</p>
+                        <p class="p2 new-font"><span class="counter">{{ order_count }}</span></p>
+                        <p class="p3 new-font">
+                            <span class="new-font"><i class="dot dot1 new-font"></i>Pending：{{ OrderDeliveredRatio.notDelivered }}</span>
+                            <span class="new-font"><i class="dot dot2 new-font"></i>Delivered：{{ OrderDeliveredRatio.delivered }}</span>
+                        </p></div>
+                </div>
+                <div class="boxfoot"></div>
+            </div>
+            <div class="boxall" style="height:calc(66.666666% - .25rem)">
+                <div class="tit03 new-font">Orders</div>
+                <div class="boxnav nav03">
+
+                    <div class="listhead listhead1">
+                        <span class="new-font">Order Date</span>
+                        <span class="new-font">By</span>
+                        <span class="new-font">City</span>
+                        <span class="new-font">Phone</span>
+                        <span class="new-font">Address</span>
+                        <span class="new-font">Status</span>
+                    </div>
+                    <div class="listnav listnav1 scrollDiv">
+                        <ul>
+                            {% for order in orders %}
+                                <li>
+                                    <span>{{ order.created_at | date:"Y/m/d" }}</span>
+                                    <span>{{ order.user.username }}</span>
+                                    <span>{{ order.city }}</span>
+                                    <span>{{ order.telephone }}</span>
+                                    <span>{{ order.full_address | truncatechars:20 }}</span>
+                                    {% if order.delivery_confirmed %}
+                                        <span class="text-green">Delivered</span>
+                                    {% else %}
+                                        {% if order.shopper_confirmed %}
+                                            <span class="text-green">Shipping</span>
+                                        {% else %}
+                                            <span class="text-red">Pending</span>
+                                        {% endif %}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="boxfoot"></div>
+            </div>
+        </li>
+        <li>
+            <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
+                <div class="tit04 new-font" >Instruments</div>
+                <div class="boxnav nav04">
+
+                    <div class="listhead listhead2">
+                        <span class="new-font">Name</span>
+                        <span class="new-font">Price</span>
+                        <span class="new-font">Created At</span>
+
+                    </div>
+
+                    <div class="listnav listnav2 scrollDiv">
+
+                        <ul class="smjl">
+                            {% for instrument in instruments %}
+                                <li>
+                                    <span>{{ instrument.name }}</span>
+                                    <span class="text-green">{{ instrument.price }}</span>
+                                    <span>{{ instrument.created_at | date:"Y/m/d" }}</span>
+
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="boxfoot"></div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    $('.counter').countUp();
+
+    $(function () {
+        $('.scrollDiv').liMarquee({
+            direction: 'up',//身上滚动
+            runshort: false,//内容不足时不滚动
+            scrollamount: 20//速度
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $("input[name='countDown']").each(function () {
+        var time_end = this.value;
+        var con = $(this).next("span");
+        var _ = this.dataset;
+        countDown(con, {
+            time_end: time_end//开始时间
+        })
+            //提供3个事件分别为:启动,重启,停止
+            .on("countDownStarted countDownRestarted  countDownEnded ", function (arguments) {
+                console.info(arguments);
+            });
+    });
+
+</script>
+</body>
+</html>

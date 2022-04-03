@@ -27,6 +27,7 @@ urlpatterns = [
     path('blog/', include('blog.urls'), name="blog"),
 
     path('chat/', include('chat.urls'), name="chat"),
+    path('echarts/', include('echarts.urls'), name="echarts"),
 
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
