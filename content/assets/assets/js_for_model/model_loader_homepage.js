@@ -72,28 +72,28 @@ function modelLoadLeftAndRight(box_selector, model_name) {
 
         scene.add(new THREE.AmbientLight(0xffffff));
 
-        let light = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light = new THREE.DirectionalLight(0xffffff, 0.2);
         light.position.set(1, 1, 1);
         scene.add(light);
-        let light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light2 = new THREE.DirectionalLight(0xffffff, 0.2);
         light2.position.set(1, 1, -1);
         scene.add(light2);
-        let light3 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light3 = new THREE.DirectionalLight(0xffffff, 0.2);
         light3.position.set(1, -1, 1);
         scene.add(light3);
-        let light4 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light4 = new THREE.DirectionalLight(0xffffff, 0.2);
         light4.position.set(-1, 1, 1);
         scene.add(light4);
-        let light5 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light5 = new THREE.DirectionalLight(0xffffff, 0.2);
         light5.position.set(-1, 1, -1);
         scene.add(light5);
-        let light6 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light6 = new THREE.DirectionalLight(0xffffff, 0.2);
         light6.position.set(-1, -1, 1);
         scene.add(light6);
-        let light7 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light7 = new THREE.DirectionalLight(0xffffff, 0.2);
         light7.position.set(1, -1, -1);
         scene.add(light7)
-        let light8 = new THREE.DirectionalLight(0xffffff, 0.5);
+        let light8 = new THREE.DirectionalLight(0xffffff, 0.2);
         light8.position.set(-1, -1, -1);
         scene.add(light8);
 
