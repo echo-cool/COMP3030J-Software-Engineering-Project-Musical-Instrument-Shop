@@ -64,8 +64,10 @@
                 <div class="card">
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
-                            <div class="img_cont">
-                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                            <div class="img_cont head">
+
+                                <img id="user-image"
+                                     style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
                                      src="/media/{{ request.user.profile.image }}"
                                      alt="{{ request.user.username }}'s Photo"/>
                                 <span class="online_icon"></span>
@@ -135,6 +137,23 @@
         let chat_with;
         let chat_with_current;
 
+        function select(id) {
+            $('.active').removeClass('active');
+            let selected = event.target;
+            console.log(selected);
+            $(selected).addClass('active');
+            chat_with_current = $(selected).attr('value');
+            setCurrentRecipient(chat_with_current);
+            $('#chat_with').text(chat_with_current);
+            $.getJSON(`../api/user/${id}`, function (user) {
+                $.getJSON(`../api/profile/${user.id}`, function (profile) {
+                    console.log(profile);
+                    $('#user-image').attr('src', profile.image);
+                    $('#user-image').attr('alt', profile.name);
+                });
+            });
+        }
+
         function updateUserList() {
             $.getJSON('/api/user/', function (data) {
                 userList.children('.user').remove();
@@ -142,7 +161,7 @@
                     $.getJSON('/api/profile/', function (profile) {
                         const userItem = `
 
-                        <li class="user" value=${data[i]['username']}>
+                        <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
 							<div class="d-flex bd-highlight" style="pointer-events: none">
 								<div class="img_cont">
 									<img src=${profile[i]['image']} class="rounded-circle user_img">
@@ -160,19 +179,20 @@
                     })
 
                 }
-                $('.user').click(function () {
-                    $('.active').removeClass('active');
-                    let selected = event.target;
-                    console.log(selected);
-                    $(selected).addClass('active');
-                    chat_with_current = $(selected).attr('value');
-                    setCurrentRecipient(chat_with_current);
-                    $('#chat_with').text(chat_with_current);
-                });
+                {#$('.user').click(function () {#}
+                {#    $('.active').removeClass('active');#}
+                {#    let selected = event.target;#}
+                {#    console.log(selected);#}
+                {#    $(selected).addClass('active');#}
+                {#    chat_with_current = $(selected).attr('value');#}
+                {#    setCurrentRecipient(chat_with_current);#}
+                {#    $('#chat_with').text(chat_with_current);});#}
+
+
             });
         }
 
-        function drawMessage(message) {
+        function drawMessage(message, user) {
             let position = 'start';
             let position_new = 'cleft';
             let messageItem = '';
@@ -192,10 +212,10 @@
                                      alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
-                messageItem = `
+                    messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
                 <div class="img_cont_msg">
-					<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+					<img src="/media/{{ request.user.profile.image }}" class="rounded-circle user_img_msg">
 				</div>
 				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
@@ -218,7 +238,7 @@
                     chat_history = data['results'].length;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
-                        drawMessage(data['results'][i]);
+                        drawMessage(data['results'][i], data['results'][i].user);
                     }
                     messageList.animate({scrollTop: messageList.prop('scrollHeight')});
                 }

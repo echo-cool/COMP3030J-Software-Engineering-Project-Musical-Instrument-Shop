@@ -89,3 +89,7 @@ def index(request):
         "ThreeRecentOrders": getThreeRecentOrders(request),
         "ThreeRecentOrders2": getThreeRecentOrders2(request)
     })
+
+
+def index2(request):
+    return render(request, 'echarts/chart2/index.html')

@@ -8,11 +8,11 @@
 
 from django.urls import path
 
-from echarts.views import index
+from echarts.views import index, index2
 
 app_name = 'echarts'
 urlpatterns = [
     path('', index, name='index'),
     path('chart1/', index, name='chart1'),
-    path('chart2/', index, name='chart2'),
+    path('chart2/', index2, name='chart2'),
 ]
