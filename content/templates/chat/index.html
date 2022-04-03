@@ -217,7 +217,7 @@
                 messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
                 <div class="img_cont_msg">
-					<img id="chat_avatar" src="" class="rounded-circle user_img_msg">
+					<img src="" class="rounded-circle user_img_msg chat_avatar">
 				</div>
 				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
@@ -228,7 +228,7 @@
 
             $.getJSON(`../api/user/${current_user_id}`, function (user) {
                 $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
-                    $('#chat_avatar').attr('src', profile[0].image);
+                    $('.chat_avatar').attr('src', profile[0].image);
                 });
             });
         }
