@@ -146,17 +146,16 @@
             setCurrentRecipient(chat_with_current);
             $('#chat_with').text(chat_with_current);
             $.getJSON(`../api/user/${id}`, function (user) {
-                $.getJSON(`../api/profile/${user.id}`, function (profile) {
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
                     console.log(profile);
-                    $('#user-image').attr('src', profile.image);
-                    $('#user-image').attr('alt', profile.name);
-                    $('#chat_avatar').attr('src', profile.image);
+                    $('#user-image').attr('src', profile[0].image);
+                    $('.chat_avatar').attr('src', profile[0].image);
                 });
             });
         }
 
         function updateUserList() {
-            $.getJSON('/api/user/', function (data) {
+            $.getJSON('/api/user/?chat=true', function (data) {
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
                     $.getJSON('/api/profile/', function (profile) {
@@ -214,16 +213,11 @@
                                      alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
-                $.getJSON(`../api/user/${userID}`, function (user) {
-                    $.getJSON(`../api/profile/${user.id}`, function (profile) {
-                        console.log(profile);
-                        $('#chat_avatar').attr('src', profile.image);
-                    });
-                });
+
                 messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
                 <div class="img_cont_msg">
-					<img id="chat_avatar" src="" class="rounded-circle user_img_msg">
+					<img src="" class="rounded-circle user_img_msg chat_avatar">
 				</div>
 				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
