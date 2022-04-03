@@ -1,6 +1,6 @@
 import django_filters
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Q, QuerySet
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
@@ -84,6 +84,21 @@ class UserViewSet(viewsets.ModelViewSet):
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['username', 'email', 'id']
 
+    def list(self, request, *args, **kwargs):
+        chat = self.request.query_params.get('chat', None)
+        if chat is not None and chat == "true":
+            messages = MessageModel.objects.filter(Q(recipient=request.user) |
+                                                   Q(user=request.user))
+            user_set = set()
+            user_set.add(request.user.id)
+            for message in messages:
+                if message.user_id == request.user.id:
+                    user_set.add(message.recipient_id)
+                else:
+                    user_set.add(message.user_id)
+            self.queryset = self.queryset.filter(id__in=user_set)
+        return super(UserViewSet, self).list(request, *args, **kwargs)
+
 
 class CartViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.all()
@@ -145,7 +160,6 @@ class MessageModelViewSet(ModelViewSet):
                                  Q(pk=kwargs['pk'])))
         serializer = self.get_serializer(msg)
         return Response(serializer.data)
-
 
 # class UserModelViewSet(ModelViewSet):
 #     queryset = User.objects.all()
