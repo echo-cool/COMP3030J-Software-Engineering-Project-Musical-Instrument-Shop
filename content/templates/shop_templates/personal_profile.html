@@ -32,10 +32,10 @@
     {#    <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">#}
 
     <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'assets/css/ace.min.css' %}" rel="stylesheet" class="ace-main-stylesheet" id="main-ace-style">
     <link href="{% static "assets/css_for_shop/personal_profile.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/orders.css" %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}" />
-    <link href="{% static 'assets/css/ace.min.css' %}" rel="stylesheet" class="ace-main-stylesheet" id="main-ace-style">
 
 
 {% endblock %}
@@ -51,11 +51,10 @@
                                 <img src="{{ profile.image.url }}" id="avatar" alt="Avatar"
                                      class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
-                                    <p class="text-secondary mb-1">Full Stack Developer</p>
-                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                    <button class="btn btn-primary">Follow</button>
-                                    <button class="btn btn-outline-primary">Message</button>
+                                    <h4>{{ request.user.username }}</h4>
+                                    <p class="text-secondary mb-1"></p>
+                                    <button class="btn btn-primary"><a href="{% url 'accounts:change_password' %}">Change Password</a></button>
+                                    <button class="btn btn-outline-primary"><a href="{% url 'accounts:change_email' %}">Change Email</a></button>
                                 </div>
                             </div>
                             <hr class="my-4">
@@ -182,7 +181,7 @@
                                                 <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
                                             </div>
                                             <div class="col-md-7 col-7">
-                                                <span class="editable" id="email">{{ request.user.email }}</span>
+                                                <span id="email">{{ request.user.email }}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -362,36 +361,7 @@
             //editables
 
             //text editable
-            $('#username')
-                .editable({
-                    type: 'text',
-                    name: 'username',
-                    success: function (response, newValue) {
-                        $.ajax({
 
-                        })
-                        $.ajax({
-                            url: "/api/user/{{ request.user.id }}/",
-                            method: "PATCH",
-                            headers: {
-                                'X-CSRFTOKEN': '{{ csrf_token }}'
-                            },
-                            data: {
-                                username: newValue
-                            },
-                            success: function (res) {
-                                $.ajax({
-                                    url: "#",
-                                    method: "GET",
-                                    success: function (res) {
-                                        $('.user-name').html(newValue);
-
-                                    }
-                                });
-                            }
-                        })
-                    }
-                });
             $('#first_name')
                 .editable({
                     type: 'text',
@@ -426,27 +396,6 @@
                             },
                             data: {
                                 last_name: newValue
-                            },
-                            success: function (res) {
-
-                            }
-                        })
-                    }
-                });
-
-            $('#email')
-                .editable({
-                    type: 'email',
-                    name: 'email',
-                    success: function (response, newValue) {
-                        $.ajax({
-                            url: "/api/user/{{ request.user.id }}/",
-                            method: "PATCH",
-                            headers: {
-                                'X-CSRFTOKEN': '{{ csrf_token }}'
-                            },
-                            data: {
-                                email: newValue
                             },
                             success: function (res) {
 
