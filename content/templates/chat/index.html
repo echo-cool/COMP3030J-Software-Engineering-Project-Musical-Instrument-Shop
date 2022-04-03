@@ -65,7 +65,7 @@
 
                                 <img id="user-image"
                                      style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
-                                     src=""
+                                     src="{{ user.profile.image.url }}"
                                      alt="'s Photo"/>
                                 <span class="online_icon"></span>
                             </div>
@@ -176,7 +176,6 @@
                         $(userItem).appendTo('#user-list');
                         (data[i].username);
                     })
-
                 }
                 {#$('.user').click(function () {#}
                 {#    $('.active').removeClass('active');#}
