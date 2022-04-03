@@ -69,7 +69,7 @@ function specific_model_split(mesh, model_id) {
     } else if (model_id.includes("piano")) {
         console.log(mesh);
         switch (model_id) {
-            case "piano_style_1":
+            case "piano_style_3":
                 switch (mesh.name) {
                     case "wrap":
                         ModelTo(mesh, "z", -1, 1.5);
@@ -138,7 +138,7 @@ function specific_model_split(mesh, model_id) {
                         break;
                 }
                 break;
-            case "piano_style_3":
+            case "piano_style_1":
                 // console.log(mesh.name);
                 switch (mesh.name) {
                     case 'forbid_keyboard':
@@ -246,7 +246,7 @@ function specific_model_merge(mesh, model_id) {
         }
     } else if (model_id.includes("piano")) {
         switch (model_id) {
-            case "piano_style_1":
+            case "piano_style_3":
                 switch (mesh.name) {
                     case "wrap":
                         ModelTo(mesh, "z", 1, 1.5);
@@ -315,7 +315,7 @@ function specific_model_merge(mesh, model_id) {
                         break;
                 }
                 break;
-            case "piano_style_3":
+            case "piano_style_1":
                 switch (mesh.name) {
                     case 'forbid_keyboard':
                         // ModelTo(mesh, "x", 4, 1.5);

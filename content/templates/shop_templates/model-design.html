@@ -209,6 +209,18 @@
                     </div>
                     <div class="product-name space-30">
                         <h2>MODEL DESIGN </h2>
+                        <div class="model-help" style="position: absolute;top: -2%;left: 53%;">
+                            <img onclick="showHelp()" style="cursor: pointer; width:25px;height: 25px"
+                                 height="40px"
+                                 src="{% static "assets/img_for_shop/design/design-help.png" %}">
+                        </div>
+                        <div class="model-help  wrapper-hidden" style="">
+                            <img onclick="clearSelected()" style="cursor: pointer; width: 100%;"
+                                 height="40px"
+                                 src="{% static "assets/img_for_shop/design/design-help.png" %}">
+                        </div>
+
+
                         {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
                         <h1></h1>
                         <div>
@@ -367,6 +379,7 @@
                 <div class="upsell-product products grid_full model-recommend-list my-slider">
                     <div class="item item-inner">
                         <div class="product">
+                            <span class="sale lable">Guitar</span>
                             <a class="product-images" href="/model_design/color?name=guitar&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar1_3.jpg" %}"
@@ -385,6 +398,7 @@
                     </div>
                     <div class="item item-inner">
                         <div class="product">
+                            <span class="sale lable">Guitar</span>
                             <a class="product-images" href="/model_design/color?name=guitar&style=2" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
@@ -402,7 +416,7 @@
                     </div>
                     <div class="item item-inner">
                         <div class="product sale">
-                            <span class="sale lable">Sale</span>
+                            <span class="sale lable">Guitar</span>
                             <a class="product-images" href="/model_design/color?name=guitar&style=3" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar3_3.jpg" %}"
@@ -430,7 +444,7 @@
                     </div>
                     <div class="item item-inner">
                         <div class="product">
-                            <span class="new lable">New</span>
+                            <span class="new lable">Piano</span>
                             <a class="product-images" href="/model_design/color?name=piano&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
@@ -449,7 +463,7 @@
                     </div>
                     <div class="item item-inner">
                         <div class="product ">
-                            <span class="new lable">New</span>
+                            <span class="new lable">Piano</span>
                             <a class="product-images" href="/model_design/color?name=piano&style=2" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2_3.jpg" %}"
@@ -468,7 +482,7 @@
                     </div>
                     <div class="item item-inner">
                         <div class="product ">
-                            <span class="new lable">New</span>
+                            <span class="new lable">Piano</span>
                             <a class="product-images" href="/model_design/color?name=piano&style=3" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano3_3.jpg" %}"
