@@ -146,7 +146,8 @@
             setCurrentRecipient(chat_with_current);
             $('#chat_with').text(chat_with_current);
             $.getJSON(`../api/user/${id}`, function (user) {
-                $.getJSON(`../api/profile/${user.id}`, function (profile) {
+                console.log(user);
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
                     console.log(profile);
                     $('#user-image').attr('src', profile.image);
                     $('#user-image').attr('alt', profile.name);
