@@ -145,25 +145,16 @@ def leave_review(request, instrument_id):
 
 @login_required
 def personal_profile(request):
-    user = request.user
-    username = user.username
-    email = user.email
-    prof = Profile.objects.filter(user=user).first()
-    print(prof)
-    if prof is None:
-        prof = Profile()
-    phone = prof.phone
-    address = prof.address
-    form = UpdateProfileForm({
-        'username': username,
-        'email': email,
-        'phone': phone,
-        'address': address
-    })
+    if request.method == "POST":
+        profile_item = Profile.objects.filter(user=request.user.id).first()
+        profile_item.image = request.FILES.get('photo')
+        profile_item.save()
+        return redirect(reverse('shop:personal_profile'))
     # print(form)
+    orders = Order.objects.order_by('-created_at')[:5]
     return render(request, 'shop_templates/personal_profile.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'form': form
+        'orders': orders
     })
 
 
