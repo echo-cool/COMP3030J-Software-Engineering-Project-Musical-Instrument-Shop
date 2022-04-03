@@ -11,98 +11,102 @@
     <script language="JavaScript" src="/static/assets/echarts_static/chart2/js/js.js"></script>
     <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.countup.min.js"></script>
     <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.waypoints.min.js"></script>
-    <script src="/static/assets/echarts_static/chart2/js/js/countDown.js"></script>
+    <script src="/static/assets/echarts_static/chart2/js/countDown.js"></script>
+    <style>
+        .new-font{
+            font-family: "Sofia", Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div class="loading">
     <div class="loadbox"><img src="images/loading.gif">Loading...</div>
 </div>
 <div class="head">
-    <h1><a href="">Data Visualization System</a></h1>
+    <h1><a class="new-font">Data Visualization System</a></h1>
 </div>
 <div class="mainbox">
     <ul class="clearfix">
         <li>
-            <div class="boxall" style="height:calc(33.3333% - .25rem)">
-                <div class="tit01">模块标题</div>
-                <div class="boxnav nav01" id="echart1"></div>
-                <div class="boxfoot"></div>
-            </div>
-            <div style="height:calc(33.3333% - .25rem); margin-bottom: .25rem;">
+            <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
+                <div class="tit04 new-font">Users</div>
+                <div class="boxnav nav04">
 
-                <div class="boxall" style="height: 100%; width:calc(50% - .08rem); float: left;">
-                    <div class="tit01">模块标题</div>
-                    <div class="boxnav nav01" id="echart2"></div>
-                    <div class="boxfoot"></div>
-                </div>
+                    <div class="listhead listhead2">
+                        <span class="new-font">Username</span>
+                        <span class="new-font">Active</span>
+                        <span class="new-font">Date Joined</span>
 
-                <div class="boxall" style="height: 100%; width:calc(50% - .08rem); float: right;">
-                    <div class="tit01">模块标题</div>
-                    <div class="boxnav nav01" style="display: flex; align-items: center;">
-                        <p class="p2"><span class="counter">19</span>/<span class="counter">25</span></p>
                     </div>
-                    <div class="boxfoot"></div>
+
+                    <div class="listnav listnav2 scrollDiv">
+
+                        <ul class="smjl">
+                            {% for user in users %}
+                                <li>
+                                    <span>{{ user.username }}</span>
+                                    <span class="text-green">{{ user.is_active }}</span>
+                                    <span>{{ user.date_joined | date:"Y/m/d" }}</span>
+
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
                 </div>
-
-
-            </div>
-
-
-            <div class="boxall" style="height:calc(33.3333% - .25rem)">
-                <div class="tit01">模块标题</div>
-                <div class="boxnav nav01" id="echart3"></div>
                 <div class="boxfoot"></div>
             </div>
+
         </li>
         <li>
 
             <div class="boxall" style="height:calc(33.33333% - .25rem)">
-                <div class="tit02">本月计划</div>
+                <div class="tit02 new-font">Order</div>
                 <div class="boxnav nav02">
                     <div>
-                        <p class="p1">完成/计划</p>
-                        <p class="p2"><span class="counter">15633</span>/<span class="counter">68000</span></p>
-                        <p class="p3">
-                            <span><i class="dot dot1"></i>未完成：52367</span>
-                            <span><i class="dot dot2"></i>完成率：22.9%</span>
+                        <p class="p1 new-font">All Order Count</p>
+                        <p class="p2 new-font"><span class="counter">{{ order_count }}</span></p>
+                        <p class="p3 new-font">
+                            <span class="new-font"><i class="dot dot1 new-font"></i>Pending：{{ OrderDeliveredRatio.notDelivered }}</span>
+                            <span class="new-font"><i class="dot dot2 new-font"></i>Delivered：{{ OrderDeliveredRatio.delivered }}</span>
                         </p></div>
                 </div>
                 <div class="boxfoot"></div>
             </div>
             <div class="boxall" style="height:calc(66.666666% - .25rem)">
-                <div class="tit03">模块标题</div>
+                <div class="tit03 new-font">Orders</div>
                 <div class="boxnav nav03">
 
                     <div class="listhead listhead1">
-                        <span>字段1</span>
-                        <span>字段名称</span>
-                        <span>字段名称</span>
-                        <span>字段名称</span>
-                        <span>字段名称</span>
-                        <span>字段名称</span>
+                        <span class="new-font">Order Date</span>
+                        <span class="new-font">By</span>
+                        <span class="new-font">City</span>
+                        <span class="new-font">Phone</span>
+                        <span class="new-font">Address</span>
+                        <span class="new-font">Status</span>
                     </div>
                     <div class="listnav listnav1 scrollDiv">
                         <ul>
-                            <li><span>201910-01</span> <span>2658/2658</span> <span>2658/2658</span>
-                                <span>2658/2658</span> <span>2658/2658</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span class="text-green">100%</span></li>
-                            <li><span>201910-02</span> <span>2334/2334</span> <span>2334/2334</span>
-                                <span>2334/2334</span> <span>2334/2334</span> <span>70%</span></li>
+                            {% for order in orders %}
+                                <li>
+                                    <span>{{ order.created_at | date:"Y/m/d" }}</span>
+                                    <span>{{ order.user.username }}</span>
+                                    <span>{{ order.city }}</span>
+                                    <span>{{ order.telephone }}</span>
+                                    <span>{{ order.full_address | truncatechars:20 }}</span>
+                                    {% if order.delivery_confirmed %}
+                                        <span class="text-green">Delivered</span>
+                                    {% else %}
+                                        {% if order.shopper_confirmed %}
+                                            <span class="text-green">Shipping</span>
+                                        {% else %}
+                                            <span class="text-red">Pending</span>
+                                        {% endif %}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
 
@@ -113,127 +117,27 @@
         </li>
         <li>
             <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
-                <div class="tit04">模块标题</div>
+                <div class="tit04 new-font" >Instruments</div>
                 <div class="boxnav nav04">
 
                     <div class="listhead listhead2">
-                        <span>字段名称</span>
-                        <span>字段名称</span>
-                        <span>字段名称</span>
+                        <span class="new-font">Name</span>
+                        <span class="new-font">Price</span>
+                        <span class="new-font">Created At</span>
 
                     </div>
 
                     <div class="listnav listnav2 scrollDiv">
 
                         <ul class="smjl">
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-red">异常</span>
-                                <span><span> <input type="hidden" name="countDown"
-                                                    value="2019/10/30 3:23:00"> <span></span></span></span>
-                            </li>
+                            {% for instrument in instruments %}
+                                <li>
+                                    <span>{{ instrument.name }}</span>
+                                    <span class="text-green">{{ instrument.price }}</span>
+                                    <span>{{ instrument.created_at | date:"Y/m/d" }}</span>
 
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown"
-                                              value="2019/09/10 13:29:9"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:11"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:13"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:14"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:15"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:16"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:12"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:22"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:42"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:19"> <span></span></span>
-                            </li>
-                            <li>
-                                <span>设备名称</span>
-                                <span class="text-green">正常</span>
-                                <span> <input type="hidden" name="countDown" value="2019/09/10 13:29:17"> <span></span></span>
-                            </li>
+                                </li>
+                            {% endfor %}
 
                         </ul>
                     </div>
