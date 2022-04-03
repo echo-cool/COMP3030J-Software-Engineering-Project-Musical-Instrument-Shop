@@ -62,6 +62,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ProfileSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['user']
 
 
 class InstrumentDetailViewSet(viewsets.ModelViewSet):
@@ -81,6 +82,7 @@ class UserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = UserSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['username', 'email', 'id']
 
 
 class CartViewSet(viewsets.ModelViewSet):

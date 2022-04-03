@@ -676,25 +676,53 @@
         function add_wishlist_item(id) {
             $.ajax({
                 url: "/api/wishlist/",
-                method: "POST",
-                contentType: "application/json", //必须这样写
+                method: "GET",
+                contentType: "application/json",
                 dataType: "json",
-                data: JSON.stringify({
-                    //TODO: 替換成用戶
-                    "user": 1,
-                    "instrument": id
-                }),
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
                 },
                 success: function (res) {
-                    console.log("WISHLIST: ", id + "  已被加入购物车");
+                    console.log("WISHLIST: ", eval(res));
+                    let exist_wishlists = eval(res);
+
+                    function checkExist(item) {
+                        return item.instrument.toString() === id;
+                    }
+
+                    let detect_exist = exist_wishlists.filter(checkExist);
+
+                    console.log("WISHLIST: ", detect_exist);
+                    if (detect_exist.length === 0) {
+                        $.ajax({
+                            url: "/api/wishlist/",
+                            method: "POST",
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                //TODO: 替換成用戶
+                                "user": 1,
+                                "instrument": id
+                            }),
+                            headers: {
+                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                            },
+                            success: function (res) {
+                                console.log("WISHLIST: ", id + "  已被加入愿望清单");
+                            },
+                            error: function (res) {
+                                console.log("Add wishlist failed:", id, res);
+                            }
+                        });
+                    } else {
+                        console.log("exist wishlist item, can't add");
+                    }
                 },
                 error: function (res) {
-                    console.log("ji", id, res);
+                    console.log("Get wishlist failed:", id, res);
                 }
-            })
-            fetchHeaderCartList();
+            });
+            {#fetchHeaderCartList();#}
         }
 
     </script>

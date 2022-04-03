@@ -24,11 +24,15 @@ def login(request):
         #       Use Django's built-in authentication system
         print(email_or_username, password)
         tmp_user = User.objects.filter(Q(username=email_or_username) | Q(email__iexact=email_or_username)).first()
-        user = auth.authenticate(username=tmp_user.username, password=password)
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            messages.add_message(request, messages.INFO, 'Login Successfully!')
-            return redirect('shop:index')
+        if tmp_user is not None:
+            user = auth.authenticate(username=tmp_user.username, password=password)
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                messages.add_message(request, messages.INFO, 'Login Successfully!')
+                return redirect('shop:index')
+            else:
+                messages.add_message(request, messages.INFO, 'Login Failed!')
+                return redirect('shop:index')
         else:
             messages.add_message(request, messages.INFO, 'Login Failed!')
             return redirect('shop:index')
