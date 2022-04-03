@@ -55,10 +55,15 @@
 //     });
 //
 // }
+// function activateWishlist() {
+//     $(".add-wishlist-item").click(function () {
+//         let instrument_id = this.id;
+//         console.log("加入愿望单", instrument_id);
+//     });
+// }
 
 (function ($) {
     // fetchHeaderCartList();
-
     "use strict";
 
     // Sticky nav
@@ -69,7 +74,6 @@
         } else {
             $headerStick.removeClass("sticky_element");
         }
-        ;
     });
 
     // Menu Categories

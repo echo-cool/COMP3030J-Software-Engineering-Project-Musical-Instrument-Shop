@@ -1,6 +1,8 @@
-/*============================================================================================*/
-/* PRODUCT PAGE */
-/*============================================================================================*/
+@import url("./Sofia/font-sofia.css");
+@import url("./font-texgyreadventor/font-texgyreadventor.css");
+@import url("./font-texgyreadventor-bold/font-texgyreadventor-bold.css");
+
+
 .countdown_inner {
     background: #F33;
     color: #fff;
@@ -874,10 +876,15 @@
 .help-item .help-right h2 {
     font-size: 38px;
     font-weight: 700;
-    font-family: "Playfair Display", serif;
+    font-family: "Sofia", serif;
     margin-bottom: 25px;
     line-height: 1.4
 }
+
+.help-item .help-right h2 span {
+    font-family: 'TXGR', serif;
+}
+
 
 .help-item .help-right p {
     color: #333;
@@ -950,3 +957,4 @@
     margin-top: 30px;
     margin-bottom: 30px
 }
+

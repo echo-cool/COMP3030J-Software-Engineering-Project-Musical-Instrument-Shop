@@ -10,7 +10,12 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/style.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/responsive.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
-
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <style>
+        .wrapper-hidden {
+            display: none;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -29,7 +34,8 @@
                     </div>
                     <div class="box-title box-title-1606671744b1519c3f-1 animated">
 
-                        <h3 class="titlebig mb-0" style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">Starter Drum Kit</h3>
+                        <h3 class="titlebig mb-0"
+                            style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">Starter Drum Kit</h3>
 
                     </div>
                     <div class="box-title2 box-title2-1606671744b1519c3f-1  animated">
@@ -48,48 +54,91 @@
 
 
                 <div class="banner-box-adv">
+                    <button onclick="active3DShowing()"> 3d model show</button>
+                    {#                    <div class="row">#}
+                    {#                        {% for i in two %}#}
+                    {#                            <div class="col-md-6 col-sm-6 col-xs-12">#}
+                    {#                                <div class="inner-box-banner-adv odd bottom-right">#}
+                    {#                                    <a href="#" class="banner-adv-thumb-link"><img#}
+                    {#                                            src="{% static 'assets/images/home_1/ad_01.png' %}" alt=""/></a>#}
+                    {#                                    <div class="text-adv-intro">#}
+                    {#                                        <h2>Men’s</h2>#}
+                    {#                                        <h3>Collection</h3>#}
+                    {#                                    </div>#}
+                    {#                                    <div class="box-search-adv">#}
+                    {##}
+                    {#                                    </div>#}
+                    {#                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                    {#                                    <div class="text-adv-hidden">#}
+                    {#                                        <p>Many students are cash conteos</p>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        {% endfor %}#}
+                    {#                    </div>#}
                     <div class="row">
-                        {% for i in two %}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box-banner-adv odd bottom-right">
-                                    <a href="#" class="banner-adv-thumb-link"><img
-                                            src="{% static 'assets/images/home_1/ad_01.png' %}" alt=""/></a>
-                                    <div class="text-adv-intro">
-                                        <h2>Men’s</h2>
-                                        <h3>Collection</h3>
-                                    </div>
-                                    <div class="box-search-adv">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="inner-box-banner-adv odd bottom-right">
+                                <img class="show-style"
+                                     src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}" alt=""/>
 
-                                    </div>
-                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
-                                    <div class="text-adv-hidden">
-                                        <p>Many students are cash conteos</p>
-                                    </div>
+                                <div class="model-wrapper-left model-wrapper-control wrapper-hidden show-style">
+                                </div>
+
+                                <div class="text-adv-intro">
+                                    <h2>Men’s</h2>
+                                    <h3>Collection</h3>
+                                </div>
+                                <div class="box-search-adv">
+
+                                </div>
+                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
+                                <div class="text-adv-hidden">
+                                    <p>Many students are cash conteos</p>
                                 </div>
                             </div>
-                        {% endfor %}
+                        </div>
 
-                    </div>
-                    <div class="row">
-                        {% for i in two %}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box-banner-adv odd bottom-right">
-                                    <a href="#" class="banner-adv-thumb-link"><img
-                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>
-                                    <div class="text-adv-intro">
-                                        <h2>Men’s</h2>
-                                        <h3>Collection</h3>
-                                    </div>
-                                    <div class="box-search-adv">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="inner-box-banner-adv odd bottom-right">
+                                <img class="show-style"
+                                     src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}" alt=""/>
+                                <div class="model-wrapper-right model-wrapper-control wrapper-hidden show-style">
+                                </div>
+                                <div class="text-adv-intro">
+                                    <h2>Men’s</h2>
+                                    <h3>Collection</h3>
+                                </div>
+                                <div class="box-search-adv">
 
-                                    </div>
-                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
-                                    <div class="text-adv-hidden">
-                                        <p>Many students are cash conteos</p>
-                                    </div>
+                                </div>
+                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>
+                                <div class="text-adv-hidden">
+                                    <p>Many students are cash conteos</p>
                                 </div>
                             </div>
-                        {% endfor %}
+                        </div>
+
+
+                        {#                        {% for i in two %}#}
+                        {#                            <div class="col-md-6 col-sm-6 col-xs-12">#}
+                        {#                                <div class="inner-box-banner-adv odd bottom-right">#}
+                        {#                                    <a href="#" class="banner-adv-thumb-link"><img#}
+                        {#                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>#}
+                        {#                                    <div class="text-adv-intro">#}
+                        {#                                        <h2>Men’s</h2>#}
+                        {#                                        <h3>Collection</h3>#}
+                        {#                                    </div>#}
+                        {#                                    <div class="box-search-adv">#}
+                        {##}
+                        {#                                    </div>#}
+                        {#                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                        {#                                    <div class="text-adv-hidden">#}
+                        {#                                        <p>Many students are cash conteos</p>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        {% endfor %}#}
                     </div>
                 </div>
             </div>
@@ -699,4 +748,19 @@
         <!-- End From our blog -->
     </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function active3DShowing() {
+            $(".show-style").toggle("wrapper-hidden");
+        }
+    </script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/FBXLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_homepage.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script src="{% static 'assets/js_for_model/model_loader_homepage.js' %}"></script>
 {% endblock %}

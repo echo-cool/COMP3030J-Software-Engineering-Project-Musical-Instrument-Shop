@@ -26,6 +26,7 @@
     <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/model-design-img-list.css" %}" rel="stylesheet">
 
+
     {#    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>#}
     {#    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>#}
     {#    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>#}
@@ -168,6 +169,12 @@
                     <div class="product-img-box">
                         <div class="show-controls wrapper-hidden"
                              style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
+                            <div class="model-zoom-in">
+                                <img onclick="clearSelected()" style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                                {#                            zoom in#}
+                            </div>
+
                             <div class="model-zoom-in">
                                 <img onclick="zoomIn()" style="width: 100%;"
                                      src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
@@ -392,15 +399,124 @@
 
             <!-- Picture cut Part Start -->
 
-            <!-- Design Master Part Start -->
+
+            <div class="hoz-tab-container space-padding-tb-10">
+                <!-- tab-container -->
+                <div class="title-product">
+                    <h3>upsell products</h3>
+                </div>
+                <div class="upsell-product products grid_full">
+                    <div class="item-inner">
+                        <div class="product">
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar1_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar1.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product">
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product sale">
+                            <span class="sale lable">Sale</span>
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar3_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar3.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <div class="product-price">
+                                <p class="content-star">
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star"></i>
+                                </p>
+                                <span class="price">$ 650.99</span>
+                                <span class="price-old">$ 670.99</span>
+                            </div>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <div class="product ">
+                            <span class="new lable">New</span>
+                            <a class="product-images" href="#" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_2.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="#">Add to Cart</a>
+                            <div class="action">
+                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-sm-12 col-md-6 col-md-offset-1">
                 <div class="section-title">
                     <h3 class="lead">Design Masters</h3>
                     <div class="border-style"></div>
                 </div>
             </div>
-
             <div class="hoz-tab-container space-padding-tb-10">
+                <!-- Design Master Part Start -->
                 <ul class="tabs">
                     <li class="item" rel="master1">Dale Wilson</li>
                     <li class="item" rel="master2">Paul Waller</li>
@@ -423,18 +539,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -463,18 +589,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span style="font-family: 'TXRB',serif">Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -503,18 +639,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -543,18 +689,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: &nbsp;</span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -583,18 +739,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -623,18 +789,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -663,18 +839,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span>Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -703,18 +889,28 @@
                             <div class="col-lg-6">
                                 <div class="help-item">
                                     <div class="help-right">
-                                        <h2>Master: Dale Wilson</h2>
-                                        <p>戴尔· 威尔逊2003 年入职Fender，2005 年加入 Fender 定制商店，并于2011年成为“ 制琴大师（Master
-                                            Builder）”。作为加利福尼亚人的他，从小就对制作吉他有着浓厚的兴趣。“从我记事时起，我就非常喜欢吉他”
-                                            他说“奇怪的是，我不想成为一个摇滚明星，而是梦想制作出一把超级吉他，我对吉他的迷恋程度不输演奏家”。威尔逊家族精通木工手艺，而精湛的手工艺一直是Fender
-                                            定制商店所热衷与追求，这些早已融入到戴尔的血液中。早在上世纪80 年代末，他就已经在中学附近的吉他工作室从事修理和模具工作。
+                                        <h2><span style="font-family: none">Master: </span> Dale Wilson</h2>
+                                        <p>
+                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
+                                            became Master Builder in 2011. A Native of California, he had a passion for
+                                            making guitars from an early age. "For as long as I can remember, I've loved
+                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
+                                            and exquisite craftsmanship has always been the passion and pursuit of
+                                            Fender custom shop, which has long been integrated into dell's blood. Back
+                                            in the late 1980s, he was working in guitar repair and tooling at a studio
+                                            near his middle school.
                                         </p>
                                         <p>
-                                            随后，他前往Dobro 和Rickenbacker （吉他品牌）工作了一段时间，然后进入Fender
-                                            ；在成为定制商店制琴大师的学徒之前，他还曾为Guild、Gretsch 和Benedetto 等
-                                            吉他品牌工作过。作为一个手艺人，他非常享受能利用自己丰富的实战经验来制作一把高品质的吉他，比如一把“Resophonic Thinline
-                                            Telecaster®”琴。2011年，当他还是一名学徒的时候，他就已经为当年一月举行的“美国国际乐器展（NAMM Show）”制作了5
-                                            把优质的定制吉他，并被要求在背板上签名，他也由此获得了“ 制琴大师（Master Builder）” 的荣誉。</p>
+                                            He then went to work for Dobro and Rickenbacker for a while before entering
+                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                            Benedetto before becoming an apprentice to a master luthier in a custom
+                                            shop. As a craftsman, he relished being able to draw on his extensive
+                                            experience in producing high-quality guitars, such as the Resophonic
+                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                            premium custom guitars for the NAMM Show in January of that year and was
+                                            asked to sign the back, earning him the honor of Master Builder.
+                                        </p>
                                         <div class="help-inner-left">
                                             <ul>
                                                 <li><i class="flaticon-checkmark"></i> Quick Reply</li>
@@ -734,97 +930,8 @@
                     </div>
 
                 </div>
-                <!-- tab-container -->
-                <div class="title-product">
-                    <h3>upsell products</h3>
-                </div>
-                <div class="upsell-product products grid_full">
-                    <div class="item-inner">
-                        <div class="product">
-                            <a class="product-images" href="#" title="">
-                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                            </a>
-                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-inner">
-                        <div class="product">
-                            <a class="product-images" href="#" title="">
-                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                            </a>
-                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-inner">
-                        <div class="product sale">
-                            <span class="sale lable">Sale</span>
-                            <a class="product-images" href="#" title="">
-                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                            </a>
-                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <div class="product-price">
-                                <p class="content-star">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star"></i>
-                                </p>
-                                <span class="price">$ 650.99</span>
-                                <span class="price-old">$ 670.99</span>
-                            </div>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-inner">
-                        <div class="product ">
-                            <span class="new lable">New</span>
-                            <a class="product-images" href="#" title="">
-                                <img class="primary_image" src="assets/images/products/1.jpg" alt=""/>
-                                <img class="secondary_image" src="assets/images/products/1.jpg" alt=""/>
-                            </a>
-                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
-                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+
             <!-- End container -->
         </div>
         <!-- End MainContent -->
@@ -855,7 +962,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/jquery.simplecolorpicker.js" %}"></script>
 
     <script type="text/javascript" src="{% static "assets/js_for_model/model_split_and_merge.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/model_design_loader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_design.js" %}"></script>
     {#<script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>#}
 
 
