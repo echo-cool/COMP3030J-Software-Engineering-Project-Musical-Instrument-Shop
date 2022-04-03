@@ -236,14 +236,14 @@
 
         function getConversation(recipient) {
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-
-                if (chat_with != chat_with_current || data['results'].length != chat_history) {
+                    {#console.log(data['results'][0].body)#}
+                    {#console.log(chat_history)#}
+                if (chat_with != chat_with_current || data['results'][0].body != chat_history) {
                     {#console.log(chat_with);#}
                     {#console.log(chat_with_current);#}
                     chat_with_current = chat_with;
-                    {#console.log(data['results'].length)#}
-                    {#console.log(chat_history)#}
-                    chat_history = data['results'].length;
+
+                    chat_history = data['results'][0].body;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
                         drawMessage(data['results'][i]);
