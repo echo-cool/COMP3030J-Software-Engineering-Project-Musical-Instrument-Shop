@@ -150,6 +150,7 @@
                     console.log(profile);
                     $('#user-image').attr('src', profile.image);
                     $('#user-image').attr('alt', profile.name);
+                    $('#chat_avatar').attr('src', profile.image);
                 });
             });
         }
@@ -192,12 +193,13 @@
             });
         }
 
-        function drawMessage(message, user) {
+        function drawMessage(message) {
             let position = 'start';
             let position_new = 'cleft';
             let messageItem = '';
             let date = new Date(message.timestamp);
             date = date.toLocaleString();
+            let userID = message.user.id;
             if (message.user === currentUser) position = 'end';
             if (message.user === currentUser) position_new = 'cright';
             if (message.user === currentUser) {
@@ -212,10 +214,16 @@
                                      alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
-                    messageItem = `
+                $.getJSON(`../api/user/${userID}`, function (user) {
+                    $.getJSON(`../api/profile/${user.id}`, function (profile) {
+                        console.log(profile);
+                        $('#chat_avatar').attr('src', profile.image);
+                    });
+                });
+                messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
                 <div class="img_cont_msg">
-					<img src="/media/{{ request.user.profile.image }}" class="rounded-circle user_img_msg">
+					<img id="chat_avatar" src="" class="rounded-circle user_img_msg">
 				</div>
 				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
@@ -238,7 +246,7 @@
                     chat_history = data['results'].length;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
-                        drawMessage(data['results'][i], data['results'][i].user);
+                        drawMessage(data['results'][i]);
                     }
                     messageList.animate({scrollTop: messageList.prop('scrollHeight')});
                 }
