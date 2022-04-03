@@ -12,18 +12,24 @@
     <link href="{% static "assets/css_for_shop/style2.css" %}" rel="stylesheet">
     <link href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}" rel="stylesheet">
 
-    <!-- jQuery 1.8 or later, 33 KB -->
+    <!-- jQuery 1.8 or later-->
     <script src="{% static "assets/js_for_model/jquery1.11.1.min.js" %}"></script>
-    <!-- Fotorama from CDNJS, 19 KB -->
+    <!-- Fotorama  -->
     <link href="{% static "assets/js_for_model/fotorama.css" %}" rel="stylesheet">
     <script src="{% static "assets/js_for_model/fotorama.js" %}" id="js-reload"></script>
+
+    <!-- tiny-slider (new Version for owl-slider) -->
+    <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
+    <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
 
     <!-- SPECIFIC CSS -->
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
 
     <!-- CUSTOM CSS -->
-    <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">
+    {#    <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">#}
+    {#    <script src="{% static 'assets/js_for_shop/owl.carousel.js' %}"></script>#}
+
     <link href="{% static "assets/css_for_shop/model-design-img-list.css" %}" rel="stylesheet">
 
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -48,101 +54,7 @@
     <title>Model Design</title>
 
     <style>
-        .wrapper-hidden {
-            display: none;
-        }
 
-        .model_design_controls .model-img-list-wrapper {
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            position: absolute;
-            z-index: 3;
-            width: 100%;
-            bottom: 0;
-            height: 72%;
-            text-align: left;
-            padding: 0;
-            background-color: #fff;
-        }
-
-        .model_design_controls .model-img-list-wrapper .cart-product-image img {
-            width: 100%;
-        }
-
-        .model_design_controls .model-img-list-wrapper ul {
-            padding: 0 20px;
-        }
-
-        .model_design_controls .model-img-list-wrapper li {
-            padding: 20px 0;
-            border-bottom: 1px solid #eeeeee;
-        }
-
-        .model_design_controls .model-img-list-wrapper li a {
-            margin-right: 20px;
-        }
-
-        .model_design_controls .model-img-list-wrapper li:last-child {
-            border-bottom: none;
-        }
-
-
-        .bottom_checks {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-        }
-
-        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design, .model-checkout {
-            display: inline-block;
-            width: 50%;
-            padding: 20px 0px;
-            text-align: center;
-            background: #000;
-            color: #ba933e;
-            text-transform: uppercase;
-            font-size: 18px;
-        }
-
-        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design:hover, .model-checkout {
-            background: #ba933e;
-            color: #fff;
-        }
-
-        .model_design_controls .model-img-list-wrapper a {
-            display: inline-block;
-            position: relative;
-        }
-
-
-        .title-product .model-products::after {
-            content: "";
-            background: #ba933e;
-            bottom: 0;
-            left: 40%;
-            width: 20%;
-            height: 3px;
-            position: absolute;
-        }
-
-        .model-list-wrapper {
-            border-color: white;
-            border-width: 0 55px 0 55px;
-            border-style: solid;
-            position: absolute;
-            z-index: 2;
-            left: 0;
-            width: 100%;
-            height: 500px;
-
-        }
-
-        .model-recommend-list {
-            display: -webkit-inline-box;
-            transition: all 200ms ease 1s;
-            transform: none;
-
-        }
     </style>
 
 {% endblock %}
@@ -160,8 +72,7 @@
             <!-- Model Design Part Start -->
             <div class="product-details-content container-fluid">
                 <div class="col-md-8 col-sm-6">
-                    <div class="progress-container progress-wrapper"
-                         style="min-height: 635px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
+                    <div class="progress-container progress-wrapper">
                         <header>
                             <h1>Model<strong>3D</strong> Design</h1>
                             <p id="pro">please just wait for a short time ...</p>
@@ -201,11 +112,6 @@
                     <div class="product-img-box">
                         <div class="show-controls wrapper-hidden"
                              style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                            <div class="model-zoom-in">
-                                <img onclick="clearSelected()" style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
-                                {#                            zoom in#}
-                            </div>
 
                             <div class="model-zoom-in">
                                 <img onclick="zoomIn()" style="width: 100%;"
@@ -224,15 +130,31 @@
                         </div>
                         <div class="show-controls2 wrapper-hidden"
                              style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                            <div>
+
+                            <div class="model-select-none wrapper-hidden">
+                                <img onclick="clearSelected()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-select-none.png" %}">
+                                {#                            combine#}
+                            </div>
+                            <div class="model-select-none">
+                                <img onclick="allSelected()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-select-all.png" %}">
+                                {#                            combine#}
+                            </div>
+
+
+                            <div class="model-split-merge wrapper-hidden">
                                 <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
                                      height="40px"
                                      src="{% static "assets/img_for_shop/design/design-combine.png" %}">
                                 {#                            combine#}
                             </div>
-                            <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
-                                      height="40px"
-                                      src="{% static "assets/img_for_shop/design/design-explode.png" %}">
+                            <div class="model-split-merge ">
+                                <img onclick="splitModel()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-explode.png" %}">
                                 {#                            explode#}
                             </div>
                         </div>
@@ -431,22 +353,21 @@
 
             <!-- Picture cut Part Start -->
 
-            <div class="title-product" style="text-align-last: center;">
+            <div class="title-product title-product-model">
                 <h3 class="model-products">
-                    <i onclick="modelListPre()" class="fa fa-arrow-circle-left"></i>
-                    upsell products
-                    <i onclick="modelListNext()" class="fa fa-arrow-circle-right"></i>
+                    <a href="javascript:void(0);" class="pre-new-arrival"><i
+                            class="fa fa-arrow-circle-left prev-model"></i></a>
+                    <span>upsell products</span>
+                    <a href="javascript:void(0);" class="pre-new-arrival"> <i
+                            class="fa fa-arrow-circle-right next-model"></i></a>
                 </h3>
             </div>
-            {#            <div class="model-list-wrapper">#}
-            {#                <!-- model list border white -->#}
-            {#            </div>#}
+
             <div class="hoz-tab-container space-padding-tb-10 ">
-                <!-- tab-container -->
-                <div class="upsell-product products grid_full model-recommend-list owl-carousel owl-theme ">
+                <div class="upsell-product products grid_full model-recommend-list my-slider">
                     <div class="item item-inner">
                         <div class="product">
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=guitar&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar1_3.jpg" %}"
                                      alt=""/>
@@ -459,16 +380,12 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=1">Start Design</a>
                         </div>
                     </div>
                     <div class="item item-inner">
                         <div class="product">
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=guitar&style=2" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
                                      alt=""/>
@@ -481,17 +398,12 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=2">Start Design</a></div>
                     </div>
                     <div class="item item-inner">
                         <div class="product sale">
                             <span class="sale lable">Sale</span>
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=guitar&style=3" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar3_3.jpg" %}"
                                      alt=""/>
@@ -514,22 +426,17 @@
                                 <span class="price">$ 650.99</span>
                                 <span class="price-old">$ 670.99</span>
                             </div>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=3">Start Design</a></div>
                     </div>
                     <div class="item item-inner">
-                        <div class="product ">
+                        <div class="product">
                             <span class="new lable">New</span>
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=piano&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
                                      alt=""/>
                                 <img class="secondary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_2.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1.jpg" %}"
                                      alt=""/>
                             </a>
                             <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
@@ -537,22 +444,18 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=1">Start Design</a>
                         </div>
                     </div>
                     <div class="item item-inner">
                         <div class="product ">
                             <span class="new lable">New</span>
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=piano&style=2" title="">
                                 <img class="primary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2_3.jpg" %}"
                                      alt=""/>
                                 <img class="secondary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_2.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2.jpg" %}"
                                      alt=""/>
                             </a>
                             <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
@@ -560,22 +463,18 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=2">Start Design</a>
                         </div>
                     </div>
                     <div class="item item-inner">
                         <div class="product ">
                             <span class="new lable">New</span>
-                            <a class="product-images" href="#" title="">
+                            <a class="product-images" href="/model_design/color?name=piano&style=3" title="">
                                 <img class="primary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano3_3.jpg" %}"
                                      alt=""/>
                                 <img class="secondary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_2.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano3.jpg" %}"
                                      alt=""/>
                             </a>
                             <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
@@ -583,23 +482,21 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=3">Start Design</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="title-product">
-                    <h3>Design Masters</h3>
-                </div>
 
+            <div class="title-design-master title-product-model">
+                <h3 class="model-products">
+                    <span>~ Design Masters ~</span>
+                </h3>
             </div>
-            <div class=" hoz-tab-container space-padding-tb-10">
+
+
+            <div class="design-master hoz-tab-container space-padding-tb-10">
                 <!-- Design Master Part Start -->
                 <ul class="tabs">
                     <li class="item" rel="master1">Dale Wilson</li>
@@ -933,6 +830,26 @@
 
 
     <script>
+
+        let model_split_dom = $(".model-split-merge");
+        let model_select_dom = $(".model-select-none");
+        model_select_dom.click(function () {
+            model_select_dom.toggle("wrapper-hidden");
+        });
+        model_split_dom.click(function () {
+            model_split_dom.toggle("wrapper-hidden");
+        });
+
+        let color_input_dom = $("input[type='color']");
+
+        color_input_dom.on("input", function (e) {
+            changeColor(e.target.value);
+        });
+
+        color_input_dom.change(function (e) {
+            changeColor(e.target.value);
+        });
+
         // 截图
         function convertCanvasToImage(canvas) {
             let image = new Image();
@@ -940,7 +857,6 @@
             return image.src;
         }
 
-        // 图片下载
         // imgUrl = canvas.toDataURL("image/png");
         function downloadImage(imgUrl) {
             let a = $("<a></a>").attr("href", imgUrl).attr("download", "img.png").appendTo("body");
@@ -948,19 +864,14 @@
             a.remove();
         }
 
-        $('.add-to-cart').click(function (e) {
-            {#let biggest_wrapper = $(".model_design_controls");#}
-            {#biggest_wrapper.html();#}
-            {#biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");#}
-            {#console.log("jia  class", this);#}
+        // 开始截图
+        $('.add-to-cart').click(function () {
             let img_list_wrapper = $(".model-img-list-wrapper");
             img_list_wrapper.toggleClass("wrapper-hidden");
             img_holder = $(".model-img-list");
-            {#let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"#}
-            {#img_list_wrapper.html(html);#}
         });
 
-
+        // 返回设计
         $(".return-design").click(function () {
             model_img_list = [];
             reloadList();
@@ -968,6 +879,7 @@
             img_list_wrapper.toggleClass("wrapper-hidden");
         });
 
+        // 添加图片
         let img_holder;
         let model_img_list = [];
         $('.add-img').click(function () {
@@ -980,21 +892,29 @@
             reloadList();
         });
 
+        // 删除图片
         $('.delete-img').click(function () {
             let single_img_removed = $(".fotorama__active").children().children().attr("src");
+            console.log("will remove: ", single_img_removed)
             if (single_img_removed === undefined) {
                 model_img_list = [];
             } else {
-                console.log("BEFPRE", model_img_list);
+                let model_img_list_new = [];
+                console.log("Before remove", model_img_list);
                 let single_img_html = "<a><img src=\"" + single_img_removed + "\"></a>";
-                model_img_list = model_img_list.filter(function (item) {
-                    return item !== single_img_html;
+                model_img_list.forEach(function (item) {
+                    console.log("detect equal", item !== single_img_html);
+                    if (item !== single_img_html) {
+                        model_img_list_new.push(item);
+                    }
                 });
-                console.log("ASDASD", model_img_list);
+                model_img_list = model_img_list_new;
+                console.log("After remove", model_img_list);
             }
             reloadList();
         });
 
+        // 截图刷新
         function reloadList() {
             let mul_img_string = model_img_list.join("\n")
             let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + "data-width=\"110%\"   "
@@ -1016,17 +936,21 @@
             }).appendTo($('body'));
         }
 
-        let model_wrapper = $(".model-recommend-list");
+        // 滑动效果
+        var slider = tns({
+            container: '.my-slider',
+            items: 4,
+            prevButton: '.prev-model',
+            nextButton: '.next-model',
+            "rewind": true,
+            "slideBy": "page",
+            {#"arrowKeys": true,#}
+            {#"swipeAngle": false,#}
+            "speed": 400,
+            "nav": false,
+            autoplay: false
+        });
 
-        function modelListPre() {
-            model_wrapper.css("transition", "all 200ms ease 0s");
-            model_wrapper.css("transform", "translate3d(0px, 0px, 0px)");
-        }
-
-        function modelListNext() {
-            model_wrapper.css("transition", "all 200ms ease 0s");
-            model_wrapper.css("transform", "translate3d(-622px, 0px, 0px)");
-        }
 
     </script>
 
