@@ -36,6 +36,12 @@ class Instrument(models.Model):
     price = models.FloatField(max_length=200, default=0)
     details = models.TextField(max_length=3000, default="")
     image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
+    image1 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
+    image2 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
+    image3 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
+    image4 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
+
+
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
