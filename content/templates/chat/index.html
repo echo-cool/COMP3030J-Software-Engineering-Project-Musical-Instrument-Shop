@@ -238,12 +238,12 @@
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
                     {#console.log(data['results'][0].body)#}
                     {#console.log(chat_history)#}
-                if (chat_with != chat_with_current || data['results'][0].body != chat_history) {
+                if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
                     {#console.log(chat_with);#}
                     {#console.log(chat_with_current);#}
                     chat_with_current = chat_with;
 
-                    chat_history = data['results'][0].body;
+                    chat_history = data['results'][0].id;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
                         drawMessage(data['results'][i]);
