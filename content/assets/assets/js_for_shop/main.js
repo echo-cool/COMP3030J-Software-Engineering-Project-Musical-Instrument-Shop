@@ -316,14 +316,29 @@
     var $topPnl = $('.top_panel');
     var $pnlMsk = $('.layer');
 
+    // Product detail add to cart
     $('.btn_add_to_cart a').on('click', function () {
-        $topPnl.addClass('show');
-        $pnlMsk.addClass('layer-is-visible');
+        let instrument_id = this.getAttribute("data_id");
+        console.log("Add to cart: ", instrument_id);
+
+        $.ajax({
+            url: "/cart/product_add_cart/" + instrument_id,
+            method: "GET",
+            success: function (res) {
+                $topPnl.addClass('show');
+                $pnlMsk.addClass('layer-is-visible');
+            },
+            error: function (res) {
+                console.log("Fail to add to cart");
+            },
+        });
     });
+
     $('a.search_panel').on('click', function () {
         $topPnl.addClass('show');
         $pnlMsk.addClass('layer-is-visible');
     });
+
     $('a.btn_close_top_panel').on('click', function () {
         $topPnl.removeClass('show');
         $pnlMsk.removeClass('layer-is-visible');

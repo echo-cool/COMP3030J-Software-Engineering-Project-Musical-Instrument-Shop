@@ -150,7 +150,7 @@ function init() {
     $(".model-show-wrapper").append(container);
 
     let width = (window.innerWidth / 3) * 2;
-    let height = window.innerHeight * 1.08;
+    let height = window.innerHeight;
     renderer = new THREE.WebGLRenderer({
         antialias: false,
         //是否保留缓冲区直到手动清除或覆盖
