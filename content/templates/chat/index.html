@@ -20,7 +20,8 @@
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/litewebchat.css' %}"/>
-    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet"
+          type="text/css">
 
     <!-- SPECIFIC JS -->
     {#    <script src="{% static 'assets/chat_js/gun.js' %}"></script>#}
@@ -154,16 +155,17 @@
         }
 
         function updateUserList() {
-            $.getJSON('/api/user/', function (data) {
+            $.getJSON('/api/user/?chat=true', function (data) {
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
                     $.getJSON(`/api/profile/?user=${data[i]['id']}`, function (profile) {
-                        const userItem = `
-
+                        var userItem;
+                        if (profile.length === 0) {
+                            userItem = `
                         <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
 							<div class="d-flex bd-highlight" style="pointer-events: none">
 								<div class="img_cont">
-									<img src=${profile[0]['image']} class="rounded-circle user_img">
+									<img src="{% static 'assets/images/avatars/avatar.png' %}" class="rounded-circle user_img">
 									<span class="online_icon offline"></span>
 								</div>
 								<div class="user_info">
@@ -173,6 +175,22 @@
 							</div>
 						</li>
 `;
+                        } else {
+                            userItem = `
+                        <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
+							<div class="d-flex bd-highlight" style="pointer-events: none">
+								<div class="img_cont">
+									<img src="${profile[0]['image']}" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>${data[i].username}</span>
+									<p>${data[i].email}</p>
+								</div>
+							</div>
+						</li>
+`;
+                        }
                         $(userItem).appendTo('#user-list');
                         (data[i].username);
                     })
@@ -232,8 +250,8 @@
 
         function getConversation(recipient) {
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-                    {#console.log(data['results'][0].body)#}
-                    {#console.log(chat_history)#}
+                {#console.log(data['results'][0].body)#}
+                {#console.log(chat_history)#}
                 if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
                     {#console.log(chat_with);#}
                     {#console.log(chat_with_current);#}
