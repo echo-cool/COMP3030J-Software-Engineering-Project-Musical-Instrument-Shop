@@ -84,6 +84,10 @@ def product_details(request, product_id):
     instrument = Instrument.objects.get(id=product_id)
     instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
     all_instruments = Instrument.objects.all()
+
+    # add price / old_price for hint
+    instrument.percentage = round(instrument.price * 100 / instrument.old_price, 2)
+
     related = []
     # Get 4 random reviews
     review = Review.objects.filter(instrument=instrument).order_by('?')[:4]

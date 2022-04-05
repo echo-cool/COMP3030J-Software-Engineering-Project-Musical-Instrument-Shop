@@ -92,4 +92,14 @@ def index(request):
 
 
 def index2(request):
-    return render(request, 'echarts/chart2/index.html')
+    orders = Order.objects.all()
+    order_count = orders.count()
+    users = User.objects.all()
+    instruments = Instrument.objects.all()
+    return render(request, 'echarts/chart2/index.html',{
+        'orders': orders,
+        'order_count': order_count,
+        'OrderDeliveredRatio': GetOrderDeliveredRatio(request),
+        'users': users,
+        'instruments': instruments,
+    })

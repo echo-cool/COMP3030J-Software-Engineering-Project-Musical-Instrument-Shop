@@ -178,8 +178,10 @@
                                     <span class="old_price">${{ instrument.old_price }}</span></div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <div class="btn_add_to_cart"><a href="/cart/product_add_cart/{{ instrument.id }}"
-                                                                class="btn_1">Add to Cart</a></div>
+                                <div class="btn_add_to_cart">
+                                    <a href="javascript:void(0)" class="btn_1" data_id="{{ instrument.id }}">Add to
+                                        Cart</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,7 +233,28 @@
                             <div class="card-body">
                                 <div class="row justify-content-between">
                                     <div class="col-lg-6">
-                                        <h3>Details</h3>
+                                        {#                                        <h3>Details</h3>#}
+                                        <p> 🎹 Double keyboard setting of this weighted keyboard lets you separate the
+                                            keyboard into
+                                            two same sections in pitch&tone, enabling you to one-to-one
+                                            teaching&practicing,
+                                            for an
+                                            inspiring new practicing experience. Headphones can also be connected, which
+                                            is
+                                            very
+                                            suitable for beginners to practice piano late at night or where speakers are
+                                            not
+                                            suitable.
+                                        </p>
+                                        <p> 🎹 10 Pre-set authentic timbres (Grand Piano, Electric Piano, Rock Organ,
+                                            Strings, Bass,
+                                            etc), 128 polyphony, the advanced sampling makes the degree of reduction is
+                                            extremely
+                                            high. And this 88-key weighted keyboard has a metal 3-pedal system ( Soft /
+                                            Sustain /
+                                            Sostenuto Pedal) to ensure the quality of your practice, and aim to create
+                                            new
+                                            experiences in music and performance.</p>
                                         <p>{{ instrument_details.details }}</p>
                                     </div>
                                     <div class="col-lg-5">
@@ -312,7 +335,8 @@
                                     {% endfor %}
                                 </div>
                                 <!-- /row -->
-                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave a
+                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave
+                                    a
                                     review</a></p>
                             </div>
                             <!-- /card-body -->
@@ -544,14 +568,17 @@
                                      data-src="{% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="lazy"
                                      alt="">
                             </figure>
-                            <h4>1x Armor Air X Fear</h4>
-                            <div class="price_panel"><span class="new_price">$148.00</span><span
-                                    class="percentage">-20%</span> <span
-                                    class="old_price">${{ instrument.old_price }}</span></div>
+                            <h4>1x {{ instrument.name }}</h4>
+                            <div class="price_panel">
+                                <span class="new_price">${{ instrument.price }}</span>
+                                <span class="percentage">-${{ instrument.percentage }}</span>
+                                <span class="old_price">${{ instrument.old_price }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5 btn_panel">
-                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="checkout.html" class="btn_1">Checkout</a>
+                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="/checkout"
+                                                                               class="btn_1">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -717,7 +744,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>
-    <!-- 需要修复main 的buttom错误-->
+    <!-- 需要修复main 的button错误-->
     <script>
         $(".show3D").click(function () {
             console.log("youwu", $(".model-zoom-in"));

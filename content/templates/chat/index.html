@@ -15,15 +15,12 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
     <link href="{% static 'assets/chat_css/chat.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/fontawesome.css' %}" rel="stylesheet">
     {#        <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/bootstrap.min.css' %}">#}
     <script src="{% static 'assets/chat_js/static/js/jquery.min.js' %}"></script>
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/font-awesome.min.css' %}"/>
-
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/litewebchat.css' %}"/>
-
+    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet" type="text/css">
 
     <!-- SPECIFIC JS -->
     {#    <script src="{% static 'assets/chat_js/gun.js' %}"></script>#}
@@ -68,8 +65,8 @@
 
                                 <img id="user-image"
                                      style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
-                                     src="/media/{{ request.user.profile.image }}"
-                                     alt="{{ request.user.username }}'s Photo"/>
+                                     src="{{ user.profile.image.url }}"
+                                     alt="'s Photo"/>
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
@@ -136,21 +133,22 @@
         let chat_history = 0;
         let chat_with;
         let chat_with_current;
+        let current_user_id;
 
         function select(id) {
+            current_user_id = id;
             $('.active').removeClass('active');
             let selected = event.target;
-            console.log(selected);
+            {#console.log(selected);#}
             $(selected).addClass('active');
             chat_with_current = $(selected).attr('value');
             setCurrentRecipient(chat_with_current);
             $('#chat_with').text(chat_with_current);
             $.getJSON(`../api/user/${id}`, function (user) {
-                $.getJSON(`../api/profile/${user.id}`, function (profile) {
-                    console.log(profile);
-                    $('#user-image').attr('src', profile.image);
-                    $('#user-image').attr('alt', profile.name);
-                    $('#chat_avatar').attr('src', profile.image);
+                {#console.log(user);#}
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
+                    $('#user-image').attr('src', profile[0].image);
+                    {#$('#chat_avatar').attr('src', profile[0].image);#}
                 });
             });
         }
@@ -159,13 +157,13 @@
             $.getJSON('/api/user/', function (data) {
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
-                    $.getJSON('/api/profile/', function (profile) {
+                    $.getJSON(`/api/profile/?user=${data[i]['id']}`, function (profile) {
                         const userItem = `
 
                         <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
 							<div class="d-flex bd-highlight" style="pointer-events: none">
 								<div class="img_cont">
-									<img src=${profile[i]['image']} class="rounded-circle user_img">
+									<img src=${profile[0]['image']} class="rounded-circle user_img">
 									<span class="online_icon offline"></span>
 								</div>
 								<div class="user_info">
@@ -178,7 +176,6 @@
                         $(userItem).appendTo('#user-list');
                         (data[i].username);
                     })
-
                 }
                 {#$('.user').click(function () {#}
                 {#    $('.active').removeClass('active');#}
@@ -199,7 +196,6 @@
             let messageItem = '';
             let date = new Date(message.timestamp);
             date = date.toLocaleString();
-            let userID = message.user.id;
             if (message.user === currentUser) position = 'end';
             if (message.user === currentUser) position_new = 'cright';
             if (message.user === currentUser) {
@@ -214,16 +210,10 @@
                                      alt="{{ request.user.username }}'s Photo"/>				</div>
             </div>`;
             } else {
-                $.getJSON(`../api/user/${userID}`, function (user) {
-                    $.getJSON(`../api/profile/${user.id}`, function (profile) {
-                        console.log(profile);
-                        $('#chat_avatar').attr('src', profile.image);
-                    });
-                });
                 messageItem = `
             <div class="message d-flex justify-content-${position} mb-4 ">
                 <div class="img_cont_msg">
-					<img id="chat_avatar" src="" class="rounded-circle user_img_msg">
+					<img src="" class="rounded-circle user_img_msg chat_avatar">
 				</div>
 				<div class="msg_cotainer">${message.body}<br>
 					<span class="msg_time">${date}</span>
@@ -231,19 +221,25 @@
             </div>`;
             }
             $(messageItem).appendTo('#messages');
+
+            $.getJSON(`../api/user/${current_user_id}`, function (user) {
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
+                    $('.chat_avatar').attr('src', profile[0].image);
+                });
+            });
         }
 
 
         function getConversation(recipient) {
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-
-                if (chat_with != chat_with_current || data['results'].length != chat_history) {
+                    {#console.log(data['results'][0].body)#}
+                    {#console.log(chat_history)#}
+                if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
                     {#console.log(chat_with);#}
                     {#console.log(chat_with_current);#}
                     chat_with_current = chat_with;
-                    {#console.log(data['results'].length)#}
-                    {#console.log(chat_history)#}
-                    chat_history = data['results'].length;
+
+                    chat_history = data['results'][0].id;
                     messageList.children('.message').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
                         drawMessage(data['results'][i]);
