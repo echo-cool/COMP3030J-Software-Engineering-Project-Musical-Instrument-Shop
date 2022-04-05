@@ -9,8 +9,6 @@ pipeline {
         stage('Pre-Tesks') { 
             steps {
                 sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
-                sh 'python manage.py makemigrations'
-                sh 'python manage.py migrate'
             }
         }
         stage('Build') { 
