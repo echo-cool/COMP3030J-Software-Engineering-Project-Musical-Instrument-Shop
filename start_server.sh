@@ -1,3 +1,6 @@
+killall python3
+killall python
+
 git checkout master
 git fetch --all
 git reset --hard origin/master
@@ -10,4 +13,4 @@ python3 -m pip install -r requirements.txt
 #python3 manage.py migrate shop
 
 
-python3 manage.py runserver 0.0.0.0:5008
+nohup python3 manage.py runserver 0.0.0.0:5008 &
