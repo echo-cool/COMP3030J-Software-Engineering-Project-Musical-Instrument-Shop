@@ -29,7 +29,7 @@ pipeline {
                        ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
                             ls
                             cd /home/group8/comp3030j-project
-                            ./start_server.sh &
+                            bash start_server.sh &
                        '
                        """
                 }
