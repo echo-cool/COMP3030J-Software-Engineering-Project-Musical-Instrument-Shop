@@ -31,12 +31,7 @@ pipeline {
                             cd /home/group8/comp3030j-project
                             killall python3
                             killall python
-                            git checkout master
-                            git fetch --all
-                            git reset --hard origin/master
-                            git pull
-                            python3 -m pip install -r requirements.txt
-                            BUILD_ID=DONTKILLME nohup python3 manage.py runserver 0.0.0.0:5008 &
+                            nohup start_server.sh > log.txt 2>&1 &
                        '
                        """
                 }
