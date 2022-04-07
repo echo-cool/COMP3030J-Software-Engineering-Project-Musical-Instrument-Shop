@@ -29,7 +29,14 @@ pipeline {
                        ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
                             ls
                             cd /home/group8/comp3030j-project
-                            bash start_server.sh &
+                            killall python3
+                            killall python
+                            git checkout master
+                            git fetch --all
+                            git reset --hard origin/master
+                            git pull
+                            python3 -m pip install -r requirements.txt
+                            BUILD_ID=DONTKILLME nohup python3 manage.py runserver 0.0.0.0:5008 &
                        '
                        """
                 }
