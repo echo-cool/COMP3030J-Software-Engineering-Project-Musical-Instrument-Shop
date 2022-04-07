@@ -24,8 +24,13 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sshagent(['6299a811-c460-44c5-a587-7b6e7cbeff9d']) {
-                    sh "cd /home/group8/comp3030j-project"
-                    sh "./update_project.sh"
+                    sh """
+                       ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
+                            ls
+                            cd /home/group8/comp3030j-project
+                            ./update_project.sh
+                       '
+                       """
                 }
             }
         }
