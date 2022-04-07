@@ -52,11 +52,12 @@ def index(request):
 
 def home(request):
     return render(request, 'shop_templates/homepage.html', {
-        "ten": range(10),
-        "three": range(3),
         "two": range(2),
+        "three": range(3),
+        "four": range(4),
+        "six": range(6),
         "eight": range(8),
-        "six": range(6)
+        "ten": range(10),
     })
 
 
