@@ -21,6 +21,14 @@ pipeline {
                 sh 'python manage.py test' 
             }
         }
+        stage('Deploy') { 
+            steps {
+                sshagent(['6299a811-c460-44c5-a587-7b6e7cbeff9d']) {
+                    sh "cd /home/group8/comp3030j-project"
+                    sh "./update_project.sh"
+                }
+            }
+        }
         stage('Post-Tasks') { 
             steps {
                 sh 'echo Done!' 
