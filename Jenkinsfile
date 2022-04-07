@@ -26,14 +26,18 @@ pipeline {
                 
                 sshagent(['efe4fb22-9a6d-49d4-aea5-de7d077d397e']) {
                     sh """
-                       BUILD_ID=DONTKILLME
                        ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
                             
                             ls
                             cd /home/group8/comp3030j-project
                             killall python3
                             killall python
-                            nohup start_server.sh > log.txt 2>&1 &
+                            git checkout master
+                            git fetch --all
+                            git reset --hard origin/master
+                            git pull
+                            python3 -m pip install -r requirements.txt
+                            nohup python3 manage.py runserver 0.0.0.0:5008 > log.txt 2>&1 &
                        '
                        """
                 }
