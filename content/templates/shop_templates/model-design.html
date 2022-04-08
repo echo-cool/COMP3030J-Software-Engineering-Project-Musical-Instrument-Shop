@@ -47,14 +47,245 @@
     <script src="{% static "assets/js_for_shop/store.js" %}"></script>
 
 
+    <!-- SPECIFIC CSS -->
+    {#    <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">#}
+
     {#    <script src="{% static "assets/js_for_shop/main.js" %}"></script>#}
     {#    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/jquery.elevatezoom.js"></script>#}
     {#    <script type="text/javascript" src="assets/js/store.js"></script>#}
     <title>Model Design</title>
 
+
     <style>
 
+        /*REVIEW DESCRIPTION*/
+        .underline_scale {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline_scale:after {
+            border-bottom: 2px solid #ff5a00;
+            bottom: 2px;
+            left: 0;
+            content: "";
+            position: absolute;
+            transform: scale(0);
+            transition: all 0.3s linear 0s;
+            -o-transition: all 0.3s linear 0s;
+            -webkit-transition: all 0.3s linear 0s;
+            width: 100%;
+        }
+
+        .underline_scale:hover:after, .underline_scale.active:after {
+            transform: scale(1);
+        }
+
+        .tab-pd-details {
+            border-top: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tab-pd-details .bd-tab {
+            border-bottom: 1px solid #e4e4e4;
+            border-top: 1px solid #e4e4e4;
+        }
+
+        .tab-pd-details .tab_prod {
+            border-bottom: none;
+            padding: 25px 0;
+            display: flex;
+        }
+
+        .tab-pd-details .tab_prod li a {
+            font-family: TXGB;
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            transition: .3s;
+            margin-right: 35px;
+        }
+
+        @media (max-width: 767px) {
+            .tab-pd-details .tab_prod li a {
+                margin-right: 0px;
+            }
+        }
+
+        .tab-pd-details .product-desc {
+            padding-top: 40px;
+        }
+
+        .tab-pd-details .product-desc p {
+            font-family: TXGR;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #a8a8a8;
+        }
+
+        .tab-pd-details .product-desc .info2 {
+            text-align: left;
+        }
+
+        .tab-pd-details .product-desc .info2 h3 {
+            font-family: TXGR;
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 45px;
+        }
+
+        .tab-pd-details .product-desc .info2 p {
+            font-family: TXGR;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #a8a8a8;
+            width: 90%;
+            padding-top: 10px;
+            padding-bottom: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .tab-pd-details .product-desc .info2 p {
+                width: 100%;
+                padding-bottom: 0px;
+            }
+        }
+
+        .tab-pd-details .product-desc .info2 {
+            padding-top: 80px;
+            padding-left: 105px;
+        }
+
+        @media (max-width: 768px) {
+            .tab-pd-details .product-desc .info2 {
+                padding-bottom: 20px;
+                padding-top: 20px;
+                padding-left: 20px;
+            }
+        }
+
+        .tab-pd-details .product-desc .des-info {
+            padding-top: 80px !important;
+        }
+
+        @media (max-width: 768px) {
+            .tab-pd-details .product-desc .des-info {
+                padding-top: 10px !important;
+            }
+        }
+
+        .tab-pd-details .product-desc .des-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .2em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 74px;
+            text-transform: uppercase;
+        }
+
+        .tab-pd-details .product-desc .des-info h3:before {
+            content: '';
+            height: 46px;
+            width: 1px;
+            background: black;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tab-pd-details .product-desc .des-info p {
+            font-size: 14px;
+            color: #979797;
+            line-height: 24px;
+            font-weight: 400;
+        }
+
+        .tab-pd-details .tab-addition {
+            padding-top: 30px;
+            text-align: left;
+        }
+
+        .tab-pd-details .tab-addition .title_content .more_info {
+            font-family: TXGR;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #979797;
+            margin-bottom: 5px;
+        }
+
+        .tab-pd-details .tab-addition .title_content h3 {
+            font-family: TXGR;
+            font-size: 25px;
+            font-weight: 500;
+            color: black;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .tab-pd-details .tab-addition .title_content h3:after {
+            content: "";
+            height: 2px;
+            width: 40px;
+            background: #ff5a00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .tab-pd-details .tab-addition .content1 .info_1 {
+            font-family: TXGR;
+            font-size: 16px;
+            font-weight: 400;
+            color: #979797;
+            padding: 10px 0;
+        }
+
+        .tab-pd-details .tab-addition .content1 ul li {
+            font-family: TXGR;
+            font-size: 16px;
+            font-weight: 500;
+            color: #979797;
+            padding: 4px 0;
+        }
+
+        .tab-pd-details .tab-addition .content2 .info2 h3 {
+            font-size: 18px;
+            font-family: TXGR;
+            font-weight: 500;
+            color: black;
+        }
+
+        .tab-pd-details .tab-addition .content2 .info2 ul li a {
+            font-family: TXGR;
+            font-size: 16px;
+            font-weight: 500;
+            color: #979797;
+            padding: 4px 0;
+        }
+
+        .tab-pd-details .tab-addition .content2 .info2 ul li a:hover {
+            color: #ff5a00;
+        }
+
+        .tab-pd-details .tab-addition .content2 .info2 ul li {
+            font-family: TXGR;
+            font-size: 16px;
+            font-weight: 500;
+            color: #979797;
+            padding: 4px 0;
+        }
     </style>
 
 {% endblock %}
@@ -362,9 +593,71 @@
                 </div>
             </div>
             <!-- Model Design Part Start -->
+        </div>
 
+        <div class="tab-pd-details">
+            <div class="container container-v2">
+                <div class=" mt-4" id="review">
+                    <div id="shopify-product-reviews">
+                        <div class="desc product-desc">
+                            <p>Sounds and effects
+                                The Yamaha reface YC has a vintage look and feel with 5 classic organ sounds. This 37
+                                key
+                                portable combo organ has built in effects such as distortion and reverb, these effects
+                                can
+                                be
+                                combined with any preset sound.
+
+                                Classic look and feel
+                                The reface YC is based on classic organs with a stripped back interface that includes
+                                rotary
+                                control and drawbars. Carefully selected vintage effects increase the authenticity of
+                                the
+                                sounds
+                                even further making the reface YC an extremely versatile organ.
+
+                                Lightweight and portable
+                                Unlike the majority of vintage style organs, the reface is compact and lightweight with
+                                built in
+                                speakers and optional battery power. The keyboard can be connected to external speakers
+                                or
+                                PA
+                                systems so is ideal for live performance.
+
+                                Expand your sound with Soundmondo
+                                Yamaha has given you the ability to expand your soundset with a range of premium-quality
+                                sounds,
+                                with the Soundmondo community. To discover, create and share sounds simply visit
+                                Soundmondo
+                                site, connect your Yamaha Reface and browse the ever expanding list of high-quality
+                                soundbanks.
+
+                                Features
+                                Combo Organ Sound Engine with five vintage organ Waves
+                                Retro Distortion, Reverb and Rotary Speaker effects
+                                HQ mini keyboard allows fast, natural performance with premium feel and response
+                                Expression pedal input for foot volume control (organ expression)
+                                2W 3cm stereo speaker system lets you play any place, any time
+                                Battery powered - uses six "AA" batteries with five hours of life
+                                USB "TO HOST" allows MIDI connectivity to your USB-equipped computer or iOS device
+                                A 3.5mm aux line input lets you connect and hear mobile devices, tablets and more
+                                through
+                                the
+                                instrument
+                                Dual 1/4" unbalanced line outputs provide connection to mixers, audio interfaces, DI
+                                boxes
+                                and
+                                more
+                                Includes MIDI breakout cable, Owner's Manual, and PA130 power supply
+                                Specifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding-left: 5%;padding-right: 5%">
             <!-- Picture cut Part Start -->
-
             <div class="title-product title-product-model">
                 <h3 class="model-products">
                     <a href="javascript:void(0);" class="pre-new-arrival"><i
@@ -513,7 +806,7 @@
             <div class="design-master hoz-tab-container space-padding-tb-10">
                 <!-- Design Master Part Start -->
                 <ul class="tabs">
-                    <li class="item" rel="master1">Dale Wilson</li>
+                    <li class="item active" rel="master1">Dale Wilson</li>
                     <li class="item" rel="master2">Paul Waller</li>
                     <li class="item" rel="master3">Jason Smith</li>
                     <li class="item" rel="master4">Yuriy Shishkov</li>
@@ -819,6 +1112,8 @@
 
 {% block foot_link %}
     <!-- Start Script -->
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
     <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/LoaderSupport.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/OBJLoader.js" %}"></script>

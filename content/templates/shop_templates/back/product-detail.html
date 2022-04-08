@@ -35,6 +35,13 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
     <style>
+        .container-v1 {
+            max-width: 1670px;
+        }
+
+        .container-v2 {
+        {#margin-top: 2%;#} max-width: 1440px;
+        }
 
         .wrapper-hidden {
             display: none;
@@ -56,10 +63,6 @@
 
         .slider-two {
             width: 500% !important;
-        }
-
-        .tab-pd-details {
-            margin-top: 2%;
         }
     </style>
 
@@ -221,24 +224,19 @@
                 </div>
                 <div class="col-md-4">
                     <div class="detail-info">
-                        <h2 class="product-title">{{ instrument.name }}</h2>
+                        <h2 class="product-title">SZPA-P12 Portable PA</h2>
                         <div class="product-price ">
-                            <del class="enj-product-price-compare">${{ instrument.old_price }} </del>
-                            <ins class="enj-product-price engoj_price_main">${{ instrument.price }} </ins>
+                            <del class="enj-product-price-compare">$558.00 USD</del>
+                            <ins class="enj-product-price engoj_price_main">$57.00 USD</ins>
                         </div>
                         <div class="wrap-rating">
                             <span class="spr-badge">
                                 <span class="spr-starrating spr-badge-starrating">
-                                    <i class="spr-icon fa fa-star" aria-hidden="true"></i>
-                                    <i class="spr-icon fa fa-star" aria-hidden="true"></i>
-                                    <i class="spr-icon spr-icon-star-empty fa fa-star" aria-hidden="true"></i>
-                                    <i class="spr-icon spr-icon-star-empty fa fa-star" aria-hidden="true"></i>
-                                    <i class="spr-icon spr-icon-star-empty fa fa-star" aria-hidden="true"></i>
-{#                                    <i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i#}
-{#                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i#}
-{#                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i#}
-{#                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i#}
-{#                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i></span>#}
+                                    <i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i></span>
                                 <span class="spr-badge-caption">No reviews</span>
                             </span>
                         </div>
@@ -250,6 +248,8 @@
                         </div>
                         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
+
+
                             <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
                                     class="single-option-selector" data-option="option1" id="productSelect-option-0">
                                 <option value="Maroon">Maroon</option>
@@ -262,34 +262,66 @@
                                 <option data-sku="" value="37685248753851">White - $223.00 USD</option>
                             </select>
                             <!--Swatch Variant -->
+                            <style rel="stylesheet" type="text/css">
+                                .proVariants .selector-wrapper:nth-child(1) {
+                                    display: none;
+                                }
 
-                            {#                            <div class="maxus-productdetail__options">#}
-                            {#                                <div class="swatch clearfix  align-center flex engoc-flex-wrap" data-option-index="0">#}
-                            {#                                    <p class="text-uppercase title_variant">Color </p>#}
-                            {#                                    <div data-value="Maroon" data-style="square"#}
-                            {#                                         class="maxus-color none color maroon available">#}
-                            {#                                        <input id="swatch-0-maroon" type="radio" name="option-0" value="Maroon"#}
-                            {#                                               checked="">#}
-                            {#                                        <div class="  border-color ">#}
-                            {#                                            <label class="link_color" for="swatch-0-maroon"#}
-                            {#                                                   style="background-color: maroon; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/maroon.png?1155); background-size: cover;">#}
-                            {#                                            </label>#}
-                            {#                                        </div>#}
-                            {#                                    </div>#}
-                            {#                                    <div data-value="White" data-style="square"#}
-                            {#                                         class="maxus-color none color white available">#}
-                            {#                                        <input id="swatch-0-white" type="radio" name="option-0" value="White">#}
-                            {#                                        <div class="  border-color ">#}
-                            {#                                            <label class="link_color" for="swatch-0-white"#}
-                            {#                                                   style="background-color: white; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/white.png?1155); background-size: cover;">#}
-                            {#                                            </label>#}
-                            {#                                        </div>#}
-                            {#                                    </div>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                            {#                            <!--End Swatch Variant -->#}
+                                .maxus-productdetail__options:not(:last-child) {
+                                    margin-right: 20px;
+                                }
+                            </style>
+                            <div class="maxus-productdetail__options">
+
+                                <div class="swatch clearfix  align-center flex engoc-flex-wrap" data-option-index="0">
+                                    <p class="text-uppercase title_variant">Color </p>
+
+
+                                    <div data-value="Maroon" data-style="square"
+                                         class="maxus-color none color maroon available">
+                                        <input id="swatch-0-maroon" type="radio" name="option-0" value="Maroon"
+                                               checked="">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-maroon"
+                                                   style="background-color: maroon; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/maroon.png?1155); background-size: cover;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $('.swatch[data-option-index="0"] .maroon').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+                                    <div data-value="White" data-style="square"
+                                         class="maxus-color none color white available">
+                                        <input id="swatch-0-white" type="radio" name="option-0" value="White">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-white"
+                                                   style="background-color: white; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/white.png?1155); background-size: cover;">
+
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <script>
+                                        jQuery('.swatch[data-option-index="0"] .white').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+
+
+                                </div>
+                            </div>
+
+
+                            <!--End Swatch Variant -->
 
                             <!-- Add to cart & quantity -->
+
+
                             <div class="btn-action detail-attr qty-cart">
                                 <div class="">
                                     <div class="js-qty">
@@ -329,7 +361,9 @@
                                data-toggle="tooltip" data-placement="top" data-original-title="Add to Wishlist">
                                 <i class="fsz-unset"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
-                                         width="400" id="svg2" version="1.1"
+                                         width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                         xmlns:cc="http://creativecommons.org/ns#"
+                                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                          xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
@@ -352,17 +386,17 @@
                 </div>
                 <div class="col-lg-3 col-md-12 col-12">
                     <div class="row prod_extended">
-                        {#                        <div class="col-lg-12 col-md-4 content-page-detail">#}
-                        {#                            <div class="content_box ">#}
-                        {#                                <div class="content_text">#}
-                        {#                                    <h3 class="title">Why Choose Us ?</h3>#}
-                        {#                                    <div class="text">Official Herschel stockist Australian warranty assistance &amp;#}
-                        {#                                        support Australian shipping &amp; returns.Customer first experience#}
-                        {#                                        environmentally focused#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                        </div>#}
+                        <div class="col-lg-12 col-md-4 content-page-detail">
+                            <div class="content_box ">
+                                <div class="content_text">
+                                    <h3 class="title">Why Choose Us ?</h3>
+                                    <div class="text">Official Herschel stockist Australian warranty assistance &amp;
+                                        support Australian shipping &amp; returns.Customer first experience
+                                        environmentally focused
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-12 col-md-4 content-page-detail">
                             <div class="content_box ">
                                 <div class="content_text">
@@ -391,171 +425,152 @@
         </div>
         <!-- /container -->
 
-        <div class="tab-pd-details">
-            <div class="bd-tab">
-                <div class="container container-v2">
-                    <ul class="nav nav-tabs tab_prod">
-                        <li>
-                            <a class="underline_scale active" data-toggle="tab" href="#des">Description</a>
-                        </li>
-                        <li>
-                            <a class="underline_scale" data-toggle="tab" href="#add">Additional Information</a>
-                        </li>
-                        <li>
-                            <a class="underline_scale" data-toggle="tab" href="#review">Review</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tab-content container container-v2">
-                <div class="tab-pane fade show active" id="des">
-                    <div class="desc product-desc"><p>Sounds and effects
-                        The Yamaha reface YC has a vintage look and feel with 5 classic organ sounds. This 37 key
-                        portable combo organ has built in effects such as distortion and reverb, these effects can be
-                        combined with any preset sound.
-
-                        Classic look and feel
-                        The reface YC is based on classic organs with a stripped back interface that includes rotary
-                        control and drawbars. Carefully selected vintage effects increase the authenticity of the sounds
-                        even further making the reface YC an extremely versatile organ.
-
-                        Lightweight and portable
-                        Unlike the majority of vintage style organs, the reface is compact and lightweight with built in
-                        speakers and optional battery power. The keyboard can be connected to external speakers or PA
-                        systems so is ideal for live performance.
-
-                        Expand your sound with Soundmondo
-                        Yamaha has given you the ability to expand your soundset with a range of premium-quality sounds,
-                        with the Soundmondo community. To discover, create and share sounds simply visit Soundmondo
-                        site, connect your Yamaha Reface and browse the ever expanding list of high-quality soundbanks.
-
-                        Features
-                        Combo Organ Sound Engine with five vintage organ Waves
-                        Retro Distortion, Reverb and Rotary Speaker effects
-                        HQ mini keyboard allows fast, natural performance with premium feel and response
-                        Expression pedal input for foot volume control (organ expression)
-                        2W 3cm stereo speaker system lets you play any place, any time
-                        Battery powered - uses six "AA" batteries with five hours of life
-                        USB "TO HOST" allows MIDI connectivity to your USB-equipped computer or iOS device
-                        A 3.5mm aux line input lets you connect and hear mobile devices, tablets and more through the
-                        instrument
-                        Dual 1/4" unbalanced line outputs provide connection to mixers, audio interfaces, DI boxes and
-                        more
-                        Includes MIDI breakout cable, Owner's Manual, and PA130 power supply
-                        Specifications</p>
-
-                    </div>
-                </div>
-                <div class="tab-pane fade tab-addition" id="add">
-                    <div class="">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 col-md-6">
-                                <div class="title_content">
-                                    <p class="more_info">More Infomation To You</p>
-                                    <h3 class="">Things you need to know</h3>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 content1">
-                                        <p class="info_1">We use industry standard SSL encryption to protect your
-                                            details. Potentially sensitive information such as your name, address and
-                                            card details are encoded so they can only be read on the secure server.</p>
-                                        <ul class="px-0 list-unstyled">
-                                            <li>Safe Payments</li>
-                                            <li>Accept Credit Cart</li>
-                                            <li>Different Payment Method</li>
-                                            <li>Price Include VAT</li>
-                                            <li>Easy To Order</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 content2">
-                                        <div class="info2">
-                                            <h3>Express Delivery</h3>
-                                            <ul class="px-0 list-unstyled">
-                                                <li>Europe &amp; USA within 2-4 days</li>
-                                                <li>Rest of the world within 3-7 days</li>
-                                                <li>Selected locations</li>
-                                            </ul>
-                                        </div>
-                                        <div class="info2">
-                                            <h3>Need more information</h3>
-                                            <ul class="px-0 list-unstyled">
-                                                <li><a href="">Orders &amp; Shipping</a></li>
-                                                <li><a href="">Returns &amp; Refunds</a></li>
-                                                <li><a href="">Payments</a></li>
-                                                <li><a href="">Your Orders</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <img style="width: 100%"
-                                     src="/media/uploads/instrument/image/detail_piano1 (1).jpg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade mt-4" id="review">
-                    <div id="shopify-product-reviews">
-                        {#                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">#}
-                        <div class="card-body">
-                            <div class="row justify-content-between">
-                                {% for review in review_left %}
-                                    <div class="col-lg-6">
-                                        <div class="review_content">
-                                            <div class="clearfix add_bottom_10">
-                                                <span class="rating">
-                                                    {% for iter in review.review_icon_iter %}
-                                                        <i class="icon-star"></i>
-                                                    {% endfor %}
-                                                    {% for iter in review.review_icon_iter2 %}
-                                                        <i class="icon-star-empty"></i>
-                                                    {% endfor %}
-                                                    <em>{{ review.rating }}/5.0</em></span>
-                                                <em>{{ review.created_at }}</em>
-                                            </div>
-                                            <h4>{{ review.title }}</h4>
-                                            <p>{{ review.content }}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-                            <!-- /row -->
-                            <div class="row justify-content-between">
-
-                                {% for review in review_right %}
-                                    <div class="col-lg-6">
-                                        <div class="review_content">
-                                            <div class="clearfix add_bottom_10">
-                                                <span class="rating">
-                                                    {% for iter in review.review_icon_iter %}
-                                                        <i class="icon-star"></i>
-                                                    {% endfor %}
-                                                    {% for iter in review.review_icon_iter2 %}
-                                                        <i class="icon-star-empty"></i>
-                                                    {% endfor %}
-
-                                                    <em>{{ review.rating }}/5.0</em></span>
-                                                <em>{{ review.created_at }}</em>
-                                            </div>
-                                            <h4>{{ review.title }}</h4>
-                                            <p>{{ review.content }}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <!-- /row -->
-                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave
-                                a
-                                review</a></p>
-                        </div>
-                        <!-- /card-body -->
-                        {#                        </div>#}
-                    </div>
-                </div>
+        <div class="tabs_product">
+            <div class="container">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab"
+                           role="tab">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="tab-B" href="#pane-B" class="nav-link" data-bs-toggle="tab" role="tab">Reviews</a>
+                    </li>
+                </ul>
             </div>
         </div>
+        <!-- /tabs_product -->
+        <div class="tab_content_wrapper">
+            <div class="container">
+                <div class="tab-content" role="tablist">
+                    <div id="pane-A" class="card tab-pane fade active show" role="tabpanel" aria-labelledby="tab-A">
+                        <div class="card-header" role="tab" id="heading-A">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse-A" aria-expanded="false"
+                                   aria-controls="collapse-A">
+                                    Description
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+                            <div class="card-body">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-6">
+                                        {#                                        <h3>Details</h3>#}
+                                        <p> 🎹 Double keyboard setting of this weighted keyboard lets you separate the
+                                            keyboard into
+                                            two same sections in pitch&tone, enabling you to one-to-one
+                                            teaching&practicing,
+                                            for an
+                                            inspiring new practicing experience. Headphones can also be connected, which
+                                            is
+                                            very
+                                            suitable for beginners to practice piano late at night or where speakers are
+                                            not
+                                            suitable.
+                                        </p>
+                                        <p> 🎹 10 Pre-set authentic timbres (Grand Piano, Electric Piano, Rock Organ,
+                                            Strings, Bass,
+                                            etc), 128 polyphony, the advanced sampling makes the degree of reduction is
+                                            extremely
+                                            high. And this 88-key weighted keyboard has a metal 3-pedal system ( Soft /
+                                            Sustain /
+                                            Sostenuto Pedal) to ensure the quality of your practice, and aim to create
+                                            new
+                                            experiences in music and performance.</p>
+                                        <p>{{ instrument_details.details }}</p>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <h3>Specifications</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-striped">
+                                                <tbody>
+                                                <tr>
+                                                    <td><strong>Color</strong></td>
+                                                    <td>Blue, Purple</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Size</strong></td>
+                                                    <td>150x100x100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Weight</strong></td>
+                                                    <td>0.6kg</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Manifacturer</strong></td>
+                                                    <td>Manifacturer</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /table-responsive -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /TAB A -->
+                    <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+                        <div class="card-header" role="tab" id="heading-B">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse-B" aria-expanded="false"
+                                   aria-controls="collapse-B">
+                                    Reviews
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+                            <div class="card-body">
+                                <div class="row justify-content-between">
+                                    {% for review in review_left %}
+                                        <div class="col-lg-6">
+                                            <div class="review_content">
+                                                <div class="clearfix add_bottom_10">
+                                                <span class="rating"><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
+                                                    <em>review.created_at</em>
+                                                </div>
+                                                <h4>review.review_text</h4>
+                                                <p>review.review_text</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                                <!-- /row -->
+                                <div class="row justify-content-between">
+
+                                    {% for review in review_right %}
+                                        <div class="col-lg-6">
+                                            <div class="review_content">
+                                                <div class="clearfix add_bottom_10">
+                                                <span class="rating"><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
+                                                    <em>review.created_at</em>
+                                                </div>
+                                                <h4>review.review_text</h4>
+                                                <p>review.review_text</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- /row -->
+                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave
+                                    a
+                                    review</a></p>
+                            </div>
+                            <!-- /card-body -->
+                        </div>
+                    </div>
+                    <!-- /tab B -->
+                </div>
+                <!-- /tab-content -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /tab_content_wrapper -->
 
         <div class="container margin_60_35">
             <div class="main_title">
@@ -784,8 +799,8 @@
                         </div>
                     </div>
                     <div class="col-md-5 btn_panel">
-                        <a href="/cart" class="btn_1 outline">View cart</a>
-                        <a href="/checkout" class="btn_1">Checkout</a>
+                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="/checkout"
+                                                                               class="btn_1">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -968,74 +983,5 @@
         });
 
         $(".main").style = "margin-bottom: 0px;";
-
-
-        qtySelectors();
-
-        function qtySelectors() {
-            // Change number inputs to JS ones, similar to ajax cart but without API integration.
-            // Make sure to add the existing name and id to the new input element
-            var numInputs = $('input[type="number"]');
-            if (numInputs.length) {
-                numInputs.each(function () {
-                    var $el = $(this),
-                        currentQty = $el.val(),
-                        inputName = $el.attr('name'),
-                        inputId = $el.attr('id');
-
-                    var itemAdd = currentQty + 1,
-                        itemMinus = currentQty - 1,
-                        itemQty = currentQty;
-
-                    var source = $("#JsQty").html(),
-                        template = Handlebars.compile(source),
-                        data = {
-                            id: $el.data('id'),
-                            itemQty: itemQty,
-                            itemAdd: itemAdd,
-                            itemMinus: itemMinus,
-                            inputName: inputName,
-                            inputId: inputId
-                        };
-
-                    // Append new quantity selector then remove original
-                    $el.after(template(data)).remove();
-                });
-            }
-        }
-
-        // Setup listeners to add/subtract from the input
-        $('.js-qty__adjust').on('click', function () {
-            var $el = $(this),
-                id = $el.data('id'),
-                $qtySelector = $el.siblings('.js-qty__num'),
-                qty = parseInt($qtySelector.val().replace(/\D/g, ''));
-
-            qty = validateQty(qty);
-
-            // Add or subtract from the current quantity
-            if ($el.hasClass('js-qty__adjust--plus')) {
-                qty += 1;
-                console.log(qty);
-                {#updatePricingQty(qty);#}
-            } else {
-                qty -= 1;
-                if (qty <= 1) qty = 1;
-                {#updatePricingQty(qty);#}
-            }
-
-            // Update the input's number
-            $qtySelector.val(qty);
-        });
-
-        function validateQty(qty) {
-            if ((parseFloat(qty) === parseInt(qty)) && !isNaN(qty)) {
-                // We have a valid number!
-            } else {
-                // Not a number. Default to 1.
-                qty = 1;
-            }
-            return qty;
-        }
     </script>
 {% endblock %}
