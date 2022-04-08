@@ -13,6 +13,11 @@
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
+
+    <!-- tiny-slider (new Version for owl-slider) -->
+    <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
+    <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
+
     <style>
         .wrapper-hidden {
             display: none;
@@ -50,98 +55,102 @@
                     </a>
                 </div>
             </div>
-            <div class="container container-v2">
-                <div class="banner-box-adv">
-                    <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> 3D Preview
-                    </button>
-                    <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview
-                    </button>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner-box-banner-adv odd bottom-left">
-                                <img class="show-style" style="position:absolute"
-                                     src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}" alt=""/>
-                                <video loop preload
-                                       style="width:100%" class="model-video"
-                                       src="{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}"></video>
-                                {#                                <div class="text-adv-intro">#}
-                                {#                                    <h2>Men’s</h2>#}
-                                {#                                    <h3>Collection</h3>#}
-                                {#                                </div>#}
-                                <div class="box-search-adv">
+            <div class=" background">
+                <div class="container container-v2 ">
+                    <div class="banner-box-adv">
+                        <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> 3D Preview
+                        </button>
+                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview
+                        </button>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-left">
+                                    <img class="show-style" style="position:absolute"
+                                         src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}"
+                                         alt=""/>
+                                    <video loop preload
+                                           style="width:100%" class="model-video"
+                                           src="{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}"></video>
+                                    {#                                <div class="text-adv-intro">#}
+                                    {#                                    <h2>Men’s</h2>#}
+                                    {#                                    <h3>Collection</h3>#}
+                                    {#                                </div>#}
+                                    <div class="box-search-adv">
+                                    </div>
+                                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                                    <div class="text-adv-hidden">
+                                        <p class="name">HARP</p>
+                                        <p><span>Western</span> Musical Instruments section</p>
+                                    </div>
                                 </div>
-                                {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                <div class="text-adv-hidden">
-                                    <p class="name">HARP</p>
-                                    <p><span>Western</span> Musical Instruments section</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+                                <div class="inner-box-banner-adv odd bottom-right">
+                                    <img class="show-style" style="position:absolute"
+                                         src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}"
+                                         alt=""/>
+                                    <video loop preload
+                                           style="width:100%" class="model-video"
+                                           src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
+                                    {#                                <div class="text-adv-intro">#}
+                                    {#                                    <h2>Men’s</h2>#}
+                                    {#                                    <h3>Collection</h3>#}
+                                    {#                                </div>#}
+                                    <div class="box-search-adv">
+                                    </div>
+                                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                                    <div class="text-adv-hidden">
+                                        <p class="name">PIPA</p>
+                                        <p><span>Chinese</span> Musical Instruments section</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
-                            <div class="inner-box-banner-adv odd bottom-right">
-                                <img class="show-style" style="position:absolute"
-                                     src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}" alt=""/>
-                                <video loop preload
-                                       style="width:100%" class="model-video"
-                                       src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                {#                                <div class="text-adv-intro">#}
-                                {#                                    <h2>Men’s</h2>#}
-                                {#                                    <h3>Collection</h3>#}
-                                {#                                </div>#}
-                                <div class="box-search-adv">
-                                </div>
-                                {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                <div class="text-adv-hidden">
-                                    <p class="name">PIPA</p>
-                                    <p><span>Chinese</span> Musical Instruments section</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {#                              <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">#}
-                    {#                            <div class="inner-box-banner-adv odd bottom-right">#}
-                    {#                                <img class="show-style"#}
-                    {#                                     src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}" alt=""/>#}
-                    {##}
-                    {#                                <div class="model-wrapper-left model-wrapper-control wrapper-hidden show-style">#}
-                    {#                                </div>#}
-                    {##}
-                    {#                                <div class="text-adv-intro">#}
-                    {#                                    <h2>Men’s</h2>#}
-                    {#                                    <h3>Collection</h3>#}
-                    {#                                </div>#}
-                    {#                                <div class="box-search-adv">#}
-                    {##}
-                    {#                                </div>#}
-                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                    {#                                <div class="text-adv-hidden">#}
-                    {#                                    <p>Many students are cash conteos</p>#}
-                    {#                                </div>#}
-                    {#                            </div>#}
-                    {#                        </div>#}
-
-                    <div class="row">
-
-
-                        {#                        {% for i in two %}#}
-                        {#                            <div class="col-md-6 col-sm-6 col-xs-12">#}
-                        {#                                <div class="inner-box-banner-adv odd bottom-right">#}
-                        {#                                    <a href="#" class="banner-adv-thumb-link"><img#}
-                        {#                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>#}
-                        {#                                    <div class="text-adv-intro">#}
-                        {#                                        <h2>Men’s</h2>#}
-                        {#                                        <h3>Collection</h3>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="box-search-adv">#}
+                        {#                              <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">#}
+                        {#                            <div class="inner-box-banner-adv odd bottom-right">#}
+                        {#                                <img class="show-style"#}
+                        {#                                     src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}" alt=""/>#}
                         {##}
-                        {#                                    </div>#}
-                        {#                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                        {#                                    <div class="text-adv-hidden">#}
-                        {#                                        <p>Many students are cash conteos</p>#}
-                        {#                                    </div>#}
+                        {#                                <div class="model-wrapper-left model-wrapper-control wrapper-hidden show-style">#}
+                        {#                                </div>#}
+                        {##}
+                        {#                                <div class="text-adv-intro">#}
+                        {#                                    <h2>Men’s</h2>#}
+                        {#                                    <h3>Collection</h3>#}
+                        {#                                </div>#}
+                        {#                                <div class="box-search-adv">#}
+                        {##}
+                        {#                                </div>#}
+                        {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                        {#                                <div class="text-adv-hidden">#}
+                        {#                                    <p>Many students are cash conteos</p>#}
                         {#                                </div>#}
                         {#                            </div>#}
-                        {#                        {% endfor %}#}
+                        {#                        </div>#}
+
+                        <div class="row">
+
+
+                            {#                        {% for i in two %}#}
+                            {#                            <div class="col-md-6 col-sm-6 col-xs-12">#}
+                            {#                                <div class="inner-box-banner-adv odd bottom-right">#}
+                            {#                                    <a href="#" class="banner-adv-thumb-link"><img#}
+                            {#                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>#}
+                            {#                                    <div class="text-adv-intro">#}
+                            {#                                        <h2>Men’s</h2>#}
+                            {#                                        <h3>Collection</h3>#}
+                            {#                                    </div>#}
+                            {#                                    <div class="box-search-adv">#}
+                            {##}
+                            {#                                    </div>#}
+                            {#                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
+                            {#                                    <div class="text-adv-hidden">#}
+                            {#                                        <p>Many students are cash conteos</p>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                        {% endfor %}#}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,24 +159,24 @@
 
         <!--  Begin Products Section Part -->
         <div class="new-arrival-product">
-            <div class="container">
+            <div class="container container-v2">
                 <div class="title-box-default">
-                    <a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
+                    <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
                     <span class="title-tab"><span>~ Western ~ &nbsp;</span>Musical Instruments</span>
-                    <a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
-                    <div class="wrap-item">
+                    <div class="owl-demo-chinese">
                         <div class="item">
                             <div class="row">
                                 {% for i in four %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/1.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
@@ -210,9 +219,9 @@
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/9.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
@@ -251,29 +260,27 @@
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
-
-
             </div>
         </div>
         <div class="new-arrival-product">
-            <div class="container">
+            <div class="container container-v2">
                 <div class="title-box-default no-back ">
-                    <a href="#" class="prev-new-arrival"><i class="fa fa-arrow-circle-left"></i></a>
+                    <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
                     <span class="title-tab"><span>~ CHINESE ~   &nbsp;</span>Musical Instruments</span>
-                    <a href="#" class="next-new-arrival"><i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
-                    <div class="wrap-item">
+                    <div class="owl-demo-chinese2">
                         <div class="item">
                             <div class="row">
                                 {% for i in four %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/1.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
@@ -316,9 +323,9 @@
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/9.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt=""
+                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
@@ -357,8 +364,6 @@
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
-
-
             </div>
         </div>
         <!--  End Products Section Part -->
@@ -402,6 +407,14 @@
                     <h2><span class="title-tab">Musical Instrument &nbsp; <span> ~Color Design~ </span></span>
                     </h2>
                 </div>
+
+            </div>
+
+        </div>
+        <!-- End Custom Services -->
+
+        <div class="new-arrival-product">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
@@ -432,150 +445,115 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End Custom Services -->
-        <div class="new-arrival-product">
-            <div class="container">
-                <div class="title-box-default no-back ">
-                    <div></div>
-                </div>
+            <div class="container container-v2">
+
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
-                    <div class="wrap-item">
-                        <div class="item">
-                            <div class="row">
-                                {% for i in four %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/1.jpg' %}" alt=""
-                                                     class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/1-1.jpg' %}" alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
-                                                <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
+                    <div class="row">
+                        {% for i in four %}
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="item-product">
+                                    <div class="item-thumb-product">
+                                        <img style="width: 100%;"
+                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
+                                             alt=""
+                                             class="product-thumb-front"/>
+                                        <img style="width: 100%;"
+                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2.jpg" %}"
+                                             alt=""
+                                             class="product-thumb-behind"/>
+                                        <div class="info-product-cart">
+                                            <div class="inner-info-product-cart">
+                                                <ul>
+                                                    <li><a href="#" class="link-wishlist"><i
+                                                            class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#" class="link-quick-view"><i
+                                                            class="fa fa-search"></i></a></li>
+                                                    <li><a href="#" class="link-compare"><i
+                                                            class="fa fa-external-link-square"></i></a></li>
+                                                </ul>
+                                                <a href="#" class="link-product-add-cart">Add to cart</a>
                                             </div>
                                         </div>
+                                        <span class="status-product-new">Guitar</span>
                                     </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- End Item -->
-                        <div class="item">
-                            <div class="row">
-                                {% for i in four %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product">
-                                                <img src="{% static 'assets/images/product_home1/9.jpg' %}" alt=""
-                                                     class="product-thumb-front"/>
-                                                <img src="{% static 'assets/images/product_home1/9-9.jpg' %}" alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
-                                                <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Content Slider Product -->
-
-
-            </div>
-        </div>
-        <!-- End New Arrival Product -->
-        <div class="banner-grid-adv">
-            <div class="clearfix">
-                <div class="banner-grid-left">
-                    {% for i in three %}
-                        <div class="wrap-grid-adv-box clearfix">
-                            <div class="grid-image-box">
-                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
-                            </div>
-                            <div class="grid-text-box gray-box">
-                                <div class="inner-grid-text-box">
-                                    <h3>Women’s</h3>
-                                    <h2>Live style</h2>
-                                    <h3>Danlien Polosa</h3>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        {% for i in four %}
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="item-product">
+                                    <div class="item-thumb-product">
+                                        <img style="width: 100%;"
+                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2_3.jpg" %}"
+                                             alt=""
+                                             class="product-thumb-front"/>
+                                        <img style="width: 100%;"
+                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2.jpg" %}"
+                                             alt=""
+                                             class="product-thumb-behind"/>
+                                        <div class="info-product-cart2">
+                                            <a class="move-to-model-design"
+                                               href="/model_design/color?name=guitar&amp;style=3">Start
+                                                Design</a>
+                                        </div>
+                                        <span class="status-product-new">New</span>
+                                    </div>
 
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
 
                 </div>
-                <div class="banner-grid-right">
-                    <div class="grid-image-box">
-                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
-                    </div>
-                    <div class="grid-text-box active">
-                        <div class="inner-grid-text-box">
-                            <h3>Collection</h3>
-                            <h2>Jewerly</h2>
-                            <h3>For Girl</h3>
-                        </div>
-                    </div>
+                <!-- End Content Slider Product -->
+            </div>
+        </div>
+
+
+        <div class="list-designer">
+            <div class="container">
+                <div class="content-list-designer">
+                    <label>DESIGNERS:</label>
+                    <ul class="list-inline">
+                        <li class="item-designer">
+                            <a href="#" class="designer-thumb">
+                                <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master2.jpg" %}"
+                                     alt="">
+                            </a>
+                            <h3><a href="#">David Cilezege</a></h3>
+                        </li>
+                        <li class="item-designer">
+                            <a href="#" class="designer-thumb">
+                                <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master3.jpg" %}"
+                                     alt="">
+                            </a>
+                            <h3><a href="#">Ana Hovurt</a></h3>
+                        </li>
+                        <li class="item-designer">
+                            <a href="#" class="designer-thumb">
+                                <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master4.jpg" %}"
+                                     alt="">
+                            </a>
+                            <h3><a href="#">Ana Hovurt</a></h3>
+                        </li>
+                        <li class="item-designer">
+                            <a href="#" class="designer-thumb">
+                                <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master5.jpg" %}"
+                                     alt="">
+                            </a>
+                            <h3><a href="#">Ana Hovurt</a></h3>
+                        </li>
+                    </ul>
+                    {#                    <a href="#" class="see-all-designer">see all designers</a>#}
                 </div>
             </div>
         </div>
-        <!-- End Banner Grid Adv -->
+        <!-- End Design Team -->
 
-        <!-- End News Scroll -->
+
         <div class="category-leading">
             <div class="container">
                 <div class="thumb-category-leading">
@@ -620,6 +598,43 @@
             </div>
         </div>
         <!-- End Category Leading -->
+
+        <div class="banner-grid-adv">
+            <div class="clearfix">
+                <div class="banner-grid-left">
+                    {% for i in three %}
+                        <div class="wrap-grid-adv-box clearfix">
+                            <div class="grid-image-box">
+                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
+                            </div>
+                            <div class="grid-text-box gray-box">
+                                <div class="inner-grid-text-box">
+                                    <h3>Women’s</h3>
+                                    <h2>Live style</h2>
+                                    <h3>Danlien Polosa</h3>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+                <div class="banner-grid-right">
+                    <div class="grid-image-box">
+                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
+                    </div>
+                    <div class="grid-text-box active">
+                        <div class="inner-grid-text-box">
+                            <h3>Collection</h3>
+                            <h2>Jewerly</h2>
+                            <h3>For Girl</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Grid Adv -->
+
         <div class="from-our-blog">
             <div class="container">
                 <div class="title-box-default white-arrow-style">
@@ -660,9 +675,6 @@
 {% block scripts %}
     <script>
 
-        window.onload = function () {
-
-        }
 
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
@@ -677,5 +689,40 @@
 
             }
         }
+
+
+        $(".owl-demo-chinese, .owl-demo-chinese2").each(function () {
+            // Carousel
+            //Product Slider
+            $(this).owlCarousel({
+                items: 1,
+                itemsCustom: [
+                    [0, 1],
+                    [480, 1],
+                    [768, 1],
+                    [992, 1],
+                    [1200, 1]
+                ],
+                pagination: false,
+                navigation: false,
+            });
+        });
+        $('.arrow-prev-1').on('click', function (e) {
+            e.preventDefault();
+            $('.owl-demo-chinese').trigger('owl.prev');
+        });
+        $('.arrow-next-1').on('click', function (e) {
+            e.preventDefault();
+            $('.owl-demo-chinese').trigger('owl.next');
+        });
+
+        $('.arrow-prev-2').on('click', function (e) {
+            e.preventDefault();
+            $('.owl-demo-chinese2').trigger('owl.prev');
+        });
+        $('.arrow-next-2').on('click', function (e) {
+            e.preventDefault();
+            $('.owl-demo-chinese2').trigger('owl.next');
+        });
     </script>
 {% endblock %}

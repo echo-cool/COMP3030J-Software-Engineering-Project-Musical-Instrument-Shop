@@ -33,27 +33,27 @@ $(window).load(function(){
 			$(this).next().slideToggle(500);
 		});
 	}
-	//Product Slider
-	$('.content-product-slider .wrap-item').owlCarousel({
-		items: 1,
-		itemsCustom: [ 
-		[0, 1], 
-		[480, 1], 
-		[768, 1], 
-		[992, 1], 
-		[1200, 1] 
-		],
-		pagination: false,
-		navigation: false,
-	});
-	$('.prev-new-arrival').on('click', function(e){
-		e.preventDefault();
-		$('.wrap-item').trigger('owl.prev');
-	});
-	$('.next-new-arrival').on('click', function(e){
-		e.preventDefault();
-		$('.wrap-item').trigger('owl.next');
-	});
+	// //Product Slider
+	// $('.content-product-slider .wrap-item').owlCarousel({
+	// 	items: 1,
+	// 	itemsCustom: [
+	// 	[0, 1],
+	// 	[480, 1],
+	// 	[768, 1],
+	// 	[992, 1],
+	// 	[1200, 1]
+	// 	],
+	// 	pagination: false,
+	// 	navigation: false,
+	// });
+	// $('.prev-new-arrival').on('click', function(e){
+	// 	e.preventDefault();
+	// 	$('.wrap-item').trigger('owl.prev');
+	// });
+	// $('.next-new-arrival').on('click', function(e){
+	// 	e.preventDefault();
+	// 	$('.wrap-item').trigger('owl.next');
+	// });
 	//Menu Responsive
 	if($(window).width()<1025){
 		$('body').on('click',function(){
