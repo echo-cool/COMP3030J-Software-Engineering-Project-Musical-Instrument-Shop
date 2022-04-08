@@ -413,71 +413,70 @@
         </div>
         <!-- End Custom Services -->
 
-{#        <div class="new-arrival-product">#}
-        {#            <div class="container">#}
-        {#                <div class="row">#}
-        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
-        {#                        <div class="item-service-box">#}
-        {#                            <h3>idea Design</h3>#}
-        {#                            <a href="#" class="item-service-link"><img#}
-        {#                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>#}
-        {#                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy#}
-        {#                                yoleacene anritv antacus.</p>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
-        {#                        <div class="item-service-box">#}
-        {#                            <h3>Confection</h3>#}
-        {#                            <a href="#" class="item-service-link"><img#}
-        {#                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>#}
-        {#                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.#}
-        {#                                Santac us uisque nuaderas</p>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
-        {#                        <div class="item-service-box">#}
-        {#                            <h3>Confection</h3>#}
-        {#                            <a href="#" class="item-service-link"><img#}
-        {#                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>#}
-        {#                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.#}
-        {#                                Santacus isque nulladeras. </p>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#            <div class="container container-v2">#}
-        {#                <!-- End Title Slider -->#}
-        {#                <div class="content-product-slider">#}
-        {#                    <div class="row">#}
-        {#                        {% for design_model in design_models %}#}
-        {#                            <div class="col-md-2 col-sm-6 col-xs-12">#}
-        {#                                <div>  {{ design_model.name }}{{ design_model.style }}</div>#}
-        {#                                <div class="item-product">#}
-        {#                                    <div class="item-thumb-product">#}
-        {#                                        <img style="width: 100%;"#}
-        {#                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}_3.jpg"#}
-        {#                                             alt=""#}
-        {#                                             class="product-thumb-front"/>#}
-        {#                                        <img style="width: 100%;"#}
-        {#                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}.jpg"#}
-        {#                                             alt=""#}
-        {#                                             class="product-thumb-behind"/>#}
-        {#                                        <div class="info-product-cart2">#}
-        {#                                            <a class="move-to-model-design"#}
-        {#                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">#}
-        {#                                                Start Design</a>#}
-        {#                                        </div>#}
-        {#                                        <span class="status-product-new">New</span>#}
-        {#                                    </div>#}
-        {#                                </div>#}
-        {#                            </div>#}
-        {#                        {% endfor %}#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#                <!-- End Content Slider Product -->#}
-        {#            </div>#}
-        {#        </div>#}
-        {#        <!-- End Model Design -->#}
+        <div class="new-arrival-product">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>idea Design</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
+                                yoleacene anritv antacus.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>Confection</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
+                                Santac us uisque nuaderas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>Confection</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
+                                Santacus isque nulladeras. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container container-v2">
+                <!-- End Title Slider -->
+                <div class="content-product-slider">
+                    <div class="row">
+                        {% for design_model in design_models %}
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="item-product">
+                                    <div class="item-thumb-product">
+                                        <img style="width: 100%;"
+                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}_3.jpg"
+                                             alt=""
+                                             class="product-thumb-front"/>
+                                        <img style="width: 100%;"
+                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}.jpg"
+                                             alt=""
+                                             class="product-thumb-behind"/>
+                                        <div class="info-product-cart2">
+                                            <a class="move-to-model-design"
+                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">
+                                                Start Design</a>
+                                        </div>
+                                        <span class="status-product-new">New</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End Content Slider Product -->
+            </div>
+        </div>
+        <!-- End Model Design -->
 
 
         <div class="list-designer">
@@ -519,6 +518,43 @@
             </div>
         </div>
         <!-- End Design Team -->
+
+
+        <div class="banner-grid-adv">
+            <div class="clearfix">
+                <div class="banner-grid-left">
+                    {% for i in three %}
+                        <div class="wrap-grid-adv-box clearfix">
+                            <div class="grid-image-box">
+                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
+                            </div>
+                            <div class="grid-text-box gray-box">
+                                <div class="inner-grid-text-box">
+                                    <h3>Women’s</h3>
+                                    <h2>Live style</h2>
+                                    <h3>Danlien Polosa</h3>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+                <div class="banner-grid-right">
+                    <div class="grid-image-box">
+                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
+                    </div>
+                    <div class="grid-text-box active">
+                        <div class="inner-grid-text-box">
+                            <h3>Collection</h3>
+                            <h2>Jewerly</h2>
+                            <h3>For Girl</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Grid Adv -->
 
 
         <div class="category-leading">
@@ -565,42 +601,6 @@
             </div>
         </div>
         <!-- End Category Leading -->
-
-        <div class="banner-grid-adv">
-            <div class="clearfix">
-                <div class="banner-grid-left">
-                    {% for i in three %}
-                        <div class="wrap-grid-adv-box clearfix">
-                            <div class="grid-image-box">
-                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
-                            </div>
-                            <div class="grid-text-box gray-box">
-                                <div class="inner-grid-text-box">
-                                    <h3>Women’s</h3>
-                                    <h2>Live style</h2>
-                                    <h3>Danlien Polosa</h3>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-
-                </div>
-                <div class="banner-grid-right">
-                    <div class="grid-image-box">
-                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
-                    </div>
-                    <div class="grid-text-box active">
-                        <div class="inner-grid-text-box">
-                            <h3>Collection</h3>
-                            <h2>Jewerly</h2>
-                            <h3>For Girl</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Banner Grid Adv -->
 
         <div class="from-our-blog">
             <div class="container">
