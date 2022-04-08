@@ -58,6 +58,9 @@ def home(request):
         "six": range(6),
         "eight": range(8),
         "ten": range(10),
+        "design_models": [{"name": "guitar", "style": 1}, {"name": "guitar", "style": 2},
+                          {"name": "guitar", "style": 3}, {"name": "piano", "style": 1},
+                          {"name": "piano", "style": 2}, {"name": "piano", "style": 3}],
     })
 
 
