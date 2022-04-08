@@ -8,12 +8,6 @@ pipeline {
     stages {
         stage('Pre-Tesks') { 
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: '1', keyFileVariable: '')]) {
-                    sh 'git pull'
-                    sh 'git checkout master'
-                    sh 'git merge HomePage --no-ff'
-                    sh 'git push origin master'
-                }
                 sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
             }
         }
