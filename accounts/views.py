@@ -30,7 +30,6 @@ from .forms import (
 )
 
 
-
 class GuestOnlyView(View):
     def dispatch(self, request, *args, **kwargs):
         # Redirect to the index page if the user already authenticated
@@ -79,7 +78,8 @@ class LogInView(GuestOnlyView, FormView):
         messages.success(request, "Login successfully")
 
         redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
-        url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(), require_https=request.is_secure())
+        url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(),
+                                                      require_https=request.is_secure())
 
         if url_is_safe:
             return redirect(redirect_to)
@@ -333,4 +333,3 @@ class RestorePasswordDoneView(BasePasswordResetDoneView):
 
 class LogOutView(LoginRequiredMixin, BaseLogoutView):
     template_name = 'accounts/log_out.html'
-
