@@ -8,8 +8,6 @@ pipeline {
     stages {
         stage('Pre-Tesks') { 
             steps {
-                sh 'git merge origin/HomePage --no-ff'
-                sh 'git push'
                 sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
             }
         }
