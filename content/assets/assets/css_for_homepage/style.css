@@ -6,18 +6,20 @@ Version:	1.1
 Last change:	25/01/2016
 Author:	7UP Theme
 -------------------------------------------------------------------*/
+/*@import url("../css_for_shop/Sofia/font-sofia.css");*/
 /*General*/
 .button-shop-1606671744b1519c3f-1:hover {
-  background: #ffffff !important;
-  border-color: #ffffff !important;
-  color: #000000 !important;
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #000000 !important;
 }
 
 
-h3{
+h3 {
     margin-bottom: 0px;
     margin-top: 0px;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -30,6 +32,45 @@ body.home-page {
     background: url('../images/banner.webp') no-repeat top center;
     background-size: contain;
 }
+
+.background {
+    /*background: url('../images/banner.webp') no-repeat top center;*/
+    /*background-size: cover;*/
+}
+
+
+.move-to-model-design {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    text-align: center;
+    background: none;
+    box-shadow: 0 0 0 30px #ba933e inset;
+    color: #fff;
+    line-height: 54px;
+    padding: 0 37px;
+    transition: all 0.3s ease-in-out;
+    visibility: visible;
+}
+
+
+/*.item-thumb-product:hover .info-product-cart {*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*}*/
+
+
+.move-to-model-design:hover {
+    background: white;
+    color: #ba933e;
+    box-shadow: 0 0 0 2px #ba933e inset;
+}
+
+/*.move-to-model-design::after {*/
+/*    content: "";*/
+/*}*/
+
 
 img, input, textarea {
     max-width: 100%;
@@ -52,95 +93,96 @@ a:hover, a:active, a:focus, a:visited {
 
 
 .box-content {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 13%;
-  z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 13%;
+    z-index: 2;
 }
 
 .text-left {
-  text-align: left !important;
+    text-align: left !important;
 }
 
 .box-title1-1606671744b1519c3f-1 {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
 }
 
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 .title-small {
-  font-family: "Playfair Display", serif;
-  font-size: 16px;
-  font-weight: 500;
-  padding-bottom: 15px;
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 15px;
 
 }
 
 .box-title-1606671744b1519c3f-1 {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
 }
 
 .box-title .titlebig {
-  font-family: "Playfair Display", serif;
-  font-size: 60px;
-  font-weight: 400;
-  padding-bottom: 15px;
+    font-family: "Playfair Display", serif;
+    font-size: 60px;
+    font-weight: 400;
+    padding-bottom: 15px;
 }
 
 .box-title2-1606671744b1519c3f-1 {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
 }
 
 .title-small {
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
-  font-weight: 500;
-  padding-bottom: 15px;
-  text-transform: unset;
-  line-height: 1.5;
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 15px;
+    text-transform: unset;
+    line-height: 1.5;
 }
 
 .button-main2 {
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1;
-  border: 1px solid #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1;
+    border: 1px solid #fff;
     border-top-color: rgb(255, 255, 255);
     border-right-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
     border-left-color: rgb(255, 255, 255);
-  color: #fff;
-  padding: 15px 30px;
-  transition: .3s;
-  display: inline-block;
+    color: #fff;
+    padding: 15px 30px;
+    transition: .3s;
+    display: inline-block;
 }
+
 a {
-  color: black;
+    color: black;
 }
+
 a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
 }
+
 a, .text-link {
-  color: white;
-  text-decoration: none;
-  background: transparent;
+    color: white;
+    text-decoration: none;
+    background: transparent;
     background-color: transparent;
 }
-
-
 
 
 /**Content**/
@@ -256,18 +298,18 @@ a, .text-link {
 
 .box-search-adv {
     position: absolute;
-    right: 60px;
-    top: 100px;
-    background: #ffc229 none repeat scroll 0 0;
+    right: -60px;
+    top: -60px;
+    background: #6b5964 none repeat scroll 0 0;
     border-radius: 50%;
-    height: 80px;
+    height: 110px;
+    width: 120px;
     text-align: center;
-    width: 80px;
     transition: all 0.5s ease-out 0s;
 }
 
 .inner-box-banner-adv:hover .box-search-adv {
-    background: rgba(255, 194, 41, 0.5) none repeat scroll 0 0;
+    background: rgba(100, 89, 100, 0.5) none repeat scroll 0 0;
     transform: scale(9.5);
 }
 
@@ -283,7 +325,8 @@ a, .text-link {
 }
 
 .box-search-adv-link:hover {
-    color: #ffc229;
+    /*color: #ffc229;*/
+    color: #6b5964;
 }
 
 .inner-box-banner-adv:hover .box-search-adv-link {
@@ -297,14 +340,27 @@ a, .text-link {
     opacity: 0.7;
 }
 
+
+.text-adv-hidden p span {
+    font-weight: 600;
+    padding-right: 10%;
+}
+
+.text-adv-hidden .name {
+    font-size: 35px;
+    font-weight: 700;
+}
+
 .text-adv-hidden {
+    font-family: "Playfair Display", serif;
     bottom: 40px;
-    color: #ede5d5;
+    color: #000000;
     font-size: 18px;
     line-height: 20px;
     max-width: 200px;
     position: absolute;
-    right: 50px;
+    /*right: 50px;*/
+    right: 30px;
     text-transform: uppercase;
     transform: translate(250px, 0px);
     transition: all 0.5s ease-out 0.3s;
@@ -363,7 +419,7 @@ a, .text-link {
 }
 
 .banner-box-adv {
-    padding-bottom: 125px;
+    /*padding-bottom: 125px;*/
 }
 
 .banner-adv-thumb-link > img {
@@ -378,14 +434,29 @@ a, .text-link {
     text-align: center;
 }
 
+.no-back {
+    background: none;
+    padding-bottom: 60px;
+    padding-top: 0;
+}
+
 .title-tab {
+    font-family: "Playfair Display", serif;
     font-size: 30px;
     text-transform: uppercase;
 }
 
+.title-tab span {
+    font-weight: 700;
+}
+
+.content-top {
+    padding-bottom: 70px;
+}
+
 .new-arrival-product {
     background: #fff none repeat scroll 0 0;
-    padding-top: 70px;
+    /*padding-top: 70px;*/
 }
 
 .list-title-tab .active {
@@ -492,6 +563,26 @@ a, .text-link {
     top: 0;
     z-index: 10;
 }
+
+
+.info-product-cart2 {
+    bottom: 0px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s ease-out 0s;
+    width: 100%;
+    z-index: 10;
+    border: 1px solid #ffc229;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.item-thumb-product:hover .info-product-cart2 {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 .info-product-cart {
     border: 1px solid #ffc229;

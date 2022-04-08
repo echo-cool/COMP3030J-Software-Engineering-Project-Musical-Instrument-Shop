@@ -75,7 +75,15 @@ let params = {
 };
 var model_state = "default";
 
+function allSelected() {
+    if (selectedObjects) {
+        selectedObjects = scene.children[scene.children.length - 1].children[0].children[0].children;
+        outlinePass.selectedObjects = selectedObjects;
+    }
+}
+
 function clearSelected() {
+    console.log(selectedObjects);
     if (selectedObjects) {
         selectedObjects = [];
         outlinePass.selectedObjects = selectedObjects;
@@ -96,7 +104,7 @@ var rotate_avail = false;
 function switchRotate() {
     console.log(rotate_avail);
     rotate_avail = !rotate_avail
-};
+}
 
 // Init gui
 function mergeModel() {
@@ -123,11 +131,12 @@ function splitModel() {
 }
 
 function changeColor(new_color) {
-    console.log("onChange for selected color:", selectedObjects, new_color);
+    // console.log("onChange for selected color:", selectedObjects, new_color);
     //selectedObjects[0].material.color = value;
-    let newMaterial = selectedObjects[0].material.clone();
-    newMaterial.color = new THREE.Color(new_color); //重新修改颜色
-    selectedObjects[0].material = newMaterial;
+    selectedObjects.forEach(function (item) {
+        item.material.color = new THREE.Color(new_color);
+    })
+    // selectedObjects[0].material.color = new THREE.Color(new_color);
 }
 
 
@@ -235,7 +244,6 @@ function init() {
     var manager = new THREE.LoadingManager();
     manager.onProgress = function (item, loaded, total) {
         console.log(item, loaded, total);
-
     };
 
     function sleep(time) {

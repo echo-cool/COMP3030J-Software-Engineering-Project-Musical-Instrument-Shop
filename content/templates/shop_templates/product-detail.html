@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+
     <!-- BASE CSS -->
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
@@ -29,12 +31,14 @@
     <!-- SPECIFIC CSS -->
     <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
 
+
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
     <style>
         .wrapper-hidden {
             display: none;
         }
+
     </style>
 
 {% endblock %}
@@ -71,24 +75,29 @@
                         <div class="slider">
                             <div class="owl-carousel owl-theme main">
                                 <div>
-                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"
-                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
+                                    <img class="owl-lazy" src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                         data-src="/media/uploads/instrument/image/detail_piano1 (1).jpg" alt=""
+                                         style="opacity: 1;">
                                 </div>
                                 <div>
-                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"
-                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
+                                    <img class="owl-lazy" src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                         data-src="/media/uploads/instrument/image/detail_piano1 (2).jpg" alt=""
+                                         style="opacity: 1;">
                                 </div>
                                 <div>
-                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"
-                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
+                                    <img class="owl-lazy" src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                         data-src="/media/uploads/instrument/image/detail_piano1 (3).jpg" alt=""
+                                         style="opacity: 1;">
                                 </div>
                                 <div>
-                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"
-                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
+                                    <img class="owl-lazy" src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                         data-src="/media/uploads/instrument/image/detail_piano1 (4).jpg" alt=""
+                                         style="opacity: 1;">
                                 </div>
                                 <div>
-                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"
-                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">
+                                    <img class="owl-lazy" src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                         data-src="/media/uploads/instrument/image/detail_piano1 (5).jpg" alt=""
+                                         style="opacity: 1;">
                                 </div>
                             </div>
                             <div class="left nonl"><i class="ti-angle-left"></i></div>
@@ -97,100 +106,259 @@
                         <div class="slider-two">
                             <div class="owl-carousel owl-theme thumbs">
                                 <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
+                                    <img class="item active" src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                         alt="">
                                 </div>
                                 <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
+                                    <img class="item active" src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                         alt="">
                                 </div>
                                 <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
+                                    <img class="item active" src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                         alt="">
                                 </div>
                                 <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
+                                    <img class="item active" src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                         alt="">
                                 </div>
                                 <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
-                                </div>
-                                <div>
-                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">
+                                    <img class="item active" src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                         alt="">
                                 </div>
                             </div>
                             <div class="left-t nonl-t"></div>
                             <div class="right-t"></div>
                         </div>
+
+                        {#                        <div class="slider">#}
+                        {#                            <div class="owl-carousel owl-theme main">#}
+                        {#                                <div>#}
+                        {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
+                        {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
+                        {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
+                        {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
+                        {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="owl-lazy" src="/media/{{ instrument.image }}"#}
+                        {#                                         data-src="/media/{{ instrument.image }}" alt="" style="opacity: 1;">#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="left nonl"><i class="ti-angle-left"></i></div>#}
+                        {#                            <div class="right"><i class="ti-angle-right"></i></div>#}
+                        {#                        </div>#}
+                        {#                        <div class="slider-two">#}
+                        {#                            <div class="owl-carousel owl-theme thumbs">#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                                <div>#}
+                        {#                                    <img class="item active" src="/media/{{ instrument.image }}" alt="">#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="left-t nonl-t"></div>#}
+                        {#                            <div class="right-t"></div>#}
+                        {#                        </div>#}
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
-                        </ul>
-                    </div>
-                    <!-- /page_header -->
-                    <div class="prod_info">
-                        <h1>{{ instrument.name }}</h1>
-                        <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                                class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
-                        <p><small>Description</small><br>{{ instrument.details }}</p>
-                        <div class="prod_options">
-                            <div class="row">
-                                <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
-                                <div class="col-xl-4 col-lg-5 col-md-6 col-6 colors">
-                                    <ul>
-                                        <li><a href="#0" class="color color_1 active"></a></li>
-                                        <li><a href="#0" class="color color_2"></a></li>
-                                        <li><a href="#0" class="color color_3"></a></li>
-                                        <li><a href="#0" class="color color_4"></a></li>
-                                    </ul>
+                <div class="col-md-4">
+                    <div class="detail-info">
+                        <h2 class="product-title">SZPA-P12 Portable PA</h2>
+                        <div class="product-price ">
+                            <del class="enj-product-price-compare">$558.00 USD</del>
+                            <ins class="enj-product-price engoj_price_main">$57.00 USD</ins>
+                        </div>
+                        <div class="wrap-rating">
+                            <span class="spr-badge">
+                                <span class="spr-starrating spr-badge-starrating">
+                                    <i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i></span>
+                                <span class="spr-badge-caption">No reviews</span>
+                            </span>
+                        </div>
+                        <div class="pd_summary">
+                            <p class=" mb-0">Play Music via MP3 and Bluetooth Easily play music. You don't need any
+                                extra equipment - the SubZero SZPA-P12 has an all-in-one media player built in. You can
+                                play MP3s from SD cards and USB, or wirelessly stream music from your phone or tablet
+                                via Bluetooth. All of this is...</p>
+                        </div>
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm"
+                              class="cart clearfix mt-3">
+
+
+                            <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
+                                    class="single-option-selector" data-option="option1" id="productSelect-option-0">
+                                <option value="Maroon">Maroon</option>
+                                <option value="White">White</option>
+                            </select></div>
+                            <select name="id" id="productSelect" class="product-single__variants"
+                                    style="display: none;">
+
+
+                                <option selected="selected" data-sku="" value="37685248721083">Maroon - $223.00 USD
+                                </option>
+
+
+                                <option data-sku="" value="37685248753851">White - $223.00 USD</option>
+
+
+                            </select>
+
+
+                            <!--Swatch Variant -->
+
+
+                            <style rel="stylesheet" type="text/css">
+                                .proVariants .selector-wrapper:nth-child(1) {
+                                    display: none;
+                                }
+
+                                .maxus-productdetail__options:not(:last-child) {
+                                    margin-right: 20px;
+                                }
+                            </style>
+
+
+                            <div class="maxus-productdetail__options">
+
+                                <div class="swatch clearfix  align-center flex engoc-flex-wrap" data-option-index="0">
+                                    <p class="text-uppercase title_variant">Color </p>
+
+
+                                    <div data-value="Maroon" data-style="square"
+                                         class="maxus-color none color maroon available">
+                                        <input id="swatch-0-maroon" type="radio" name="option-0" value="Maroon"
+                                               checked="">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-maroon"
+                                                   style="background-color: maroon; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/maroon.png?1155); background-size: cover;">
+
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <script>
+                                        jQuery('.swatch[data-option-index="0"] .maroon').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+
+
+                                    <div data-value="White" data-style="square"
+                                         class="maxus-color none color white available">
+                                        <input id="swatch-0-white" type="radio" name="option-0" value="White">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-white"
+                                                   style="background-color: white; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/white.png?1155); background-size: cover;">
+
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <script>
+                                        jQuery('.swatch[data-option-index="0"] .white').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+
+
                                 </div>
                             </div>
-                            <div class="row">
-                                <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a
-                                        href="#0" data-bs-toggle="modal" data-bs-target="#size-modal"><i
-                                        class="ti-help-alt"></i></a></label>
-                                <div class="col-xl-4 col-lg-5 col-md-6 col-6">
-                                    <div class="custom-select-form">
-                                        <select class="wide">
-                                            <option value="" selected>Small (S)</option>
-                                            <option value="">M</option>
-                                            <option value=" ">L</option>
-                                            <option value=" ">XL</option>
-                                        </select>
+
+
+                            <!--End Swatch Variant -->
+
+                            <!-- Add to cart & quantity -->
+
+
+                            <div class="btn-action detail-attr qty-cart">
+                                <div class="">
+                                    <div class="js-qty">
+                                        <button type="button"
+                                                class="qty_minus js-qty__adjust js-qty__adjust--minus icon-fallback-text"
+                                                data-id="" data-qty="0">
+                                            <span class="fa fa-minus"></span>
+                                        </button>
+                                        <input type="text" class="js-qty__num" value="1" min="1" data-id=""
+                                               aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
+                                        <button type="button"
+                                                class="qty_plus js-qty__adjust js-qty__adjust--plus icon-fallback-text"
+                                                data-id="" data-qty="11">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
                                     </div>
                                 </div>
+                                <button type="submit" class="shop-button enj-add-to-cart-btn engoj-btn-addtocart"
+                                        value="Add to Cart" style="opacity: 1;">
+                                    Add to Cart
+                                </button>
                             </div>
-                            <div class="row">
-                                <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
-                                <div class="col-xl-4 col-lg-5 col-md-6 col-6">
-                                    <div class="numbers-row">
-                                        <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1">
-                                    </div>
+                            <!-- End add to cart & quantity -->
+                            <input type="hidden" name="form_type" value="product">
+                            <input type="hidden" name="utf8" value="✓">
+                            <div data-shopify="payment-button" data-has-selling-plan="false"
+                                 class="shopify-payment-button">
+                                <button type="button"
+                                        class="shopify-payment-button__button"
+                                        data-testid="Checkout-button">Buy it now
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="btn-addwhlist">
+                            <a href="/account/login"
+                               class="box-shadow  inline-block maxus-product__wishlist wish text-center"
+                               data-toggle="tooltip" data-placement="top" data-original-title="Add to Wishlist">
+                                <i class="fsz-unset"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
+                                         width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                         xmlns:cc="http://creativecommons.org/ns#"
+                                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                            rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
+                                        <defs id="defs6"></defs>
+                                        <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
+                                </i>
+                            </a>
+                            <span class="text_whlist"></span>
+                        </div>
+                        <ul class="product-meta-info">
+                            <li>
+                                <div class="item-product-meta-info product-category-info">
+                                    <label>Categories :</label>
+                                    <a href="/collections/frontpage">Home page, </a>
+                                    <a href="/collections/hot-rate">hot rate </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5 col-md-6">
-                                <div class="price_main"><span class="new_price">${{ instrument.price }}</span>
-                                    {#                                    TODO: 红色太丑了 #}
-                                    <span class="percentag">-{{ discount }}%</span>
-                                    <span class="old_price">${{ instrument.old_price }}</span></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="btn_add_to_cart"><a href="/cart/product_add_cart/{{ instrument.id }}"
-                                                                class="btn_1">Add to Cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /prod_info -->
-                    <div class="product_actions">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-control-shuffle"></i><span>Add to Compare</span></a>
                             </li>
                         </ul>
                     </div>
@@ -231,7 +399,28 @@
                             <div class="card-body">
                                 <div class="row justify-content-between">
                                     <div class="col-lg-6">
-                                        <h3>Details</h3>
+                                        {#                                        <h3>Details</h3>#}
+                                        <p> 🎹 Double keyboard setting of this weighted keyboard lets you separate the
+                                            keyboard into
+                                            two same sections in pitch&tone, enabling you to one-to-one
+                                            teaching&practicing,
+                                            for an
+                                            inspiring new practicing experience. Headphones can also be connected, which
+                                            is
+                                            very
+                                            suitable for beginners to practice piano late at night or where speakers are
+                                            not
+                                            suitable.
+                                        </p>
+                                        <p> 🎹 10 Pre-set authentic timbres (Grand Piano, Electric Piano, Rock Organ,
+                                            Strings, Bass,
+                                            etc), 128 polyphony, the advanced sampling makes the degree of reduction is
+                                            extremely
+                                            high. And this 88-key weighted keyboard has a metal 3-pedal system ( Soft /
+                                            Sustain /
+                                            Sostenuto Pedal) to ensure the quality of your practice, and aim to create
+                                            new
+                                            experiences in music and performance.</p>
                                         <p>{{ instrument_details.details }}</p>
                                     </div>
                                     <div class="col-lg-5">
@@ -281,13 +470,18 @@
                                         <div class="col-lg-6">
                                             <div class="review_content">
                                                 <div class="clearfix add_bottom_10">
-                                                <span class="rating"><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
-                                                    <em>review.created_at</em>
+                                                <span class="rating">
+                                                    {% for iter in review.review_icon_iter %}
+                                                    <i class="icon-star"></i>
+                                                {% endfor %}
+                                                {% for iter in review.review_icon_iter2 %}
+                                                    <i class="icon-star-empty"></i>
+                                                {% endfor %}
+                                                    <em>{{ review.rating }}/5.0</em></span>
+                                                    <em>{{ review.created_at }}</em>
                                                 </div>
-                                                <h4>review.review_text</h4>
-                                                <p>review.review_text</p>
+                                                <h4>{{ review.title }}</h4>
+                                                <p>{{ review.content }}</p>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -300,19 +494,26 @@
                                         <div class="col-lg-6">
                                             <div class="review_content">
                                                 <div class="clearfix add_bottom_10">
-                                                <span class="rating"><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
-                                                    <em>review.created_at</em>
+                                                <span class="rating">
+                                                    {% for iter in review.review_icon_iter %}
+                                                    <i class="icon-star"></i>
+                                                {% endfor %}
+                                                {% for iter in review.review_icon_iter2 %}
+                                                    <i class="icon-star-empty"></i>
+                                                {% endfor %}
+
+                                                    <em>{{ review.rating }}/5.0</em></span>
+                                                    <em>{{ review.created_at }}</em>
                                                 </div>
-                                                <h4>review.review_text</h4>
-                                                <p>review.review_text</p>
+                                                <h4>{{ review.title }}</h4>
+                                                <p>{{ review.content }}</p>
                                             </div>
                                         </div>
                                     {% endfor %}
                                 </div>
                                 <!-- /row -->
-                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave a
+                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave
+                                    a
                                     review</a></p>
                             </div>
                             <!-- /card-body -->
@@ -544,14 +745,17 @@
                                      data-src="{% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="lazy"
                                      alt="">
                             </figure>
-                            <h4>1x Armor Air X Fear</h4>
-                            <div class="price_panel"><span class="new_price">$148.00</span><span
-                                    class="percentage">-20%</span> <span
-                                    class="old_price">${{ instrument.old_price }}</span></div>
+                            <h4>1x {{ instrument.name }}</h4>
+                            <div class="price_panel">
+                                <span class="new_price">${{ instrument.price }}</span>
+                                <span class="percentage">-${{ instrument.percentage }}</span>
+                                <span class="old_price">${{ instrument.old_price }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5 btn_panel">
-                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="checkout.html" class="btn_1">Checkout</a>
+                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="/checkout"
+                                                                               class="btn_1">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -717,7 +921,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>
-    <!-- 需要修复main 的buttom错误-->
+    <!-- 需要修复main 的button错误-->
     <script>
         $(".show3D").click(function () {
             console.log("youwu", $(".model-zoom-in"));

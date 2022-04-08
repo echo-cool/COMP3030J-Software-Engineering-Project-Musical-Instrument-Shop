@@ -174,11 +174,10 @@ class Review(models.Model):
         validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
     title = models.TextField(null=True, blank=True)
-    review_text = models.TextField(null=True)
-    file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/', null=True, blank=True)
+    content = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'review_text', 'file_upload', 'created_at')
+    list_display = ('order', 'user', 'rating', 'title', 'content', 'created_at')
