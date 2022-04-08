@@ -306,11 +306,11 @@
                                                 <div class="clearfix add_bottom_10">
                                                 <span class="rating"><i class="icon-star"></i><i
                                                         class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
-                                                    <em>review.created_at</em>
+                                                        class="icon-star"></i><i class="icon-star"></i><em>{{ review.rating }}/5.0</em></span>
+                                                    <em>{{ review.created_at }}</em>
                                                 </div>
-                                                <h4>review.review_text</h4>
-                                                <p>review.review_text</p>
+                                                <h4>{{ review.title }}</h4>
+                                                <p>{{ review.content }}</p>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -325,11 +325,11 @@
                                                 <div class="clearfix add_bottom_10">
                                                 <span class="rating"><i class="icon-star"></i><i
                                                         class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
-                                                    <em>review.created_at</em>
+                                                        class="icon-star"></i><i class="icon-star"></i><em>{{ review.rating }}/5.0</em></span>
+                                                    <em>{{ review.created_at }}</em>
                                                 </div>
-                                                <h4>review.review_text</h4>
-                                                <p>review.review_text</p>
+                                                <h4>{{ review.title }}</h4>
+                                                <p>{{ review.content }}</p>
                                             </div>
                                         </div>
                                     {% endfor %}

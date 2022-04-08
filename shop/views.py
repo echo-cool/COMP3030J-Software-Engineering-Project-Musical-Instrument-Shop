@@ -101,8 +101,8 @@ def product_details(request, product_id):
         "instrument_details": instrument_details,
         "related": related,
         'categories': categories,
-        "review_left": review[:1],
-        "review_right": review[1:]
+        "review_left": [review[0], review[1]],
+        "review_right": [review[2], review[3]]
     })
 
 
@@ -110,17 +110,23 @@ def product_details(request, product_id):
 def leave_review(request, instrument_id):
     form = ReviewForm()
     if request.method == "POST":
+        form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.instrument = Instrument.objects.get(id=instrument_id)
+            user = request.user
+            instrument = Instrument.objects.get(id=instrument_id)
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            rating = form.cleaned_data['rating']
+            review = Review(
+                user=user,
+                instrument=instrument,
+                title=title,
+                content=content,
+                rating=rating
+            )
             review.save()
             messages.success(request, "Review submitted successfully")
-            return redirect(reverse('product-details', args=[instrument_id]))
-        else:
-            messages.error(request, "Error submitting review")
-            return redirect(reverse('product-details', args=[instrument_id]))
-
+            return redirect(reverse('shop:product_details', args=[instrument_id]))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form

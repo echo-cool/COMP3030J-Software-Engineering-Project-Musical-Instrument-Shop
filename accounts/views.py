@@ -76,6 +76,7 @@ class LogInView(GuestOnlyView, FormView):
                 request.session.set_expiry(0)
 
         login(request, form.user_cache)
+        messages.success(request, "Login successfully")
 
         redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
         url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(), require_https=request.is_secure())

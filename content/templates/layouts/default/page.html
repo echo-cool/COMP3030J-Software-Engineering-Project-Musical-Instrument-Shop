@@ -32,13 +32,15 @@
     {#    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">#}
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">
+    {#    <link href="{% static 'vendor/jquery/jquery-3.4.1.js' %}" rel="script">#}
     <!-- SPECIFIC CSS -->
-    <link href="{% static "assets/css_for_shop/home_1.css" %}" rel="stylesheet">
+    {#    <link href="{% static "assets/css_for_shop/home_1.css" %}" rel="stylesheet">#}
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
     <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
 
     {% block head_link %}
 
@@ -51,16 +53,7 @@
 </head>
 
 <body>
-
 <div id="page">
-    {#    {% if messages %}#}
-    {#    <ul class="messages">#}
-    {#        {% for message in messages %}#}
-    {#        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-    {#        {% endfor %}#}
-    {#    </ul>#}
-    {#    {% endif %}#}
-
     <header class="version_1">
         <div class="layer"></div><!-- Mobile menu overlay mask -->
         <div class="main_header">
@@ -532,13 +525,14 @@
 <script src="{% static 'assets/js_for_shop/main.js' %}"></script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 <script src="{% static "assets/js_for_shop/carousel-home.js" %}"></script>
-<script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
 <script type="text/javascript">
-    $.hulla = new hullabaloo();
+
     {% if messages %}
     {% for message in messages %}
     setTimeout(function () {
-        $.hulla.send("{{ message }}", "{{ message.tags }}");
+        let hulla = new hullabaloo();
+        hulla.send("{{ message }}", "{{ message.tags }}");
     }, 300);
     {% endfor %}{% endif %}
 </script>

@@ -17,6 +17,6 @@ class UpdateProfileForm(forms.Form):
 
 
 class ReviewForm(forms.Form):
-    title = forms.CharField(max_length=50, required=True)
+    title = forms.CharField(max_length=500, required=True)
     content = forms.CharField(max_length=500, required=True)
     rating = forms.IntegerField(required=True)
