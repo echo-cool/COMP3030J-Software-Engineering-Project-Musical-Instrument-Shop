@@ -9,9 +9,6 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
-
-# Create your views here.
-from blog.models import Post, Category, Tag
 from django.contrib import messages
 
 

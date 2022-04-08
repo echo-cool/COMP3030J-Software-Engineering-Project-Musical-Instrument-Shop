@@ -41,7 +41,6 @@ class Instrument(models.Model):
     image3 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image4 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
 
-
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
@@ -174,11 +173,10 @@ class Review(models.Model):
         validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
     title = models.TextField(null=True, blank=True)
-    review_text = models.TextField(null=True)
-    file_upload = models.ImageField(default='default.jpg', upload_to='uploads/review/image/', null=True, blank=True)
+    content = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'rating', 'review_text', 'file_upload', 'created_at')
+    list_display = ('order', 'user', 'rating', 'title', 'content', 'created_at')
