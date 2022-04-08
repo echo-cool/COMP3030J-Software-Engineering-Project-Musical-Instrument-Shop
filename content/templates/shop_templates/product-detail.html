@@ -470,9 +470,14 @@
                                         <div class="col-lg-6">
                                             <div class="review_content">
                                                 <div class="clearfix add_bottom_10">
-                                                <span class="rating"><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>{{ review.rating }}/5.0</em></span>
+                                                <span class="rating">
+                                                    {% for iter in review.review_icon_iter %}
+                                                    <i class="icon-star"></i>
+                                                {% endfor %}
+                                                {% for iter in review.review_icon_iter2 %}
+                                                    <i class="icon-star-empty"></i>
+                                                {% endfor %}
+                                                    <em>{{ review.rating }}/5.0</em></span>
                                                     <em>{{ review.created_at }}</em>
                                                 </div>
                                                 <h4>{{ review.title }}</h4>
@@ -489,9 +494,15 @@
                                         <div class="col-lg-6">
                                             <div class="review_content">
                                                 <div class="clearfix add_bottom_10">
-                                                <span class="rating"><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><i
-                                                        class="icon-star"></i><i class="icon-star"></i><em>{{ review.rating }}/5.0</em></span>
+                                                <span class="rating">
+                                                    {% for iter in review.review_icon_iter %}
+                                                    <i class="icon-star"></i>
+                                                {% endfor %}
+                                                {% for iter in review.review_icon_iter2 %}
+                                                    <i class="icon-star-empty"></i>
+                                                {% endfor %}
+
+                                                    <em>{{ review.rating }}/5.0</em></span>
                                                     <em>{{ review.created_at }}</em>
                                                 </div>
                                                 <h4>{{ review.title }}</h4>
