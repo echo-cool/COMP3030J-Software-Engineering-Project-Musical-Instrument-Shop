@@ -12,19 +12,27 @@
     <link href="{% static "assets/css_for_shop/style2.css" %}" rel="stylesheet">
     <link href="{% static "assets/js_for_model/jquery.simplecolorpicker.css" %}" rel="stylesheet">
 
-    <!-- jQuery 1.8 or later, 33 KB -->
+    <!-- jQuery 1.8 or later-->
     <script src="{% static "assets/js_for_model/jquery1.11.1.min.js" %}"></script>
-    <!-- Fotorama from CDNJS, 19 KB -->
+    <!-- Fotorama  -->
     <link href="{% static "assets/js_for_model/fotorama.css" %}" rel="stylesheet">
     <script src="{% static "assets/js_for_model/fotorama.js" %}" id="js-reload"></script>
+
+    <!-- tiny-slider (new Version for owl-slider) -->
+    <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
+    <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
 
     <!-- SPECIFIC CSS -->
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
 
     <!-- CUSTOM CSS -->
-    <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">
+    {#    <link href="{% static "assets/css_for_shop/owl-slider.css" %}" rel="stylesheet">#}
+    {#    <script src="{% static 'assets/js_for_shop/owl.carousel.js' %}"></script>#}
+
     <link href="{% static "assets/css_for_shop/model-design-img-list.css" %}" rel="stylesheet">
+
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
 
     {#    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>#}
@@ -46,71 +54,7 @@
     <title>Model Design</title>
 
     <style>
-        .wrapper-hidden {
-            display: none;
-        }
 
-        .model_design_controls .model-img-list-wrapper {
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            position: absolute;
-            z-index: 3;
-            width: 100%;
-            bottom: 0;
-            height: 72%;
-            text-align: left;
-            padding: 0;
-            background-color: #fff;
-        }
-
-        .model_design_controls .model-img-list-wrapper .cart-product-image img {
-            width: 100%;
-        }
-
-        .model_design_controls .model-img-list-wrapper ul {
-            padding: 0 20px;
-        }
-
-        .model_design_controls .model-img-list-wrapper li {
-            padding: 20px 0;
-            border-bottom: 1px solid #eeeeee;
-        }
-
-        .model_design_controls .model-img-list-wrapper li a {
-            margin-right: 20px;
-        }
-
-        .model_design_controls .model-img-list-wrapper li:last-child {
-            border-bottom: none;
-        }
-
-
-        .bottom_checks {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-        }
-
-        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design, .model-checkout {
-            display: inline-block;
-            width: 50%;
-            padding: 20px 0px;
-            text-align: center;
-            background: #000;
-            color: #ba933e;
-            text-transform: uppercase;
-            font-size: 18px;
-        }
-
-        .model_design_controls .model-img-list-wrapper .bottom_checks .return-design:hover, .model-checkout {
-            background: #ba933e;
-            color: #fff;
-        }
-
-        .model_design_controls .model-img-list-wrapper a {
-            display: inline-block;
-            position: relative;
-        }
     </style>
 
 {% endblock %}
@@ -128,8 +72,7 @@
             <!-- Model Design Part Start -->
             <div class="product-details-content container-fluid">
                 <div class="col-md-8 col-sm-6">
-                    <div class="progress-container progress-wrapper"
-                         style="min-height: 750px;align-items: center;background:#cbccce;width:97%;height:100%; position: absolute;z-index: 99">
+                    <div class="progress-container progress-wrapper">
                         <header>
                             <h1>Model<strong>3D</strong> Design</h1>
                             <p id="pro">please just wait for a short time ...</p>
@@ -169,11 +112,6 @@
                     <div class="product-img-box">
                         <div class="show-controls wrapper-hidden"
                              style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                            <div class="model-zoom-in">
-                                <img onclick="clearSelected()" style="width: 100%;"
-                                     src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
-                                {#                            zoom in#}
-                            </div>
 
                             <div class="model-zoom-in">
                                 <img onclick="zoomIn()" style="width: 100%;"
@@ -192,15 +130,31 @@
                         </div>
                         <div class="show-controls2 wrapper-hidden"
                              style="right:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
-                            <div>
+
+                            <div class="model-select-none wrapper-hidden">
+                                <img onclick="clearSelected()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-select-none.png" %}">
+                                {#                            combine#}
+                            </div>
+                            <div class="model-select-none">
+                                <img onclick="allSelected()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-select-all.png" %}">
+                                {#                            combine#}
+                            </div>
+
+
+                            <div class="model-split-merge wrapper-hidden">
                                 <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
                                      height="40px"
                                      src="{% static "assets/img_for_shop/design/design-combine.png" %}">
                                 {#                            combine#}
                             </div>
-                            <div><img onclick="splitModel()" style="cursor: pointer; width: 100%;"
-                                      height="40px"
-                                      src="{% static "assets/img_for_shop/design/design-explode.png" %}">
+                            <div class="model-split-merge ">
+                                <img onclick="splitModel()" style="cursor: pointer; width: 100%;"
+                                     height="40px"
+                                     src="{% static "assets/img_for_shop/design/design-explode.png" %}">
                                 {#                            explode#}
                             </div>
                         </div>
@@ -255,6 +209,18 @@
                     </div>
                     <div class="product-name space-30">
                         <h2>MODEL DESIGN </h2>
+                        <div class="model-help" style="position: absolute;top: -2%;left: 53%;">
+                            <img onclick="showHelp()" style="cursor: pointer; width:25px;height: 25px"
+                                 height="40px"
+                                 src="{% static "assets/img_for_shop/design/design-help.png" %}">
+                        </div>
+                        <div class="model-help  wrapper-hidden" style="">
+                            <img onclick="clearSelected()" style="cursor: pointer; width: 100%;"
+                                 height="40px"
+                                 src="{% static "assets/img_for_shop/design/design-help.png" %}">
+                        </div>
+
+
                         {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
                         <h1></h1>
                         <div>
@@ -346,7 +312,6 @@
                                     <option value="#9fc6e7">#9fc6e7</option>
                                     <option value="#4986e7">#4986e7</option>
                                     <option value="#9a9cff">#9a9cff</option>
-                                    <option value="#b99aff">#b99aff</option>
                                 </select>
                                 <input id="color" type="color"
                                        style="width: 5%;position: absolute;top: 4px;right: 5px;">
@@ -384,7 +349,8 @@
                     <!-- End Options -->
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
-                    <div class="products" style="text-align:end;">
+                    <div class="products" style="text-align:end;
+                    position: relative;bottom: 95px;">
                         <div class="product product-details">
                             <a href="javascript:void(0);" class="add-to-cart">Start to Save</a>
                             {#                        <div class="action">#}
@@ -399,16 +365,22 @@
 
             <!-- Picture cut Part Start -->
 
+            <div class="title-product title-product-model">
+                <h3 class="model-products">
+                    <a href="javascript:void(0);" class="pre-new-arrival"><i
+                            class="fa fa-arrow-circle-left prev-model"></i></a>
+                    <span>upsell products</span>
+                    <a href="javascript:void(0);" class="pre-new-arrival"> <i
+                            class="fa fa-arrow-circle-right next-model"></i></a>
+                </h3>
+            </div>
 
-            <div class="hoz-tab-container space-padding-tb-10">
-                <!-- tab-container -->
-                <div class="title-product">
-                    <h3>upsell products</h3>
-                </div>
-                <div class="upsell-product products grid_full">
-                    <div class="item-inner">
+            <div class="hoz-tab-container space-padding-tb-10 ">
+                <div class="upsell-product products grid_full model-recommend-list my-slider">
+                    <div class="item item-inner">
                         <div class="product">
-                            <a class="product-images" href="#" title="">
+                            <span class="sale lable">Guitar</span>
+                            <a class="product-images" href="/model_design/color?name=guitar&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar1_3.jpg" %}"
                                      alt=""/>
@@ -421,16 +393,13 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=1">Start Design</a>
                         </div>
                     </div>
-                    <div class="item-inner">
+                    <div class="item item-inner">
                         <div class="product">
-                            <a class="product-images" href="#" title="">
+                            <span class="sale lable">Guitar</span>
+                            <a class="product-images" href="/model_design/color?name=guitar&style=2" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
                                      alt=""/>
@@ -443,17 +412,12 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=2">Start Design</a></div>
                     </div>
-                    <div class="item-inner">
+                    <div class="item item-inner">
                         <div class="product sale">
-                            <span class="sale lable">Sale</span>
-                            <a class="product-images" href="#" title="">
+                            <span class="sale lable">Guitar</span>
+                            <a class="product-images" href="/model_design/color?name=guitar&style=3" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar3_3.jpg" %}"
                                      alt=""/>
@@ -476,22 +440,17 @@
                                 <span class="price">$ 650.99</span>
                                 <span class="price-old">$ 670.99</span>
                             </div>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
-                        </div>
+                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=3">Start Design</a></div>
                     </div>
-                    <div class="item-inner">
-                        <div class="product ">
-                            <span class="new lable">New</span>
-                            <a class="product-images" href="#" title="">
+                    <div class="item item-inner">
+                        <div class="product">
+                            <span class="new lable">Piano</span>
+                            <a class="product-images" href="/model_design/color?name=piano&style=1" title="">
                                 <img class="primary_image"
                                      src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_3.jpg" %}"
                                      alt=""/>
                                 <img class="secondary_image"
-                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1_2.jpg" %}"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano1.jpg" %}"
                                      alt=""/>
                             </a>
                             <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
@@ -499,23 +458,59 @@
                                 industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="#">Add to Cart</a>
-                            <div class="action">
-                                <a href="#" title="Like"><i class="fa fa-heart-o"></i></a>
-                                <a href="#" title="View"><i class="fa fa-compress"></i></a>
-                            </div>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=1">Start Design</a>
+                        </div>
+                    </div>
+                    <div class="item item-inner">
+                        <div class="product ">
+                            <span class="new lable">Piano</span>
+                            <a class="product-images" href="/model_design/color?name=piano&style=2" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=2">Start Design</a>
+                        </div>
+                    </div>
+                    <div class="item item-inner">
+                        <div class="product ">
+                            <span class="new lable">Piano</span>
+                            <a class="product-images" href="/model_design/color?name=piano&style=3" title="">
+                                <img class="primary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano3_3.jpg" %}"
+                                     alt=""/>
+                                <img class="secondary_image"
+                                     src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano3.jpg" %}"
+                                     alt=""/>
+                            </a>
+                            <p class="product-title">Smart TV Ultra HD 40 inch - 40JU6600</p>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p class="product-price">$ 650.99</p>
+                            <a class="add-to-cart" href="/model_design/color?name=piano&style=3">Start Design</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-md-offset-1">
-                <div class="section-title">
-                    <h3 class="lead">Design Masters</h3>
-                    <div class="border-style"></div>
-                </div>
+
+            <div class="title-design-master title-product-model">
+                <h3 class="model-products">
+                    <span>~ Design Masters ~</span>
+                </h3>
             </div>
-            <div class="hoz-tab-container space-padding-tb-10">
+
+
+            <div class="design-master hoz-tab-container space-padding-tb-10">
                 <!-- Design Master Part Start -->
                 <ul class="tabs">
                     <li class="item" rel="master1">Dale Wilson</li>
@@ -523,414 +518,296 @@
                     <li class="item" rel="master3">Jason Smith</li>
                     <li class="item" rel="master4">Yuriy Shishkov</li>
                     <li class="item" rel="master5">Todd Krause</li>
-                    <li class="item" rel="master6">Dennis Galuszka</li>
-                    <li class="item" rel="master7">Greg Fessler</li>
-                    <li class="item" rel="master8">John Cruz</li>
                 </ul>
-                <div class="tab-container">
-                    <div id="master1" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
+            </div>
+            <div class="tab-container">
+                <div id="master1" class="tab-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="help-item help-left">
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master1.jpg" %}"
+                                     alt="Help"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="help-item">
+                                <div class="help-right">
+                                    <h2><span>Master Signature: &nbsp;</span> Dale Wilson</h2>
+                                    <p>
+                                        Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005,
+                                        and
+                                        became Master Builder in 2011. A Native of California, he had a passion
+                                        for
+                                        making guitars from an early age. "For as long as I can remember, I've
+                                        loved
+                                        guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                        wanted to make a super guitar. The Wilson family is proficient in
+                                        carpentry,
+                                        and exquisite craftsmanship has always been the passion and pursuit of
+                                        Fender custom shop, which has long been integrated into dell's blood.
+                                        Back
+                                        in the late 1980s, he was working in guitar repair and tooling at a
+                                        studio
+                                        near his middle school.
+                                    </p>
+                                    <p>
+                                        He then went to work for Dobro and Rickenbacker for a while before
+                                        entering
+                                        Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                        Benedetto before becoming an apprentice to a master luthier in a custom
+                                        shop. As a craftsman, he relished being able to draw on his extensive
+                                        experience in producing high-quality guitars, such as the Resophonic
+                                        Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                        premium custom guitars for the NAMM Show in January of that year and was
+                                        asked to sign the back, earning him the honor of Master Builder.
+                                    </p>
+                                    <div class="help-inner-left">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="help-inner-right">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="master2" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master2.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span style="font-family: 'TXRB',serif">Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
+                </div>
+                <div id="master2" class="tab-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="help-item help-left">
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master2.jpg" %}"
+                                     alt="Help"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="help-item">
+                                <div class="help-right">
+                                    <h2><span>Master Signature: &nbsp;</span> Dale Wilson</h2>
+                                    <p>
+                                        Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005,
+                                        and
+                                        became Master Builder in 2011. A Native of California, he had a passion
+                                        for
+                                        making guitars from an early age. "For as long as I can remember, I've
+                                        loved
+                                        guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                        wanted to make a super guitar. The Wilson family is proficient in
+                                        carpentry,
+                                        and exquisite craftsmanship has always been the passion and pursuit of
+                                        Fender custom shop, which has long been integrated into dell's blood.
+                                        Back
+                                        in the late 1980s, he was working in guitar repair and tooling at a
+                                        studio
+                                        near his middle school.
+                                    </p>
+                                    <p>
+                                        He then went to work for Dobro and Rickenbacker for a while before
+                                        entering
+                                        Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                        Benedetto before becoming an apprentice to a master luthier in a custom
+                                        shop. As a craftsman, he relished being able to draw on his extensive
+                                        experience in producing high-quality guitars, such as the Resophonic
+                                        Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                        premium custom guitars for the NAMM Show in January of that year and was
+                                        asked to sign the back, earning him the honor of Master Builder.
+                                    </p>
+                                    <div class="help-inner-left">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="help-inner-right">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="master3" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master3.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
+                </div>
+                <div id="master3" class="tab-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="help-item help-left">
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master3.jpg" %}"
+                                     alt="Help"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="help-item">
+                                <div class="help-right">
+                                    <h2><span>Master Signature: &nbsp;</span> Dale Wilson</h2>
+                                    <p>
+                                        Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005,
+                                        and
+                                        became Master Builder in 2011. A Native of California, he had a passion
+                                        for
+                                        making guitars from an early age. "For as long as I can remember, I've
+                                        loved
+                                        guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                        wanted to make a super guitar. The Wilson family is proficient in
+                                        carpentry,
+                                        and exquisite craftsmanship has always been the passion and pursuit of
+                                        Fender custom shop, which has long been integrated into dell's blood.
+                                        Back
+                                        in the late 1980s, he was working in guitar repair and tooling at a
+                                        studio
+                                        near his middle school.
+                                    </p>
+                                    <p>
+                                        He then went to work for Dobro and Rickenbacker for a while before
+                                        entering
+                                        Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                        Benedetto before becoming an apprentice to a master luthier in a custom
+                                        shop. As a craftsman, he relished being able to draw on his extensive
+                                        experience in producing high-quality guitars, such as the Resophonic
+                                        Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                        premium custom guitars for the NAMM Show in January of that year and was
+                                        asked to sign the back, earning him the honor of Master Builder.
+                                    </p>
+                                    <div class="help-inner-left">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="help-inner-right">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="master4" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master4.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: &nbsp;</span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
+                </div>
+                <div id="master4" class="tab-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="help-item help-left">
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master4.jpg" %}"
+                                     alt="Help"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="help-item">
+                                <div class="help-right">
+                                    <h2><span>Master Signature: &nbsp;</span> Dale Wilson</h2>
+                                    <p>
+                                        Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005,
+                                        and
+                                        became Master Builder in 2011. A Native of California, he had a passion
+                                        for
+                                        making guitars from an early age. "For as long as I can remember, I've
+                                        loved
+                                        guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                        wanted to make a super guitar. The Wilson family is proficient in
+                                        carpentry,
+                                        and exquisite craftsmanship has always been the passion and pursuit of
+                                        Fender custom shop, which has long been integrated into dell's blood.
+                                        Back
+                                        in the late 1980s, he was working in guitar repair and tooling at a
+                                        studio
+                                        near his middle school.
+                                    </p>
+                                    <p>
+                                        He then went to work for Dobro and Rickenbacker for a while before
+                                        entering
+                                        Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                        Benedetto before becoming an apprentice to a master luthier in a custom
+                                        shop. As a craftsman, he relished being able to draw on his extensive
+                                        experience in producing high-quality guitars, such as the Resophonic
+                                        Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                        premium custom guitars for the NAMM Show in January of that year and was
+                                        asked to sign the back, earning him the honor of Master Builder.
+                                    </p>
+                                    <div class="help-inner-left">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="help-inner-right">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="master5" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master5.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
+                </div>
+                <div id="master5" class="tab-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="help-item help-left">
+                                <img style="width: 100%;"
+                                     src="{% static "assets/img_for_shop/master/master5.jpg" %}"
+                                     alt="Help"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="help-item">
+                                <div class="help-right">
+                                    <h2><span>Master Signature: &nbsp;</span> Dale Wilson</h2>
+                                    <p>
+                                        Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005,
+                                        and
+                                        became Master Builder in 2011. A Native of California, he had a passion
+                                        for
+                                        making guitars from an early age. "For as long as I can remember, I've
+                                        loved
+                                        guitars," he says. "Strangely enough, I didn't want to be a rock star. I
+                                        wanted to make a super guitar. The Wilson family is proficient in
+                                        carpentry,
+                                        and exquisite craftsmanship has always been the passion and pursuit of
+                                        Fender custom shop, which has long been integrated into dell's blood.
+                                        Back
+                                        in the late 1980s, he was working in guitar repair and tooling at a
+                                        studio
+                                        near his middle school.
+                                    </p>
+                                    <p>
+                                        He then went to work for Dobro and Rickenbacker for a while before
+                                        entering
+                                        Fender; He also worked for guitar brands such as Guild, Gretsch and
+                                        Benedetto before becoming an apprentice to a master luthier in a custom
+                                        shop. As a craftsman, he relished being able to draw on his extensive
+                                        experience in producing high-quality guitars, such as the Resophonic
+                                        Thinline Telecaster. In 2011, while still an apprentice, he made five
+                                        premium custom guitars for the NAMM Show in January of that year and was
+                                        asked to sign the back, earning him the honor of Master Builder.
+                                    </p>
+                                    <div class="help-inner-left">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="help-inner-right">
+                                        <ul>
+                                            <li><i class="flaticon-checkmark"></i> Quick Reply</li>
+                                            <li><i class="flaticon-checkmark"></i> Best Performances</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="master6" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="master7" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span>Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="master8" class="tab-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="help-item help-left">
-                                    <img style="width: 100%;"
-                                         src="{% static "assets/img_for_shop/master/master1.jpg" %}"
-                                         alt="Help"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="help-item">
-                                    <div class="help-right">
-                                        <h2><span style="font-family: none">Master: </span> Dale Wilson</h2>
-                                        <p>
-                                            Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and
-                                            became Master Builder in 2011. A Native of California, he had a passion for
-                                            making guitars from an early age. "For as long as I can remember, I've loved
-                                            guitars," he says. "Strangely enough, I didn't want to be a rock star. I
-                                            wanted to make a super guitar. The Wilson family is proficient in carpentry,
-                                            and exquisite craftsmanship has always been the passion and pursuit of
-                                            Fender custom shop, which has long been integrated into dell's blood. Back
-                                            in the late 1980s, he was working in guitar repair and tooling at a studio
-                                            near his middle school.
-                                        </p>
-                                        <p>
-                                            He then went to work for Dobro and Rickenbacker for a while before entering
-                                            Fender; He also worked for guitar brands such as Guild, Gretsch and
-                                            Benedetto before becoming an apprentice to a master luthier in a custom
-                                            shop. As a craftsman, he relished being able to draw on his extensive
-                                            experience in producing high-quality guitars, such as the Resophonic
-                                            Thinline Telecaster. In 2011, while still an apprentice, he made five
-                                            premium custom guitars for the NAMM Show in January of that year and was
-                                            asked to sign the back, earning him the honor of Master Builder.
-                                        </p>
-                                        <div class="help-inner-left">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                        <div class="help-inner-right">
-                                            <ul>
-                                                <li><i class="flaticon-checkmark"></i> Quick Reply</li>
-                                                <li><i class="flaticon-checkmark"></i> Best Performances</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+
 
             <!-- End container -->
         </div>
@@ -967,6 +844,26 @@
 
 
     <script>
+
+        let model_split_dom = $(".model-split-merge");
+        let model_select_dom = $(".model-select-none");
+        model_select_dom.click(function () {
+            model_select_dom.toggle("wrapper-hidden");
+        });
+        model_split_dom.click(function () {
+            model_split_dom.toggle("wrapper-hidden");
+        });
+
+        let color_input_dom = $("input[type='color']");
+
+        color_input_dom.on("input", function (e) {
+            changeColor(e.target.value);
+        });
+
+        color_input_dom.change(function (e) {
+            changeColor(e.target.value);
+        });
+
         // 截图
         function convertCanvasToImage(canvas) {
             let image = new Image();
@@ -974,7 +871,6 @@
             return image.src;
         }
 
-        // 图片下载
         // imgUrl = canvas.toDataURL("image/png");
         function downloadImage(imgUrl) {
             let a = $("<a></a>").attr("href", imgUrl).attr("download", "img.png").appendTo("body");
@@ -982,19 +878,14 @@
             a.remove();
         }
 
-        $('.add-to-cart').click(function (e) {
-            {#let biggest_wrapper = $(".model_design_controls");#}
-            {#biggest_wrapper.html();#}
-            {#biggest_wrapper.toggleClass("model_design_controls").toggleClass("model-img-list");#}
-            {#console.log("jia  class", this);#}
+        // 开始截图
+        $('.add-to-cart').click(function () {
             let img_list_wrapper = $(".model-img-list-wrapper");
             img_list_wrapper.toggleClass("wrapper-hidden");
             img_holder = $(".model-img-list");
-            {#let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\" data-nav=\"thumbs\"></div>"#}
-            {#img_list_wrapper.html(html);#}
         });
 
-
+        // 返回设计
         $(".return-design").click(function () {
             model_img_list = [];
             reloadList();
@@ -1002,6 +893,7 @@
             img_list_wrapper.toggleClass("wrapper-hidden");
         });
 
+        // 添加图片
         let img_holder;
         let model_img_list = [];
         $('.add-img').click(function () {
@@ -1014,21 +906,29 @@
             reloadList();
         });
 
+        // 删除图片
         $('.delete-img').click(function () {
             let single_img_removed = $(".fotorama__active").children().children().attr("src");
+            console.log("will remove: ", single_img_removed)
             if (single_img_removed === undefined) {
                 model_img_list = [];
             } else {
-                console.log("BEFPRE", model_img_list);
+                let model_img_list_new = [];
+                console.log("Before remove", model_img_list);
                 let single_img_html = "<a><img src=\"" + single_img_removed + "\"></a>";
-                model_img_list = model_img_list.filter(function (item) {
-                    return item !== single_img_html;
+                model_img_list.forEach(function (item) {
+                    console.log("detect equal", item !== single_img_html);
+                    if (item !== single_img_html) {
+                        model_img_list_new.push(item);
+                    }
                 });
-                console.log("ASDASD", model_img_list);
+                model_img_list = model_img_list_new;
+                console.log("After remove", model_img_list);
             }
             reloadList();
         });
 
+        // 截图刷新
         function reloadList() {
             let mul_img_string = model_img_list.join("\n")
             let html = "<div class=\"fotorama model-img-append\" id=\"fotorama\"" + "data-width=\"110%\"   "
@@ -1049,6 +949,23 @@
                 type: 'text/javascript'
             }).appendTo($('body'));
         }
+
+        // 滑动效果
+        var slider = tns({
+            container: '.my-slider',
+            items: 4,
+            prevButton: '.prev-model',
+            nextButton: '.next-model',
+            "rewind": true,
+            "slideBy": "page",
+            {#"arrowKeys": true,#}
+            {#"swipeAngle": false,#}
+            "speed": 400,
+            "nav": false,
+            autoplay: false
+        });
+
+
     </script>
 
 {% endblock %}
