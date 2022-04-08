@@ -413,104 +413,71 @@
         </div>
         <!-- End Custom Services -->
 
-        <div class="new-arrival-product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>idea Design</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
-                                yoleacene anritv antacus.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>Confection</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
-                                Santac us uisque nuaderas</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>Confection</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
-                                Santacus isque nulladeras. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container container-v2">
-
-                <!-- End Title Slider -->
-                <div class="content-product-slider">
-                    <div class="row">
-                        {% for i in four %}
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="item-product">
-                                    <div class="item-thumb-product">
-                                        <img style="width: 100%;"
-                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2_3.jpg" %}"
-                                             alt=""
-                                             class="product-thumb-front"/>
-                                        <img style="width: 100%;"
-                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_guitar2.jpg" %}"
-                                             alt=""
-                                             class="product-thumb-behind"/>
-                                        <div class="info-product-cart">
-                                            <div class="inner-info-product-cart">
-                                                <ul>
-                                                    <li><a href="#" class="link-wishlist"><i
-                                                            class="fa fa-heart"></i></a></li>
-                                                    <li><a href="#" class="link-quick-view"><i
-                                                            class="fa fa-search"></i></a></li>
-                                                    <li><a href="#" class="link-compare"><i
-                                                            class="fa fa-external-link-square"></i></a></li>
-                                                </ul>
-                                                <a href="#" class="link-product-add-cart">Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <span class="status-product-new">Guitar</span>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="row">
-                        {% for i in four %}
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="item-product">
-                                    <div class="item-thumb-product">
-                                        <img style="width: 100%;"
-                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2_3.jpg" %}"
-                                             alt=""
-                                             class="product-thumb-front"/>
-                                        <img style="width: 100%;"
-                                             src="{% static "assets/img_for_shop/img_for_model_design/model_design_piano2.jpg" %}"
-                                             alt=""
-                                             class="product-thumb-behind"/>
-                                        <div class="info-product-cart2">
-                                            <a class="move-to-model-design"
-                                               href="/model_design/color?name=guitar&amp;style=3">Start
-                                                Design</a>
-                                        </div>
-                                        <span class="status-product-new">New</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                </div>
-                <!-- End Content Slider Product -->
-            </div>
-        </div>
+{#        <div class="new-arrival-product">#}
+        {#            <div class="container">#}
+        {#                <div class="row">#}
+        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
+        {#                        <div class="item-service-box">#}
+        {#                            <h3>idea Design</h3>#}
+        {#                            <a href="#" class="item-service-link"><img#}
+        {#                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>#}
+        {#                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy#}
+        {#                                yoleacene anritv antacus.</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
+        {#                        <div class="item-service-box">#}
+        {#                            <h3>Confection</h3>#}
+        {#                            <a href="#" class="item-service-link"><img#}
+        {#                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>#}
+        {#                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.#}
+        {#                                Santac us uisque nuaderas</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                    <div class="col-md-4 col-sm-4 col-xs-12">#}
+        {#                        <div class="item-service-box">#}
+        {#                            <h3>Confection</h3>#}
+        {#                            <a href="#" class="item-service-link"><img#}
+        {#                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>#}
+        {#                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.#}
+        {#                                Santacus isque nulladeras. </p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#            <div class="container container-v2">#}
+        {#                <!-- End Title Slider -->#}
+        {#                <div class="content-product-slider">#}
+        {#                    <div class="row">#}
+        {#                        {% for design_model in design_models %}#}
+        {#                            <div class="col-md-2 col-sm-6 col-xs-12">#}
+        {#                                <div>  {{ design_model.name }}{{ design_model.style }}</div>#}
+        {#                                <div class="item-product">#}
+        {#                                    <div class="item-thumb-product">#}
+        {#                                        <img style="width: 100%;"#}
+        {#                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}_3.jpg"#}
+        {#                                             alt=""#}
+        {#                                             class="product-thumb-front"/>#}
+        {#                                        <img style="width: 100%;"#}
+        {#                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}.jpg"#}
+        {#                                             alt=""#}
+        {#                                             class="product-thumb-behind"/>#}
+        {#                                        <div class="info-product-cart2">#}
+        {#                                            <a class="move-to-model-design"#}
+        {#                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">#}
+        {#                                                Start Design</a>#}
+        {#                                        </div>#}
+        {#                                        <span class="status-product-new">New</span>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        {% endfor %}#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#                <!-- End Content Slider Product -->#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <!-- End Model Design -->#}
 
 
         <div class="list-designer">
