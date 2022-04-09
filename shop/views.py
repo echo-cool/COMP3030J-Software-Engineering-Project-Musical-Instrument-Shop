@@ -126,6 +126,9 @@ def about(request):
 def game(request):
     return render(request, 'shop_templates/game.html')
 
+def chinese(request):
+    return render(request, 'shop_templates/chinese.html')
+
 
 def category_view(request, category_id):
     categories = Category.objects.all()
