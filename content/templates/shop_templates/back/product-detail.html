@@ -1,0 +1,991 @@
+{% extends 'layouts/default/page.html' %}
+{% load static %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon"
+          href="{% static "assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
+          href="{% static "assets/img_for_shop/apple-touch-icon-72x72-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+          href="{% static "assets/img_for_shop/apple-touch-icon-114x114-precomposed.png" %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+          href="{% static "assets/img_for_shop/apple-touch-icon-144x144-precomposed.png" %}">
+
+    <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{% static "assets/css_for_shop/product_page.css" %}" rel="stylesheet">
+
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
+    <style>
+        .container-v1 {
+            max-width: 1670px;
+        }
+
+        .container-v2 {
+        {#margin-top: 2%;#} max-width: 1440px;
+        }
+
+        .wrapper-hidden {
+            display: none;
+        }
+
+        .slider-two .owl-stage {
+            display: flex !important;
+            flex-direction: column;
+        }
+
+        .slider-two .owl-item {
+            margin-bottom: 9px;
+        }
+
+        .slider-two .owl-stage .active {
+            border: wheat;
+            border-style: solid;
+        }
+
+        .slider-two {
+            width: 500% !important;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+
+{% block content %}
+    <main>
+        <div class="wrap-bread-crumb">
+            <div class="container container-v1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- /snippets/breadcrumb.liquid -->
+                        <div class="bread-crumb">
+                            <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right"
+                                                                             aria-hidden="true"></i></a>
+                            <a href="/collections/hot-deal">hot deal <i class="fa fa-angle-right"
+                                                                        aria-hidden="true"></i></a>
+                            <strong>YC Combo Organ</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 justify-content-end align-items-center d-sm-flex d-none prod_extended">
+                        <div class="arrows-product">
+                            <div class="prev_prod">
+                                <a href="/products/mapex-30th-anniversary"><i class="fa fa-angle-left"
+                                                                              aria-hidden="true"></i>Prev</a>
+                                <div class="position-absolute img-prev">
+                                    <a href="/products/mapex-30th-anniversary">
+                                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1_80x80.jpg?v=1606587239"
+                                             class="">
+                                    </a>
+                                    <div class="info-prod">
+                                        <a href="/products/mapex-30th-anniversary">Mapex 30th Anniversary</a>
+                                        <p>$239.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next_prod">
+                                <a href="/products/keyboard-with-usb-midi">
+                                    Next<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                                <div class=" img-next">
+                                    <a href="/products/keyboard-with-usb-midi">
+                                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1_80x80.jpg?v=1606586472"
+                                             class="">
+                                    </a>
+                                    <div class="info-prod">
+                                        <a href="/products/keyboard-with-usb-midi">Keyboard with USB MIDI</a>
+                                        <p>$79.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container  container-v2">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="slider-two">
+                                <div class="owl-carousel owl-carousel-vertical owl-theme thumbs vertical-slider">
+                                    <div>
+                                        <img class="item active"
+                                             src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                             alt="">
+                                    </div>
+                                    <div>
+                                        <img class="item active"
+                                             src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                             alt="">
+                                    </div>
+                                    <div>
+                                        <img class="item active"
+                                             src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                             alt="">
+                                    </div>
+                                    <div>
+                                        <img class="item active"
+                                             src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                             alt="">
+                                    </div>
+                                    <div>
+                                        <img class="item active"
+                                             src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                             alt="">
+                                    </div>
+                                </div>
+                                <div class="left-t nonl-t"></div>
+                                <div class="right-t"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="all">
+                                <div class="show3D"
+                                     style="cursor:pointer;right: 5%; position: absolute; z-index: 3; background: white; width: 10%; height: 12%; box-shadow: 0 1px 2px 0 #a1aaad; border-radius: 50%; top: 5%;">
+                                    <img style="padding: 24%;" id="3d-icon"
+                                         src="{% static "assets/img_for_shop/3d-icon.svg" %}">
+                                </div>
+                                <div class="show-controls wrapper-hidden"
+                                     style="bottom: 0;position: absolute;z-index:3;width:4%">
+                                    <div class="model-zoom-in"><img style="width: 100%;"
+                                                                    src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                                    </div>
+                                    <div class="model-zoom-out"><img style="width: 100%;"
+                                                                     src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
+                                    </div>
+                                    <div onclick=switchRotate()>
+                                        <img style="width: 100%;"
+                                             src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
+                                    </div>
+                                </div>
+                                <!--加载模型，默认不显示  -->
+                                <div id="progress" class="progress" style="display:none;">
+                                </div>
+                                <div class="slider">
+                                    <div class="owl-carousel owl-theme main">
+                                        <div>
+                                            <img class="owl-lazy"
+                                                 src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                                 data-src="/media/uploads/instrument/image/detail_piano1 (1).jpg" alt=""
+                                                 style="opacity: 1;">
+                                        </div>
+                                        <div>
+                                            <img class="owl-lazy"
+                                                 src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                                 data-src="/media/uploads/instrument/image/detail_piano1 (2).jpg" alt=""
+                                                 style="opacity: 1;">
+                                        </div>
+                                        <div>
+                                            <img class="owl-lazy"
+                                                 src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                                 data-src="/media/uploads/instrument/image/detail_piano1 (3).jpg" alt=""
+                                                 style="opacity: 1;">
+                                        </div>
+                                        <div>
+                                            <img class="owl-lazy"
+                                                 src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                                 data-src="/media/uploads/instrument/image/detail_piano1 (4).jpg" alt=""
+                                                 style="opacity: 1;">
+                                        </div>
+                                        <div>
+                                            <img class="owl-lazy"
+                                                 src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                                 data-src="/media/uploads/instrument/image/detail_piano1 (5).jpg" alt=""
+                                                 style="opacity: 1;">
+                                        </div>
+                                    </div>
+                                    <div class="left nonl"><i class="ti-angle-left"></i></div>
+                                    <div class="right"><i class="ti-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="detail-info">
+                        <h2 class="product-title">SZPA-P12 Portable PA</h2>
+                        <div class="product-price ">
+                            <del class="enj-product-price-compare">$558.00 USD</del>
+                            <ins class="enj-product-price engoj_price_main">$57.00 USD</ins>
+                        </div>
+                        <div class="wrap-rating">
+                            <span class="spr-badge">
+                                <span class="spr-starrating spr-badge-starrating">
+                                    <i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i><i
+                                        class="spr-icon spr-icon-star-empty" aria-hidden="true"></i></span>
+                                <span class="spr-badge-caption">No reviews</span>
+                            </span>
+                        </div>
+                        <div class="pd_summary">
+                            <p class=" mb-0">Play Music via MP3 and Bluetooth Easily play music. You don't need any
+                                extra equipment - the SubZero SZPA-P12 has an all-in-one media player built in. You can
+                                play MP3s from SD cards and USB, or wirelessly stream music from your phone or tablet
+                                via Bluetooth. All of this is...</p>
+                        </div>
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm"
+                              class="cart clearfix mt-3">
+
+
+                            <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
+                                    class="single-option-selector" data-option="option1" id="productSelect-option-0">
+                                <option value="Maroon">Maroon</option>
+                                <option value="White">White</option>
+                            </select></div>
+                            <select name="id" id="productSelect" class="product-single__variants"
+                                    style="display: none;">
+                                <option selected="selected" data-sku="" value="37685248721083">Maroon - $223.00 USD
+                                </option>
+                                <option data-sku="" value="37685248753851">White - $223.00 USD</option>
+                            </select>
+                            <!--Swatch Variant -->
+                            <style rel="stylesheet" type="text/css">
+                                .proVariants .selector-wrapper:nth-child(1) {
+                                    display: none;
+                                }
+
+                                .maxus-productdetail__options:not(:last-child) {
+                                    margin-right: 20px;
+                                }
+                            </style>
+                            <div class="maxus-productdetail__options">
+
+                                <div class="swatch clearfix  align-center flex engoc-flex-wrap" data-option-index="0">
+                                    <p class="text-uppercase title_variant">Color </p>
+
+
+                                    <div data-value="Maroon" data-style="square"
+                                         class="maxus-color none color maroon available">
+                                        <input id="swatch-0-maroon" type="radio" name="option-0" value="Maroon"
+                                               checked="">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-maroon"
+                                                   style="background-color: maroon; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/maroon.png?1155); background-size: cover;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $('.swatch[data-option-index="0"] .maroon').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+                                    <div data-value="White" data-style="square"
+                                         class="maxus-color none color white available">
+                                        <input id="swatch-0-white" type="radio" name="option-0" value="White">
+
+
+                                        <div class="  border-color ">
+                                            <label class="link_color" for="swatch-0-white"
+                                                   style="background-color: white; background-image: url(//cdn.shopify.com/s/files/1/0518/3173/4459/files/white.png?1155); background-size: cover;">
+
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <script>
+                                        jQuery('.swatch[data-option-index="0"] .white').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                                    </script>
+
+
+                                </div>
+                            </div>
+
+
+                            <!--End Swatch Variant -->
+
+                            <!-- Add to cart & quantity -->
+
+
+                            <div class="btn-action detail-attr qty-cart">
+                                <div class="">
+                                    <div class="js-qty">
+                                        <button type="button"
+                                                class="qty_minus js-qty__adjust js-qty__adjust--minus icon-fallback-text"
+                                                data-id="" data-qty="0">
+                                            <span class="fa fa-minus"></span>
+                                        </button>
+                                        <input type="text" class="js-qty__num" value="1" min="1" data-id=""
+                                               aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
+                                        <button type="button"
+                                                class="qty_plus js-qty__adjust js-qty__adjust--plus icon-fallback-text"
+                                                data-id="" data-qty="11">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="shop-button enj-add-to-cart-btn engoj-btn-addtocart"
+                                        value="Add to Cart" style="opacity: 1;">
+                                    Add to Cart
+                                </button>
+                            </div>
+                            <!-- End add to cart & quantity -->
+                            <input type="hidden" name="form_type" value="product">
+                            <input type="hidden" name="utf8" value="✓">
+                            <div data-shopify="payment-button" data-has-selling-plan="false"
+                                 class="shopify-payment-button">
+                                <button type="button"
+                                        class="shopify-payment-button__button"
+                                        data-testid="Checkout-button">Buy it now
+                                </button>
+                            </div>
+                        </form>
+                        <div class="btn-addwhlist">
+                            <a href="/account/login"
+                               class="box-shadow  inline-block maxus-product__wishlist wish text-center"
+                               data-toggle="tooltip" data-placement="top" data-original-title="Add to Wishlist">
+                                <i class="fsz-unset"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
+                                         width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                         xmlns:cc="http://creativecommons.org/ns#"
+                                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                            rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
+                                        <defs id="defs6"></defs>
+                                        <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
+                                </i>
+                            </a>
+                            <span class="text_whlist"></span>
+                        </div>
+                        <ul class="product-meta-info">
+                            <li>
+                                <div class="item-product-meta-info product-category-info">
+                                    <label>Categories :</label>
+                                    <a href="/collections/frontpage">Home page, </a>
+                                    <a href="/collections/hot-rate">hot rate </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /product_actions -->
+                </div>
+                <div class="col-lg-3 col-md-12 col-12">
+                    <div class="row prod_extended">
+                        <div class="col-lg-12 col-md-4 content-page-detail">
+                            <div class="content_box ">
+                                <div class="content_text">
+                                    <h3 class="title">Why Choose Us ?</h3>
+                                    <div class="text">Official Herschel stockist Australian warranty assistance &amp;
+                                        support Australian shipping &amp; returns.Customer first experience
+                                        environmentally focused
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-4 content-page-detail">
+                            <div class="content_box ">
+                                <div class="content_text">
+                                    <h3 class="title">Returns</h3>
+                                    <div class="text">Return this product within 100 days if you change your mind. Get a
+                                        refund/replacement &amp; free return shipping if it arrives damaged or not as
+                                        described
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-4 content-page-detail">
+                            <div class="content_box ">
+                                <div class="content_text">
+                                    <h3 class="title">Shipping</h3>
+                                    <div class="text">Free if stated near price. $9.95 Australia wide (up to 10 items).
+                                        $18.95 for Express Post (generally 1 business day).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+
+        <div class="tabs_product">
+            <div class="container">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab"
+                           role="tab">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="tab-B" href="#pane-B" class="nav-link" data-bs-toggle="tab" role="tab">Reviews</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /tabs_product -->
+        <div class="tab_content_wrapper">
+            <div class="container">
+                <div class="tab-content" role="tablist">
+                    <div id="pane-A" class="card tab-pane fade active show" role="tabpanel" aria-labelledby="tab-A">
+                        <div class="card-header" role="tab" id="heading-A">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse-A" aria-expanded="false"
+                                   aria-controls="collapse-A">
+                                    Description
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+                            <div class="card-body">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-6">
+                                        {#                                        <h3>Details</h3>#}
+                                        <p> 🎹 Double keyboard setting of this weighted keyboard lets you separate the
+                                            keyboard into
+                                            two same sections in pitch&tone, enabling you to one-to-one
+                                            teaching&practicing,
+                                            for an
+                                            inspiring new practicing experience. Headphones can also be connected, which
+                                            is
+                                            very
+                                            suitable for beginners to practice piano late at night or where speakers are
+                                            not
+                                            suitable.
+                                        </p>
+                                        <p> 🎹 10 Pre-set authentic timbres (Grand Piano, Electric Piano, Rock Organ,
+                                            Strings, Bass,
+                                            etc), 128 polyphony, the advanced sampling makes the degree of reduction is
+                                            extremely
+                                            high. And this 88-key weighted keyboard has a metal 3-pedal system ( Soft /
+                                            Sustain /
+                                            Sostenuto Pedal) to ensure the quality of your practice, and aim to create
+                                            new
+                                            experiences in music and performance.</p>
+                                        <p>{{ instrument_details.details }}</p>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <h3>Specifications</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-striped">
+                                                <tbody>
+                                                <tr>
+                                                    <td><strong>Color</strong></td>
+                                                    <td>Blue, Purple</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Size</strong></td>
+                                                    <td>150x100x100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Weight</strong></td>
+                                                    <td>0.6kg</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Manifacturer</strong></td>
+                                                    <td>Manifacturer</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /table-responsive -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /TAB A -->
+                    <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+                        <div class="card-header" role="tab" id="heading-B">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse-B" aria-expanded="false"
+                                   aria-controls="collapse-B">
+                                    Reviews
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+                            <div class="card-body">
+                                <div class="row justify-content-between">
+                                    {% for review in review_left %}
+                                        <div class="col-lg-6">
+                                            <div class="review_content">
+                                                <div class="clearfix add_bottom_10">
+                                                <span class="rating">
+                                                    <i class="icon-star"></i>
+                                                    <i class="icon-star"></i>
+                                                    <i class="icon-star"></i>
+                                                    <i class="icon-star"></i>
+                                                    <i class="icon-star"></i>
+                                                    <em>review.rating/5.0</em>
+                                                </span>
+                                                    <em>review.created_at</em>
+                                                </div>
+                                                <h4>review.review_text</h4>
+                                                <p>review.review_text</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- /row -->
+                                <div class="row justify-content-between">
+
+                                    {% for review in review_right %}
+                                        <div class="col-lg-6">
+                                            <div class="review_content">
+                                                <div class="clearfix add_bottom_10">
+                                                <span class="rating"><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><i
+                                                        class="icon-star"></i><i class="icon-star"></i><em>review.rating/5.0</em></span>
+                                                    <em>review.created_at</em>
+                                                </div>
+                                                <h4>review.review_text</h4>
+                                                <p>review.review_text</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- /row -->
+                                <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">Leave
+                                    a
+                                    review</a></p>
+                            </div>
+                            <!-- /card-body -->
+                        </div>
+                    </div>
+                    <!-- /tab B -->
+                </div>
+                <!-- /tab-content -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /tab_content_wrapper -->
+
+        <div class="container margin_60_35">
+            <div class="main_title">
+                <h2>Related</h2>
+                <span>Products</span>
+                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+            </div>
+            <div class="owl-carousel owl-theme products_carousel">
+                {% for item in related %}
+                    <div class="item">
+                        <div class="grid_item">
+                            <span class="ribbon new">New</span>
+                            <figure>
+                                <a href="{% url 'shop:product_details' product_id=item.id %}">
+                                    <img class="owl-lazy image-size" src="/media/{{ item.image }}"
+                                         data-src="/media/{{ item.image }}" alt="">
+                                </a>
+                            </figure>
+                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+                                    class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i>
+                            </div>
+                            <a href="{% url 'shop:product_details' product_id=item.id %}">
+                                <h3>{{ item.name }}</h3>
+                            </a>
+                            <div class="price_box">
+                                <span class="new_price">${{ item.price }}</span>
+                            </div>
+                            <ul>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                       title="Add to favorites"><i
+                                        class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                       title="Add to compare"><i
+                                        class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                       title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /grid_item -->
+                    </div>
+                    <!-- /item -->
+                {% endfor %}
+            </div>
+            <!-- /products_carousel -->
+        </div>
+        <!-- /container -->
+
+        <div class="feat">
+            <div class="container">
+                <ul>
+                    <li>
+                        <div class="box">
+                            <i class="ti-gift"></i>
+                            <div class="justify-content-center">
+                                <h3>Free Shipping</h3>
+                                <p>For all oders over $99</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box">
+                            <i class="ti-wallet"></i>
+                            <div class="justify-content-center">
+                                <h3>Secure Payment</h3>
+                                <p>100% secure payment</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box">
+                            <i class="ti-headphone-alt"></i>
+                            <div class="justify-content-center">
+                                <h3>24/7 Support</h3>
+                                <p>Online top support</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/feat-->
+
+    </main>
+    <!-- /main -->
+
+    <footer class="revealed">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3 data-bs-target="#collapse_1">Quick Links</h3>
+                    <div class="collapse dont-collapse-sm links" id="collapse_1">
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="help.html">Faq</a></li>
+                            <li><a href="help.html">Help</a></li>
+                            <li><a href="account.html">My account</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 data-bs-target="#collapse_2">Categories</h3>
+                    <div class="collapse dont-collapse-sm links" id="collapse_2">
+                        <ul>
+                            <li><a href="listing-grid-1-full.html">Clothes</a></li>
+                            <li><a href="listing-grid-2-full.html">Electronics</a></li>
+                            <li><a href="listing-grid-1-full.html">Furniture</a></li>
+                            <li><a href="listing-grid-3.html">Glasses</a></li>
+                            <li><a href="listing-grid-1-full.html">Shoes</a></li>
+                            <li><a href="listing-grid-1-full.html">Watches</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 data-bs-target="#collapse_3">Contacts</h3>
+                    <div class="collapse dont-collapse-sm contacts" id="collapse_3">
+                        <ul>
+                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
+                            <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
+                            <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 data-bs-target="#collapse_4">Keep in touch</h3>
+                    <div class="collapse dont-collapse-sm" id="collapse_4">
+                        <div id="newsletter">
+                            <div class="form-group">
+                                <input type="email" name="email_newsletter" id="email_newsletter" class="form-control"
+                                       placeholder="Your email">
+                                <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="follow_us">
+                            <h5>Follow Us</h5>
+                            <ul>
+                                <li><a href="#0"><img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                        data-src="{% static "assets/img_for_shop/twitter_icon.svg" %}" alt=""
+                                        class="lazy"></a></li>
+                                <li><a href="#0"><img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                        data-src="{% static "assets/img_for_shop/facebook_icon.svg" %}" alt=""
+                                        class="lazy"></a></li>
+                                <li><a href="#0"><img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                        data-src="{% static "assets/img_for_shop/instagram_icon.svg" %}" alt=""
+                                        class="lazy"></a></li>
+                                <li><a href="#0"><img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                        data-src="{% static "assets/img_for_shop/youtube_icon.svg" %}" alt=""
+                                        class="lazy"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /row-->
+            <hr>
+            <div class="row add_bottom_25">
+                <div class="col-lg-6">
+                    <ul class="footer-selector clearfix">
+                        <li>
+                            <div class="styled-select lang-selector">
+                                <select>
+                                    <option value="English" selected>English</option>
+                                    <option value="French">French</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Russian">Russian</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="styled-select currency-selector">
+                                <select>
+                                    <option value="US Dollars" selected>US Dollars</option>
+                                    <option value="Euro">Euro</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li><img
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                data-src="{% static "assets/img_for_shop/cards_all.svg" %}" alt="" width="198"
+                                height="30" class="lazy"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="additional_links">
+                        <li><a href="#0">Terms and conditions</a></li>
+                        <li><a href="#0">Privacy</a></li>
+                        <li><span>© 2021 Allaia</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/footer-->
+
+    <div id="toTop"></div><!-- Back to top button -->
+
+    <div class="top_panel">
+        <div class="container header_panel">
+            <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
+            <label>1 product added to cart</label>
+        </div>
+        <!-- /header_panel -->
+        <div class="item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="item_panel">
+                            <figure>
+                                <img src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"
+                                     data-src="{% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="lazy"
+                                     alt="">
+                            </figure>
+                            <h4>1x {{ instrument.name }}</h4>
+                            <div class="price_panel">
+                                <span class="new_price">${{ instrument.price }}</span>
+                                <span class="percentage">-${{ instrument.percentage }}</span>
+                                <span class="old_price">${{ instrument.old_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 btn_panel">
+                        <a href="/cart" class="btn_1 outline">View cart</a> <a href="/checkout"
+                                                                               class="btn_1">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /item -->
+        <div class="container related">
+            <h4>Who bought this product also bought</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"
+                                     data-src="{% static "assets/img_for_shop/products/shoes/2.jpg" %}" alt=""
+                                     class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor Okwahn II</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$90.00</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"
+                                     data-src="{% static "assets/img_for_shop/products/shoes/3.jpg" %}" alt=""
+                                     class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor Air Wildwood ACG</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$75.00</span><span
+                                class="percentage">-20%</span> <span class="old_price">$155.00</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="{% static "assets/img_for_shop/products/product_placeholder_square_small.jpg" %}"
+                                     data-src="{% static "assets/img_for_shop/products/shoes/4.jpg" %}" alt=""
+                                     class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor ACG React Terra</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$110.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /related -->
+    </div>
+    <!-- /add_cart_panel -->
+
+    <!-- Size modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="size-modal" id="size-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Size guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, et velit propriae invenire mea, ad nam alia intellegat. Aperiam
+                        mediocrem rationibus nec te. Tation persecuti accommodare pro te. Vis et augue legere, vel
+                        labitur habemus ocurreret ex.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm sizes">
+                            <tbody>
+                            <tr>
+                                <th scope="row">US Sizes</th>
+                                <td>6</td>
+                                <td>6,5</td>
+                                <td>7</td>
+                                <td>7,5</td>
+                                <td>8</td>
+                                <td>8,5</td>
+                                <td>9</td>
+                                <td>9,5</td>
+                                <td>10</td>
+                                <td>10,5</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Euro Sizes</th>
+                                <td>39</td>
+                                <td>39</td>
+                                <td>40</td>
+                                <td>40-41</td>
+                                <td>41</td>
+                                <td>41-42</td>
+                                <td>42</td>
+                                <td>42-43</td>
+                                <td>43</td>
+                                <td>43-44</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">UK Sizes</th>
+                                <td>5,5</td>
+                                <td>6</td>
+                                <td>6,5</td>
+                                <td>7</td>
+                                <td>7,5</td>
+                                <td>8</td>
+                                <td>8,5</td>
+                                <td>9</td>
+                                <td>9,5</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Inches</th>
+                                <td>9.25"</td>
+                                <td>9.5"</td>
+                                <td>9.625"</td>
+                                <td>9.75"</td>
+                                <td>9.9375"</td>
+                                <td>10.125"</td>
+                                <td>10.25"</td>
+                                <td>10.5"</td>
+                                <td>10.625"</td>
+                                <td>10.75"</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CM</th>
+                                <td>23,5</td>
+                                <td>24,1</td>
+                                <td>24,4</td>
+                                <td>24,8</td>
+                                <td>25,4</td>
+                                <td>25,7</td>
+                                <td>26</td>
+                                <td>26,7</td>
+                                <td>27</td>
+                                <td>27,3</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /table -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block foot_link %}
+    <!-- COMMON SCRIPTS -->
+    <script src="{% static "assets/js_for_shop/common_scripts.min.js" %}"></script>
+    <script src="{% static "assets/js_for_shop/main.js" %}"></script>
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="{% static "assets/js_for_shop/carousel_with_thumbs.js" %}"></script>
+
+    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>
+    <!-- 需要修复main 的button错误-->
+    <script>
+        $(".show3D").click(function () {
+            console.log("youwu", $(".model-zoom-in"));
+            let img = $("#3d-icon");
+            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.svg" %}") {
+                $(".show-controls").toggle("wrapper-hidden");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.svg" %}");
+                $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
+            } else {
+                $(".show-controls").toggle("wrapper-hidden");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.svg" %}");
+                $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
+            }
+        });
+
+        $(".main").style = "margin-bottom: 0px;";
+    </script>
+{% endblock %}

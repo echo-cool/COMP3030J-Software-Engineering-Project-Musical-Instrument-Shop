@@ -51,13 +51,51 @@ def index(request):
 
 
 def home(request):
+    instruments = Instrument.objects.all()
+    categories = Category.objects.all()
+    index_categories = {
+        'left_700_604': {
+            'category': Category.objects.get(id=1),
+            'count': Instrument.objects.filter(category=1).count()
+        },
+        "right_bottom_800_343": {
+            'category': Category.objects.get(id=2),
+            'count': Instrument.objects.filter(category=2).count()
+        },
+        "right_top1_500_480": {
+            'category': Category.objects.get(id=2),
+            'count': Instrument.objects.filter(category=2).count()
+        },
+        "right_top2_500_480": {
+            'category': Category.objects.get(id=1),
+            'count': Instrument.objects.filter(category=1).count()
+        },
+    }
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+
     return render(request, 'shop_templates/homepage.html', {
+        "instruments": instruments,
+        "categories": categories,
+        "index_categories": index_categories,
         "two": range(2),
         "three": range(3),
         "four": range(4),
         "six": range(6),
         "eight": range(8),
         "ten": range(10),
+        "design_models": [{"name": "guitar", "style": 1,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_guitar1"},
+                          {"name": "guitar", "style": 2,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_guitar2"},
+                          {"name": "guitar", "style": 3,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_guitar3"},
+                          {"name": "piano", "style": 1,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_piano1"},
+                          {"name": "piano", "style": 2,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_piano2"},
+                          {"name": "piano", "style": 3,
+                           "url": "/static/assets/img_for_shop/img_for_model_design/model_design_piano3"}, ],
     })
 
 
@@ -91,7 +129,14 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    review = Review.objects.filter(instrument=instrument).order_by('?')[:4]
+    reviews = Review.objects.all()
+    review = []
+    for i in range(4):
+        num = random.randint(0, len(reviews) - 1)
+        reviews[num].review_icon_iter = range(int(reviews[num].rating))
+        reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
+        review.append(reviews[num])
+
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
@@ -101,8 +146,9 @@ def product_details(request, product_id):
         "instrument_details": instrument_details,
         "related": related,
         'categories': categories,
-        "review_left": review[:1],
-        "review_right": review[1:]
+        "review_left": [review[0], review[1]],
+        "review_right": [review[2], review[3]],
+
     })
 
 
@@ -110,17 +156,23 @@ def product_details(request, product_id):
 def leave_review(request, instrument_id):
     form = ReviewForm()
     if request.method == "POST":
+        form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.instrument = Instrument.objects.get(id=instrument_id)
+            user = request.user
+            instrument = Instrument.objects.get(id=instrument_id)
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            rating = form.cleaned_data['rating']
+            review = Review(
+                user=user,
+                instrument=instrument,
+                title=title,
+                content=content,
+                rating=rating
+            )
             review.save()
             messages.success(request, "Review submitted successfully")
-            return redirect(reverse('product-details', args=[instrument_id]))
-        else:
-            messages.error(request, "Error submitting review")
-            return redirect(reverse('product-details', args=[instrument_id]))
-
+            return redirect(reverse('shop:product_details', args=[instrument_id]))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form
@@ -338,7 +390,6 @@ def product_add_cart(request, instrument_id):
 #         exist_cart.delete()
 #         exist_cart.save()
 #     return redirect('shop:cart')
-
 
 def product_details_test_model(request, product_id):
     categories = Category.objects.all()

@@ -6,6 +6,7 @@ Version:	1.1
 Last change:	25/01/2016
 Author:	7UP Theme
 -------------------------------------------------------------------*/
+/*@import url("../css_for_shop/Sofia/font-sofia.css");*/
 /*General*/
 .button-shop-1606671744b1519c3f-1:hover {
     background: #ffffff !important;
@@ -31,6 +32,45 @@ body.home-page {
     background: url('../images/banner.webp') no-repeat top center;
     background-size: contain;
 }
+
+.background {
+    /*background: url('../images/banner.webp') no-repeat top center;*/
+    /*background-size: cover;*/
+}
+
+
+.move-to-model-design {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    text-align: center;
+    background: none;
+    box-shadow: 0 0 0 30px #ba933e inset;
+    color: #fff;
+    line-height: 54px;
+    padding: 0 37px;
+    transition: all 0.3s ease-in-out;
+    visibility: visible;
+}
+
+
+/*.item-thumb-product:hover .info-product-cart {*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*}*/
+
+
+.move-to-model-design:hover {
+    background: white;
+    color: #ba933e;
+    box-shadow: 0 0 0 2px #ba933e inset;
+}
+
+/*.move-to-model-design::after {*/
+/*    content: "";*/
+/*}*/
+
 
 img, input, textarea {
     max-width: 100%;
@@ -260,7 +300,7 @@ a, .text-link {
     position: absolute;
     right: -60px;
     top: -60px;
-    background: #ffc229 none repeat scroll 0 0;
+    background: #6b5964 none repeat scroll 0 0;
     border-radius: 50%;
     height: 110px;
     width: 120px;
@@ -269,7 +309,7 @@ a, .text-link {
 }
 
 .inner-box-banner-adv:hover .box-search-adv {
-    background: rgba(255, 194, 41, 0.5) none repeat scroll 0 0;
+    background: rgba(100, 89, 100, 0.5) none repeat scroll 0 0;
     transform: scale(9.5);
 }
 
@@ -285,7 +325,8 @@ a, .text-link {
 }
 
 .box-search-adv-link:hover {
-    color: #ffc229;
+    /*color: #ffc229;*/
+    color: #6b5964;
 }
 
 .inner-box-banner-adv:hover .box-search-adv-link {
@@ -523,6 +564,26 @@ a, .text-link {
     z-index: 10;
 }
 
+
+.info-product-cart2 {
+    bottom: 0px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s ease-out 0s;
+    width: 100%;
+    z-index: 10;
+    border: 1px solid #ffc229;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.item-thumb-product:hover .info-product-cart2 {
+    opacity: 1;
+    visibility: visible;
+}
+
+
 .info-product-cart {
     border: 1px solid #ffc229;
     bottom: 0;
@@ -599,16 +660,18 @@ a, .text-link {
     display: inline-block;
 }
 
-.inner-info-product-cart ul li a {
+.inner-info-product-cart ul li a, .inner-info-product-cart ul li button {
     color: #fff;
     transition: all 0.5s ease-out 0s;
     display: block;
     width: 40px;
     height: 40px;
     text-align: center;
+    border: none;
+    background-color: transparent;
 }
 
-.inner-info-product-cart ul li a:hover {
+.inner-info-product-cart ul li a:hover, .inner-info-product-cart ul li button:hover {
     background: #ffc229 none repeat scroll 0 0;
 }
 
@@ -865,7 +928,7 @@ a, .text-link {
 
 /*List Design*/
 .list-designer {
-    background: rgba(0, 0, 0, 0) url("../images/home_1/parallax_01.png") no-repeat scroll center top;
+    background: rgba(0, 0, 0, 0) url("../img_for_shop/only_for_instruments_figure/blog11.jpg") no-repeat scroll center top;
     padding: 70px 0;
     margin-top: 20px;
 }

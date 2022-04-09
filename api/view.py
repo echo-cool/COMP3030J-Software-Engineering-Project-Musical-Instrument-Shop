@@ -10,9 +10,6 @@ from django.contrib.auth.models import User
 from django.db.models import Q, Max
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-
-# Create your views here.
-from blog.models import Post, Category, Tag
 from django.contrib import messages
 
 from chat.models import MessageModel
