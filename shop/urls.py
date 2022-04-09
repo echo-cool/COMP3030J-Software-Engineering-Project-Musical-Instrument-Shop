@@ -13,8 +13,6 @@ urlpatterns = [
     path("product_details_test_model/<int:product_id>", product_details_test_model,
          name="product_details_test_model"),
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
-    # path("leave_review2/", leave_review2, name="leave_review2"),
-    # path("confirm_submit/", confirm_submit, name="confirm_submit"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
     path('confirm/', confirm, name='confirm'),
@@ -32,6 +30,5 @@ urlpatterns = [
     path('orders/', orders, name='orders'),
     path('home', home, name='home'),
     path('about', about, name='about'),
-
     path('game', game, name='game'),
 ]

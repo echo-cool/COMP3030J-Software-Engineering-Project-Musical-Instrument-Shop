@@ -52,11 +52,12 @@ def index(request):
 
 def home(request):
     return render(request, 'shop_templates/homepage.html', {
-        "ten": range(10),
-        "three": range(3),
         "two": range(2),
+        "three": range(3),
+        "four": range(4),
+        "six": range(6),
         "eight": range(8),
-        "six": range(6)
+        "ten": range(10),
     })
 
 
@@ -124,27 +125,6 @@ def leave_review(request, instrument_id):
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form
     })
-
-
-# @login_required
-# def confirm_submit(request):
-#     if request.method == "POST":
-#         rating = request.POST.get("rating-input", None)
-#         review_text = request.POST.get("review", None)
-#         fileupload = request.FILES.get("fileupload", None)
-#         # check_selected = request.POST.get("check", None)
-#         print("rating: ", rating)
-#         print("review_text: ", review_text)
-#         print("fileupload: ", fileupload)
-#         # print("check_selected: ", check_selected)
-#         # f = ReviewForm(request.POST, request.FILES)
-#         # if f.is_valid():
-#         #     f.save()
-#         # print(f.errors)
-#         new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
-#                             review_text=review_text, file_upload=fileupload)
-#         new_review.save()
-#     return render(request, 'shop_templates/product-detail.html')
 
 
 @login_required
