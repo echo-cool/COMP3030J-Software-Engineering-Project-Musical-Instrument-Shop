@@ -1,3 +1,4 @@
+{% load static %}
 <div class="audio_player">
     <!-- js handle -->
 </div>
@@ -16,6 +17,9 @@
         <button class="piano-button" onclick="load_sample1()">Sample</button>
         <button class="piano-button" onclick="load_sample2()">Sample2</button>
         <button class="piano-button" onclick="start_play()">Start play<i class="fa fa-play"></i></button>
-        <button class="piano-button" onclick="start_play()">Stop play<i class="fa fa-pause"></i></button>
+        <button class="piano-button" onclick="stop_play()">Stop play<i class="fa fa-pause"></i></button>
     </div>
 </div>
+<link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/js_for_game/game_piano.css' %}" rel="stylesheet">
+<script src="{% static 'assets/js_for_game/game_piano.js' %}"></script>

@@ -13,24 +13,21 @@
     {#    <link href="/static/assets/css_for_shop/listing.css" rel="stylesheet">#}
 
     <link rel="stylesheet" href="{% static "assets/css_for_shop/listing.css" %}">
+
+
+    <link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/js_for_game/game_piano.css' %}" rel="stylesheet">
+
+    <script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>
+    <script src="{% static 'assets/js_for_game/game_piano.js' %}"></script>
+
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
     <main class="content-page">
-        <div class="top_banner">
-            <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
-                        </ul>
-                    </div>
-                    <h1>Shoes - Grid listing</h1>
-                </div>
-            </div>
-            <img src="../static/assets/img_for_shop/bg_cat_shoes.jpg" class="img-fluid" alt="">
+        <div class="piano-wrapper container">
+            {% include "shop_templates/game_piano.html" %}
         </div>
         <!-- /top_banner -->
         <div id="stick_here"></div>
