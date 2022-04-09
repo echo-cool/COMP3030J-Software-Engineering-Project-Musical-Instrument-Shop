@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'chat',
     'echarts',
+    'landing_page',
 
     # API Framework
     'drf_yasg',

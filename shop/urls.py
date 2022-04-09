@@ -9,6 +9,7 @@ from .views import model_view, index, cart, product_details, model_design, leave
 app_name = 'shop'
 urlpatterns = [
     path('', index, name='index'),
+    path('shopping', index, name='shopping'),
     path("product_details/<int:product_id>", product_details, name="product_details"),
     path("product_details_test_model/<int:product_id>", product_details_test_model,
          name="product_details_test_model"),

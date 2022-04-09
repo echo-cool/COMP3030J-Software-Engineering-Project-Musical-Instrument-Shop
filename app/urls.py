@@ -29,6 +29,8 @@ urlpatterns = [
     path('chat/', include('chat.urls'), name="chat"),
     path('echarts/', include('echarts.urls'), name="echarts"),
 
+    path('landing/', include('landing_page.urls'), name="landing_page"),
+
     # path('', IndexPageView.as_view(), name='index'),
     path('', include('shop.urls'), name="index"),
     path('management/', include('management.urls'), name='management'),
