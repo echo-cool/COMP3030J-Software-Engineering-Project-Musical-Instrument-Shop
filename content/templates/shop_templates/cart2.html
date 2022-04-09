@@ -18,11 +18,11 @@
         <div class="text-center bg-breadcrumb"
              style="background-image : url({% static '/assets/img_for_shop/banner_cart.jpg' %})">
             <div class="title-page">
-                <h2 class="">Cart</h2>
+                <h2 class="">{% trans 'Cart' %}</h2>
             </div>
             <div class="bread-crumb">
-                <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                <strong>Your Shopping Cart</strong>
+                <a href="/" title="Back to the frontpage">{% trans 'Home' %}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <strong>{% trans 'Your Shopping Cart' %}</strong>
             </div>
         </div>
     </div>
@@ -35,18 +35,18 @@
                     {#                    <li class="active">Shopping cart</li>#}
                 </ul>
                 <div class="title-product">
-                    <h3>Shopping Cart</h3>
+                    <h3>{% trans 'Shopping Cart' %}</h3>
                 </div>
                 <!-- End title product -->
                 <table class="table space-80">
                     <thead>
                     <tr>
-                        <th class="product-photo">Product Photo</th>
-                        <th class="produc-name">Product Name</th>
-                        <th class="description">Description</th>
-                        <th class="product-price">Price</th>
-                        <th class="product-quantity">Quantity</th>
-                        <th class="total-price">Total price</th>
+                        <th class="product-photo">{% trans 'Product Photo' %}</th>
+                        <th class="produc-name">{% trans 'Product Name' %}</th>
+                        <th class="description">{% trans 'Description' %}</th>
+                        <th class="product-price">{% trans 'Price' %}</th>
+                        <th class="product-quantity">{% trans 'Quantity' %}</th>
+                        <th class="total-price">{% trans 'Total price' %}</th>
                         <th class="product-remove"></th>
                     </tr>
                     </thead>
@@ -65,8 +65,7 @@
                                 <td class="produc-name"><a href="#" title="">
                                     <span class="item_cart">{{ cart.instrument.name }}</span>
                                 </a></td>
-                                <td class="description">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.
+                                <td class="description">{% trans 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' %}
                                 </td>
                                 <td class="product-price">
                                     <strong id="price-{{ forloop.counter }}"
@@ -102,35 +101,34 @@
                 <div class="shipping-total">
                     <div class="col-md-4 caculate-shipping">
                         <div class="title-product">
-                            <h3>Caculate shipping</h3>
+                            <h3>{% trans 'Caculate shipping' %}</h3>
                         </div>
                         <div class="contact-form">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class=" control-label" for="inputconttry">Select your Counttry</label>
+                                    <label class=" control-label" for="inputconttry">{% trans 'Select your Counttry' %}</label>
                                     <input type="text" class="form-control" id="inputconttry"
-                                           placeholder="United States (USA)...">
+                                           placeholder="{% trans 'United States (USA)...' %}">
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputstate" class="control-label">Select your State</label>
+                                        <label for="inputstate" class="control-label">{% trans 'Select your State' %}</label>
                                         <select id="inputstate" class="form-control inputstate">
-                                            <option value="">State / City...</option>
-                                            <option value="City1">City1</option>
-                                            <option value="City2">City2</option>
-                                            <option value="City3">City3</option>
+                                            <option value="">{% trans 'State / City...' %}</option>
+                                            <option value="City1">{% trans 'City1' %}</option>
+                                            <option value="City2">{% trans 'City2' %}</option>
+                                            <option value="City3">{% trans 'City3' %}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label class=" control-label" for="inputzipcode">Zip Code</label>
+                                        <label class=" control-label" for="inputzipcode">{% trans 'Zip Code' %}</label>
                                         <input type="text" class="form-control" id="inputzipcode"
-                                               placeholder="Zip code...">
+                                               placeholder="{% trans 'Zip code...' %}">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">Update
-                                        Shipping
+                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">{% trans 'Update Shipping' %}
                                     </button>
                                 </div>
                             </div>
@@ -140,21 +138,20 @@
                     <!-- End col-md-4 -->
                     <div class="col-md-4 coupon">
                         <div class="title-product">
-                            <h3>Coupon code</h3>
+                            <h3>{% trans 'Coupon code' %}</h3>
                         </div>
                         <p>
-                            You can find coupon code from our Activities !
+                            {% trans 'You can find coupon code from our Activities !' %}
                         </p>
                         <div class="contact-form">
                             <form class="form-horizontal">
                                 <div class="form-group">
                                     {#                                    <label class=" control-label" for="inputfname">Coupon code</label>#}
                                     <input type="text" class="form-control" id="inputfname"
-                                           placeholder="Enter your Coupon code...">
+                                           placeholder="{% trans 'Enter your Coupon code...' %}">
                                 </div>
                                 <div class="form-group">
-                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">REdeem
-                                        code
+                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">{% trans 'REdeem code'%}
                                     </button>
                                 </div>
                             </form>
@@ -163,17 +160,17 @@
                     <!-- End col-md-4 -->
                     <div class="col-md-4 cart-totals text-price">
                         <div class="title-product">
-                            <h3>Cart totals</h3>
+                            <h3>{% trans 'Cart totals' %}</h3>
                         </div>
                         <ul>
-                            <li id="subtotal-all"><span class="text">Cart Subtotal</span><span
+                            <li id="subtotal-all"><span class="text">{% trans 'Cart Subtotal' %}</span><span
                                     class="number">$ 1,990.00</span></li>
-                            <li><span class="text">Shipping and Handling</span><span
+                            <li><span class="text">{% trans 'Shipping and Handling' %}</span><span
                                     class="number">$ 50.00</span></li>
-                            <li id="all-total"><span class="text">Cart Totals</span><span
+                            <li id="all-total"><span class="text">{% trans 'Cart Totals' %}</span><span
                                     class="number">$ 2,040.00</span></li>
                         </ul>
-                        <button class="btn link-button" href="#" title="Proceed to checkout">Proceed to checkout
+                        <button class="btn link-button" href="#" title="Proceed to checkout">{% trans 'Proceed to checkout' %}
                         </button>
                     </div>
                     <!-- End col-md-4 -->
@@ -206,8 +203,8 @@
                 {#total_money_element.innerHTML = total_money;#}
             }
 
-            $("#subtotal-all").html("<span class=\"text\">Cart Subtotal</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
-            $("#all-total").html("<span class=\"text\">Cart Totals</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
+            $("#subtotal-all").html("<span class=\"text\">{% trans 'Cart Subtotal' %}</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
+            $("#all-total").html("<span class=\"text\">{% trans 'Cart Totals' %}</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
         }
 
         $(document).ready(function () {
