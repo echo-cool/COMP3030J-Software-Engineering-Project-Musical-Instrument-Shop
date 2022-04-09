@@ -89,7 +89,9 @@ function init() {
 
     // 添加操作器
     var loader = new THREE.GLTFLoader();
-    loader.load("../static/assets/detail_model/" + pathName, function (gltf) {
+    let model_url = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano2.glb";
+    // loader.load("../static/assets/detail_model/" + pathName, function (gltf) {
+    loader.load(model_url, function (gltf) {
             console.log('控制台查看加载gltf文件返回的对象结构', gltf)
             console.log('gltf对象场景属性', gltf.scene)
             console.log('gltf对象相机属性', gltf.cameras)

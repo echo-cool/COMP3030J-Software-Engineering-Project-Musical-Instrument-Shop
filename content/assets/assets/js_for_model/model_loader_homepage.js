@@ -1,5 +1,5 @@
-let url1 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_harp.glb?Expires=1649519297&OSSAccessKeyId=TMP.3KfuWWbiALkoaSvP7vQ144U8Y6dsWut68koh1Nh8RVFairM8iw4LdYy1rjce1osPLMTBwyTeoace5hcxqw1ZrCp4yyP81x&Signature=2cPofLhmsX2WaZPhfRErhPNk1ss%3D";
-let url2 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano8.glb?Expires=1649519383&OSSAccessKeyId=TMP.3KfuWWbiALkoaSvP7vQ144U8Y6dsWut68koh1Nh8RVFairM8iw4LdYy1rjce1osPLMTBwyTeoace5hcxqw1ZrCp4yyP81x&Signature=TBNtl2s4313zVm5nEWUDE%2F3DqeQ%3D";
+let url1 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_harp.glb";
+let url2 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano8.glb";
 modelLoadLeftAndRight(".model-wrapper-left", "model_detail_piano8.glb", url1);
 
 modelLoadLeftAndRight(".model-wrapper-right", "model_detail_piano2.glb", url2);

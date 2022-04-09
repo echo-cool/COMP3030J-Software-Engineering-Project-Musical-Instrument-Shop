@@ -59,12 +59,16 @@ design by: https://www.behance.net/vahanhovh
 <div class="guitar_center_box">
     <button class="guitar-button" onclick="load_guitar_example1()">Sample</button>
     <button class="guitar-button" onclick="load_guitar_example2()">Sample2</button>
-    <button class="guitar-button play-icon" onclick="playGuitar()">Start play<i class="fa fa-play"></i>
+    <button class="guitar-button play-icon show-style-guitar " onclick="play_start()">
+        Start play<i class="fa fa-play"></i>
     </button>
-    <button class="guitar-button pause-icon" onclick="stopGuitar()">Stop play<i class="fa fa-pause"></i></button>
+    <button class="guitar-button pause-icon show-style-guitar wrapper-hidden" onclick="play_stop()">
+        Stop play<i class="fa fa-pause"></i>
+    </button>
 
 </div>
-<audio id="guitar-audio-1" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Shuffle_A.mp3"></audio>
+<audio class="guitar-audio-player" id="guitar-audio-1"
+       src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Shuffle_A.mp3"></audio>
 
 
 <link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
