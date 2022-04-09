@@ -14,24 +14,16 @@
     {#    <link href="/static/assets/css_for_shop/listing.css" rel="stylesheet">#}
 
     <link rel="stylesheet" href="{% static "assets/css_for_shop/listing.css" %}">
+
+    <link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
     <main class="content-page">
-        <div class="top_banner">
-            <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
-                        </ul>
-                    </div>
-                    <h1>Shoes - Grid listing</h1>
-                </div>
-            </div>
-            <img src="../static/assets/img_for_shop/bg_cat_shoes.jpg" class="img-fluid" alt="">
+
+        <div class="piano-wrapper ">
+            {% include "shop_templates/game_piano.html" %}
         </div>
         <!-- /top_banner -->
         <div id="stick_here"></div>
@@ -86,6 +78,7 @@
                             <a href="javascript:void(0)" class="size_3">3</a>
                             <a href="javascript:void(0)" class="size_4 active">4</a>
                             <a href="javascript:void(0)" class="size_5">5</a>
+                            <a href="javascript:void(0)" class="size_6">6</a>
                         </div>
                     </div>
                     <div class="style_layout_prod  justify-content-md-end justify-content-center ">
@@ -1120,5 +1113,6 @@
     </script>
     <script src="{% static "assets/js_for_shop/product_search.js" %}"></script>
 
+    <script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>
 {% endblock %}
 
