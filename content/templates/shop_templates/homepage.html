@@ -182,7 +182,7 @@
                     <div class="owl-demo-chinese">
                         <div class="item">
                             <div class="row">
-                                {% for instrument in instruments %}
+                                {% for instrument in western_instruments %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product"
@@ -298,34 +298,46 @@
                     <div class="owl-demo-chinese2">
                         <div class="item">
                             <div class="row">
-                                {% for i in four %}
+                                {% for instrument in chinese_instruments %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
-                                            <div class="item-thumb-product">
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
+                                            <div class="item-thumb-product"
+                                                 onclick="window.location.href = '{% url 'shop:product_details' product_id=instrument.id %}'">
+                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
+                                                     alt=""
                                                      class="product-thumb-front"/>
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
+                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
+                                                     alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
                                                         <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
+                                                            <li><a href="/api/message" class="link-wishlist"><i
                                                                     class="fa fa-heart"></i></a></li>
                                                             <li><a href="#" class="link-quick-view"><i
                                                                     class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
+                                                            <li data-bs-toggle="modal"
+                                                                data-bs-target="#popup-quickview"
+                                                            >
+                                                                <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                        title="Quick View">
+                                                                    <i class="fi ti-eye"></i>
+                                                                </button>
+                                                            </li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                        <a href="#" class="link-product-add-cart">Add to
+                                                            cart</a>
                                                     </div>
                                                 </div>
                                                 <span class="status-product-new">New</span>
                                             </div>
                                             <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <h3>
+                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
+                                                </h3>
                                                 <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
+                                                    <span>${{ instrument.price }}</span>
+                                                    <del>${{ instrument.old_price }}</del>
                                                 </div>
                                                 <div class="product-rating-star">
                                                     <i class="fa fa-star"></i>
@@ -717,29 +729,29 @@
                                             </ul>
                                         </div>
                                     </div>
-{#                                    <div class="product-filter-item color filter-size">#}
-{#                                        <div class="color-name">#}
-{#                                            <span>Weight :</span>#}
-{#                                            <ul>#}
-{#                                                <li class="color"><input id="w1" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w1">4L</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w2" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w2">2L</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w3" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w3">500ML</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w4" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w4">200ML</label>#}
-{#                                                </li>#}
-{#                                            </ul>#}
-{#                                        </div>#}
-{#                                    </div>#}
+                                    {#                                    <div class="product-filter-item color filter-size">#}
+                                    {#                                        <div class="color-name">#}
+                                    {#                                            <span>Weight :</span>#}
+                                    {#                                            <ul>#}
+                                    {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w1">4L</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w2">2L</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w3">500ML</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w4">200ML</label>#}
+                                    {#                                                </li>#}
+                                    {#                                            </ul>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
                                     <div class="pro-single-btn">
                                         <div class="quantity cart-plus-minus">
                                             <input type="text" value="1">
@@ -774,9 +786,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/FBXLoader.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_homepage.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script src="{% static 'assets/js_for_model/model_loader_homepage.js' %}"></script>
+
     <script>
-
-
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放

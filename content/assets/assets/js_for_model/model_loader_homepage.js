@@ -1,6 +1,6 @@
-modelLoadLeftAndRight(".model-wrapper-left", "model_detail_harp.glb");
+modelLoadLeftAndRight(".model-wrapper-left", "model_detail_piano8.glb");
 
-modelLoadLeftAndRight(".model-wrapper-right", "model_detail_pipa.glb");
+modelLoadLeftAndRight(".model-wrapper-right", "model_detail_piano2.glb");
 
 function modelLoadLeftAndRight(box_selector, model_name) {
     function switchRotate() {
@@ -65,37 +65,52 @@ function modelLoadLeftAndRight(box_selector, model_name) {
 
         // scene 创建一个场景
         scene = new THREE.Scene();
+
         // 设置场景背景色
-        scene.background = new THREE.Color(0xdfe0e2);
+        // scene.background = new THREE.Color( 0xffffff);
+        scene.fog = new THREE.Fog(0x000, 1000, 4000);
+
+        console.log(scene)
+        //创建一个环境灯光
+        var ambientLight = new THREE.AmbientLight(0x888888);
+        scene.add(ambientLight);
+        // 从上到下的平行光
+        var direction = new THREE.DirectionalLight(0x666666);
+        scene.add(direction);
+
+        //把视角放入环境
+        scene.add(camera);
+        // 设置场景背景色
+        // scene.background = new THREE.Color(0xdfe0e2);
         // scene.fog = new THREE.Fog(0x000, 1000, 4000);
 
 
-        scene.add(new THREE.AmbientLight(0xffffff));
-
-        let light = new THREE.DirectionalLight(0xffffff, 0.2);
-        light.position.set(1, 1, 1);
-        scene.add(light);
-        let light2 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light2.position.set(1, 1, -1);
-        scene.add(light2);
-        let light3 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light3.position.set(1, -1, 1);
-        scene.add(light3);
-        let light4 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light4.position.set(-1, 1, 1);
-        scene.add(light4);
-        let light5 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light5.position.set(-1, 1, -1);
-        scene.add(light5);
-        let light6 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light6.position.set(-1, -1, 1);
-        scene.add(light6);
-        let light7 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light7.position.set(1, -1, -1);
-        scene.add(light7)
-        let light8 = new THREE.DirectionalLight(0xffffff, 0.2);
-        light8.position.set(-1, -1, -1);
-        scene.add(light8);
+        // scene.add(new THREE.AmbientLight(0xffffff));
+        //
+        // let light = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light.position.set(1, 1, 1);
+        // scene.add(light);
+        // let light2 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light2.position.set(1, 1, -1);
+        // scene.add(light2);
+        // let light3 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light3.position.set(1, -1, 1);
+        // scene.add(light3);
+        // let light4 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light4.position.set(-1, 1, 1);
+        // scene.add(light4);
+        // let light5 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light5.position.set(-1, 1, -1);
+        // scene.add(light5);
+        // let light6 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light6.position.set(-1, -1, 1);
+        // scene.add(light6);
+        // let light7 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light7.position.set(1, -1, -1);
+        // scene.add(light7)
+        // let light8 = new THREE.DirectionalLight(0xffffff, 0.2);
+        // light8.position.set(-1, -1, -1);
+        // scene.add(light8);
 
         scene.add(camera);
 
@@ -115,7 +130,7 @@ function modelLoadLeftAndRight(box_selector, model_name) {
 
         // 添加操作器
         let loader = new THREE.GLTFLoader();
-        loader.load("../static/assets/detail_model/homepage/" + model_name, function (gltf) {
+        loader.load("../static/assets/detail_model/" + model_name, function (gltf) {
                 // 返回的场景对象gltf.scene插入到threejs场景中
                 gltf.scene.traverse(function (child) {
                     child.frustumCulled = false;
@@ -126,7 +141,7 @@ function modelLoadLeftAndRight(box_selector, model_name) {
                     // child.material.emissiveMap = child.material.map;
                 });
                 // 返回的场景对象gltf.scene插入到threejs场景中
-                gltf.scene.scale.set(15, 15, 15) // scale here
+                gltf.scene.scale.set(11, 11, 11) // scale here
                 gltf.scene.position.set(-5, -15, 0) // scale here
                 scene.add(gltf.scene);
             }, onProgress, onError
@@ -158,7 +173,6 @@ function modelLoadLeftAndRight(box_selector, model_name) {
             scene.children[scene.children.length - 1].rotateY(0.001 * 5);//旋转角速度0.001弧度每毫秒
         }
     }
-
 
     let fake = 0;
 
