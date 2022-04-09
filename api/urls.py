@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet
-from .view import login,logout
+from .view import login, logout, rank_user_list
 
 app_name = 'api'
 
@@ -24,5 +24,6 @@ router.register('message', MessageModelViewSet, 'message')
 urlpatterns = router.urls + [
     path('login/', login, name='index'),
     path('logout/', logout, name='logout'),
+    path('rank_user_list/', rank_user_list, name='rank_user'),
 
 ]
