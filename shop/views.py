@@ -1,6 +1,7 @@
 # Create your views here.
 import json
 import random
+from datetime import timedelta
 
 import django
 from django.contrib import messages
@@ -48,6 +49,7 @@ def index(request):
         "categories": categories,
         "index_categories": index_categories
     })
+
 
 
 def home(request):
