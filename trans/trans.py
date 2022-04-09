@@ -18,10 +18,11 @@ url = 'https://aip.baidubce.com/rpc/2.0/mt/texttrans/v1?access_token=' + token
 base_urls = [
     'http://127.0.0.1:8000/',
     'http://127.0.0.1:8000/personal_profile/',
-    "http://127.0.0.1:8000/category/1/",
+    "http://127.0.0.1:8000/category/1",
     "http://127.0.0.1:8000/wishlist/",
     "http://127.0.0.1:8000/cart/",
     "http://127.0.0.1:8000/home",
+    "http://127.0.0.1:8000/product_details/8"
 
 ]
 visited_urls = []
@@ -124,7 +125,7 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    with open("wordlist.txt", "w", encoding='utf8') as f:
-        f.write("")
-    write_to_wordlist()
+    main()
+    # with open("wordlist.txt", "w", encoding='utf8') as f:
+    #     f.write("")
+    # write_to_wordlist()
