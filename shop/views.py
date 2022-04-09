@@ -1,13 +1,13 @@
 # Create your views here.
 import json
 import random
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 import django
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.db.models import Max
+from django.db.models import Max, Count, Sum
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -21,6 +21,10 @@ from shop.models import Instrument, InstrumentDetail, Category, Order, Review, P
 
 
 def index(request):
+    # order by count
+    orders = Order.objects.filter()
+    order_rank = orders.values('instrument').annotate(count=Sum('quantity')).order_by('-count')
+    print(order_rank)
     instruments = Instrument.objects.all()
     categories = Category.objects.all()
     index_categories = {
@@ -47,9 +51,9 @@ def index(request):
     return render(request, 'shop_templates/index.html', {
         "instruments": instruments,
         "categories": categories,
-        "index_categories": index_categories
+        "index_categories": index_categories,
+        "order_rank": order_rank
     })
-
 
 
 def home(request):
