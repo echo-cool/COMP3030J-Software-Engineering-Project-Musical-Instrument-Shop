@@ -712,29 +712,29 @@
                                             </ul>
                                         </div>
                                     </div>
-{#                                    <div class="product-filter-item color filter-size">#}
-{#                                        <div class="color-name">#}
-{#                                            <span>Weight :</span>#}
-{#                                            <ul>#}
-{#                                                <li class="color"><input id="w1" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w1">4L</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w2" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w2">2L</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w3" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w3">500ML</label>#}
-{#                                                </li>#}
-{#                                                <li class="color"><input id="w4" type="radio" name="size"#}
-{#                                                                         value="30">#}
-{#                                                    <label for="w4">200ML</label>#}
-{#                                                </li>#}
-{#                                            </ul>#}
-{#                                        </div>#}
-{#                                    </div>#}
+                                    {#                                    <div class="product-filter-item color filter-size">#}
+                                    {#                                        <div class="color-name">#}
+                                    {#                                            <span>Weight :</span>#}
+                                    {#                                            <ul>#}
+                                    {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w1">4L</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w2">2L</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w3">500ML</label>#}
+                                    {#                                                </li>#}
+                                    {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
+                                    {#                                                                         value="30">#}
+                                    {#                                                    <label for="w4">200ML</label>#}
+                                    {#                                                </li>#}
+                                    {#                                            </ul>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
                                     <div class="pro-single-btn">
                                         <div class="quantity cart-plus-minus">
                                             <input type="text" value="1">
@@ -769,9 +769,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/FBXLoader.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_homepage.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script src="{% static 'assets/js_for_model/model_loader_homepage.js' %}"></script>
+
     <script>
-
-
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放

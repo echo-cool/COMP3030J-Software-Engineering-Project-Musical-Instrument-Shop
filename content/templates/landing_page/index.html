@@ -11,8 +11,8 @@
     <link href="{% static "assets/img_for_shop/img_for_company_profile/apple-touch-icon.png" %}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-{#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"#}
-{#          rel="stylesheet">#}
+    {#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"#}
+    {#          rel="stylesheet">#}
     <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
 
     <!-- Vendor CSS Files -->
@@ -94,7 +94,6 @@
                     <h2 id="typewriter-2"></h2>
                     <script>
                         $(function () {
-
                             setTimeout(function () {
                                 let a = new Typewriter('#typewriter-1', {
                                     strings: ['Melodious Instruments Shop'],
@@ -199,8 +198,10 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="{% static "assets/img_for_shop/img_for_company_profile/testimonials-bg.jpg" %}"
-                             class="img-fluid" alt="">
+                        {#                        <img src="{% static "assets/img_for_shop/img_for_company_profile/testimonials-bg.jpg" %}"#}
+                        {#                             class="img-fluid" alt="">#}
+                        <div class="model-wrapper-left model-wrapper-control wrapper-hidden show-style">
+                        </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
                          data-aos-delay="100">
@@ -465,7 +466,7 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}g"
+                            <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>App 3</h4>

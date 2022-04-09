@@ -159,7 +159,6 @@ function modelLoadLeftAndRight(box_selector, model_name) {
         }
     }
 
-
     let fake = 0;
 
 // 这是一个进度条函数进度条函数
