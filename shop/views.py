@@ -23,10 +23,10 @@ from shop.models import Instrument, InstrumentDetail, Category, Order, Review, P
 def index(request):
     # order by count
     orders = Order.objects.all()
-    order_rank = orders.values('instrument').annotate(count=Sum('quantity')).order_by('-count')[:5]
+    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[:5]
     order_rank = list(order_rank)
     for i in order_rank:
-        i['instrument'] = Instrument.objects.filter(id=i['instrument']).first().name
+        i['name'] = Instrument.objects.filter(id=i['instrument']).first().name
     # order_rank = order_rank.annotate(name=Instrument.objects.filter(id=order_rank.values('instrument')).values('name'))
     instruments = Instrument.objects.all()
     categories = Category.objects.all()
