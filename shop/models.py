@@ -40,7 +40,8 @@ class Instrument(models.Model):
     image2 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image3 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image4 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
-
+    ex_detail = models.TextField(max_length=3000, default="")
+    ad_info = models.TextField(max_length=3000, default="")
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
     object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
