@@ -160,19 +160,21 @@ def product_details(request, product_id):
         # add price / old_price for hint
         instrument.percentage = round(instrument.price * 100 / instrument.old_price, 2)
 
-        related = []
-        # Get 4 random reviews
-        reviews = Review.objects.all()
-        review = []
-        for i in range(4):
+    related = []
+    # Get 4 random reviews
+    reviews = Review.objects.all()
+    review = []
+    for i in range(4):
+        if len(reviews) > 0:
             num = random.randint(0, len(reviews) - 1)
             reviews[num].review_icon_iter = range(int(reviews[num].rating))
             reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
             review.append(reviews[num])
 
-        for i in range(5):
-            num = random.randint(0, len(all_instruments) - 1)
-            related.append(all_instruments[num])
+    for i in range(5):
+        num = random.randint(0, len(all_instruments) - 1)
+        related.append(all_instruments[num])
+    if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
@@ -182,6 +184,14 @@ def product_details(request, product_id):
             "review_left": [review[0], review[1]],
             "review_right": [review[2], review[3]],
 
+        })
+    else:
+        return render(request, 'shop_templates/product-detail.html', {
+            "instrument": instrument,
+            "discount": instrument.price * 100 / instrument.old_price,
+            "instrument_details": instrument_details,
+            "related": related,
+            'categories': categories,
         })
 
 
