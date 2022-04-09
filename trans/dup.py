@@ -19,8 +19,8 @@ print(res)
 with open("django.po", "w", encoding="utf8") as file:
     for key in res:
         try:
-            file.write("msgid \"{}\"\n".format(key.encode('utf-8').decode('utf-8')))
-            file.write("msgstr \"{}\"\n".format(res[key].encode('utf-8').decode('utf-8')))
+            file.write("msgid \"{}\"\n".format(key))
+            file.write("msgstr \"{}\"\n".format(res[key]))
             file.write("\n")
         except:
             print("Error:", key)
