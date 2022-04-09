@@ -40,13 +40,15 @@ function activateCol() {
         } else if (this.className.includes("size_4")) {
             $(".js_size_prod").addClass('col-lg-3');
         } else if (this.className.includes("size_5")) {
+            $(".js_size_prod").addClass('col-lg-2dot4');
+        } else if (this.className.includes("size_6")) {
             $(".js_size_prod").addClass('col-lg-2');
         }
     })
 
 
     function removeCol() {
-        $(".js_size_prod").removeClass('col-lg-6').removeClass('col-lg-4').removeClass('col-lg-3').removeClass('col-lg-2');
+        $(".js_size_prod").removeClass('col-lg-6').removeClass('col-lg-4').removeClass('col-lg-3').removeClass('col-lg-2').removeClass('col-lg-2dot4');
     }
 }
 
