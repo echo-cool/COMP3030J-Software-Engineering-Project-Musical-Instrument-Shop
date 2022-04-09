@@ -197,7 +197,7 @@
                             <div class="col-lg-6">
                                 <div class="slide-text white">
                                     <h3>{% trans 'Armor Air' %}<br>{% trans 'Max 720 Sage Low' %}</h3>
-                                    <p>Limited items available at this price</p>
+                                    <p>{% trans 'Limited items available at this price' %}</p>
                                     <a class="btn_1" href="#0" role="button">{% trans 'Shop Now' %}</a>
                                 </div>
                             </div>
@@ -219,8 +219,8 @@
                         <div class="box">
                             <i class="ti-gift"></i>
                             <div class="justify-content-center">
-                                <h3>Free Shipping</h3>
-                                <p>For all oders over $99</p>
+                                <h3>{% trans 'Free Shipping' %}</h3>
+                                <p>{% trans 'For all oders over $99' %}</p>
                             </div>
                         </div>
                     </li>
@@ -228,8 +228,8 @@
                         <div class="box">
                             <i class="ti-wallet"></i>
                             <div class="justify-content-center">
-                                <h3>Secure Payment</h3>
-                                <p>100% secure payment</p>
+                                <h3>{% trans 'Secure Payment' %}</h3>
+                                <p>{% trans '100% secure payment' %}</p>
                             </div>
                         </div>
                     </li>
@@ -237,8 +237,8 @@
                         <div class="box">
                             <i class="ti-headphone-alt"></i>
                             <div class="justify-content-center">
-                                <h3>24/7 Support</h3>
-                                <p>Online top support</p>
+                                <h3>{% trans '24/7 Support' %}</h3>
+                                <p>{% trans 'Online top support' %}</p>
                             </div>
                         </div>
                     </li>
@@ -312,15 +312,15 @@
 
         <div class="container margin_60_35">
             <div class="main_title mb-4">
-                <h2>New Arrival</h2>
-                <span>Products</span>
-                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                <h2>{% trans 'New Arrival' %}</h2>
+                <span>{% trans 'Products' %}</span>
+                <p>{% trans 'Cum doctus civibus efficiantur in imperdiet deterruisset.' %}</p>
             </div>
             <div class="isotope_filter">
                 <ul>
-                    <li><a href="#0" id="all" data-filter="*">All</a></li>
-                    <li><a href="#0" id="popular" data-filter=".popular">Popular</a></li>
-                    <li><a href="#0" id="sale" data-filter=".sale">Sale</a></li>
+                    <li><a href="#0" id="all" data-filter="*">{% trans 'All' %}</a></li>
+                    <li><a href="#0" id="popular" data-filter=".popular">{% trans 'Popular' %}</a></li>
+                    <li><a href="#0" id="sale" data-filter=".sale">{% trans 'Sale' %}</a></li>
                 </ul>
             </div>
             <div class="isotope-wrapper">
@@ -345,7 +345,7 @@
                                         class="icon-star"></i>
                                 </div>
                                 <a href="{% url "shop:product_details" product_id=instrument.id %}">
-                                    <h3>{{ instrument.name }}</h3>
+                                    <h3>{% trans  instrument.name %}</h3>
                                 </a>
                                 <div class="price_box">
                                     <span class="new_price">${{ instrument.price }}</span>
@@ -358,21 +358,21 @@
                                            data-bs-placement="left"
                                            title="Add to favorites">
                                             <i class="ti-heart"></i>
-                                            <span>Add to favorites</span>
+                                            <span>{% trans  'Add to favorites' %}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="/product_add_compare" class="tooltip-1"
                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare">
                                             <i class="ti-control-shuffle"></i>
-                                            <span>Add to compare</span>
+                                            <span>{% trans  'Add to compare' %}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="/cart/product_add_cart/{{ instrument.id }}" class="tooltip-1"
                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart">
                                             <i class="ti-shopping-cart"></i>
-                                            <span>Add to cart</span>
+                                            <span>{% trans  'Add to cart' %}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -658,7 +658,7 @@
                 <div class="container margin_60">
                     <div class="row justify-content-center justify-content-md-start">
                         <div class="col-lg-6 wow" data-wow-offset="150">
-                            <h3>Armor<br>Air Color 720</h3>
+                            <h3>{% trans  'Armor' %}<br>{% trans  'Air Color 720' %}</h3>
                             <p>Lightweight cushioning and durable support with a Phylon midsole</p>
                             <div class="feat_text_block">
                                 <div class="price_box">

@@ -33,8 +33,8 @@
     <div class="container-fluid h-100">
 
         <div class="card-header">
-            <h1>Welcome to ChatApp
-                <small>Pick a user and start chatting!</small>
+            <h1>{% trans 'Welcome to ChatApp' %}
+                <small>{% trans 'Pick a user and start chatting!' %}</small>
             </h1>
         </div>
         <div class="row justify-content-center h-100">
@@ -71,8 +71,8 @@
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
-                                Chat with <span id="chat_with"></span>
-                                <p>1767 Messages(temp)</p>
+                                {% trans 'Chat with ' %}<span id="chat_with"></span>
+                                <p>{% trans '1767 Messages(temp)' %}</p>
                             </div>
                             <div class="video_cam">
                                 <span><i class="fas fa-video"></i></span>
@@ -82,10 +82,10 @@
                         <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                         <div class="action_menu">
                             <ul>
-                                <li><i class="fas fa-user-circle"></i> View profile</li>
-                                <li><i class="fas fa-users"></i> Add to close friends</li>
-                                <li><i class="fas fa-plus"></i> Add to group</li>
-                                <li><i class="fas fa-ban"></i> Block</li>
+                                <li><i class="fas fa-user-circle"></i> {% trans 'View profile' %}</li>
+                                <li><i class="fas fa-users"></i> {% trans 'Add to close friends' %}</li>
+                                <li><i class="fas fa-plus"></i> {% trans 'Add to group' %}</li>
+                                <li><i class="fas fa-ban"></i> {% trans 'Block' %}</li>
                             </ul>
                         </div>
                     </div>
@@ -97,8 +97,8 @@
                         <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text attach_btn"><i
-                                        {#                                        class="fas fa-paperclip"#}
-                                >File</i></span>
+                                                                                class="fas fa-paperclip"
+                                ></i></span>
                             </div>
                             <input id="chat-input" type="text"
                                    class="form-control type_msg"
@@ -106,8 +106,8 @@
                                    maxlength="500">
                             <div class="input-group-append">
                                 <span class="input-group-text send_btn"><i
-                                        {#                                        class="fas fa-location-arrow"#}
-                                        id="btn-send">Send</i></span>
+                                                                                class="fas fa-location-arrow"
+                                        id="btn-send"></i></span>
                             </div>
                         </div>
                     </div>
