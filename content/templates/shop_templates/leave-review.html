@@ -70,9 +70,27 @@
                                 </div>
                             </div>
                             {% bootstrap_form form %}
+
                             <script>
                                 $(document).ready(function () {
-                                    $('#id_rating').val(4);
+                                     $('#id_rating').val(0);
+                                    $('#5_star').click(function () {
+                                        $('#id_rating').val(5);
+                                    });
+                                    $('#4_star').click(function () {
+                                        $('#id_rating').val(4);
+                                    });
+                                    $('#3_star').click(function () {
+                                        $('#id_rating').val(3);
+                                    });
+                                    $('#2_star').click(function () {
+                                        $('#id_rating').val(2);
+                                    });
+                                    $('#1_star').click(function () {
+                                        $('#id_rating').val(1);
+                                    });
+
+
                                 });
                             </script>
                         </div>

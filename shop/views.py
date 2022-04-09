@@ -58,6 +58,9 @@ def home(request):
         "six": range(6),
         "eight": range(8),
         "ten": range(10),
+        "design_models": [{"name": "guitar", "style": 1}, {"name": "guitar", "style": 2},
+                          {"name": "guitar", "style": 3}, {"name": "piano", "style": 1},
+                          {"name": "piano", "style": 2}, {"name": "piano", "style": 3}],
     })
 
 
@@ -91,7 +94,14 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    review = Review.objects.filter(instrument=instrument).order_by('?')[:4]
+    reviews = Review.objects.all()
+    review = []
+    for i in range(4):
+        num = random.randint(0, len(reviews) - 1)
+        reviews[num].review_icon_iter = range(int(reviews[num].rating))
+        reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
+        review.append(reviews[num])
+
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
@@ -101,8 +111,9 @@ def product_details(request, product_id):
         "instrument_details": instrument_details,
         "related": related,
         'categories': categories,
-        "review_left": review[:1],
-        "review_right": review[1:]
+        "review_left": [review[0], review[1]],
+        "review_right": [review[2], review[3]],
+
     })
 
 
@@ -110,42 +121,27 @@ def product_details(request, product_id):
 def leave_review(request, instrument_id):
     form = ReviewForm()
     if request.method == "POST":
+        form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.instrument = Instrument.objects.get(id=instrument_id)
+            user = request.user
+            instrument = Instrument.objects.get(id=instrument_id)
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            rating = form.cleaned_data['rating']
+            review = Review(
+                user=user,
+                instrument=instrument,
+                title=title,
+                content=content,
+                rating=rating
+            )
             review.save()
             messages.success(request, "Review submitted successfully")
-            return redirect(reverse('product-details', args=[instrument_id]))
-        else:
-            messages.error(request, "Error submitting review")
-            return redirect(reverse('product-details', args=[instrument_id]))
-
+            return redirect(reverse('shop:product_details', args=[instrument_id]))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form
     })
-
-
-@login_required
-def confirm_submit(request):
-    if request.method == "POST":
-        rating = request.POST.get("rating-input", None)
-        review_text = request.POST.get("review", None)
-        fileupload = request.FILES.get("fileupload", None)
-        # check_selected = request.POST.get("check", None)
-        print("rating: ", rating)
-        print("review_text: ", review_text)
-        print("fileupload: ", fileupload)
-        # print("check_selected: ", check_selected)
-        # f = ReviewForm(request.POST, request.FILES)
-        # if f.is_valid():
-        #     f.save()
-        # print(f.errors)
-        new_review = Review(order=Order.objects.filter(id=2).first(), user_id=1, rating=rating,
-                            review_text=review_text, file_upload=fileupload)
-        new_review.save()
-    return render(request, 'shop_templates/product-detail.html')
 
 
 @login_required
