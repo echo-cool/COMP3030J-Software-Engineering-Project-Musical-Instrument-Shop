@@ -1,33 +1,53 @@
 {% extends 'layouts/default/page.html' %}
+{% load static %}
 
 {% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <!-- BASE CSS -->
+    <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{% static 'assets/css_for_shop/account.css' %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-6 col-md-8">
+            <div class="row">
+                {% get_current_language as language_code %}
+                {% get_available_languages as languages %}
 
-    {% get_current_language as language_code %}
-    {% get_available_languages as languages %}
+                <h4>{% trans 'Change language' %}</h4>
 
-    <h4>{% trans 'Change language' %}</h4>
+                <form action="{% url 'set_language' %}" method="post">
 
-    <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
 
-        {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}"/>
 
-        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                    <div class="form-group">
+                        <label class="form-control-label" for="language-field">{% trans 'Select the language' %}</label>
+                        <select name="language" class="form-control" id="language-field">
+                            {% for code, name in languages %}
+                                <option value="{{ code }}" {% if code == language_code %}
+                                        selected="selected"{% endif %}>
+                                    {{ name }} ({{ code }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-        <div class="form-group">
-            <label class="form-control-label" for="language-field">{% trans 'Select the language' %}</label>
-            <select name="language" class="form-control" id="language-field">
-                {% for code, name in languages %}
-                    <option value="{{ code }}" {% if code == language_code %} selected="selected"{% endif %}>
-                        {{ name }} ({{ code }})
-                    </option>
-                {% endfor %}
-            </select>
+                    <button class="btn btn-success">{% trans 'Change' %}</button>
+
+                </form>
+            </div>
         </div>
-
-        <button class="btn btn-success">{% trans 'Change' %}</button>
-
-    </form>
+    </div>
 
 {% endblock %}
