@@ -21,11 +21,15 @@
             padding: 0;
         }
 
+        #list_top5_btn {
+            z-index: 1000;
+            color: black;
+        }
+
         .sidebar-fixed {
             position: fixed;
             left: 10px;
-            {#top: 150px;#}
-            z-index: 999;
+        {#top: 150px;#} z-index: 999;
         }
 
         .sidebar-show {
@@ -163,10 +167,9 @@
 {% block content %}
 
     {# hot list begin (top 5) #}
-    <div id="list_top5" class=sidebar-fixed onclick="switch_sidebar()">
-    <div>
+    <div id="list_top5_btn" class=sidebar-fixed style="width: 20px; height: 20px" onclick="switch_sidebar()"><img src="{% static 'assets/images/icons/love-heart.png' %}" width="50px"></div>
 
-    </div>
+    <div id="list_top5" class=sidebar-fixed >
         <div class="warp">
             {% for rank in order_rank %}
                 <div class="card No{{ forloop.counter }}">
@@ -178,9 +181,9 @@
     </div>
 
     <script>
-    function switch_sidebar() {
-        $("#list_top5").toggleClass("sidebar-show");
-    }
+        function switch_sidebar() {
+            $("#list_top5").toggleClass("sidebar-show");
+        }
     </script>
     {# hot list end #}
 
