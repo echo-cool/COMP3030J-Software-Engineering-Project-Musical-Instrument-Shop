@@ -85,15 +85,16 @@ def home(request):
         i.percentage = round(i.price * 100 / i.old_price, 2)
 
     chinese_instruments = []
-    english_instruments = []
+    western_instruments = []
     for i in instruments:
-        if i.chinese == 0:
+        print("==========", i.chinese, str(i.chinese) == "True")
+        if str(i.chinese) == "True":
             chinese_instruments.append(i)
         else:
-            english_instruments.append(i)
+            western_instruments.append(i)
     return render(request, 'shop_templates/homepage.html', {
         "chinese_instruments": chinese_instruments,
-        "english_instruments": english_instruments,
+        "western_instruments": western_instruments,
         "instruments": instruments,
         "categories": categories,
         "index_categories": index_categories,
