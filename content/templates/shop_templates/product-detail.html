@@ -496,9 +496,9 @@
                     </div>
                 </div>
                 <div class="tab-pane fade mt-4" id="review">
-                    <div id="shopify-product-reviews">
+                    <div class="container" id="shopify-product-reviews">
                         {#                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">#}
-                        <div class="card-body">
+                        <div class="card-body" style="text-align: start;">
                             <div class="row justify-content-between">
                                 {% for review in review_left %}
                                     <div class="col-lg-6">
@@ -514,16 +514,14 @@
                                                     <em>{{ review.rating }}/5.0</em></span>
                                                 <em>{{ review.created_at }}</em>
                                             </div>
-                                            <h4>{{ review.title }}</h4>
+                                            <h4>"{{ review.title }}"</h4>
                                             <p>{{ review.content }}</p>
                                         </div>
                                     </div>
                                 {% endfor %}
-
                             </div>
                             <!-- /row -->
                             <div class="row justify-content-between">
-
                                 {% for review in review_right %}
                                     <div class="col-lg-6">
                                         <div class="review_content">
