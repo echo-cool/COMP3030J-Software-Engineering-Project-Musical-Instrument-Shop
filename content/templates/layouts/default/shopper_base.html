@@ -273,12 +273,16 @@
                         </nav>
                     </div>
                     <div class="col-md-3 col-sm-12 col-xs-10">
-                        <div class="search-form search-form2">
-                            <input type="text" value="Enter your keyword..."
-                                   onfocus="if (this.value==this.defaultValue) this.value = ''"
-                                   onblur="if (this.value=='') this.value = this.defaultValue"/>
-                            <input type="submit" value=""/>
-                        </div>
+                        <form id="search_form" action="/product_search/" method="post" class="navbar-form navbar-left">
+                            {% csrf_token %}
+
+                            <div class="search-form search-form2">
+                                <input type="text" value="Enter your keyword..."
+                                       onfocus="if (this.value==this.defaultValue) this.value = ''"
+                                       onblur="if (this.value=='') this.value = this.defaultValue"/>
+                                <input type="submit" value=""/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
