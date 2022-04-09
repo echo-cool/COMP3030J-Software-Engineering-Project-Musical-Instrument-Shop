@@ -7,9 +7,13 @@
 """
 from django.contrib import auth
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Q, Max
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+
+from chat.models import MessageModel
+from shop.models import Profile
 
 
 def login(request):
@@ -50,3 +54,86 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('shop:index')
+
+
+def rank_user_list(request):
+    messages = MessageModel.objects.filter(Q(recipient=request.user) |
+                                           Q(user=request.user))
+    users = User.objects
+    profiles = Profile.objects
+    sender_rank = messages.values("user").annotate(max=Max("timestamp")).exclude(user=request.user.id).order_by("user")
+    receiver_rank = messages.values("recipient").annotate(max=Max("timestamp")).exclude(
+        recipient=request.user.id).order_by("recipient")
+    len_sender = len(sender_rank)
+    len_receiver = len(receiver_rank)
+    data = []
+    p1, p2 = 0, 0
+    while p1 < len_sender and p2 < len_receiver:
+        if sender_rank[p1]['user'] == receiver_rank[p2]['recipient']:
+            user = users.get(id=sender_rank[p1]['user'])
+            profile = profiles.filter(user=user).first()
+            if profile:
+                avatar = profile.image.url
+            else:
+                avatar = '/static/assets/images/avatars/avatar.png'
+            data.append({'id': user.id,
+                         'username': user.username,
+                         'email': user.email,
+                         'image': avatar,
+                         'time': max(sender_rank[p1]['max'], receiver_rank[p2]['max'])})
+            p1 += 1
+            p2 += 1
+        elif sender_rank[p1]['user'] < receiver_rank[p2]['user']:
+            user = users.get(id=sender_rank[p1]['user'])
+            profile = profiles.filter(user=user).first()
+            if profile:
+                avatar = profile.image.url
+            else:
+                avatar = '/static/assets/images/avatars/avatar.png'
+            data.append({'id': user.id,
+                         'username': user.username,
+                         'email': user.email,
+                         'image': avatar,
+                         'time': sender_rank[p1]['max']})
+            p1 += 1
+        else:
+            user = users.get(id=receiver_rank[p2]['recipient'])
+            profile = profiles.filter(user=user).first()
+            if profile:
+                avatar = profile.image.url
+            else:
+                avatar = '/static/assets/images/avatars/avatar.png'
+            data.append({'id': user.id,
+                         'username': user.username,
+                         'email': user.email,
+                         'image': avatar,
+                         'time': receiver_rank[p2]['max']})
+            p2 += 1
+    if p1 == len_sender:
+        for i in range(p2, len_receiver):
+            user = users.get(id=receiver_rank[i]['recipient'])
+            profile = profiles.filter(user=user).first()
+            if profile:
+                avatar = profile.image.url
+            else:
+                avatar = '/static/assets/images/avatars/avatar.png'
+            data.append({'id': user.id,
+                         'username': user.username,
+                         'email': user.email,
+                         'image': avatar,
+                         'time': receiver_rank[i]['max']})
+    else:
+        for i in range(p1, len_sender):
+            user = users.get(id=sender_rank[i]['user'])
+            profile = profiles.filter(user=user).first()
+            if profile:
+                avatar = profile.image.url
+            else:
+                avatar = '/static/assets/images/avatars/avatar.png'
+            data.append({'id': user.id,
+                         'username': user.username,
+                         'email': user.email,
+                         'image': avatar,
+                         'time': sender_rank[i]['max']})
+    data = sorted(data, key=lambda x: x['time'], reverse=True)
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})

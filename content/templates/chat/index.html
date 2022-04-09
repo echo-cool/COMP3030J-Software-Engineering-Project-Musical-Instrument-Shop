@@ -20,7 +20,8 @@
     {#    <script src="{% static 'assets/chat_js/static/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/chat_js/static/css/litewebchat.css' %}"/>
-    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet"
+          type="text/css">
 
     <!-- SPECIFIC JS -->
     {#    <script src="{% static 'assets/chat_js/gun.js' %}"></script>#}
@@ -64,7 +65,7 @@
                             <div class="img_cont head">
 
                                 <img id="user-image"
-                                     style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
+                                     style="border-radius: 100%; border: 2px solid #FFF; width: 70px; height: 70px;"
                                      src="{{ user.profile.image.url }}"
                                      alt="'s Photo"/>
                                 <span class="online_icon"></span>
@@ -154,28 +155,25 @@
         }
 
         function updateUserList() {
-            $.getJSON('/api/user/', function (data) {
+            $.getJSON('/api/rank_user_list', function (data) {
+                console.log(data)
                 userList.children('.user').remove();
                 for (let i = 0; i < data.length; i++) {
-                    $.getJSON(`/api/profile/?user=${data[i]['id']}`, function (profile) {
-                        const userItem = `
-
-                        <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
-							<div class="d-flex bd-highlight" style="pointer-events: none">
-								<div class="img_cont">
-									<img src=${profile[0]['image']} class="rounded-circle user_img">
-									<span class="online_icon offline"></span>
-								</div>
-								<div class="user_info">
-									<span>${data[i].username}</span>
-									<p>${data[i].email}</p>
-								</div>
-							</div>
-						</li>
+                    let userItem = `
+                    <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
+                        <div class="d-flex bd-highlight" style="pointer-events: none">
+                            <div class="img_cont">
+                                <img src=${data[i]['image']} class="rounded-circle user_img">
+                                <span class="online_icon offline"></span>
+                            </div>
+                            <div class="user_info">
+                                <span>${data[i].username}</span>
+                                <p>${data[i].email}</p>
+                            </div>
+                        </div>
+                    </li>
 `;
-                        $(userItem).appendTo('#user-list');
-                        (data[i].username);
-                    })
+                    $(userItem).appendTo('#user-list')
                 }
                 {#$('.user').click(function () {#}
                 {#    $('.active').removeClass('active');#}
@@ -232,8 +230,8 @@
 
         function getConversation(recipient) {
             $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-                    {#console.log(data['results'][0].body)#}
-                    {#console.log(chat_history)#}
+                {#console.log(data['results'][0].body)#}
+                {#console.log(chat_history)#}
                 if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
                     {#console.log(chat_with);#}
                     {#console.log(chat_with_current);#}
@@ -263,12 +261,25 @@
         }
 
         function sendMessage(recipient, body) {
-            $.post('/api/message/', {
-                recipient: recipient,
-                body: body
-            }).fail(function () {
-                alert('Error! Check console!');
-            });
+            $.ajax({
+                url: "/api/message/",
+                method: 'POST',
+                data:{
+                    recipient: recipient,
+                    body: body
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    updateUserList()
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+
         }
 
         function setCurrentRecipient(username) {
