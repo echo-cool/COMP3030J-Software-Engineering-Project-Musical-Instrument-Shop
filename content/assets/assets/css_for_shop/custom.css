@@ -1,3 +1,43 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+
+@keyframes Fadeout {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes blurFadeIn {
+    0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+    }
+    25% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.2);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
