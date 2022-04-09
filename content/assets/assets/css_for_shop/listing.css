@@ -1335,8 +1335,12 @@
 }
 
 /* PRODUCT ITEMS */
+.js_size_prod {
+    margin-bottom: 50px;
+}
 
 .product-item-v5 {
+    padding-bottom: 50px;
     overflow: hidden;
 }
 
@@ -1457,7 +1461,8 @@
     transition: all .5s ease;
     height: 44px;
     position: absolute;
-    bottom: 0;
+    /*bottom: 0;*/
+    bottom: 70px;
     width: 100%;
     transform: translateY(100%);
 }
@@ -1478,6 +1483,15 @@
     line-height: 1.5em;
     font-weight: 450;
     padding-top: 22px;
+
+    width: 100%;
+    background: white;
+}
+
+
+.product-item-v5 .absolute-wrapper {
+    position: absolute;
+    width: 100%;
 }
 
 .product-item-v5 .price-product {
