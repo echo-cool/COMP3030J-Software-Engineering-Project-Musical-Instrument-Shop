@@ -172,10 +172,10 @@
     <div id="list_top5" class=sidebar-fixed >
         <div class="warp">
             {% for rank in order_rank %}
-                <div class="card No{{ forloop.counter }}">
-                    <div class="title">{{ rank.instrument }}</div>
+                <a href="/product_details/{{ rank.instrument }}" class="card No{{ forloop.counter }}">
+                    <div class="title">{{ rank.name }}</div>
                     <div class="content">{{ rank.count }}</div>
-                </div>
+                </a>
             {% endfor %}
         </div>
     </div>
