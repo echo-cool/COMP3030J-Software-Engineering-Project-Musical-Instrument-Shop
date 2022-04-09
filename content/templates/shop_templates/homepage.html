@@ -86,7 +86,7 @@
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
-                                    {#                                </div>#}fa
+                                    {#                                </div>#}
                                     <div class="box-search-adv">
                                     </div>
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
@@ -182,39 +182,40 @@
                     <div class="owl-demo-chinese">
                         <div class="item">
                             <div class="row">
-                                {% for i in four %}
+                                {% for instrument in instruments %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
                                             <div class="item-thumb-product">
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
+                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
+                                                     alt=""
                                                      class="product-thumb-front"/>
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
+                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
+                                                     alt=""
                                                      class="product-thumb-behind"/>
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
                                                         <ul>
-{#                                                            <li><a href="#" class="link-wishlist"><i#}
-{#                                                                    class="fa fa-heart"></i></a></li>#}
-{#                                                            <li><a href="#" class="link-quick-view"><i#}
-{#                                                                    class="fa fa-search"></i></a></li>#}
-{#                                                            <li><a href="#" class="link-compare"><i#}
-{#                                                                    class="fa fa-external-link-square"></i></a></li>#}
-
-                                                            <li><a data-bs-toggle="tooltip" data-bs-html="true"
-                                                                   title="Add to Cart"
-                                                                   href="cart.html"><i
-                                                                    class="fi flaticon-shopping-cart"></i></a></li>
-                                                            <li data-bs-toggle="modal"
-                                                                data-bs-target="#popup-quickview">
-                                                                <button
-                                                                        data-bs-toggle="tooltip" data-bs-html="true"
-                                                                        title="Quick View"><i
-                                                                        class="fi ti-eye"></i></button>
-                                                            </li>
-                                                            <li><a data-bs-toggle="tooltip" data-bs-html="true"
-                                                                   title="Add to Wishlist"
-                                                                   href="wishlist.html"><i class="fi flaticon-like"></i></a>
-                                                            </li>
+                                                            <li><a href="#" class="link-wishlist"><i
+                                                                    class="fa fa-heart"></i></a></li>
+                                                            <li><a href="#" class="link-quick-view"><i
+                                                                    class="fa fa-search"></i></a></li>
+                                                            <li><a href="#" class="link-compare"><i
+                                                                    class="fa fa-eye"></i></a></li>
+                                                            {#   <li><a data-bs-toggle="tooltip" data-bs-html="true"#}
+                                                            {#          title="Add to Cart"#}
+                                                            {#          href="cart.html"><i#}
+                                                            {#           class="fi flaticon-shopping-cart"></i></a></li>#}
+                                                            {#   <li data-bs-toggle="modal"#}
+                                                            {#       data-bs-target="#popup-quickview">#}
+                                                            {#       <button#}
+                                                            {#               data-bs-toggle="tooltip" data-bs-html="true"#}
+                                                            {#               title="Quick View"><i#}
+                                                            {#               class="fi ti-eye"></i></button>#}
+                                                            {#   </li>#}
+                                                            {#   <li><a data-bs-toggle="tooltip" data-bs-html="true"#}
+                                                            {#          title="Add to Wishlist"#}
+                                                            {#          href="wishlist.html"><i class="fi flaticon-like"></i></a>#}
+                                                            {#   </li>#}
                                                         </ul>
                                                         <a href="#" class="link-product-add-cart">Add to cart</a>
                                                     </div>
@@ -222,10 +223,10 @@
                                                 <span class="status-product-new">New</span>
                                             </div>
                                             <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <h3><a href="#">{{ instrument.name }}</a></h3>
                                                 <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
+                                                    <span>${{ instrument.price }}</span>
+                                                    <del>${{ instrument.old_price }}</del>
                                                 </div>
                                                 <div class="product-rating-star">
                                                     <i class="fa fa-star"></i>
@@ -482,11 +483,11 @@
                                 <div class="item-product">
                                     <div class="item-thumb-product">
                                         <img style="width: 100%;"
-                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}_3.jpg"
+                                             src="{{ design_model.url }}_3.jpg"
                                              alt=""
                                              class="product-thumb-front"/>
                                         <img style="width: 100%;"
-                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}.jpg"
+                                             src="{{ design_model.url }}.jpg"
                                              alt=""
                                              class="product-thumb-behind"/>
                                         <div class="info-product-cart2">
