@@ -23,7 +23,8 @@ from shop.models import Instrument, InstrumentDetail, Category, Order, Review, P
 def index(request):
     # order by count
     orders = Order.objects.all()
-    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[:5]
+    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
+                 :5]
     order_rank = list(order_rank)
     for i in order_rank:
         i['name'] = Instrument.objects.filter(id=i['instrument']).first().name
@@ -83,7 +84,17 @@ def home(request):
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
 
+    chinese_instruments = []
+    western_instruments = []
+    for i in instruments:
+        print("==========", i.chinese, str(i.chinese) == "True")
+        if str(i.chinese) == "True":
+            chinese_instruments.append(i)
+        else:
+            western_instruments.append(i)
     return render(request, 'shop_templates/homepage.html', {
+        "chinese_instruments": chinese_instruments,
+        "western_instruments": western_instruments,
         "instruments": instruments,
         "categories": categories,
         "index_categories": index_categories,

@@ -11,8 +11,8 @@
     <link href="{% static "assets/img_for_shop/img_for_company_profile/apple-touch-icon.png" %}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-{#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"#}
-{#          rel="stylesheet">#}
+    {#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"#}
+    {#          rel="stylesheet">#}
     <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
 
     <!-- Vendor CSS Files -->
@@ -30,6 +30,9 @@
     <!-- Template Main CSS File -->
     <link href="{% static "assets/css_for_shop/css_for_company_profile/style.css" %}" rel="stylesheet">
     <script src="{% static "assets/js_for_shop/type-writer-core.js" %}"></script>
+
+
+
     <!-- =======================================================
     * Template Name: Gp - v4.7.0
     * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -93,26 +96,6 @@
                     {#                    Melodious Instruments Shop <span>.</span>#}
                     <h2 id="typewriter-2"></h2>
                     <script>
-                        $(function () {
-
-                            setTimeout(function () {
-                                let a = new Typewriter('#typewriter-1', {
-                                    strings: ['Melodious Instruments Shop'],
-                                    autoStart: true,
-                                    pauseFor: 20000000,
-                                });
-
-                                setTimeout(function () {
-                                    new Typewriter('#typewriter-2', {
-                                        strings: ['We are team of talented instruments sellers.'],
-                                        autoStart: true,
-                                        pauseFor: 20000000,
-                                        delay: 50,
-                                    });
-                                }, 1000);
-
-                            }, 1000)
-                        })
 
                     </script>
                 </div>
@@ -199,10 +182,13 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="{% static "assets/img_for_shop/img_for_company_profile/testimonials-bg.jpg" %}"
-                             class="img-fluid" alt="">
+                        {#                        <img src="{% static "assets/img_for_shop/img_for_company_profile/testimonials-bg.jpg" %}"#}
+                        {#                             class="img-fluid" alt="">#}
+                        <div class="model-wrapper-left model-wrapper-control show-style">
+                        </div>
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
+                    <div style="margin-top: 11%;" class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content"
+                         data-aos="fade-right"
                          data-aos-delay="100">
                         <h3>Real-time 3D Instrument Viewing and Customization</h3>
                         <p class="fst-italic">
@@ -238,10 +224,13 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
+                    {#  style='background-image: url("{% static "assets/img_for_shop/img_for_company_profile/about1.webp" %}");'#}
                     <div class="image col-lg-6"
-                         style='background-image: url("{% static "assets/img_for_shop/img_for_company_profile/about1.webp" %}");'
-                         data-aos="fade-right"></div>
-                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                         data-aos="fade-right">
+                        <div class="model-wrapper-right model-wrapper-control show-style">
+                        </div>
+                    </div>
+                    <div style="margin-top: 8%;" class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                         <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                             <i class="bx bx-receipt"></i>
                             <h4>Est labore ad</h4>
@@ -465,7 +454,7 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}g"
+                            <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>App 3</h4>
@@ -545,12 +534,12 @@
                     <h2>Contact</h2>
                     <p>Contact Us</p>
                 </div>
-
-                <div>
-                    <iframe style="border:0; width: 100%; height: 270px;"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                            frameborder="0" allowfullscreen></iframe>
-                </div>
+                <!-- //TODO: GOOGLE MAP -->
+                {#                <div>#}
+                {#                    <iframe style="border:0; width: 100%; height: 270px;"#}
+                {#                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"#}
+                {#                            frameborder="0" allowfullscreen></iframe>#}
+                {#                </div>#}
 
                 <div class="row mt-5">
 
@@ -658,4 +647,14 @@
     <!-- Template Main JS File -->
     <script src="{% static "assets/js_for_shop/js_for_companu_profile/main.js" %}"></script>
 
+
+
+
+    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+    {#    <script type="text/javascript" src="{% static "assets/js_for_model/FBXLoader.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_homepage.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+    <script src="{% static 'assets/js_for_model/model_loader_homepage.js' %}"></script>
 {% endblock %}
