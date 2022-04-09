@@ -128,27 +128,27 @@
                                 <div class="owl-carousel owl-carousel-vertical owl-theme thumbs vertical-slider">
                                     <div>
                                         <img class="item active"
-                                             src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                             src="{{ instrument.image.url }}"
                                              alt="">
                                     </div>
                                     <div>
                                         <img class="item active"
-                                             src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                             src="{{ instrument.image1.url }}"
                                              alt="">
                                     </div>
                                     <div>
                                         <img class="item active"
-                                             src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                             src="{{ instrument.image2.url }}"
                                              alt="">
                                     </div>
                                     <div>
                                         <img class="item active"
-                                             src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                             src="{{ instrument.image3.url }}"
                                              alt="">
                                     </div>
                                     <div>
                                         <img class="item active"
-                                             src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                             src="{{ instrument.image4.url }}"
                                              alt="">
                                     </div>
                                 </div>
@@ -183,31 +183,31 @@
                                     <div class="owl-carousel owl-theme main">
                                         <div>
                                             <img class="owl-lazy"
-                                                 src="/media/uploads/instrument/image/detail_piano1 (1).jpg"
+                                                 src="{{ instrument.image.url }}"
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (1).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
                                         <div>
                                             <img class="owl-lazy"
-                                                 src="/media/uploads/instrument/image/detail_piano1 (2).jpg"
+                                                 src="{{ instrument.image1.url }}"
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (2).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
                                         <div>
                                             <img class="owl-lazy"
-                                                 src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                                 src="{{ instrument.image2.url }}"
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (3).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
                                         <div>
                                             <img class="owl-lazy"
-                                                 src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                                 src="{{ instrument.image3.url }}"
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (4).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
                                         <div>
                                             <img class="owl-lazy"
-                                                 src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                                 src="{{ instrument.image4.url }}"
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (5).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
@@ -243,13 +243,11 @@
                             </span>
                         </div>
                         <div class="pd_summary">
-                            <p class=" mb-0">Play Music via MP3 and Bluetooth Easily play music. You don't need any
-                                extra equipment - the SubZero SZPA-P12 has an all-in-one media player built in. You can
-                                play MP3s from SD cards and USB, or wirelessly stream music from your phone or tablet
-                                via Bluetooth. All of this is...</p>
+                            <p class=" mb-0">{{ instrument.details }}</p>
                         </div>
-                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm"
+                        <form method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
+                            {% csrf_token %}
                             <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
                                     class="single-option-selector" data-option="option1" id="productSelect-option-0">
                                 <option value="Maroon">Maroon</option>
