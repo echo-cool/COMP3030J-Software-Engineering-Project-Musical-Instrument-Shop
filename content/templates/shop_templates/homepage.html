@@ -199,23 +199,13 @@
                                                                     class="fa fa-heart"></i></a></li>
                                                             <li><a href="#" class="link-quick-view"><i
                                                                     class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-eye"></i></a></li>
-                                                            {#   <li><a data-bs-toggle="tooltip" data-bs-html="true"#}
-                                                            {#          title="Add to Cart"#}
-                                                            {#          href="cart.html"><i#}
-                                                            {#           class="fi flaticon-shopping-cart"></i></a></li>#}
-                                                            {#   <li data-bs-toggle="modal"#}
-                                                            {#       data-bs-target="#popup-quickview">#}
-                                                            {#       <button#}
-                                                            {#               data-bs-toggle="tooltip" data-bs-html="true"#}
-                                                            {#               title="Quick View"><i#}
-                                                            {#               class="fi ti-eye"></i></button>#}
-                                                            {#   </li>#}
-                                                            {#   <li><a data-bs-toggle="tooltip" data-bs-html="true"#}
-                                                            {#          title="Add to Wishlist"#}
-                                                            {#          href="wishlist.html"><i class="fi flaticon-like"></i></a>#}
-                                                            {#   </li>#}
+                                                            <li data-bs-toggle="modal"
+                                                                data-bs-target="#popup-quickview">
+                                                                <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                        title="Quick View">
+                                                                    <i class="fi ti-eye"></i>
+                                                                </button>
+                                                            </li>
                                                         </ul>
                                                         <a href="#" class="link-product-add-cart">Add to cart</a>
                                                     </div>
@@ -667,7 +657,7 @@
     </div>
 
     <!-- popup-quickview  -->
-    <div id="popup-quickview" class="modal fade" tabindex="-1">
+    <div id="popup-quickview" class="modal" tabindex="-1">
         <div class="modal-dialog quickview-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
