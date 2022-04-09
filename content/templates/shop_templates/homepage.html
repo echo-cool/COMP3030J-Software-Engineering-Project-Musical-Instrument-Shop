@@ -14,6 +14,18 @@
 
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
 
+    <link href="{% static "assets/assets_for_bees/css/themify-icons.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/flaticon.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/animate.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/owl.carousel.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/owl.theme.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/slick-theme.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/owl.transitions.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/jquery.fancybox.css" %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/style.css" %}" rel="stylesheet">
+
     <!-- tiny-slider (new Version for owl-slider) -->
     <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
     <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
@@ -74,7 +86,7 @@
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
-                                    {#                                </div>#}
+                                    {#                                </div>#}fa
                                     <div class="box-search-adv">
                                     </div>
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
@@ -181,12 +193,28 @@
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
                                                         <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
+{#                                                            <li><a href="#" class="link-wishlist"><i#}
+{#                                                                    class="fa fa-heart"></i></a></li>#}
+{#                                                            <li><a href="#" class="link-quick-view"><i#}
+{#                                                                    class="fa fa-search"></i></a></li>#}
+{#                                                            <li><a href="#" class="link-compare"><i#}
+{#                                                                    class="fa fa-external-link-square"></i></a></li>#}
+
+                                                            <li><a data-bs-toggle="tooltip" data-bs-html="true"
+                                                                   title="Add to Cart"
+                                                                   href="cart.html"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a></li>
+                                                            <li data-bs-toggle="modal"
+                                                                data-bs-target="#popup-quickview">
+                                                                <button
+                                                                        data-bs-toggle="tooltip" data-bs-html="true"
+                                                                        title="Quick View"><i
+                                                                        class="fi ti-eye"></i></button>
+                                                            </li>
+                                                            <li><a data-bs-toggle="tooltip" data-bs-html="true"
+                                                                   title="Add to Wishlist"
+                                                                   href="wishlist.html"><i class="fi flaticon-like"></i></a>
+                                                            </li>
                                                         </ul>
                                                         <a href="#" class="link-product-add-cart">Add to cart</a>
                                                     </div>
@@ -454,11 +482,13 @@
                                 <div class="item-product">
                                     <div class="item-thumb-product">
                                         <img style="width: 100%;"
-                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}_3.jpg"
+                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_
+                                                     {{ design_model.name }}{{ design_model.style }}_3.jpg"
                                              alt=""
                                              class="product-thumb-front"/>
                                         <img style="width: 100%;"
-                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_{{ design_model.name }}{{ design_model.style }}.jpg"
+                                             src="/static/assets/img_for_shop/img_for_model_design/model_design_
+                                                     {{ design_model.name }}{{ design_model.style }}.jpg"
                                              alt=""
                                              class="product-thumb-behind"/>
                                         <div class="info-product-cart2">
@@ -637,6 +667,116 @@
         <!-- End From our blog -->
     </div>
 
+    <!-- popup-quickview  -->
+    <div id="popup-quickview" class="modal fade" tabindex="-1">
+        <div class="modal-dialog quickview-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fi flaticon-cancel"></i></button>
+                <div class="modal-body d-flex">
+                    <div class="product-details">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="product-single-img">
+                                    <div class="modal-product">
+                                        <div class="item">
+                                            <img src="assets/images/modal2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="product-single-content">
+                                    <h5>Queen Bee Honey</h5>
+                                    <h6>350.00 USD</h6>
+                                    <ul class="rating">
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices
+                                        lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius
+                                        felis
+                                        sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipiscing elit. Aliquam
+                                        hendrerit.
+                                    </p>
+                                    <div class="product-filter-item color">
+                                        <div class="color-name">
+                                            <span>Color :</span>
+                                            <ul>
+                                                <li class="color1"><input id="1" type="radio" name="color"
+                                                                          value="30">
+                                                    <label for="1"></label>
+                                                </li>
+                                                <li class="color2"><input id="2" type="radio" name="color"
+                                                                          value="30">
+                                                    <label for="2"></label>
+                                                </li>
+                                                <li class="color3"><input id="3" type="radio" name="color"
+                                                                          value="30">
+                                                    <label for="3"></label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-filter-item color filter-size">
+                                        <div class="color-name">
+                                            <span>Weight :</span>
+                                            <ul>
+                                                <li class="color"><input id="w1" type="radio" name="size"
+                                                                         value="30">
+                                                    <label for="w1">4L</label>
+                                                </li>
+                                                <li class="color"><input id="w2" type="radio" name="size"
+                                                                         value="30">
+                                                    <label for="w2">2L</label>
+                                                </li>
+                                                <li class="color"><input id="w3" type="radio" name="size"
+                                                                         value="30">
+                                                    <label for="w3">500ML</label>
+                                                </li>
+                                                <li class="color"><input id="w4" type="radio" name="size"
+                                                                         value="30">
+                                                    <label for="w4">200ML</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="pro-single-btn">
+                                        <div class="quantity cart-plus-minus">
+                                            <input type="text" value="1">
+                                            <div class="dec qtybutton"></div>
+                                            <div class="inc qtybutton"></div>
+                                        </div>
+                                        <a href="#" class="theme-btn">Add to cart</a>
+                                    </div>
+                                    <div class="social-share">
+                                        <span>Share with : </span>
+                                        <ul class="socialLinks">
+                                            <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href='#'><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="m-shape">
+                                        <img src="assets/images/bee2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup-quickview -->
+
 {% endblock %}
 
 {% block scripts %}
@@ -692,4 +832,9 @@
             $('.owl-demo-chinese2').trigger('owl.next');
         });
     </script>
+    <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/assets_for_bees/js/jquery-ui.min.js"></script>
+    <script src="/static/assets/assets_for_bees/js/jquery-plugin-collection.js"></script>
+    <script src="/static/assets/assets_for_bees/js/script.js"></script>
+    <script src="/static/assets/assets_for_bees/js/modernizr.custom.js"></script>
 {% endblock %}
