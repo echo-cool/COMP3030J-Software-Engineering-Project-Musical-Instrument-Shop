@@ -185,7 +185,8 @@
                                 {% for instrument in instruments %}
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="item-product">
-                                            <div class="item-thumb-product">
+                                            <div class="item-thumb-product"
+                                                 onclick="window.location.href = '{% url 'shop:product_details' product_id=instrument.id %}'">
                                                 <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
                                                      alt=""
                                                      class="product-thumb-front"/>
@@ -195,25 +196,29 @@
                                                 <div class="info-product-cart">
                                                     <div class="inner-info-product-cart">
                                                         <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
+                                                            <li><a href="/api/message" class="link-wishlist"><i
                                                                     class="fa fa-heart"></i></a></li>
                                                             <li><a href="#" class="link-quick-view"><i
                                                                     class="fa fa-search"></i></a></li>
                                                             <li data-bs-toggle="modal"
-                                                                data-bs-target="#popup-quickview">
+                                                                data-bs-target="#popup-quickview"
+                                                            >
                                                                 <button data-bs-toggle="tooltip" data-bs-html="true"
                                                                         title="Quick View">
                                                                     <i class="fi ti-eye"></i>
                                                                 </button>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                        <a href="#" class="link-product-add-cart">Add to
+                                                            cart</a>
                                                     </div>
                                                 </div>
                                                 <span class="status-product-new">New</span>
                                             </div>
                                             <div class="item-info-product">
-                                                <h3><a href="#">{{ instrument.name }}</a></h3>
+                                                <h3>
+                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
+                                                </h3>
                                                 <div class="info-product-price">
                                                     <span>${{ instrument.price }}</span>
                                                     <del>${{ instrument.old_price }}</del>
@@ -826,6 +831,14 @@
             e.preventDefault();
             $('.owl-demo-chinese2').trigger('owl.next');
         });
+        $('.info-product-cart').on('click', function (e) {
+            var ev = window.event || arguments.callee.caller.arguments[0];
+
+            if (window.event) ev.cancelBubble = true;
+            else {
+                ev.stopPropagation();
+            }
+        })
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
     <script src="/static/assets/assets_for_bees/js/jquery-ui.min.js"></script>
