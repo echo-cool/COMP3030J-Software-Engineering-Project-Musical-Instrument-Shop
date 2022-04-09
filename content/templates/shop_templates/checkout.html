@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="step first">
-                            <h3>1. Billing address</h3>
+                            <h3>{% trans '1. Billing address' %}</h3>
 
                             <div class="tab-content checkout">
                                 <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
@@ -60,10 +60,10 @@
                                         <div class="col-md-12 form-group">
                                             <div class="custom-select-form">
                                                 <select class="wide add_bottom_15" name="country" id="country">
-                                                    <option value="" selected>Country</option>
-                                                    <option value="Europe">Europe</option>
-                                                    <option value="United states">United states</option>
-                                                    <option value="Asia">Asia</option>
+                                                    <option value="" selected>{% trans 'Country' %}</option>
+                                                    <option value="Europe">{% trans 'Europe' %}</option>
+                                                    <option value="United states">{% trans 'United states' %}</option>
+                                                    <option value="Asia">{% trans 'Asia' %}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -74,7 +74,7 @@
                                     </div>
                                     <hr>
                                     <div class="form-group">
-                                        <label class="container_check" id="other_addr">Other billing address
+                                        <label class="container_check" id="other_addr">{% trans 'Other billing address' %}
                                             <input name="checkbox" type="checkbox">
                                             <span class="checkmark"></span>
                                         </label>
@@ -82,22 +82,22 @@
                                     <div id="other_addr_c" class="pt-2">
                                         <div class="row no-gutters">
                                             <div class="col-6 form-group pr-1">
-                                                <input name="name_2" type="text" class="form-control" placeholder="Name">
+                                                <input name="name_2" type="text" class="form-control" placeholder="{% trans 'Name' %}">
                                             </div>
                                             <div class="col-6 form-group pl-1">
-                                                <input name="last_name_2" type="text" class="form-control" placeholder="Last Name">
+                                                <input name="last_name_2" type="text" class="form-control" placeholder="{% trans 'Last Name' %}">
                                             </div>
                                         </div>
                                         <!-- /row -->
                                         <div class="form-group">
-                                            <input name="full_address_2" type="text" class="form-control" placeholder="Full Address">
+                                            <input name="full_address_2" type="text" class="form-control" placeholder="{% trans 'Full Address' %}">
                                         </div>
                                         <div class="row no-gutters">
                                             <div class="col-6 form-group pr-1">
-                                                <input name="city_2" type="text" class="form-control" placeholder="City">
+                                                <input name="city_2" type="text" class="form-control" placeholder="{% trans 'City' %}">
                                             </div>
                                             <div class="col-6 form-group pl-1">
-                                                <input name="postal_code_2" type="text" class="form-control" placeholder="Postal code">
+                                                <input name="postal_code_2" type="text" class="form-control" placeholder="{% trans 'Postal code' %}">
                                             </div>
                                         </div>
                                         <!-- /row -->
@@ -105,10 +105,10 @@
                                             <div class="col-md-12 form-group">
                                                 <div class="custom-select-form">
                                                     <select class="wide add_bottom_15" name="country" id="country_2">
-                                                        <option value="" selected>Country</option>
-                                                        <option value="Europe">Europe</option>
-                                                        <option value="United states">United states</option>
-                                                        <option value="Asia">Asia</option>
+                                                        <option value="" selected>{% trans 'Country' %}</option>
+                                                        <option value="Europe">{% trans 'Europe' %}</option>
+                                                        <option value="United states">{% trans 'United states' %}</option>
+                                                        <option value="Asia">{% trans 'Asia' %}</option>
                                                     </select>
                                                 </div>
                                             </div>
