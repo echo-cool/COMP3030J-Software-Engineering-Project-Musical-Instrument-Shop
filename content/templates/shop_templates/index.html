@@ -14,9 +14,179 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="/static/assets/css_for_shop/custom.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list_top5_btn {
+            z-index: 1000;
+            color: black;
+        }
+
+        .sidebar-fixed {
+            position: fixed;
+            left: 10px;
+        {#top: 150px;#} z-index: 999;
+        }
+
+        .sidebar-show {
+            visibility: hidden;
+        }
+
+        .warp {
+            background-color: rgba(255, 255, 255, 0.55);
+            border-radius: 10px;
+            width: 30vw;
+            height: 60vh;
+
+            overflow: hidden;
+            /* position: absolute; */
+            /*避免子元素margin 影响外层元素 overflow和position都可以*/
+
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* flex弹性布局 居中（水平、垂直） */
+        }
+
+        .card {
+            width: 28vw;
+            height: 16vh;
+            background-color: darkcyan;
+            border-radius: 2vh;
+            margin: 2vh;
+
+            /* 文本垂直居中 */
+            /* text-align: center; */
+            /* line-height: 20vh; */
+
+            /*外层相对位置*/
+            /* position: relative; */
+
+            border-radius: 12px;
+            color: #ffc0cb;
+            cursor: pointer;
+            transition: all 1s ease;
+            display: block;
+        }
+
+        .No1 {
+            background-color: #8063e1;
+            background-image: linear-gradient(135deg, #bd7be8, #8063e1);
+            box-shadow: 20px 20px 60px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
+            z-index: 5;
+            opacity: 0.9;
+        }
+
+        .No2 {
+            background-color: #3f58e3;
+            background-image: linear-gradient(135deg, #7f94fc, #3f58e3);
+            box-shadow: 20px 20px 60px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #3f58e3;
+            z-index: 4;
+            opacity: 0.9;
+        }
+
+        .No3 {
+            background-color: #2c6fd1;
+            background-image: linear-gradient(135deg, #21bbfe, #2c6fd1);
+            box-shadow: 20px 20px 60px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #2c6fd1;
+            z-index: 3;
+            opacity: 0.9;
+        }
+
+        .No4 {
+            background-color: #352f64;
+            background-image: linear-gradient(135deg, #415197, #352f64);
+            box-shadow: 20px 20px 60px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #352f64;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .No5 {
+            background-color: #63e1b7;
+            background-image: linear-gradient(135deg, #4e9666, #63e1a6);
+            box-shadow: 20px 20px 60px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #63e178;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .card .title {
+            /*内层绝对位置*/
+            /* position: absolute; */
+            border-bottom: rgb(149, 158, 158) 1px solid;
+            width: calc(100% - 2vw);
+            height: 25%;
+            padding-left: 2vw;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .card .content {
+            /* position: absolute; */
+
+            width: 100%;
+            height: 74%;
+
+            /* 文本垂直居中 */
+            /* text-align: center; */
+            line-height: 11vh;
+
+            padding-left: 2vw;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .card:hover {
+            transform: rotateX(0deg) rotateY(0deg) rotate(0deg) translate(15px, 0px);
+            opacity: 0.6;
+        }
+
+        .card:hover:after {
+            transform: translateX(100%);
+            transition: all 1.5s ease-in-out;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-100%);
+            background-image: linear-gradient(60deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 80%);
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
+
+    {# hot list begin (top 5) #}
+    <div id="list_top5_btn" class=sidebar-fixed style="width: 20px; height: 20px" onclick="switch_sidebar()"><img src="{% static 'assets/images/icons/love-heart.png' %}" width="50px"></div>
+
+    <div id="list_top5" class=sidebar-fixed >
+        <div class="warp">
+            {% for rank in order_rank %}
+                <div class="card No{{ forloop.counter }}">
+                    <div class="title">{{ rank.instrument }}</div>
+                    <div class="content">{{ rank.count }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        function switch_sidebar() {
+            $("#list_top5").toggleClass("sidebar-show");
+        }
+    </script>
+    {# hot list end #}
+
 
     <main>
         <div class="header-video">
