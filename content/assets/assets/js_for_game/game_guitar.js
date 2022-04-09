@@ -135,45 +135,63 @@ buttons.forEach(button => {
 })
 
 
-let audio = document.querySelector('audio');
-let circle = document.querySelector('.circle');
+// let audio = document.querySelector('audio');
+// let circle = document.querySelector('.circle');
 
-audio.addEventListener('pause', pauseTrack);
-audio.addEventListener('play', playTrack);
+// audio.addEventListener('pause', pauseTrack);
+// audio.addEventListener('play', playTrack);
+
+// function play_start() {
+//     // audio.pause();
+//     // pauseTrack();
+// }
+
+
+// circle.addEventListener('click', () => {
+//     preset = (preset === 0) ? 15 : 0;
+//     circle.classList.toggle('rock');
+// })
+// audio.addEventListener('ended', () => {
+//     pauseTrack();
+// });
+
+// function playTrack() {
+//     play.querySelector('.pause-icon').style.display = "block";
+//     play.querySelector('.play-icon').style.display = "none";
+// }
+//
+// function pauseTrack() {
+//     play.querySelector('.pause-icon').style.display = "none";
+//     play.querySelector('.play-icon').style.display = "block";
+// }
+
+
+let audio_embed = $(".guitar-audio-player");
+
+function load_guitar_example1() {
+    // guitar = new Guitar(context, buffer.getSound(2));
+    // audio_embed.attr("src", sounds[0]);
+}
+
+function load_guitar_example2() {
+    // guitar = new Guitar(context, buffer.getSound(4));
+    // audio_embed.attr("src", sounds[1]);
+}
 
 function play_start() {
-    if (audio.paused) {
-        audio.play();
-        playTrack();
-    } else {
-        audio.pause();
-        pauseTrack();
+    $(".show-style-guitar").toggle("wrapper-hidden");
+    console.log("start", audio_embed.attr("src"), audio_embed.paused);
+    audio_embed[0].play();
+}
+
+
+function play_stop() {
+    $(".show-style-guitar").toggle("wrapper-hidden");
+    console.log("stop", audio_embed.attr("src"), audio_embed.paused);
+    if (!audio_embed[0].paused) {
+        audio_embed[0].pause();
     }
 }
 
 
-circle.addEventListener('click', () => {
-    preset = (preset === 0) ? 15 : 0;
-    circle.classList.toggle('rock');
-})
-audio.addEventListener('ended', () => {
-    pauseTrack();
-});
 
-function playTrack() {
-    play.querySelector('.pause-icon').style.display = "block";
-    play.querySelector('.play-icon').style.display = "none";
-}
-
-function pauseTrack() {
-    play.querySelector('.pause-icon').style.display = "none";
-    play.querySelector('.play-icon').style.display = "block";
-}
-
-function load_guitar_example1() {
-    guitar = new Guitar(context, buffer.getSound(2));
-}
-
-function load_guitar_example2() {
-    guitar = new Guitar(context, buffer.getSound(4));
-}
