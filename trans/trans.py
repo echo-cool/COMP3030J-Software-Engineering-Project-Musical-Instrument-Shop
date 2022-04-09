@@ -16,13 +16,23 @@ import json
 token = '【调用鉴权接口获取的token】'
 url = 'https://aip.baidubce.com/rpc/2.0/mt/texttrans/v1?access_token=' + token
 base_urls = [
-    'http://127.0.0.1:8000/'
+    'http://127.0.0.1:8000/',
+    'http://127.0.0.1:8000/personal_profile/',
+    "http://127.0.0.1:8000/category/1",
+    "http://127.0.0.1:8000/wishlist/",
+    "http://127.0.0.1:8000/cart/",
+    "http://127.0.0.1:8000/home",
+    "http://127.0.0.1:8000/product_details/8"
+
 ]
 visited_urls = []
 apiKey = "XUcrx0T41dXQRtPY0wYng6uQ"
 secretKey = 'g59xudpCSZyj1XLvV5Gjl0y9WdRx4rpN'
 translated = {
 
+}
+cookies = {
+    'sessionid': '0roa6pevgob5lug6stcv487gm09qzbrp'
 }
 
 
@@ -35,9 +45,7 @@ def getToken(apiKey, secretKey):
         return response.json()['access_token']
 
 
-token = getToken(apiKey, secretKey)
-print("token:", token)
-time.sleep(1)
+
 
 
 def get_translation(text, token):
@@ -76,10 +84,27 @@ def text_from_html(body):
     return [t.strip().replace("\n", "").replace("  ", "") for t in visible_texts if t.strip().replace("\n", "") != ""]
 
 
-def main():
+def write_to_wordlist():
     for url_tmp in base_urls:
         print(url_tmp)
-        r = requests.get(url_tmp)
+        r = requests.get(url_tmp, cookies=cookies)
+        res = text_from_html(r.text)
+        for i in res:
+            if i not in translated.keys():
+                with open("wordlist.txt", "a", encoding='utf8') as f:
+                    try:
+                        f.write(i + "\n")
+                    except Exception as e:
+                        print(e)
+
+
+def main():
+    token = getToken(apiKey, secretKey)
+    print("token:", token)
+    time.sleep(1)
+    for url_tmp in base_urls:
+        print(url_tmp)
+        r = requests.get(url_tmp, cookies=cookies)
         res = text_from_html(r.text)
         for i in res:
             if i not in translated.keys():
@@ -101,3 +126,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # with open("wordlist.txt", "w", encoding='utf8') as f:
+    #     f.write("")
+    # write_to_wordlist()

@@ -1,0 +1,4608 @@
+/*----------
+
+Theme Name: Holiday Planners - Travel & Tour HTML5 Template
+Theme Version: 1.0
+更多精品模板：http://www.bootstrapmb.com
+----------*/
+
+
+/*==========
+----- CSS INDEX -----
+1.Common CSS
+2.Preloader CSS
+3.Header CSS
+4.Banner CSS
+5.Banner Bottom Form CSS
+6.About CSS
+7.Destination CSS
+8.Tour Offer CSS
+9.Highlight CSS
+10.Tour CSS
+11.Testimonial CSS
+12.Blog CSS
+13.Instagram CSS
+14.Partners CSS
+15.Footer CSS
+16.(Page)About Us CSS
+    (A)-About Services CSS
+    (B)-About Description CSS
+    (C)-About Progress Bar CSS
+17.(Page)Destination Detail CSS
+18.(Page)Tour CSS
+    (A)-Pagination CSS
+19.(Page)Tour Detail CSS
+20.(Page)Blog CSS
+21.(Page)Blog Single CSS
+22.(Page)Contact CSS
+23.Scroll To Top CSS
+24.Responsive CSS
+==========*/
+
+
+/*==========Common CSS Start==========*/
+
+:root {
+    --yellow-color: #C29D59;
+    --dark-color: #2B2B2B;
+    --white-light-color: #F6F6F6;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    --primary-font-family: 'Titillium Web';
+    --secondary-font-family: 'Cormorant Garamond';
+    --transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--primary-font-family);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dark-color);
+}
+
+input,
+input:focus,
+button,
+button:focus {
+    outline: none;
+}
+
+a {
+    color: var(--yellow-color);
+    transition: var(--transition);
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--secondary-font-family);
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dark-color);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+.h1-title {
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 90px;
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.h1-title span {
+    background: var(--yellow-color);
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.h2-title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.h2-title span {
+    font-weight: bold;
+}
+
+.h3-title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    color: var(--dark-color);
+    position: relative;
+    margin-bottom: 0;
+}
+
+.h4-title {
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--dark-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.h5-title {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.h6-title {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.line-title {
+    padding-left: 10px;
+    border-left: 3px solid var(--yellow-color);
+    margin-bottom: 15px;
+}
+
+.line-title .h4-title {
+    color: var(--yellow-color);
+    margin-bottom: 0;
+    font-family: var(--primary-font-family);
+    font-weight: 400;
+}
+
+.sec-wp {
+    position: relative;
+    z-index: 4;
+}
+
+.sec-title {
+    margin-bottom: 30px;
+}
+
+.sec-btn {
+    width: 170px;
+    height: 50px;
+    background: var(--yellow-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 0;
+    color: var(--white-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.sec-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.sec-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: -1;
+}
+
+.sec-btn:hover {
+    color: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.sec-btn:hover:before {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.slick-slide {
+    outline: none !important;
+}
+
+.slick-slide:focus {
+    outline: none !important;
+}
+
+.slick-dots li button:before,
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before,
+.slick-dots li.slick-active button:before {
+    display: none;
+}
+
+.slick-dots li {
+    width: auto;
+    height: auto;
+    margin: 0;
+    margin-right: 15px;
+}
+
+.slick-dots li:last-child {
+    margin-right: 0;
+}
+
+.slick-dots li button {
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid var(--yellow-color);
+    transition: var(--transition);
+}
+
+.slick-dots li button:hover,
+.slick-dots li.slick-active button {
+    background: var(--yellow-color);
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 70px;
+    height: 40px;
+    background: var(--yellow-color);
+    border: none;
+    outline: none;
+    border-radius: 0;
+    box-shadow: var(--box-shadow);
+    font-size: 18px;
+    font-family: var(--primary-font-family);
+    letter-spacing: 2px;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    z-index: 5;
+}
+
+.slick-arrow.prev-arrow {
+    left: 0;
+}
+
+.slick-arrow.next-arrow {
+    right: 0;
+}
+
+.slick-arrow span {
+    position: relative;
+    z-index: 2;
+}
+
+.slick-arrow:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: 1;
+}
+
+.slick-arrow:hover:before {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.back-image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    position: relative;
+}
+
+.overlay:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+.form-control-span {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.label-input {
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.form-control-span .icon {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    font-size: 20px;
+    color: var(--yellow-color);
+}
+
+.form-input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    padding: 10px 45px;
+    border: 1px solid var(--dark-color);
+    border-radius: 5px;
+    color: var(--dark-color);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.form-input::placeholder {
+    color: var(--dark-color);
+}
+
+textarea.form-input {
+    resize: none;
+    height: 120px;
+    display: block;
+}
+
+.form-control-span .arrow {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    font-size: 20px;
+    color: var(--dark-color);
+    pointer-events: none;
+}
+
+.common-sec {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    position: relative;
+}
+
+.pt-70 {
+    padding-top: 70px;
+}
+
+.pb-70 {
+    padding-bottom: 70px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.overflow-text {
+    max-height: 175px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+.overflow-text::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 3px;
+}
+
+.overflow-text::-webkit-scrollbar-thumb {
+    background: var(--yellow-color);
+    border-radius: 3px;
+}
+
+.overflow-text::-webkit-scrollbar-track {
+    background: var(--dark-color);
+    border-radius: 3px;
+}
+
+.overflow-text p:last-child {
+    margin-bottom: 0;
+}
+
+.for-des {
+    display: block !important;
+}
+
+.for-mob {
+    display: none !important;
+}
+
+.logo-icon {
+    position: absolute;
+    left: 0;
+    bottom: 100px;
+    opacity: 0.2;
+}
+
+.logo-icon img {
+    width: 217px;
+}
+
+.bg-f6 {
+    background-color: var(--white-light-color);
+}
+
+.compensate-for-scrollbar {
+    margin-right: 0 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+
+/*==========Common CSS End==========*/
+
+
+/*==========Preloader CSS Start==========*/
+
+.loader-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: var(--white-color);
+    font-size: 1rem;
+    line-height: 1.5;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+.pl {
+    width: 12em;
+    height: 12em;
+}
+
+.pl__ring {
+    animation: ringA 2s linear infinite;
+}
+
+.pl__ring--a {
+    stroke: var(--yellow-color);
+}
+
+.pl__ring--b {
+    animation-name: ringB;
+    stroke: var(--dark-color);
+}
+
+.pl__ring--c {
+    animation-name: ringC;
+    stroke: var(--yellow-color);
+}
+
+.pl__ring--d {
+    animation-name: ringD;
+    stroke: var(--dark-color);
+}
+
+@keyframes ringA {
+    from,
+    4% {
+        stroke-dasharray: 0 660;
+        stroke-width: 20;
+        stroke-dashoffset: -330;
+    }
+    12% {
+        stroke-dasharray: 60 600;
+        stroke-width: 30;
+        stroke-dashoffset: -335;
+    }
+    32% {
+        stroke-dasharray: 60 600;
+        stroke-width: 30;
+        stroke-dashoffset: -595;
+    }
+    40%,
+    54% {
+        stroke-dasharray: 0 660;
+        stroke-width: 20;
+        stroke-dashoffset: -660;
+    }
+    62% {
+        stroke-dasharray: 60 600;
+        stroke-width: 30;
+        stroke-dashoffset: -665;
+    }
+    82% {
+        stroke-dasharray: 60 600;
+        stroke-width: 30;
+        stroke-dashoffset: -925;
+    }
+    90%,
+    to {
+        stroke-dasharray: 0 660;
+        stroke-width: 20;
+        stroke-dashoffset: -990;
+    }
+}
+
+@keyframes ringB {
+    from,
+    12% {
+        stroke-dasharray: 0 220;
+        stroke-width: 20;
+        stroke-dashoffset: -110;
+    }
+    20% {
+        stroke-dasharray: 20 200;
+        stroke-width: 30;
+        stroke-dashoffset: -115;
+    }
+    40% {
+        stroke-dasharray: 20 200;
+        stroke-width: 30;
+        stroke-dashoffset: -195;
+    }
+    48%,
+    62% {
+        stroke-dasharray: 0 220;
+        stroke-width: 20;
+        stroke-dashoffset: -220;
+    }
+    70% {
+        stroke-dasharray: 20 200;
+        stroke-width: 30;
+        stroke-dashoffset: -225;
+    }
+    90% {
+        stroke-dasharray: 20 200;
+        stroke-width: 30;
+        stroke-dashoffset: -305;
+    }
+    98%,
+    to {
+        stroke-dasharray: 0 220;
+        stroke-width: 20;
+        stroke-dashoffset: -330;
+    }
+}
+
+@keyframes ringC {
+    from {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: 0;
+    }
+    8% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -5;
+    }
+    28% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -175;
+    }
+    36%,
+    58% {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: -220;
+    }
+    66% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -225;
+    }
+    86% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -395;
+    }
+    94%,
+    to {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: -440;
+    }
+}
+
+@keyframes ringD {
+    from,
+    8% {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: 0;
+    }
+    16% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -5;
+    }
+    36% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -175;
+    }
+    44%,
+    50% {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: -220;
+    }
+    58% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -225;
+    }
+    78% {
+        stroke-dasharray: 40 400;
+        stroke-width: 30;
+        stroke-dashoffset: -395;
+    }
+    86%,
+    to {
+        stroke-dasharray: 0 440;
+        stroke-width: 20;
+        stroke-dashoffset: -440;
+    }
+}
+
+
+/*==========Preloader CSS End==========*/
+
+
+/*==========Header CSS Start==========*/
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.top-header {
+    background: var(--dark-color);
+    height: 80px;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.bottom-header {
+    position: relative;
+    z-index: 2;
+}
+
+.bottom-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    height: 100%;
+    width: 0;
+    z-index: -1;
+    transition: var(--transition);
+}
+
+.contact-list-item {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+}
+
+.contact-list-item li {
+    display: inline-block;
+    border-left: 1px solid rgb(255 255 255 / 0.5);
+}
+
+.contact-list-item li:first-child {
+    border-left: none;
+}
+
+.contact-list-item li .icon {
+    margin-right: 9px;
+    font-size: 25px;
+    display: inline-block;
+}
+
+.contact-list-item li .text {
+    color: var(--white-color);
+    transition: var(--transition);
+}
+
+.contact-list-item li a {
+    padding: 11px 15px;
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+    font-size: 16px;
+}
+
+.contact-list-item li a:hover {
+    color: var(--dark-color);
+    background: var(--white-color);
+}
+
+.contact-list-item li a:hover .text {
+    color: var(--dark-color);
+}
+
+.header-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-social li {
+    display: inline-block;
+}
+
+.header-social li a {
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgb(255 255 255 / 0.5);
+}
+
+.header-social li:first-child a {
+    border-left: none;
+}
+
+.header-social li a:hover {
+    background: var(--white-color);
+    color: var(--dark-color);
+}
+
+.bottom-header-inner {
+    background: var(--white-color);
+    height: 100px;
+    padding: 22px 30px;
+    box-shadow: var(--box-shadow);
+    margin-top: -30px;
+    transition: var(--transition);
+}
+
+.site-branding a {
+    display: inline-block;
+}
+
+.site-branding img {
+    width: 258px;
+    transition: var(--transition);
+}
+
+.header-menu-side {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.header-reserve-btn {
+    z-index: 0;
+    position: relative;
+}
+
+.navigation-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: var(--yellow-color);
+    border: 2px solid var(--yellow-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 15px;
+    padding: 15px 13px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.navigation-btn span {
+    height: 2px;
+    background: var(--white-color);
+    margin-bottom: 4px;
+    display: block;
+    transition: var(--transition);
+}
+
+.navigation-btn span.first {
+    width: 25px;
+}
+
+.navigation-btn span.second {
+    width: 20px;
+    margin-left: auto;
+}
+
+.navigation-btn span.third {
+    width: 15px;
+    margin-left: auto;
+    margin-bottom: 0;
+}
+
+.site-header.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.site-header.sticky-header .top-header {
+    height: 0;
+    transition: var(--transition);
+}
+
+.site-header.sticky-header .bottom-header-inner {
+    margin-top: 0;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.site-header.sticky-header .bottom-header:before {
+    width: 100%;
+    transition: var(--transition);
+}
+
+.full-menu {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dark-color);
+    overflow: hidden;
+    overflow-y: auto;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.full-menu .full-menu-logo-row {
+    padding-top: 60px;
+    padding-bottom: 13vh;
+}
+
+.full-menu .full-menu-logo-row .site-branding img {
+    width: 349px;
+}
+
+.full-menu .menu-container {
+    position: relative;
+    padding: 5vh 0;
+}
+
+.full-menu .menu-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500%;
+    height: 100%;
+    background: #393939;
+    z-index: 1;
+}
+
+.full-menu .menu-container>ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.full-menu .menu-container ul li {
+    margin-bottom: 5px;
+}
+
+.full-menu .menu-container ul li a {
+    color: var(--white-color);
+    font-family: var(--secondary-font-family);
+    font-size: max(3.7vh, 15px);
+    line-height: max(4.7vh, 25px);
+    font-weight: bold;
+    position: relative;
+    display: inline-flex;
+    transition: var(--transition);
+}
+
+.full-menu .menu-container ul li a:before {
+    content: '';
+    position: absolute;
+    top: 52%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow-color);
+    z-index: -1;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+}
+
+.full-menu .menu-container ul li a:hover,
+.full-menu .menu-container ul li.active a {
+    color: var(--yellow-color);
+}
+
+.full-menu .menu-container ul li a:hover:before,
+.full-menu .menu-container ul li.active a:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+}
+
+.full-menu .menu-container ul li.dropdown-items>a {
+    margin-right: max(3vh, 15px);
+}
+
+.full-menu .menu-container ul li.dropdown-items>a:after {
+    content: "\f078";
+    position: absolute;
+    color: #fff;
+    font-size: max(2.3vh, 15px);
+    line-height: max(2.3vh, 15px);
+    right: -3vh;
+    top: 55%;
+    transition: var(--transition);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transform: translate(0, -50%);
+}
+
+.full-menu .menu-container ul li.dropdown-items.dropdown-open>a:after {
+    transform: translate(0, -50%) rotate(180deg);
+}
+
+.full-menu .menu-container .sub-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5px 0 0 30px;
+}
+
+.full-menu .menu-container .sub-menu li a {
+    font-size: max(3vh, 15px);
+    line-height: max(4vh, 25px);
+}
+
+.full-menu .menu-container .dropdown-items.dropdown-open .sub-menu {
+    display: flex;
+}
+
+.full-menu .logo-icon {
+    right: 50px;
+    left: auto;
+    bottom: 50px;
+}
+
+.full-menu .logo-icon img,
+.search-overlay-inner .logo-icon img {
+    height: 34vh;
+}
+
+.full-menu-social {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.full-menu-social ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.full-menu-social ul li a {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: inline-flex;
+    background: var(--yellow-color);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+}
+
+.full-menu-social ul li {
+    margin-bottom: 15px;
+}
+
+.full-menu-social ul li:last-child {
+    margin-bottom: 0;
+}
+
+.full-menu-social ul li a:hover {
+    color: var(--yellow-color);
+    background: var(--white-color);
+}
+
+.main-navigation.toggle-menu .full-menu {
+    left: 0;
+    opacity: 1;
+    transition: var(--transition);
+    z-index: 3;
+}
+
+.main-navigation.toggle-menu .navigation-btn {
+    background: transparent;
+    border-color: var(--white-color);
+    z-index: 9;
+}
+
+.main-navigation.toggle-menu .navigation-btn span.first {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    left: 50%;
+    width: 25px;
+}
+
+.main-navigation.toggle-menu .navigation-btn span.second {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.main-navigation.toggle-menu .navigation-btn span.third {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    left: 50%;
+    width: 25px;
+}
+
+.search-wp {
+    display: flex;
+}
+
+.search-icon {
+    width: 55px;
+    height: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    border: 2px solid var(--dark-color);
+    color: var(--dark-color);
+    margin-left: 30px;
+    transition: var(--transition);
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    right: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dark-color);
+    overflow: hidden;
+    transition: var(--transition);
+    opacity: 0;
+    z-index: 1;
+}
+
+.search-overlay .logo-icon {
+    right: 50px;
+    left: auto;
+    bottom: 50px;
+}
+
+.search-overlay-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-inner-box .form-input {
+    height: auto;
+    padding: 25px 130px 25px 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 5px solid var(--white-color);
+    color: var(--white-color);
+    font-family: var(--secondary-font-family);
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.search-inner-box .form-input::placeholder {
+    color: var(--white-color);
+}
+
+.search-inner-box .sm-btn {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translate(0, -50%);
+    border: none;
+    background: transparent;
+    color: var(--white-color);
+    font-size: 40px;
+}
+
+.search-icon .fa-search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: var(--transition);
+    opacity: 1;
+}
+
+.search-icon .fa-times {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 28px;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.search-wp.search-box-open .search-icon {
+    border-color: var(--white-color);
+    color: var(--white-color);
+}
+
+.search-wp.search-box-open .search-icon .fa-search {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.search-wp.search-box-open .search-icon .fa-times {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.search-wp.search-box-open .search-overlay {
+    right: 0;
+    opacity: 1;
+    transition: var(--transition);
+}
+
+
+/*---*/
+
+
+/*==========Header CSS End==========*/
+
+
+/*==========Banner CSS Start==========*/
+
+.banner-slider .slick-slide .banner-content .h1-title {
+    position: relative;
+    top: -50px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.banner-slider .slick-slide.slick-current .banner-content .h1-title {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 1s;
+}
+
+.banner-slider .slick-slide .banner-content p {
+    position: relative;
+    top: 50px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.banner-slider .slick-slide.slick-current .banner-content p {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 1.3s;
+}
+
+.banner-slide-box {
+    width: 100%;
+    position: relative;
+    padding: 348px 0 289px 0;
+    overflow: hidden;
+}
+
+.banner-content {
+    text-align: center;
+}
+
+.banner-content p {
+    color: var(--white-color);
+    width: 77%;
+    margin: auto;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.banner-slider.slick-slider {
+    margin-bottom: 0;
+}
+
+.banner-slider.slick-slider .slick-track {
+    display: flex;
+}
+
+.banner-slider.slick-slider .slick-slide {
+    height: auto;
+}
+
+.banner-slider.slick-slider .slick-dots {
+    bottom: 0;
+    right: 0;
+    width: auto;
+    background: var(--white-color);
+    padding: 44px 40px;
+    border-radius: 50px 0 0 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.banner-slider.slick-slider .slick-arrow.prev-arrow {
+    left: 0;
+    transform: translate(-15px, -50%) rotate(-90deg);
+}
+
+.banner-slider.slick-slider .slick-arrow.next-arrow {
+    right: 0;
+    transform: translate(15px, -50%) rotate(90deg);
+}
+
+
+/*==========Banner CSS End==========*/
+
+
+/*==========Banner Bottom Form CSS Start==========*/
+
+.banner-form {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding: 25px 30px;
+    position: relative;
+    margin-top: -50px;
+    border-left: 3px solid var(--yellow-color);
+    border-right: 3px solid var(--yellow-color);
+}
+
+.banner-form form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.banner-form form .input-col {
+    max-width: 27.545%;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    flex: 0 0 27.545%;
+}
+
+.banner-form form .input-col.button-col {
+    max-width: 17.365%;
+    flex: 0 0 17.365%;
+}
+
+.banner-form form .input-col.button-col .sec-btn {
+    width: 100%;
+}
+
+
+/*==========Banner Bottom Form CSS End==========*/
+
+
+/*==========About CSS Start==========*/
+
+.about-image-wp {
+    position: relative;
+    padding-right: 100px;
+    padding-bottom: 40px;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+}
+
+.about-image-box.big {
+    width: 100%;
+    height: 440px;
+    padding: 7px;
+    border: 3px solid var(--yellow-color);
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+}
+
+.about-image-box.small {
+    width: 270px;
+    height: 200px;
+    padding: 7px;
+    border: 3px solid var(--yellow-color);
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.about-content .sec-btn {
+    margin-top: 20px;
+}
+
+.about-content {
+    padding-right: 26px;
+    padding-top: 30px;
+}
+
+
+/*==========About CSS End==========*/
+
+
+/*==========Destination CSS Start==========*/
+
+.destination-box {
+    margin-bottom: 40px;
+}
+
+.destination-box a {
+    display: block;
+}
+
+.destination-box:hover .destination-box-image {
+    transform: scale(1.1);
+}
+
+.destination-box:hover .destination-box-content-inner:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+}
+
+.destination-box:hover .destination-box-content .h3-title {
+    color: var(--white-color);
+}
+
+.destination-box .destination-box-image-wp {
+    overflow: hidden;
+}
+
+.destination-box .destination-box-image {
+    width: 100%;
+    height: 370px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.destination-box-content {
+    margin: -27px 30px 0 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.destination-box-content-inner {
+    width: auto;
+    display: inline-block;
+    padding: 7px 15px;
+    background: var(--white-color);
+    border-left: 3px solid var(--yellow-color);
+    box-shadow: var(--box-shadow);
+    min-width: 150px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.destination-box-content-inner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--yellow-color);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: -1;
+}
+
+.destination-box-content .h3-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.destination-box.big-height .destination-box-image {
+    height: 807px;
+}
+
+.destination-see-more {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*==========Destination CSS End==========*/
+
+
+/*==========Tour Offer CSS Start==========*/
+
+.tour-offer-box a {
+    display: block;
+}
+
+.tour-offer-box .tour-offer-box-image-wp {
+    padding-right: 30px;
+}
+
+.tour-offer-box .tour-offer-box-image {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+.discount-label {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: rotate(270deg) translateX(-100%);
+    transform-origin: 0 0;
+    background-color: var(--yellow-color);
+    color: var(--white-color);
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 25px;
+    box-sizing: border-box;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.tour-offer-box:hover .discount-label,
+.tour-box:hover .discount-label {
+    padding: 5px 20px;
+}
+
+.tour-offer-box-content {
+    background: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    border-left: 3px solid var(--yellow-color);
+    box-shadow: var(--box-shadow);
+    margin-left: 30px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+}
+
+.tour-offer-box-content .h4-title {
+    margin-bottom: 0;
+    margin: 15px 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tour-offer-box-content .price-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    padding: 18px 9px;
+    font-size: 20px;
+    font-family: var(--secondary-font-family);
+    transition: var(--transition);
+    min-width: 60px;
+}
+
+.tour-offer-box a:hover .price-label {
+    background: var(--dark-color);
+}
+
+.tour-offer-top {
+    padding-bottom: 216px;
+}
+
+.tour-offer-slider-wp {
+    margin-top: -226px;
+}
+
+.tour-offer-slider .slick-list {
+    width: calc(100% + 400px);
+    padding-right: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tour-offer-slider .slick-dots {
+    text-align: left;
+    padding-left: 15px;
+    bottom: -45px;
+}
+
+.tour-offer-slider.slick-slider {
+    margin-bottom: 45px;
+}
+
+.tour-offer-slider .slick-arrow {
+    left: -85px;
+}
+
+.tour-offer-slider .slick-arrow.prev-arrow {
+    top: calc(50% - 30px);
+}
+
+.tour-offer-slider .slick-arrow.next-arrow {
+    top: calc(50% + 30px);
+    right: auto;
+}
+
+
+/*==========Tour Offer CSS End==========*/
+
+
+/*==========Highlight CSS Start==========*/
+
+.main-highlight {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.main-highlight:after {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    right: 45px;
+    bottom: 45px;
+    border: 5px solid var(--yellow-color);
+    z-index: 2;
+}
+
+.highlight-bg-video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.highlight-bg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.main-highlight .sec-title {
+    text-align: center;
+}
+
+.main-highlight .sec-title .h2-title {
+    color: var(--white-color);
+    font-size: 50px;
+    line-height: 60px;
+}
+
+.main-highlight .sec-title .h3-title {
+    color: var(--yellow-color);
+    font-family: var(--primary-font-family);
+}
+
+
+/*==========Highlight CSS End==========*/
+
+
+/*==========Tour CSS Start==========*/
+
+
+/*--- Tour services Start ---*/
+
+.tour-services-row {
+    width: 100%;
+    padding: 40px 50px;
+    background: var(--yellow-color);
+    position: relative;
+    z-index: 2;
+}
+
+.tour-services-row:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: -1;
+}
+
+.tour-service-box {
+    display: flex;
+    align-items: flex-start;
+}
+
+.tour-service-box .tour-service-icon {
+    width: 50px;
+    flex: 0 0 50px;
+    margin-right: 15px;
+}
+
+.tour-service-content .h4-title {
+    font-family: var(--primary-font-family);
+    color: var(--white-color);
+}
+
+.tour-service-content p {
+    margin-bottom: 0;
+    color: var(--white-color);
+}
+
+.tour-services {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/*--- Tour services End ---*/
+
+.tour-box {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.tour-box .tour-box-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+.tour-box-content {
+    border-left: 3px solid var(--yellow-color);
+    padding: 30px 20px 15px 20px;
+    position: relative;
+}
+
+.tour-box-label .h4-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+    color: var(--white-color);
+    text-transform: uppercase;
+}
+
+.tour-box-label {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    right: 20px;
+}
+
+.tour-box-inner-label {
+    background: var(--yellow-color);
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.tour-box-title .h4-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.tour-box-description {
+    margin-bottom: 15px;
+}
+
+.tour-box-description p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.6;
+}
+
+.tour-info-box {
+    padding: 15px 0;
+    border-top: 1px solid rgb(43 43 43 / 0.1);
+    border-bottom: 1px solid rgb(43 43 43 / 0.1);
+}
+
+.tour-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.tour-info-icon i {
+    font-size: 25px;
+    color: var(--yellow-color);
+}
+
+.tour-info-icon {
+    margin-right: 10px;
+}
+
+.tour-info-content {
+    flex: 1;
+}
+
+.tour-info-content .h6-title {
+    margin-bottom: 0;
+}
+
+.tour-info-content p {
+    font-size: 12px;
+    line-height: 14px;
+    opacity: 0.6;
+}
+
+.tour-box-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.book-now-button .sec-btn {
+    width: 120px;
+}
+
+.tour-slider .slick-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tour-slider.slick-slider {
+    margin-bottom: 0;
+}
+
+.tour-slider .slick-arrow {
+    top: -115px;
+    right: 15px;
+    left: auto;
+    transform: unset;
+}
+
+.tour-slider .next-arrow.slick-arrow {
+    top: -60px;
+}
+
+.tour-sec {
+    padding-bottom: 227px;
+}
+
+.tour-slider .slick-dots {
+    bottom: -45px;
+}
+
+
+/*==========Tour CSS End==========*/
+
+
+/*==========Testimonial CSS Start==========*/
+
+.testimonial-left-side {
+    position: relative;
+    margin-top: -112px;
+    z-index: 2;
+}
+
+.testimonial-left-side:before {
+    content: '';
+    position: absolute;
+    background: var(--yellow-color);
+    width: 500%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.testimonial-left-side .sec-title .line-title {
+    border-color: var(--white-color);
+}
+
+.testimonial-left-side .sec-title .line-title .h4-title {
+    color: var(--white-color);
+}
+
+.testimonial-left-side .sec-title .h2-title {
+    color: var(--white-color);
+}
+
+.testimonial-quote {
+    background: var(--white-color);
+    text-align: right;
+    padding: 112px 0 0 0;
+}
+
+.testimonial-quote img {
+    width: 295px;
+}
+
+.testimonial-right-side {
+    padding: 70px 0 0 0;
+}
+
+.testimonial-slide .overflow-text {
+    max-height: unset;
+    height: 178px;
+}
+
+.testimonial-slide .overflow-text p {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.testimonial-stars {
+    font-size: 0;
+    margin-bottom: 18px;
+}
+
+.testimonial-stars i {
+    color: var(--yellow-color);
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.testimonial-stars i:last-child {
+    margin-right: 0;
+}
+
+.testimonial-name {
+    margin-top: 18px;
+}
+
+.testimonial-name .h3-title {
+    color: var(--yellow-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.testimonial-name .rated {
+    color: var(--dark-color);
+    opacity: 0.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 300;
+}
+
+.testimonial-slider.slick-slider {
+    margin-bottom: 35px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.testimonial-slide {
+    padding: 0 15px;
+}
+
+.testimonial-slider .slick-dots {
+    text-align: left;
+    bottom: -35px;
+    padding-left: 15px;
+}
+
+
+/*==========Testimonial CSS End==========*/
+
+
+/*==========Blog CSS Start==========*/
+
+.main-blog .sec-title,
+.main-blog .sec-title .h2-title {
+    margin-bottom: 0;
+}
+
+.blog-learn-btn {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.blog-learn-btn.for-des {
+    display: flex !important;
+}
+
+.blog-learn-btn.for-mob {
+    display: none !important;
+}
+
+.blog-box {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-image {
+    width: 100%;
+    height: 400px;
+    transition: var(--transition);
+}
+
+.blog-box:hover .blog-image {
+    transform: scale(1.2);
+}
+
+.blog-box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.blog-box:hover .blog-box-content {
+    padding-bottom: 40px;
+}
+
+.blog-box-content * {
+    color: var(--white-color);
+}
+
+.blog-box-content .h3-title {
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.blog-box-content .h3-title a {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-box-content .date {
+    font-weight: 300;
+}
+
+.blog-box-content a:hover {
+    color: var(--yellow-color);
+}
+
+.blog-box-content p {
+    margin-bottom: 0;
+}
+
+
+/*==========Blog CSS End==========*/
+
+
+/*==========Instagram CSS Start==========*/
+
+.main-instagram .sec-title .h2-title a {
+    color: var(--dark-color);
+}
+
+.main-instagram .sec-title .h2-title a:hover {
+    color: var(--yellow-color);
+}
+
+.instagram-icon {
+    position: absolute;
+    font-size: 200px;
+    line-height: 1;
+    top: 50%;
+    left: 4%;
+    transform: translate(0, -50%);
+    color: var(--yellow-color);
+    opacity: 0.3;
+}
+
+.instagram-slide-box {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+
+.instagram-slide-box .instagram-slide-image {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.instagram-slide-box:hover .instagram-slide-image {
+    transform: scale(1.2) rotate(2deg);
+}
+
+
+/*==========Instagram CSS End==========*/
+
+
+/*==========Partners CSS Start==========*/
+
+.partners-logo-box {
+    position: relative;
+    background: var(--white-color);
+    border-left: 3px solid var(--yellow-color);
+    border-right: 3px solid var(--yellow-color);
+    width: 100%;
+    height: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+}
+
+.partners-logo-box img {
+    filter: grayscale(1);
+    transition: var(--transition);
+}
+
+.partners-logo-box:hover img {
+    filter: grayscale(0);
+}
+
+.partners-slider .slick-list {
+    padding: 10px 0;
+}
+
+
+/*==========Partners CSS End==========*/
+
+
+/*==========Footer CSS Start==========*/
+
+.site-footer.overlay:before {
+    opacity: 0.95;
+}
+
+.footer-logo {
+    width: 258px;
+}
+
+.footer-text p {
+    color: var(--white-color);
+}
+
+.newsletter-form .form-input {
+    background: rgb(255 255 255 / 0.1);
+    border-color: var(--white-color);
+    padding: 15px 140px 15px 20px;
+    color: var(--white-color);
+}
+
+.newsletter-form .form-input::placeholder {
+    color: var(--white-color);
+}
+
+.newsletter-form .sec-btn {
+    width: 120px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.newsletter-form .sec-btn:before {
+    background: var(--white-color);
+}
+
+.newsletter-form .sec-btn:hover {
+    color: var(--yellow-color);
+}
+
+.payment-companies-logo img {
+    max-width: 200px;
+    width: 100%;
+}
+
+.footer-title {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--white-color);
+    margin-bottom: 5px;
+}
+
+.footer-title .h3-title {
+    color: var(--white-color);
+}
+
+.footer-nav-wp {
+    padding: 0 30px 0 60px;
+}
+
+.footer-contact-wp {
+    padding: 0 30px;
+}
+
+.footer-menu ul {
+    margin-top: 15px;
+}
+
+.footer-menu ul li {
+    margin-bottom: 15px;
+}
+
+.footer-menu ul li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-menu ul li a {
+    padding-left: 20px;
+    color: var(--white-color);
+    position: relative;
+    transition: var(--transition);
+}
+
+.footer-menu ul li a:before {
+    content: '';
+    position: absolute;
+    top: 52%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 5px;
+    height: 5px;
+    background: var(--white-color);
+    transition: var(--transition);
+}
+
+.footer-menu ul li a:hover {
+    color: var(--yellow-color);
+}
+
+.footer-contact>ul>li {
+    padding-left: 15px;
+    border-left: 3px solid var(--yellow-color);
+    margin: 20px 0;
+}
+
+.footer-contact>ul>li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-contact ul li .contact-label {
+    display: block;
+    color: var(--white-color);
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.footer-contact ul li a {
+    color: var(--white-color);
+    font-family: var(--secondary-font-family);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.footer-contact ul li a:hover {
+    color: var(--yellow-color);
+}
+
+.footer-contact>ul>li.social-icons ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-contact>ul>li.social-icons ul li a {
+    color: var(--yellow-color);
+}
+
+.footer-contact>ul>li.social-icons ul li a:hover {
+    color: var(--white-color);
+}
+
+.bottom-footer {
+    padding: 25px 0;
+    border-top: 1px solid var(--white-color);
+    position: relative;
+    z-index: 2;
+}
+
+.copyright-text {
+    color: var(--white-color);
+}
+
+.bottom-footer .copyright-text a {
+    color: var(--yellow-color);
+    transition: var(--transition);
+}
+
+.bottom-footer .copyright-text a:hover {
+    text-decoration: underline !important;
+    color: var(--white-color);
+}
+
+.copyright-link ul {
+    text-align: right;
+}
+
+.copyright-link ul li {
+    display: inline-block;
+    padding: 0 5px 0 8px;
+    position: relative;
+}
+
+.copyright-link ul li:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 80%;
+    background: var(--white-color);
+    transform: translate(0, -50%);
+}
+
+.copyright-link ul li:first-child:before {
+    content: none;
+}
+
+.copyright-link ul li a {
+    color: var(--white-color);
+}
+
+.copyright-link ul li a:hover {
+    color: var(--yellow-color);
+}
+
+
+/*==========Footer CSS End==========*/
+
+
+/*============(Page)About Us CSS Start============*/
+
+.inner-banner {
+    padding: 380px 0 230px 0;
+}
+
+.inner-banner .h1-title {
+    margin: 0;
+}
+
+
+/*==========About Services CSS Start==========*/
+
+.main-about-services {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-service-box {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border: 3px solid transparent;
+    text-align: center;
+    padding: 40px 10px;
+    transition: var(--transition);
+    height: calc(100% - 30px);
+    margin-bottom: 30px;
+}
+
+.about-service-box:hover {
+    border-color: var(--yellow-color);
+}
+
+.about-service-box .about-service-icon {
+    font-size: 50px;
+    color: var(--yellow-color);
+    margin-bottom: 15px;
+}
+
+.about-service-content .h4-title {
+    font-family: var(--primary-font-family);
+}
+
+.about-service-content p {
+    opacity: 0.6;
+}
+
+.main-about.page-about .about-image-wp {
+    padding-right: 0;
+    padding-left: 100px;
+}
+
+.main-about.page-about .about-image-box.small {
+    left: 0;
+    right: auto;
+}
+
+
+/*==========About Services CSS End==========*/
+
+
+/*==========About Description Sec CSS Start==========*/
+
+.about-description-image-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.about-description-image-box .about-description-image {
+    position: absolute;
+    top: 0;
+    right: -15px;
+    height: 100%;
+    width: calc(100% + 400px);
+}
+
+.about-description-content {
+    position: relative;
+    padding: 70px 10px 70px 30px;
+}
+
+.about-description-content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 500%;
+    height: 100%;
+    background: var(--white-light-color);
+    z-index: -1;
+}
+
+.about-dec-text {
+    margin-bottom: 30px;
+}
+
+.icon-listing ul {
+    column-count: 2;
+}
+
+.icon-listing ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+}
+
+.icon-listing ul li i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    line-height: 1;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.about-description-sec.two .about-description-content {
+    padding: 70px 10px 182px 0px;
+}
+
+.about-description-sec.two .about-description-content:before {
+    left: auto;
+    right: -15px;
+}
+
+.about-description-sec.two .about-description-image-box .about-description-image {
+    right: auto;
+    left: -15px;
+}
+
+
+/*==========About Description Sec CSS End==========*/
+
+
+/*==========About Progress Bar Sec CSS Start==========*/
+
+.progress-bar-item {
+    margin-bottom: 20px;
+}
+
+.progress-bar-item:last-child {
+    margin-bottom: 0;
+}
+
+.progress-bar-item .h4-title {
+    font-family: var(--primary-font-family);
+    padding-right: 50px;
+}
+
+.progress-bar-item .progress {
+    height: 10px;
+    background: var(--white-light-color);
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    position: relative;
+}
+
+.progress-bar-item .progress .progress-bar {
+    position: relative;
+    background: var(--yellow-color);
+    transition: unset;
+}
+
+.progress-bar-item .progress .progress-value {
+    display: block;
+    font-size: 20px;
+    color: var(--dark-color);
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-weight: bold;
+}
+
+
+/*==========About Progress Bar Sec CSS End==========*/
+
+
+/*============(Page)About Us CSS End============*/
+
+
+/*============(Page)Destination Detail CSS Start============*/
+
+.left-side-box {
+    padding: 30px;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.left-side {
+    padding-top: 30px;
+}
+
+.destination-gallery-box {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.destination-gallery-box .destination-gallery-image {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.destination-gallery-box .destination-gallery-image:hover {
+    transform: scale(1.2) rotate(2deg);
+}
+
+.destination-gallery-box.big {
+    height: 230px;
+}
+
+blockquote {
+    margin: 15px 0;
+    background: var(--white-light-color);
+    padding: 10px 12px 10px 30px;
+    border-left: 3px solid var(--yellow-color);
+    font-weight: 600;
+    font-style: italic;
+}
+
+blockquote p {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.widget {
+    position: relative;
+    padding: 40px;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 40px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+.widget .line-title {
+    margin-bottom: 20px;
+}
+
+.search-form .sec-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 20px;
+}
+
+.search-form .form-input {
+    padding: 15px 70px 15px 20px;
+}
+
+.right-side {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+}
+
+.widget .line-title .h4-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--dark-color);
+}
+
+.about-author {
+    text-align: center;
+}
+
+.about-author .about-author-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.about-author .h5-title {
+    text-transform: uppercase;
+    font-family: var(--primary-font-family);
+}
+
+.author-social {
+    margin-top: 20px;
+}
+
+.author-social li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.author-social li a {
+    font-size: 17px;
+}
+
+.author-social li a:hover {
+    color: var(--dark-color);
+}
+
+.categories-list li {
+    margin-bottom: 10px;
+}
+
+.categories-list li:last-child {
+    margin-bottom: 0;
+}
+
+.categories-list li a {
+    width: 100%;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categories-list li a .h4-title {
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--primary-font-family);
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 26px;
+}
+
+.categories-list li a .price-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    padding: 11px 9px;
+    font-weight: bold;
+    transition: var(--transition);
+    min-width: 46px;
+}
+
+.categories-list li a:hover .price-label {
+    background: var(--dark-color);
+}
+
+.tour-listing li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tour-listing li:last-child {
+    margin-bottom: 0;
+}
+
+.tour-listing li .tour-list-image {
+    width: 80px;
+    height: 80px;
+    box-shadow: var(--box-shadow);
+    flex: 0 0 80px;
+    margin-right: 15px;
+}
+
+.tour-list-content {
+    flex: 1;
+}
+
+.tour-list-content * {
+    margin-bottom: 0;
+}
+
+.tour-list-content .h5-title {
+    font-family: var(--primary-font-family);
+    text-transform: uppercase;
+}
+
+.tour-list-content .h5-title a {
+    color: var(--dark-color);
+}
+
+.tour-list-content .h5-title a:hover {
+    color: var(--yellow-color);
+}
+
+.tour-list-content .h4-title {
+    margin-top: -5px;
+}
+
+.tour-list-content .tour-duration {
+    display: flex;
+    align-items: center;
+}
+
+.tour-list-content .tour-duration i {
+    margin-right: 7px;
+    color: var(--yellow-color);
+}
+
+.tour-list-content .tour-duration p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tag-listing li {
+    display: inline-block;
+    margin: 0 12px 15px 0;
+}
+
+.tag-listing li a {
+    display: inline-block;
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+    border-radius: 5px;
+    padding: 6px 10px;
+}
+
+.tag-listing li a:hover {
+    background: var(--yellow-color);
+    color: var(--white-color);
+    border-color: var(--yellow-color);
+}
+
+
+/*============(Page)Destination Detail CSS End============*/
+
+
+/*============(Page)Tour CSS Start============*/
+
+.tour-filter .form-input.filter-label {
+    text-align: center;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.tour-filter .form-input {
+    border-color: rgb(43 43 43 / 0.5);
+    padding: 10px 45px 10px 16px;
+}
+
+.tour-filter .release-wrap .form-input {
+    border-right: none;
+    border-radius: 0;
+}
+
+.tour-filter .order-wrap .form-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.tour-filter .form-control-span .arrow {
+    right: 16px;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.tour-filter-result .tour-box {
+    margin-bottom: 30px;
+}
+
+
+/*==========Pagination CSS Start==========*/
+
+.pagination {
+    margin: 0;
+    flex-wrap: wrap;
+    border-radius: 0;
+    margin-top: 10px;
+}
+
+.pagination li {
+    margin-right: 10px;
+}
+
+.pagination li:last-child {
+    margin-right: 0;
+}
+
+.pagination li .page-link {
+    font-size: 20px;
+    font-weight: 700;
+    background: var(--white-light-color);
+    color: var(--dark-color);
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 5px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.pagination li .page-link:hover {
+    background: var(--yellow-color);
+    color: var(--white-color);
+}
+
+.pagination li .page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: none;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--yellow-color);
+    border-color: var(--yellow-color);
+}
+
+
+/*==========Pagination CSS End==========*/
+
+.find-tour-form .form-control-span {
+    margin-bottom: 20px;
+}
+
+.no-icon .form-input {
+    padding-left: 15px;
+}
+
+.no-arrow .form-input {
+    padding-right: 15px;
+}
+
+.checkbox-item {
+    padding-left: 40px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    cursor: pointer;
+    transition: var(--transition);
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.checkbox-item input[type="checkbox"]::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 5px;
+    left: 10px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: var(--white-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(90deg) scale(0);
+    transform: rotate(90deg) scale(0);
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    color: var(--white-color);
+    border-color: var(--yellow-color);
+    background: var(--yellow-color);
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+    opacity: 1;
+    transition: var(--transition);
+    -webkit-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+}
+
+.check-box-label {
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.find-now-btn.sec-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.why-book-with-us {
+    background: var(--white-light-color);
+}
+
+.why-book-with-us .book-with-list li {
+    position: relative;
+    color: rgb(43 43 43 / 0.6);
+    margin-bottom: 5px;
+}
+
+.why-book-with-us .book-with-list li:last-child {
+    margin-bottom: 0;
+}
+
+.why-book-with-us .book-with-list li i {
+    position: relative;
+    margin-right: 5px;
+    color: var(--black-color);
+}
+
+.get-a-questions:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--yellow-color);
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.get-a-questions * {
+    position: relative;
+    z-index: 2;
+}
+
+.get-a-questions .line-title {
+    border-color: var(--dark-color);
+}
+
+.get-a-questions .line-title .h4-title {
+    color: var(--white-color);
+}
+
+.get-a-questions p {
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.gaq-list-item li i {
+    color: var(--dark-color);
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.gaq-list-item li a {
+    color: var(--white-color);
+}
+
+.gaq-list-item li {
+    margin-bottom: 20px;
+}
+
+.gaq-list-item li:last-child {
+    margin-bottom: 0;
+}
+
+
+/*============(Page)Tour CSS End============*/
+
+
+/*============(Page)Tour Detail CSS Start============*/
+
+.tour-detail-tabbing .nav {
+    margin-bottom: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: none;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item {
+    margin: 0;
+    flex: 1;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link {
+    text-align: center;
+    border-color: rgb(43 43 43 / 0.5) !important;
+    border-radius: 0 !important;
+    border-right-color: transparent !important;
+    color: var(--dark-color);
+    padding: 12px 10px;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item:last-child .nav-link {
+    border-right-color: rgb(43 43 43 / 0.5) !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item:first-child .nav-link {
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link i {
+    color: var(--yellow-color);
+    margin-right: 7px;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link.active,
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link:hover {
+    background-color: var(--yellow-color);
+    border-color: var(--yellow-color) !important;
+    color: var(--white-color);
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link.active i,
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link:hover i {
+    color: var(--dark-color);
+}
+
+.tour-detail-tabbing .tab-content .tab-pane {
+    padding: 40px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.information-tab-box .discount-label {
+    right: 0;
+    left: auto;
+    transform: unset;
+    background-color: var(--dark-color);
+    font-family: var(--secondary-font-family);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: bold;
+    border-bottom-left-radius: 20px;
+}
+
+.tour-title .h2-title {
+    margin-bottom: 0;
+}
+
+.tour-price-wp {
+    text-align: right;
+}
+
+.tour-price-wp .tour-price {
+    width: 85px;
+    height: 85px;
+    background-color: var(--yellow-color);
+    border-radius: 50%;
+    margin-left: auto;
+    text-align: center;
+}
+
+.tour-price-wp .tour-price .h3-title {
+    font-size: 25px;
+    line-height: 35px;
+    color: var(--white-color);
+    height: 50%;
+    border-bottom: 1px solid var(--white-color);
+    padding-top: 5px;
+}
+
+.tour-price-wp .tour-price p {
+    height: 50%;
+    font-size: 10px;
+    line-height: 20px;
+    color: var(--white-color);
+    padding-top: 5px;
+}
+
+.tour-short-info-box {
+    background-color: var(--yellow-color);
+    margin: 40px 0;
+}
+
+.tour-short-info-box ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 70px;
+}
+
+.tour-short-info-box ul li .text {
+    display: block;
+    color: var(--dark-color);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.tour-short-info-box ul li i {
+    color: var(--white-color);
+    font-size: 25px;
+}
+
+.tour-short-info-box ul li {
+    text-align: center;
+}
+
+.tour-timetable-schedule>ul>li {
+    display: inline-table;
+    width: 100%;
+}
+
+.tour-timetable-schedule ul li .tts-label {
+    border-top: 1px solid rgb(43 43 43 / .1);
+    border-right: 1px solid rgb(43 43 43 / .1);
+    padding: 17px 30px;
+    width: 50%;
+    display: table-cell;
+}
+
+.tour-timetable-schedule ul li .tts-label .h4-title {
+    margin-bottom: 0;
+}
+
+.tour-timetable-schedule ul li .tts-description {
+    padding: 17px 30px;
+    width: 50%;
+    display: table-cell;
+    border-top: 1px solid rgb(43 43 43 / .1);
+    vertical-align: middle;
+    color: var(--dark-color);
+}
+
+.tour-timetable-schedule ul li:last-child .tts-label,
+.tour-timetable-schedule ul li:last-child .tts-description {
+    border-bottom: 1px solid rgb(43 43 43 / .1);
+}
+
+.tour-timetable-schedule ul li .tts-description a {
+    color: var(--dark-color);
+}
+
+.tour-timetable-schedule ul li .tts-description a:hover {
+    color: var(--yellow-color);
+}
+
+.tour-location iframe {
+    width: 100%;
+}
+
+.tts-description ul li {
+    position: relative;
+    padding-left: 25px;
+}
+
+.tts-description ul li i {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: var(--yellow-color);
+    font-size: 16px;
+}
+
+.tts-description ul.not-included li i {
+    color: var(--dark-color);
+}
+
+.tour-gallery-slider .tour-gallery-slide-image {
+    width: 100%;
+    height: 230px;
+    cursor: pointer;
+}
+
+.tour-gallery-slider.slick-slider .slick-arrow.prev-arrow {
+    left: 30px;
+    transform: translate(-15px, -50%) rotate(-90deg);
+}
+
+.tour-gallery-slider.slick-slider .slick-arrow.next-arrow {
+    right: 30px;
+    transform: translate(15px, -50%) rotate(90deg);
+}
+
+.tour-timeline-box {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding: 30px 0;
+    border-bottom: 1px solid rgb(43 43 43 / .1);
+    overflow: hidden;
+}
+
+.tour-timeline-box:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(0, -50%);
+    width: 1px;
+    height: 110%;
+    background: rgb(43 43 43 / .1);
+    z-index: -1;
+}
+
+.tour-timeline-box:first-child {
+    padding-top: 0;
+}
+
+.tour-timeline-box:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.tour-timeline-box .tt-box-number {
+    width: 40px;
+    height: 40px;
+    background: var(--yellow-color);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--white-color);
+    border-radius: 5px;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.tour-timeline-box .h3-title {
+    margin-bottom: 15px;
+}
+
+.tour-timeline-box .h3-title span {
+    font-weight: normal;
+}
+
+.memories-gallery .memories-gallery-image {
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.rb-avarage-rating .h2-title {
+    margin-bottom: 0;
+    font-family: var(--primary-font-family);
+}
+
+.rb-left-side {
+    width: 150px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.review-breakdown {
+    display: inline-table;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.rb-avarage-verbal-desc i {
+    color: var(--yellow-color);
+}
+
+.rb-right-side {
+    padding-left: 20px;
+}
+
+.rb-comment-list ul li {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(43 43 43 / 0.1);
+}
+
+.rb-comment-list ul li .rb-comment-image {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    flex: 0 0 80px;
+    margin-right: 30px;
+}
+
+.rb-comment-list ul li .rb-comment-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.rb-comment-list ul li .rb-comment-content {
+    flex: 1;
+}
+
+.rb-comment-top-text {
+    margin-bottom: 10px;
+}
+
+.rb-comment-top-text p.date {
+    color: var(--yellow-color);
+}
+
+.rb-comment-top-text .h5-title {
+    margin-bottom: 0;
+}
+
+.rb-rating {
+    margin: 20px 0;
+}
+
+.rb-rating-label {
+    vertical-align: middle;
+}
+
+.rb-rating-value i {
+    color: var(--yellow-color);
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.rb-rating-inner {
+    margin: 2px 0;
+}
+
+.rb-comment-form {
+    padding-top: 30px;
+}
+
+.rb-comment-form .form-control-span {
+    margin-bottom: 30px;
+}
+
+.rb-comment-form .form-input {
+    padding: 10px 20px;
+}
+
+
+/*============(Page)Tour Detail CSS End============*/
+
+
+/*============(Page)Blog CSS Start============*/
+
+.main-blog-sec .left-side {
+    padding-top: 70px;
+}
+
+.blog-single-box {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.blog-single-image {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-single-image.overlay:before {
+    z-index: 1;
+}
+
+.blog-single-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: var(--transition);
+    transform: scale(1);
+}
+
+.blog-single-box:hover img {
+    transform: scale(1.2);
+}
+
+.blog-single-content {
+    padding: 30px;
+}
+
+.blog-single-content .h2-title a {
+    color: var(--dark-color);
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-single-content .h2-title a:hover {
+    color: var(--yellow-color);
+}
+
+.blog-post-meta {
+    margin-bottom: 15px;
+}
+
+.blog-post-meta ul li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 12px 12px 0;
+}
+
+.blog-post-meta ul li a {
+    display: inline-block;
+    color: var(--dark-color);
+    vertical-align: middle;
+    transition: var(--transition);
+}
+
+.blog-post-meta ul li a:hover {
+    color: var(--yellow-color);
+}
+
+.blog-post-meta ul li.blog-categories a {
+    background: var(--yellow-color);
+    color: var(--white-color);
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 3px 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.blog-post-meta ul li.blog-categories a:hover {
+    background: var(--dark-color);
+}
+
+.blog-post-meta ul li a i {
+    color: var(--yellow-color);
+    margin-right: 5px;
+}
+
+.blog-post-text p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.latest-post-listing li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.latest-post-listing li:last-child {
+    margin-bottom: 0;
+}
+
+.latest-post-listing li .latest-post-image {
+    width: 80px;
+    height: 80px;
+    box-shadow: var(--box-shadow);
+    flex: 0 0 80px;
+    margin-right: 15px;
+}
+
+.latest-post-listing li .latest-post-content {
+    flex: 1;
+}
+
+.latest-post-listing .latest-post-content .h5-title {
+    font-family: var(--primary-font-family);
+    text-transform: uppercase;
+}
+
+.latest-post-listing .latest-post-content .h5-title a {
+    color: var(--dark-color);
+}
+
+.latest-post-listing .latest-post-content .h5-title a:hover {
+    color: var(--yellow-color);
+}
+
+
+/*============(Page)Blog CSS End============*/
+
+
+/*============(Page)Blog Single CSS Start============*/
+
+.main-blog-single-sec .left-side-box .h2-title {
+    font-weight: bold;
+}
+
+.main-blog-single-sec .left-side-box .h3-title {
+    margin-bottom: 15px;
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.blog-single-inner-img-box {
+    width: 100%;
+    height: 270px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.blog-single-inner-img-box.big-img {
+    height: 300px;
+}
+
+.blog-single-inner-img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.blog-single-inner-img:hover {
+    transform: scale(1.2);
+}
+
+.comment-form .form-control-span {
+    margin-bottom: 30px;
+}
+
+.comment-form .form-input {
+    padding: 10px 20px;
+}
+
+
+/*============(Page)Blog Single CSS End============*/
+
+
+/*============(Page)Contact CSS Start============*/
+
+.main-contact-sec .left-side {
+    padding-top: 70px;
+}
+
+.contact-form .form-control-span {
+    margin-bottom: 30px;
+}
+
+.contact-box-wrap {
+    position: relative;
+}
+
+.contact-box-wrap:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500%;
+    height: 100%;
+    background: var(--white-light-color);
+    z-index: -1;
+}
+
+.contact-box {
+    margin-bottom: 40px;
+}
+
+.contact-box:last-child {
+    margin-bottom: 0;
+}
+
+.contact-box .line-title {
+    margin-bottom: 20px;
+}
+
+.contact-box .line-title .h4-title {
+    color: var(--dark-color);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.contact-box ul li a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--dark-color);
+}
+
+.contact-box ul li span.icon {
+    width: 34px;
+    height: 34px;
+    background-color: var(--white-color);
+    flex: 0 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 15px;
+    color: var(--yellow-color);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.contact-box ul li a:hover span.icon {
+    background-color: var(--yellow-color);
+    color: var(--white-color);
+}
+
+.contact-box ul li {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.contact-box ul li:last-child {
+    margin-bottom: 0;
+}
+
+.contact-map-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.contact-map-box iframe {
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: calc(100% + 430px);
+    height: 100%;
+    z-index: 1;
+}
+
+
+/*============(Page)Contact CSS End============*/
+
+
+/*============Scroll To Top CSS Start============*/
+
+.scrolltop {
+    position: fixed;
+    bottom: 15px;
+    right: 0;
+    transform: translateX(100%);
+    width: 50px;
+    height: 60px;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    text-align: center;
+    border-radius: 12px 0 0 12px;
+    line-height: 1;
+    font-size: 25px;
+    z-index: 99;
+    padding: 0;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.scrolltop:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--dark-color);
+    transition: var(--transition);
+}
+
+.scrolltop i {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrolltop i.default {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+}
+
+.scrolltop i.hover {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    transition: var(--transition);
+}
+
+.scrolltop:hover {
+    background: var(--white-color);
+    color: var(--yellow-color);
+    transition: var(--transition);
+}
+
+.scrolltop:hover i.default {
+    top: auto;
+    bottom: 50%;
+    transform: translate(-50%, -100%);
+    transition: var(--transition);
+}
+
+.scrolltop:hover i.hover {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+}
+
+.scrolltop:hover:before {
+    height: 100%;
+    transition: var(--transition);
+}
+
+.scrolltop.show {
+    transform: translateX(0);
+}
+
+
+/*============Scroll To Top CSS End============*/
+
+
+/*==========Responsive CSS Start==========*/
+
+@media (min-width: 1500px) {
+    .container {
+        max-width: 1200px;
+    }
+    .site-header .container,
+    .site-footer .container {
+        max-width: 1400px;
+    }
+}
+
+@media (max-width: 1700px) {
+    .instagram-icon {
+        font-size: 140px;
+    }
+    .logo-icon img {
+        width: 150px;
+    }
+}
+
+@media (max-width: 1499px) {
+    .tour-offer-slider .slick-arrow.prev-arrow {
+        left: auto;
+        right: 15px;
+        transform: unset;
+        top: -115px;
+    }
+    .tour-offer-slider .slick-arrow.next-arrow {
+        right: 15px;
+        top: -40px;
+        left: auto;
+    }
+    .instagram-icon {
+        font-size: 100px;
+        left: 3%;
+    }
+    .tour-short-info-box ul {
+        padding: 19px 40px;
+    }
+    .tour-detail-tabbing .nav-tabs li.nav-item .nav-link {
+        padding: 12px 5px;
+    }
+}
+
+@media(max-width: 1199px) {
+    .comment-form-author,
+    .comment-form-email {
+        width: 47%;
+    }
+    .h1-title {
+        font-size: 66px;
+        line-height: 80px;
+    }
+    .main-highlight:after {
+        top: 31px;
+        left: 31px;
+        right: 31px;
+        bottom: 31px;
+    }
+    .tour-info-content .h6-title {
+        font-size: 15px;
+    }
+    .tour-info-icon i {
+        font-size: 16px;
+    }
+    .instagram-icon {
+        display: none;
+    }
+    .widget {
+        padding: 30px;
+    }
+    .gaq-list-item li a {
+        font-size: 14px;
+    }
+    .rb-rating-value {
+        display: block;
+    }
+    .footer-nav-wp,
+    .footer-contact-wp {
+        padding: 0;
+    }
+}
+
+@media(max-width: 991px) {
+    .for-des {
+        display: none !important;
+    }
+    .for-mob {
+        display: block !important;
+    }
+    .pl {
+        width: 6em;
+        height: 6em;
+    }
+    .site-header .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    .site-header .container .row {
+        margin: 0;
+    }
+    .widget-area {
+        margin-top: 50px;
+    }
+    .main-banner .banner-video {
+        display: none;
+    }
+    .banner-content p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .contact-list-item li .text {
+        display: none;
+    }
+    .contact-list-item li .icon {
+        margin: 0;
+    }
+    .contact-list-item {
+        position: absolute;
+        top: 0;
+        left: 30px;
+    }
+    .header-social {
+        position: absolute;
+        top: 0;
+        right: 30px;
+    }
+    .bottom-header-inner .col-lg-4 {
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        transform: translate(0, -50%);
+        width: auto;
+        padding: 0;
+        z-index: 1;
+    }
+    .full-menu .menu-container:before {
+        content: none;
+    }
+    .full-menu-logo-row .col-lg-4 {
+        display: none;
+    }
+    .top-header {
+        display: none;
+    }
+    .bottom-header-inner {
+        margin-top: 0;
+        position: relative;
+        padding: 0;
+        height: 80px;
+    }
+    .site-branding img {
+        width: 230px;
+    }
+    .header-menu-side {
+        height: auto;
+        width: auto;
+    }
+    .search-icon {
+        position: absolute;
+        right: 100px;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0;
+    }
+    .search-inner-box .form-input {
+        font-size: 25px;
+        border-width: 3px;
+        padding: 25px 100px 25px 30px;
+    }
+    .search-inner-box .sm-btn {
+        font-size: 30px;
+    }
+    .navigation-btn {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translate(0, -50%);
+        margin: 0;
+    }
+    .bottom-header-inner .col-lg-8 {
+        position: unset;
+    }
+    .full-menu {
+        padding: 20vh 15px;
+    }
+    .full-menu .full-menu-logo-row {
+        padding: 0;
+    }
+    .full-menu .menu-container>ul {
+        align-items: center;
+    }
+    .full-menu .menu-container ul li.dropdown-items>a {
+        margin-left: max(3vh, 15px);
+    }
+    .full-menu .menu-container .sub-menu {
+        margin: 5px 5px 0 5px;
+        align-items: center;
+    }
+    .full-menu-social {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        text-align: center;
+    }
+    .full-menu-social ul li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+    .h1-title {
+        font-size: 60px;
+        line-height: 70px;
+    }
+    .h2-title {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .h3-title {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .banner-slide-box {
+        padding: 300px 0 220px 0;
+    }
+    .banner-form form .input-col {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 15px;
+    }
+    .banner-form form .input-col.button-col {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 0;
+    }
+    .about-image-wp {
+        margin-bottom: 30px;
+    }
+    .about-content {
+        padding: 0;
+    }
+    .destination-box .destination-box-image,
+    .destination-box.big-height .destination-box-image {
+        height: 400px;
+    }
+    .main-about .logo-icon img {
+        width: 80px;
+    }
+    .main-highlight {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .main-highlight:after {
+        top: 45px;
+        left: 20px;
+        right: 20px;
+        bottom: 45px;
+    }
+    .tour-services-row [class*=col-] .tour-service-box {
+        margin-bottom: 30px;
+    }
+    .tour-services-row [class*=col-]:last-child .tour-service-box {
+        margin-bottom: 0;
+    }
+    .testimonial-slide .overflow-text {
+        height: 145px;
+    }
+    .blog-learn-btn {
+        margin-top: 30px;
+        text-align: center;
+    }
+    .blog-learn-btn.for-des {
+        display: none !important;
+    }
+    .blog-learn-btn.for-mob {
+        display: block !important;
+    }
+    .footer-nav-wp,
+    .footer-contact-wp {
+        margin-top: 50px;
+    }
+    .bottom-footer {
+        padding: 30px 0 70px 0;
+    }
+    .copyright-link ul {
+        text-align: left;
+    }
+    .copyright-link ul li:first-child {
+        padding-left: 0;
+    }
+    .copyright-link ul li:last-child {
+        padding-right: 0;
+    }
+    .copyright-link {
+        margin-top: 15px;
+    }
+    .scrolltop {
+        width: 40px;
+        height: 50px;
+    }
+    .inner-banner {
+        padding: 280px 0 210px 0;
+    }
+    .about-description-image-box {
+        height: 500px;
+        margin-bottom: 30px;
+    }
+    .about-progress-content {
+        margin-bottom: 30px;
+    }
+    .about-description-image-box .about-description-image {
+        width: calc(100% + 200px);
+    }
+    .destination-gallery-box {
+        margin-bottom: 30px;
+    }
+    .right-side {
+        margin-top: 0;
+    }
+    .left-side {
+        margin-bottom: 30px;
+    }
+    .tour-filter .form-input {
+        border: 1px solid rgb(43 43 43 / 0.5) !important;
+        border-radius: 0 !important;
+    }
+    .tour-filter .form-control-span,
+    .tour-filter .filter-label {
+        margin: 5px 0 !important;
+    }
+    .tour-filter .form-input.filter-label {
+        text-align: left;
+    }
+    .tour-price-wp .tour-price {
+        margin: auto;
+    }
+    .tour-title {
+        margin-bottom: 30px;
+    }
+    .pagination {
+        margin-bottom: 30px;
+    }
+    .main-blog-sec .left-side {
+        padding-top: 30px;
+    }
+}
+
+@media(max-width: 767px) {
+    .comment-form-author,
+    .comment-form-email {
+        width: 100%;
+    }
+    .error-404 img {
+        width: 50vw;
+    }
+    .widget-area {
+        margin-top: 50px;
+    }
+    .main-about .logo-icon {
+        display: none;
+    }
+    .h1-title {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    .banner-content p {
+        width: 100%;
+    }
+    .about-image-box.big {
+        height: 340px;
+    }
+    .about-image-box.small {
+        width: 220px;
+        height: 170px;
+    }
+    .inner-banner {
+        padding: 200px 0 150px 0;
+    }
+    .about-description-image-box {
+        height: 400px;
+    }
+    .tour-detail-tabbing .nav {
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+        flex-wrap: unset;
+    }
+    .tour-detail-tabbing .nav::-webkit-scrollbar {
+        display: none;
+    }
+    .tour-detail-tabbing .nav-tabs li.nav-item .nav-link {
+        border-radius: 0 !important;
+        border-right-color: rgb(43 43 43 / 0.5) !important;
+    }
+    .tour-detail-tabbing .nav-tabs li.nav-item {
+        margin: 5px 0;
+        flex: 0 0 auto;
+    }
+    .tour-detail-tabbing .nav-tabs li.nav-item:first-child .nav-link,
+    .tour-detail-tabbing .nav-tabs li.nav-item:last-child .nav-link {
+        border-radius: 0 !important;
+    }
+    .tour-detail-tabbing .nav-tabs li.nav-item .nav-link {
+        padding: 12px 12px;
+    }
+    .tour-timetable-schedule>ul>li {
+        display: block;
+        background: var(--white-light-color);
+        margin-bottom: 15px;
+    }
+    .tour-timetable-schedule ul li .tts-label {
+        display: block;
+        width: 100%;
+        border: none;
+    }
+    .tour-timetable-schedule ul li .tts-description {
+        display: block;
+        width: 100%;
+    }
+    .tour-timetable-schedule>ul>liLlast-child {
+        margin-bottom: 0;
+    }
+    .tour-timetable-schedule ul li:last-child .tts-label,
+    .tour-timetable-schedule ul li:last-child .tts-description {
+        border-bottom: none;
+    }
+    .blog-single-image {
+        height: 300px;
+    }
+    blockquote {
+        padding: 10px 10px 10px 15px;
+    }
+}
+
+@media(max-width: 575px) {
+    .thank-text {
+        padding-top: 80px;
+        margin: 60px 0;
+    }
+    .thank-text:before {
+        width: 57px;
+        height: 61px;
+    }
+    .container {
+        padding: 0 30px;
+    }
+    .privacy-content ol,
+    .privacy-content ul {
+        margin-left: 20px;
+    }
+    .avatar.photo {
+        margin-right: 8px;
+        width: 50px;
+        height: 50px;
+    }
+    .site-branding img {
+        width: 200px;
+    }
+    .banner-slide-box {
+        padding: 240px 0 180px 0;
+    }
+    .about-image-wp {
+        padding-right: 40px;
+    }
+    .h1-title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .h2-title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .h4-title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .tour-services-row {
+        padding: 30px 30px;
+    }
+    .testimonial-quote {
+        padding: 80px 0 0 0;
+    }
+    .testimonial-quote img {
+        width: 200px;
+    }
+    .testimonial-slide .overflow-text p {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .testimonial-slide .overflow-text {
+        height: 112px;
+    }
+    .main-highlight .sec-title .h2-title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .about-description-image-box .about-description-image {
+        right: 0;
+    }
+    .about-description-content:before {
+        left: 0;
+    }
+    .about-description-sec.two .about-description-image-box .about-description-image {
+        left: 0;
+    }
+    .about-description-sec.two .about-description-content:before {
+        right: 0;
+    }
+    .about-description-image-box {
+        height: 300px;
+    }
+    .about-description-content {
+        padding: 30px 10px 30px 30px;
+    }
+    .icon-listing ul {
+        column-count: 1;
+    }
+    .about-description-sec.two .about-description-content {
+        padding: 30px 10px 142px 0px;
+    }
+    .left-side-box {
+        padding: 20px;
+    }
+    .widget {
+        padding: 20px;
+    }
+    .tour-detail-tabbing .tab-content .tab-pane {
+        padding: 20px;
+    }
+    .tab-box.information-tab-box {
+        padding-top: 30px;
+    }
+}
+
+@media(max-width: 480px) {
+    .h1-title {
+        font-size: max(9.3vw, 25px);
+        line-height: max(11.4vw, 35px);
+    }
+    .inner-banner .h1-title {
+        font-size: max(12.3vw, 25px);
+        line-height: max(14.4vw, 35px);
+    }
+    .tour-short-info-box ul {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .tour-short-info-box ul li {
+        margin-bottom: 15px;
+    }
+    .tour-short-info-box ul li:last-child {
+        margin-bottom: 0;
+    }
+    .tour-location iframe {
+        height: 300px;
+    }
+    .memories-gallery .memories-gallery-image {
+        height: 250px;
+    }
+}
+
+@media(max-width: 400px) {
+    .container {
+        padding: 0 15px;
+    }
+    .common-sec {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .pt-70 {
+        padding-top: 50px;
+    }
+    .pb-70 {
+        padding-bottom: 50px;
+    }
+    .bottom-header-inner {
+        height: 70px;
+    }
+    .bottom-header-inner .col-lg-4 {
+        left: 15px;
+    }
+    .site-branding img {
+        width: 170px;
+    }
+    .navigation-btn {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        padding: 15px 8px;
+    }
+    .search-icon {
+        right: 70px;
+        width: 45px;
+        height: 45px;
+    }
+    .search-inner-box .form-input {
+        font-size: 20px;
+        border-width: 3px;
+        padding: 15px 50px 15px 15px;
+    }
+    .search-inner-box .sm-btn {
+        font-size: 20px;
+        right: 15px;
+    }
+    .banner-slide-box {
+        padding: 180px 0 130px 0;
+    }
+    .banner-form {
+        padding: 20px 15px;
+    }
+    .about-image-box.big {
+        height: 250px;
+    }
+    .about-image-box.small {
+        width: 160px;
+        height: 130px;
+    }
+    .h2-title {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .main-highlight:after {
+        top: 20px;
+        left: 5px;
+        right: 5px;
+        bottom: 45px;
+    }
+    .tour-offer-box .tour-offer-box-image {
+        height: 300px;
+    }
+    .tour-services-row {
+        padding: 20px 15px;
+    }
+    .tour-service-box .tour-service-icon {
+        width: 35px;
+        flex: 0 0 35px;
+    }
+    .tour-service-content .h4-title {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .testimonial-slide .overflow-text {
+        height: 168px;
+    }
+    .blog-image {
+        height: 300px;
+    }
+    .blog-box-content {
+        padding: 15px;
+    }
+    .main-highlight .sec-title .h2-title {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .destination-box .destination-box-image,
+    .destination-box.big-height .destination-box-image {
+        height: 230px;
+    }
+    .destination-box-content-inner {
+        min-width: 120px;
+        padding: 7px 10px;
+    }
+    .destination-box-content {
+        margin: -22px 30px 0 30px;
+    }
+    .destination-box-content .h3-title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .newsletter-form .sec-btn {
+        width: 100px;
+    }
+    .newsletter-form .form-input {
+        padding: 15px 120px 15px 20px;
+    }
+    .copyright-text,
+    .copyright-link ul li a {
+        font-size: 14px;
+    }
+    .rb-comment-list ul li .rb-comment-image {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        flex: 0 0 40px;
+    }
+    .blog-single-content {
+        padding: 15px;
+    }
+    .footer-title {
+        padding-top: 0;
+    }
+    .about-description-content {
+        padding: 20px 10px 20px 15px;
+    }
+    .about-description-sec.two .about-description-content {
+        padding: 20px 10px 142px 0px;
+    }
+    .pagination li .page-link {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    .blog-single-image {
+        height: 230px;
+    }
+    .tour-detail-tabbing .tab-content .tab-pane {
+        padding: 15px;
+    }
+    .tour-timeline-box .tt-box-number {
+        width: 30px;
+        height: 30px;
+    }
+    .tour-timeline-box:before {
+        left: 15px;
+    }
+    .main-contact-sec .left-side {
+        padding-top: 50px;
+    }
+}
+
+@media(max-height: 620px) {
+    .modal-body.overflow-text {
+        height: 491px;
+        padding-top: 22px;
+    }
+    .modal-body .wpcf7-form-control-wrap {
+        margin-bottom: 20px;
+    }
+    .modal-body .wpcf7-form-control-wrap.your-message {
+        margin-bottom: 12px;
+    }
+    .modal-body .form-input.wpcf7-textarea {
+        height: 100px;
+    }
+    .full-menu-social ul li a {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+@media(max-height: 500px) {
+    .modal-body.overflow-text {
+        height: 470px;
+    }
+    .modal-body .form-input {
+        height: 40px;
+        padding: 10px 20px;
+    }
+    .modal-body .form-input.wpcf7-textarea {
+        padding: 18px 20px;
+    }
+    .modal-body span.wpcf7-not-valid-tip {
+        font-size: 14px;
+        bottom: -24px;
+    }
+}
+
+@media(max-height: 475px) {
+    .modal-body.overflow-text {
+        height: 400px;
+    }
+}
+
+
+/*==========Responsive CSS End==========*/

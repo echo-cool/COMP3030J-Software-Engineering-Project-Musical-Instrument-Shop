@@ -126,6 +126,9 @@ def about(request):
 def game(request):
     return render(request, 'shop_templates/game.html')
 
+def chinese(request):
+    return render(request, 'shop_templates/chinese.html')
+
 
 def category_view(request, category_id):
     categories = Category.objects.all()
@@ -139,37 +142,60 @@ def category_view(request, category_id):
 
 
 def product_details(request, product_id):
-    categories = Category.objects.all()
-    instrument = Instrument.objects.get(id=product_id)
-    instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
-    all_instruments = Instrument.objects.all()
+    if request.method == "POST":
+        quantity = int(request.POST.get('quantity', 0))
+        instrument = Instrument.objects.filter(id=product_id).first()
+        exist_cart = Cart.objects.filter(instrument_id=product_id).first()
+        if exist_cart:
+            exist_cart.count = exist_cart.count + quantity
+            exist_cart.save()
+        else:
+            new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+            new_cart.save()
+        messages.success(request, "Add Successfully")
+        return redirect('shop:product_details', product_id=product_id)
+    else:
+        categories = Category.objects.all()
+        instrument = Instrument.objects.get(id=product_id)
+        instrument_details = InstrumentDetail.objects.filter(instrument=instrument).first()
+        all_instruments = Instrument.objects.all()
 
-    # add price / old_price for hint
-    instrument.percentage = round(instrument.price * 100 / instrument.old_price, 2)
+        # add price / old_price for hint
+        instrument.percentage = round(instrument.price * 100 / instrument.old_price, 2)
 
     related = []
     # Get 4 random reviews
     reviews = Review.objects.all()
     review = []
     for i in range(4):
-        num = random.randint(0, len(reviews) - 1)
-        reviews[num].review_icon_iter = range(int(reviews[num].rating))
-        reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
-        review.append(reviews[num])
+        if len(reviews) > 0:
+            num = random.randint(0, len(reviews) - 1)
+            reviews[num].review_icon_iter = range(int(reviews[num].rating))
+            reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
+            review.append(reviews[num])
 
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
-    return render(request, 'shop_templates/product-detail.html', {
-        "instrument": instrument,
-        "discount": instrument.price * 100 / instrument.old_price,
-        "instrument_details": instrument_details,
-        "related": related,
-        'categories': categories,
-        "review_left": [review[0], review[1]],
-        "review_right": [review[2], review[3]],
+    if len(reviews) > 0:
+        return render(request, 'shop_templates/product-detail.html', {
+            "instrument": instrument,
+            "discount": instrument.price * 100 / instrument.old_price,
+            "instrument_details": instrument_details,
+            "related": related,
+            'categories': categories,
+            "review_left": [review[0], review[1]],
+            "review_right": [review[2], review[3]],
 
-    })
+        })
+    else:
+        return render(request, 'shop_templates/product-detail.html', {
+            "instrument": instrument,
+            "discount": instrument.price * 100 / instrument.old_price,
+            "instrument_details": instrument_details,
+            "related": related,
+            'categories': categories,
+        })
 
 
 @login_required
@@ -389,29 +415,27 @@ def cart(request):
 
 @login_required
 def cart2(request):
-    if request.user.is_authenticated:
-        carts = Cart.objects.filter(user=request.user)
-        each_cart = {}
-        for each_cart in carts:
-            each_cart.total_money = each_cart.count * each_cart.instrument.price
-        return render(request, 'shop_templates/cart2.html', {
-            "carts": carts,
-        })
-    else:
-        return redirect('accounts:log_in')
+    carts = Cart.objects.filter(user=request.user)
+    each_cart = {}
+    for each_cart in carts:
+        each_cart.total_money = each_cart.count * each_cart.instrument.price
+    return render(request, 'shop_templates/cart2.html', {
+        "carts": carts,
+    })
 
 
-@login_required
-def product_add_cart(request, instrument_id):
-    instrument = Instrument.objects.filter(id=instrument_id).first()
-    exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
-    if exist_cart:
-        exist_cart.count = exist_cart.count + 1
-        exist_cart.save()
-    else:
-        new_cart = Cart(user=request.user, instrument=instrument, count=1, user_id=1)
-        new_cart.save()
-    return redirect('shop:cart')
+
+# @login_required
+# def product_add_cart(request, instrument_id):
+#     instrument = Instrument.objects.filter(id=instrument_id).first()
+#     exist_cart = Cart.objects.filter(instrument_id=instrument_id).first()
+#     if exist_cart:
+#         exist_cart.count = exist_cart.count + 1
+#         exist_cart.save()
+#     else:
+#         new_cart = Cart(user=request.user, instrument=instrument, count=1, user_id=1)
+#         new_cart.save()
+#     return redirect('shop:cart')
 
 
 # def product_minus_cart(request, instrument_id):
