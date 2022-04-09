@@ -1,5 +1,4 @@
-﻿
-{% load static %}
+﻿{% load static %}
 
 {% load i18n %}
 {% load bootstrap4 %}
@@ -18,1259 +17,1350 @@
     <link rel="icon" href="/static/assets_chinese/images//favicon.png" type="image/gif" sizes="16x16">
 
     <!-- Bootstrap CSS Link -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/bootstrap.min.css' %}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- Slick Slider CSS Link -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/slick-theme.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/slick-theme.css' %}">
 
     <!-- Fancybox CSS Link -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/jquery.fancybox.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/jquery.fancybox.min.css' %}">
 
     <!-- Wow Animation CSS Link -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/animate.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/animate.min.css' %}">
 
     <!-- Main Style CSS Link -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/style.css' %}">
 
 </head>
 
 <body class="fixed">
 
-    <!-- Preloader Start -->
-    <div class="loader-box">
-        <div class="loader">
-            <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
-                <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round" />
-                <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round" />
-                <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round" />
-                <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round" />
-            </svg>
-        </div>
+<!-- Preloader Start -->
+<div class="loader-box">
+    <div class="loader">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20"
+                    stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"/>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20"
+                    stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"/>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20"
+                    stroke-dasharray="0 440" stroke-linecap="round"/>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20"
+                    stroke-dasharray="0 440" stroke-linecap="round"/>
+        </svg>
     </div>
-    <!-- Preloader End -->
+</div>
+<!-- Preloader End -->
 
-    <!-- Header Start -->
-    <header class="site-header">
-        <div class="top-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <ul class="contact-list-item">
-                            <li>
-                                <a href="mailto:holidayplanners@gmail.com" title="holidayplanners@gmail.com">
-                                    <span class="icon"><i class="far fa-envelope"></i></span>
-                                    <span class="text">holidayplanners@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tel:1234567890" title="+123 456 7890">
-                                    <span class="icon"><i class="fas fa-phone-alt"></i></span>
-                                    <span class="text">+123 456 7890</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="header-social">
-                            <li>
-                                <a href="javascript:void(0);" title="Follow us on Facebook">
-                                    <span class="icon"><i class="fab fa-facebook-f"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" title="Follow us on Instagram">
-                                    <span class="icon"><i class="fab fa-instagram"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" title="Follow us on Twitter">
-                                    <span class="icon"><i class="fab fa-twitter"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-header">
-            <div class="container">
-                <div class="bottom-header-inner">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="site-branding">
-                                <a href="index.html" title="Travel & Tour"><img src="/static/assets_chinese/images//logo.png" alt="Logo"></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="header-menu-side">
-                                <div class="header-reserve-btn for-des">
-                                    <a href="tour.html" class="sec-btn" title="Reserve"><span>Reserve</span></a>
-                                </div>
-                                <div class="search-wp">
-                                    <div class="search-icon">
-                                        <i class="fas fa-search"></i>
-                                        <i class="fas fa-times"></i>
-                                    </div>
-                                    <div class="search-overlay">
-                                        <div class="search-overlay-inner">
-                                            <div class="logo-icon">
-                                                <img src="/static/assets_chinese/images//logo-icon-white.svg" alt="logo-icon-white">
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-10 m-auto">
-                                                        <div class="search-inner-box">
-                                                            <form>
-                                                                <span class="form-control-span search-wrap">
-                                                                    <input type="text" class="form-input" placeholder="Search">
-                                                                    <button type="submit" class="sm-btn"><i class="fas fa-search"></i></button>
-                                                                </span>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-navigation">
-                                    <button type="button" class="navigation-btn">
-                                        <span class="first"></span>
-                                        <span class="second"></span>
-                                        <span class="third"></span>
-                                    </button>
-                                    <div class="full-menu">
-                                        <div class="logo-icon">
-                                            <img src="/static/assets_chinese/images//logo-icon-white.svg" alt="logo-icon-white">
-                                        </div>
-                                        <div class="container">
-                                            <div class="full-menu-logo-row">
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <div class="site-branding">
-                                                            <a href="index.html" title="Travel & Tour"><img src="/static/assets_chinese/images//white-logo.png" alt="Logo"></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-5">
-                                                    <div class="menu-container">
-                                                        <ul>
-                                                            <li class="active">
-                                                                <a href="index.html">Home</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="about.html">About</a>
-                                                            </li>
-                                                            <li class="dropdown-items">
-                                                                <a href="javascript:void(0);">Destination</a>
-                                                                <ul class="sub-menu">
-                                                                    <li>
-                                                                        <a href="destination.html">Destination</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="destination-detail.html">Destination Detail</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="dropdown-items">
-                                                                <a href="javascript:void(0);">Tour</a>
-                                                                <ul class="sub-menu">
-                                                                    <li>
-                                                                        <a href="tour.html">Tour</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="tour-detail.html">Tour Detail</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="dropdown-items">
-                                                                <a href="javascript:void(0);">Blog</a>
-                                                                <ul class="sub-menu">
-                                                                    <li>
-                                                                        <a href="blog.html">Blog</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="blog-detail.html">Blog Detail</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li>
-                                                                <a href="contact.html">Contact us</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="full-menu-social">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="javascript:void(0);" title="Follow us on Facebook">
-                                                                    <span class="icon"><i class="fab fa-facebook-f"></i></span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0);" title="Follow us on Instagram">
-                                                                    <span class="icon"><i class="fab fa-instagram"></i></span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0);" title="Follow us on Twitter">
-                                                                    <span class="icon"><i class="fab fa-twitter"></i></span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header End -->
-
-    <!-- Banner Start -->
-    <section class="main-banner">
-        <div class="banner-slider">
-            <div class="banner-slide-box overlay back-image" style="background-image: url(/static/assets_chinese/images//banner-slide-1.jpg);'%}">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8 m-auto">
-                                <div class="banner-content wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                                    <h1 class="h1-title">Enjoy The Travel With <span>Holiday Planners</span></h1>
-                                    <p>A journey of a 1000 miles starts with a single step. Import the full demo content with 1 click and create a head-turning website for your travel agency.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="banner-slide-box overlay back-image" style="background-image: url(/static/assets_chinese/images//banner-slide-2.jpg);">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8 m-auto">
-                                <div class="banner-content wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                                    <h1 class="h1-title">Life is Short and <span>The World is Wide.</span></h1>
-                                    <p>A journey of a 1000 miles starts with a single step. Import the full demo content with 1 click and create a head-turning website for your travel agency.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="banner-slide-box overlay back-image" style="background-image: url(/static/assets_chinese/images//banner-slide-3.jpg);">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8 m-auto">
-                                <div class="banner-content wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                                    <h1 class="h1-title">Get Ready to Travel <span>The World.</span></h1>
-                                    <p>A journey of a 1000 miles starts with a single step. Import the full demo content with 1 click and create a head-turning website for your travel agency.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Banner End -->
-
-    <!-- Banner Bottom Form Start -->
-    <div class="main-banner-bottom-form">
-        <div class="sec-wp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="banner-form">
-                            <form>
-                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                                    <span class="form-control-span where-wrap">
-                                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                    <input type="text" class="form-input" placeholder="Where To?">
-                                    </span>
-                                </div>
-                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                                    <span class="form-control-span when-wrap">
-                                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
-                                    <select class="form-input">
-                                            <option>When?</option>
-                                            <option>January</option>
-                                            <option>February</option>
-                                            <option>March</option>
-                                            <option>April</option>
-                                            <option>May</option>
-                                            <option>June</option>
-                                            <option>July</option>
-                                            <option>August</option>
-                                            <option>September</option>
-                                            <option>October</option>
-                                            <option>November</option>
-                                            <option>December</option>
-                                        </select>
-                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>
-                                    </span>
-                                </div>
-                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.4s">
-                                    <span class="form-control-span travel-wrap">
-                                        <span class="icon"><i class="fas fa-flag"></i></span>
-                                    <select class="form-input">
-                                            <option>Travel Type</option>
-                                            <option>Cultural</option>
-                                            <option>Adventure</option>
-                                            <option>Historical</option>
-                                            <option>Seaside</option>
-                                            <option>Discovery</option>
-                                        </select>
-                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>
-                                    </span>
-                                </div>
-                                <div class="input-col button-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">
-                                    <span class="form-control-span button-wrap">
-                                        <button class="sec-btn"><span>Find Now</span></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Banner Bottom Form End -->
-
-    <!-- About Start -->
-    <section class="main-about common-sec">
-        <div class="logo-icon">
-            <img src="/static/assets_chinese/images//logo-icon.svg" alt="logo-icon">
-        </div>
-        <div class="sec-wp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="about-image-wp">
-                            <div class="about-image-box big wow right-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                                <div class="about-image back-image" style="background-image: url(/static/assets_chinese/images//about-big-image.jpg);"></div>
-                            </div>
-                            <div class="about-image-box small wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                                <div class="about-image back-image" style="background-image: url(/static/assets_chinese/images//about-small-image.jpg);"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-content wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">About us</h4>
-                            </div>
-                            <h2 class="h2-title">Plan Your <span>Trip</span> with <span>Us</span></h2>
-                            <div class="about-content-text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small
-                                    river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control
-                                    about the blind texts it is an almost unorthographic. Italic Mountains, she had a last view back on the skyline</p>
-                            </div>
-                            <a href="about.html" title="Read More" class="sec-btn"><span>Read More</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About End -->
-
-    <!-- Destination Start -->
-    <section class="main-destination common-sec back-image" style="background-image: url(/static/assets_chinese/images//wave-design.jpg);">
-        <div class="sec-wp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">Amazing Destination</h4>
-                            </div>
-                            <h2 class="h2-title">Choose The <span>Destination</span> Just Right For <span>Your Vacation</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <div class="col-lg-8">
-                        <div class="destination-box">
-                            <a href="destination-detail.html">
-                                <div class="destination-box-image-wp">
-                                    <div class="destination-box-image back-image" style="background-image: url(/static/assets_chinese/images//destination-img1.jpg);"></div>
-                                </div>
-                                <div class="destination-box-content">
-                                    <div class="destination-box-content-inner">
-                                        <h3 class="h3-title">Greece</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="destination-box">
-                                    <a href="destination-detail.html">
-                                        <div class="destination-box-image-wp">
-                                            <div class="destination-box-image back-image" style="background-image: url(/static/assets_chinese/images//destination-img2.jpg);"></div>
-                                        </div>
-                                        <div class="destination-box-content">
-                                            <div class="destination-box-content-inner">
-                                                <h3 class="h3-title">Thailand</h3>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="destination-box">
-                                    <a href="destination-detail.html">
-                                        <div class="destination-box-image-wp">
-                                            <div class="destination-box-image back-image" style="background-image: url(/static/assets_chinese/images//destination-img3.jpg);"></div>
-                                        </div>
-                                        <div class="destination-box-content">
-                                            <div class="destination-box-content-inner">
-                                                <h3 class="h3-title">Switzerland</h3>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="destination-box big-height">
-                            <a href="destination-detail.html">
-                                <div class="destination-box-image-wp">
-                                    <div class="destination-box-image back-image" style="background-image: url(/static/assets_chinese/images//destination-img4.jpg);"></div>
-                                </div>
-                                <div class="destination-box-content">
-                                    <div class="destination-box-content-inner">
-                                        <h3 class="h3-title">India</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="destination-see-more">
-                            <a href="destination.html" title="See More" class="sec-btn"><span>View All</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Destination End -->
-
-    <!-- Tour Offer Start -->
-    <section class="main-tour-offer">
-        <div class="tour-offer-top pt-70 bg-f6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">Amazing Offers</h4>
-                            </div>
-                            <h2 class="h2-title">Special <span>Deals</span> And Last Minute <span>Amazing Offers</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tour-offer-slider-wp pb-70">
-            <div class="container">
-                <div class="row tour-offer-slider wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <div class="col-lg-4">
-                        <div class="tour-offer-box">
-                            <a href="tour-detail.html">
-                                <div class="tour-offer-box-image-wp">
-                                    <div class="tour-offer-box-image back-image" style="background-image: url(/static/assets_chinese/images//offer-img1.jpg);">
-                                        <span class="discount-label">22% off</span>
-                                    </div>
-                                </div>
-                                <div class="tour-offer-box-content">
-                                    <h4 class="h4-title">Cinque Terre, Italy</h4>
-                                    <span class="price-label">$1200</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-offer-box">
-                            <a href="tour-detail.html">
-                                <div class="tour-offer-box-image-wp">
-                                    <div class="tour-offer-box-image back-image" style="background-image: url(/static/assets_chinese/images//offer-img2.jpg);">
-                                        <span class="discount-label">15% off</span>
-                                    </div>
-                                </div>
-                                <div class="tour-offer-box-content">
-                                    <h4 class="h4-title">Parthenon, Greece</h4>
-                                    <span class="price-label">$2500</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-offer-box">
-                            <a href="tour-detail.html">
-                                <div class="tour-offer-box-image-wp">
-                                    <div class="tour-offer-box-image back-image" style="background-image: url(/static/assets_chinese/images//offer-img3.jpg);">
-                                        <span class="discount-label">38% off</span>
-                                    </div>
-                                </div>
-                                <div class="tour-offer-box-content">
-                                    <h4 class="h4-title">Jaisalmer Fort, Jaisalmer</h4>
-                                    <span class="price-label">$750</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-offer-box">
-                            <a href="tour-detail.html">
-                                <div class="tour-offer-box-image-wp">
-                                    <div class="tour-offer-box-image back-image" style="background-image: url(/static/assets_chinese/images//offer-img4.jpg);">
-                                        <span class="discount-label">32% off</span>
-                                    </div>
-                                </div>
-                                <div class="tour-offer-box-content">
-                                    <h4 class="h4-title">JungGrenzgipfel, Thailand</h4>
-                                    <span class="price-label">$970</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-offer-box">
-                            <a href="tour-detail.html">
-                                <div class="tour-offer-box-image-wp">
-                                    <div class="tour-offer-box-image back-image" style="background-image: url(/static/assets_chinese/images//offer-img5.jpg);">
-                                        <span class="discount-label">15% off</span>
-                                    </div>
-                                </div>
-                                <div class="tour-offer-box-content">
-                                    <h4 class="h4-title">Jungfrau Mountain, Switzerland</h4>
-                                    <span class="price-label">$1280</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Tour Offer End -->
-
-    <!-- Highlight Start -->
-    <section class="main-highlight overlay back-image wow fadeup-animation" style="background-image: url(/static/assets_chinese/images//highlight-image.jpg);" data-wow-duration="1s" data-wow-delay="0.1s">
-        <div class="highlight-bg-video">
-            <video loop="" muted="" autoplay="">
-                <source src="/static/assets_chinese/images//highlight-video.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="sec-wp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 m-auto">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <h2 class="h2-title"><span>Traveling Highlights</span></h2>
-                            <h3 class="h3-title">Your New Traveling Idea</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Highlight End -->
-
-    <!-- Tour Start -->
-    <section class="main-tour bg-f6 back-image" style="background-image: url(/static/assets_chinese/images//white-map.png);">
-        <div class="tour-services">
-            <div class="container">
-                <div class="tour-services-row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="tour-service-box">
-                                <div class="tour-service-icon">
-                                    <img src="/static/assets_chinese/images//tour-service-icon1.svg" alt="tour-service-icon1">
-                                </div>
-                                <div class="tour-service-content">
-                                    <h4 class="h4-title">700+ DESTINATIONS</h4>
-                                    <p>Far far away, behind the word mountains, far countries Vokalia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="tour-service-box">
-                                <div class="tour-service-icon">
-                                    <img src="/static/assets_chinese/images//tour-service-icon2.svg" alt="tour-service-icon2">
-                                </div>
-                                <div class="tour-service-content">
-                                    <h4 class="h4-title">BEST PRICE GUARANTEE</h4>
-                                    <p>Far far away, behind the word mountains, far countries Vokalia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="tour-service-box">
-                                <div class="tour-service-icon">
-                                    <img src="/static/assets_chinese/images//tour-service-icon3.svg" alt="tour-service-icon3">
-                                </div>
-                                <div class="tour-service-content">
-                                    <h4 class="h4-title">TOP NOTCH SUPPORT</h4>
-                                    <p>Far far away, behind the word mountains, far countries Vokalia.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tour-sec pt-70">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">Amazing Tours</h4>
-                            </div>
-                            <h2 class="h2-title">Trending, <span>Best Selling Tours</span> And Fun Destinations</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row tour-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <div class="col-lg-4">
-                        <div class="tour-box">
-                            <div class="tour-box-image back-image" style="background-image: url(/static/assets_chinese/images//tour-box-image1.jpg);"></div>
-                            <div class="tour-box-content">
-                                <div class="tour-box-label">
-                                    <div class="tour-box-inner-label">
-                                        <h4 class="h4-title">Italy</h4>
-                                    </div>
-                                </div>
-                                <div class="tour-box-title">
-                                    <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking Platform</h4>
-                                </div>
-                                <div class="tour-box-description">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                </div>
-                                <div class="tour-info-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-clock"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Duration</h5>
-                                                    <p>2 days</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-user-friends"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Group Size</h5>
-                                                    <p>6 People</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tour-box-bottom">
-                                    <div class="tour-price">
-                                        <h3 class="h3-title">$1200</h3>
-                                    </div>
-                                    <div class="book-now-button">
-                                        <a href="tour-detail.html" title="Book Now" class="sec-btn"><span>Book Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-box">
-                            <div class="tour-box-image back-image" style="background-image: url(/static/assets_chinese/images//tour-box-image2.jpg);"><span class="discount-label">15% off</span></div>
-                            <div class="tour-box-content">
-                                <div class="tour-box-label">
-                                    <div class="tour-box-inner-label">
-                                        <h4 class="h4-title">Greece</h4>
-                                    </div>
-                                </div>
-                                <div class="tour-box-title">
-                                    <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking Platform</h4>
-                                </div>
-                                <div class="tour-box-description">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                </div>
-                                <div class="tour-info-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-clock"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Duration</h5>
-                                                    <p>6 days 3 hours</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-user-friends"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Group Size</h5>
-                                                    <p>15+ People</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tour-box-bottom">
-                                    <div class="tour-price">
-                                        <h3 class="h3-title">$2500</h3>
-                                    </div>
-                                    <div class="book-now-button">
-                                        <a href="tour-detail.html" title="Book Now" class="sec-btn"><span>Book Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-box">
-                            <div class="tour-box-image back-image" style="background-image: url(/static/assets_chinese/images//tour-box-image3.jpg);"><span class="discount-label">38% off</span></div>
-                            <div class="tour-box-content">
-                                <div class="tour-box-label">
-                                    <div class="tour-box-inner-label">
-                                        <h4 class="h4-title">Jaisalmer</h4>
-                                    </div>
-                                </div>
-                                <div class="tour-box-title">
-                                    <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking Platform</h4>
-                                </div>
-                                <div class="tour-box-description">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                </div>
-                                <div class="tour-info-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-clock"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Duration</h5>
-                                                    <p>1 days 8 hours</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-user-friends"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Group Size</h5>
-                                                    <p>50+ People</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tour-box-bottom">
-                                    <div class="tour-price">
-                                        <h3 class="h3-title">$750</h3>
-                                    </div>
-                                    <div class="book-now-button">
-                                        <a href="tour-detail.html" title="Book Now" class="sec-btn"><span>Book Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="tour-box">
-                            <div class="tour-box-image back-image" style="background-image: url(/static/assets_chinese/images//tour-box-image4.jpg);"></div>
-                            <div class="tour-box-content">
-                                <div class="tour-box-label">
-                                    <div class="tour-box-inner-label">
-                                        <h4 class="h4-title">Switzerland</h4>
-                                    </div>
-                                </div>
-                                <div class="tour-box-title">
-                                    <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking Platform</h4>
-                                </div>
-                                <div class="tour-box-description">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                </div>
-                                <div class="tour-info-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-clock"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Duration</h5>
-                                                    <p>7 days 8 hours</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="tour-info">
-                                                <div class="tour-info-icon">
-                                                    <i class="fas fa-user-friends"></i>
-                                                </div>
-                                                <div class="tour-info-content">
-                                                    <h5 class="h6-title">Group Size</h5>
-                                                    <p>50+ People</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tour-box-bottom">
-                                    <div class="tour-price">
-                                        <h3 class="h3-title">$750</h3>
-                                    </div>
-                                    <div class="book-now-button">
-                                        <a href="tour-detail.html" title="Book Now" class="sec-btn"><span>Book Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Tour End -->
-
-    <!-- Testimonial Start -->
-    <section class="main-testimonial">
+<!-- Header Start -->
+<header class="site-header">
+    {#        <div class="top-header">#}
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    <div class="col-lg-8">#}
+    {#                        <ul class="contact-list-item">#}
+    {#                            <li>#}
+    {#                                <a href="mailto:holidayplanners@gmail.com" title="holidayplanners@gmail.com">#}
+    {#                                    <span class="icon"><i class="far fa-envelope"></i></span>#}
+    {#                                    <span class="text">holidayplanners@gmail.com</span>#}
+    {#                                </a>#}
+    {#                            </li>#}
+    {#                            <li>#}
+    {#                                <a href="tel:1234567890" title="+123 456 7890">#}
+    {#                                    <span class="icon"><i class="fas fa-phone-alt"></i></span>#}
+    {#                                    <span class="text">+123 456 7890</span>#}
+    {#                                </a>#}
+    {#                            </li>#}
+    {#                        </ul>#}
+    {#                    </div>#}
+    {#                    <div class="col-lg-4">#}
+    {#                        <ul class="header-social">#}
+    {#                            <li>#}
+    {#                                <a href="javascript:void(0);" title="Follow us on Facebook">#}
+    {#                                    <span class="icon"><i class="fab fa-facebook-f"></i></span>#}
+    {#                                </a>#}
+    {#                            </li>#}
+    {#                            <li>#}
+    {#                                <a href="javascript:void(0);" title="Follow us on Instagram">#}
+    {#                                    <span class="icon"><i class="fab fa-instagram"></i></span>#}
+    {#                                </a>#}
+    {#                            </li>#}
+    {#                            <li>#}
+    {#                                <a href="javascript:void(0);" title="Follow us on Twitter">#}
+    {#                                    <span class="icon"><i class="fab fa-twitter"></i></span>#}
+    {#                                </a>#}
+    {#                            </li>#}
+    {#                        </ul>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    <div class="bottom-header">
         <div class="container">
-            <div class="row align-items-end">
-                <div class="col-lg-5">
-                    <div class="testimonial-left-side pt-70 wow right-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <div class="sec-title">
-                            <div class="line-title">
-                                <h4 class="h4-title">Testimonials</h4>
-                            </div>
-                            <h2 class="h2-title">Customer <span>Reviews</span></h2>
-                        </div>
-                        <div class="testimonial-quote">
-                            <img src="/static/assets_chinese/images//testimonial-quote.svg" alt="testimonial-quote">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="testimonial-right-side wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <div class="testimonial-slider">
-                            <div class="testimonial-slide">
-                                <div class="testimonial-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="overflow-text">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                                <div class="testimonial-name">
-                                    <h3 class="h3-title">John Doe</h3>
-                                    <p class="rated">Rated by travelers on facebook</p>
-                                </div>
-                            </div>
+            {#                <div class="bottom-header-inner">#}
+            {#                    <div class="row">#}
+            {#                        <div class="col-lg-4">#}
+            {#                            <div class="site-branding">#}
+            {#                                <a href="index.html" title="Travel & Tour"><img src="/static/assets_chinese/images//logo.png" alt="Logo"></a>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <div class="col-lg-8">#}
+            {#                            <div class="header-menu-side">#}
+            {#                                <div class="header-reserve-btn for-des">#}
+            {#                                    <a href="tour.html" class="sec-btn" title="Reserve"><span>Reserve</span></a>#}
+            {#                                </div>#}
+            {#                                <div class="search-wp">#}
+            {#                                    <div class="search-icon">#}
+            {#                                        <i class="fas fa-search"></i>#}
+            {#                                        <i class="fas fa-times"></i>#}
+            {#                                    </div>#}
+            {#                                    <div class="search-overlay">#}
+            {#                                        <div class="search-overlay-inner">#}
+            {#                                            <div class="logo-icon">#}
+            {#                                                <img src="/static/assets_chinese/images//logo-icon-white.svg" alt="logo-icon-white">#}
+            {#                                            </div>#}
+            {#                                            <div class="container">#}
+            {#                                                <div class="row">#}
+            {#                                                    <div class="col-10 m-auto">#}
+            {#                                                        <div class="search-inner-box">#}
+            {#                                                            <form>#}
+            {#                                                                <span class="form-control-span search-wrap">#}
+            {#                                                                    <input type="text" class="form-input" placeholder="Search">#}
+            {#                                                                    <button type="submit" class="sm-btn"><i class="fas fa-search"></i></button>#}
+            {#                                                                </span>#}
+            {#                                                            </form>#}
+            {#                                                        </div>#}
+            {#                                                    </div>#}
+            {#                                                </div>#}
+            {#                                            </div>#}
+            {#                                        </div>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                                <div class="main-navigation">#}
+            {#                                    <button type="button" class="navigation-btn">#}
+            {#                                        <span class="first"></span>#}
+            {#                                        <span class="second"></span>#}
+            {#                                        <span class="third"></span>#}
+            {#                                    </button>#}
+            {#                                    <div class="full-menu">#}
+            {#                                        <div class="logo-icon">#}
+            {#                                            <img src="/static/assets_chinese/images//logo-icon-white.svg" alt="logo-icon-white">#}
+            {#                                        </div>#}
+            {#                                        <div class="container">#}
+            {#                                            <div class="full-menu-logo-row">#}
+            {#                                                <div class="row">#}
+            {#                                                    <div class="col-lg-4">#}
+            {#                                                        <div class="site-branding">#}
+            {#                                                            <a href="index.html" title="Travel & Tour"><img src="/static/assets_chinese/images//white-logo.png" alt="Logo"></a>#}
+            {#                                                        </div>#}
+            {#                                                    </div>#}
+            {#                                                </div>#}
+            {#                                            </div>#}
+            {#                                            <div class="row">#}
+            {#                                                <div class="col-lg-5">#}
+            {#                                                    <div class="menu-container">#}
+            {#                                                        <ul>#}
+            {#                                                            <li class="active">#}
+            {#                                                                <a href="index.html">Home</a>#}
+            {#                                                            </li>#}
+            {#                                                            <li>#}
+            {#                                                                <a href="about.html">About</a>#}
+            {#                                                            </li>#}
+            {#                                                            <li class="dropdown-items">#}
+            {#                                                                <a href="javascript:void(0);">Destination</a>#}
+            {#                                                                <ul class="sub-menu">#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="destination.html">Destination</a>#}
+            {#                                                                    </li>#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="destination-detail.html">Destination Detail</a>#}
+            {#                                                                    </li>#}
+            {#                                                                </ul>#}
+            {#                                                            </li>#}
+            {#                                                            <li class="dropdown-items">#}
+            {#                                                                <a href="javascript:void(0);">Tour</a>#}
+            {#                                                                <ul class="sub-menu">#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="tour.html">Tour</a>#}
+            {#                                                                    </li>#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="tour-detail.html">Tour Detail</a>#}
+            {#                                                                    </li>#}
+            {#                                                                </ul>#}
+            {#                                                            </li>#}
+            {#                                                            <li class="dropdown-items">#}
+            {#                                                                <a href="javascript:void(0);">Blog</a>#}
+            {#                                                                <ul class="sub-menu">#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="blog.html">Blog</a>#}
+            {#                                                                    </li>#}
+            {#                                                                    <li>#}
+            {#                                                                        <a href="blog-detail.html">Blog Detail</a>#}
+            {#                                                                    </li>#}
+            {#                                                                </ul>#}
+            {#                                                            </li>#}
+            {#                                                            <li>#}
+            {#                                                                <a href="contact.html">Contact us</a>#}
+            {#                                                            </li>#}
+            {#                                                        </ul>#}
+            {#                                                    </div>#}
+            {#                                                </div>#}
+            {#                                                <div class="col-lg-6">#}
+            {#                                                    <div class="full-menu-social">#}
+            {#                                                        <ul>#}
+            {#                                                            <li>#}
+            {#                                                                <a href="javascript:void(0);" title="Follow us on Facebook">#}
+            {#                                                                    <span class="icon"><i class="fab fa-facebook-f"></i></span>#}
+            {#                                                                </a>#}
+            {#                                                            </li>#}
+            {#                                                            <li>#}
+            {#                                                                <a href="javascript:void(0);" title="Follow us on Instagram">#}
+            {#                                                                    <span class="icon"><i class="fab fa-instagram"></i></span>#}
+            {#                                                                </a>#}
+            {#                                                            </li>#}
+            {#                                                            <li>#}
+            {#                                                                <a href="javascript:void(0);" title="Follow us on Twitter">#}
+            {#                                                                    <span class="icon"><i class="fab fa-twitter"></i></span>#}
+            {#                                                                </a>#}
+            {#                                                            </li>#}
+            {#                                                        </ul>#}
+            {#                                                    </div>#}
+            {#                                                </div>#}
+            {#                                            </div>#}
+            {#                                        </div>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+        </div>
+    </div>
+</header>
+<!-- Header End -->
 
-                            <div class="testimonial-slide">
-                                <div class="testimonial-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="overflow-text">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                                <div class="testimonial-name">
-                                    <h3 class="h3-title">Minh Chau</h3>
-                                    <p class="rated">Rated by travelers on instagram</p>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-slide">
-                                <div class="testimonial-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="overflow-text">
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                                <div class="testimonial-name">
-                                    <h3 class="h3-title">Mathew A. Stephenson</h3>
-                                    <p class="rated">Rated by travelers on twitter</p>
-                                </div>
+<!-- Banner Start -->
+<section class="main-banner">
+    <div class="banner-slider">
+        <div class="banner-slide-box overlay back-image"
+             style="background-image: url(/static/assets_chinese/images//ban4.jpg);'%}">
+            <div class="sec-wp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 m-auto">
+                            <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
+                                 data-wow-delay="0.1s">
+                                <h1 class="h1-title">Enjoy The <span>Chinese Instruments</span></h1>
+                                <p>Serve as a communication bridge between Chinese instruments and Western
+                                    instruments</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Testimonial End -->
 
-    <!-- Blog Start -->
-    <section class="main-blog pt-70 pb-70">
+        <div class="banner-slide-box overlay back-image"
+             style="background-image: url(/static/assets_chinese/images//ban3.jpg);">
+            <div class="sec-wp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 m-auto">
+                            <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
+                                 data-wow-delay="0.1s">
+                                <h1 class="h1-title">Music and Instruments are <span>Universal.</span></h1>
+                                <p>A Convivial Journey of Chinese Instruments</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-slide-box overlay back-image"
+             style="background-image: url(/static/assets_chinese/images//ban5.jpg);">
+            <div class="sec-wp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 m-auto">
+                            <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
+                                 data-wow-delay="0.1s">
+                                <h1 class="h1-title">Get Ready to Travel <span>The World.</span></h1>
+                                <p>A journey of a 1000 miles starts with a single step. Import the full demo content
+                                    with 1 click and create a head-turning website for your travel agency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner End -->
+
+<!-- Banner Bottom Form Start -->
+<div class="main-banner-bottom-form">
+    <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <div class="line-title">
-                            <h4 class="h4-title">Latest News</h4>
+                <div class="col-12">
+                    {#                        <div class="banner-form">#}
+                    {#                            <form>#}
+                    {#                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">#}
+                    {#                                    <span class="form-control-span where-wrap">#}
+                    {#                                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>#}
+                    {#                                    <input type="text" class="form-input" placeholder="Where To?">#}
+                    {#                                    </span>#}
+                    {#                                </div>#}
+                    {#                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">#}
+                    {#                                    <span class="form-control-span when-wrap">#}
+                    {#                                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>#}
+                    {#                                    <select class="form-input">#}
+                    {#                                            <option>When?</option>#}
+                    {#                                            <option>January</option>#}
+                    {#                                            <option>February</option>#}
+                    {#                                            <option>March</option>#}
+                    {#                                            <option>April</option>#}
+                    {#                                            <option>May</option>#}
+                    {#                                            <option>June</option>#}
+                    {#                                            <option>July</option>#}
+                    {#                                            <option>August</option>#}
+                    {#                                            <option>September</option>#}
+                    {#                                            <option>October</option>#}
+                    {#                                            <option>November</option>#}
+                    {#                                            <option>December</option>#}
+                    {#                                        </select>#}
+                    {#                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>#}
+                    {#                                    </span>#}
+                    {#                                </div>#}
+                    {#                                <div class="input-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.4s">#}
+                    {#                                    <span class="form-control-span travel-wrap">#}
+                    {#                                        <span class="icon"><i class="fas fa-flag"></i></span>#}
+                    {#                                    <select class="form-input">#}
+                    {#                                            <option>Travel Type</option>#}
+                    {#                                            <option>Cultural</option>#}
+                    {#                                            <option>Adventure</option>#}
+                    {#                                            <option>Historical</option>#}
+                    {#                                            <option>Seaside</option>#}
+                    {#                                            <option>Discovery</option>#}
+                    {#                                        </select>#}
+                    {#                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>#}
+                    {#                                    </span>#}
+                    {#                                </div>#}
+                    {#                                <div class="input-col button-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">#}
+                    {#                                    <span class="form-control-span button-wrap">#}
+                    {#                                        <button class="sec-btn"><span>Find Now</span></button>#}
+                    {#                                    </span>#}
+                    {#                                </div>#}
+                    {#                            </form>#}
+                    {#                        </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Bottom Form End -->
+
+<!-- About Start -->
+<section class="main-about common-sec">
+    <div class="logo-icon">
+        <img src="/static/assets_chinese/images//logo-icon.svg" alt="logo-icon">
+    </div>
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-image-wp">
+                        <div class="about-image-box big wow right-animation" data-wow-duration="1s"
+                             data-wow-delay="0.1s">
+                            <div class="about-image back-image"
+                                 style="background-image: url(/static/assets_chinese/images//about-big-image.jpg);"></div>
                         </div>
-                        <h2 class="h2-title">Learn More <span>About Tours</span></h2>
+                        <div class="about-image-box small wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.2s">
+                            <div class="about-image back-image"
+                                 style="background-image: url(/static/assets_chinese/images//about-small-image.jpg);"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-learn-btn for-des wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <a href="blog.html" class="sec-btn" title="Learn More"><span>Learn More</span></a>
+                <div class="col-lg-6">
+                    <div class="about-content wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">About us</h4>
+                        </div>
+                        <h2 class="h2-title"><span>Chinese</span> Instruments Shop <span>Now</span></h2>
+                        <div class="about-content-text">
+                            <p>
+                                The project displays Chinese and Western musical instruments in the separate zone to
+                                attract potential customers
+                                from different cultural backgrounds. The following figures shows the shopping zone
+                                specially designed to promote
+                                Chinese instruments.
+                            </p>
+                        </div>
+                        <a href="about.html" title="Read More" class="sec-btn"><span>Shop Now</span></a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<!-- About End -->
 
-            <div class="row blog-slider mt-30 wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                <div class="col-lg-4">
-                    <div class="blog-box">
-                        <div class="blog-image back-image overlay" style="background-image: url(/static/assets_chinese/images//blog-image1.jpg);"></div>
-                        <div class="blog-box-content">
-                            <h3 class="h3-title">
-                                <a href="blog-detail.html">Things to See and Do When Visiting Japan</a>
-                            </h3>
-                            <p class="date">
-                                <a href="javascript:void(0);">June 6, 2020</a>
-                            </p>
+<!-- Destination Start -->
+<section class="main-destination common-sec back-image"
+         style="background-image: url(/static/assets_chinese/images//wave-design.jpg);">
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">Amazing Destination</h4>
+                        </div>
+                        <h2 class="h2-title">Choose The <span>Destination</span> Just Right For
+                            <span>Your Vacation</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="col-lg-8">
+                    <div class="destination-box">
+                        <a href="destination-detail.html">
+                            <div class="destination-box-image-wp">
+                                <div class="destination-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//ban4.jpg);"></div>
+                            </div>
+                            <div class="destination-box-content">
+                                <div class="destination-box-content-inner">
+                                    <h3 class="h3-title">Greece</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="destination-box">
+                                <a href="destination-detail.html">
+                                    <div class="destination-box-image-wp">
+                                        <div class="destination-box-image back-image"
+                                             style="background-image: url(/static/assets_chinese/images//dunhuang2.jpg);"></div>
+                                    </div>
+                                    <div class="destination-box-content">
+                                        <div class="destination-box-content-inner">
+                                            <h3 class="h3-title">Thailand</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="destination-box">
+                                <a href="destination-detail.html">
+                                    <div class="destination-box-image-wp">
+                                        <div class="destination-box-image back-image"
+                                             style="background-image: url(/static/assets_chinese/images//dunhuang3.jpg);"></div>
+                                    </div>
+                                    <div class="destination-box-content">
+                                        <div class="destination-box-content-inner">
+                                            <h3 class="h3-title">Switzerland</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="blog-box">
-                        <div class="blog-image back-image overlay" style="background-image: url(/static/assets_chinese/images//blog-image2.jpg);"></div>
-                        <div class="blog-box-content">
-                            <h3 class="h3-title">
-                                <a href="blog-detail.html">Travel the Most Beautiful Places in the World</a>
-                            </h3>
-                            <p class="date">
-                                <a href="javascript:void(0);">May 18, 2020</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-box">
-                        <div class="blog-image back-image overlay" style="background-image: url(/static/assets_chinese/images//blog-image3.jpg);"></div>
-                        <div class="blog-box-content">
-                            <h3 class="h3-title">
-                                <a href="blog-detail.html">Journeys are Best Measured in New Friends</a>
-                            </h3>
-                            <p class="date">
-                                <a href="javascript:void(0);">April 5, 2020</a>
-                            </p>
-                        </div>
+                    <div class="destination-box big-height">
+                        <a href="destination-detail.html">
+                            <div class="destination-box-image-wp">
+                                <div class="destination-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//dunhuang1.jpg);"></div>
+                            </div>
+                            <div class="destination-box-content">
+                                <div class="destination-box-content-inner">
+                                    <h3 class="h3-title">India</h3>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="blog-learn-btn for-mob wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <a href="blog.html" class="sec-btn" title="Learn More"><span>Learn More</span></a>
+                    <div class="destination-see-more">
+                        <a href="destination.html" title="See More" class="sec-btn"><span>View All</span></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Blog End -->
+    </div>
+</section>
+<!-- Destination End -->
 
-    <!-- Instagram Start -->
-    <section class="main-instagram bg-f6 common-sec">
-        <div class="instagram-icon">
-            <i class="fab fa-instagram"></i>
+<!-- Tour Offer Start -->
+<section class="main-tour-offer">
+    <div class="tour-offer-top pt-70 bg-f6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">Amazing Offers</h4>
+                        </div>
+                        <h2 class="h2-title">View of <span>Chinese Instruments</span> and <span>Shop Now</span></h2>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="sec-wp">
-            <div class="container">
+    </div>
+
+    <div class="tour-offer-slider-wp pb-70">
+        <div class="container">
+            <div class="row tour-offer-slider wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                <div class="col-lg-4">
+                    <div class="tour-offer-box">
+                        <a href="tour-detail.html">
+                            <div class="tour-offer-box-image-wp">
+                                <div class="tour-offer-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//ban4.jpg);">
+                                    <span class="discount-label">22% off</span>
+                                </div>
+                            </div>
+                            <div class="tour-offer-box-content">
+                                <h4 class="h4-title">Cinque Terre, Italy</h4>
+                                <span class="price-label">$1200</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-offer-box">
+                        <a href="tour-detail.html">
+                            <div class="tour-offer-box-image-wp">
+                                <div class="tour-offer-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//offer-img2.jpg);">
+                                    <span class="discount-label">15% off</span>
+                                </div>
+                            </div>
+                            <div class="tour-offer-box-content">
+                                <h4 class="h4-title">Parthenon, Greece</h4>
+                                <span class="price-label">$2500</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-offer-box">
+                        <a href="tour-detail.html">
+                            <div class="tour-offer-box-image-wp">
+                                <div class="tour-offer-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//offer-img3.jpg);">
+                                    <span class="discount-label">38% off</span>
+                                </div>
+                            </div>
+                            <div class="tour-offer-box-content">
+                                <h4 class="h4-title">Jaisalmer Fort, Jaisalmer</h4>
+                                <span class="price-label">$750</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-offer-box">
+                        <a href="tour-detail.html">
+                            <div class="tour-offer-box-image-wp">
+                                <div class="tour-offer-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//offer-img4.jpg);">
+                                    <span class="discount-label">32% off</span>
+                                </div>
+                            </div>
+                            <div class="tour-offer-box-content">
+                                <h4 class="h4-title">JungGrenzgipfel, Thailand</h4>
+                                <span class="price-label">$970</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-offer-box">
+                        <a href="tour-detail.html">
+                            <div class="tour-offer-box-image-wp">
+                                <div class="tour-offer-box-image back-image"
+                                     style="background-image: url(/static/assets_chinese/images//offer-img5.jpg);">
+                                    <span class="discount-label">15% off</span>
+                                </div>
+                            </div>
+                            <div class="tour-offer-box-content">
+                                <h4 class="h4-title">Jungfrau Mountain, Switzerland</h4>
+                                <span class="price-label">$1280</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tour Offer End -->
+
+<!-- Highlight Start -->
+<section class="main-highlight overlay back-image wow fadeup-animation"
+         style="background-image: url(/static/assets_chinese/images//highlight-image.jpg);" data-wow-duration="1s"
+         data-wow-delay="0.1s">
+    <div class="highlight-bg-video">
+        <video loop="" muted="" autoplay="">
+            <source src="/static/assets_chinese/images//highlight-video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 m-auto">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <h2 class="h2-title"><span>Traveling Highlights</span></h2>
+                        <h3 class="h3-title">Your New Traveling Idea</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Highlight End -->
+
+<!-- Tour Start -->
+<section class="main-tour bg-f6 back-image"
+         style="background-image: url(/static/assets_chinese/images//white-map.png);">
+    <div class="tour-services">
+        <div class="container">
+            <div class="tour-services-row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">Instagram</h4>
+                    <div class="col-lg-4">
+                        <div class="tour-service-box">
+                            <div class="tour-service-icon">
+                                <img src="/static/assets_chinese/images//tour-service-icon1.svg"
+                                     alt="tour-service-icon1">
                             </div>
-                            <h2 class="h2-title"><span><a href="javascript:void(0);">Holidayplanners</a></span></h2>
+                            <div class="tour-service-content">
+                                <h4 class="h4-title">700+ DESTINATIONS</h4>
+                                <p>Far far away, behind the word mountains, far countries Vokalia.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row instagram-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image1.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image1.jpg);"></div>
+                    <div class="col-lg-4">
+                        <div class="tour-service-box">
+                            <div class="tour-service-icon">
+                                <img src="/static/assets_chinese/images//tour-service-icon2.svg"
+                                     alt="tour-service-icon2">
+                            </div>
+                            <div class="tour-service-content">
+                                <h4 class="h4-title">BEST PRICE GUARANTEE</h4>
+                                <p>Far far away, behind the word mountains, far countries Vokalia.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image2.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image2.jpg);"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image3.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image3.jpg);"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image4.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image4.jpg);"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image5.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image5.jpg);"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image6.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image6.jpg);"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="instagram-slide-box">
-                            <div class="instagram-slide-image back-image" data-fancybox data-src="/static/assets_chinese/images//instagram-image4.jpg" style="background-image: url(/static/assets_chinese/images//instagram-image4.jpg);"></div>
+                    <div class="col-lg-4">
+                        <div class="tour-service-box">
+                            <div class="tour-service-icon">
+                                <img src="/static/assets_chinese/images//tour-service-icon3.svg"
+                                     alt="tour-service-icon3">
+                            </div>
+                            <div class="tour-service-content">
+                                <h4 class="h4-title">TOP NOTCH SUPPORT</h4>
+                                <p>Far far away, behind the word mountains, far countries Vokalia.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Instagram End -->
+    </div>
+    <div class="tour-sec pt-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">Amazing Tours</h4>
+                        </div>
+                        <h2 class="h2-title">Trending, <span>Best Selling Tours</span> And Fun Destinations</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row tour-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="col-lg-4">
+                    <div class="tour-box">
+                        <div class="tour-box-image back-image"
+                             style="background-image: url(/static/assets_chinese/images//tour-box-image1.jpg);"></div>
+                        <div class="tour-box-content">
+                            <div class="tour-box-label">
+                                <div class="tour-box-inner-label">
+                                    <h4 class="h4-title">Italy</h4>
+                                </div>
+                            </div>
+                            <div class="tour-box-title">
+                                <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking
+                                    Platform</h4>
+                            </div>
+                            <div class="tour-box-description">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                            </div>
+                            <div class="tour-info-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Duration</h5>
+                                                <p>2 days</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-user-friends"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Group Size</h5>
+                                                <p>6 People</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tour-box-bottom">
+                                <div class="tour-price">
+                                    <h3 class="h3-title">$1200</h3>
+                                </div>
+                                <div class="book-now-button">
+                                    <a href="tour-detail.html" title="Book Now"
+                                       class="sec-btn"><span>Book Now</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-box">
+                        <div class="tour-box-image back-image"
+                             style="background-image: url(/static/assets_chinese/images//tour-box-image2.jpg);"><span
+                                class="discount-label">15% off</span></div>
+                        <div class="tour-box-content">
+                            <div class="tour-box-label">
+                                <div class="tour-box-inner-label">
+                                    <h4 class="h4-title">Greece</h4>
+                                </div>
+                            </div>
+                            <div class="tour-box-title">
+                                <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking
+                                    Platform</h4>
+                            </div>
+                            <div class="tour-box-description">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                            </div>
+                            <div class="tour-info-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Duration</h5>
+                                                <p>6 days 3 hours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-user-friends"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Group Size</h5>
+                                                <p>15+ People</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tour-box-bottom">
+                                <div class="tour-price">
+                                    <h3 class="h3-title">$2500</h3>
+                                </div>
+                                <div class="book-now-button">
+                                    <a href="tour-detail.html" title="Book Now"
+                                       class="sec-btn"><span>Book Now</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-box">
+                        <div class="tour-box-image back-image"
+                             style="background-image: url(/static/assets_chinese/images//tour-box-image3.jpg);"><span
+                                class="discount-label">38% off</span></div>
+                        <div class="tour-box-content">
+                            <div class="tour-box-label">
+                                <div class="tour-box-inner-label">
+                                    <h4 class="h4-title">Jaisalmer</h4>
+                                </div>
+                            </div>
+                            <div class="tour-box-title">
+                                <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking
+                                    Platform</h4>
+                            </div>
+                            <div class="tour-box-description">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                            </div>
+                            <div class="tour-info-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Duration</h5>
+                                                <p>1 days 8 hours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-user-friends"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Group Size</h5>
+                                                <p>50+ People</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tour-box-bottom">
+                                <div class="tour-price">
+                                    <h3 class="h3-title">$750</h3>
+                                </div>
+                                <div class="book-now-button">
+                                    <a href="tour-detail.html" title="Book Now"
+                                       class="sec-btn"><span>Book Now</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tour-box">
+                        <div class="tour-box-image back-image"
+                             style="background-image: url(/static/assets_chinese/images//tour-box-image4.jpg);"></div>
+                        <div class="tour-box-content">
+                            <div class="tour-box-label">
+                                <div class="tour-box-inner-label">
+                                    <h4 class="h4-title">Switzerland</h4>
+                                </div>
+                            </div>
+                            <div class="tour-box-title">
+                                <h4 class="h4-title">Holiday Planners is a World Leading Online Tour Booking
+                                    Platform</h4>
+                            </div>
+                            <div class="tour-box-description">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                            </div>
+                            <div class="tour-info-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Duration</h5>
+                                                <p>7 days 8 hours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="tour-info">
+                                            <div class="tour-info-icon">
+                                                <i class="fas fa-user-friends"></i>
+                                            </div>
+                                            <div class="tour-info-content">
+                                                <h5 class="h6-title">Group Size</h5>
+                                                <p>50+ People</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tour-box-bottom">
+                                <div class="tour-price">
+                                    <h3 class="h3-title">$750</h3>
+                                </div>
+                                <div class="book-now-button">
+                                    <a href="tour-detail.html" title="Book Now"
+                                       class="sec-btn"><span>Book Now</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tour End -->
 
-    <!-- Partners Start -->
-    <section class="main-partners common-sec">
-        <div class="sec-wp">
-            <div class="container">
+<!-- Testimonial Start -->
+<section class="main-testimonial">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-5">
+                <div class="testimonial-left-side pt-70 wow right-animation" data-wow-duration="1s"
+                     data-wow-delay="0.1s">
+                    <div class="sec-title">
+                        <div class="line-title">
+                            <h4 class="h4-title">Testimonials</h4>
+                        </div>
+                        <h2 class="h2-title">Customer <span>Reviews</span></h2>
+                    </div>
+                    <div class="testimonial-quote">
+                        <img src="/static/assets_chinese/images//testimonial-quote.svg" alt="testimonial-quote">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <div class="testimonial-right-side wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="overflow-text">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
+                                    at the coast of the Semantics, a large language ocean.</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h3 class="h3-title">John Doe</h3>
+                                <p class="rated">Rated by travelers on facebook</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="overflow-text">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
+                                    at the coast of the Semantics, a large language ocean.</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h3 class="h3-title">Minh Chau</h3>
+                                <p class="rated">Rated by travelers on instagram</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="overflow-text">
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
+                                    at the coast of the Semantics, a large language ocean.</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h3 class="h3-title">Mathew A. Stephenson</h3>
+                                <p class="rated">Rated by travelers on twitter</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonial End -->
+
+<!-- Blog Start -->
+<section class="main-blog pt-70 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <div class="line-title">
+                        <h4 class="h4-title">Latest News</h4>
+                    </div>
+                    <h2 class="h2-title">Learn More <span>About Tours</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-learn-btn for-des wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <a href="blog.html" class="sec-btn" title="Learn More"><span>Learn More</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row blog-slider mt-30 wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+            <div class="col-lg-4">
+                <div class="blog-box">
+                    <div class="blog-image back-image overlay"
+                         style="background-image: url(/static/assets_chinese/images//blog-image1.jpg);"></div>
+                    <div class="blog-box-content">
+                        <h3 class="h3-title">
+                            <a href="blog-detail.html">Things to See and Do When Visiting Japan</a>
+                        </h3>
+                        <p class="date">
+                            <a href="javascript:void(0);">June 6, 2020</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-box">
+                    <div class="blog-image back-image overlay"
+                         style="background-image: url(/static/assets_chinese/images//blog-image2.jpg);"></div>
+                    <div class="blog-box-content">
+                        <h3 class="h3-title">
+                            <a href="blog-detail.html">Travel the Most Beautiful Places in the World</a>
+                        </h3>
+                        <p class="date">
+                            <a href="javascript:void(0);">May 18, 2020</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-box">
+                    <div class="blog-image back-image overlay"
+                         style="background-image: url(/static/assets_chinese/images//blog-image3.jpg);"></div>
+                    <div class="blog-box-content">
+                        <h3 class="h3-title">
+                            <a href="blog-detail.html">Journeys are Best Measured in New Friends</a>
+                        </h3>
+                        <p class="date">
+                            <a href="javascript:void(0);">April 5, 2020</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="blog-learn-btn for-mob wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                    <a href="blog.html" class="sec-btn" title="Learn More"><span>Learn More</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog End -->
+
+<!-- Instagram Start -->
+<section class="main-instagram bg-f6 common-sec">
+    <div class="instagram-icon">
+        <i class="fab fa-instagram"></i>
+    </div>
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">Instagram</h4>
+                        </div>
+                        <h2 class="h2-title"><span><a href="javascript:void(0);">Holidayplanners</a></span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row instagram-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image1.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image1.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image2.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image2.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image3.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image3.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image4.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image4.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image5.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image5.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image6.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image6.jpg);"></div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="instagram-slide-box">
+                        <div class="instagram-slide-image back-image" data-fancybox
+                             data-src="/static/assets_chinese/images//instagram-image4.jpg"
+                             style="background-image: url(/static/assets_chinese/images//instagram-image4.jpg);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram End -->
+
+<!-- Partners Start -->
+<section class="main-partners common-sec">
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="line-title">
+                            <h4 class="h4-title">Partners</h4>
+                        </div>
+                        <h2 class="h2-title">Our <span>Members</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row partners-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="col-lg-3">
+                    <div class="partners-logo-box">
+                        <img src="/static/assets_chinese/images//partners-logo1.png" alt="partners-logo1">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="partners-logo-box">
+                        <img src="/static/assets_chinese/images//partners-logo2.png" alt="partners-logo2">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="partners-logo-box">
+                        <img src="/static/assets_chinese/images//partners-logo3.png" alt="partners-logo3">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="partners-logo-box">
+                        <img src="/static/assets_chinese/images//partners-logo4.png" alt="partners-logo4">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="partners-logo-box">
+                        <img src="/static/assets_chinese/images//partners-logo3.png" alt="partners-logo3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Partners End -->
+
+<!-- Footer Start -->
+<footer class="site-footer back-image overlay"
+        style="background-image: url(/static/assets_chinese/images//footer-back.jpg);">
+    <div class="sec-wp">
+        <div class="container">
+            <div class="top-footer common-sec">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="line-title">
-                                <h4 class="h4-title">Partners</h4>
-                            </div>
-                            <h2 class="h2-title">Our <span>Members</span></h2>
+                    <div class="col-lg-4">
+                        <div class="footer-logo mb-30 wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.1s">
+                            <a href="index.html" title="Travel & Tour"><img
+                                    src="/static/assets_chinese/images//white-logo.png" alt="Logo"></a>
                         </div>
-                    </div>
-                </div>
-                <div class="row partners-slider wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <div class="col-lg-3">
-                        <div class="partners-logo-box">
-                            <img src="/static/assets_chinese/images//partners-logo1.png" alt="partners-logo1">
+                        <div class="footer-text mb-30 wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.2s">
+                            <p><b>Holiday Planners</b> sit amet consectetur adipisicing elit. Perferendis sapiente
+                                tenetur officiis explicabo fugit, sit mollitia eum atque excepturi quaerat autem.</p>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="partners-logo-box">
-                            <img src="/static/assets_chinese/images//partners-logo2.png" alt="partners-logo2">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="partners-logo-box">
-                            <img src="/static/assets_chinese/images//partners-logo3.png" alt="partners-logo3">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="partners-logo-box">
-                            <img src="/static/assets_chinese/images//partners-logo4.png" alt="partners-logo4">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="partners-logo-box">
-                            <img src="/static/assets_chinese/images//partners-logo3.png" alt="partners-logo3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Partners End -->
-
-    <!-- Footer Start -->
-    <footer class="site-footer back-image overlay" style="background-image: url(/static/assets_chinese/images//footer-back.jpg);">
-        <div class="sec-wp">
-            <div class="container">
-                <div class="top-footer common-sec">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="footer-logo mb-30 wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                                <a href="index.html" title="Travel & Tour"><img src="/static/assets_chinese/images//white-logo.png" alt="Logo"></a>
-                            </div>
-                            <div class="footer-text mb-30 wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
-                                <p><b>Holiday Planners</b> sit amet consectetur adipisicing elit. Perferendis sapiente tenetur officiis explicabo fugit, sit mollitia eum atque excepturi quaerat autem.</p>
-                            </div>
-                            <div class="newsletter-form mb-30 wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                                <form>
+                        <div class="newsletter-form mb-30 wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.3s">
+                            <form>
                                     <span class="form-control-span email-wrap">
                                         <input type="email" class="form-input" placeholder="Enter Your Email" required>
                                         <button type="submit" class="sec-btn sm-btn"><span>Submit</span></button>
                                     </span>
-                                </form>
-                            </div>
-                            <div class="payment-companies-logo wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <img src="/static/assets_chinese/images//payment-companies-logo.png" alt="payment-companies-logo">
-                            </div>
+                            </form>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="footer-nav-wp wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">
-                                <div class="footer-title">
-                                    <div class="h3-title">Navigation</div>
-                                </div>
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li>
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li>
-                                            <a href="about.html">About</a>
-                                        </li>
-                                        <li>
-                                            <a href="destination.html">Destination</a>
-                                        </li>
-                                        <li>
-                                            <a href="tour.html">Tour</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html">Blog</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact us</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="payment-companies-logo wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.4s">
+                            <img src="/static/assets_chinese/images//payment-companies-logo.png"
+                                 alt="payment-companies-logo">
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="footer-contact-wp wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.6s">
-                                <div class="footer-title">
-                                    <div class="h3-title">Need Help ?</div>
-                                </div>
-                                <div class="footer-contact">
-                                    <ul>
-                                        <li>
-                                            <span class="contact-label">Call Us</span>
-                                            <a href="tel:1234567890">+123 456 7890</a>
-                                        </li>
-                                        <li>
-                                            <span class="contact-label">Email for Us</span>
-                                            <a href="mailto:holidayplanners@gmail.com">holidayplanners@gmail.com</a>
-                                        </li>
-                                        <li>
-                                            <span class="contact-label">Location</span>
-                                            <a href="javascript:void(0);">Main Street, Victoria 8007.</a>
-                                        </li>
-                                        <li class="social-icons">
-                                            <span class="contact-label">Follow us</span>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0);" title="Follow us on Facebook">
-                                                        <span class="icon"><i class="fab fa-facebook-f"></i></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);" title="Follow us on Instagram">
-                                                        <span class="icon"><i class="fab fa-instagram"></i></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);" title="Follow us on Twitter">
-                                                        <span class="icon"><i class="fab fa-twitter"></i></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-nav-wp wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <div class="footer-title">
+                                <div class="h3-title">Navigation</div>
+                            </div>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="destination.html">Destination</a>
+                                    </li>
+                                    <li>
+                                        <a href="tour.html">Tour</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact us</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="bottom-footer">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <p class="copyright-text text-lg-left">Copyright © 2021 <a href="http://www.bootstrapmb.com" target="_blank">Geek Code Lab</a>. All Rights Reserved.</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="copyright-link">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-contact-wp wow fadeup-animation" data-wow-duration="1s"
+                             data-wow-delay="0.6s">
+                            <div class="footer-title">
+                                <div class="h3-title">Need Help ?</div>
+                            </div>
+                            <div class="footer-contact">
                                 <ul>
-                                    <li><a href="javascript:void(0);" title="Privacy Policy">Privacy Policy</a></li>
-                                    <li><a href="javascript:void(0);" title="Terms of Use">Terms of Use</a></li>
-                                    <li><a href="javascript:void(0);" title="Cookie Policy">Cookie Policy</a></li>
+                                    <li>
+                                        <span class="contact-label">Call Us</span>
+                                        <a href="tel:1234567890">+123 456 7890</a>
+                                    </li>
+                                    <li>
+                                        <span class="contact-label">Email for Us</span>
+                                        <a href="mailto:holidayplanners@gmail.com">holidayplanners@gmail.com</a>
+                                    </li>
+                                    <li>
+                                        <span class="contact-label">Location</span>
+                                        <a href="javascript:void(0);">Main Street, Victoria 8007.</a>
+                                    </li>
+                                    <li class="social-icons">
+                                        <span class="contact-label">Follow us</span>
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:void(0);" title="Follow us on Facebook">
+                                                    <span class="icon"><i class="fab fa-facebook-f"></i></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" title="Follow us on Instagram">
+                                                    <span class="icon"><i class="fab fa-instagram"></i></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" title="Follow us on Twitter">
+                                                    <span class="icon"><i class="fab fa-twitter"></i></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="bottom-footer">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="copyright-text text-lg-left">Copyright © 2021 <a href="http://www.bootstrapmb.com"
+                                                                                   target="_blank">Geek Code Lab</a>.
+                            All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="copyright-link">
+                            <ul>
+                                <li><a href="javascript:void(0);" title="Privacy Policy">Privacy Policy</a></li>
+                                <li><a href="javascript:void(0);" title="Terms of Use">Terms of Use</a></li>
+                                <li><a href="javascript:void(0);" title="Cookie Policy">Cookie Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-    <!-- Footer End -->
+    </div>
+</footer>
+<!-- Footer End -->
 
-    <!-- Scroll To Top Start -->
-    <a href="javascript:void(0);" title="Back To Top" id="scrollToTop" class="scrolltop"> <i class="default fas fa-long-arrow-alt-up"></i> <i class="hover fas fa-long-arrow-alt-up"></i> </a>
-    <!-- Scroll To Top End -->
+<!-- Scroll To Top Start -->
+<a href="javascript:void(0);" title="Back To Top" id="scrollToTop" class="scrolltop"> <i
+        class="default fas fa-long-arrow-alt-up"></i> <i class="hover fas fa-long-arrow-alt-up"></i> </a>
+<!-- Scroll To Top End -->
 
 
-    <!-- Jquery JS Link -->
-    <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js'%}"></script>
+<!-- Jquery JS Link -->
+<script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>
 
-    <!-- Bootstrap JS Link -->
-    <script src="{% static 'assets_chinese/js/bootstrap.min.js'%}"></script>
+<!-- Bootstrap JS Link -->
+<script src="{% static 'assets_chinese/js/bootstrap.min.js' %}"></script>
 
-    <!-- Slick Slider JS Link -->
-    <script src="{% static 'assets_chinese/js/slick.min.js'%}"></script>
+<!-- Slick Slider JS Link -->
+<script src="{% static 'assets_chinese/js/slick.min.js' %}"></script>
 
-    <!-- Fancybox JS Link -->
-    <script src="{% static 'assets_chinese/js/jquery.fancybox.min.js'%}"></script>
+<!-- Fancybox JS Link -->
+<script src="{% static 'assets_chinese/js/jquery.fancybox.min.js' %}"></script>
 
-    <!-- Wow Animation JS Link -->
-    <script src="{% static 'assets_chinese/js/wow.min.js'%}"></script>
+<!-- Wow Animation JS Link -->
+<script src="{% static 'assets_chinese/js/wow.min.js' %}"></script>
 
-    <!-- Font Awesome JS Link -->
-    <script src="{% static 'assets_chinese/js/font-awesome.min.js'%}"></script>
+<!-- Font Awesome JS Link -->
+<script src="{% static 'assets_chinese/js/font-awesome.min.js' %}"></script>
 
-    <!-- Custom JS Link -->
-    <script src="{% static 'assets_chinese/js/custom.js'%}"></script>
+<!-- Custom JS Link -->
+<script src="{% static 'assets_chinese/js/custom.js' %}"></script>
 
 </body>
 
