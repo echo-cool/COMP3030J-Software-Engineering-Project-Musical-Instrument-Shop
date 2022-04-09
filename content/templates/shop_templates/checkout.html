@@ -37,22 +37,22 @@
                                      aria-labelledby="tab_1">
                                     <div class="row no-gutters">
                                         <div class="col-6 form-group pr-1">
-                                            <input name="name" type="text" class="form-control" placeholder="Name">
+                                            <input name="name" type="text" class="form-control" placeholder="{% trans 'Name' %}">
                                         </div>
                                         <div class="col-6 form-group pl-1">
-                                            <input name="last_name" type="text" class="form-control" placeholder="Last Name">
+                                            <input name="last_name" type="text" class="form-control" placeholder="{% trans 'Last Name' %}">
                                         </div>
                                     </div>
                                     <!-- /row -->
                                     <div class="form-group">
-                                        <input name="full_address" type="text" class="form-control" placeholder="Full Address">
+                                        <input name="full_address" type="text" class="form-control" placeholder="{% trans 'Full Address' %}">
                                     </div>
                                     <div class="row no-gutters">
                                         <div class="col-6 form-group pr-1">
-                                            <input name="city" type="text" class="form-control" placeholder="City">
+                                            <input name="city" type="text" class="form-control" placeholder="{% trans 'City' %}">
                                         </div>
                                         <div class="col-6 form-group pl-1">
-                                            <input name="postal_code" type="text" class="form-control" placeholder="Postal code">
+                                            <input name="postal_code" type="text" class="form-control" placeholder="{% trans 'Postal code' %}">
                                         </div>
                                     </div>
                                     <!-- /row -->
@@ -70,7 +70,7 @@
                                     </div>
                                     <!-- /row -->
                                     <div class="form-group">
-                                        <input name="telephone" type="text" class="form-control" placeholder="Telephone">
+                                        <input name="telephone" type="text" class="form-control" placeholder="{% trans 'Telephone' %}">
                                     </div>
                                     <hr>
                                     <div class="form-group">
@@ -115,7 +115,7 @@
                                         </div>
                                         <!-- /row -->
                                         <div class="form-group">
-                                            <input name="telephone_2" type="text" class="form-control" placeholder="Telephone">
+                                            <input name="telephone_2" type="text" class="form-control" placeholder="{% trans 'Telephone' %}">
                                         </div>
                                     </div>
                                     <!-- /other_addr_c -->
@@ -155,7 +155,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_radio">Bank Transfer<a href="#0" class="info"
+                                    <label class="container_radio">{% trans 'Bank Transfer' %}<a href="#0" class="info"
                                                                                    data-bs-toggle="modal"
                                                                                    data-bs-target="#payments_method"></a>
                                         <input type="radio" name="payment" value="Bank Transfer">
@@ -165,16 +165,16 @@
                             </ul>
                             <div class="payment_info d-none d-sm-block">
                                 <figure><img src="img/cards_all.svg" alt=""></figure>
-                                <p>Sensibus reformidans interpretaris sit ne, nec errem nostrum et, te nec meliore
+                                <p>{% trans 'Sensibus reformidans interpretaris sit ne, nec errem nostrum et, te nec meliore
                                     philosophia. At vix quidam periculis. Solet tritani ad pri, no iisque definitiones
-                                    sea.</p></div>
+                                    sea.' %}</p></div>
 
-                            <h6 class="pb-2">Shipping Method</h6>
+                            <h6 class="pb-2">{% trans 'Shipping Method' %}</h6>
 
 
                             <ul>
                                 <li>
-                                    <label class="container_radio">Standard shipping<a href="#0" class="info"
+                                    <label class="container_radio">{% trans 'Standard shipping' %}<a href="#0" class="info"
                                                                                        data-bs-toggle="modal"
                                                                                        data-bs-target="#payments_method"></a>
                                         <input type="radio" name="shipping" value="Standard shipping" checked>
@@ -182,7 +182,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_radio">Express shipping<a href="#0" class="info"
+                                    <label class="container_radio">{% trans 'Express shipping' %}<a href="#0" class="info"
                                                                                       data-bs-toggle="modal"
                                                                                       data-bs-target="#payments_method"></a>
                                         <input type="radio" name="shipping" value="Express shipping">
@@ -198,7 +198,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="step last">
-                            <h3>3. Order Summary</h3>
+                            <h3>{% trans '3. Order Summary' %}</h3>
                             <div class="box_general summary">
                                 <ul>
                                     {% for cart in carts %}
@@ -206,18 +206,18 @@
                                     {% endfor %}
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><em><strong>Subtotal</strong></em> <span>${{ subtotal_all }}</span></li>
-                                    <li class="clearfix"><em><strong>Shipping</strong></em> <span>${{ shipping }}</span></li>
+                                    <li class="clearfix"><em><strong>{% trans 'Subtotal' %}</strong></em> <span>${{ subtotal_all }}</span></li>
+                                    <li class="clearfix"><em><strong>{% trans 'Shipping' %}</strong></em> <span>${{ shipping }}</span></li>
                                 </ul>
-                                <div class="total clearfix">TOTAL <span>${{ total }}</span></div>
+                                <div class="total clearfix">{% trans 'TOTAL' %} <span>${{ total }}</span></div>
                                 <div class="form-group">
-                                    <label class="container_check">Register to the Newsletter.
+                                    <label class="container_check">{% trans 'Register to the Newsletter.' %}
                                         <input name="newsletter" type="checkbox" checked>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <input value="{{ order_id }}" name="order_id">
-                                <button type="submit" class="btn_1 full-width">Confirm and Pay</button>
+                                <button type="submit" class="btn_1 full-width">{% trans 'Confirm and Pay' %}</button>
                             </div>
                             <!-- /box_general -->
                         </div>
