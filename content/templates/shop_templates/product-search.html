@@ -15,16 +15,39 @@
 
     <link rel="stylesheet" href="{% static "assets/css_for_shop/listing.css" %}">
 
-    <link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+
 
 {% endblock %}
 
 {% block content %}
     <main class="content-page">
 
-        <div class="piano-wrapper ">
-            {% include "shop_templates/game_piano.html" %}
-        </div>
+        {% if game_style == 1 %}
+            <div class="piano-wrapper ">
+                {% include "shop_templates/game_piano.html" %}
+            </div>
+        {% elif game_style == 2 %}
+            <div class="guitar-wrapper ">
+                {% include "shop_templates/game_guitar.html" %}
+            </div>
+        {% else %}
+            <div class="wrap-bread-crumb breadcrumb_collection2">
+                <div class="text-center bg-breadcrumb"
+                     style="background-image : url({% static '/assets/img_for_shop/banner_wishlist.jpg' %})">
+                    <div class="title-page">
+                        <h2 class="">Products</h2>
+                    </div>
+                    <div class="bread-crumb">
+                        <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right"
+                                                                         aria-hidden="true"></i></a>
+                        <strong>Products</strong>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         <!-- /top_banner -->
         <div id="stick_here"></div>
 
@@ -1113,6 +1136,5 @@
     </script>
     <script src="{% static "assets/js_for_shop/product_search.js" %}"></script>
 
-    <script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>
 {% endblock %}
 

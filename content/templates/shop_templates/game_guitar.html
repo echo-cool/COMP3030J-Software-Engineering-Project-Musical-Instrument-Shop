@@ -1,7 +1,9 @@
+{% load static %}
+
 <!--
 design by: https://www.behance.net/vahanhovh
 -->
-<div class="notes" style="position: absolute;left: 6%;">
+<div class="notes" style="position: absolute;left: 23%;">
     <div class="note" data-note="0">
         <div>G<span>4</span></div>
     </div>
@@ -57,9 +59,13 @@ design by: https://www.behance.net/vahanhovh
 <div class="guitar_center_box">
     <button class="guitar-button" onclick="load_guitar_example1()">Sample</button>
     <button class="guitar-button" onclick="load_guitar_example2()">Sample2</button>
-    <button class="guitar-button play-icon" onclick="play_start()">Start play<i class="fa fa-play"></i>
+    <button class="guitar-button play-icon" onclick="playGuitar()">Start play<i class="fa fa-play"></i>
     </button>
-    <button class="guitar-button pause-icon" onclick="play_start()">Stop play<i class="fa fa-pause"></i></button>
+    <button class="guitar-button pause-icon" onclick="stopGuitar()">Stop play<i class="fa fa-pause"></i></button>
 
 </div>
-<audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Shuffle_A.mp3"></audio>
+<audio id="guitar-audio-1" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Shuffle_A.mp3"></audio>
+
+
+<link href="{% static 'assets/js_for_game/game_guitar.css' %}" rel="stylesheet">
+<script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>

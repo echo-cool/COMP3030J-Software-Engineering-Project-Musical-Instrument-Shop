@@ -1,5 +1,4 @@
 class Guitar {
-
     constructor(context, buffer) {
         this.context = context;
         this.buffer = buffer;
@@ -12,12 +11,12 @@ class Guitar {
         this.source.connect(this.gainNode);
         this.gainNode.connect(this.context.destination);
 
-        this.gainNode.gain.setValueAtTime(0.8, this.context.currentTime);
+        this.gainNode.gain.setValueAtTime(0.8, context.currentTime);
     }
 
     play() {
         this.setup();
-        this.source.start(this.context.currentTime);
+        this.source.start(context.currentTime);
     }
 
     stop() {
@@ -90,6 +89,7 @@ function stopGuitar() {
 }
 
 let context = new (window.AudioContext || window.webkitAudioContext)();
+
 
 let sounds = [
     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/G4.mp3',

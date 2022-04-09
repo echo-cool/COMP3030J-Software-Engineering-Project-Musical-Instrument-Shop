@@ -1,8 +1,10 @@
-modelLoadLeftAndRight(".model-wrapper-left", "model_detail_piano8.glb");
+let url1 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_harp.glb?Expires=1649519297&OSSAccessKeyId=TMP.3KfuWWbiALkoaSvP7vQ144U8Y6dsWut68koh1Nh8RVFairM8iw4LdYy1rjce1osPLMTBwyTeoace5hcxqw1ZrCp4yyP81x&Signature=2cPofLhmsX2WaZPhfRErhPNk1ss%3D";
+let url2 = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano8.glb?Expires=1649519383&OSSAccessKeyId=TMP.3KfuWWbiALkoaSvP7vQ144U8Y6dsWut68koh1Nh8RVFairM8iw4LdYy1rjce1osPLMTBwyTeoace5hcxqw1ZrCp4yyP81x&Signature=TBNtl2s4313zVm5nEWUDE%2F3DqeQ%3D";
+modelLoadLeftAndRight(".model-wrapper-left", "model_detail_piano8.glb", url1);
 
-modelLoadLeftAndRight(".model-wrapper-right", "model_detail_piano2.glb");
+modelLoadLeftAndRight(".model-wrapper-right", "model_detail_piano2.glb", url2);
 
-function modelLoadLeftAndRight(box_selector, model_name) {
+function modelLoadLeftAndRight(box_selector, model_name, online_url) {
     function switchRotate() {
         console.log(rotate_avail);
         rotate_avail = !rotate_avail
@@ -130,7 +132,7 @@ function modelLoadLeftAndRight(box_selector, model_name) {
 
         // 添加操作器
         let loader = new THREE.GLTFLoader();
-        loader.load("../static/assets/detail_model/" + model_name, function (gltf) {
+        loader.load(online_url, function (gltf) {
                 // 返回的场景对象gltf.scene插入到threejs场景中
                 gltf.scene.traverse(function (child) {
                     child.frustumCulled = false;
