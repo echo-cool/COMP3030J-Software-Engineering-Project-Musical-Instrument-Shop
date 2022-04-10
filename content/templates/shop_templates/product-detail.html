@@ -245,7 +245,7 @@
                         <div class="pd_summary">
                             <p class=" mb-0">{% trans 'instrument.details' %}</p>
                         </div>
-                        <form action="../api/add_cart" method="post" enctype="multipart/form-data" id="AddToCartForm"
+                        <form method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
                             {% csrf_token %}
                             <input type="hidden" value="{{ instrument.id }}" name="product-id">

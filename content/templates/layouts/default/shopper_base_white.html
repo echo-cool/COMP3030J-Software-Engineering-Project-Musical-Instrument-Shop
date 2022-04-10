@@ -25,8 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_header.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base.css" %}" media="all"/>
-    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base_white.css" %}"
-          media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base_white.css" %}" media="all"/>
 
 
     <!-- YOUR CUSTOM CSS -->
@@ -75,14 +74,14 @@
             <div class="drawer-search-top">
                 <h3 class="drawer-search-title">Start typing and hit Enter</h3>
             </div>
-            <form class="wg-search-form" action="/search">
+            <form class="wg-search-form" id="search_form">
                 <input type="hidden" name="type" value="product">
                 <input type="text" name="q" placeholder="Search anything" class="search-input js_engo_autocomplate">
-                <button type="submit" class="set-20-svg" id="search_form">
+                <button type="submit" class="set-20-svg" >
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </form>
-            <div class="drawer_back">
+            <div class="drawer_back" id="close-search">
                 <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
