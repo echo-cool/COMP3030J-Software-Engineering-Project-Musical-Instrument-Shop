@@ -38,9 +38,9 @@
                     <div class="col-md-6 col-sm-5 col-xs-12">
                         <div class="top-support">
                             <ul class="list-inline">
-                                <li><a href="#" class="top-support-link">Help </a></li>
-                                <li><a href="#" class="top-support-link">Services</a></li>
-                                <li><a href="#" class="top-support-link">USD</a></li>
+                                <li><a href="#" class="top-support-link">{% trans 'Help' %} </a></li>
+                                <li><a href="#" class="top-support-link">{% trans 'Services' %}</a></li>
+                                <li><a href="#" class="top-support-link">{% trans 'USD' %}</a></li>
                                 <li><a href="#" class="top-support-link"><img
                                         src="{% static 'assets/images/home_2/icon-flag.png' %}" alt=""/></a></li>
                             </ul>
@@ -49,10 +49,10 @@
                     <div class="col-md-6 col-sm-7 col-xs-12">
                         <div class="top-info">
                             <ul class="list-inline text-right">
-                                <li><a href="#" class="top-info-link"><i class="fa fa-user"></i> My Account</a></li>
-                                <li><a href="#" class="top-info-link"><i class="fa fa-heart"></i> Wishlist</a></li>
-                                <li><a href="#" class="top-info-link"><i class="fa fa-refresh"></i> Compare</a></li>
-                                <li><a href="#" class="top-info-link"><i class="fa fa-sign-out"></i> Check out</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-user"></i> {% trans 'My Account' %}</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-heart"></i> {% trans 'Wishlist' %}</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-refresh"></i> {% trans 'Compare' %}</a></li>
+                                <li><a href="#" class="top-info-link"><i class="fa fa-sign-out"></i> {% trans 'Check out' %}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -69,30 +69,30 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="phone-info">
-                            <label>Call Us Now</label>
-                            <h2 class="phone-number">Toll free : (+00) 00 00 000</h2>
+                            <label>{% trans 'Call Us Now' %}</label>
+                            <h2 class="phone-number">{% trans 'Toll free : (+00) 00 00 000' %}</h2>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="top-cart block-cart box">
                             <a href="#">
-                                <h2>shopping Cart</h2>
-                                <p>0 Item(s) - $0.00</p>
+                                <h2>{% trans 'shopping Cart' %}</h2>
+                                <p>{% trans '0 Item(s) - $0.00' %}</p>
                             </a>
                             <div class="block-content box-inner">
                                 <div class="inner">
-                                    <p class="block-subtitle">Recently added item(s)</p>
+                                    <p class="block-subtitle">{% trans 'Recently added item(s)' %}</p>
                                     <ol class="mini-products-list" id="cart-sidebar">
                                         <li class="item odd">
                                             <a class="product-image" href="#">
                                                 <img width="70" height="84" alt=""
                                                      src="{% static 'assets/images/home_1/img-cart.gif' %}">
                                             </a>
-                                            <a class="btn-remove" href="">X</a>
-                                            <a class="btn-edit" href="#">Edit</a>
+                                            <a class="btn-remove" href="">{% trans 'X' %}</a>
+                                            <a class="btn-edit" href="#">{% trans 'Edit' %}</a>
                                             <div class="product-details">
                                                 <p class="product-name">
-                                                    <a href="#">Bath Minerals and Salt</a>
+                                                    <a href="#">{% trans 'Bath Minerals and Salt' %}</a>
                                                 </p>
                                                 <span class="price">$25.00</span>
                                                 <strong>1</strong>
@@ -103,11 +103,11 @@
                                                 <img width="70" height="84" alt=""
                                                      src="{% static 'assets/images/home_1/img-cart.gif' %}">
                                             </a>
-                                            <a class="btn-remove" href="#">X</a>
-                                            <a class="btn-edit" href="#">Edit</a>
+                                            <a class="btn-remove" href="#">{% trans 'X' %}</a>
+                                            <a class="btn-edit" href="#">{% trans 'Edit' %}</a>
                                             <div class="product-details">
                                                 <p class="product-name">
-                                                    <a href="#">Large Camera Bag</a>
+                                                    <a href="#">{% trans 'Large Camera Bag' %}</a>
                                                 </p>
                                                 <span class="price">$20.00</span>
                                                 <strong>1</strong>
@@ -116,14 +116,14 @@
                                     </ol>
                                     <div class="summary">
                                         <p class="subtotal">
-                                            <span class="label">Subtotal:</span>
+                                            <span class="label">{% trans 'Subtotal:' %}</span>
                                             <span class="price">$45.00</span>
                                         </p>
                                     </div>
                                     <div class="actions">
                                         <div class="a-inner">
-                                            <a href="#" class="btn-mycart">view my cart</a>
-                                            <a class="btn-checkout" href="#">Checkout</a>
+                                            <a href="#" class="btn-mycart">{% trans 'view my cart' %}</a>
+                                            <a class="btn-checkout" href="#">{% trans 'Checkout' %}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -140,23 +140,23 @@
                         <nav class="main-nav main-nav2">
                             <ul>
                                 <li class="menu-item-has-children">
-                                    <a href="#" class="active">Home <i class="fa fa-angle-down"></i></a>
+                                    <a href="#" class="active">{% trans 'Home' %} <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Home 1</a></li>
-                                        <li><a href="#">Home 2</a></li>
-                                        <li><a href="#">Home 3</a></li>
-                                        <li><a href="#">List</a></li>
-                                        <li><a href="#">Grid</a></li>
-                                        <li><a href="#">Detail</a></li>
+                                        <li><a href="#">{% trans 'Home 1' %}</a></li>
+                                        <li><a href="#">{% trans 'Home 2' %}</a></li>
+                                        <li><a href="#">{% trans 'Home 3' %}</a></li>
+                                        <li><a href="#">{% trans 'List' %}</a></li>
+                                        <li><a href="#">{% trans 'Grid' %}</a></li>
+                                        <li><a href="#">{% trans 'Detail' %}</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="#">Corssbody <i class="fa fa-angle-down"></i></a>
+                                    <a href="#">{% trans 'Corssbody' %} <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li>
                                             <div class="wrap-mega-menu">
                                                 <div class="mega-menu-list-product">
-                                                    <h2 class="title-mega-menu">Collection</h2>
+                                                    <h2 class="title-mega-menu">{% trans 'Collection' %}</h2>
                                                     <div class="wrap-item">
                                                         {% for i in ten %}
                                                             <div class="item">
@@ -188,8 +188,8 @@
                                                                 alt=""/></a>
                                                     </div>
                                                     <div class="mega-menu-simple-text">
-                                                        <p class="simple-text1">big sale on canifa shop</p>
-                                                        <p class="simple-text2">up to<br/>80% off</p>
+                                                        <p class="simple-text1">{% trans 'big sale on canifa shop' %}</p>
+                                                        <p class="simple-text2">{% trans 'up to' %}<br/>80% off</p>
                                                     </div>
                                                 </div>
                                                 <!-- End Mega Menu Simple Banner -->
@@ -198,7 +198,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="#">Satchel Totes <i class="fa fa-angle-down"></i></a>
+                                    <a href="#">{% trans 'Satchel Totes' %} <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li>
                                             <div class="wrap-mega-menu">
@@ -211,30 +211,29 @@
                                                                         alt=""/></a>
                                                             </div>
                                                             <div class="mega-menu-simple-text">
-                                                                <p class="mega-menu-text-intro"><strong>Women
-                                                                    fashion</strong>
-                                                                    <span>|  Lorem ipsum dolor sit amet</span></p>
+                                                                <p class="mega-menu-text-intro"><strong>{% trans 'Women fashion' %}</strong>
+                                                                    <span>{% trans '|  Lorem ipsum dolor sit amet' %}</span></p>
                                                             </div>
                                                         </div>
                                                         <!-- End Mega Menu Simple Banner -->
                                                     </div>
                                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                                         <div class="mega-menu-list-category">
-                                                            <h2>Categories</h2>
+                                                            <h2>{% trans 'Categories' %}</h2>
                                                             <ul>
-                                                                <li><a href="#">Tops</a></li>
-                                                                <li><a href="#">Sweaters</a></li>
-                                                                <li><a href="#">Bottoms</a></li>
-                                                                <li><a href="#">Dresses</a></li>
-                                                                <li><a href="#">Coats &amp; Jackets</a></li>
-                                                                <li><a href="#">Scarves</a></li>
-                                                                <li><a href="#">Pants</a></li>
+                                                                <li><a href="#">{% trans 'Tops' %}</a></li>
+                                                                <li><a href="#">{% trans 'Sweaters' %}</a></li>
+                                                                <li><a href="#">{% trans 'Bottoms' %}</a></li>
+                                                                <li><a href="#">{% trans 'Dresses' %}</a></li>
+                                                                <li><a href="#">{% trans 'Coats &amp; Jackets' %}</a></li>
+                                                                <li><a href="#">{% trans 'Scarves' %}</a></li>
+                                                                <li><a href="#">{% trans 'Pants' %}</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                                         <div class="mega-menu-slider-brand">
-                                                            <h2>Style-Brands</h2>
+                                                            <h2>{% trans 'Style-Brands' %}</h2>
                                                             <div class="wrap-item">
                                                                 {% for i in three %}
                                                                     <div class="item">
@@ -265,10 +264,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">Kids</a></li>
-                                <li class="menu-item-has-children"><a href="#">Accessories</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li class="menu-item-has-children"><a href="#">{% trans 'Kids' %}</a></li>
+                                <li class="menu-item-has-children"><a href="#">{% trans 'Accessories' %}</a></li>
+                                <li><a href="#">{% trans 'Blog' %}</a></li>
+                                <li><a href="#">{% trans 'Contact' %}</a></li>
                             </ul>
                             <a href="#" class="btn-mobile-menu"></a>
                         </nav>
@@ -301,7 +300,7 @@
             <div class="container">
                 <div class="newsletter-intro">
                     <span class="envalope-icon"><i class="fa fa-envelope-o"></i></span>
-                    <p>SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br/>UPDATES, AND ANOTHER STUFF BY EMAIL.</p>
+                    <p>{% trans 'SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, ' %}<br/>{% trans 'UPDATES, AND ANOTHER STUFF BY EMAIL.' %}</p>
                 </div>
                 <div class="newsletter-form">
                     <form method="post">
@@ -317,7 +316,7 @@
         <div class="footer-quick-search">
             <div class="container">
                 <div class="content-quick-search">
-                    <label>Quick link:</label>
+                    <label>{% trans 'Quick link:' %}</label>
                     <a href="#">#</a>
                     <a href="#">A</a>
                     <a href="#">B</a>
@@ -357,12 +356,12 @@
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="copy-right">
-                            <p>© 2015 <a href="#" class="privacy-policy">Privacy Policy</a></p>
+                            <p>© 2022 <a href="#" class="privacy-policy">{% trans 'Privacy Policy' %}</a></p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="contact-footer">
-                            <p>My Company , Glasgow D04 89GR<br/>Call us now: 123-456-7890</p>
+                            <p>{% trans 'My Company , Glasgow D04 89GR' %}<br/>{% trans 'Call us now: 123-456-7890' %}</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
