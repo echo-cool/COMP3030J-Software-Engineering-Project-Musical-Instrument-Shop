@@ -61,32 +61,18 @@
             <div class="drawer-search-top">
                 <h3 class="drawer-search-title">Start typing and hit Enter</h3>
             </div>
-            <form class="wg-search-form" action="/search">
+            <form class="wg-search-form">
                 <input type="hidden" name="type" value="product">
                 <input type="text" name="q" placeholder="Search anything" class="search-input js_engo_autocomplate">
-                <button type="submit" class="set-20-svg">
+                <button type="submit" class="set-20-svg" id="search_form">
 
                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2"
-                         version="1.1" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
-                            rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
-                        <defs id="defs6"></defs>
-                        <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg>
+                    <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </form>
             <div class="drawer_back">
                 <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                         id="Capa_1" x="0px" y="0px" viewBox="0 0 298.667 298.667"
-                         style="enable-background:new 0 0 298.667 298.667;" xml:space="preserve">
-          <g>
-            <g>
-              <polygon
-                      points="298.667,30.187 268.48,0 149.333,119.147 30.187,0 0,30.187 119.147,149.333 0,268.48 30.187,298.667     149.333,179.52 268.48,298.667 298.667,268.48 179.52,149.333   "></polygon>
-            </g>
-          </g>
-
-        </svg>
+                    <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
             </div>
             <div class="result_prod js_productSearchResults">
@@ -115,7 +101,7 @@
           </svg>
                     </a>
                     <h3 class="title">Shopping Cart</h3>
-                    <div class="mini-cart-counter"><span class="cart-counter enj-cartcount">4</span></div>
+                    <div class="mini-cart-counter"><span class="cart-counter enj-cartcount" id="cart-count">{{ carts.count }}</span></div>
                 </div>
 
                 <div class="mini-cart-bottom enj-minicart-ajax">
@@ -123,64 +109,44 @@
                     <div class="prod">
                         <div class="product-cart ">
 
-                            <ol class="minicart_item list-unstyled mb-0 px-0">
-                                <li class="d-flex">
-                                    <div class="thumb_img_cartmini">
-                                        <a href="/products/szpa-p12-portable-pa?variant=37685276573883" title=""
-                                           class=""><img alt="SZPA-P12 Portable PA - Black"
-                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/13.1_small.jpg?v=1606588122"></a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <h3 class="product_name_mini">
-                                            <a href="/products/szpa-p12-portable-pa?variant=37685276573883">SZPA-P12
-                                                Portable PA - Black</a>
-                                        </h3>
-                                        <div class="product_info">
-                                            <div class="product_quanity">QTY : 1</div>
-                                            <div class="product_price">
-                                                <span class="price_sale">$57.00</span>
+                            {% for cart in carts %}
+                                <ol class="minicart_item list-unstyled mb-0 px-0" id="cart-{{ forloop.counter }}" data-price="{{ cart.instrument.price }}">
+                                    <li class="d-flex">
+                                        <div class="thumb_img_cartmini">
+                                            <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}"
+                                               title=""
+                                               class=""><img alt="{{ cart.instrument.name }}"
+                                                             src="{{ cart.instrument.image.url }}"></a>
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3 class="product_name_mini">
+                                                <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}">{{ cart.instrument.name }}</a>
+                                            </h3>
+                                            <div class="product_info">
+                                                <div class="product_quanity">QTY : <span id="cart-count">{{ cart.count }}</span></div>
+                                                <div class="product_price">
+                                                    <span class="price_sale">${{ cart.instrument.price }}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="produc_remove">
-                                        <a href="javascript:void(0)" class="remove-product" data-line="1"><i
-                                                class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                            </ol>
+                                        <div class="produc_remove">
+                                            <a href="javascript:void(0)" class="remove-product" data-line="1">
+                                                <i id="remove-button" class="fa fa-trash-o delete-item"
+                                                   data-id="{{ cart.id }}"
+                                                   data-count="{{ forloop.counter }}"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ol>
+                            {% endfor %}
 
-                            <ol class="minicart_item list-unstyled mb-0 px-0">
-                                <li class="d-flex">
-                                    <div class="thumb_img_cartmini">
-                                        <a href="/products/recording-starter?variant=37685272936635" title=""
-                                           class=""><img alt="Recording Starter - Black"
-                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/12.1_small.jpg?v=1606587941"></a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <h3 class="product_name_mini">
-                                            <a href="/products/recording-starter?variant=37685272936635">Recording
-                                                Starter - Black</a>
-                                        </h3>
-                                        <div class="product_info">
-                                            <div class="product_quanity">QTY : 3</div>
-                                            <div class="product_price">
-                                                <span class="price_sale">$55.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="produc_remove">
-                                        <a href="javascript:void(0)" class="remove-product" data-line="2"><i
-                                                class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                            </ol>
 
                         </div>
                     </div>
                     <div class="sub-total">
 
                         <span class="total-title float-left">Total:</span>
-                        <span class="total-price float-right">$222.00</span>
+                        <span class="total-price float-right" id="total-price">$</span>
 
                     </div>
                     <div class="action-checkout">
@@ -1534,7 +1500,32 @@
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
+    <script>
+        $(".delete-item").on("click", function () {
+            // {# Use API to remove cart item #}
+            let that = this;
+            $.ajax({
+                url: "/api/cart/" + $(this).attr("data-id"),
+                type: "DELETE",
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    $("#cart-" + $(that).attr("data-count")).remove();
+                    update_total_money()
+                    let count = $("#cart-count").text()
+                    $("#cart-count").text(count-1)
+                }
+            });
+        });
 
+        jQuery(function ($) {
+            $('#search_form').on('submit', function (e) {
+                window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
+                return false;
+            });
+        })
+    </script>
 
     {% block scripts %}
     {% endblock %}
