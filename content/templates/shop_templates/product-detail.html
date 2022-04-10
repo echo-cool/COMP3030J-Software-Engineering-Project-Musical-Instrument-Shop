@@ -248,9 +248,10 @@
                         <div class="pd_summary">
                             <p class=" mb-0">{% trans 'instrument.details' %}</p>
                         </div>
-                        <form method="post" enctype="multipart/form-data" id="AddToCartForm"
+                        <form action="../api/add_cart" method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
                             {% csrf_token %}
+                            <input type="hidden" value="{{ instrument.id }}" name="product-id">
                             <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
                                     class="single-option-selector" data-option="option1" id="productSelect-option-0">
                                 <option value="Maroon">{% trans 'Maroon' %}</option>

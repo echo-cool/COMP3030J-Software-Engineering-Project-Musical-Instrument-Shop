@@ -98,6 +98,9 @@ def home(request):
             chinese_instruments.append(i)
         else:
             western_instruments.append(i)
+
+    carts = Cart.objects.filter(user_id=request.user.id)
+    print(carts)
     return render(request, 'shop_templates/homepage.html', {
         "chinese_instruments": chinese_instruments,
         "western_instruments": western_instruments,
@@ -110,6 +113,7 @@ def home(request):
         "six": range(6),
         "eight": range(8),
         "ten": range(10),
+        'carts': carts,
         "design_models": [{"name": "guitar", "style": 1,
                            "url": "/static/assets/img_for_shop/img_for_model_design/model_design_guitar1"},
                           {"name": "guitar", "style": 2,
@@ -409,7 +413,7 @@ def product_search(request):
 @login_required
 def cart(request):
     if request.user.is_authenticated:
-        carts = Cart.objects.filter(user=request.user)
+        carts = Cart.objects.filter(user_id=request.user.id)
         each_cart = {}
         for each_cart in carts:
             each_cart.total_money = each_cart.count * each_cart.instrument.price
@@ -422,7 +426,7 @@ def cart(request):
 
 @login_required
 def cart2(request):
-    carts = Cart.objects.filter(user=request.user)
+    carts = Cart.objects.filter(user_id=request.user.id)
     each_cart = {}
     for each_cart in carts:
         each_cart.total_money = each_cart.count * each_cart.instrument.price
