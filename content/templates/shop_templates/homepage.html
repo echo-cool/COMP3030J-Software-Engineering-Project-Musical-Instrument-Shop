@@ -407,21 +407,21 @@
                 <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
                 <div class="content-news-scroll">
                     <div class="row">
-                        {% for i in eight %}
+                        {% for blog in blogs %}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
                                     <div class="item-news">
                                         <div class="item-news-thumb">
-                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>18 Dec, 2016 </span>
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>{{ blog.created_on }} </span>
                                             </div>
-                                            <a href="#" class="news-thumb-link">
-                                                <img src="{% static 'assets/images/home_2/news3.png' %}" alt=""/>
+                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
+                                                <img src="{{ blog.main_image.url }}" alt=""/>
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3><a href="#">{% trans 'Quam tortor eleifend etE neque eget' %}</a></h3>
-                                            <p>{% trans 'Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut labore et dolore magna aliqua. Etiam non neque eros cetquis benlater' %}</p>
-                                            <span>{% trans 'Jane Doe - Stylish Manager' %}</span>
+                                            <h3><a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a></h3>
+                                            <p>{{ blog.body | truncatechars:100 }}</p>
+                                            <span>{{ blog.author }}</span>
                                         </div>
                                     </div>
                                 </div>
