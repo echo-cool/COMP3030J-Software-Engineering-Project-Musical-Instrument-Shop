@@ -2,6 +2,8 @@ activateSearch();
 activateMiniCart();
 activateHeightWhat();
 
+update_total_money();
+
 function activateSearch() {
     console.log(" activateSearch()");
     $(".js-search-destop").on("click", function () {
@@ -105,6 +107,23 @@ function activateBackToTop() {
             k.preventDefault(), $("html,body").animat$({scrollTop: 0}, 700)
         })
     }
+}
+
+
+function update_total_money() {
+    let cart_items = $(".minicart_item");
+    let all_total_money = 0;
+    for (let i = 0; i < cart_items.length; i++) {
+        let cart_item = cart_items[i];
+        let price = cart_item.getAttribute("data-price");
+        let quantity = $(cart_item).find("#cart-count").text();
+        console.log(price)
+        let total_money = price * quantity;
+        all_total_money += total_money;
+        // {#let total_money_element = document.getElementById("total-" + id);#}
+        // {#total_money_element.innerHTML = total_money;#}
+    }
+    $('#total-price').text("$" + all_total_money)
 }
 
 // jQuery(document).ready(function (e) {
