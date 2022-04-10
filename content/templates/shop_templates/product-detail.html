@@ -138,21 +138,27 @@
                                              src="{{ instrument.image1.url }}"
                                              alt="">
                                     </div>
-                                    <div>
-                                        <img class="item active"
-                                             src="{{ instrument.image2.url }}"
-                                             alt="">
-                                    </div>
-                                    <div>
-                                        <img class="item active"
-                                             src="{{ instrument.image3.url }}"
-                                             alt="">
-                                    </div>
-                                    <div>
-                                        <img class="item active"
-                                             src="{{ instrument.image4.url }}"
-                                             alt="">
-                                    </div>
+                                    {% if instrument.image2.url != "/media/default.jpg" %}
+                                        <div>
+                                            <img class="item active"
+                                                 src="{{ instrument.image2.url }}"
+                                                 alt="">
+                                        </div>
+                                    {% endif %}
+                                    {% if instrument.image3.url != "/media/default.jpg" %}
+                                        <div>
+                                            <img class="item active"
+                                                 src="{{ instrument.image3.url }}"
+                                                 alt="">
+                                        </div>
+                                    {% endif %}
+                                    {% if instrument.image4.url  != "/media/default.jpg" %}
+                                        <div>
+                                            <img class="item active"
+                                                 src="{{ instrument.image4.url }}"
+                                                 alt="">
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="left-t nonl-t"></div>
                                 <div class="right-t"></div>
@@ -195,24 +201,33 @@
                                                  data-src="/media/uploads/instrument/image/detail_piano1 (2).jpg" alt=""
                                                  style="opacity: 1;">
                                         </div>
-                                        <div>
-                                            <img class="owl-lazy"
-                                                 src="{{ instrument.image2.url }}"
-                                                 data-src="/media/uploads/instrument/image/detail_piano1 (3).jpg" alt=""
-                                                 style="opacity: 1;">
-                                        </div>
-                                        <div>
-                                            <img class="owl-lazy"
-                                                 src="{{ instrument.image3.url }}"
-                                                 data-src="/media/uploads/instrument/image/detail_piano1 (4).jpg" alt=""
-                                                 style="opacity: 1;">
-                                        </div>
-                                        <div>
-                                            <img class="owl-lazy"
-                                                 src="{{ instrument.image4.url }}"
-                                                 data-src="/media/uploads/instrument/image/detail_piano1 (5).jpg" alt=""
-                                                 style="opacity: 1;">
-                                        </div>
+                                        {% if instrument.image2.url  != "/media/default.jpg" %}
+                                            <div>
+                                                <img class="owl-lazy"
+                                                     src="{{ instrument.image2.url }}"
+                                                     data-src="/media/uploads/instrument/image/detail_piano1 (3).jpg"
+                                                     alt=""
+                                                     style="opacity: 1;">
+                                            </div>
+                                        {% endif %}
+                                        {% if instrument.image3.url  != "/media/default.jpg" %}
+                                            <div>
+                                                <img class="owl-lazy"
+                                                     src="{{ instrument.image3.url }}"
+                                                     data-src="/media/uploads/instrument/image/detail_piano1 (4).jpg"
+                                                     alt=""
+                                                     style="opacity: 1;">
+                                            </div>
+                                        {% endif %}
+                                        {% if instrument.image4.url  != "/media/default.jpg" %}
+                                            <div>
+                                                <img class="owl-lazy"
+                                                     src="{{ instrument.image4.url }}"
+                                                     data-src="/media/uploads/instrument/image/detail_piano1 (5).jpg"
+                                                     alt=""
+                                                     style="opacity: 1;">
+                                            </div>
+                                        {% endif %}
                                     </div>
                                     <div class="left nonl"><i class="ti-angle-left"></i></div>
                                     <div class="right"><i class="ti-angle-right"></i></div>
@@ -410,14 +425,13 @@
                 </div>
             </div>
             <div class="tab-content container container-v3">
-                <div class="tab-pane fade show active" id="des">
+                <div class="tab-pane show active" id="des">
                     <div class="desc product-desc"><p>
                         {{ instrument.ex_detail }}
                     </p>
-
                     </div>
                 </div>
-                <div class="tab-pane fade tab-addition" id="add">
+                <div class="tab-pane tab-addition" id="add">
                     <div class="">
                         <div class="row justify-content-center">
                             <div class="col-lg-8 col-md-6">
@@ -437,7 +451,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade mt-4" id="review">
+                <div class="tab-pane mt-4" id="review">
                     <div class="container" id="shopify-product-reviews">
                         {#                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">#}
                         <div class="card-body" style="text-align: start;">
@@ -753,7 +767,7 @@
     <!-- /add_cart_panel -->
 
     <!-- Size modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="size-modal" id="size-modal" aria-hidden="true">
+    <div class="modal " tabindex="-1" role="dialog" aria-labelledby="size-modal" id="size-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -944,5 +958,10 @@
             }
             return qty;
         }
+
+        $(".underline_scale").click(function (e) {
+            $(".underline_scale").removeClass("active");
+            this.className = "underline_scale active";
+        });
     </script>
 {% endblock %}
