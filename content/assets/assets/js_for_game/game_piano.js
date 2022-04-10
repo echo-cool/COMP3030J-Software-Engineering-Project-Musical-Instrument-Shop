@@ -149,6 +149,7 @@ function stop_record() {
 }
 
 function start_play() {
+    $(".show-style-piano").toggle("wrapper-hidden");
     this.now_note_id = 0;
     this.playing_time = 0;
     this.next_note_id = 0;
@@ -164,6 +165,7 @@ function start_play() {
 }
 
 function stop_play() {
+    $(".show-style-piano").toggle("wrapper-hidden");
     clearInterval(this.player);
     this.now_note_id = 0;
     this.playing_time = 0;
@@ -178,6 +180,7 @@ function add_note(id) {
 }
 
 function load_sample1() {
+    $(".show-style-piano").toggle("wrapper-hidden");
     let vobj = this;
     $.ajax({
         url: "https://awiclass.monoame.com/api/command.php?type=get&name=music_dodoro",
@@ -199,6 +202,7 @@ function load_sample1() {
 }
 
 function load_sample2() {
+    $(".show-style-piano").toggle("wrapper-hidden");
     let vobj = this;
     vobj.notes = [{num: 3, time: 105}, {num: 3, time: 223}, {num: 4, time: 331}, {num: 5, time: 482}, {
         num: 5,
@@ -249,3 +253,4 @@ $(window).keyup(function (e) {
     let hovered_key = "#key-" + key;
     $(hovered_key).attr("type", '');
 });
+
