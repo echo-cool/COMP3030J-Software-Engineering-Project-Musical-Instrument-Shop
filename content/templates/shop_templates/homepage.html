@@ -622,6 +622,17 @@
 {% block scripts %}
 
     <script>
+        $(".bottom-left").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+        $(".bottom-right").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放
