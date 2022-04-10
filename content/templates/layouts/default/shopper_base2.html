@@ -56,6 +56,39 @@
 </head>
 <body class="home-page">
 <div class="wrap">
+    <div class="menu_moblie d-flex d-xl-none jsmenumobile align-items-center">
+        <a href="javascript:void(0)" title="" class="menuleft">
+    <span class="iconmenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+        </a>
+        <div class="logo_menumoblie">
+            <a href="https://musicmo-store-demo.myshopify.com">
+                <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599" width="115"
+                     alt="logo">
+            </a>
+        </div>
+        <div class="menuright">
+            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                    rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata><defs
+                    id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg></span>
+            <a href="javascript:void(0)" title="" class="js-call-minicart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2"
+                     version="1.1" xmlns:svg="http://www.w3.org/2000/svg"
+                     xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
+                    <defs id="defs6"></defs>
+                    <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2565.21,2412.71 H 450.992 V 0 H 2565.21 V 2412.71 Z M 2366.79,2214.29 V 198.43 H 649.418 V 2214.29 H 2366.79"></path><path
+                            id="path16" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                            d="m 1508.11,2990 h -0.01 c -361.22,0 -654.037,-292.82 -654.037,-654.04 V 2216.92 H 2162.14 v 119.04 c 0,361.22 -292.82,654.04 -654.03,654.04 z m 0,-198.43 c 224.16,0 411.02,-162.7 448.69,-376.23 h -897.39 c 37.66,213.53 224.53,376.23 448.7,376.23"></path><path
+                            id="path18" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                            d="m 1946.24,1868.17 h -876.27 v 169.54 h 876.27 v -169.54"></path></g></g></svg>
+                <span class="count_pr_incart enj-cartcount">4</span>
+            </a>
+        </div>
+    </div>
     <div class="search-full-destop">
         <div class="search-eveland js-box-search">
             <div class="drawer-search-top">
@@ -101,7 +134,8 @@
           </svg>
                     </a>
                     <h3 class="title">Shopping Cart</h3>
-                    <div class="mini-cart-counter"><span class="cart-counter enj-cartcount" id="cart-count">{{ carts.count }}</span></div>
+                    <div class="mini-cart-counter"><span class="cart-counter enj-cartcount"
+                                                         id="cart-count">{{ carts.count }}</span></div>
                 </div>
 
                 <div class="mini-cart-bottom enj-minicart-ajax">
@@ -110,7 +144,8 @@
                         <div class="product-cart ">
 
                             {% for cart in carts %}
-                                <ol class="minicart_item list-unstyled mb-0 px-0" id="cart-{{ forloop.counter }}" data-price="{{ cart.instrument.price }}">
+                                <ol class="minicart_item list-unstyled mb-0 px-0" id="cart-{{ forloop.counter }}"
+                                    data-price="{{ cart.instrument.price }}">
                                     <li class="d-flex">
                                         <div class="thumb_img_cartmini">
                                             <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}"
@@ -123,7 +158,8 @@
                                                 <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}">{{ cart.instrument.name }}</a>
                                             </h3>
                                             <div class="product_info">
-                                                <div class="product_quanity">QTY : <span id="cart-count">{{ cart.count }}</span></div>
+                                                <div class="product_quanity">QTY : <span
+                                                        id="cart-count">{{ cart.count }}</span></div>
                                                 <div class="product_price">
                                                     <span class="price_sale">${{ cart.instrument.price }}</span>
                                                 </div>
@@ -1514,7 +1550,7 @@
                     $("#cart-" + $(that).attr("data-count")).remove();
                     update_total_money()
                     let count = $("#cart-count").text()
-                    $("#cart-count").text(count-1)
+                    $("#cart-count").text(count - 1)
                 }
             });
         });

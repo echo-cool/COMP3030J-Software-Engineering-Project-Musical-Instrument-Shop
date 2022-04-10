@@ -1624,3 +1624,90 @@ a:hover, a:focus {
     font-weight: 500;
     padding-top: 20px;
 }
+
+
+.menu_moblie {
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    position: relative;
+    z-index: 2;
+    transition: background-color 0.5s ease 0s, padding 0.5s ease 0s;
+}
+
+.menu_moblie.menu_mobilescroll {
+    -webkit-animation: mations 1s ease;
+    animation: mations 1s ease;
+    transition: background-color 0.5s ease 0s, padding 0.5s ease 0s;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.menu_moblie.engoc-disable-sticky {
+    position: unset;
+}
+
+.menu_moblie .menuleft {
+    width: 70px;
+}
+
+.menu_moblie .menuleft .iconmenu {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.menu_moblie .menuleft .iconmenu span {
+    text-align: left;
+    display: block;
+    width: 23px;
+    height: 2px;
+    background: #000;
+    margin-bottom: 6px;
+}
+
+.menu_moblie .menuleft .iconmenu span:nth-child(2) {
+    width: 12px;
+}
+
+.menu_moblie .menuleft .iconmenu span:nth-child(3) {
+    width: 17px;
+}
+
+.menu_moblie .menuright {
+    width: 70px;
+    text-align: right;
+}
+
+.menu_moblie .menuright i {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.menu_moblie .menuright svg {
+    width: 22px;
+    height: 22px;
+    fill: black;
+}
+
+.menu_moblie .menuright a {
+    position: relative;
+    color: #000;
+    font-size: 23px;
+    text-decoration: none;
+}
+
+.menu_moblie .menuright a span {
+    color: #ff5a00;
+    display: block;
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    right: -4px;
+}
