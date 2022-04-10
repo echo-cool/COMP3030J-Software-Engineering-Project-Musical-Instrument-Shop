@@ -68,16 +68,18 @@
                 </div>
             </div>
             <div class=" background">
-                <div class="container container-v2 ">
-                    <div class="banner-box-adv">
-                        <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> 3D Preview
+                <div class="container container-model" style="max-width:1452px;">
+                    <div class="banner-box-adv" style="margin-top: 40%;">
+                        <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
+                                onclick="active3DShowing()"> 3D
+                            Preview
                         </button>
-                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview
-                        </button>
+                        {#                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview#}
+                        {#                        </button>#}
                         <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner-box-banner-adv odd bottom-left">
-                                    <img class="show-style" style="position:absolute"
+                                    <img class="show-style" style="position:absolute" id="model-video-left"
                                          src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}"
                                          alt=""/>
                                     <video loop preload
@@ -87,34 +89,45 @@
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
                                     {#                                </div>#}
-                                    <div class="box-search-adv">
-                                    </div>
+                                    {#                                    <div class="box-search-adv"></div>#}
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    <div class="text-adv-hidden">
-                                        <p class="name">HARP</p>
-                                        <p><span>Western</span> Musical Instruments section</p>
-                                    </div>
+{#                                    <div class="text-adv-hidden">#}
+                                    {#                                        <p class="name">HARP</p>#}
+                                    {#                                        <p><span>Western</span> Musical Instruments section</p>#}
+                                    {#                                    </div>#}
+                                    <img id="model-video-right" height="250px"
+                                         src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
+                                         alt=""/>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
                                 <div class="inner-box-banner-adv odd bottom-right">
-                                    <img class="show-style" style="position:absolute"
+                                    <img height="250px" style="  margin-bottom: 10px;"
+                                         src="{% static 'assets/detail_model/homepage/model-meinv1.jpg' %}"
+                                         alt=""/>
+                                    <img class="show-style" style="position: absolute; top: 260px;left: 0px;z-index: 2"
                                          src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="width:100%" class="model-video"
+                                           style="position: relative;width: 100%;" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
                                     {#                                </div>#}
-                                    <div class="box-search-adv">
-                                    </div>
+                                    {#                                    <div class="box-search-adv"></div>#}
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    <div class="text-adv-hidden">
-                                        <p class="name">PIPA</p>
-                                        <p><span>Chinese</span> Musical Instruments section</p>
-                                    </div>
+{#                                    <div class="text-adv-hidden">#}
+{#                                        <p class="name">PIPA</p>#}
+{#                                        <p><span>Chinese</span> Musical Instruments section</p>#}
+{#                                    </div>#}
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-left">
+                                    <img
+                                            src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
+                                            alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -610,6 +623,17 @@
 {% block scripts %}
 
     <script>
+        $(".bottom-left").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+        $(".bottom-right").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放
