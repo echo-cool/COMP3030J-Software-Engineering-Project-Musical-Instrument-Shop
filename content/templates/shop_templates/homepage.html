@@ -51,28 +51,27 @@
                 <div class="text-left box-info"
                      style="margin-bottom: 16%; margin-top: 10%;">
                     <div class="box-title1 animated">
-                        <h3 class="title-small mb-0" style="color:#ffffff;">STYLE DESTINATION</h3>
+                        <h3 class="title-small mb-0" style="color:#ffffff;">{% trans 'STYLE DESTINATION' %}</h3>
                     </div>
                     <div class="box-title animated">
                         <h3 class="titlebig mb-0"
-                            style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">Starter Drum Kit</h3>
+                            style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">{% trans 'Starter Drum Kit' %}</h3>
                     </div>
                     <div class="box-title2 animated">
-                        <h3 class="title-small mb-0" style="color:#ffffff;">Stunning appearance, both inside and
-                            out</h3>
+                        <h3 class="title-small mb-0" style="color:#ffffff;">{% trans 'Stunning appearance, both inside and out' %}</h3>
                     </div>
                     <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all"
                        style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
-                        SHOP NOW
+                        {% trans 'SHOP NOW' %}
                     </a>
                 </div>
             </div>
             <div class=" background">
                 <div class="container container-v2 ">
                     <div class="banner-box-adv">
-                        <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> 3D Preview
+                        <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> {% trans '3D Preview' %}
                         </button>
-                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview
+                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> {% trans '3D Preview' %}
                         </button>
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -92,7 +91,7 @@
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
                                     <div class="text-adv-hidden">
                                         <p class="name">HARP</p>
-                                        <p><span>Western</span> Musical Instruments section</p>
+                                        <p><span>{% trans 'Western' %}</span> {% trans 'Musical Instruments section' %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -112,8 +111,8 @@
                                     </div>
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
                                     <div class="text-adv-hidden">
-                                        <p class="name">PIPA</p>
-                                        <p><span>Chinese</span> Musical Instruments section</p>
+                                        <p class="name">{% trans 'PIPA' %}</p>
+                                        <p><span>{% trans 'Chinese' %}</span>{% trans ' Musical Instruments section<' %}/p>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +173,7 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ Western ~ &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -209,15 +208,14 @@
                                                                 </button>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to
-                                                            cart</a>
+                                                        <a href="#" class="link-product-add-cart">{% trans 'Add to cart' %}</a>
                                                     </div>
                                                 </div>
-                                                <span class="status-product-new">New</span>
+                                                <span class="status-product-new">{% trans 'New' %}</span>
                                             </div>
                                             <div class="item-info-product">
                                                 <h3>
-                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
+                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{% trans instrument.name %}</a>
                                                 </h3>
                                                 <div class="info-product-price">
                                                     <span>${{ instrument.price }}</span>
@@ -257,13 +255,13 @@
                                                             <li><a href="#" class="link-compare"><i
                                                                     class="fa fa-external-link-square"></i></a></li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                        <a href="#" class="link-product-add-cart">{% trans 'Add to cart'%}</a>
                                                     </div>
                                                 </div>
-                                                <span class="status-product-new">New</span>
+                                                <span class="status-product-new">{% trans 'New'%}</span>
                                             </div>
                                             <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <h3><a href="#">{% trans 'Chemise SLimFit'%}</a></h3>
                                                 <div class="info-product-price">
                                                     <span>$45.99</span>
                                                     <del>$69.71</del>
@@ -290,7 +288,7 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ CHINESE ~   &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ CHINESE ~'%}   &nbsp;</span>{% trans 'Musical Instruments'%}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -325,15 +323,14 @@
                                                                 </button>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to
-                                                            cart</a>
+                                                        <a href="#" class="link-product-add-cart">{% trans 'Add to cart'%}</a>
                                                     </div>
                                                 </div>
-                                                <span class="status-product-new">New</span>
+                                                <span class="status-product-new">{% trans 'New'%}</span>
                                             </div>
                                             <div class="item-info-product">
                                                 <h3>
-                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
+                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{% trans instrument.name %}</a>
                                                 </h3>
                                                 <div class="info-product-price">
                                                     <span>${{ instrument.price }}</span>
@@ -373,13 +370,13 @@
                                                             <li><a href="#" class="link-compare"><i
                                                                     class="fa fa-external-link-square"></i></a></li>
                                                         </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
+                                                        <a href="#" class="link-product-add-cart">{% trans 'Add to cart' %}</a>
                                                     </div>
                                                 </div>
-                                                <span class="status-product-new">New</span>
+                                                <span class="status-product-new">{% trans 'New' %}</span>
                                             </div>
                                             <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
+                                                <h3><a href="#">{% trans 'Chemise SLimFit' %}</a></h3>
                                                 <div class="info-product-price">
                                                     <span>$45.99</span>
                                                     <del>$69.71</del>
@@ -407,7 +404,7 @@
         <!--  Begin News Part -->
         <div class="news-scroll">
             <div class="container">
-                <h2 class="title-news-scroll">latest news</h2>
+                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
                 <div class="content-news-scroll">
                     <div class="row">
                         {% for i in eight %}
@@ -422,10 +419,9 @@
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3><a href="#">Quam tortor eleifend etE neque eget</a></h3>
-                                            <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut
-                                                labore et dolore magna aliqua. Etiam non neque eros cetquis benlater</p>
-                                            <span>Jane Doe - Stylish Manager</span>
+                                            <h3><a href="#">{% trans 'Quam tortor eleifend etE neque eget' %}</a></h3>
+                                            <p>{% trans 'Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut labore et dolore magna aliqua. Etiam non neque eros cetquis benlater' %}</p>
+                                            <span>{% trans 'Jane Doe - Stylish Manager' %}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -440,7 +436,7 @@
         <div class="custom-services">
             <div class="container">
                 <div class="title-box-default">
-                    <h2><span class="title-tab">Musical Instrument &nbsp; <span> ~Color Design~ </span></span>
+                    <h2><span class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
                     </h2>
                 </div>
 
@@ -454,29 +450,26 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>idea Design</h3>
+                            <h3>{% trans 'idea Design' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
-                                yoleacene anritv antacus.</p>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
-                                Santac us uisque nuaderas</p>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
-                                Santacus isque nulladeras. </p>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
                         </div>
                     </div>
                 </div>
@@ -499,10 +492,10 @@
                                              class="product-thumb-behind"/>
                                         <div class="info-product-cart2">
                                             <a class="move-to-model-design"
-                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">
-                                                Start Design</a>
+                                               href="/model_design/color?name={% trans design_model.name %}&amp;style={% trans design_model.style %}">
+                                                {% trans 'Start Design' %}</a>
                                         </div>
-                                        <span class="status-product-new">New</span>
+                                        <span class="status-product-new">{% trans 'New' %}</span>
                                     </div>
                                 </div>
                             </div>
@@ -525,28 +518,28 @@
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master2.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">David Cilezege</a></h3>
+                            <h3><a href="#">{% trans 'David Cilezege' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master3.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master4.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master5.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                     </ul>
                     {#                    <a href="#" class="see-all-designer">see all designers</a>#}
@@ -566,9 +559,9 @@
                             </div>
                             <div class="grid-text-box gray-box">
                                 <div class="inner-grid-text-box">
-                                    <h3>Women’s</h3>
-                                    <h2>Live style</h2>
-                                    <h3>Danlien Polosa</h3>
+                                    <h3>{% trans 'Women’s' %}</h3>
+                                    <h2>{% trans 'Live style' %}</h2>
+                                    <h3>{% trans 'Danlien Polosa' %}</h3>
                                 </div>
                             </div>
                         </div>
@@ -582,9 +575,9 @@
                     </div>
                     <div class="grid-text-box active">
                         <div class="inner-grid-text-box">
-                            <h3>Collection</h3>
-                            <h2>Jewerly</h2>
-                            <h3>For Girl</h3>
+                            <h3>{% trans 'Collection' %}</h3>
+                            <h2>{% trans 'Jewerly' %}</h2>
+                            <h3>{% trans 'For Girl' %}</h3>
                         </div>
                     </div>
                 </div>
@@ -598,8 +591,8 @@
                 <div class="thumb-category-leading">
                     <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>
                     <div class="text-category-leading">
-                        <span>New</span>
-                        <h2>Collection</h2>
+                        <span>{% trans 'New' %}</span>
+                        <h2>{% trans 'Collection' %}</h2>
                     </div>
                 </div>
                 <div class="content-category-leading">
@@ -623,7 +616,7 @@
                                                 <li><a class="link-compare" href="#"><i
                                                         class="fa fa-external-link-square"></i></a></li>
                                             </ul>
-                                            <a class="link-product-add-cart" href="#">Add to cart</a>
+                                            <a class="link-product-add-cart" href="#">{% trans 'Add to cart' %}</a>
                                             <div class="info-product-price">
                                                 <span>$489.99</span>
                                             </div>
@@ -641,7 +634,7 @@
         <div class="from-our-blog">
             <div class="container">
                 <div class="title-box-default white-arrow-style">
-                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>
+                    <h2><span class="title-tab">{% trans 'FROM OUR BLOG' %}</span></h2>
                 </div>
                 <div class="row">
                     {% for i in six %}
@@ -654,9 +647,9 @@
                                 </div>
                                 <div class="our-blog-info">
                                     <div class="inner-our-blog-info">
-                                        <span>Jun 23 2014</span>
-                                        <h3><a href="#">Cupidatat none proident amet</a></h3>
-                                        <span>9 Comments</span>
+                                        <span>{% trans 'Jun 23 2014' %}</span>
+                                        <h3><a href="#">{% trans 'Cupidatat none proident amet' %}</a></h3>
+                                        <span>{% trans '9 Comments' %}</span>
                                         <div class="post-extra-link">
                                             <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"
                                                              alt=""/></a>
@@ -693,7 +686,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="product-single-content">
-                                    <h5>Queen Bee Honey</h5>
+                                    <h5>{% trans 'Queen Bee Honey' %}</h5>
                                     <h6>350.00 USD</h6>
                                     <ul class="rating">
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -702,17 +695,11 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices
-                                        lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius
-                                        felis
-                                        sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem
-                                        ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        hendrerit.
+                                    <p>{% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit.' %}
                                     </p>
                                     <div class="product-filter-item color">
                                         <div class="color-name">
-                                            <span>Color :</span>
+                                            <span>{% trans 'Color :' %}</span>
                                             <ul>
                                                 <li class="color1"><input id="1" type="radio" name="color"
                                                                           value="30">
@@ -758,10 +745,10 @@
                                             <div class="dec qtybutton"></div>
                                             <div class="inc qtybutton"></div>
                                         </div>
-                                        <a href="#" class="theme-btn">Add to cart</a>
+                                        <a href="#" class="theme-btn">{% trans 'Add to cart' %}</a>
                                     </div>
                                     <div class="social-share">
-                                        <span>Share with : </span>
+                                        <span>{% trans 'Share with : ' %}</span>
                                         <ul class="socialLinks">
                                             <li><a href='#'><i class="fa fa-facebook"></i></a></li>
                                             <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
