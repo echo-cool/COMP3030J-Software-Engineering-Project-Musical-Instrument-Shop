@@ -159,9 +159,9 @@
                         <div class="col-md-10">
                             <div class="all">
                                 <div class="show3D"
-                                     style="cursor:pointer;right: 5%; position: absolute; z-index: 3; background: white; width: 10%; height: 12%; box-shadow: 0 1px 2px 0 #a1aaad; border-radius: 50%; top: 5%;">
-                                    <img style="padding: 24%;" id="3d-icon"
-                                         src="{% static "assets/img_for_shop/3d-icon.svg" %}">
+                                     style="cursor:pointer;right: 5%; position: absolute; z-index: 3; background: white; width: 10%; height: 10%; box-shadow: 0 1px 2px 0 #a1aaad; border-radius: 50%; top: 5%;">
+                                    <img style="padding: 18%;width: 100%" id="3d-icon"
+                                         src="{% static "assets/img_for_shop/3d-icon.png" %}">
                                 </div>
                                 <div class="show-controls wrapper-hidden"
                                      style="bottom: 0;position: absolute;z-index:3;width:4%">
@@ -256,7 +256,8 @@
                             </select></div>
                             <select name="id" id="productSelect" class="product-single__variants"
                                     style="display: none;">
-                                <option selected="selected" data-sku="" value="37685248721083">{% trans 'Maroon - $223.00 USD' %}
+                                <option selected="selected" data-sku=""
+                                        value="37685248721083">{% trans 'Maroon - $223.00 USD' %}
                                 </option>
                                 <option data-sku="" value="37685248753851">{% trans 'White - $223.00 USD' %}</option>
                             </select>
@@ -392,10 +393,12 @@
                 <div class="container container-v2">
                     <ul class="nav nav-tabs tab_prod">
                         <li>
-                            <a class="underline_scale active" data-toggle="tab" href="#des">{% trans 'Description' %}</a>
+                            <a class="underline_scale active" data-toggle="tab"
+                               href="#des">{% trans 'Description' %}</a>
                         </li>
                         <li>
-                            <a class="underline_scale" data-toggle="tab" href="#add">{% trans 'Additional Information' %}</a>
+                            <a class="underline_scale" data-toggle="tab"
+                               href="#add">{% trans 'Additional Information' %}</a>
                         </li>
                         <li>
                             <a class="underline_scale" data-toggle="tab" href="#review">{% trans 'Review' %}</a>
@@ -480,7 +483,8 @@
                                 {% endfor %}
                             </div>
                             <!-- /row -->
-                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">{% trans Leave a review %}</a></p>
+                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}"
+                                                   class="btn_1">{% trans "Leave a review" %}</a></p>
                         </div>
                         <!-- /card-body -->
                         {#                        </div>#}
@@ -521,9 +525,11 @@
                                         class="ti-heart"></i><span>{% trans 'Add to favorites' %}</span></a></li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
                                        title="Add to compare"><i
-                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a></li>
+                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>
+                                </li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                       title="Add to cart"><i class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
+                                       title="Add to cart"><i
+                                        class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -888,16 +894,17 @@
         $(".show3D").click(function () {
             console.log("youwu", $(".model-zoom-in"));
             let img = $("#3d-icon");
-            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.svg" %}") {
+            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.jpg" %}") {
                 $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.svg" %}");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.png" %}");
                 $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
             } else {
                 $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.svg" %}");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.jpg" %}");
                 $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
             }
         });
+
 
         $(".main").style = "margin-bottom: 0px;";
 
