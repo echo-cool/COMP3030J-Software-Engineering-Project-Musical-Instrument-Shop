@@ -67,7 +67,7 @@
                     </div>
                     <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all"
                        style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
-                        SHOP NOW
+                        {% trans 'SHOP NOW' %}
                     </a>
                 </div>
             </div>
@@ -78,8 +78,6 @@
                                 onclick="active3DShowing()"> 3D
                             Preview
                         </button>
-                        {#                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview#}
-                        {#                        </button>#}
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner-box-banner-adv odd bottom-left">
@@ -94,7 +92,8 @@
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
                                     {#                                </div>#}
-                                    {#                                    <div class="box-search-adv"></div>#}
+                                    {#                                    <div class="box-search-adv">#}
+                                    {#                                    </div>#}
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
                                     {#                                    <div class="text-adv-hidden">#}
                                     {#                                        <p class="name">HARP</p>#}
@@ -193,7 +192,7 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ Western ~ &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -220,7 +219,7 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ CHINESE ~   &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ CHINESE ~' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -248,25 +247,27 @@
         <!--  Begin News Part -->
         <div class="news-scroll">
             <div class="container">
-                <h2 class="title-news-scroll">latest news</h2>
+                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
                 <div class="content-news-scroll">
                     <div class="row">
-                        {% for i in eight %}
+                        {% for blog in blogs %}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
                                     <div class="item-news">
                                         <div class="item-news-thumb">
-                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>18 Dec, 2016 </span>
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
+                                                <span>{{ blog.created_on }} </span>
                                             </div>
-                                            <a href="#" class="news-thumb-link">
-                                                <img src="{% static 'assets/images/home_2/news3.png' %}" alt=""/>
+                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
+                                                <img src="{{ blog.main_image.url }}" alt=""/>
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3><a href="#">Quam tortor eleifend etE neque eget</a></h3>
-                                            <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut
-                                                labore et dolore magna aliqua. Etiam non neque eros cetquis benlater</p>
-                                            <span>Jane Doe - Stylish Manager</span>
+                                            <h3>
+                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
+                                            </h3>
+                                            <p>{{ blog.body | truncatechars:100 }}</p>
+                                            <span>{{ blog.author }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -281,7 +282,8 @@
         <div class="custom-services">
             <div class="container">
                 <div class="title-box-default">
-                    <h2><span class="title-tab">Musical Instrument &nbsp; <span> ~Color Design~ </span></span>
+                    <h2><span
+                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
                     </h2>
                 </div>
 
@@ -295,29 +297,26 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>idea Design</h3>
+                            <h3>{% trans 'idea Design' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
-                                yoleacene anritv antacus.</p>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
-                                Santac us uisque nuaderas</p>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
-                                Santacus isque nulladeras. </p>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
                         </div>
                     </div>
                 </div>
@@ -340,10 +339,10 @@
                                              class="product-thumb-behind"/>
                                         <div class="info-product-cart2">
                                             <a class="move-to-model-design"
-                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">
-                                                Start Design</a>
+                                               href="/model_design/color?name={% trans design_model.name %}&amp;style={% trans design_model.style %}">
+                                                {% trans 'Start Design' %}</a>
                                         </div>
-                                        <span class="status-product-new">New</span>
+                                        <span class="status-product-new">{% trans 'New' %}</span>
                                     </div>
                                 </div>
                             </div>
@@ -366,28 +365,28 @@
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master2.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">David Cilezege</a></h3>
+                            <h3><a href="#">{% trans 'David Cilezege' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master3.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master4.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master5.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                     </ul>
                     {#                    <a href="#" class="see-all-designer">see all designers</a>#}
@@ -407,9 +406,9 @@
                             </div>
                             <div class="grid-text-box gray-box">
                                 <div class="inner-grid-text-box">
-                                    <h3>Women’s</h3>
-                                    <h2>Live style</h2>
-                                    <h3>Danlien Polosa</h3>
+                                    <h3>{% trans 'Women’s' %}</h3>
+                                    <h2>{% trans 'Live style' %}</h2>
+                                    <h3>{% trans 'Danlien Polosa' %}</h3>
                                 </div>
                             </div>
                         </div>
@@ -423,9 +422,9 @@
                     </div>
                     <div class="grid-text-box active">
                         <div class="inner-grid-text-box">
-                            <h3>Collection</h3>
-                            <h2>Jewerly</h2>
-                            <h3>For Girl</h3>
+                            <h3>{% trans 'Collection' %}</h3>
+                            <h2>{% trans 'Jewerly' %}</h2>
+                            <h3>{% trans 'For Girl' %}</h3>
                         </div>
                     </div>
                 </div>
@@ -478,7 +477,7 @@
         {#            </div>#}
         {#        </div>#}
         {#        <!-- End Category Leading -->#}
-
+        {##}
         {#        <div class="from-our-blog">#}
         {#            <div class="container">#}
         {#                <div class="title-box-default white-arrow-style">#}
@@ -534,7 +533,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="product-single-content">
-                                    <h5>Queen Bee Honey</h5>
+                                    <h5>{% trans 'Queen Bee Honey' %}</h5>
                                     <h6>350.00 USD</h6>
                                     <ul class="rating">
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -543,17 +542,11 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices
-                                        lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius
-                                        felis
-                                        sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem
-                                        ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        hendrerit.
+                                    <p>{% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit.' %}
                                     </p>
                                     <div class="product-filter-item color">
                                         <div class="color-name">
-                                            <span>Color :</span>
+                                            <span>{% trans 'Color :' %}</span>
                                             <ul>
                                                 <li class="color1"><input id="1" type="radio" name="color"
                                                                           value="30">
@@ -599,10 +592,10 @@
                                             <div class="dec qtybutton"></div>
                                             <div class="inc qtybutton"></div>
                                         </div>
-                                        <a href="#" class="theme-btn">Add to cart</a>
+                                        <a href="#" class="theme-btn">{% trans 'Add to cart' %}</a>
                                     </div>
                                     <div class="social-share">
-                                        <span>Share with : </span>
+                                        <span>{% trans 'Share with : ' %}</span>
                                         <ul class="socialLinks">
                                             <li><a href='#'><i class="fa fa-facebook"></i></a></li>
                                             <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
@@ -629,17 +622,6 @@
 {% block scripts %}
 
     <script>
-        $(".bottom-left").click(function () {
-            console.log("active video");
-            {#$("#trigger-video-button").click();#}
-            active3DShowing();
-        })
-        $(".bottom-right").click(function () {
-            console.log("active video");
-            {#$("#trigger-video-button").click();#}
-            active3DShowing();
-        })
-
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放

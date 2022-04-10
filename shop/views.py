@@ -12,10 +12,12 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
+import blog
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
@@ -62,7 +64,7 @@ def index(request):
         "instruments": instruments,
         "categories": categories,
         "index_categories": index_categories,
-        "order_rank": order_rank
+        "order_rank": order_rank,
     })
 
 
@@ -104,7 +106,9 @@ def home(request):
     western_instruments = [western_instruments[i:i + step] for i in range(0, len(western_instruments), step)]
 
     carts = Cart.objects.filter(user_id=request.user.id)
-    print(carts)
+    blogs = Post.objects.order_by("created_on")
+    if blogs.count() > 8:
+        blogs = blogs[:8]
     return render(request, 'shop_templates/homepage.html', {
         "home": 1,
         "chinese_instruments": chinese_instruments,
@@ -114,6 +118,7 @@ def home(request):
         "instruments": instruments,
         "categories": categories,
         "index_categories": index_categories,
+        "blogs": blogs,
         "two": range(2),
         "three": range(3),
         "four": range(4),
@@ -373,7 +378,7 @@ def product_search_by_category(request):
 def product_search(request):
     search_text = request.GET.get("search", "")
     search_category_text = request.GET.get("category", None)
-    all_instruments = Instrument.objects.filter(name__contains=search_text)
+    all_instruments = Instrument.objects.filter(name__contains=search_text).filter(chinese=0)
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
