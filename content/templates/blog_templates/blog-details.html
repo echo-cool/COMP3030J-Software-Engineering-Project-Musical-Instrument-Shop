@@ -1,4 +1,4 @@
-﻿{% extends 'layouts/default/shopper_base.html' %}
+﻿{% extends 'layouts/default/shopper_base2.html' %}
 
 {% load static %}
 {% load i18n %}
@@ -49,7 +49,9 @@
                     <div class="post_img" data-aos="overlay-left">
                         <img src="{{ post.main_image.url }}" alt="blog">
                         <div class="calendar">
-                            <a href="#"><span class="date">{{ post.created_on.day }}</span><br>{{ post.created_on | date:"M" }}</a>
+                            <a href="#"><span
+                                    class="date">{{ post.created_on.day }}</span><br>{{ post.created_on | date:"M" }}
+                            </a>
                         </div>
                     </div>
                     <div class="row">
