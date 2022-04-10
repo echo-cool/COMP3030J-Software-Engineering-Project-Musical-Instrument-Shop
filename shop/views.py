@@ -20,6 +20,12 @@ from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
 
+def new_header(request):
+    return render(request, 'layouts/default/shopper_base2.html', {
+        "back": 0
+    })
+
+
 def index(request):
     # order by count
     orders = Order.objects.all()
@@ -125,6 +131,7 @@ def about(request):
 
 def game(request):
     return render(request, 'shop_templates/game.html')
+
 
 def chinese(request):
     return render(request, 'shop_templates/chinese.html')
@@ -330,9 +337,11 @@ def product_search_by_category(request):
         category_li = request.GET.get("checked_category", None)
         search_text = request.GET.get("search", "")
         category_list = [ch for ch in category_li]
-        i = 0
+
         instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
         instruments = []
+
+        i = 0
         while i < len(category_list):
             if category_list[i] == str(1):
                 searched_instruments = instruments_by_search_bar.filter(category=i + 1)
@@ -363,7 +372,18 @@ def product_search(request):
         i.percentage = round(i.price * 100 / i.old_price, 2)
     for category in category_list:
         categories[category] = instruments.filter(category=category).count()
+
+    # game option
+    game_style = 0
+    if "guitar" in search_text:
+        game_style = 2
+    elif "piano" in search_text:
+        game_style = 1
+
+    print("==========", game_style, search_text)
+
     return render(request, 'shop_templates/product-search.html', {
+        "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
     })
@@ -409,7 +429,6 @@ def cart2(request):
     return render(request, 'shop_templates/cart2.html', {
         "carts": carts,
     })
-
 
 
 # @login_required
