@@ -16,7 +16,7 @@ def index(request):
     # else:
     #     latest3Posts = posts[:1]
 
-    paginator = Paginator(all_posts, 6, 0)
+    paginator = Paginator(all_posts, 12, 0)
     page = request.GET.get("page")
     try:
         posts = paginator.page(page)
