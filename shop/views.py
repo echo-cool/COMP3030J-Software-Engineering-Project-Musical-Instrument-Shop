@@ -20,6 +20,12 @@ from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
 
+def new_header(request):
+    return render(request, 'layouts/default/shopper_base2.html', {
+        "back": 0
+    })
+
+
 def index(request):
     # order by count
     orders = Order.objects.all()
@@ -125,6 +131,7 @@ def about(request):
 
 def game(request):
     return render(request, 'shop_templates/game.html')
+
 
 def chinese(request):
     return render(request, 'shop_templates/chinese.html')
@@ -422,7 +429,6 @@ def cart2(request):
     return render(request, 'shop_templates/cart2.html', {
         "carts": carts,
     })
-
 
 
 # @login_required
