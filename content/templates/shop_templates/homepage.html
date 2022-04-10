@@ -1,4 +1,4 @@
-{% extends 'layouts/default/shopper_base.html' %}
+{% extends 'layouts/default/shopper_base2.html' %}
 
 {% load static %}
 {% load i18n %}
@@ -17,7 +17,7 @@
     <link href="{% static "assets/assets_for_bees/css/themify-icons.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/flaticon.css" %}" rel="stylesheet">
-    <link href="{% static "assets/assets_for_bees/css/bootstrap.min.css" %}" rel="stylesheet">
+    {#    <link href="{% static "assets/assets_for_bees/css/bootstrap.min.css" %}" rel="stylesheet">#}
     <link href="{% static "assets/assets_for_bees/css/animate.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/owl.carousel.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/owl.theme.css" %}" rel="stylesheet">
@@ -786,13 +786,6 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
-    {#    <script type="text/javascript" src="{% static "assets/js_for_model/FBXLoader.js" %}"></script>#}
-    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_homepage.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
-    <script src="{% static 'assets/js_for_model/model_loader_homepage.js' %}"></script>
 
     <script>
         function active3DShowing() {

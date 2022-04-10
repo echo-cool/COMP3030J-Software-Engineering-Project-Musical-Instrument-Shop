@@ -1,11 +1,10 @@
-{% extends 'layouts/default/page.html' %}
+{% extends 'layouts/default/shopper_base_white.html' %}
 {% load static %}
 
 {% load i18n %}
 {% load bootstrap4 %}
 
 {% block head_link %}
-
     <!-- Favicons-->
     <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon"
@@ -159,9 +158,9 @@
                         <div class="col-md-10">
                             <div class="all">
                                 <div class="show3D"
-                                     style="cursor:pointer;right: 5%; position: absolute; z-index: 3; background: white; width: 10%; height: 12%; box-shadow: 0 1px 2px 0 #a1aaad; border-radius: 50%; top: 5%;">
-                                    <img style="padding: 24%;" id="3d-icon"
-                                         src="{% static "assets/img_for_shop/3d-icon.svg" %}">
+                                     style="cursor:pointer;right: 5%; position: absolute; z-index: 3; background: white; width: 10%; height: 10%; box-shadow: 0 1px 2px 0 #a1aaad; border-radius: 50%; top: 5%;">
+                                    <img style="padding: 18%;width: 100%" id="3d-icon"
+                                         src="{% static "assets/img_for_shop/3d-icon.png" %}">
                                 </div>
                                 <div class="show-controls wrapper-hidden"
                                      style="bottom: 0;position: absolute;z-index:3;width:4%">
@@ -256,7 +255,8 @@
                             </select></div>
                             <select name="id" id="productSelect" class="product-single__variants"
                                     style="display: none;">
-                                <option selected="selected" data-sku="" value="37685248721083">{% trans 'Maroon - $223.00 USD' %}
+                                <option selected="selected" data-sku=""
+                                        value="37685248721083">{% trans 'Maroon - $223.00 USD' %}
                                 </option>
                                 <option data-sku="" value="37685248753851">{% trans 'White - $223.00 USD' %}</option>
                             </select>
@@ -392,10 +392,12 @@
                 <div class="container container-v2">
                     <ul class="nav nav-tabs tab_prod">
                         <li>
-                            <a class="underline_scale active" data-toggle="tab" href="#des">{% trans 'Description' %}</a>
+                            <a class="underline_scale active" data-toggle="tab"
+                               href="#des">{% trans 'Description' %}</a>
                         </li>
                         <li>
-                            <a class="underline_scale" data-toggle="tab" href="#add">{% trans 'Additional Information' %}</a>
+                            <a class="underline_scale" data-toggle="tab"
+                               href="#add">{% trans 'Additional Information' %}</a>
                         </li>
                         <li>
                             <a class="underline_scale" data-toggle="tab" href="#review">{% trans 'Review' %}</a>
@@ -480,7 +482,8 @@
                                 {% endfor %}
                             </div>
                             <!-- /row -->
-                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}" class="btn_1">{% trans Leave a review %}</a></p>
+                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}"
+                                                   class="btn_1">{% trans "Leave a review" %}</a></p>
                         </div>
                         <!-- /card-body -->
                         {#                        </div>#}
@@ -521,9 +524,11 @@
                                         class="ti-heart"></i><span>{% trans 'Add to favorites' %}</span></a></li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
                                        title="Add to compare"><i
-                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a></li>
+                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>
+                                </li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                       title="Add to cart"><i class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
+                                       title="Add to cart"><i
+                                        class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -574,119 +579,119 @@
     </main>
     <!-- /main -->
 
-    <footer class="revealed">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_1">{% trans 'Quick Links' %}</h3>
-                    <div class="collapse dont-collapse-sm links" id="collapse_1">
-                        <ul>
-                            <li><a href="about.html">{% trans 'About us' %}</a></li>
-                            <li><a href="help.html">{% trans 'Faq' %}</a></li>
-                            <li><a href="help.html">{% trans 'Help' %}</a></li>
-                            <li><a href="account.html">{% trans 'My account' %}</a></li>
-                            <li><a href="blog.html">{% trans 'Blog' %}</a></li>
-                            <li><a href="contacts.html">{% trans 'Contacts' %}</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_2">{% trans 'Categories' %}</h3>
-                    <div class="collapse dont-collapse-sm links" id="collapse_2">
-                        <ul>
-                            <li><a href="listing-grid-1-full.html">{% trans 'Clothes' %}</a></li>
-                            <li><a href="listing-grid-2-full.html">{% trans 'Electronics' %}</a></li>
-                            <li><a href="listing-grid-1-full.html">{% trans 'Furniture' %}</a></li>
-                            <li><a href="listing-grid-3.html">{% trans 'Glasses' %}</a></li>
-                            <li><a href="listing-grid-1-full.html">{% trans 'Shoes' %}</a></li>
-                            <li><a href="listing-grid-1-full.html">{% trans 'Watches' %}</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_3">{% trans 'Contacts' %}</h3>
-                    <div class="collapse dont-collapse-sm contacts" id="collapse_3">
-                        <ul>
-                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-                            <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
-                            <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_4">{% trans 'Keep in touch' %}</h3>
-                    <div class="collapse dont-collapse-sm" id="collapse_4">
-                        <div id="newsletter">
-                            <div class="form-group">
-                                <input type="email" name="email_newsletter" id="email_newsletter" class="form-control"
-                                       placeholder="Your email">
-                                <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="follow_us">
-                            <h5>{% trans 'Follow Us' %}</h5>
-                            <ul>
-                                <li><a href="#0"><img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="{% static "assets/img_for_shop/twitter_icon.svg" %}" alt=""
-                                        class="lazy"></a></li>
-                                <li><a href="#0"><img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="{% static "assets/img_for_shop/facebook_icon.svg" %}" alt=""
-                                        class="lazy"></a></li>
-                                <li><a href="#0"><img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="{% static "assets/img_for_shop/instagram_icon.svg" %}" alt=""
-                                        class="lazy"></a></li>
-                                <li><a href="#0"><img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-src="{% static "assets/img_for_shop/youtube_icon.svg" %}" alt=""
-                                        class="lazy"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /row-->
-            <hr>
-            <div class="row add_bottom_25">
-                <div class="col-lg-6">
-                    <ul class="footer-selector clearfix">
-                        <li>
-                            <div class="styled-select lang-selector">
-                                <select>
-                                    <option value="English" selected>{% trans 'English' %}</option>
-                                    <option value="French">{% trans 'French' %}</option>
-                                    <option value="Spanish">{% trans 'Spanish' %}</option>
-                                    <option value="Russian">{% trans 'Russian' %}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="styled-select currency-selector">
-                                <select>
-                                    <option value="US Dollars" selected>{% trans 'US Dollars' %}</option>
-                                    <option value="Euro">{% trans 'Euro' %}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li><img
-                                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                data-src="{% static "assets/img_for_shop/cards_all.svg" %}" alt="" width="198"
-                                height="30" class="lazy"></li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="additional_links">
-                        <li><a href="#0">{% trans 'Terms and conditions' %}</a></li>
-                        <li><a href="#0">{% trans 'Privacy' %}</a></li>
-                        <li><span>© 2021 Allaia</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {#    <footer class="revealed">#}
+    {#        <div class="container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-lg-3 col-md-6">#}
+    {#                    <h3 data-bs-target="#collapse_1">{% trans 'Quick Links' %}</h3>#}
+    {#                    <div class="collapse dont-collapse-sm links" id="collapse_1">#}
+    {#                        <ul>#}
+    {#                            <li><a href="about.html">{% trans 'About us' %}</a></li>#}
+    {#                            <li><a href="help.html">{% trans 'Faq' %}</a></li>#}
+    {#                            <li><a href="help.html">{% trans 'Help' %}</a></li>#}
+    {#                            <li><a href="account.html">{% trans 'My account' %}</a></li>#}
+    {#                            <li><a href="blog.html">{% trans 'Blog' %}</a></li>#}
+    {#                            <li><a href="contacts.html">{% trans 'Contacts' %}</a></li>#}
+    {#                        </ul>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-3 col-md-6">#}
+    {#                    <h3 data-bs-target="#collapse_2">{% trans 'Categories' %}</h3>#}
+    {#                    <div class="collapse dont-collapse-sm links" id="collapse_2">#}
+    {#                        <ul>#}
+    {#                            <li><a href="listing-grid-1-full.html">{% trans 'Clothes' %}</a></li>#}
+    {#                            <li><a href="listing-grid-2-full.html">{% trans 'Electronics' %}</a></li>#}
+    {#                            <li><a href="listing-grid-1-full.html">{% trans 'Furniture' %}</a></li>#}
+    {#                            <li><a href="listing-grid-3.html">{% trans 'Glasses' %}</a></li>#}
+    {#                            <li><a href="listing-grid-1-full.html">{% trans 'Shoes' %}</a></li>#}
+    {#                            <li><a href="listing-grid-1-full.html">{% trans 'Watches' %}</a></li>#}
+    {#                        </ul>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-3 col-md-6">#}
+    {#                    <h3 data-bs-target="#collapse_3">{% trans 'Contacts' %}</h3>#}
+    {#                    <div class="collapse dont-collapse-sm contacts" id="collapse_3">#}
+    {#                        <ul>#}
+    {#                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>#}
+    {#                            <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>#}
+    {#                            <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>#}
+    {#                        </ul>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-3 col-md-6">#}
+    {#                    <h3 data-bs-target="#collapse_4">{% trans 'Keep in touch' %}</h3>#}
+    {#                    <div class="collapse dont-collapse-sm" id="collapse_4">#}
+    {#                        <div id="newsletter">#}
+    {#                            <div class="form-group">#}
+    {#                                <input type="email" name="email_newsletter" id="email_newsletter" class="form-control"#}
+    {#                                       placeholder="Your email">#}
+    {#                                <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i>#}
+    {#                                </button>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="follow_us">#}
+    {#                            <h5>{% trans 'Follow Us' %}</h5>#}
+    {#                            <ul>#}
+    {#                                <li><a href="#0"><img#}
+    {#                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="#}
+    {#                                        data-src="{% static "assets/img_for_shop/twitter_icon.svg" %}" alt=""#}
+    {#                                        class="lazy"></a></li>#}
+    {#                                <li><a href="#0"><img#}
+    {#                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="#}
+    {#                                        data-src="{% static "assets/img_for_shop/facebook_icon.svg" %}" alt=""#}
+    {#                                        class="lazy"></a></li>#}
+    {#                                <li><a href="#0"><img#}
+    {#                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="#}
+    {#                                        data-src="{% static "assets/img_for_shop/instagram_icon.svg" %}" alt=""#}
+    {#                                        class="lazy"></a></li>#}
+    {#                                <li><a href="#0"><img#}
+    {#                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="#}
+    {#                                        data-src="{% static "assets/img_for_shop/youtube_icon.svg" %}" alt=""#}
+    {#                                        class="lazy"></a></li>#}
+    {#                            </ul>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            <!-- /row-->#}
+    {#            <hr>#}
+    {#            <div class="row add_bottom_25">#}
+    {#                <div class="col-lg-6">#}
+    {#                    <ul class="footer-selector clearfix">#}
+    {#                        <li>#}
+    {#                            <div class="styled-select lang-selector">#}
+    {#                                <select>#}
+    {#                                    <option value="English" selected>{% trans 'English' %}</option>#}
+    {#                                    <option value="French">{% trans 'French' %}</option>#}
+    {#                                    <option value="Spanish">{% trans 'Spanish' %}</option>#}
+    {#                                    <option value="Russian">{% trans 'Russian' %}</option>#}
+    {#                                </select>#}
+    {#                            </div>#}
+    {#                        </li>#}
+    {#                        <li>#}
+    {#                            <div class="styled-select currency-selector">#}
+    {#                                <select>#}
+    {#                                    <option value="US Dollars" selected>{% trans 'US Dollars' %}</option>#}
+    {#                                    <option value="Euro">{% trans 'Euro' %}</option>#}
+    {#                                </select>#}
+    {#                            </div>#}
+    {#                        </li>#}
+    {#                        <li><img#}
+    {#                                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="#}
+    {#                                data-src="{% static "assets/img_for_shop/cards_all.svg" %}" alt="" width="198"#}
+    {#                                height="30" class="lazy"></li>#}
+    {#                    </ul>#}
+    {#                </div>#}
+    {#                <div class="col-lg-6">#}
+    {#                    <ul class="additional_links">#}
+    {#                        <li><a href="#0">{% trans 'Terms and conditions' %}</a></li>#}
+    {#                        <li><a href="#0">{% trans 'Privacy' %}</a></li>#}
+    {#                        <li><span>© 2021 Allaia</span></li>#}
+    {#                    </ul>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </footer>#}
     <!--/footer-->
 
     <div id="toTop"></div><!-- Back to top button -->
@@ -888,16 +893,17 @@
         $(".show3D").click(function () {
             console.log("youwu", $(".model-zoom-in"));
             let img = $("#3d-icon");
-            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.svg" %}") {
+            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.jpg" %}") {
                 $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.svg" %}");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.png" %}");
                 $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
             } else {
                 $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.svg" %}");
+                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.jpg" %}");
                 $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
             }
         });
+
 
         $(".main").style = "margin-bottom: 0px;";
 
