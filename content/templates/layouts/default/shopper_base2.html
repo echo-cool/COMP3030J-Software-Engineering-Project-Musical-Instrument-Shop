@@ -61,23 +61,18 @@
             <div class="drawer-search-top">
                 <h3 class="drawer-search-title">Start typing and hit Enter</h3>
             </div>
-            <form class="wg-search-form">
-                <input type="hidden" name="type" value="product">
-                <input type="text" name="q" placeholder="Search anything" class="search-input js_engo_autocomplate">
-                <button type="submit" class="set-20-svg" id="search_form">
+            <form class="wg-search-form" id="search_form">
+                <input type="text" placeholder="Search anything" class="search-input js_engo_autocomplate" id="search_text">
+                <button type="submit" class="set-20-svg">
 
                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </form>
             <div class="drawer_back">
-                <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg">
+                <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg" id="close-search">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
-            </div>
-            <div class="result_prod js_productSearchResults">
-                <div class="js_search_results row">
-                </div>
             </div>
         </div>
         <div class="bg_search_box ">
@@ -1500,6 +1495,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/add_url.js" %}"></script>
     <script>
         $(".delete-item").on("click", function () {
             // {# Use API to remove cart item #}

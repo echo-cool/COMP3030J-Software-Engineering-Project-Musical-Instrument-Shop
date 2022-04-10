@@ -154,17 +154,20 @@ def category_view(request, category_id):
 
 def product_details(request, product_id):
     if request.method == "POST":
-        quantity = int(request.POST.get('quantity', 0))
-        instrument = Instrument.objects.filter(id=product_id).first()
-        exist_cart = Cart.objects.filter(instrument_id=product_id).first()
-        if exist_cart:
-            exist_cart.count = exist_cart.count + quantity
-            exist_cart.save()
+        if request.user.is_authenticated:
+            quantity = int(request.POST.get('quantity', 0))
+            instrument = Instrument.objects.filter(id=product_id).first()
+            exist_cart = Cart.objects.filter(instrument_id=product_id).first()
+            if exist_cart:
+                exist_cart.count = exist_cart.count + quantity
+                exist_cart.save()
+            else:
+                new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+                new_cart.save()
+            messages.success(request, "Add Successfully")
+            return redirect('shop:product_details', product_id=product_id)
         else:
-            new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
-            new_cart.save()
-        messages.success(request, "Add Successfully")
-        return redirect('shop:product_details', product_id=product_id)
+            return redirect('accounts:log_in')
     else:
         categories = Category.objects.all()
         instrument = Instrument.objects.get(id=product_id)
