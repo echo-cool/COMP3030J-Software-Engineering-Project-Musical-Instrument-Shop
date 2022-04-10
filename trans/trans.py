@@ -70,7 +70,7 @@ def get_translation(text, token):
 
 
 def tag_visible(element):
-    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+    if element.parent.name in {'style', 'script', 'head', 'title', 'meta', '[document]'}:
         return False
     if isinstance(element, Comment):
         return False
@@ -125,7 +125,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
-    # with open("wordlist.txt", "w", encoding='utf8') as f:
-    #     f.write("")
-    # write_to_wordlist()
+    # main()
+    with open("wordlist.txt", "w", encoding='utf8') as f:
+        f.write("")
+    write_to_wordlist()
