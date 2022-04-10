@@ -102,6 +102,7 @@ def home(request):
     carts = Cart.objects.filter(user_id=request.user.id)
     print(carts)
     return render(request, 'shop_templates/homepage.html', {
+        "home": 1,
         "chinese_instruments": chinese_instruments,
         "western_instruments": western_instruments,
         "instruments": instruments,
