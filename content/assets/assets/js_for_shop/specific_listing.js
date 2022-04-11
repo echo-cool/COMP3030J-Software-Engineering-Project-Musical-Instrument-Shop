@@ -91,13 +91,12 @@ function activateCategorySearch() {
         categories.on("click", function () {
 
             var param = "";
-            let that = this;
             // $(this).prev().attr("checked", !$(this).prev().is(':checked'));\
             if ($(this).prev().is(':checked')) {
-                $(this).prev().removeAttr("checked");
+                $(this).prev().prop("checked", false);
             }
             else {
-                $(this).prev().attr("checked", 'checked');
+                $(this).prev().prop("checked", true);
             }
             let categories = $(".category-name");
             categories.each(function () {
@@ -110,11 +109,8 @@ function activateCategorySearch() {
             param = param.substring(1);
             console.log(param)
             console.log(categories)
-            categories.each(function () {
-                console.log($(this).prev())
-            })
 
-            // window.location.href = addUrlPara(window.location.href, 'category', param);
+            window.location.href = addUrlPara(window.location.href, 'category', param);
         })
 
         if (getQueryString('category')) {
