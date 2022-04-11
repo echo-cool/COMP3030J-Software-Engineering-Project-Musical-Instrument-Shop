@@ -155,11 +155,13 @@
                                 </div>
                                 <div class="widget-content">
                                     <ul class="list-category-toggle toggle-tab list-none">
-                                        <li class="item-toggle-tab"><a href="/"><input type="checkbox" name="1" value="123"> </a></li>
-                                        <li class="item-toggle-tab"><a href="/">Portable Keyboards</a></li>
-                                        <li class="item-toggle-tab"><a href="/">Digital Upright Pianos</a></li>
-                                        <li class="item-toggle-tab"><a href="/">Electric Double Basses</a></li>
-                                        <li class="item-toggle-tab"><a href="/">Guitar Amp Heads</a></li>
+                                        {% for category in categories %}
+                                        <li class="item-toggle-tab">
+                                            <input type="checkbox" class="category-checkbox" id="checkbox__{{ category.id }}" checked/>
+                                            <a href="javascript:void(0)" class="category-name" id="category__{{ category.id }}">
+                                                {{ category.name }}
+                                            </a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -682,8 +684,9 @@
 
 {% block foot_link %}
     <!-- SPECIFIC SCRIPTS -->
-    <script src="../static/assets/js_for_shop/sticky_sidebar.min.js"></script>
-    <script src="../static/assets/js_for_shop/specific_listing.js"></script>
+    <script src="{% static "/assets/js/add_url.js" %}"></script>
+    <script src="{% static "/assets/js_for_shop/sticky_sidebar.min.js" %}"></script>
+    <script src="{% static "/assets/js_for_shop/specific_listing.js" %}"></script>
     <script>
         jQuery(function ($) {
             $('#search_form').on('submit', function (e) {
