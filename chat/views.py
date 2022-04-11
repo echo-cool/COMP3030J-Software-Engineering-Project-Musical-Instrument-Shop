@@ -14,3 +14,11 @@ def index(request):
     message_list = MessageModel.objects.values('user').annotate(total=Count('id'))
     print([item['user'] for item in message_list])
     return render(request, 'chat/index.html')
+
+@login_required
+def index_new(request):
+    # query = MessageModel.objects.all().query
+    # query.group_by = ['user']
+    message_list = MessageModel.objects.values('user').annotate(total=Count('id'))
+    print([item['user'] for item in message_list])
+    return render(request, 'chat/index_new.html')
