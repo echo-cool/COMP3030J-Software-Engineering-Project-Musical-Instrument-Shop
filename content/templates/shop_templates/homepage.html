@@ -263,10 +263,8 @@
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3>
-                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
-                                            </h3>
-                                            <p>{{ blog.body | truncatechars:100 }}</p>
+                                            <h3><a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a></h3>
+                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
                                             <span>{{ blog.author }}</span>
                                         </div>
                                     </div>

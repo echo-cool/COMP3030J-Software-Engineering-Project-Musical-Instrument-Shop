@@ -75,23 +75,65 @@ function activateCategorySearch() {
     $(function () {
         console.log('activateCategorySearch');
         var $checkboxes = $(".category-checkbox");
+        let categories = $(".category-name");
 
-        $checkboxes.on("change", function () {
+        // $checkboxes.on("change", function () {
+        //     var param = "";
+        //     $checkboxes.each(function () {
+        //         if (this.checked) {
+        //             param += "|" + this.id.split('__')[1];
+        //         }
+        //     });
+        //     param = param.substring(1);
+        //     window.location.href = addUrlPara(window.location.href, 'category', param);
+        // })
+
+        categories.on("click", function () {
+
             var param = "";
-            $checkboxes.each(function () {
-                if (this.checked) {
+            let that = this;
+            // $(this).prev().attr("checked", !$(this).prev().is(':checked'));\
+            if ($(this).prev().is(':checked')) {
+                $(this).prev().removeAttr("checked");
+            }
+            else {
+                $(this).prev().attr("checked", 'checked');
+            }
+            let categories = $(".category-name");
+            categories.each(function () {
+                var checkbox = $(this).prev();
+                console.log(checkbox.is(':checked'));
+                if (checkbox.is(':checked')) {
                     param += "|" + this.id.split('__')[1];
                 }
             });
             param = param.substring(1);
-            window.location.href = addUrlPara(window.location.href, 'category', param);
+            console.log(param)
+            console.log(categories)
+            categories.each(function () {
+                console.log($(this).prev())
+            })
+
+            // window.location.href = addUrlPara(window.location.href, 'category', param);
         })
 
         if (getQueryString('category')) {
             const checked_list = getQueryString('category').split('|');
             if (checked_list.length > 0) {
                 $checkboxes.each(function () {
-                    this.checked = checked_list.includes(this.id.split('__')[1]);
+                    // this.checked = checked_list.includes(this.id.split('__')[1]);
+                    if (checked_list.includes(this.id.split('__')[1])) {
+                        $(this).attr("checked", true);
+                        if (!$(this).next().hasClass('active')) {
+                            $(this).next().addClass('active')
+                        }
+                    }
+                    else {
+                        $(this).attr("checked", false);
+                        if ($(this).next().hasClass('active')) {
+                            $(this).next().removeClass('active')
+                        }
+                    }
                 });
             }
         }
