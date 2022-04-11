@@ -101,6 +101,10 @@ def home(request):
         else:
             western_instruments.append(i)
 
+    step = 4
+    chinese_instruments = [chinese_instruments[i:i + step] for i in range(0, len(chinese_instruments), step)]
+    western_instruments = [western_instruments[i:i + step] for i in range(0, len(western_instruments), step)]
+
     carts = Cart.objects.filter(user_id=request.user.id)
     blogs = Post.objects.order_by("created_on")
     if blogs.count() > 8:
@@ -109,6 +113,8 @@ def home(request):
         "home": 1,
         "chinese_instruments": chinese_instruments,
         "western_instruments": western_instruments,
+        # "chinese_number": range(len(chinese_instruments) % 4),
+        # "western_number": range(len(western_instruments) % 4),
         "instruments": instruments,
         "categories": categories,
         "index_categories": index_categories,
