@@ -19,6 +19,9 @@
     <title>Backend</title>
     {#    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css"/>#}
 
+    {% block dashboard %}
+    {% endblock %}
+
     <!-- bootstrap & fontawesome -->
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -43,7 +46,6 @@
     <script src="{% static 'assets/js/ace-extra.min.js' %}"></script>
 
     <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
-
 
 </head>
 
@@ -928,8 +930,6 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
-
-
         //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
         //so disable dragging when clicking on label
         var agent = navigator.userAgent.toLowerCase();
@@ -973,5 +973,8 @@
         });
     })
 </script>
+{% block dashboard_js %}
+{% endblock %}
+
 </body>
 </html>

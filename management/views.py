@@ -41,6 +41,34 @@ def new(request):
 
 
 @login_required
+def index_new(request):
+    counts = {
+        'user': User.objects.count(),
+        'instrument': Instrument.objects.count(),
+        'order': Order.objects.count(),
+        'category': Category.objects.count(),
+        'review': Review.objects.count(),
+    }
+    pie_data = {}
+    for category_item in Category.objects.all():
+        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
+            category=category_item.id).count()
+
+    tmp = {}
+    for instrument_item in Instrument.objects.all():
+        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+
+    return render(request, 'management_templates/index_new.html', {
+        'counts': counts,
+        'pie_data': pie_data,
+        'popular_instruments': popular_instruments,
+        'data_length': len(pie_data),
+        'profile': Profile.objects.filter(user=request.user.id).first()
+    })
+
+
+@login_required
 def index(request):
     counts = {
         'user': User.objects.count(),
