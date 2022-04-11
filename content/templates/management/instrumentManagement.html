@@ -1,0 +1,612 @@
+{% extends 'management/base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% block left_menu %}
+    <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+        <li class=" nav-item">
+            <a href="/management/new"><i class="ft-home"></i>
+                <span class="menu-title" data-i18n="">Dashboard</span>
+            </a>
+        </li>
+        <li class=" nav-item open">
+            <a href="/management/instrument_management/new">
+                <i class="ft-box"></i>
+                <span class="menu-title" data-i18n="">Instrument</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="index.html">
+                <i class="ft-grid"></i>
+                <span class="menu-title" data-i18n="">Order</span>
+                <span class="badge badge badge-info badge-pill float-right mr-2">3</span>
+            </a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="/management/order_management/all/new">All Orders</a>
+                </li>
+                <li><a class="menu-item" href="/management/order_management/unconfirmed/new">Unconfirmed
+                    Orders</a>
+                </li>
+                <li><a class="menu-item" href="/management/order_management/confirmed/new">Confirmed Orders</a>
+                </li>
+                <li><a class="menu-item" href="/management/order_management/delivered/new">Delivered Orders</a>
+                </li>
+            </ul>
+        </li>
+        <li class=" nav-item">
+            <a href="#"><i class="ft-layout"></i>
+                <span class="menu-title" data-i18n="">Layouts</span>
+                <span class="badge badge badge-pill badge-danger float-right mr-2">5</span>
+            </a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="#">Content Sidebar</a>
+                    <ul class="menu-content">
+                        <li><a class="menu-item" href="layout-content-detached-left-sidebar.html">Left
+                            sidebar</a>
+                        </li>
+                        <li><a class="menu-item" href="layout-content-detached-left-sticky-sidebar.html">Sticky
+                            left
+                            sidebar</a>
+                        </li>
+                        <li><a class="menu-item" href="layout-content-detached-right-sidebar.html">Right
+                            sidebar</a>
+                        </li>
+                        <li><a class="menu-item" href="layout-content-detached-right-sticky-sidebar.html">Sticky
+                            right sidebar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navigation-divider"></li>
+                <li><a class="menu-item" href="navbar-hide-on-scroll-top.html">Hide on Scroll Top</a>
+                </li>
+                <li><a class="menu-item" href="vertical-nav-compact-menu.html">Compact navigation</a>
+                </li>
+                <li><a class="menu-item" href="layout-fixed-navbar.html">Fixed navbar</a>
+                </li>
+                <li><a class="menu-item" href="layout-fixed-navigation.html">Fixed navigation</a>
+                </li>
+                <li><a class="menu-item" href="layout-fixed-navbar-navigation.html">Fixed navbar &amp;
+                    navigation</a>
+                </li>
+                <li><a class="menu-item" href="layout-fixed-navbar-footer.html">Fixed navbar &amp; footer</a>
+                </li>
+                <li class="navigation-divider"></li>
+                <li><a class="menu-item" href="layout-fixed.html">Fixed layout</a>
+                </li>
+                <li><a class="menu-item" href="layout-boxed.html">Boxed layout</a>
+                </li>
+                <li><a class="menu-item" href="layout-static.html">Static layout</a>
+                </li>
+                <li class="navigation-divider"></li>
+                <li><a class="menu-item" href="layout-light.html">Navigation light</a>
+                </li>
+                <li><a class="menu-item" href="layout-dark.html">Navigation Dark</a>
+                </li>
+                <li><a class="menu-item" href="vertical-nav-flipped.html">Flipped Navigation</a>
+                </li>
+            </ul>
+        </li>
+        <li class=" nav-item">
+            <a href="changelog.html"><i class="ft-file"></i><span class="menu-title"
+                                                                  data-i18n="">Changelog</span><span
+                    class="badge badge badge-pill badge-warning float-right">1.2</span></a>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="ft-server"></i><span class="menu-title"
+                                                                         data-i18n="">Menu levels</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="#">Second level</a>
+                </li>
+                <li><a class="menu-item" href="#">Second level child</a>
+                    <ul class="menu-content">
+                        <li><a class="menu-item" href="#">Third level</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class=" nav-item"><a href="https://themeselection.com/support"><i class="ft-life-buoy"></i><span
+                class="menu-title" data-i18n="">Raise Support</span></a>
+        </li>
+    </ul>
+{% endblock %}
+
+<!-- BEGIN: Content-->
+{% block back_content %}
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-wrapper-before"></div>
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace">
+                                <span class="lbl"></span>
+                            </label>
+                        </th>
+                        <th class="detail-col">Details</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th class="hidden-480">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            Posted by
+                        </th>
+
+                        <th>
+                            <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                            Created At
+                        </th>
+                        <th class="hidden-480">Category</th>
+
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for instrument in instruments %}
+                        <tr>
+                            <td class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace">
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+
+                            <td class="center">
+                                <div class="action-buttons">
+                                    <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                                        <i class="ace-icon fa fa-angle-double-down"></i>
+                                        <span class="sr-only">Details</span>
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <a href="#">
+                                    {{ instrument.name | truncatewords:3 }}
+                                </a>
+                            </td>
+                            <td>${{ instrument.price }}</td>
+                            <td class="hidden-480">{{ instrument.posted_by }}</td>
+                            <td>{{ instrument.created_at }}</td>
+
+                            <td class="hidden-480">
+                                {{ instrument.category }}
+                            </td>
+
+                            <td>
+                                <div class="hidden-sm hidden-xs btn-group">
+
+                                    <button class="btn btn-xs btn-info"
+                                            onclick="window.location.href='{% url 'management:update_instrument' instrument.id %}'">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </button>
+
+
+                                    <button class="btn btn-xs btn-danger" id="delete_button-{{ instrument.id }}">
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </button>
+                                    <script>
+                                        $("#delete_button-{{ instrument.id }}").on("click", function (res) {
+                                            $("#dialog-delete").removeClass('hide').dialog({
+                                                resizable: false,
+                                                width: '320',
+                                                modal: true,
+                                                title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                                title_html: true,
+                                                buttons: [
+                                                    {
+                                                        html: "<i class='ace-icon fa fa-trash-o bigger-120'></i>  Delete the Item",
+                                                        "class": "btn btn-danger btn-minier",
+                                                        click: function () {
+                                                            $.ajax({
+                                                                url: "/api/instruments/{{ instrument.id }}/",
+                                                                method: "DELETE",
+                                                                headers: {
+                                                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                                                },
+                                                                success: function (res) {
+                                                                    $.ajax({
+                                                                        url: "#",
+                                                                        method: "GET",
+                                                                        success: function (res) {
+                                                                            $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                                            table_events()
+                                                                            {#alert("Success!");#}
+
+                                                                        }
+                                                                    });
+
+                                                                    console.log(res);
+                                                                }
+                                                            })
+                                                            $(this).dialog("close");
+
+                                                        }
+                                                    }
+                                                    ,
+                                                    {
+                                                        html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
+                                                        "class": "btn btn-minier",
+                                                        click: function () {
+                                                            $(this).dialog("close");
+                                                        }
+                                                    }
+                                                ]
+                                            });
+
+                                        });
+
+                                    </script>
+
+                                    <button class="btn btn-xs btn-warning">
+                                        <i class="ace-icon fa fa-flag bigger-120"></i>
+                                    </button>
+                                </div>
+
+                                <div class="hidden-md hidden-lg">
+                                    <div class="inline pos-rel">
+                                        <button class="btn btn-minier btn-primary dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                data-position="auto">
+                                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                            <li>
+                                                <a href="#" class="tooltip-info" data-rel="tooltip" title=""
+                                                   data-original-title="View">
+                                        <span class="blue">
+                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                        </span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="tooltip-success" data-rel="tooltip" title=""
+                                                   data-original-title="Edit">
+                                        <span class="green">
+                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                        </span>
+                                                </a>
+
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="tooltip-error" data-rel="tooltip" title=""
+                                                   data-original-title="Delete">
+                                        <span class="red">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="detail-row">
+                            <td colspan="8">
+                                <div class="table-detail">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-2">
+                                            <div class="text-center">
+                                                <img height="150" class="thumbnail inline no-margin-bottom"
+                                                     alt="Domain Owner's Avatar"
+                                                     src="/media/{{ instrument.image }}">
+                                                <br>
+                                                <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                                    <div class="inline position-relative">
+                                                        <a class="user-title-label" href="#">
+                                                            <i class="ace-icon fa fa-circle light-green"></i>
+                                                            &nbsp;
+                                                            <span class="white">{{ instrument.name }}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-7">
+                                            <div class="space visible-xs"></div>
+
+                                            <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Name</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>{{ instrument.name }}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Location</div>
+
+                                                    <div class="profile-info-value">
+                                                        <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                                        <span>Netherlands, Amsterdam</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Age</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>38</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Joined</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>2010/06/20</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Last Online</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>3 hours ago</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> About Me</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>Bio</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {#                            <div class="col-xs-12 col-sm-3">#}
+                                        {#                                <div class="space visible-xs"></div>#}
+                                        {#                                <h4 class="header blue lighter less-margin">Send a message#}
+                                        {#                                    to {{ order_item.user.username }}</h4>#}
+                                        {##}
+                                        {#                                <div class="space-6"></div>#}
+                                        {##}
+                                        {#                                <form>#}
+                                        {#                                    <fieldset>#}
+                                        {#                                        <textarea class="width-100" resize="none"#}
+                                        {#                                                  placeholder="Type something…"></textarea>#}
+                                        {#                                    </fieldset>#}
+                                        {##}
+                                        {#                                    <div class="hr hr-dotted"></div>#}
+                                        {##}
+                                        {#                                    <div class="clearfix">#}
+                                        {#                                        <label class="pull-left">#}
+                                        {#                                            <input type="checkbox" class="ace">#}
+                                        {#                                            <span class="lbl"> Email me a copy</span>#}
+                                        {#                                        </label>#}
+                                        {##}
+                                        {#                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round"#}
+                                        {#                                                type="button">#}
+                                        {#                                            Submit#}
+                                        {#                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>#}
+                                        {#                                        </button>#}
+                                        {#                                    </div>#}
+                                        {#                                </form>#}
+                                        {#                            </div>#}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <div class="row align-center justify-center"
+                         style="display: flex;margin-bottom: 0.7%;justify-content: center;">
+                        <span class="bigger-150 border-light justify-center align-center font-weight-bold">Page: {{ instruments.number }} Total: {{ instruments.paginator.num_pages }}</span>
+                        {% if instruments.has_previous %}
+                            <button id="first_page" class="btn btn-round btn-success">First Page</button>
+                            <button id="prev_page" class="btn btn-round btn-info">
+                                Previous Page
+                            </button>
+                        {% endif %}
+
+
+                        {% for pg in part_pages %}
+                            {% if pg == instruments.number %}
+                                <button class="btn btn-round btn-pink page-button">{{ pg }}</button>
+                            {% else %}
+                                <button class="btn btn-round page-button">{{ pg }}</button>
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% if instruments.has_next %}
+                            <button id="next_page" class="btn btn-round btn-info">
+                                Next Page
+                            </button>
+
+                            <button id="last_page" class="btn btn-round btn-danger">
+                                Last Page
+                            </button>
+                        {% endif %}
+
+                    </div>
+                    <script>
+                        $("#prev_page").on('click', function (res) {
+                            {% if instruments.has_previous %}
+                                window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})
+                            {% endif %}
+
+                        })
+                        $("#next_page").on('click', function (res) {
+                            {% if instruments.has_next %}
+                                window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})
+                            {% endif %}
+
+                        })
+                        $("#first_page").on('click', function (res) {
+                            {% if instruments.has_next %}
+                                window.location.href = addUrlPara(window.location.href, 'page', 1)
+                            {% endif %}
+                        })
+                        $("#last_page").on('click', function (res) {
+                            {% if instruments.has_next %}
+                                window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.paginator.num_pages }})
+                            {% endif %}
+                        })
+                        $(".page-button").on('click', function (res) {
+                            window.location.href = addUrlPara(window.location.href, 'page', $(this).text())
+                        })
+                        $("#first_page").on('click', function (res) {
+                            window.location.href = addUrlPara(window.location.href, 'page', 1)
+                        })
+                    </script>
+
+                    </tbody>
+                </table>
+                <div id="dialog-delete" class="hide">
+                    <div class="alert alert-info bigger-110">
+                        The instrument will be deleted and the operation can not be revoked
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <p class="bigger-110 bolder center grey">
+                        <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                        Are you sure?
+                    </p>
+                </div><!-- #dialog-confirm -->
+                <!--/ Total earning & Recent Sales  -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- END: Content-->
+
+{% block scripts %}
+
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    {#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="/static/assets/js/buttons.flash.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.html5.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.print.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.colVis.min.js"></script>#}
+    {#        <script src="/static/assets/js/dataTables.select.min.js"></script>#}
+    {#        		<script src="/static/assets/js/jquery-ui.min.js"></script>#}
+    {#        <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>#}
+    {#    <script src="/static/assets/js/ace-elements.min.js"></script>#}
+    {#        <script src="/static/assets/js/ace.min.js"></script>#}
+
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+
+        function table_events() {
+
+
+            //initiate dataTables plugin
+
+            $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+
+            //And for the first simple table, which doesn't have TableTools or dataTables
+            //select/deselect all rows according to table header checkbox
+            var active_class = 'active';
+            $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+                var th_checked = this.checked;//checkbox inside "TH" table header
+
+                $(this).closest('table').find('tbody > tr').each(function () {
+                    var row = this;
+                    if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                    else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+                });
+            });
+
+            //select/deselect a row when the checkbox is checked/unchecked
+            $('#simple-table').on('click', 'td input[type=checkbox]', function () {
+                var $row = $(this).closest('tr');
+                if ($row.is('.detail-row ')) return;
+                if (this.checked) $row.addClass(active_class);
+                else $row.removeClass(active_class);
+            });
+
+
+            /********************************/
+            //add tooltip for small view action buttons in dropdown menu
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+
+            //tooltip placement on right or left
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+                return 'left';
+            }
+
+
+            /***************/
+            $('.show-details-btn').on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('tr').next().toggleClass('open');
+                $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+            });
+            /***************/
+
+
+            /**
+             //add horizontal scrollbars to a simple table
+             $('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+             {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+             ).css('padding-top', '12px');
+             */
+
+        }
+
+        function dialog() {
+
+
+            //override dialog's title function to allow for HTML titles
+            $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+                _title: function (title) {
+                    var $title = this.options.title || '&nbsp;'
+                    if (("title_html" in this.options) && this.options.title_html == true)
+                        title.html($title);
+                    else title.text($title);
+                }
+            }));
+
+
+        }
+
+        jQuery(function ($) {
+            table_events();
+            dialog();
+
+        })
+
+        $('li:contains(Instruments)').attr("class", "active");
+
+    </script>
+
+{% endblock %}
