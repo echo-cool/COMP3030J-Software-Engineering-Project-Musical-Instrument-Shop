@@ -395,7 +395,8 @@
                                                         <div class="quick-view mr-0 w-50">
                                                             <a href="javascript:void(0)"
                                                                class="engoj_btn_quickview icon-quickview inline-block box-shadow"
-                                                               data-id="bdk-1-full-size-starter-drum" data-toggle="tooltip"
+                                                               data-id="bdk-1-full-size-starter-drum"
+                                                               data-toggle="tooltip"
                                                                data-placement="top" data-original-title="Quickview">
                                                                 <i class="fsz-unset">
                                                                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
@@ -431,12 +432,14 @@
                                                         <s class="price-old">${{ instrument.old_price }}</s>
                                                     </p>
                                                     <div class="add-to-cart mr-0">
-                                                        <form method="post" action="/cart/add" enctype="multipart/form-data"
+                                                        <form method="post" action="/cart/add"
+                                                              enctype="multipart/form-data"
                                                               class="inline-block icon-addcart  box-shadow"
                                                               data-toggle="tooltip" data-placement="top"
                                                               data-original-title="Add to Cart">
                                                             <input type="hidden" name="id" value="37684377813179">
-                                                            <button type="submit" name="add" class="enj-add-to-cart-btn ">
+                                                            <button type="submit" name="add"
+                                                                    class="enj-add-to-cart-btn ">
                                                                 Add to Cart
                                                             </button>
                                                         </form>
@@ -697,5 +700,7 @@
     </script>
     <script src="{% static "assets/js_for_shop/product_search.js" %}"></script>
 
+    <script src="{% static 'assets/js_for_game/game_piano.js' %}"></script>
+    <script src="{% static 'assets/js_for_game/game_guitar.js' %}"></script>
 {% endblock %}
 

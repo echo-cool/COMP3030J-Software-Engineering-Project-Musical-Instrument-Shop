@@ -13,6 +13,62 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 
 @login_required
+def new(request):
+    counts = {
+        'user': User.objects.count(),
+        'instrument': Instrument.objects.count(),
+        'order': Order.objects.count(),
+        'category': Category.objects.count(),
+        'review': Review.objects.count(),
+    }
+    pie_data = {}
+    for category_item in Category.objects.all():
+        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
+            category=category_item.id).count()
+
+    tmp = {}
+    for instrument_item in Instrument.objects.all():
+        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+
+    return render(request, 'management/index.html', {
+        'counts': counts,
+        'pie_data': pie_data,
+        'popular_instruments': popular_instruments,
+        'data_length': len(pie_data),
+        'profile': Profile.objects.filter(user=request.user.id).first()
+    })
+
+
+@login_required
+def index_new(request):
+    counts = {
+        'user': User.objects.count(),
+        'instrument': Instrument.objects.count(),
+        'order': Order.objects.count(),
+        'category': Category.objects.count(),
+        'review': Review.objects.count(),
+    }
+    pie_data = {}
+    for category_item in Category.objects.all():
+        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
+            category=category_item.id).count()
+
+    tmp = {}
+    for instrument_item in Instrument.objects.all():
+        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+
+    return render(request, 'management_templates/index_new.html', {
+        'counts': counts,
+        'pie_data': pie_data,
+        'popular_instruments': popular_instruments,
+        'data_length': len(pie_data),
+        'profile': Profile.objects.filter(user=request.user.id).first()
+    })
+
+
+@login_required
 def index(request):
     counts = {
         'user': User.objects.count(),
@@ -55,6 +111,27 @@ def order_management_all(request):
         }
         data.append(tmp)
     return render(request, 'management_templates/orderManagement.html', {
+        'orders': data,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'mode': 0
+    })
+
+
+@login_required
+def order_management_all_new(request):
+    data = []
+    orders = Order.objects.all()
+    for order_item in orders:
+        tmp = {
+            'order': order_item,
+            'user': User.objects.filter(id=order_item.user.id).first(),
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first(),
+            'profile': Profile.objects.filter(
+                user=order_item.user.id).first()
+        }
+        data.append(tmp)
+    return render(request, 'management/orderManagement.html', {
         'orders': data,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 0
@@ -139,6 +216,39 @@ def update_order(request, order_id):
         return render(request, 'management_templates/update_order.html', {
             'form': f
         })
+
+
+@login_required
+def instrument_management_new(request):
+    search = request.GET.get("search")
+    if search is not None:
+        instrument_list = Instrument.objects.filter(Q(name__contains=search) | Q(details__contains=search))
+    else:
+        instrument_list = Instrument.objects.all()
+    paginator = Paginator(instrument_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+    return render(request, 'management/instrumentManagement.html', {
+        'instruments': instruments,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
 
 
 @login_required
