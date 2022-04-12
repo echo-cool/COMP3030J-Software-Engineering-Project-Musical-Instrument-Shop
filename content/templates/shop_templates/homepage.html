@@ -511,99 +511,101 @@
         {#        <!-- End From our blog -->#}
     </div>
 
-    <!-- popup-quickview  -->
-    <div id="popup-quickview" class="modal" tabindex="-1">
-        <div class="modal-dialog quickview-dialog">
-            <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="fi flaticon-cancel"></i></button>
-                <div class="modal-body d-flex">
-                    <div class="product-details">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="product-single-img">
-                                    <div class="modal-product">
-                                        <div class="item">
-                                            <img src="assets/images/modal2.jpg" alt="">
+    {% for instrument in instruments %}
+        <!-- popup-quickview  -->
+        <div id="popup-quickview-{{ instrument.id }}" class="modal" tabindex="-1">
+            <div class="modal-dialog quickview-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="fi flaticon-cancel"></i></button>
+                    <div class="modal-body d-flex">
+                        <div class="product-details">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5">
+                                    <div class="product-single-img">
+                                        <div class="modal-product">
+                                            <div class="item">
+                                                <img src="{{ instrument.image.url }}" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="product-single-content">
-                                    <h5>{% trans 'Queen Bee Honey' %}</h5>
-                                    <h6>350.00 USD</h6>
-                                    <ul class="rating">
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    </ul>
-                                    <p>{% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit.' %}
-                                    </p>
-                                    <div class="product-filter-item color">
-                                        <div class="color-name">
-                                            <span>{% trans 'Color :' %}</span>
-                                            <ul>
-                                                <li class="color1"><input id="1" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="1"></label>
-                                                </li>
-                                                <li class="color2"><input id="2" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="2"></label>
-                                                </li>
-                                                <li class="color3"><input id="3" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="3"></label>
-                                                </li>
+                                <div class="col-lg-7">
+                                    <div class="product-single-content">
+                                        <h5>{% trans instrument.name %}</h5>
+                                        <h6>{{ instrument.price }} USD</h6>
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        </ul>
+                                        <p>{% trans instrument.details %}
+                                        </p>
+                                        <div class="product-filter-item color">
+                                            <div class="color-name">
+                                                <span>{% trans 'Color :' %}</span>
+                                                <ul>
+                                                    <li class="color1"><input id="1" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="1"></label>
+                                                    </li>
+                                                    <li class="color2"><input id="2" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="2"></label>
+                                                    </li>
+                                                    <li class="color3"><input id="3" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="3"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {#                                    <div class="product-filter-item color filter-size">#}
+                                        {#                                        <div class="color-name">#}
+                                        {#                                            <span>Weight :</span>#}
+                                        {#                                            <ul>#}
+                                        {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w1">4L</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w2">2L</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w3">500ML</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w4">200ML</label>#}
+                                        {#                                                </li>#}
+                                        {#                                            </ul>#}
+                                        {#                                        </div>#}
+                                        {#                                    </div>#}
+                                        <div class="pro-single-btn">
+                                            <div class="quantity cart-plus-minus">
+                                                <input type="text" value="1">
+                                                <div class="dec qtybutton"></div>
+                                                <div class="inc qtybutton"></div>
+                                            </div>
+                                            <a href="cart__{{ instrument.id }}" class="theme-btn">{% trans 'Add to cart' %}</a>
+                                        </div>
+                                        <div class="social-share">
+                                            <span>{% trans 'Share with : ' %}</span>
+                                            <ul class="socialLinks">
+                                                <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    {#                                    <div class="product-filter-item color filter-size">#}
-                                    {#                                        <div class="color-name">#}
-                                    {#                                            <span>Weight :</span>#}
-                                    {#                                            <ul>#}
-                                    {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w1">4L</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w2">2L</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w3">500ML</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w4">200ML</label>#}
-                                    {#                                                </li>#}
-                                    {#                                            </ul>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
-                                    <div class="pro-single-btn">
-                                        <div class="quantity cart-plus-minus">
-                                            <input type="text" value="1">
-                                            <div class="dec qtybutton"></div>
-                                            <div class="inc qtybutton"></div>
+                                        <div class="m-shape">
+                                            <img src="{{ instrument.image1.url }}" alt="">
                                         </div>
-                                        <a href="#" class="theme-btn">{% trans 'Add to cart' %}</a>
-                                    </div>
-                                    <div class="social-share">
-                                        <span>{% trans 'Share with : ' %}</span>
-                                        <ul class="socialLinks">
-                                            <li><a href='#'><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="m-shape">
-                                        <img src="assets/images/bee2.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -612,8 +614,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- popup-quickview -->
+        <!-- popup-quickview -->
+    {% endfor %}
 
 {% endblock %}
 
