@@ -24,7 +24,7 @@
 
     <!-- BEGIN: Theme CSS-->
     {#    TODO: 处理冲突 #}
-    {#    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap.css" %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap-extended.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/colors.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/components.css" %}">
@@ -60,14 +60,50 @@
         .menu_scroll_v2 .container {
             background: rgba(255, 255, 255, 0.7);
         }
+
+        .footer_v1 {
+            display: none;
+        }
+
+        .chat-application .chat-app-window {
+            overflow: auto;
+        }
+
+
+        .chat-application .chat-app-window {
+            height: calc(100% - 82px);
+        }
+
+        .chat-application .sidebar-left {
+            height: calc(100% - 0px);
+        }
+
+        .chat-application .users-list-padding {
+            padding-bottom: 1px;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .sidebar {
+            height: 100%;
+        }
+
+        .chat-application .chats .time {
+            text-align: end;
+            margin: 40px 0;
+            position: relative;
+            top: 110px;
+            right: 62px;
+        }
+
     </style>
 
 {% endblock %}
 
 {% block content %}
-
-
-    <div class="container-fluid h-100 chat-application">
+    <div class="h-100 chat-application">
         <!-- BEGIN: Content-->
         <div class="app-content content">
             <div class="sidebar-left sidebar-fixed">
