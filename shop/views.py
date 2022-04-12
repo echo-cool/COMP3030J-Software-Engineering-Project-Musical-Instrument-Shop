@@ -142,7 +142,11 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'shop_templates/company-profile.html')
+    carts = Cart.objects.filter(user_id=request.user.id)
+    return render(request, 'shop_templates/company-profile.html',
+                  {
+                      'carts': carts
+                  })
 
 
 def game(request):
@@ -150,7 +154,11 @@ def game(request):
 
 
 def chinese(request):
-    return render(request, 'shop_templates/chinese.html')
+    carts = Cart.objects.filter(user_id=request.user.id)
+    return render(request, 'shop_templates/chinese.html',
+                  {
+                      'carts': carts
+                  })
 
 
 def category_view(request, category_id):
@@ -193,6 +201,7 @@ def product_details(request, product_id):
     # Get 4 random reviews
     reviews = Review.objects.all()
     review = []
+    carts = Cart.objects.filter(user_id=request.user.id)
     for i in range(4):
         if len(reviews) > 0:
             num = random.randint(0, len(reviews) - 1)
@@ -212,7 +221,7 @@ def product_details(request, product_id):
             'categories': categories,
             "review_left": [review[0], review[1]],
             "review_right": [review[2], review[3]],
-
+            "carts": carts
         })
     else:
         return render(request, 'shop_templates/product-detail.html', {
@@ -221,12 +230,14 @@ def product_details(request, product_id):
             "instrument_details": instrument_details,
             "related": related,
             'categories': categories,
+            "carts": carts
         })
 
 
 @login_required
 def leave_review(request, instrument_id):
     form = ReviewForm()
+    carts = Cart.objects.filter(user_id=request.user.id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -247,7 +258,8 @@ def leave_review(request, instrument_id):
             return redirect(reverse('shop:product_details', args=[instrument_id]))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
-        "form": form
+        "form": form,
+        "carts": carts
     })
 
 
@@ -260,9 +272,11 @@ def personal_profile(request):
         return redirect(reverse('shop:personal_profile'))
     # print(form)
     orders = Order.objects.order_by('-created_at')[:5]
+    carts = Cart.objects.filter(user_id=request.user.id)
     return render(request, 'shop_templates/personal_profile.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'orders': orders
+        'orders': orders,
+        'carts': carts
     })
 
 
@@ -425,22 +439,22 @@ def product_search(request):
 #             "instruments": instruments,
 #         })
 
+# @login_required
+# def cart(request):
+#     if request.user.is_authenticated:
+#         carts = Cart.objects.filter(user_id=request.user.id)
+#         each_cart = {}
+#         for each_cart in carts:
+#             each_cart.total_money = each_cart.count * each_cart.instrument.price
+#         return render(request, 'shop_templates/cart.html', {
+#             "carts": carts,
+#         })
+#     else:
+#         return redirect('accounts:log_in')
+
+
 @login_required
 def cart(request):
-    if request.user.is_authenticated:
-        carts = Cart.objects.filter(user_id=request.user.id)
-        each_cart = {}
-        for each_cart in carts:
-            each_cart.total_money = each_cart.count * each_cart.instrument.price
-        return render(request, 'shop_templates/cart.html', {
-            "carts": carts,
-        })
-    else:
-        return redirect('accounts:log_in')
-
-
-@login_required
-def cart2(request):
     carts = Cart.objects.filter(user_id=request.user.id)
     each_cart = {}
     for each_cart in carts:
@@ -495,6 +509,7 @@ def product_details_test_model(request, product_id):
 def orders(request):
     user = request.user
     all_orders = Order.objects.filter(user_id=user.id)
+    carts = Cart.objects.filter(user_id=request.user.id)
     count = {
         "order": Order.objects.filter(user_id=user.id).count(),
         "cart": Cart.objects.filter(user_id=user.id).count(),
@@ -503,4 +518,5 @@ def orders(request):
     return render(request, 'shop_templates/orders.html', {
         "orders": all_orders,
         "count": count,
+        "carts": carts
     })
