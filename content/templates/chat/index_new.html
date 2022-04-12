@@ -11,7 +11,7 @@
     <!-- ace styles -->
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
-    <link href="{% static 'assets/css/fonts.googleapis.com.css' %}" rel="stylesheet">\
+    <link href="{% static 'assets/css/fonts.googleapis.com.css' %}" rel="stylesheet">
 
     <link rel="apple-touch-icon" href="{% static "assets_backend/images/ico/apple-icon-120.png" %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static "assets_backend/images/ico/favicon.ico" %}">
@@ -24,7 +24,7 @@
 
     <!-- BEGIN: Theme CSS-->
     {#    TODO: 处理冲突 #}
-    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap.css" %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap.css" %}">#}
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap-extended.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/colors.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/components.css" %}">
@@ -48,7 +48,19 @@
 
     <!-- SPECIFIC JS -->
     <script src="{% static 'assets/chat_js/gun.js' %}"></script>
+    <style>
+        body {
+            background: white;
+        }
 
+        .header-v2-h2 .container {
+            background: white;
+        }
+
+        .menu_scroll_v2 .container {
+            background: rgba(255, 255, 255, 0.7);
+        }
+    </style>
 
 {% endblock %}
 
