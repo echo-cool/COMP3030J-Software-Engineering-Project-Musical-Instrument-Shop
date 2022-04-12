@@ -18,7 +18,7 @@
                         <li><a href="{% url 'shop:product_details' product_id=instrument.id %}" class="link-quick-view"><i
                                 class="fa fa-search"></i></a></li>
                         <li data-bs-toggle="modal"
-                            data-bs-target="#popup-quickview">
+                            data-bs-target="#popup-quickview-{{ instrument.id }}">
                             <button data-bs-toggle="tooltip" data-bs-html="true"
                                     title="Quick View">
                                 <i class="fi ti-eye"></i>

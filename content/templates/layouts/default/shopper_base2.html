@@ -1326,7 +1326,14 @@
                             <a href="javascript:void(0)" class="login js-call-popup-login">
                                 <div class="dropdown dropdown-access">
                                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
+                                    {% if request.user.is_authenticated %}
+                                        <a href="{% url "shop:personal_profile" %}" class="">
+                                            <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 30px;"
+                                                 src="/media/{{ request.user.profile.image }}"
+                                                 alt="{{ request.user.username }}'s Photo"/></a>
+                                    {% else %}
+                                        <a href="{% url "accounts:log_in" %}"
+                                           class="access_link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
                                          width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
                                          xmlns:cc="http://creativecommons.org/ns#"
                                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -1335,11 +1342,12 @@
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1506.87,2587.11 c -225.04,0 -408.14,-183.08 -408.14,-408.11 0,-225.06 183.1,-408.13 408.14,-408.13 225.02,0 408.13,183.07 408.13,408.13 0,225.03 -183.11,408.11 -408.13,408.11 z m 0,-1038.56 c -347.64,0 -630.432,282.79 -630.432,630.45 0,347.63 282.792,630.43 630.432,630.43 347.63,0 630.42,-282.8 630.42,-630.43 0,-347.66 -282.79,-630.45 -630.42,-630.45 v 0"></path><path
                                                 id="path16" style="fill-opacity:1;fill-rule:nonzero;stroke:none"
-                                                d="M 399.648,361.789 H 2614.07 c -25.06,261.531 -139.49,503.461 -327.47,689.831 -124.25,123.14 -300.78,193.96 -483.86,193.96 h -591.76 c -183.61,0 -359.601,-70.82 -483.863,-193.96 C 539.148,865.25 424.719,623.32 399.648,361.789 Z M 2730.69,139.461 H 283.035 c -61.558,0 -111.16,49.59 -111.16,111.16 0,363.438 141.68,704 398.32,959.019 165.657,164.55 399.414,258.82 640.785,258.82 h 591.76 c 241.94,0 475.14,-94.27 640.8,-258.82 256.63,-255.019 398.31,-595.581 398.31,-959.019 0,-61.57 -49.59,-111.16 -111.16,-111.16 v 0"></path></g></g></svg>
+                                                d="M 399.648,361.789 H 2614.07 c -25.06,261.531 -139.49,503.461 -327.47,689.831 -124.25,123.14 -300.78,193.96 -483.86,193.96 h -591.76 c -183.61,0 -359.601,-70.82 -483.863,-193.96 C 539.148,865.25 424.719,623.32 399.648,361.789 Z M 2730.69,139.461 H 283.035 c -61.558,0 -111.16,49.59 -111.16,111.16 0,363.438 141.68,704 398.32,959.019 165.657,164.55 399.414,258.82 640.785,258.82 h 591.76 c 241.94,0 475.14,-94.27 640.8,-258.82 256.63,-255.019 398.31,-595.581 398.31,-959.019 0,-61.57 -49.59,-111.16 -111.16,-111.16 v 0"></path></g></g></svg></a>
+                                    {% endif %}
 
                                     <div class="dropdown-menu" id="account-menu">
                                         {% if user.is_authenticated %}
-                                            <a href="{% url "api:logout" %}" class="btn btn-primary">Logout</a>
+                                            <a href="{% url "api:logout" %}" class="btn btn-primary" style="display: block;">Logout</a>
                                         {% else %}
                                             <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
                                         {% endif %}
@@ -1410,6 +1418,36 @@
     </div>
     </header>
     <!-- End Header -->
+
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+        <div class="modal_header">
+            <h3>Sign In</h3>
+        </div>
+        <form action="/api/login/" method="post">
+            {% csrf_token %}
+            <div class="sign-in-wrapper">
+                <a href="#0" class="social_bt facebook">Login with Facebook</a>
+                <a href="#0" class="social_bt google">Login with Google</a>
+                <div class="divider"><span>Or</span></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="username" id="email">
+                    <i class="ti-email" style="margin-top: 0.6rem;"></i>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="password" value="">
+                    <i class="ti-lock" style="margin-top: 0.6rem;"></i>
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" value="Log In" class="btn_1 full-width">
+                </div>
+
+            </div>
+        </form>
+        <!--form -->
+    </div>
 
     {% block content %}
 
@@ -1564,6 +1602,7 @@
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
+    <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
@@ -1603,6 +1642,19 @@
             $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(300);
         }, function () {
             $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
+        });
+
+        $('#sign-in').magnificPopup({
+            type: 'inline',
+            fixedContentPos: true,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            closeMarkup: '<button title="%title%" type="button" class="mfp-close"></button>',
+            mainClass: 'my-mfp-zoom-in'
         });
     </script>
 
