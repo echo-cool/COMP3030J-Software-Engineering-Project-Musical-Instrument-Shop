@@ -13,9 +13,9 @@
             <div class="info-product-cart">
                 <div class="inner-info-product-cart">
                     <ul>
-                        <li><a href="/api/message" class="link-wishlist"><i
+                        <li><a href="javascript:void(0)" class="link-wishlist" id="wishlist__{{ instrument.id }}"><i
                                 class="fa fa-heart"></i></a></li>
-                        <li><a href="#" class="link-quick-view"><i
+                        <li><a href="{% url 'shop:product_details' product_id=instrument.id %}" class="link-quick-view"><i
                                 class="fa fa-search"></i></a></li>
                         <li data-bs-toggle="modal"
                             data-bs-target="#popup-quickview">
@@ -25,7 +25,7 @@
                             </button>
                         </li>
                     </ul>
-                    <a href="#" class="link-product-add-cart">Add to
+                    <a href="javascript:void(0)" class="link-product-add-cart" id="cart__{{ instrument.id }}">Add to
                         cart</a>
                 </div>
             </div>

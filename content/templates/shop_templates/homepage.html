@@ -687,6 +687,78 @@
                 ev.stopPropagation();
             }
         })
+
+        $('.link-wishlist').on('click', function () {
+            $.ajax({
+                url: "/api/add_wishlist/",
+                method: 'POST',
+                data:{
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100){
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your wishlist!", "warning");
+                        }, 300);
+                    }
+                    else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    }
+                    else {
+                        alert("Error!")
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
+
+        $('.link-product-add-cart').on('click', function () {
+            $.ajax({
+                url: "/api/add_cart/",
+                method: 'POST',
+                data:{
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100){
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your cart!", "warning");
+                        }, 300);
+                    }
+                    else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    }
+                    else {
+                        alert("Error!")
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
     <script src="/static/assets/assets_for_bees/js/jquery-ui.min.js"></script>
