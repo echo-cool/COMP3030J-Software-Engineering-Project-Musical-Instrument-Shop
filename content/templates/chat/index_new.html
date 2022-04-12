@@ -235,123 +235,6 @@
                             <div class="mb-1 secondary text-bold-700">Chat History</div>
                             <div class="chats">
                                 <div class="chats" id="messages">
-                                    <div class="chat">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-1.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>How are you Chris?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat chat-left">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="left"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>Hey John, I am good.</p>
-                                                <p>Could you please send me a pic?</p>
-                                            </div>
-                                            <div class="chat-content">
-                                                <p>It should be of smaller size.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-1.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <img class="img-thumbnail img-fluid"
-                                                     src="{% static "assets_backend/images/portrait/small/avatar-s-1.png" %}"
-                                                     alt="Image description">
-                                            </div>
-                                            <div class="chat-content">
-                                                <p>Here you go! Let me know if you need anything else.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="time">25 minutes ago</p>
-                                    <div class="chat chat-left">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="left"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>Looks cool!</p>
-                                            </div>
-                                            <div class="chat-content">
-                                                <p>It's perfect for my next project.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-1.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>Thanks, glad to help you.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat chat-left">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="left"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>I will talk you later.</p>
-                                            </div>
-                                            <div class="chat-content">
-                                                <p>Bye.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat">
-                                        <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
-                                               title="" data-original-title="">
-                                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-1.png" %}"
-                                                     class="box-shadow-4" alt="avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="chat-body">
-                                            <div class="chat-content">
-                                                <p>Sure, Feel free to get in touch.</p>
-                                            </div>
-                                            <div class="chat-content">
-                                                <p>Bye</p>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -363,11 +246,11 @@
                                             <span id="basic-addon3"><i class="ft-image"></i></span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Send message"
-                                               aria-describedby="button-addon2">
+                                               aria-describedby="button-addon2" id="chat-input">
                                     </div>
                                 </fieldset>
                                 <fieldset class="form-group position-relative has-icon-left col-2 m-0">
-                                    <button type="button" class="btn btn-danger">
+                                    <button type="button" class="btn btn-danger" id="btn-send">
                                         <i class="la la-paper-plane-o d-xl-none"></i>
                                         <span class="d-none d-lg-none d-xl-block">Send Message </span>
                                     </button>
@@ -415,13 +298,14 @@
         let chat_with_current;
         let current_user_id;
 
-        function select(id) {
+        function select(id, username) {
             current_user_id = id;
             $('.active').removeClass('active');
-            let selected = event.target;
+            {#let selected = event.target;#}
             {#console.log(selected);#}
-            $(selected).addClass('active');
-            chat_with_current = $(selected).attr('value');
+            {#$(selected).addClass('active');#}
+            chat_with_current = username;
+            {#console.log(selected)#}
             setCurrentRecipient(chat_with_current);
             $('#chat_with').text(chat_with_current);
             $.getJSON(`../api/user/${id}`, function (user) {
@@ -439,7 +323,7 @@
                 userList.children('.media').remove();
                 for (let i = 0; i < data.length; i++) {
                     let userItem = `
-                    <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']})">
+                    <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']}, '${data[i]['username']}')">
                         <div class="media-left pr-1">
                         <span class="avatar avatar-md">
                             <img class="media-object rounded-circle"
@@ -483,7 +367,9 @@
             if (message.user === currentUser) position_new = 'cright';
             if (message.user === currentUser) {
                 messageItem = `
+
                 <div class="chat">
+                <p class="time">${date}</p>
                     <div class="chat-avatar">
                         <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
                            title="" data-original-title="">
@@ -497,11 +383,11 @@
                         </div>
                     </div>
                     <div>
-                </div>${date}</div>
                 `;
             } else {
                 messageItem = `
             <div class="chat chat-left">
+                <p class="time">${date}</p>
                 <div class="chat-avatar">
                     <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
                        title="" data-original-title="">
@@ -515,7 +401,6 @@
                     </div>
                 </div>
                 <div>
-            </div>${date}</div>
 `;
             }
             $(messageItem).appendTo('#messages');
@@ -538,7 +423,7 @@
                     chat_with_current = chat_with;
 
                     chat_history = data['results'][0].id;
-                    messageList.children('.message').remove();
+                    messageList.children('.chat').remove();
                     for (let i = data['results'].length - 1; i >= 0; i--) {
                         drawMessage(data['results'][i]);
                     }
@@ -604,7 +489,9 @@
 
         $(document).ready(function () {
                 updateUserList();
-                disableInput();
+                $.getJSON('/api/rank_user_list', function (data) {
+                    select(data[0]['id'], data[0]['username']);
+                })
 
                 chatInput.keypress(function (e) {
                     if (e.keyCode == 13)
@@ -623,6 +510,7 @@
                         getConversation(currentRecipient);
                     }
                 }, 500);
+
 
             }
         );
