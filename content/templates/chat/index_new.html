@@ -84,7 +84,7 @@
                                     class="ft-edit"></i> </span>
                         </div>
                         <div id="users-list" class="list-group position-relative">
-                            <div class="users-list-padding media-list">
+                            <div id="user-list" class="users-list-padding media-list">
                                 <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
                                     <div class="media-left pr-1">
                                     <span class="avatar avatar-md">
@@ -234,7 +234,7 @@
                         <section class="chat-app-window">
                             <div class="mb-1 secondary text-bold-700">Chat History</div>
                             <div class="chats">
-                                <div class="chats">
+                                <div class="chats" id="messages">
                                     <div class="chat">
                                         <div class="chat-avatar">
                                             <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
@@ -382,6 +382,24 @@
     </div>
 
 
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/charts/chartist.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/vendors/js/charts/chartist-plugin-tooltip.min.js" %}"
+            type="text/javascript"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static "assets_backend/js/core/app-menu.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/js/core/app.js" %}" type="text/javascript"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="{% static "assets_backend/js/scripts/pages/chat-application.js" %}" type="text/javascript"></script>
+    <!-- END: Page JS-->
+
     <script>
         let sessionKey = '{{ request.session.session_key }}';
         let currentUser = '{{ request.user.username }}';
@@ -418,21 +436,27 @@
         function updateUserList() {
             $.getJSON('/api/rank_user_list', function (data) {
                 console.log(data)
-                userList.children('.user').remove();
+                userList.children('.media').remove();
                 for (let i = 0; i < data.length; i++) {
                     let userItem = `
-                    <li class="user" value=${data[i]['username']} onclick=select(${data[i]['id']})>
-                        <div class="d-flex bd-highlight" style="pointer-events: none">
-                            <div class="img_cont">
-                                <img src=${data[i]['image']} class="rounded-circle user_img">
-                                <span class="online_icon offline"></span>
-                            </div>
-                            <div class="user_info">
-                                <span>${data[i].username}</span>
-                                <p>${data[i].email}</p>
-                            </div>
+                    <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']})">
+                        <div class="media-left pr-1">
+                        <span class="avatar avatar-md">
+                            <img class="media-object rounded-circle"
+                                 src=${data[i]['image']}
+                                 alt="Generic placeholder image">
+                        </span>
                         </div>
-                    </li>
+                        <div class="media-body w-100">
+                            <h6 class="list-group-item-heading font-medium-1 text-bold-700">${data[i]['username']}&nbsp;
+                                <i class="ft-circle font-small-2 success"></i><span
+                                        class="float-right primary"><span
+                                        class="badge badge-pill badge-danger lighten-3">1</span></span></h6>
+                            <p class="font-small-3 text-muted text-bold-500">3:55 PM</p>
+                            <p class="list-group-item-text text-muted mb-0 lighten-1">I was looking at your
+                                profile. The design looks better... </p>
+                        </div>
+                    </a>
 `;
                     $(userItem).appendTo('#user-list')
                 }
@@ -450,34 +474,49 @@
         }
 
         function drawMessage(message) {
-            let position = 'start';
+            let position = 'left';
             let position_new = 'cleft';
             let messageItem = '';
             let date = new Date(message.timestamp);
             date = date.toLocaleString();
-            if (message.user === currentUser) position = 'end';
+            if (message.user === currentUser) position = '';
             if (message.user === currentUser) position_new = 'cright';
             if (message.user === currentUser) {
                 messageItem = `
-            <div class="message d-flex justify-content-${position} mb-4 ">
-				<div class="msg_cotainer_send">${message.body}<br>
-					<span class="msg_time">${date}</span>
-				</div>
-                <div class="img_cont_msg">
-                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 37px;"
-                                     src="/media/{{ request.user.profile.image }}"
-                                     alt="{{ request.user.username }}'s Photo"/>				</div>
-            </div>`;
+                <div class="chat">
+                    <div class="chat-avatar">
+                        <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                           title="" data-original-title="">
+                            <img src="/media/{{ request.user.profile.image }}"
+                                 class="box-shadow-4" alt="{{ request.user.username }}'s Photo"/>
+                        </a>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-content">
+                            <p>${message.body}</p>
+                        </div>
+                    </div>
+                    <div>
+                </div>${date}</div>
+                `;
             } else {
                 messageItem = `
-            <div class="message d-flex justify-content-${position} mb-4 ">
-                <div class="img_cont_msg">
-					<img src="" class="rounded-circle user_img_msg chat_avatar">
-				</div>
-				<div class="msg_cotainer">${message.body}<br>
-					<span class="msg_time">${date}</span>
-				</div>
-            </div>`;
+            <div class="chat chat-left">
+                <div class="chat-avatar">
+                    <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                       title="" data-original-title="">
+                        <img src=""
+                             class="box-shadow-4 chat_avatar"/>
+                    </a>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-content">
+                        <p>${message.body}</p>
+                    </div>
+                </div>
+                <div>
+            </div>${date}</div>
+`;
             }
             $(messageItem).appendTo('#messages');
 
@@ -595,24 +634,4 @@
 
     </script>
 {% endblock %}
-
-
-
-<!-- BEGIN: Vendor JS-->
-<script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
-<!-- BEGIN Vendor JS-->
-
-<!-- BEGIN: Page Vendor JS-->
-<script src="{% static "assets_backend/vendors/js/charts/chartist.min.js" %}" type="text/javascript"></script>
-<script src="{% static "assets_backend/vendors/js/charts/chartist-plugin-tooltip.min.js" %}"
-        type="text/javascript"></script>
-<!-- END: Page Vendor JS-->
-
-<!-- BEGIN: Theme JS-->
-<script src="{% static "assets_backend/js/core/app-menu.js" %}" type="text/javascript"></script>
-<script src="{% static "assets_backend/js/core/app.js" %}" type="text/javascript"></script>
-<!-- END: Theme JS-->
-<!-- BEGIN: Page JS-->
-<script src="{% static "assets_backend/js/scripts/pages/chat-application.js" %}" type="text/javascript"></script>
-<!-- END: Page JS-->
 
