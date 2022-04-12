@@ -712,8 +712,11 @@
                             hulla.send("Add successfully!", "success");
                         }, 300);
                     }
-                    else {
+                    else if (res === 300) {
                         alert("Error!")
+                    }
+                    else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
                     }
 
                 },
@@ -748,8 +751,11 @@
                             hulla.send("Add successfully!", "success");
                         }, 300);
                     }
-                    else {
+                    else if (res === 300) {
                         alert("Error!")
+                    }
+                    else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
                     }
 
                 },

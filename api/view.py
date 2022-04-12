@@ -152,7 +152,7 @@ def add_wishlist(request):
                 except:
                     return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
-            return redirect('accounts:log_in')
+             return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
 def add_cart(request):
@@ -168,4 +168,4 @@ def add_cart(request):
                 except:
                     return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
-            return redirect('accounts:log_in')
+            return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
