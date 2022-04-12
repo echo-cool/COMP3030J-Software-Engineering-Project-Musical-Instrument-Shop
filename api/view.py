@@ -13,7 +13,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
 from chat.models import MessageModel
-from shop.models import Profile
+from shop.models import Profile, Wishlist, Cart
 
 
 def login(request):
@@ -137,3 +137,35 @@ def rank_user_list(request):
                          'time': sender_rank[i]['max']})
     data = sorted(data, key=lambda x: x['time'], reverse=True)
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def add_wishlist(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            if Wishlist.objects.filter(user=request.user).filter(instrument_id=request.POST.get('instrument_id')):
+                return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
+            else:
+                try:
+                    wishlist = Wishlist(user=request.user, instrument_id=request.POST.get('instrument_id'))
+                    wishlist.save()
+                    return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+                except:
+                    return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
+        else:
+            return redirect('accounts:log_in')
+
+
+def add_cart(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            if Cart.objects.filter(user=request.user, instrument_id=request.POST.get('instrument_id')):
+                return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
+            else:
+                try:
+                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'), count=1)
+                    cart.save()
+                    return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+                except:
+                    return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
+        else:
+            return redirect('accounts:log_in')
