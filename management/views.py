@@ -59,12 +59,18 @@ def index_new(request):
         tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
     popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
 
+    orders = Order.objects.all()
+
+    users = User.objects.all()
+
     return render(request, 'management_templates/index_new.html', {
         'counts': counts,
         'pie_data': pie_data,
         'popular_instruments': popular_instruments,
         'data_length': len(pie_data),
-        'profile': Profile.objects.filter(user=request.user.id).first()
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'orders': orders,
+        'users': users
     })
 
 
@@ -139,9 +145,9 @@ def order_management_all_new(request):
 
 
 @login_required
-def order_management_unconfirmed(request):
+def order_management_placed(request):
     data = []
-    orders = Order.objects.filter(shopper_confirmed=False)
+    orders = Order.objects.filter(accepted=False)
     for order_item in orders:
         tmp = {
             'order': order_item,
@@ -160,9 +166,9 @@ def order_management_unconfirmed(request):
 
 
 @login_required
-def order_management_confirmed(request):
+def order_management_accepted(request):
     data = []
-    orders = Order.objects.filter(shopper_confirmed=True).filter(delivery_confirmed=False)
+    orders = Order.objects.filter(accepted=True).filter(packed=False)
     for order_item in orders:
         tmp = {
             'order': order_item,
@@ -181,9 +187,9 @@ def order_management_confirmed(request):
 
 
 @login_required
-def order_management_delivered(request):
+def order_management_packed(request):
     data = []
-    orders = Order.objects.filter(delivery_confirmed=True).filter(shopper_confirmed=True)
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False)
     for order_item in orders:
         tmp = {
             'order': order_item,
@@ -198,6 +204,48 @@ def order_management_delivered(request):
         'orders': data,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 3
+    })
+
+
+@login_required
+def order_management_shipped(request):
+    data = []
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False)
+    for order_item in orders:
+        tmp = {
+            'order': order_item,
+            'user': User.objects.filter(id=order_item.user.id).first(),
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+            'profile': Profile.objects.filter(
+                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+        }
+        data.append(tmp)
+    return render(request, 'management_templates/orderManagement.html', {
+        'orders': data,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'mode': 4
+    })
+
+
+@login_required
+def order_management_delivered(request):
+    data = []
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True)
+    for order_item in orders:
+        tmp = {
+            'order': order_item,
+            'user': User.objects.filter(id=order_item.user.id).first(),
+            'instrument': Instrument.objects.filter(
+                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
+            'profile': Profile.objects.filter(
+                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
+        }
+        data.append(tmp)
+    return render(request, 'management_templates/orderManagement.html', {
+        'orders': data,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'mode': 5
     })
 
 

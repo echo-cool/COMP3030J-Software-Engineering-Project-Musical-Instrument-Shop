@@ -310,9 +310,11 @@ def model_view(request, product_id):
 
 @login_required
 def wishlist(request):
-    wishlists = Wishlist.objects.filter(user=1)
+    wishlists = Wishlist.objects.filter(user=request.user)
+    carts = Cart.objects.filter(user=request.user)
     return render(request, 'shop_templates/wishlist.html', {
         "wishlists": wishlists,
+        "carts": carts
     })
 
 
@@ -439,11 +441,14 @@ def product_search(request):
 
     print("==========", game_style, search_text)
 
+    carts = Cart.objects.filter(user=request.user)
+
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
+        'carts': carts
     })
 
 

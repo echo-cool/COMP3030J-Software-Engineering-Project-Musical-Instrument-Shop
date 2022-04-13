@@ -468,18 +468,36 @@
                     </li>
 
                     <li class="">
-                        <a href="{% url 'management:order_management_unconfirmed' %}">
+                        <a href="{% url 'management:order_management_placed' %}">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Unconfirmed Orders
+                            Placed Orders
                         </a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
-                        <a href="{% url 'management:order_management_confirmed' %}">
+                        <a href="{% url 'management:order_management_accepted' %}">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Confirmed Orders
+                            Accepted Orders
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'management:order_management_packed' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Packed Orders
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'management:order_management_shipped' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Shipped Orders
                         </a>
 
                         <b class="arrow"></b>
@@ -874,8 +892,8 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
+							<span class="blue bolder">Group 8 </span>
+							Application &copy; 2022
 						</span>
 
                 &nbsp; &nbsp;

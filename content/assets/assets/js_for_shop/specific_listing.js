@@ -94,8 +94,7 @@ function activateCategorySearch() {
             // $(this).prev().attr("checked", !$(this).prev().is(':checked'));\
             if ($(this).prev().is(':checked')) {
                 $(this).prev().prop("checked", false);
-            }
-            else {
+            } else {
                 $(this).prev().prop("checked", true);
             }
             let categories = $(".category-name");
@@ -123,8 +122,7 @@ function activateCategorySearch() {
                         if (!$(this).next().hasClass('active')) {
                             $(this).next().addClass('active')
                         }
-                    }
-                    else {
+                    } else {
                         $(this).attr("checked", false);
                         if ($(this).next().hasClass('active')) {
                             $(this).next().removeClass('active')
@@ -132,6 +130,13 @@ function activateCategorySearch() {
                     }
                 });
             }
+        } else {
+            $checkboxes.each(function () {
+                $(this).attr("checked", true);
+                if (!$(this).next().hasClass('active')) {
+                    $(this).next().addClass('active')
+                }
+            })
         }
 
 

@@ -269,7 +269,7 @@
                             </span>
                         </div>
                         <div class="pd_summary">
-                            <p class=" mb-0">{% trans instrument.details %}</p>
+                            <p class=" mb-0">{% trans instrument.details|truncatechars:370 %}</p>
                         </div>
                         <form method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
@@ -864,7 +864,6 @@
 {% endblock %}
 
 {% block foot_link %}
-
     <!-- COMMON SCRIPTS -->
     <script src="{% static "assets/js_for_shop/common_scripts.min.js" %}"></script>
     <script src="{% static "assets/js_for_shop/main.js" %}"></script>
