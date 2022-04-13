@@ -2049,3 +2049,111 @@ a, .text-link {
 .btn-mobile-menu {
     display: none;
 }
+
+
+/*btn*/
+
+.btn-toogle-info[id = "btn-left"] {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    bottom: 230px;
+    left: 260px;
+    font-size: 13px;
+    font-weight: bold;
+    background: white;
+}
+
+.btn-toogle-info[id = "btn-center"] {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    bottom: 712px;
+    left: 274px;
+    font-size: 13px;
+    font-weight: bold;
+    background: white;
+}
+
+.btn-toogle-info[id = "btn-right"] {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    bottom: 99px;
+    left: 67px;
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+}
+
+.btn-toogle-info {
+    color: #bfa479;
+    background-color: transparent;
+    border: 4px solid #bfa479 !important;
+}
+
+.btn-toogle-info {
+    text-transform: uppercase;
+    font-size: .875em;
+    line-height: 1em;
+    padding: 13px 20px 14px;
+    position: relative;
+    font-family: acre-medium, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    transition: all .3s;
+    outline: none !important
+}
+
+.btn-toogle-info:before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #bfa479;
+    opacity: 1;
+    transition: all .3s
+}
+
+.btn-toogle-info:hover {
+    background: #bfa479;
+    color: #fff
+}
+
+.btn-toogle-info:focus {
+    background: #bfa479;
+    color: #fff
+}
+
+.btn-toogle-info:hover:before {
+    transform: scale(1.2, 1.8);
+    opacity: 0
+}
+
+.btn-toogle-info:before {
+    border: 1px solid #bfa479
+}
+
+.btn-warning:before {
+    border: 1px solid #f0ad4e
+}
+
+.btn-danger:before {
+    border: 1px solid #d9534f
+}
+
+.btn-toogle-info {
+    padding: 17px 35px;
+    font-size: 1.1em
+}
+
+.btn-toogle-info {
+    font-size: 1em;
+    line-height: 1em
+}
+
+.btn-toogle-info {
+    font-size: .813em;
+    padding: 9px 16px 10px
+}
