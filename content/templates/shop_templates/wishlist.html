@@ -11,6 +11,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
+    <style>
+        .product-price p {
+            margin-bottom: 0 !important;
+        }
+
+        table.table td:nth-child(2) a {
+            color: #000;
+            font-size: 14px;
+        }
+
+        .link-product-add-cart {
+            height: 100%;
+            line-height: 1;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -73,7 +88,8 @@
                             <td class="product-avai">in stock</td>
 
                             <td class="add-cart">
-                                <a href="/cart/product_add_cart/{{ wishlist.instrument.id }}" title="">
+                                <a class="link-product-add-cart" href="javascript:void(0)"
+                                   id="cart__{{ wishlist.instrument.id }}">
                                     <i class="fa fa-shopping-basket"></i>
                                 </a>
                             </td>
@@ -112,5 +128,41 @@
             })
             {#fetchHeaderCartList();#}
         }
+
+        $('.link-product-add-cart').on('click', function () {
+            $.ajax({
+                url: "/api/add_cart/",
+                method: 'POST',
+                data: {
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your cart!", "warning");
+                        }, 300);
+                    } else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    } else if (res === 300) {
+                        alert("Error!")
+                    } else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
     </script>
 {% endblock %}

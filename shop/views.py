@@ -154,9 +154,14 @@ def game(request):
 
 
 def chinese(request):
+    blogs = Post.objects.order_by("created_on")
+    if blogs.count() > 8:
+        blogs = blogs[:3]
+
     carts = Cart.objects.filter(user_id=request.user.id)
     return render(request, 'shop_templates/chinese.html',
                   {
+                      'blogs': blogs,
                       'carts': carts
                   })
 
@@ -392,7 +397,14 @@ def product_search_by_category(request):
 def product_search(request):
     search_text = request.GET.get("search", "")
     search_category_text = request.GET.get("category", None)
-    all_instruments = Instrument.objects.filter(name__contains=search_text).filter(chinese=0)
+
+    if "chinese" == search_text:
+        all_instruments = Instrument.objects.filter().filter(chinese=1)
+    elif "western" == search_text:
+        all_instruments = Instrument.objects.filter().filter(chinese=0)
+    else:
+        all_instruments = Instrument.objects.filter(name__contains=search_text)
+
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
