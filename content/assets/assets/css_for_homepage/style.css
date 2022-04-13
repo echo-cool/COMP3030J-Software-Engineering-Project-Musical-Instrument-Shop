@@ -845,7 +845,7 @@ a, .text-link {
 }
 
 .grid-text-box h3 {
-    color: #333;
+    color: #ffffff !important;
     font-size: 30px;
     margin: 0;
     position: relative;
@@ -863,10 +863,11 @@ a, .text-link {
     position: relative;
     text-transform: uppercase;
     transition: all 0.5s ease-out 0s;
+    background: #000000 !important;
 }
 
 .grid-text-box:hover {
-    background: #333 none repeat scroll 0 0;
+    background: #ffffff none repeat scroll 0 0 !important;
 }
 
 .grid-text-box:hover h3 {
@@ -874,7 +875,7 @@ a, .text-link {
     -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
     animation: h3animate 0.5s;
     animation-direction: alternate;
-    color: #fff;
+    color: #000 !important;
 }
 
 @keyframes h3animate {
@@ -928,9 +929,10 @@ a, .text-link {
 
 /*List Design*/
 .list-designer {
-    background: rgba(0, 0, 0, 0) url("../img_for_shop/only_for_instruments_figure/blog11.jpg") no-repeat scroll center top;
+    background: rgba(0, 0, 0, 0) url("../images/home_2/bg-news.jpg") no-repeat scroll center top;
     padding: 70px 0;
     margin-top: 20px;
+    background-attachment: fixed;
 }
 
 .designer-thumb:hover img {

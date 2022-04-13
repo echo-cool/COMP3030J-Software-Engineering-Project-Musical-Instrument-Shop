@@ -13,7 +13,6 @@
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
-
     <link href="{% static "assets/assets_for_bees/css/themify-icons.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/flaticon.css" %}" rel="stylesheet">
@@ -36,12 +35,120 @@
         }
 
         .container-v2 {
-            margin-top: 4%;
-            max-width: 1440px;
+        {#margin-top: 4%;#} max-width: 1440px;
         }
 
         li.item-designer {
             margin: 14px;
+        }
+
+        .title-tab {
+            font-family: 'Poppins', serif;
+        }
+
+        .title-box-default {
+            padding-bottom: 25px;
+        }
+    </style>
+    <style>
+        .btn-toogle-info[id = "btn-left"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 230px;
+            left: 260px;
+            font-size: 13px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info[id = "btn-center"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 712px;
+            left: 274px;
+            font-size: 13px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info[id = "btn-right"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 99px;
+            left: 67px;
+            font-size: 20px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info {
+            color: #bfa479;
+            background-color: transparent;
+            border: 4px solid #bfa479 !important;
+        }
+
+        .btn-toogle-info {
+            text-transform: uppercase;
+            font-size: .875em;
+            line-height: 1em;
+            padding: 13px 20px 14px;
+            position: relative;
+            font-family: acre-medium, Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            transition: all .3s;
+            outline: none !important
+        }
+
+        .btn-toogle-info:before {
+            content: " ";
+            position: absolute;
+            z-index: 1;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid #bfa479;
+            opacity: 1;
+            transition: all .3s
+        }
+
+        .btn-toogle-info:hover {
+            background: #bfa479;
+            color: #fff
+        }
+
+        .btn-toogle-info:hover:before {
+            transform: scale(1.2, 1.8);
+            opacity: 0
+        }
+
+        .btn-toogle-info:before {
+            border: 1px solid #bfa479
+        }
+
+        .btn-warning:before {
+            border: 1px solid #f0ad4e
+        }
+
+        .btn-danger:before {
+            border: 1px solid #d9534f
+        }
+
+        .btn-toogle-info {
+            padding: 17px 35px;
+            font-size: 1.1em
+        }
+
+        .btn-toogle-info {
+            font-size: 1em;
+            line-height: 1em
+        }
+
+        .btn-toogle-info {
+            font-size: .813em;
+            padding: 9px 16px 10px
         }
 
     </style>
@@ -73,7 +180,7 @@
             </div>
             <div class=" background">
                 <div class="container container-model" style="max-width:1452px;">
-                    <div class="banner-box-adv" style="margin-top: 40%;">
+                    <div class="banner-box-adv" style="margin-top: 33%;">
                         <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
                                 onclick="active3DShowing()"> 3D
                             Preview
@@ -104,6 +211,8 @@
                                              src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
                                              alt=""/>
                                     </a>
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-left">Western Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
@@ -120,16 +229,8 @@
                                     <video loop preload
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                    {#                                <div class="text-adv-intro">#}
-                                    {#                                    <h2>Men’s</h2>#}
-                                    {#                                    <h3>Collection</h3>#}
-                                    {#                                </div>#}
-                                    {#                                    <div class="box-search-adv"></div>#}
-                                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    {#                                    <div class="text-adv-hidden">#}
-                                    {#                                        <p class="name">PIPA</p>#}
-                                    {#                                        <p><span>Chinese</span> Musical Instruments section</p>#}
-                                    {#                                    </div>#}
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-center">Chinese Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -139,6 +240,8 @@
                                                 src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
                                                 alt=""/>
                                     </a>
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-right">When To CHINESE Section >>></a>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +256,7 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' Western ' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -180,7 +283,7 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ CHINESE ~' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' CHINESE ' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -244,7 +347,7 @@
             <div class="container">
                 <div class="title-box-default">
                     <h2><span
-                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
+                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans 'Color Design' %} </span></span>
                     </h2>
                 </div>
 
@@ -254,34 +357,6 @@
         <!-- End Custom Services -->
 
         <div class="new-arrival-product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'idea Design' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="container container-v2">
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
@@ -311,6 +386,35 @@
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'idea Design' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- End Model Design -->
@@ -360,118 +464,57 @@
         <div class="banner-grid-adv">
             <div class="clearfix">
                 <div class="banner-grid-left">
-                    {% for i in three %}
-                        <div class="wrap-grid-adv-box clearfix">
-                            <div class="grid-image-box">
-                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
-                            </div>
-                            <div class="grid-text-box gray-box">
-                                <div class="inner-grid-text-box">
-                                    <h3>{% trans 'Women’s' %}</h3>
-                                    <h2>{% trans 'Live style' %}</h2>
-                                    <h3>{% trans 'Danlien Polosa' %}</h3>
-                                </div>
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""></a>
+                        </div>
+                        <div class="grid-text-box gray-box" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>Women’s</h3>
+                                <h2>Live style</h2>
+                                <h3>Danlien Polosa</h3>
                             </div>
                         </div>
-                    {% endfor %}
-
-
+                    </div>
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-text-box active" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>men’s</h3>
+                                <h2>Collection</h2>
+                                <h3>Hat &amp; Cavar</h3>
+                            </div>
+                        </div>
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="banner-grid-right">
                     <div class="grid-image-box">
-                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
-                    </div>
-                    <div class="grid-text-box active">
-                        <div class="inner-grid-text-box">
-                            <h3>{% trans 'Collection' %}</h3>
-                            <h2>{% trans 'Jewerly' %}</h2>
-                            <h3>{% trans 'For Girl' %}</h3>
-                        </div>
+                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Banner Grid Adv -->
 
-        {##}
-        {#        <div class="category-leading">#}
-        {#            <div class="container">#}
-        {#                <div class="thumb-category-leading">#}
-        {#                    <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>#}
-        {#                    <div class="text-category-leading">#}
-        {#                        <span>New</span>#}
-        {#                        <h2>Collection</h2>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#                <div class="content-category-leading">#}
-        {#                    {% for i in ten %}#}
-        {#                        <div class="item-product-category-leading">#}
-        {#                            <div class="item-thumb-product">#}
-        {#                                <a class="product-thumb-link" href="#">#}
-        {#                                    <img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">#}
-        {#                                </a>#}
-        {#                                <div class="leading-info-product-cart">#}
-        {#                                    <a class="product-thumb-link" href="#">#}
-        {#                                        <img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">#}
-        {#                                    </a>#}
-        {#                                    <div class="info-product-cart">#}
-        {#                                        <div class="inner-info-product-cart">#}
-        {#                                            <ul>#}
-        {#                                                <li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a>#}
-        {#                                                </li>#}
-        {#                                                <li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a>#}
-        {#                                                </li>#}
-        {#                                                <li><a class="link-compare" href="#"><i#}
-        {#                                                        class="fa fa-external-link-square"></i></a></li>#}
-        {#                                            </ul>#}
-        {#                                            <a class="link-product-add-cart" href="#">Add to cart</a>#}
-        {#                                            <div class="info-product-price">#}
-        {#                                                <span>$489.99</span>#}
-        {#                                            </div>#}
-        {#                                        </div>#}
-        {#                                    </div>#}
-        {#                                </div>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    {% endfor %}#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#        <!-- End Category Leading -->#}
-        {##}
-        {#        <div class="from-our-blog">#}
-        {#            <div class="container">#}
-        {#                <div class="title-box-default white-arrow-style">#}
-        {#                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>#}
-        {#                </div>#}
-        {#                <div class="row">#}
-        {#                    {% for i in six %}#}
-        {#                        <div class="col-md-4 col-sm-6 col-xs-12">#}
-        {#                            <div class="item-our-blog">#}
-        {#                                <div class="our-blog-thumb">#}
-        {#                                    <a href="#">#}
-        {#                                        <img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt=""/>#}
-        {#                                    </a>#}
-        {#                                </div>#}
-        {#                                <div class="our-blog-info">#}
-        {#                                    <div class="inner-our-blog-info">#}
-        {#                                        <span>Jun 23 2014</span>#}
-        {#                                        <h3><a href="#">Cupidatat none proident amet</a></h3>#}
-        {#                                        <span>9 Comments</span>#}
-        {#                                        <div class="post-extra-link">#}
-        {#                                            <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"#}
-        {#                                                             alt=""/></a>#}
-        {#                                            <a href="#"><i class="fa fa-link"></i></a>#}
-        {#                                        </div>#}
-        {#                                    </div>#}
-        {#                                </div>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    {% endfor %}#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#        <!-- End From our blog -->#}
+
+        <div class="footer-newsletter" style="height: 200px;margin-top: 50px;">
+            <div class="container">
+                <div class="newsletter-intro">
+                    <span class="envalope-icon"><i class="fa fa-envelope-o"></i></span>
+                    <p>SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br>UPDATES, AND ANOTHER STUFF BY EMAIL.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form method="post">
+                        <input type="text" name="newsletter" value="Enter your email..."
+                               onfocus="if (this.value==this.defaultValue) this.value = ''"
+                               onblur="if (this.value=='') this.value = this.defaultValue">
+                        <input type="submit" value="subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     {% for instrument in instruments %}
@@ -518,10 +561,10 @@
                                                                               value="30">
                                                         <label for="2"></label>
                                                     </li>
-{#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
-{#                                                                              value="30">#}
-{#                                                        <label for="3"></label>#}
-{#                                                    </li>#}
+                                                    {#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
+                                                    {#                                                                              value="30">#}
+                                                    {#                                                        <label for="3"></label>#}
+                                                    {#                                                    </li>#}
                                                 </ul>
                                             </div>
                                         </div>
