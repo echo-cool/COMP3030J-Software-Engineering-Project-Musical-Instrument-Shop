@@ -99,19 +99,19 @@
                                     {#                                        <p class="name">HARP</p>#}
                                     {#                                        <p><span>Western</span> Musical Instruments section</p>#}
                                     {#                                    </div>#}
-                                    <a href="">
+                                    <a href="/product_search/?search=western">
                                         <img id="model-video-right" height="250px"
-                                         src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
-                                         alt=""/>
+                                             src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
+                                             alt=""/>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
                                 <div class="inner-box-banner-adv odd bottom-right">
-                                    <a href="/chinese">
+                                    <a href="/product_search/?search=chinese">
                                         <img height="250px" style="  margin-bottom: 10px;"
-                                         src="{% static 'assets/detail_model/homepage/model-meinv1.jpg' %}"
-                                         alt=""/>
+                                             src="{% static 'assets/detail_model/homepage/model-meinv1.jpg' %}"
+                                             alt=""/>
                                     </a>
                                     <img class="show-style"
                                          style="cursor: pointer;position: absolute; top: 260px;left: 0px;z-index: 2"
@@ -136,56 +136,11 @@
                                 <div class="inner-box-banner-adv odd bottom-left">
                                     <a href="/chinese">
                                         <img
-                                            src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
-                                            alt=""/>
+                                                src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
+                                                alt=""/>
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                        {#                              <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">#}
-                        {#                            <div class="inner-box-banner-adv odd bottom-right">#}
-                        {#                                <img class="show-style"#}
-                        {#                                     src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}" alt=""/>#}
-                        {##}
-                        {#                                <div class="model-wrapper-left model-wrapper-control wrapper-hidden show-style">#}
-                        {#                                </div>#}
-                        {##}
-                        {#                                <div class="text-adv-intro">#}
-                        {#                                    <h2>Men’s</h2>#}
-                        {#                                    <h3>Collection</h3>#}
-                        {#                                </div>#}
-                        {#                                <div class="box-search-adv">#}
-                        {##}
-                        {#                                </div>#}
-                        {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                        {#                                <div class="text-adv-hidden">#}
-                        {#                                    <p>Many students are cash conteos</p>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                        </div>#}
-
-                        <div class="row">
-
-
-                            {#                        {% for i in two %}#}
-                            {#                            <div class="col-md-6 col-sm-6 col-xs-12">#}
-                            {#                                <div class="inner-box-banner-adv odd bottom-right">#}
-                            {#                                    <a href="#" class="banner-adv-thumb-link"><img#}
-                            {#                                            src="{% static 'assets/images/home_1/ad_02.png' %}" alt=""/></a>#}
-                            {#                                    <div class="text-adv-intro">#}
-                            {#                                        <h2>Men’s</h2>#}
-                            {#                                        <h3>Collection</h3>#}
-                            {#                                    </div>#}
-                            {#                                    <div class="box-search-adv">#}
-                            {##}
-                            {#                                    </div>#}
-                            {#                                    <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                            {#                                    <div class="text-adv-hidden">#}
-                            {#                                        <p>Many students are cash conteos</p>#}
-                            {#                                    </div>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                            {#                        {% endfor %}#}
                         </div>
                     </div>
                 </div>
@@ -269,7 +224,9 @@
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3><a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a></h3>
+                                            <h3>
+                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
+                                            </h3>
                                             <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
                                             <span>{{ blog.author }}</span>
                                         </div>
@@ -597,7 +554,8 @@
                                                 <div class="dec qtybutton"></div>
                                                 <div class="inc qtybutton"></div>
                                             </div>
-                                            <a href="cart__{{ instrument.id }}" class="theme-btn">{% trans 'Add to cart' %}</a>
+                                            <a href="cart__{{ instrument.id }}"
+                                               class="theme-btn">{% trans 'Add to cart' %}</a>
                                         </div>
                                         <div class="social-share">
                                             <span>{% trans 'Share with : ' %}</span>
@@ -700,7 +658,7 @@
             $.ajax({
                 url: "/api/add_wishlist/",
                 method: 'POST',
-                data:{
+                data: {
                     instrument_id: this.id.split("__")[1]
                 },
                 headers: {
@@ -708,22 +666,19 @@
                 },
                 success: function (data) {
                     let res = data['code'];
-                    if (res === 100){
+                    if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("The instrument is already in your wishlist!", "warning");
                         }, 300);
-                    }
-                    else if (res === 200) {
+                    } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");
                         }, 300);
-                    }
-                    else if (res === 300) {
+                    } else if (res === 300) {
                         alert("Error!")
-                    }
-                    else if (res === 400) {
+                    } else if (res === 400) {
                         window.location.href = "{% url 'accounts:log_in' %}"
                     }
 
@@ -739,7 +694,7 @@
             $.ajax({
                 url: "/api/add_cart/",
                 method: 'POST',
-                data:{
+                data: {
                     instrument_id: this.id.split("__")[1]
                 },
                 headers: {
@@ -747,22 +702,19 @@
                 },
                 success: function (data) {
                     let res = data['code'];
-                    if (res === 100){
+                    if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
-                    }
-                    else if (res === 200) {
+                    } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");
                         }, 300);
-                    }
-                    else if (res === 300) {
+                    } else if (res === 300) {
                         alert("Error!")
-                    }
-                    else if (res === 400) {
+                    } else if (res === 400) {
                         window.location.href = "{% url 'accounts:log_in' %}"
                     }
 
