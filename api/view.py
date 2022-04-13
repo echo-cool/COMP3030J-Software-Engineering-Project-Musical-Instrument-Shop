@@ -7,7 +7,7 @@
 """
 from django.contrib import auth
 from django.contrib.auth.models import User
-from django.db.models import Q, Max
+from django.db.models import Q, Max, Count
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
@@ -61,8 +61,11 @@ def rank_user_list(request):
                                            Q(user=request.user))
     users = User.objects
     profiles = Profile.objects
-    sender_rank = messages.values("user").annotate(max=Max("timestamp")).exclude(user=request.user.id).order_by("user")
-    receiver_rank = messages.values("recipient").annotate(max=Max("timestamp")).exclude(
+    sender_rank = messages.values("user").annotate(
+        max=Max("timestamp"), unread=Count("read", filter=Q(read=False))).exclude(
+        user=request.user.id).order_by("user")
+    receiver_rank = messages.values("recipient").annotate(
+        max=Max("timestamp")).exclude(
         recipient=request.user.id).order_by("recipient")
     len_sender = len(sender_rank)
     len_receiver = len(receiver_rank)
@@ -80,7 +83,8 @@ def rank_user_list(request):
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': max(sender_rank[p1]['max'], receiver_rank[p2]['max'])})
+                         'time': max(sender_rank[p1]['max'], receiver_rank[p2]['max']),
+                         'unread': sender_rank[p1]['unread']})
             p1 += 1
             p2 += 1
         elif sender_rank[p1]['user'] < receiver_rank[p2]['user']:
@@ -94,7 +98,8 @@ def rank_user_list(request):
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': sender_rank[p1]['max']})
+                         'time': sender_rank[p1]['max'],
+                         'unread': sender_rank[p1]['unread']})
             p1 += 1
         else:
             user = users.get(id=receiver_rank[p2]['recipient'])
@@ -107,7 +112,8 @@ def rank_user_list(request):
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': receiver_rank[p2]['max']})
+                         'time': receiver_rank[p2]['max'],
+                         'unread': 0})
             p2 += 1
     if p1 == len_sender:
         for i in range(p2, len_receiver):
@@ -121,7 +127,8 @@ def rank_user_list(request):
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': receiver_rank[i]['max']})
+                         'time': receiver_rank[i]['max'],
+                         'unread': 0})
     else:
         for i in range(p1, len_sender):
             user = users.get(id=sender_rank[i]['user'])
@@ -134,7 +141,8 @@ def rank_user_list(request):
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': sender_rank[i]['max']})
+                         'time': sender_rank[i]['max'],
+                         'unread': sender_rank[i]['unread']})
     data = sorted(data, key=lambda x: x['time'], reverse=True)
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
 
@@ -162,10 +170,23 @@ def add_cart(request):
                 return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
             else:
                 try:
-                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'), count=1)
+                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'), count=request.POST.get('count') or 1)
                     cart.save()
                     return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
                 except:
                     return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def all_read(request):
+    if request.method == 'POST':
+        unread_messages = MessageModel.objects.filter(user_id=request.POST.get('sender_id'), recipient=request.user, read=False)
+        try:
+            for message in unread_messages:
+                message.read = True
+                message.save()
+            return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
+        except:
+            return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+
