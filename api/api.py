@@ -43,7 +43,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = OrderSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', "user", 'instrument', 'shopper_confirmed', 'delivery_confirmed']
+    filterset_fields = ['id', "user", 'instrument', 'accepted', 'packed', 'shipped', 'delivered']
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

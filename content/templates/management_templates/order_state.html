@@ -83,7 +83,7 @@
 
                     <div class="step-content pos-rel">
                         <div class="step-pane active" data-step="1">
-                            <div class="alert alert-warning">
+                            <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">
                                     <i class="ace-icon fa fa-times"></i>
                                 </button>
@@ -93,10 +93,10 @@
                                     to set the order in this state.
                                 <br/>
                             </div>
-                            <h3 class="lighter block green">Leave a message for shopper confirmed state</h3>
+                            <h3 class="lighter block green">Leave a message for accepted state</h3>
 
                             <form class="form-horizontal" id="sample-form">
-                                <div class="form-group has-warning">
+                                <div class="form-group has-error">
                                     <label for="inputWarning" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                         Input your comment for the order</label>
 
@@ -356,6 +356,72 @@
 
                         <div class="step-pane" data-step="2">
                             <div>
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <i class="ace-icon fa fa-times"></i>
+                                    </button>
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                    Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
+                                    to set the order in this state.
+                                    <br/>
+                                </div>
+                                <h3 class="lighter block green">Manage the message the buyer left for packed state</h3>
+                                <form class="form-horizontal" id="sample-form">
+                                    <div class="form-group has-warning">
+                                        <label for="inputWarning"
+                                               class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                            Here's buyer's message left for this order</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+                                        <span class="block input-icon input-icon-right">
+                                            <textarea type="text" id="inputSuccess"
+                                                      class="width-100" style="height: 10em"></textarea>
+                                            <i class="ace-icon fa fa-leaf"></i>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="step-pane" data-step="3">
+                            <div>
+                                <div class="alert alert-info">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <i class="ace-icon fa fa-times"></i>
+                                    </button>
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                    Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
+                                    to set the order in this state.
+                                    <br/>
+                                </div>
+                                <h3 class="lighter block green">Manage the message the buyer left for shipped state</h3>
+                                <form class="form-horizontal" id="sample-form">
+                                    <div class="form-group has-info">
+                                        <label for="inputWarning"
+                                               class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                            Here's buyer's message left for this order</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+                                        <span class="block input-icon input-icon-right">
+                                            <textarea type="text" id="inputSuccess"
+                                                      class="width-100" style="height: 10em"></textarea>
+                                            <i class="ace-icon fa fa-leaf"></i>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="step-pane" data-step="4">
+                            <div>
                                 <div class="alert alert-success">
                                     <button type="button" class="close" data-dismiss="alert">
                                         <i class="ace-icon fa fa-times"></i>
@@ -367,7 +433,7 @@
                                     to set the order in this state.
                                     <br/>
                                 </div>
-                                <h3 class="lighter block green">Manage the message the buyer left for delivery confirmed state</h3>
+                                <h3 class="lighter block green">Manage the message the buyer left for delivered state</h3>
                                 <form class="form-horizontal" id="sample-form">
                                     <div class="form-group has-success">
                                         <label for="inputWarning"
@@ -387,7 +453,7 @@
                             </div>
                         </div>
 
-                <div class="step-pane" data-step="3">
+                <div class="step-pane" data-step="5">
                             <div class="center">
                                 <h3 class="green">Here the order have come to the delivery confirmed state.<br/>Click Confirm to save
                              the state or click Prev to go back to the previous state</h3>
@@ -656,7 +722,7 @@
                         }
                     })
                 }
-                else {
+                else if(wizard.currentStep === 3) {
                     $.ajax({
                         url: "/api/order/{{ order.id }}/",
                         method: "PATCH",
@@ -668,6 +734,44 @@
                             packed: true,
                             shipped: false,
                             delivered: false
+                        },
+                        success: function (res) {
+                            window.location.href =
+                            "{% url 'management:order_management_all' %}"
+                        }
+                    })
+                }
+                else if(wizard.currentStep === 4) {
+                    $.ajax({
+                        url: "/api/order/{{ order.id }}/",
+                        method: "PATCH",
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            accepted: true,
+                            packed: true,
+                            shipped: true,
+                            delivered: false
+                        },
+                        success: function (res) {
+                            window.location.href =
+                            "{% url 'management:order_management_all' %}"
+                        }
+                    })
+                }
+                else {
+                    $.ajax({
+                        url: "/api/order/{{ order.id }}/",
+                        method: "PATCH",
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            accepted: true,
+                            packed: true,
+                            shipped: true,
+                            delivered: true
                         },
                         success: function (res) {
                             window.location.href =
