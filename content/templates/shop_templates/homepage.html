@@ -13,7 +13,6 @@
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
-
     <link href="{% static "assets/assets_for_bees/css/themify-icons.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/flaticon.css" %}" rel="stylesheet">
@@ -36,12 +35,120 @@
         }
 
         .container-v2 {
-            margin-top: 4%;
-            max-width: 1440px;
+        {#margin-top: 4%;#} max-width: 1440px;
         }
 
         li.item-designer {
             margin: 14px;
+        }
+
+        .title-tab {
+            font-family: 'Poppins', serif;
+        }
+
+        .title-box-default {
+            padding-bottom: 25px;
+        }
+    </style>
+    <style>
+        .btn-toogle-info[id = "btn-left"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 230px;
+            left: 260px;
+            font-size: 13px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info[id = "btn-center"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 712px;
+            left: 274px;
+            font-size: 13px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info[id = "btn-right"] {
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            bottom: 99px;
+            left: 67px;
+            font-size: 20px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .btn-toogle-info {
+            color: #bfa479;
+            background-color: transparent;
+            border: 4px solid #bfa479 !important;
+        }
+
+        .btn-toogle-info {
+            text-transform: uppercase;
+            font-size: .875em;
+            line-height: 1em;
+            padding: 13px 20px 14px;
+            position: relative;
+            font-family: acre-medium, Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            transition: all .3s;
+            outline: none !important
+        }
+
+        .btn-toogle-info:before {
+            content: " ";
+            position: absolute;
+            z-index: 1;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid #bfa479;
+            opacity: 1;
+            transition: all .3s
+        }
+
+        .btn-toogle-info:hover {
+            background: #bfa479;
+            color: #fff
+        }
+
+        .btn-toogle-info:hover:before {
+            transform: scale(1.2, 1.8);
+            opacity: 0
+        }
+
+        .btn-toogle-info:before {
+            border: 1px solid #bfa479
+        }
+
+        .btn-warning:before {
+            border: 1px solid #f0ad4e
+        }
+
+        .btn-danger:before {
+            border: 1px solid #d9534f
+        }
+
+        .btn-toogle-info {
+            padding: 17px 35px;
+            font-size: 1.1em
+        }
+
+        .btn-toogle-info {
+            font-size: 1em;
+            line-height: 1em
+        }
+
+        .btn-toogle-info {
+            font-size: .813em;
+            padding: 9px 16px 10px
         }
 
     </style>
@@ -73,7 +180,7 @@
             </div>
             <div class=" background">
                 <div class="container container-model" style="max-width:1452px;">
-                    <div class="banner-box-adv" style="margin-top: 40%;">
+                    <div class="banner-box-adv" style="margin-top: 33%;">
                         <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
                                 onclick="active3DShowing()"> 3D
                             Preview
@@ -104,6 +211,8 @@
                                              src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
                                              alt=""/>
                                     </a>
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-left">Western Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
@@ -120,16 +229,8 @@
                                     <video loop preload
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                    {#                                <div class="text-adv-intro">#}
-                                    {#                                    <h2>Men’s</h2>#}
-                                    {#                                    <h3>Collection</h3>#}
-                                    {#                                </div>#}
-                                    {#                                    <div class="box-search-adv"></div>#}
-                                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    {#                                    <div class="text-adv-hidden">#}
-                                    {#                                        <p class="name">PIPA</p>#}
-                                    {#                                        <p><span>Chinese</span> Musical Instruments section</p>#}
-                                    {#                                    </div>#}
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-center">Chinese Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -139,6 +240,8 @@
                                                 src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
                                                 alt=""/>
                                     </a>
+                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                       id="btn-right">When To CHINESE Section >>></a>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +256,7 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' Western ' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -180,7 +283,7 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ CHINESE ~' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' CHINESE ' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -244,7 +347,7 @@
             <div class="container">
                 <div class="title-box-default">
                     <h2><span
-                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
+                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans 'Color Design' %} </span></span>
                     </h2>
                 </div>
 
@@ -254,34 +357,6 @@
         <!-- End Custom Services -->
 
         <div class="new-arrival-product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'idea Design' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="container container-v2">
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
@@ -311,6 +386,35 @@
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'idea Design' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- End Model Design -->
@@ -518,10 +622,10 @@
                                                                               value="30">
                                                         <label for="2"></label>
                                                     </li>
-{#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
-{#                                                                              value="30">#}
-{#                                                        <label for="3"></label>#}
-{#                                                    </li>#}
+                                                    {#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
+                                                    {#                                                                              value="30">#}
+                                                    {#                                                        <label for="3"></label>#}
+                                                    {#                                                    </li>#}
                                                 </ul>
                                             </div>
                                         </div>
