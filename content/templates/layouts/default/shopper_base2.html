@@ -1352,7 +1352,7 @@
                                             <a href="{% url "api:logout" %}" class="btn btn-primary"
                                                style="display: block;">Logout</a>
                                         {% else %}
-                                            <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
+                                            <a href="{% url 'accounts:log_in' %}" id="sign-in" class="btn_1">Sign In or Sign Up</a>
                                         {% endif %}
 
                                         <ul>
@@ -1422,35 +1422,6 @@
     </header>
     <!-- End Header -->
 
-    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-        <div class="modal_header">
-            <h3>Sign In</h3>
-        </div>
-        <form action="/api/login/" method="post">
-            {% csrf_token %}
-            <div class="sign-in-wrapper">
-                <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                <a href="#0" class="social_bt google">Login with Google</a>
-                <div class="divider"><span>Or</span></div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" name="username" id="email">
-                    <i class="ti-email" style="margin-top: 0.6rem;"></i>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" id="password" value="">
-                    <i class="ti-lock" style="margin-top: 0.6rem;"></i>
-                </div>
-
-                <div class="text-center">
-                    <input type="submit" value="Log In" class="btn_1 full-width">
-                </div>
-
-            </div>
-        </form>
-        <!--form -->
-    </div>
 
     {% block content %}
 
@@ -1604,7 +1575,6 @@
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
-    <script src="{% static 'assets/js_for_shop/common_scripts.js' %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
