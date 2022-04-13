@@ -35,9 +35,21 @@
     <link href="{% static 'assets/css/ace.min.css' %}" rel="stylesheet" class="ace-main-stylesheet" id="main-ace-style">
     <link href="{% static "assets/css_for_shop/personal_profile.css" %}" rel="stylesheet">
     <link href="{% static "assets/css_for_shop/orders.css" %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}"/>
 
+    <style>
+        .header-v2-h2 .navbar {
+            background: inherit !important;
+        }
 
+        .header-v2-h2 nav ul li {
+            padding: 0 !important;
+        }
+
+        .menu_scroll_v2 .navbar {
+            background: inherit !important;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -53,8 +65,10 @@
                                 <div class="mt-3">
                                     <h4>{{ request.user.username }}</h4>
                                     <p class="text-secondary mb-1"></p>
-                                    <button class="btn btn-primary"><a href="{% url 'accounts:change_password' %}">Change Password</a></button>
-                                    <button class="btn btn-outline-primary"><a href="{% url 'accounts:change_email' %}">Change Email</a></button>
+                                    <button class="btn btn-primary"><a href="{% url 'accounts:change_password' %}">Change
+                                        Password</a></button>
+                                    <button class="btn btn-outline-primary"><a href="{% url 'accounts:change_email' %}">Change
+                                        Email</a></button>
                                 </div>
                             </div>
                             <hr class="my-4">
@@ -451,6 +465,8 @@
                 });
             });
         })
+
+        background: rgba(255, 255, 255, 0.7);
 
     </script>
 
