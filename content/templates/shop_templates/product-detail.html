@@ -262,7 +262,7 @@
                             </span>
                         </div>
                         <div class="pd_summary">
-                            <p class=" mb-0">{% trans 'instrument.details' %}</p>
+                            <p class=" mb-0">{% trans instrument.details|truncatechars:370 %}</p>
                         </div>
                         <form method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">

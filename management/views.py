@@ -59,12 +59,18 @@ def index_new(request):
         tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
     popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
 
+    orders = Order.objects.all()
+
+    users = User.objects.all()
+
     return render(request, 'management_templates/index_new.html', {
         'counts': counts,
         'pie_data': pie_data,
         'popular_instruments': popular_instruments,
         'data_length': len(pie_data),
-        'profile': Profile.objects.filter(user=request.user.id).first()
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'orders': orders,
+        'users': users
     })
 
 
