@@ -18,7 +18,27 @@
     <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
 
+    <style>
 
+        {% if header_style == "chinese" %}
+            .wrap-bread-crumb .bread-crumb strong {
+                color: #000000;
+            }
+
+            .title-page h2 {
+                margin-bottom: 0 !important;
+                padding-top: 20px;
+                background: rgb(255, 255, 255, 0.7);
+            }
+
+            .bread-crumb {
+                background: rgb(255, 255, 255, 0.7);
+            }
+        {% elif header_style != "western" %}
+        {% else %}
+
+        {% endif %}
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -34,18 +54,27 @@
             </div>
         {% else %}
             <div class="wrap-bread-crumb breadcrumb_collection2">
+            {% if header_style == "chinese" %}
+                <div class="text-center bg-breadcrumb"
+                     style="background-image : url({% static '/assets_chinese/images/meinv_img33.JPG' %})">
+            {% elif header_style != "western" %}
                 <div class="text-center bg-breadcrumb"
                      style="background-image : url({% static '/assets/img_for_shop/banner_wishlist.jpg' %})">
-                    <div class="title-page">
-                        <h2 class="">Products</h2>
-                    </div>
-                    <div class="bread-crumb">
-                        <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right"
-                                                                         aria-hidden="true"></i></a>
-                        <strong>Products</strong>
-                    </div>
-                </div>
-            </div>
+            {% else %}
+                <div class="text-center bg-breadcrumb"
+                     style="background-image : url({% static '/assets/img_for_shop/banner_wishlist.jpg' %})">
+
+            {% endif %}
+        <div class="title-page">
+            <h2 class="">Products</h2>
+        </div>
+        <div class="bread-crumb">
+            <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right"
+                                                             aria-hidden="true"></i></a>
+            <strong>Products</strong>
+        </div>
+        </div>
+        </div>
         {% endif %}
 
         <!-- /top_banner -->
@@ -156,11 +185,13 @@
                                 <div class="widget-content">
                                     <ul class="list-category-toggle toggle-tab list-none">
                                         {% for category in categories %}
-                                        <li class="item-toggle-tab">
-                                            <input type="checkbox" class="category-checkbox" id="checkbox__{{ category.id }}" checked/>
-                                            <a href="javascript:void(0)" class="category-name" id="category__{{ category.id }}">
-                                                {{ category.name }}
-                                            </a></li>
+                                            <li class="item-toggle-tab">
+                                                <input type="checkbox" class="category-checkbox"
+                                                       id="checkbox__{{ category.id }}" checked/>
+                                                <a href="javascript:void(0)" class="category-name"
+                                                   id="category__{{ category.id }}">
+                                                    {{ category.name }}
+                                                </a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -371,7 +402,7 @@
                                                     </a>
                                                     <figure style="background : #e12c43; color: #ffffff"
                                                             class="absolute uppercase label-sale text-center">
-                                                        <span class="sale-percent">-16%</span>
+                                                        <span class="sale-percent">{% widthratio instrument.old_price 1 -1 as minus %}{% widthratio instrument.price|add:minus instrument.old_price 100 %}%</span>
                                                     </figure>
                                                     <div class="product-icon-action d-flex mb-0 text-center">
                                                         <div class="add-wishlist mr-0 w-50">
@@ -423,8 +454,8 @@
                                                 </div>
                                                 <div class="absolute-wrapper">
                                                     <h4 class="des-font capital title-product mb-0">
-                                                        <a href="/collections/all/products/bdk-1-full-size-starter-drum">BDK-1
-                                                            Full Size Starter Drum</a>
+                                                        <a href="/collections/all/products/bdk-1-full-size-starter-drum">
+                                                            {{ instrument.name }}</a>
                                                     </h4>
                                                     <!--     PRICE -->
                                                     <p class="price-product mb-0">

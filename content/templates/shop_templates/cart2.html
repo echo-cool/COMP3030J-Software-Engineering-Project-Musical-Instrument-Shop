@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
+    <style>
+        .product-quantity {
+            width: 14%;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +26,8 @@
                 <h2 class="">{% trans 'Cart' %}</h2>
             </div>
             <div class="bread-crumb">
-                <a href="/" title="Back to the frontpage">{% trans 'Home' %}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <a href="/" title="Back to the frontpage">{% trans 'Home' %}<i class="fa fa-angle-right"
+                                                                               aria-hidden="true"></i></a>
                 <strong>{% trans 'Your Shopping Cart' %}</strong>
             </div>
         </div>
@@ -106,13 +112,15 @@
                         <div class="contact-form">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class=" control-label" for="inputconttry">{% trans 'Select your Counttry' %}</label>
+                                    <label class=" control-label"
+                                           for="inputconttry">{% trans 'Select your Counttry' %}</label>
                                     <input type="text" class="form-control" id="inputconttry"
                                            placeholder="{% trans 'United States (USA)...' %}">
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputstate" class="control-label">{% trans 'Select your State' %}</label>
+                                        <label for="inputstate"
+                                               class="control-label">{% trans 'Select your State' %}</label>
                                         <select id="inputstate" class="form-control inputstate">
                                             <option value="">{% trans 'State / City...' %}</option>
                                             <option value="City1">{% trans 'City1' %}</option>
@@ -128,7 +136,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">{% trans 'Update Shipping' %}
+                                    <button value="Submit" class="btn link-button link-button-v2"
+                                            type="submit">{% trans 'Update Shipping' %}
                                     </button>
                                 </div>
                             </div>
@@ -151,7 +160,8 @@
                                            placeholder="{% trans 'Enter your Coupon code...' %}">
                                 </div>
                                 <div class="form-group">
-                                    <button value="Submit" class="btn link-button link-button-v2" type="submit">{% trans 'REdeem code'%}
+                                    <button value="Submit" class="btn link-button link-button-v2"
+                                            type="submit">{% trans 'REdeem code' %}
                                     </button>
                                 </div>
                             </form>
@@ -170,7 +180,8 @@
                             <li id="all-total"><span class="text">{% trans 'Cart Totals' %}</span><span
                                     class="number">$ 2,040.00</span></li>
                         </ul>
-                        <button class="btn link-button" href="#" title="Proceed to checkout">{% trans 'Proceed to checkout' %}
+                        <button class="btn link-button" href="#"
+                                title="Proceed to checkout">{% trans 'Proceed to checkout' %}
                         </button>
                     </div>
                     <!-- End col-md-4 -->
