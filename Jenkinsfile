@@ -1,32 +1,45 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.9-buster' 
-            args '-v /root/.m2:/root/.m2' 
+            image 'python:3.9-buster'
+            args '-v /root/.m2:/root/.m2'
         }
     }
     stages {
-        stage('Pre-Tesks') { 
+        stage('Pre-Tesks') {
             steps {
                 sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
             }
         }
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'python manage.py' 
+                sh 'python manage.py'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
-                sh 'python manage.py test' 
+                sh 'python manage.py test'
             }
         }
-//        stage('Deploy') { 
-//            steps {               
-//                sshagent(['efe4fb22-9a6d-49d4-aea5-de7d077d397e']) {
+       stage('Deploy') {
+           steps {
+               sshagent(['efe4fb22-9a6d-49d4-aea5-de7d077d397e']) {
+                    sh """
+                       ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
+                            ls
+                            cd /home/group8/comp3030j-project
+                            git checkout master
+                            git fetch --all
+                            git reset --hard origin/master
+                            git pull
+                            python3 -m pip install -r requirements.txt
+                       '
+                       """
+                }
+//             sshagent(['efe4fb22-9a6d-49d4-aea5-de7d077d397e']) {
 //                     sh """
 //                        ssh -o StrictHostKeyChecking=no -l group8 comp3030j.ucd.ie '
-//                             
+//
 //                             ls
 //                             cd /home/group8/comp3030j-project
 //                             killall python3
@@ -40,11 +53,11 @@ pipeline {
 //                        '
 //                        """
 //                 }
-//            }
+           }
 //        }
-        stage('Post-Tasks') { 
+        stage('Post-Tasks') {
             steps {
-                sh 'echo Done!' 
+                sh 'echo Done!'
             }
         }
     }
