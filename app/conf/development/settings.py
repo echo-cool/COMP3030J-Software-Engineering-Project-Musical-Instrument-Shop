@@ -149,7 +149,6 @@ LANGUAGES = [
     ('en', _('English')),
     ('ru-RU', _('Russian')),
     ('uk-UA', _('Ukrainian')),
-    ('zh-Hans', _('Simplified Chinese')),
     ('zh-CN', _('Simplified Chinese')),
     ('fr-FR', _('French')),
     ('es-ES', _('Spanish')),
