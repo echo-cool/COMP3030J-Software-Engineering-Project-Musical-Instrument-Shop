@@ -40,6 +40,10 @@
             max-width: 1440px;
         }
 
+        li.item-designer {
+            margin: 14px;
+        }
+
     </style>
 {% endblock %}
 
@@ -63,58 +67,72 @@
                     </div>
                     <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all"
                        style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
-                        SHOP NOW
+                        {% trans 'SHOP NOW' %}
                     </a>
                 </div>
             </div>
             <div class=" background">
-                <div class="container container-v2 ">
-                    <div class="banner-box-adv">
-                        <button style="position:absolute;z-index:2;" onclick="active3DShowing()"> 3D Preview
-                        </button>
-                        <button style="position:absolute;z-index:2; left: 51%;" onclick="active3DShowing()"> 3D Preview
+                <div class="container container-model" style="max-width:1452px;">
+                    <div class="banner-box-adv" style="margin-top: 40%;">
+                        <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
+                                onclick="active3DShowing()"> 3D
+                            Preview
                         </button>
                         <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner-box-banner-adv odd bottom-left">
-                                    <img class="show-style" style="position:absolute"
+                                    <img class="show-style" style="position:absolute;cursor: pointer"
+                                         id="model-video-left"
                                          src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="width:100%" class="model-video"
+                                           style="width:100% ;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}"></video>
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
                                     {#                                </div>#}
-                                    <div class="box-search-adv">
-                                    </div>
+                                    {#                                    <div class="box-search-adv">#}
+                                    {#                                    </div>#}
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    <div class="text-adv-hidden">
-                                        <p class="name">HARP</p>
-                                        <p><span>Western</span> Musical Instruments section</p>
-                                    </div>
+                                    {#                                    <div class="text-adv-hidden">#}
+                                    {#                                        <p class="name">HARP</p>#}
+                                    {#                                        <p><span>Western</span> Musical Instruments section</p>#}
+                                    {#                                    </div>#}
+                                    <img id="model-video-right" height="250px"
+                                         src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
+                                         alt=""/>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
                                 <div class="inner-box-banner-adv odd bottom-right">
-                                    <img class="show-style" style="position:absolute"
+                                    <img height="250px" style="  margin-bottom: 10px;"
+                                         src="{% static 'assets/detail_model/homepage/model-meinv1.jpg' %}"
+                                         alt=""/>
+                                    <img class="show-style"
+                                         style="cursor: pointer;position: absolute; top: 260px;left: 0px;z-index: 2"
                                          src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="width:100%" class="model-video"
+                                           style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>Men’s</h2>#}
                                     {#                                    <h3>Collection</h3>#}
                                     {#                                </div>#}
-                                    <div class="box-search-adv">
-                                    </div>
+                                    {#                                    <div class="box-search-adv"></div>#}
                                     {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    <div class="text-adv-hidden">
-                                        <p class="name">PIPA</p>
-                                        <p><span>Chinese</span> Musical Instruments section</p>
-                                    </div>
+                                    {#                                    <div class="text-adv-hidden">#}
+                                    {#                                        <p class="name">PIPA</p>#}
+                                    {#                                        <p><span>Chinese</span> Musical Instruments section</p>#}
+                                    {#                                    </div>#}
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-left">
+                                    <img
+                                            src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
+                                            alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -174,113 +192,24 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ Western ~ &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
                     <div class="owl-demo-chinese">
-                        <div class="item">
-                            <div class="row">
-                                {% for instrument in western_instruments %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product"
-                                                 onclick="window.location.href = '{% url 'shop:product_details' product_id=instrument.id %}'">
-                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
-                                                     alt=""
-                                                     class="product-thumb-front"/>
-                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
-                                                     alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="/api/message" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li data-bs-toggle="modal"
-                                                                data-bs-target="#popup-quickview"
-                                                            >
-                                                                <button data-bs-toggle="tooltip" data-bs-html="true"
-                                                                        title="Quick View">
-                                                                    <i class="fi ti-eye"></i>
-                                                                </button>
-                                                            </li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to
-                                                            cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3>
-                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
-                                                </h3>
-                                                <div class="info-product-price">
-                                                    <span>${{ instrument.price }}</span>
-                                                    <del>${{ instrument.old_price }}</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
+                        {% for i in western_instruments %}
+                            <div class="item">
+                                <div class="row">
+                                    {% for instrument in i %}
+                                        {#                                        {% if forloop.parentloop.counter < 4 %}#}
+                                        {% include "shop_templates/homepage-item-list.html" %}
+                                        {#                                        {% endif %}#}
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Item -->
-                        <div class="item">
-                            <div class="row">
-                                {% for i in four %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product">
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
-                                                     class="product-thumb-front"/>
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
-                                                <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                            <!-- End Item -->
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
@@ -290,113 +219,24 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>~ CHINESE ~   &nbsp;</span>Musical Instruments</span>
+                    <span class="title-tab"><span>{% trans '~ CHINESE ~' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
                     <div class="owl-demo-chinese2">
-                        <div class="item">
-                            <div class="row">
-                                {% for instrument in chinese_instruments %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product"
-                                                 onclick="window.location.href = '{% url 'shop:product_details' product_id=instrument.id %}'">
-                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
-                                                     alt=""
-                                                     class="product-thumb-front"/>
-                                                <img style="width: 100%;height:100%" src="{{ instrument.image.url }}"
-                                                     alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="/api/message" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li data-bs-toggle="modal"
-                                                                data-bs-target="#popup-quickview"
-                                                            >
-                                                                <button data-bs-toggle="tooltip" data-bs-html="true"
-                                                                        title="Quick View">
-                                                                    <i class="fi ti-eye"></i>
-                                                                </button>
-                                                            </li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to
-                                                            cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3>
-                                                    <a href="{% url 'shop:product_details' product_id=instrument.id %}">{{ instrument.name }}</a>
-                                                </h3>
-                                                <div class="info-product-price">
-                                                    <span>${{ instrument.price }}</span>
-                                                    <del>${{ instrument.old_price }}</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
+                        {% for i in chinese_instruments %}
+                            <div class="item">
+                                <div class="row">
+                                    {% for instrument in i %}
+                                        {#                                                {% if forloop.parentloop.counter < 4 %}#}
+                                        {% include "shop_templates/homepage-item-list.html" %}
+                                        {#                                                {% endif %}#}
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Item -->
-                        <div class="item">
-                            <div class="row">
-                                {% for i in four %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="item-product">
-                                            <div class="item-thumb-product">
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
-                                                     class="product-thumb-front"/>
-                                                <img style="width: 100%;" src="https://via.placeholder.com/150" alt=""
-                                                     class="product-thumb-behind"/>
-                                                <div class="info-product-cart">
-                                                    <div class="inner-info-product-cart">
-                                                        <ul>
-                                                            <li><a href="#" class="link-wishlist"><i
-                                                                    class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" class="link-quick-view"><i
-                                                                    class="fa fa-search"></i></a></li>
-                                                            <li><a href="#" class="link-compare"><i
-                                                                    class="fa fa-external-link-square"></i></a></li>
-                                                        </ul>
-                                                        <a href="#" class="link-product-add-cart">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                                <span class="status-product-new">New</span>
-                                            </div>
-                                            <div class="item-info-product">
-                                                <h3><a href="#">Chemise SLimFit</a></h3>
-                                                <div class="info-product-price">
-                                                    <span>$45.99</span>
-                                                    <del>$69.71</del>
-                                                </div>
-                                                <div class="product-rating-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                            <!-- End Item -->
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- End Content Slider Product -->
@@ -407,25 +247,25 @@
         <!--  Begin News Part -->
         <div class="news-scroll">
             <div class="container">
-                <h2 class="title-news-scroll">latest news</h2>
+                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
                 <div class="content-news-scroll">
                     <div class="row">
-                        {% for i in eight %}
+                        {% for blog in blogs %}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
                                     <div class="item-news">
                                         <div class="item-news-thumb">
-                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i> <span>18 Dec, 2016 </span>
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
+                                                <span>{{ blog.created_on }} </span>
                                             </div>
-                                            <a href="#" class="news-thumb-link">
-                                                <img src="{% static 'assets/images/home_2/news3.png' %}" alt=""/>
+                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
+                                                <img src="{{ blog.main_image.url }}" alt=""/>
                                             </a>
                                         </div>
                                         <div class="item-news-info">
-                                            <h3><a href="#">Quam tortor eleifend etE neque eget</a></h3>
-                                            <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, incididunt ut
-                                                labore et dolore magna aliqua. Etiam non neque eros cetquis benlater</p>
-                                            <span>Jane Doe - Stylish Manager</span>
+                                            <h3><a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a></h3>
+                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
+                                            <span>{{ blog.author }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -440,7 +280,8 @@
         <div class="custom-services">
             <div class="container">
                 <div class="title-box-default">
-                    <h2><span class="title-tab">Musical Instrument &nbsp; <span> ~Color Design~ </span></span>
+                    <h2><span
+                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
                     </h2>
                 </div>
 
@@ -454,29 +295,26 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>idea Design</h3>
+                            <h3>{% trans 'idea Design' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy
-                                yoleacene anritv antacus.</p>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase.
-                                Santac us uisque nuaderas</p>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>Confection</h3>
+                            <h3>{% trans 'Confection' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas.
-                                Santacus isque nulladeras. </p>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
                         </div>
                     </div>
                 </div>
@@ -499,10 +337,10 @@
                                              class="product-thumb-behind"/>
                                         <div class="info-product-cart2">
                                             <a class="move-to-model-design"
-                                               href="/model_design/color?name={{ design_model.name }}&amp;style={{ design_model.style }}">
-                                                Start Design</a>
+                                               href="/model_design/color?name={{ design_model.name }}style={{ design_model.style }}">
+                                                {% trans 'Start Design' %}</a>
                                         </div>
-                                        <span class="status-product-new">New</span>
+                                        <span class="status-product-new">{% trans 'New' %}</span>
                                     </div>
                                 </div>
                             </div>
@@ -525,28 +363,28 @@
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master2.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">David Cilezege</a></h3>
+                            <h3><a href="#">{% trans 'David Cilezege' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master3.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master4.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                         <li class="item-designer">
                             <a href="#" class="designer-thumb">
                                 <img style="width: 130px;" src="{% static "assets/img_for_shop/master/master5.jpg" %}"
                                      alt="">
                             </a>
-                            <h3><a href="#">Ana Hovurt</a></h3>
+                            <h3><a href="#">{% trans 'Ana Hovurt' %}</a></h3>
                         </li>
                     </ul>
                     {#                    <a href="#" class="see-all-designer">see all designers</a>#}
@@ -566,9 +404,9 @@
                             </div>
                             <div class="grid-text-box gray-box">
                                 <div class="inner-grid-text-box">
-                                    <h3>Women’s</h3>
-                                    <h2>Live style</h2>
-                                    <h3>Danlien Polosa</h3>
+                                    <h3>{% trans 'Women’s' %}</h3>
+                                    <h2>{% trans 'Live style' %}</h2>
+                                    <h3>{% trans 'Danlien Polosa' %}</h3>
                                 </div>
                             </div>
                         </div>
@@ -582,9 +420,9 @@
                     </div>
                     <div class="grid-text-box active">
                         <div class="inner-grid-text-box">
-                            <h3>Collection</h3>
-                            <h2>Jewerly</h2>
-                            <h3>For Girl</h3>
+                            <h3>{% trans 'Collection' %}</h3>
+                            <h2>{% trans 'Jewerly' %}</h2>
+                            <h3>{% trans 'For Girl' %}</h3>
                         </div>
                     </div>
                 </div>
@@ -592,186 +430,182 @@
         </div>
         <!-- End Banner Grid Adv -->
 
+        {##}
+        {#        <div class="category-leading">#}
+        {#            <div class="container">#}
+        {#                <div class="thumb-category-leading">#}
+        {#                    <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>#}
+        {#                    <div class="text-category-leading">#}
+        {#                        <span>New</span>#}
+        {#                        <h2>Collection</h2>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#                <div class="content-category-leading">#}
+        {#                    {% for i in ten %}#}
+        {#                        <div class="item-product-category-leading">#}
+        {#                            <div class="item-thumb-product">#}
+        {#                                <a class="product-thumb-link" href="#">#}
+        {#                                    <img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">#}
+        {#                                </a>#}
+        {#                                <div class="leading-info-product-cart">#}
+        {#                                    <a class="product-thumb-link" href="#">#}
+        {#                                        <img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">#}
+        {#                                    </a>#}
+        {#                                    <div class="info-product-cart">#}
+        {#                                        <div class="inner-info-product-cart">#}
+        {#                                            <ul>#}
+        {#                                                <li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a>#}
+        {#                                                </li>#}
+        {#                                                <li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a>#}
+        {#                                                </li>#}
+        {#                                                <li><a class="link-compare" href="#"><i#}
+        {#                                                        class="fa fa-external-link-square"></i></a></li>#}
+        {#                                            </ul>#}
+        {#                                            <a class="link-product-add-cart" href="#">Add to cart</a>#}
+        {#                                            <div class="info-product-price">#}
+        {#                                                <span>$489.99</span>#}
+        {#                                            </div>#}
+        {#                                        </div>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <!-- End Category Leading -->#}
+        {##}
+        {#        <div class="from-our-blog">#}
+        {#            <div class="container">#}
+        {#                <div class="title-box-default white-arrow-style">#}
+        {#                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>#}
+        {#                </div>#}
+        {#                <div class="row">#}
+        {#                    {% for i in six %}#}
+        {#                        <div class="col-md-4 col-sm-6 col-xs-12">#}
+        {#                            <div class="item-our-blog">#}
+        {#                                <div class="our-blog-thumb">#}
+        {#                                    <a href="#">#}
+        {#                                        <img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt=""/>#}
+        {#                                    </a>#}
+        {#                                </div>#}
+        {#                                <div class="our-blog-info">#}
+        {#                                    <div class="inner-our-blog-info">#}
+        {#                                        <span>Jun 23 2014</span>#}
+        {#                                        <h3><a href="#">Cupidatat none proident amet</a></h3>#}
+        {#                                        <span>9 Comments</span>#}
+        {#                                        <div class="post-extra-link">#}
+        {#                                            <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"#}
+        {#                                                             alt=""/></a>#}
+        {#                                            <a href="#"><i class="fa fa-link"></i></a>#}
+        {#                                        </div>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <!-- End From our blog -->#}
+    </div>
 
-        <div class="category-leading">
-            <div class="container">
-                <div class="thumb-category-leading">
-                    <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>
-                    <div class="text-category-leading">
-                        <span>New</span>
-                        <h2>Collection</h2>
-                    </div>
-                </div>
-                <div class="content-category-leading">
-                    {% for i in ten %}
-                        <div class="item-product-category-leading">
-                            <div class="item-thumb-product">
-                                <a class="product-thumb-link" href="#">
-                                    <img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">
-                                </a>
-                                <div class="leading-info-product-cart">
-                                    <a class="product-thumb-link" href="#">
-                                        <img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">
-                                    </a>
-                                    <div class="info-product-cart">
-                                        <div class="inner-info-product-cart">
-                                            <ul>
-                                                <li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a>
-                                                </li>
-                                                <li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a>
-                                                </li>
-                                                <li><a class="link-compare" href="#"><i
-                                                        class="fa fa-external-link-square"></i></a></li>
-                                            </ul>
-                                            <a class="link-product-add-cart" href="#">Add to cart</a>
-                                            <div class="info-product-price">
-                                                <span>$489.99</span>
+    {% for instrument in instruments %}
+        <!-- popup-quickview  -->
+        <div id="popup-quickview-{{ instrument.id }}" class="modal" tabindex="-1">
+            <div class="modal-dialog quickview-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="fi flaticon-cancel"></i></button>
+                    <div class="modal-body d-flex">
+                        <div class="product-details">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5">
+                                    <div class="product-single-img">
+                                        <div class="modal-product">
+                                            <div class="item">
+                                                <img src="{{ instrument.image.url }}" alt="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <!-- End Category Leading -->
-
-        <div class="from-our-blog">
-            <div class="container">
-                <div class="title-box-default white-arrow-style">
-                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>
-                </div>
-                <div class="row">
-                    {% for i in six %}
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="item-our-blog">
-                                <div class="our-blog-thumb">
-                                    <a href="#">
-                                        <img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="our-blog-info">
-                                    <div class="inner-our-blog-info">
-                                        <span>Jun 23 2014</span>
-                                        <h3><a href="#">Cupidatat none proident amet</a></h3>
-                                        <span>9 Comments</span>
-                                        <div class="post-extra-link">
-                                            <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"
-                                                             alt=""/></a>
-                                            <a href="#"><i class="fa fa-link"></i></a>
+                                <div class="col-lg-7">
+                                    <div class="product-single-content">
+                                        <h5>{% trans instrument.name %}</h5>
+                                        <h6>{{ instrument.price }} USD</h6>
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        </ul>
+                                        <p>{% trans instrument.details %}
+                                        </p>
+                                        <div class="product-filter-item color">
+                                            <div class="color-name">
+                                                <span>{% trans 'Color :' %}</span>
+                                                <ul>
+                                                    <li class="color1"><input id="1" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="1"></label>
+                                                    </li>
+                                                    <li class="color2"><input id="2" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="2"></label>
+                                                    </li>
+                                                    <li class="color3"><input id="3" type="radio" name="color"
+                                                                              value="30">
+                                                        <label for="3"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <!-- End From our blog -->
-    </div>
-
-    <!-- popup-quickview  -->
-    <div id="popup-quickview" class="modal" tabindex="-1">
-        <div class="modal-dialog quickview-dialog">
-            <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="fi flaticon-cancel"></i></button>
-                <div class="modal-body d-flex">
-                    <div class="product-details">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="product-single-img">
-                                    <div class="modal-product">
-                                        <div class="item">
-                                            <img src="assets/images/modal2.jpg" alt="">
+                                        {#                                    <div class="product-filter-item color filter-size">#}
+                                        {#                                        <div class="color-name">#}
+                                        {#                                            <span>Weight :</span>#}
+                                        {#                                            <ul>#}
+                                        {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w1">4L</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w2">2L</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w3">500ML</label>#}
+                                        {#                                                </li>#}
+                                        {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
+                                        {#                                                                         value="30">#}
+                                        {#                                                    <label for="w4">200ML</label>#}
+                                        {#                                                </li>#}
+                                        {#                                            </ul>#}
+                                        {#                                        </div>#}
+                                        {#                                    </div>#}
+                                        <div class="pro-single-btn">
+                                            <div class="quantity cart-plus-minus">
+                                                <input type="text" value="1">
+                                                <div class="dec qtybutton"></div>
+                                                <div class="inc qtybutton"></div>
+                                            </div>
+                                            <a href="cart__{{ instrument.id }}" class="theme-btn">{% trans 'Add to cart' %}</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="product-single-content">
-                                    <h5>Queen Bee Honey</h5>
-                                    <h6>350.00 USD</h6>
-                                    <ul class="rating">
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices
-                                        lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius
-                                        felis
-                                        sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem
-                                        ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        hendrerit.
-                                    </p>
-                                    <div class="product-filter-item color">
-                                        <div class="color-name">
-                                            <span>Color :</span>
-                                            <ul>
-                                                <li class="color1"><input id="1" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="1"></label>
-                                                </li>
-                                                <li class="color2"><input id="2" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="2"></label>
-                                                </li>
-                                                <li class="color3"><input id="3" type="radio" name="color"
-                                                                          value="30">
-                                                    <label for="3"></label>
-                                                </li>
+                                        <div class="social-share">
+                                            <span>{% trans 'Share with : ' %}</span>
+                                            <ul class="socialLinks">
+                                                <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    {#                                    <div class="product-filter-item color filter-size">#}
-                                    {#                                        <div class="color-name">#}
-                                    {#                                            <span>Weight :</span>#}
-                                    {#                                            <ul>#}
-                                    {#                                                <li class="color"><input id="w1" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w1">4L</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w2" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w2">2L</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w3" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w3">500ML</label>#}
-                                    {#                                                </li>#}
-                                    {#                                                <li class="color"><input id="w4" type="radio" name="size"#}
-                                    {#                                                                         value="30">#}
-                                    {#                                                    <label for="w4">200ML</label>#}
-                                    {#                                                </li>#}
-                                    {#                                            </ul>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
-                                    <div class="pro-single-btn">
-                                        <div class="quantity cart-plus-minus">
-                                            <input type="text" value="1">
-                                            <div class="dec qtybutton"></div>
-                                            <div class="inc qtybutton"></div>
+                                        <div class="m-shape">
+                                            <img src="{{ instrument.image1.url }}" alt="">
                                         </div>
-                                        <a href="#" class="theme-btn">Add to cart</a>
-                                    </div>
-                                    <div class="social-share">
-                                        <span>Share with : </span>
-                                        <ul class="socialLinks">
-                                            <li><a href='#'><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="m-shape">
-                                        <img src="assets/images/bee2.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -780,14 +614,25 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- popup-quickview -->
+        <!-- popup-quickview -->
+    {% endfor %}
 
 {% endblock %}
 
 {% block scripts %}
 
     <script>
+        $(".bottom-left").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+        $(".bottom-right").click(function () {
+            console.log("active video");
+            {#$("#trigger-video-button").click();#}
+            active3DShowing();
+        })
+
         function active3DShowing() {
             $(".show-style").toggle("wrapper-hidden");
             var locals = document.getElementsByClassName('model-video');  //获取，函数执行完成后local内存释放
@@ -844,6 +689,84 @@
                 ev.stopPropagation();
             }
         })
+
+        $('.link-wishlist').on('click', function () {
+            $.ajax({
+                url: "/api/add_wishlist/",
+                method: 'POST',
+                data:{
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100){
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your wishlist!", "warning");
+                        }, 300);
+                    }
+                    else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    }
+                    else if (res === 300) {
+                        alert("Error!")
+                    }
+                    else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
+
+        $('.link-product-add-cart').on('click', function () {
+            $.ajax({
+                url: "/api/add_cart/",
+                method: 'POST',
+                data:{
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100){
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your cart!", "warning");
+                        }, 300);
+                    }
+                    else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    }
+                    else if (res === 300) {
+                        alert("Error!")
+                    }
+                    else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
     <script src="/static/assets/assets_for_bees/js/jquery-ui.min.js"></script>

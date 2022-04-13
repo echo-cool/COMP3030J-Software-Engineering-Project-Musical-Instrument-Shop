@@ -8,9 +8,10 @@
 
 from django.urls import path
 
-from chat.views import index
+from chat.views import index, index_new
 
 app_name = 'chat'
 urlpatterns = [
     path('', index, name='index'),
+    path('new', index_new, name="index_new"),
 ]

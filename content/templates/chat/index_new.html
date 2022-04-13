@@ -1,0 +1,566 @@
+{% extends 'layouts/default/shopper_base2.html' %}
+{% load static %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}"
+          rel="stylesheet">
+
+    <!-- ace styles -->
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    <link href="{% static 'assets/css/fonts.googleapis.com.css' %}" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="{% static "assets_backend/images/ico/apple-icon-120.png" %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "assets_backend/images/ico/favicon.ico" %}">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700"
+          rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/vendors/css/vendors.min.css" %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    {#    TODO: 处理冲突 #}
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/bootstrap-extended.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/colors.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/components.css" %}">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+          href="{% static "assets_backend/css/core/menu/menu-types/vertical-menu.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/core/colors/palette-gradient.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/fonts/simple-line-icons/style.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/pages/chat-application.css" %}">
+    <!-- END: Page CSS-->
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/style.css" %}">
+    <!-- END: Custom CSS-->
+
+
+
+    <!-- SPECIFIC JS -->
+    <script src="{% static 'assets/chat_js/gun.js' %}"></script>
+    <style>
+        body {
+            background: white;
+        }
+
+        .header-v2-h2 .container {
+            background: white;
+        }
+
+        .menu_scroll_v2 .container {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer_v1 {
+            display: none;
+        }
+
+        .chat-application .chat-app-window {
+            overflow: auto;
+        }
+
+
+        .chat-application .chat-app-window {
+            height: calc(100% - 82px);
+        }
+
+        .chat-application .sidebar-left {
+            height: calc(100% - 0px);
+        }
+
+        .chat-application .users-list-padding {
+            padding-bottom: 1px;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .sidebar {
+            height: 100%;
+        }
+
+        .chat-application .chats .time {
+            text-align: end;
+            margin: 40px 0;
+            position: relative;
+            top: 110px;
+            right: 62px;
+        }
+
+        {#.menu_scroll_v2 ~ .chat-application .content-right,#}
+        .menu_scroll_v2 ~ .chat-application .sidebar {
+            position: relative;
+            top: 120px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="h-100 chat-application">
+        <!-- BEGIN: Content-->
+        <div class="app-content content">
+            <div class="sidebar-left sidebar-fixed">
+                <div class="sidebar">
+                    <div class="sidebar-content card d-none d-lg-block">
+                        <div class="card-body chat-fixed-search">
+                            <fieldset class="form-group position-relative has-icon-left m-0  w-75 display-inline">
+                                <input type="text" class="form-control round" id="searchUser" placeholder="Search user">
+                                <div class="form-control-position">
+                                    <i class="ft-search"></i>
+                                </div>
+                            </fieldset>
+                            <span class="float-right  primary font-large-1 cursor-pointer"> <i
+                                    class="ft-edit"></i> </span>
+                        </div>
+                        <div id="users-list" class="list-group position-relative">
+                            <div id="user-list" class="users-list-padding media-list">
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-3.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">John Elliott&nbsp;
+                                            <i class="ft-circle font-small-2 success"></i><span
+                                                    class="float-right primary"><span
+                                                    class="badge badge-pill badge-danger lighten-3">1</span></span></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">3:55 PM</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">I was looking at your
+                                            profile. The design looks better... </p>
+                                    </div>
+                                </a>
+                                <a href="#"
+                                   class="media border-bottom-blue-grey border-bottom-lighten-5 border-right-primary  border-right-2">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle box-shadow-3"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Chris Candy&nbsp;
+                                            <i class="ft-circle font-small-2 success"></i><span
+                                                    class="float-right primary"><span
+                                                    class="badge badge-pill badge-danger lighten-3">3</span></span></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">9:04 PM</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Thanks and have a
+                                            great weekend. Hope to see you soon... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-8.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Sara Cena&nbsp;
+                                            <i class="ft-circle font-small-2 danger"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">1:55 AM</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Hello john! Can we
+                                            meet and discuss few issues... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Wayne Bruto&nbsp;
+                                            <i class="ft-circle font-small-2 warning"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">Today</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Can we connect and
+                                            explore few topics togather?... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-5.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Sarah Mery&nbsp;
+                                            <i class="ft-circle font-small-2 danger"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">Yesterday</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Will contact you soon
+                                            and have a great weekend... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-9.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Heather Bell&nbsp;
+                                            <i class="ft-circle font-small-2 danger"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">Friday</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Thank you for your
+                                            support and will see you soon... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-7.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Kelly Reyes&nbsp;
+                                            <i class="ft-circle font-small-2 success"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">Thursday</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">The company will have
+                                            meeting tonight. Please attend... </p>
+                                    </div>
+                                </a>
+                                <a href="#" class="media border-bottom-blue-grey border-bottom-lighten-5">
+                                    <div class="media-left pr-1">
+                                    <span class="avatar avatar-md">
+                                        <img class="media-object rounded-circle"
+                                             src="{% static "assets_backend/images/portrait/small/avatar-s-14.png" %}"
+                                             alt="Generic placeholder image">
+                                    </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading font-medium-1 text-bold-700">Vill Nelson&nbsp;
+                                            <i class="ft-circle font-small-2 warning"></i></h6>
+                                        <p class="font-small-3 text-muted text-bold-500">Monday</p>
+                                        <p class="list-group-item-text text-muted mb-0 lighten-1">Who you are? Please
+                                            provide more details about you... </p>
+                                    </div>
+                                </a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="content-wrapper">
+                    <div class="content-wrapper-before"></div>
+                    <div class="content-header row">
+                    </div>
+                    <div class="content-body">
+                        <section class="chat-app-window">
+                            <div class="mb-1 secondary text-bold-700">Chat History</div>
+                            <div class="chats">
+                                <div class="chats" id="messages">
+                                </div>
+                            </div>
+                        </section>
+                        <section class="chat-app-form">
+                            <form class="chat-app-input d-flex">
+                                <fieldset class="col-10 m-0">
+                                    <div class="input-group position-relative has-icon-left">
+                                        <div class="form-control-position">
+                                            <span id="basic-addon3"><i class="ft-image"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Send message"
+                                               aria-describedby="button-addon2" id="chat-input">
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-group position-relative has-icon-left col-2 m-0">
+                                    <button type="button" class="btn btn-danger" id="btn-send">
+                                        <i class="la la-paper-plane-o d-xl-none"></i>
+                                        <span class="d-none d-lg-none d-xl-block">Send Message </span>
+                                    </button>
+                                </fieldset>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Content-->
+    </div>
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/charts/chartist.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/vendors/js/charts/chartist-plugin-tooltip.min.js" %}"
+            type="text/javascript"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static "assets_backend/js/core/app-menu.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/js/core/app.js" %}" type="text/javascript"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="{% static "assets_backend/js/scripts/pages/chat-application.js" %}" type="text/javascript"></script>
+    <!-- END: Page JS-->
+
+    <script>
+        let sessionKey = '{{ request.session.session_key }}';
+        let currentUser = '{{ request.user.username }}';
+    </script>
+    <script>
+        let currentRecipient = '';
+        let chatInput = $('#chat-input');
+        let chatButton = $('#btn-send');
+        let userList = $('#user-list');
+        let messageList = $('#messages');
+        let chat_history = 0;
+        let chat_with;
+        let chat_with_current;
+        let current_user_id;
+
+        function select(id, username) {
+            current_user_id = id;
+            $('.active').removeClass('active');
+            {#let selected = event.target;#}
+            {#console.log(selected);#}
+            {#$(selected).addClass('active');#}
+            chat_with_current = username;
+            {#console.log(selected)#}
+            setCurrentRecipient(chat_with_current);
+            $('#chat_with').text(chat_with_current);
+            $.getJSON(`../api/user/${id}`, function (user) {
+                {#console.log(user);#}
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
+                    $('#user-image').attr('src', profile[0].image);
+                    {#$('#chat_avatar').attr('src', profile[0].image);#}
+                });
+            });
+        }
+
+        function updateUserList() {
+            $.getJSON('/api/rank_user_list', function (data) {
+                console.log(data)
+                userList.children('.media').remove();
+                for (let i = 0; i < data.length; i++) {
+                    let userItem = `
+                    <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']}, '${data[i]['username']}')">
+                        <div class="media-left pr-1">
+                        <span class="avatar avatar-md">
+                            <img class="media-object rounded-circle"
+                                 src=${data[i]['image']}
+                                 alt="Generic placeholder image">
+                        </span>
+                        </div>
+                        <div class="media-body w-100">
+                            <h6 class="list-group-item-heading font-medium-1 text-bold-700">${data[i]['username']}&nbsp;
+                                <i class="ft-circle font-small-2 success"></i><span
+                                        class="float-right primary"><span
+                                        class="badge badge-pill badge-danger lighten-3">1</span></span></h6>
+                            <p class="font-small-3 text-muted text-bold-500">3:55 PM</p>
+                            <p class="list-group-item-text text-muted mb-0 lighten-1">I was looking at your
+                                profile. The design looks better... </p>
+                        </div>
+                    </a>
+`;
+                    $(userItem).appendTo('#user-list')
+                }
+                {#$('.user').click(function () {#}
+                {#    $('.active').removeClass('active');#}
+                {#    let selected = event.target;#}
+                {#    console.log(selected);#}
+                {#    $(selected).addClass('active');#}
+                {#    chat_with_current = $(selected).attr('value');#}
+                {#    setCurrentRecipient(chat_with_current);#}
+                {#    $('#chat_with').text(chat_with_current);});#}
+
+
+            });
+        }
+
+        function drawMessage(message) {
+            let position = 'left';
+            let position_new = 'cleft';
+            let messageItem = '';
+            let date = new Date(message.timestamp);
+            date = date.toLocaleString();
+            if (message.user === currentUser) position = '';
+            if (message.user === currentUser) position_new = 'cright';
+            if (message.user === currentUser) {
+                messageItem = `
+
+                <div class="chat">
+                <p class="time">${date}</p>
+                    <div class="chat-avatar">
+                        <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                           title="" data-original-title="">
+                            <img src="/media/{{ request.user.profile.image }}"
+                                 class="box-shadow-4" alt="{{ request.user.username }}'s Photo"/>
+                        </a>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-content">
+                            <p>${message.body}</p>
+                        </div>
+                    </div>
+                    <div>
+                `;
+            } else {
+                messageItem = `
+            <div class="chat chat-left">
+                <p class="time">${date}</p>
+                <div class="chat-avatar">
+                    <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                       title="" data-original-title="">
+                        <img src=""
+                             class="box-shadow-4 chat_avatar"/>
+                    </a>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-content">
+                        <p>${message.body}</p>
+                    </div>
+                </div>
+                <div>
+`;
+            }
+            $(messageItem).appendTo('#messages');
+
+            $.getJSON(`../api/user/${current_user_id}`, function (user) {
+                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
+                    $('.chat_avatar').attr('src', profile[0].image);
+                });
+            });
+        }
+
+
+        function getConversation(recipient) {
+            $.getJSON(`/api/message/?target=${recipient}`, function (data) {
+                {#console.log(data['results'][0].body)#}
+                {#console.log(chat_history)#}
+                if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
+                    {#console.log(chat_with);#}
+                    {#console.log(chat_with_current);#}
+                    chat_with_current = chat_with;
+
+                    chat_history = data['results'][0].id;
+                    messageList.children('.chat').remove();
+                    for (let i = data['results'].length - 1; i >= 0; i--) {
+                        drawMessage(data['results'][i]);
+                    }
+                    messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+                }
+
+            });
+
+        }
+
+        function getMessageById(message) {
+            id = JSON.parse(message).message
+            $.getJSON(`/api/message/${id}/`, function (data) {
+                if (data.user === currentRecipient ||
+                    (data.recipient === currentRecipient && data.user == currentUser)) {
+                    drawMessage(data);
+                }
+                messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+            });
+        }
+
+        function sendMessage(recipient, body) {
+            $.ajax({
+                url: "/api/message/",
+                method: 'POST',
+                data: {
+                    recipient: recipient,
+                    body: body
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    updateUserList()
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+
+        }
+
+        function setCurrentRecipient(username) {
+            currentRecipient = username;
+            console.log(currentRecipient)
+            getConversation(currentRecipient);
+
+            enableInput();
+        }
+
+
+        function enableInput() {
+            chatInput.prop('disabled', false);
+            chatButton.prop('disabled', false);
+            chatInput.focus();
+        }
+
+        function disableInput() {
+            chatInput.prop('disabled', true);
+            chatButton.prop('disabled', true);
+        }
+
+        $(document).ready(function () {
+                updateUserList();
+                $.getJSON('/api/rank_user_list', function (data) {
+                    select(data[0]['id'], data[0]['username']);
+                })
+
+                chatInput.keypress(function (e) {
+                    if (e.keyCode == 13)
+                        chatButton.click();
+                });
+
+                chatButton.click(function () {
+                    if (chatInput.val().length > 0) {
+                        sendMessage(currentRecipient, chatInput.val());
+                        chatInput.val('');
+                    }
+                });
+
+                setInterval(function () {
+                    if (currentRecipient.length > 0) {
+                        getConversation(currentRecipient);
+                    }
+                }, 500);
+
+
+            }
+        );
+        $(document).ready(function () {
+            $('#action_menu_btn').click(function () {
+                $('.action_menu').toggle();
+            });
+        });
+
+    </script>
+{% endblock %}
+

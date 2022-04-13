@@ -17,18 +17,21 @@
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
     <title>Backend</title>
-    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css"/>
+    {#    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css"/>#}
+
+    {% block dashboard %}
+    {% endblock %}
 
     <!-- bootstrap & fontawesome -->
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="{% static "assets/css/jquery-ui.custom.min.css" %}" />
-    <link rel="stylesheet" href="{% static "assets/css/jquery.gritter.min.css" %}" />
-    <link rel="stylesheet" href="{% static "assets/css/select2.min.css" %}" />
-    <link rel="stylesheet" href="{% static "assets/css/bootstrap-datepicker3.min.css" %}" />
-    <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/css/jquery-ui.custom.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "assets/css/jquery.gritter.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "assets/css/select2.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-datepicker3.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}"/>
 
     <!-- text fonts -->
     <link href="{% static 'assets/css/fonts.googleapis.com.css' %}" rel="stylesheet">
@@ -43,7 +46,6 @@
     <script src="{% static 'assets/js/ace-extra.min.js' %}"></script>
 
     <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
-
 
 </head>
 
@@ -757,14 +759,14 @@
                     </ul><!-- /.breadcrumb -->
 
                     <div class="nav-search" id="nav-search">
-                    <form class="form-search">
+                        <form class="form-search">
 								<span class="input-icon">
 									<input type="text" placeholder="Search ..." class="nav-search-input"
                                            id="nav-search-input" autocomplete="off"/>
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
-                    </form>
-                </div><!-- /.nav-search -->
+                        </form>
+                    </div><!-- /.nav-search -->
                 {% endblock %}
             </div>
 
@@ -928,53 +930,51 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
+        //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
+        //so disable dragging when clicking on label
+        var agent = navigator.userAgent.toLowerCase();
+        if (ace.vars['touch'] && ace.vars['android']) {
+            $('#tasks').on('touchstart', function (e) {
+                var li = $(e.target).closest('#tasks li');
+                if (li.length == 0) return;
+                var label = li.find('label.inline').get(0);
+                if (label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation();
+            });
+        }
 
-
-
-            //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-            //so disable dragging when clicking on label
-            var agent = navigator.userAgent.toLowerCase();
-            if (ace.vars['touch'] && ace.vars['android']) {
-                $('#tasks').on('touchstart', function (e) {
-                    var li = $(e.target).closest('#tasks li');
-                    if (li.length == 0) return;
-                    var label = li.find('label.inline').get(0);
-                    if (label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation();
-                });
-            }
-
-            $('#tasks').sortable({
-                    opacity: 0.8,
-                    revert: true,
-                    forceHelperSize: true,
-                    placeholder: 'draggable-placeholder',
-                    forcePlaceholderSize: true,
-                    tolerance: 'pointer',
-                    stop: function (event, ui) {
-                        //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-                        $(ui.item).css('z-index', 'auto');
-                    }
+        $('#tasks').sortable({
+                opacity: 0.8,
+                revert: true,
+                forceHelperSize: true,
+                placeholder: 'draggable-placeholder',
+                forcePlaceholderSize: true,
+                tolerance: 'pointer',
+                stop: function (event, ui) {
+                    //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
+                    $(ui.item).css('z-index', 'auto');
                 }
-            );
-            $('#tasks').disableSelection();
-            $('#tasks input:checkbox').removeAttr('checked').on('click', function () {
-                if (this.checked) $(this).closest('li').addClass('selected');
-                else $(this).closest('li').removeClass('selected');
-            });
+            }
+        );
+        $('#tasks').disableSelection();
+        $('#tasks input:checkbox').removeAttr('checked').on('click', function () {
+            if (this.checked) $(this).closest('li').addClass('selected');
+            else $(this).closest('li').removeClass('selected');
+        });
 
 
-            //show the dropdowns on top or bottom depending on window height and menu position
-            $('#task-tab .dropdown-hover').on('mouseenter', function (e) {
-                var offset = $(this).offset();
+        //show the dropdowns on top or bottom depending on window height and menu position
+        $('#task-tab .dropdown-hover').on('mouseenter', function (e) {
+            var offset = $(this).offset();
 
-                var $w = $(window)
-                if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
-                    $(this).addClass('dropup');
-                else $(this).removeClass('dropup');
-            });
-
-
+            var $w = $(window)
+            if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
+                $(this).addClass('dropup');
+            else $(this).removeClass('dropup');
+        });
     })
 </script>
+{% block dashboard_js %}
+{% endblock %}
+
 </body>
 </html>
