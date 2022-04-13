@@ -402,7 +402,7 @@
                                                     </a>
                                                     <figure style="background : #e12c43; color: #ffffff"
                                                             class="absolute uppercase label-sale text-center">
-                                                        <span class="sale-percent">-16%</span>
+                                                        <span class="sale-percent">{% widthratio instrument.old_price 1 -1 as minus %}{% widthratio instrument.price|add:minus instrument.old_price 100 %}%</span>
                                                     </figure>
                                                     <div class="product-icon-action d-flex mb-0 text-center">
                                                         <div class="add-wishlist mr-0 w-50">
