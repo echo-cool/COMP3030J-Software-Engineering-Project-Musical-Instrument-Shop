@@ -23,49 +23,49 @@
 		<div class="page_header">
 			<div class="breadcrumbs">
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Category</a></li>
-					<li>Page active</li>
+					<li><a href="#">{% trans 'Home' %}</a></li>
+					<li><a href="#">{% trans 'Category' %}</a></li>
+					<li>{% trans 'Page active' %}</li>
 				</ul>
 		</div>
-		<h1>Sign In or Create an Account</h1>
+		<h1>{% trans 'Sign In or Create an Account' %}</h1>
 	</div>
 	<!-- /page_header -->
 			<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
-					<h3 class="client">Already Client</h3>
+					<h3 class="client">{% trans 'Already Client' %}</h3>
 					<div class="form_container">
 						<div class="row no-gutters">
 							<div class="col-lg-6 pr-lg-1">
-								<a href="#0" class="social_bt facebook">Login with Facebook</a>
+								<a href="#0" class="social_bt facebook">{% trans 'Login with Facebook' %}</a>
 							</div>
 							<div class="col-lg-6 pl-lg-1">
-								<a href="#0" class="social_bt google">Login with Google</a>
+								<a href="#0" class="social_bt google">{% trans 'Login with Google' %}</a>
 							</div>
 						</div>
 						<div class="divider"><span>Or</span></div>
 						<div class="form-group">
-							<input type="email" class="form-control" name="email" id="email" placeholder="Email*">
+							<input type="email" class="form-control" name="email" id="email" placeholder="{% trans 'Email*' %}">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password_in" id="password_in" value="" placeholder="Password*">
+							<input type="password" class="form-control" name="password_in" id="password_in" value="" placeholder="{% trans 'Password*' %}">
 						</div>
 						<div class="clearfix add_bottom_15">
 							<div class="checkboxes float-start">
-								<label class="container_check">Remember me
+								<label class="container_check">{% trans 'Remember me' %}
 									<input type="checkbox">
 									<span class="checkmark"></span>
 								</label>
 							</div>
-							<div class="float-end"><a id="forgot" href="javascript:void(0);">Lost Password?</a></div>
+							<div class="float-end"><a id="forgot" href="javascript:void(0);">{% trans 'Lost Password?' %}</a></div>
 						</div>
 						<div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
 						<div id="forgot_pw">
 							<div class="form-group">
-								<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="Type your email">
+								<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="{% trans 'Type your email' %}">
 							</div>
-							<p>A new password will be sent shortly.</p>
+							<p>{% trans 'A new password will be sent shortly.' %}</p>
 							<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
 						</div>
 					</div>
@@ -75,15 +75,15 @@
 				<div class="row">
 					<div class="col-md-6 d-none d-lg-block">
 						<ul class="list_ok">
-							<li>Find Locations</li>
-							<li>Quality Location check</li>
-							<li>Data Protection</li>
+							<li>{% trans 'Find Locations' %}</li>
+							<li>{% trans 'Quality Location check' %}</li>
+							<li>{% trans 'Data Protection' %}</li>
 						</ul>
 					</div>
 					<div class="col-md-6 d-none d-lg-block">
 						<ul class="list_ok">
-							<li>Secure Payments</li>
-							<li>H24 Support</li>
+							<li>{% trans 'Secure Payments' %}</li>
+							<li>{% trans 'H24 Support' %}</li>
 						</ul>
 					</div>
 				</div>
@@ -91,17 +91,17 @@
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
-					<h3 class="new_client">New Client</h3> <small class="float-right pt-2">* Required Fields</small>
+					<h3 class="new_client">New Client</h3> <small class="float-right pt-2">{% trans '* Required Fields' %}</small>
 					<div class="form_container">
 						<div class="form-group">
-							<input type="email" class="form-control" name="email" id="email_2" placeholder="Email*">
+							<input type="email" class="form-control" name="email" id="email_2" placeholder="{% trans 'Email*' %}">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password_in_2" id="password_in_2" value="" placeholder="Password*">
+							<input type="password" class="form-control" name="password_in_2" id="password_in_2" value="" placeholder="{% trans 'Password*' %}">
 						</div>
 						<hr>
 						<div class="form-group">
-							<label class="container_radio" style="display: inline-block; margin-right: 15px;">Private
+							<label class="container_radio" style="display: inline-block; margin-right: 15px;">{% trans 'Private' %}
 								<input type="radio" name="client_type" checked value="private">
 								<span class="checkmark"></span>
 							</label>
@@ -114,17 +114,17 @@
 							<div class="row no-gutters">
 								<div class="col-6 pr-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name*">
+										<input type="text" class="form-control" placeholder="{% trans 'Name*' %}">
 									</div>
 								</div>
 								<div class="col-6 pl-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Last Name*">
+										<input type="text" class="form-control" placeholder="{% trans 'Last Name*' %}">
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Full Address*">
+										<input type="text" class="form-control" placeholder="{% trans 'Full Address*' %}">
 									</div>
 								</div>
 							</div>
@@ -132,12 +132,12 @@
 							<div class="row no-gutters">
 								<div class="col-6 pr-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="City*">
+										<input type="text" class="form-control" placeholder="{% trans 'City*' %}">
 									</div>
 								</div>
 								<div class="col-6 pl-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Postal Code*">
+										<input type="text" class="form-control" placeholder="{% trans 'Postal Code*' %}">
 									</div>
 								</div>
 							</div>
@@ -148,17 +148,17 @@
 									<div class="form-group">
 										<div class="custom-select-form">
 											<select class="wide add_bottom_10" name="country" id="country">
-													<option value="" selected>Country*</option>
-													<option value="Europe">Europe</option>
-													<option value="United states">United states</option>
-													<option value="Asia">Asia</option>
+													<option value="" selected>{% trans 'Country*' %}</option>
+													<option value="Europe">{% trans 'Europe' %}</option>
+													<option value="United states">{% trans 'United states' %}</option>
+													<option value="Asia">{% trans 'Asia' %}</option>
 											</select>
 										</div>
 									</div>
 								</div>
 								<div class="col-6 pl-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Telephone *">
+										<input type="text" class="form-control" placeholder="{% trans 'Telephone *' %}">
 									</div>
 								</div>
 							</div>
@@ -170,12 +170,12 @@
 							<div class="row no-gutters">
 								<div class="col-12">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Company Name*">
+										<input type="text" class="form-control" placeholder="{% trans 'Company Name*' %}">
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Full Address">
+										<input type="text" class="form-control" placeholder="{% trans 'Full Address' %}">
 									</div>
 								</div>
 							</div>
@@ -183,12 +183,12 @@
 							<div class="row no-gutters">
 								<div class="col-6 pr-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="City*">
+										<input type="text" class="form-control" placeholder="{% trans 'City*' %}">
 									</div>
 								</div>
 								<div class="col-6 pl-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Postal Code*">
+										<input type="text" class="form-control" placeholder="{% trans 'Postal Code*' %}">
 									</div>
 								</div>
 							</div>
@@ -198,17 +198,17 @@
 									<div class="form-group">
 										<div class="custom-select-form">
 											<select class="wide add_bottom_10" name="country" id="country_2">
-													<option value="" selected>Country*</option>
-													<option value="Europe">Europe</option>
-													<option value="United states">United states</option>
-													<option value="Asia">Asia</option>
+													<option value="" selected>{% trans 'Country*' %}</option>
+													<option value="Europe">{% trans 'Europe' %}</option>
+													<option value="United states">{% trans 'United states' %}</option>
+													<option value="Asia">{% trans 'Asia' %}</option>
 											</select>
 										</div>
 									</div>
 								</div>
 								<div class="col-6 pl-1">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Telephone *">
+										<input type="text" class="form-control" placeholder="{% trans 'Telephone *' %}">
 									</div>
 								</div>
 							</div>
@@ -217,7 +217,7 @@
 						<!-- /company -->
 						<hr>
 						<div class="form-group">
-							<label class="container_check">Accept <a href="#0">Terms and conditions</a>
+							<label class="container_check">Accept <a href="#0">{% trans 'Terms and conditions' %}</a>
 								<input type="checkbox">
 								<span class="checkmark"></span>
 							</label>
@@ -239,33 +239,33 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
-					<h3 data-bs-target="#collapse_1">Quick Links</h3>
+					<h3 data-bs-target="#collapse_1">{% trans 'Quick Links' %}</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
-							<li><a href="about.html">About us</a></li>
-							<li><a href="help.html">Faq</a></li>
-							<li><a href="help.html">Help</a></li>
-							<li><a href="account.html">My account</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contacts.html">Contacts</a></li>
+							<li><a href="about.html">{% trans 'About us' %}</a></li>
+							<li><a href="help.html">{% trans 'Faq' %}</a></li>
+							<li><a href="help.html">{% trans 'Help' %}</a></li>
+							<li><a href="account.html">{% trans 'My account' %}</a></li>
+							<li><a href="blog.html">{% trans 'Blog' %}</a></li>
+							<li><a href="contacts.html">{% trans 'Contacts' %}</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3 data-bs-target="#collapse_2">Categories</h3>
+					<h3 data-bs-target="#collapse_2">{% trans 'Categories' %}</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="listing-grid-1-full.html">Clothes</a></li>
-							<li><a href="listing-grid-2-full.html">Electronics</a></li>
-							<li><a href="listing-grid-1-full.html">Furniture</a></li>
-							<li><a href="listing-grid-3.html">Glasses</a></li>
-							<li><a href="listing-grid-1-full.html">Shoes</a></li>
-							<li><a href="listing-grid-1-full.html">Watches</a></li>
+							<li><a href="listing-grid-1-full.html">{% trans 'Clothes' %}</a></li>
+							<li><a href="listing-grid-2-full.html">{% trans 'Electronics' %}</a></li>
+							<li><a href="listing-grid-1-full.html">{% trans 'Furniture' %}</a></li>
+							<li><a href="listing-grid-3.html">{% trans 'Glasses' %}</a></li>
+							<li><a href="listing-grid-1-full.html">{% trans 'Glasses' %}</a></li>
+							<li><a href="listing-grid-1-full.html">{% trans 'Watches' %}</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-						<h3 data-bs-target="#collapse_3">Contacts</h3>
+						<h3 data-bs-target="#collapse_3">{% trans 'Contacts' %}</h3>
 					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 						<ul>
 							<li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
@@ -275,16 +275,16 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-						<h3 data-bs-target="#collapse_4">Keep in touch</h3>
+						<h3 data-bs-target="#collapse_4">{% trans 'Keep in touch' %}</h3>
 					<div class="collapse dont-collapse-sm" id="collapse_4">
 						<div id="newsletter">
 						    <div class="form-group">
-						        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
+						        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="{% trans 'Your email' %}">
 						        <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
 						    </div>
 						</div>
 						<div class="follow_us">
-							<h5>Follow Us</h5>
+							<h5>{% trans 'Follow Us' %}</h5>
 							<ul>
 								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/twitter_icon.svg" alt="" class="lazy"></a></li>
 								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
@@ -303,18 +303,18 @@
 						<li>
 							<div class="styled-select lang-selector">
 								<select>
-									<option value="English" selected>English</option>
-									<option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
+									<option value="English" selected>{% trans 'English' %}</option>
+									<option value="French">{% trans 'French' %}</option>
+									<option value="Spanish">{% trans 'Spanish' %}</option>
+									<option value="Russian">{% trans 'Russian' %}</option>
 								</select>
 							</div>
 						</li>
 						<li>
 							<div class="styled-select currency-selector">
 								<select>
-									<option value="US Dollars" selected>US Dollars</option>
-									<option value="Euro">Euro</option>
+									<option value="US Dollars" selected>{% trans 'US Dollars' %}</option>
+									<option value="Euro">{% trans 'Euro' %}</option>
 								</select>
 							</div>
 						</li>
@@ -323,8 +323,8 @@
 				</div>
 				<div class="col-lg-6">
 					<ul class="additional_links">
-						<li><a href="#0">Terms and conditions</a></li>
-						<li><a href="#0">Privacy</a></li>
+						<li><a href="#0">{% trans 'Terms and conditions' %}</a></li>
+						<li><a href="#0">{% trans 'Privacy' %}</a></li>
 						<li><span>© 2021 Allaia</span></li>
 					</ul>
 				</div>
