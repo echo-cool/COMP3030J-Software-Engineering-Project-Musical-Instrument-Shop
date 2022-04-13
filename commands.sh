@@ -25,7 +25,7 @@ python manage.py runserver
 python manage.py  makemessages -l zh_Hans -e html,txt,rml
 python manage.py  makemessages -l strings -e html,txt,rml
 python manage.py compilemessages
-
+#https://zh.crowdin.com/translate/comp3030j/10/en-zhcn?filter=basic&value=0
 ./localazy.exe upload
 ./localazy download
 
