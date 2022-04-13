@@ -48,7 +48,7 @@ function activateHeightWhat() {
             var b = (hexToRgb("#ffffff").b)
             $('.header-v2-h2.menu_scroll_v2').css({'background': 'rgba(' + r + ' ,' + g + ',' + b + ',0.7)'});
             if ($(this).scrollTop() < $nav.height()) {
-                $('.header-v2-h2').css({'background': 'none'});
+                $('.header-v2-h2').css({'background': 'rgba(255, 255, 255)'});
                 $nav.removeClass('menu_scroll_v2')
             }
         });

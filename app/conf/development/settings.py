@@ -149,6 +149,7 @@ LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
     ('zh-Hans', _('Simplified Chinese')),
+    ('zh-CN', _('Simplified Chinese new')),
     ('fr', _('French')),
     ('es', _('Spanish')),
 ]
