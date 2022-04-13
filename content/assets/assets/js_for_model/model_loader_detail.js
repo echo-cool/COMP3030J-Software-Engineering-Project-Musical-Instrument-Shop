@@ -64,14 +64,58 @@ function init() {
 
     console.log(scene)
     //创建一个环境灯光
-    var ambientLight = new THREE.AmbientLight(0x666666);
-    scene.add(ambientLight);
-    // 从上到下的平行光
-    var direction = new THREE.DirectionalLight(0x666666);
-    scene.add(direction);
+    // var ambientLight = new THREE.AmbientLight(0x666666);
+    // scene.add(ambientLight);
+
 
     //把视角放入环境
     scene.add(camera);
+
+    if (pathName !== "model_detail_piano2.glb") {
+        // scene.remove(ambientLight);
+        // let light = new THREE.DirectionalLight(0xffffff, 0.7);
+        // light.position.set(-10, 0, 0);
+        // light.castShadow = true;
+        // let d = 10;
+        // light.shadow.camera.left = -d;
+        // light.shadow.camera.right = d;
+        // light.shadow.camera.top = d;
+        // light.shadow.camera.bottom = -d;
+        // // light.shadow.camera.far = 1000;
+        // scene.add(light);
+    }
+    // let ambientLight2 = new THREE.AmbientLight(0xffffff);
+    // scene.add(ambientLight2);
+    // let light = new THREE.SpotLight(0xffffff, 0.7);
+    // light.position.set(0, 10, 0);
+    // light.castShadow = true;
+    // scene.add(light);
+
+
+    // x right y top z ren
+//, [40, 20, 0], [0, 20, 40], [0, 20, -40]
+    let light_list = [[0, 20, 0], [10, 10, 20], [-10, 10, 20], [10, 10, 0]];
+
+    if (model_url.includes("model_detail_piano2.glb") === false) {
+        let ambient = new THREE.AmbientLight(0x777777);
+        scene.add(ambient);
+        for (let light_num of light_list) {
+            console.log("light_number", light_num);
+            let light2 = new THREE.DirectionalLight(0x888888);
+            // let x,y,z  =);
+            light2.position.set(...light_num);
+            light2.castShadow = true;
+            scene.add(light2);
+        }
+    } else {
+        let ambient = new THREE.AmbientLight(0x888888);
+        scene.add(ambient);
+        // // 从上到下的平行光
+        var direction = new THREE.DirectionalLight(0xffffff, 0.7);
+        direction.position.set(10, 30, 50);
+        scene.add(direction);
+    }
+
 
     // model  开始创建模型
     //进度通知
@@ -89,7 +133,16 @@ function init() {
 
     // 添加操作器
     var loader = new THREE.GLTFLoader();
-    let model_url = "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano2.glb";
+
+    const bodyMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x3c3f41,
+        metalness: 1.0,
+        roughness: 0.5,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.03,
+        sheen: 0.5
+    });
+
     // loader.load("../static/assets/detail_model/" + pathName, function (gltf) {
     loader.load(model_url, function (gltf) {
             console.log('控制台查看加载gltf文件返回的对象结构', gltf)
@@ -103,9 +156,19 @@ function init() {
                     //模型阴影
                     child.castShadow = true;
                     //模型自发光
-                    if (pathName !== "model_detail_piano2.glb" && pathName !== "model_detail_piano1.glb" && pathName !== "model_detail_piano7.glb") {
+                    // child.material.shininess.specular = 0x444444;
+
+                    if (model_url.includes("gong")) {
+                        child.material = bodyMaterial;
+
                         child.material.emissive = child.material.color;
                         child.material.emissiveMap = child.material.map;
+                    }
+
+
+                    if (pathName !== "model_detail_piano2.glb") {
+                        // child.material.emissive = child.material.color;
+                        // child.material.emissiveMap = child.material.map;
                     }
                 }
             });
@@ -113,11 +176,27 @@ function init() {
             console.log('gltf对象场景属性', gltf.scene)
             console.log('gltf对象相机属性', gltf.cameras)
             // 返回的场景对象gltf.scene插入到threejs场景中
-            gltf.scene.scale.set(10, 10, 10) // scale here
+            if (model_url.includes("model_detail_piano2.glb")) {
+                gltf.scene.scale.set(20, 20, 20) // scale here
+            } else {
+                gltf.scene.scale.set(10, 10, 10) // scale here
+            }
+
+            gltf.scene.position.set(0, 0, 0)
             scene.add(gltf.scene);
         }, onProgress, onError
     );
 
+
+    // let floorMaterial = new THREE.MeshLambertMaterial({
+    //     color: '#a9a8a8',
+    // });
+    // let floorGeometry = new THREE.CircleBufferGeometry(27, 50);
+    // let floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+    // floorMesh.rotation.x -= Math.PI * 0.5;
+    // floorMesh.position.y -= 5;
+    // scene.add(floorMesh);
+    // floorMesh.receiveShadow = true;
 
     //创建一个webgl对象
     renderer = new THREE.WebGLRenderer({
