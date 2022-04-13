@@ -269,7 +269,7 @@
                             </span>
                         </div>
                         <div class="pd_summary">
-                            <p class=" mb-0">{% trans 'instrument.details' %}</p>
+                            <p class=" mb-0">{% trans instrument.details %}</p>
                         </div>
                         <form method="post" enctype="multipart/form-data" id="AddToCartForm"
                               class="cart clearfix mt-3">
@@ -881,7 +881,17 @@
         <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
         <script>
             var model_url = String({{ model_url |safe}});
-            console.log("model url:", model_url)
+            console.log("model url:", model_url);
+            $(".slider-two").ready(function () {
+                $(".item").click(function () {
+                    if ($(".show-controls").css("display") === "none") {
+                    } else {
+                        $(".show3D").click();
+                    }
+                });
+            });
+
+
             $(".show3D").click(function () {
                 console.log("youwu", $(".model-zoom-in"));
                 let img = $("#3d-icon");

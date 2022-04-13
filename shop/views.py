@@ -70,6 +70,9 @@ def index(request):
 
 def home(request):
     instruments = Instrument.objects.all()
+
+    instruments = instruments.order_by("-object_gltf")
+
     categories = Category.objects.all()
     index_categories = {
         'left_700_604': {
