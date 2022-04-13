@@ -64,11 +64,17 @@
         .tab-pd-details {
             margin-top: 2%;
         }
+
+        {% if model_url == "none" %}
+            .show3D {
+                display: none !important;
+            }
+        {% else %}
+
+        {% endif %}
     </style>
 
 {% endblock %}
-
-
 
 
 {% block content %}
@@ -84,6 +90,7 @@
                             <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"
                                                                                       aria-hidden="true"></i></a>
                             <strong>{% trans 'YC Combo Organ' %}</strong>
+
                         </div>
                     </div>
                     <div class="col-sm-6 justify-content-end align-items-center d-sm-flex d-none prod_extended">
@@ -864,32 +871,49 @@
     <!-- SPECIFIC SCRIPTS -->
     <script src="{% static "assets/js_for_shop/carousel_with_thumbs.js" %}"></script>
 
-    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
-    <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>
+    {% if model_url != "" %}
+        <script type="text/javascript" src="{% static "assets/js_for_model/three.js" %}"></script>
+        <script type="text/javascript" src="{% static "assets/js_for_model/GLTFLoader.js" %}"></script>
+        <script type="text/javascript" src="{% static "assets/js_for_model/DDSLoader.js" %}"></script>
+        <script type="text/javascript"
+                src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
+        <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
+        <script>
+            var model_url = String({{ model_url |safe}});
+            console.log("model url:", model_url);
+            $(".slider-two").ready(function () {
+                $(".item").click(function () {
+                    if ($(".show-controls").css("display") === "none") {
+                    } else {
+                        $(".show3D").click();
+                    }
+                });
+            });
+
+
+            $(".show3D").click(function () {
+                console.log("youwu", $(".model-zoom-in"));
+                let img = $("#3d-icon");
+                if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.jpg" %}") {
+                    $(".show-controls").toggle("wrapper-hidden");
+                    $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.png" %}");
+                    $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
+                } else {
+                    $(".show-controls").toggle("wrapper-hidden");
+                    $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.jpg" %}");
+                    $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
+                }
+            });
+        </script>
+        <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail.js" %}"></script>
+
+    {% else %}
+    {% endif %}
+
     <!-- 需要修复main 的button错误-->
     <script>
-        $(".show3D").click(function () {
-            console.log("youwu", $(".model-zoom-in"));
-            let img = $("#3d-icon");
-            if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.jpg" %}") {
-                $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.png" %}");
-                $(".progress").attr("style", "display:none;position:absolute;width:100%;height: 100%;");
-            } else {
-                $(".show-controls").toggle("wrapper-hidden");
-                $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.jpg" %}");
-                $(".progress").attr("style", "display:block;position:absolute;width:100%;height: 100%;");
-            }
-        });
-
 
         $(".main").style = "margin-bottom: 0px;";
-
 
         qtySelectors();
 
