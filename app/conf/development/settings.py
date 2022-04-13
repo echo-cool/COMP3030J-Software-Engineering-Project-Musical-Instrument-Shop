@@ -147,11 +147,13 @@ USE_L10N = True
 LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', _('English')),
-    ('ru', _('Russian')),
-    ('zh-Hans', _('Simplified Chinese')),
+    ('ru-RU', _('Russian')),
+    ('uk-UA', _('Ukrainian')),
     ('zh-CN', _('Simplified Chinese')),
-    ('fr', _('French')),
-    ('es', _('Spanish')),
+    ('fr-FR', _('French')),
+    ('es-ES', _('Spanish')),
+    ('de-DE', _('Dutch')),
+    ('ja-JP', _('Japanese')),
 ]
 
 TIME_ZONE = 'UTC'
