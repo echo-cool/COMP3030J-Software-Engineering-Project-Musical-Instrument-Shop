@@ -97,7 +97,7 @@
                             <div class="d-flex flex-column justify-content-between order-summary">
                                 <div class="d-flex align-items-center">
                                     <div class="text-uppercase">Order #{{ order.order_id | truncatechars:8 }}</div>
-                                    <div class="blue-label ms-auto text-uppercase">paid</div>
+{#                                    <div class="blue-label ms-auto text-uppercase">paid</div>#}
                                 </div>
                                 <div class="fs-8">Products: <b>{{ order.instrument.name }}</b></div>
                                 <div class="fs-8">{{ order.created_at }}</div>
@@ -107,10 +107,14 @@
                         <div class="col-lg-8">
                             <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
                                 <div class="status">
-                                    Status: {% if order.delivery_confirmed and order.shopper_confirmed %}
+                                    Status: {% if order.delivered %}
                                             Delivered
-                                            {% elif order.shopper_confirmed %}
+                                            {% elif order.shipped %}
                                             Shopper Confirmed
+                                            {% elif order.packed %}
+                                            Packed
+                                            {% elif order.accepted %}
+                                            Accepted
                                             {% else %}
                                             Placed
                                             {% endif %}
@@ -119,16 +123,28 @@
                             </div>
                             <div class="progressbar-track">
                                 <ul class="progressbar">
-                                    {% if order.delivery_confirmed and order.shopper_confirmed %}
+                                    {% if order.delivered %}
                                     <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
                                     <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
                                     <li id="step-3" class="text-muted green"> <span class="fas fa-box"></span> </li>
                                     <li id="step-4" class="text-muted green"> <span class="fas fa-truck"></span> </li>
                                     <li id="step-5" class="text-muted green"> <span class="fas fa-box-open"></span> </li>
-                                    {% elif order.shopper_confirmed %}
+                                    {% elif order.shipped %}
                                     <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
                                     <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
                                     <li id="step-3" class="text-muted green"> <span class="fas fa-box"></span> </li>
+                                    <li id="step-4" class="text-muted green"> <span class="fas fa-truck"></span> </li>
+                                    <li id="step-5" class="text-muted"> <span class="fas fa-box-open"></span> </li>
+                                    {% elif order.packed %}
+                                    <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
+                                    <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
+                                    <li id="step-3" class="text-muted green"> <span class="fas fa-box"></span> </li>
+                                    <li id="step-4" class="text-muted"> <span class="fas fa-truck"></span> </li>
+                                    <li id="step-5" class="text-muted"> <span class="fas fa-box-open"></span> </li>
+                                    {% elif order.accepted %}
+                                    <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
+                                    <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
+                                    <li id="step-3" class="text-muted"> <span class="fas fa-box"></span> </li>
                                     <li id="step-4" class="text-muted"> <span class="fas fa-truck"></span> </li>
                                     <li id="step-5" class="text-muted"> <span class="fas fa-box-open"></span> </li>
                                     {% else %}

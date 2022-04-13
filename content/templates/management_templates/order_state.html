@@ -28,18 +28,18 @@
 
     <div class="widget-box">
         <div class="widget-header widget-header-blue widget-header-flat">
-            <h4 class="widget-title lighter">New Item Wizard</h4>
+            <h4 class="widget-title lighter">Manage Order State</h4>
 
-            <div class="widget-toolbar">
-                <label>
-                    <small class="green">
-                        <b>Validation</b>
-                    </small>
-
-                    <input id="skip-validation" type="checkbox" class="ace ace-switch ace-switch-4"/>
-                    <span class="lbl middle"></span>
-                </label>
-            </div>
+{#            <div class="widget-toolbar">#}
+{#                <label>#}
+{#                    <small class="green">#}
+{#                        <b>Validation</b>#}
+{#                    </small>#}
+{##}
+{#                    <input id="skip-validation" type="checkbox" class="ace ace-switch ace-switch-4"/>#}
+{#                    <span class="lbl middle"></span>#}
+{#                </label>#}
+{#            </div>#}
         </div>
 
         <div class="widget-body">
@@ -49,17 +49,27 @@
                         <ul class="steps">
                             <li data-step="1" class="active">
                                 <span class="step">1</span>
-                                <span class="title">Unconfirmed</span>
+                                <span class="title">Placed</span>
                             </li>
 
                             <li data-step="2">
                                 <span class="step">2</span>
-                                <span class="title">Shopper Confirmed</span>
+                                <span class="title">Accepted</span>
                             </li>
 
                             <li data-step="3">
                                 <span class="step">3</span>
-                                <span class="title">Delivery Confirmed</span>
+                                <span class="title">Packed</span>
+                            </li>
+
+                            <li data-step="4">
+                                <span class="step">4</span>
+                                <span class="title">Shipped</span>
+                            </li>
+
+                            <li data-step="5">
+                                <span class="step">5</span>
+                                <span class="title">Delivered</span>
                             </li>
 
                             {#                            <li data-step="4">#}
@@ -431,9 +441,13 @@
             $('#fuelux-wizard-container')
                 .ace_wizard({
                     step:
-                        {% if order.delivery_confirmed and order.shopper_confirmed %}
+                        {% if order.delivered %}
+                        5
+                        {% elif order.shipped %}
+                        4
+                        {% elif order.packed %}
                         3
-                        {% elif order.shopper_confirmed %}
+                        {% elif order.accepted %}
                         2
                         {% else %}
                         1
@@ -612,8 +626,10 @@
                             'X-CSRFTOKEN': '{{ csrf_token }}'
                         },
                         data: {
-                            shopper_confirmed: false,
-                            delivery_confirmed: false
+                            accepted: false,
+                            packed: false,
+                            shipped: false,
+                            delivered: false
                         },
                         success: function (res) {
                             window.location.href =
@@ -629,8 +645,10 @@
                             'X-CSRFTOKEN': '{{ csrf_token }}'
                         },
                         data: {
-                            shopper_confirmed: true,
-                            delivery_confirmed: false
+                            accepted: true,
+                            packed: false,
+                            shipped: false,
+                            delivered: false
                         },
                         success: function (res) {
                             window.location.href =
@@ -646,8 +664,10 @@
                             'X-CSRFTOKEN': '{{ csrf_token }}'
                         },
                         data: {
-                            shopper_confirmed: true,
-                            delivery_confirmed: true
+                            accepted: true,
+                            packed: true,
+                            shipped: false,
+                            delivered: false
                         },
                         success: function (res) {
                             window.location.href =
