@@ -51,105 +51,7 @@
         }
     </style>
     <style>
-        .btn-toogle-info[id = "btn-left"] {
-            font-family: "Poppins", sans-serif;
-            position: relative;
-            bottom: 230px;
-            left: 260px;
-            font-size: 13px;
-            font-weight: bold;
-            background: white;
-        }
 
-        .btn-toogle-info[id = "btn-center"] {
-            font-family: "Poppins", sans-serif;
-            position: relative;
-            bottom: 712px;
-            left: 274px;
-            font-size: 13px;
-            font-weight: bold;
-            background: white;
-        }
-
-        .btn-toogle-info[id = "btn-right"] {
-            font-family: "Poppins", sans-serif;
-            position: relative;
-            bottom: 99px;
-            left: 67px;
-            font-size: 20px;
-            font-weight: bold;
-            background: white;
-        }
-
-        .btn-toogle-info {
-            color: #bfa479;
-            background-color: transparent;
-            border: 4px solid #bfa479 !important;
-        }
-
-        .btn-toogle-info {
-            text-transform: uppercase;
-            font-size: .875em;
-            line-height: 1em;
-            padding: 13px 20px 14px;
-            position: relative;
-            font-family: acre-medium, Helvetica, Arial, sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            -webkit-font-smoothing: antialiased;
-            transition: all .3s;
-            outline: none !important
-        }
-
-        .btn-toogle-info:before {
-            content: " ";
-            position: absolute;
-            z-index: 1;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 1px solid #bfa479;
-            opacity: 1;
-            transition: all .3s
-        }
-
-        .btn-toogle-info:hover {
-            background: #bfa479;
-            color: #fff
-        }
-
-        .btn-toogle-info:hover:before {
-            transform: scale(1.2, 1.8);
-            opacity: 0
-        }
-
-        .btn-toogle-info:before {
-            border: 1px solid #bfa479
-        }
-
-        .btn-warning:before {
-            border: 1px solid #f0ad4e
-        }
-
-        .btn-danger:before {
-            border: 1px solid #d9534f
-        }
-
-        .btn-toogle-info {
-            padding: 17px 35px;
-            font-size: 1.1em
-        }
-
-        .btn-toogle-info {
-            font-size: 1em;
-            line-height: 1em
-        }
-
-        .btn-toogle-info {
-            font-size: .813em;
-            padding: 9px 16px 10px
-        }
 
     </style>
 {% endblock %}
@@ -211,7 +113,7 @@
                                              src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
                                              alt=""/>
                                     </a>
-                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                    <a href="/product_search/?search=western" type="button" class="btn-toogle-info"
                                        id="btn-left">Western Products</a>
                                 </div>
                             </div>
@@ -229,7 +131,7 @@
                                     <video loop preload
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                    <a href="/product_search/?search=chinese" type="button" class="btn-toogle-info"
                                        id="btn-center">Chinese Products</a>
                                 </div>
                             </div>
@@ -240,7 +142,7 @@
                                                 src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
                                                 alt=""/>
                                     </a>
-                                    <a href="javascript:void(0)" type="button" class="btn-toogle-info"
+                                    <a href="/chinese" type="button" class="btn-toogle-info"
                                        id="btn-right">When To CHINESE Section >>></a>
                                 </div>
                             </div>
@@ -308,40 +210,44 @@
         </div>
         <!--  End Products Section Part -->
 
-        <!--  Begin News Part -->
-        <div class="news-scroll">
-            <div class="container">
-                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
-                <div class="content-news-scroll">
-                    <div class="row">
-                        {% for blog in blogs %}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
-                                    <div class="item-news">
-                                        <div class="item-news-thumb">
-                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
-                                                <span>{{ blog.created_on }} </span>
-                                            </div>
-                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
-                                                <img src="{{ blog.main_image.url }}" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div class="item-news-info">
-                                            <h3>
-                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
-                                            </h3>
-                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
-                                            <span>{{ blog.author }}</span>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+     <div class="banner-grid-adv">
+            <div class="clearfix" style="margin-bottom: 120px;margin-top: 100px;">
+                <div class="banner-grid-left">
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt=""></a>
+                        </div>
+                        <div class="grid-text-box gray-box" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>Your</h3>
+                                <h2>Own style</h2>
+                                <h3>Design Instrument</h3>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-text-box active" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>Try 3D Model</h3>
+                                <h2>Design differently</h2>
+                                <h3>Piano and Guitar</h3>
+                            </div>
+                        </div>
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6511.JPG' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-grid-right">
+                    <div class="grid-image-box">
+                        <a href="#"><img src="{% static 'assets/images/home_1/dashi.jpeg' %}" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--  End News Part -->
+        <!-- End Banner Grid Adv -->
 
         <div class="custom-services">
             <div class="container">
@@ -388,34 +294,7 @@
                 <!-- End Content Slider Product -->
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'idea Design' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <!-- End Model Design -->
 
@@ -459,44 +338,76 @@
             </div>
         </div>
         <!-- End Design Team -->
+    <div style="margin-top: 76px;">
 
-
-        <div class="banner-grid-adv">
-            <div class="clearfix">
-                <div class="banner-grid-left">
-                    <div class="wrap-grid-adv-box clearfix">
-                        <div class="grid-image-box">
-                            <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""></a>
-                        </div>
-                        <div class="grid-text-box gray-box" style="height: 329px;">
-                            <div class="inner-grid-text-box">
-                                <h3>Women’s</h3>
-                                <h2>Live style</h2>
-                                <h3>Danlien Polosa</h3>
-                            </div>
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'idea Design' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
                         </div>
                     </div>
-                    <div class="wrap-grid-adv-box clearfix">
-                        <div class="grid-text-box active" style="height: 329px;">
-                            <div class="inner-grid-text-box">
-                                <h3>men’s</h3>
-                                <h2>Collection</h2>
-                                <h3>Hat &amp; Cavar</h3>
-                            </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
                         </div>
-                        <div class="grid-image-box">
-                            <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
                         </div>
                     </div>
                 </div>
-                <div class="banner-grid-right">
-                    <div class="grid-image-box">
-                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""></a>
+            </div>
+
+    </div>
+
+    <!--  Begin News Part -->
+        <div class="news-scroll">
+            <div class="container">
+                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
+                <div class="content-news-scroll">
+                    <div class="row">
+                        {% for blog in blogs %}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
+                                    <div class="item-news">
+                                        <div class="item-news-thumb">
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
+                                                <span>{{ blog.created_on }} </span>
+                                            </div>
+                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
+                                                <img src="{{ blog.main_image.url }}" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="item-news-info">
+                                            <h3>
+                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
+                                            </h3>
+                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
+                                            <span>{{ blog.author }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Banner Grid Adv -->
+        <!--  End News Part -->
+
+
+
 
 
         <div class="footer-newsletter" style="height: 200px;margin-top: 50px;">
