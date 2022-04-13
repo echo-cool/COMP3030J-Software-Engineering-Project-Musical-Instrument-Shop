@@ -398,7 +398,9 @@ def product_search(request):
     search_text = request.GET.get("search", "")
     search_category_text = request.GET.get("category", None)
 
+    header = ""
     if "chinese" == search_text:
+        header = "chinese"
         all_instruments = Instrument.objects.filter().filter(chinese=1)
     elif "western" == search_text:
         all_instruments = Instrument.objects.filter().filter(chinese=0)
@@ -428,6 +430,7 @@ def product_search(request):
     print("==========", game_style, search_text)
 
     return render(request, 'shop_templates/product-search.html', {
+        "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
