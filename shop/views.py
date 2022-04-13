@@ -217,8 +217,14 @@ def product_details(request, product_id):
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
+    if str(instrument.object_gltf).replace(" ", "") != "":
+        model_url = str(instrument.object_gltf)
+    else:
+        model_url = "none"
+    print("=============" + model_url + "=========", model_url == "")
     if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
+            "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
             "instrument_details": instrument_details,
@@ -230,6 +236,7 @@ def product_details(request, product_id):
         })
     else:
         return render(request, 'shop_templates/product-detail.html', {
+            "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
             "instrument_details": instrument_details,

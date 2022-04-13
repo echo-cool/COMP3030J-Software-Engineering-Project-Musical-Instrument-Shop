@@ -29,7 +29,12 @@
                         cart</a>
                 </div>
             </div>
-            <span class="status-product-new">New</span>
+            {% if  instrument.object_gltf != "" %}
+                <span class="status-product-new" style="width: 12%;">
+                    3D
+                <img style="width: 100%;padding-bottom: 5px;" id="3d-icon"
+                     src="/static/assets/img_for_shop/3d-icon.png"></span>
+            {% endif %}
         </div>
         <div class="item-info-product">
             <h3>
