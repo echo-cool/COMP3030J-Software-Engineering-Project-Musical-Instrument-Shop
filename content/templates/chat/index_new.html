@@ -90,7 +90,16 @@
             height: 100%;
         }
 
-        .chat-application .chats .time {
+
+        .chat-application .chats .chat-left .time {
+            text-align: end;
+            margin: 40px 0;
+            position: relative;
+            top: 110px;
+            right: 86%;
+        }
+
+        .chat-application .chats .chat-right .time {
             text-align: end;
             margin: 40px 0;
             position: relative;
@@ -133,8 +142,8 @@
                     </div>
                 </div>
             </div>
-            <div class="content-right">
-                <div class="content-wrapper">
+            <div class="content-right" style="height: 630px;">
+                <div class="content-wrapper" style="height: 630px;">
                     <div class="content-wrapper-before"></div>
                     <div class="content-header row">
                     </div>
@@ -327,20 +336,20 @@
             //})
             //    ;
             {#// #}
-            }
+        }
 
-            function drawMessage(message) {
-                let position = 'left';
-                let position_new = 'cleft';
-                let messageItem = '';
-                let date = new Date(message.timestamp);
-                date = date.toLocaleString();
-                if (message.user === currentUser) position = '';
-                if (message.user === currentUser) position_new = 'cright';
-                if (message.user === currentUser) {
-                    messageItem = `
+        function drawMessage(message) {
+            let position = 'left';
+            let position_new = 'cleft';
+            let messageItem = '';
+            let date = new Date(message.timestamp);
+            date = date.toLocaleString();
+            if (message.user === currentUser) position = '';
+            if (message.user === currentUser) position_new = 'cright';
+            if (message.user === currentUser) {
+                messageItem = `
 
-                <div class="chat">
+                <div class="chat chat-right">
                 <p class="time">${date}</p>
                     <div class="chat-avatar">
                         <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
@@ -356,8 +365,8 @@
                     </div>
                     <div>
                 `;
-                } else {
-                    messageItem = `
+            } else {
+                messageItem = `
             <div class="chat chat-left">
                 <p class="time">${date}</p>
                 <div class="chat-avatar">
@@ -374,92 +383,92 @@
                 </div>
                 <div>
 `;
-                }
-                $(messageItem).appendTo('#messages');
-
-                $.getJSON(`/api/user/${current_user_id}`, function (user) {
-                    $.getJSON(`/api/profile/?user=${user.id}`, function (profile) {
-                        $('.chat_avatar').attr('src', profile[0].image);
-                    });
-                });
             }
+            $(messageItem).appendTo('#messages');
 
-
-            function getConversation(recipient) {
-                $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-                    {#console.log(data['results'][0].body)#}
-                    {#console.log(chat_history)#}
-                    if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
-                        {#console.log(chat_with);#}
-                        {#console.log(chat_with_current);#}
-                        chat_with_current = chat_with;
-
-                        chat_history = data['results'][0].id;
-                        messageList.children('.chat').remove();
-                        for (let i = data['results'].length - 1; i >= 0; i--) {
-                            drawMessage(data['results'][i]);
-                        }
-                        messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-                    }
-
+            $.getJSON(`/api/user/${current_user_id}`, function (user) {
+                $.getJSON(`/api/profile/?user=${user.id}`, function (profile) {
+                    $('.chat_avatar').attr('src', profile[0].image);
                 });
+            });
+        }
 
-            }
 
-            function getMessageById(message) {
-                id = JSON.parse(message).message
-                $.getJSON(`/api/message/${id}/`, function (data) {
-                    if (data.user === currentRecipient ||
-                        (data.recipient === currentRecipient && data.user == currentUser)) {
-                        drawMessage(data);
+        function getConversation(recipient) {
+            $.getJSON(`/api/message/?target=${recipient}`, function (data) {
+                {#console.log(data['results'][0].body)#}
+                {#console.log(chat_history)#}
+                if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
+                    {#console.log(chat_with);#}
+                    {#console.log(chat_with_current);#}
+                    chat_with_current = chat_with;
+
+                    chat_history = data['results'][0].id;
+                    messageList.children('.chat').remove();
+                    for (let i = data['results'].length - 1; i >= 0; i--) {
+                        drawMessage(data['results'][i]);
                     }
                     messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-                });
-            }
+                }
 
-            function sendMessage(recipient, body) {
-                $.ajax({
-                    url: "/api/message/",
-                    method: 'POST',
-                    data: {
-                        recipient: recipient,
-                        body: body
-                    },
-                    headers: {
-                        'X-CSRFTOKEN': '{{ csrf_token }}'
-                    },
-                    success: function (res) {
-                        updateUserList()
-                    },
-                    error: function () {
-                        alert('Error! Check console!');
-                    }
+            });
 
-                })
+        }
 
-            }
+        function getMessageById(message) {
+            id = JSON.parse(message).message
+            $.getJSON(`/api/message/${id}/`, function (data) {
+                if (data.user === currentRecipient ||
+                    (data.recipient === currentRecipient && data.user == currentUser)) {
+                    drawMessage(data);
+                }
+                messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+            });
+        }
 
-            function setCurrentRecipient(username) {
-                currentRecipient = username;
-                console.log(currentRecipient)
-                getConversation(currentRecipient);
+        function sendMessage(recipient, body) {
+            $.ajax({
+                url: "/api/message/",
+                method: 'POST',
+                data: {
+                    recipient: recipient,
+                    body: body
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    updateUserList()
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
 
-                enableInput();
-            }
+            })
+
+        }
+
+        function setCurrentRecipient(username) {
+            currentRecipient = username;
+            console.log(currentRecipient)
+            getConversation(currentRecipient);
+
+            enableInput();
+        }
 
 
-            function enableInput() {
-                chatInput.prop('disabled', false);
-                chatButton.prop('disabled', false);
-                chatInput.focus();
-            }
+        function enableInput() {
+            chatInput.prop('disabled', false);
+            chatButton.prop('disabled', false);
+            chatInput.focus();
+        }
 
-            function disableInput() {
-                chatInput.prop('disabled', true);
-                chatButton.prop('disabled', true);
-            }
+        function disableInput() {
+            chatInput.prop('disabled', true);
+            chatButton.prop('disabled', true);
+        }
 
-            $(document).ready(function () {
+        $(document).ready(function () {
                 updateUserList();
                 $.ajax({
                     url: "/api/rank_user_list/",
@@ -480,8 +489,7 @@
                                     break;
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             select(data[0]['id'], data[0]['username']);
                         }
                     },
@@ -490,32 +498,32 @@
                     }
                 })
 
-                    chatInput.keypress(function (e) {
-                        if (e.keyCode == 13)
-                            chatButton.click();
-                    });
-
-                    chatButton.click(function () {
-                        if (chatInput.val().length > 0) {
-                            sendMessage(currentRecipient, chatInput.val());
-                            chatInput.val('');
-                        }
-                    });
-
-                    setInterval(function () {
-                        if (currentRecipient.length > 0) {
-                            getConversation(currentRecipient);
-                        }
-                    }, 500);
-
-
-                }
-            );
-            $(document).ready(function () {
-                $('#action_menu_btn').click(function () {
-                    $('.action_menu').toggle();
+                chatInput.keypress(function (e) {
+                    if (e.keyCode == 13)
+                        chatButton.click();
                 });
+
+                chatButton.click(function () {
+                    if (chatInput.val().length > 0) {
+                        sendMessage(currentRecipient, chatInput.val());
+                        chatInput.val('');
+                    }
+                });
+
+                setInterval(function () {
+                    if (currentRecipient.length > 0) {
+                        getConversation(currentRecipient);
+                    }
+                }, 500);
+
+
+            }
+        );
+        $(document).ready(function () {
+            $('#action_menu_btn').click(function () {
+                $('.action_menu').toggle();
             });
+        });
 
     </script>
 {% endblock %}

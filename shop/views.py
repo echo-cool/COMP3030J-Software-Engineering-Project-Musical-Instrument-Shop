@@ -1,4 +1,6 @@
-# Create your views here.
+# Create your views here
+# iframe
+from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
 from datetime import timedelta, datetime
@@ -65,6 +67,13 @@ def index(request):
         "categories": categories,
         "index_categories": index_categories,
         "order_rank": order_rank,
+    })
+
+
+@xframe_options_exempt
+def chat_ai(request):
+    return render(request, 'layouts/default/chat_ai.html', {
+        "home": 1,
     })
 
 
