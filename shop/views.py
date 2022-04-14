@@ -70,6 +70,9 @@ def index(request):
 
 def home(request):
     instruments = Instrument.objects.all()
+
+    instruments = instruments.order_by("-object_gltf")
+
     categories = Category.objects.all()
     index_categories = {
         'left_700_604': {
@@ -217,8 +220,14 @@ def product_details(request, product_id):
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
+    if str(instrument.object_gltf).replace(" ", "") != "":
+        model_url = str(instrument.object_gltf)
+    else:
+        model_url = "none"
+    print("=============" + model_url + "=========", model_url == "")
     if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
+            "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
             "instrument_details": instrument_details,
@@ -230,6 +239,7 @@ def product_details(request, product_id):
         })
     else:
         return render(request, 'shop_templates/product-detail.html', {
+            "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
             "instrument_details": instrument_details,
@@ -300,9 +310,11 @@ def model_view(request, product_id):
 
 @login_required
 def wishlist(request):
-    wishlists = Wishlist.objects.filter(user=1)
+    wishlists = Wishlist.objects.filter(user=request.user)
+    carts = Cart.objects.filter(user=request.user)
     return render(request, 'shop_templates/wishlist.html', {
         "wishlists": wishlists,
+        "carts": carts
     })
 
 
@@ -429,11 +441,14 @@ def product_search(request):
 
     print("==========", game_style, search_text)
 
+    carts = Cart.objects.filter(user=request.user)
+
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
+        'carts': carts
     })
 
 

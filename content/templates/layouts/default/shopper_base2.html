@@ -36,6 +36,10 @@
     {% block style %}
         <style>
 
+            #header {
+                user-select: none;
+            }
+
             #header .menu ul li .nav-link {
                 color: #ffffff;
             }
@@ -72,7 +76,7 @@
     </span>
         </a>
         <div class="logo_menumoblie">
-            <a href="https://musicmo-store-demo.myshopify.com">
+            <a href="{% url 'shop:index' %}">
                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599" width="115"
                      alt="logo">
             </a>
@@ -772,9 +776,19 @@
                                 </li>
 
 
-                                <li class="nav-item dropdown">
+                                {% if request.user %}
+                                    {% if not request.user.is_staff %}
+                                        <li class="nav-item dropdown">
 
-                                    <a href="/" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">PAGES</a>
+                                        <a href="{% url 'chat:index_new' to=1 %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                    </li>
+                                    {% endif %}
+                                    {% else %}
+                                    <li class="nav-item dropdown">
+
+                                        <a href="{% url 'accounts:log_in' %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                    </li>
+                                {% endif %}
 
                                     {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                     {#                                         style="width:650px; left : -220px;">#}
@@ -904,384 +918,382 @@
                                     {#                                            </div>#}
                                     {#                                        </div>#}
                                     {#                                    </div>#}
-                                </li>
 
 
                                 <li class="nav-item dropdown">
 
-                                    <a href="/" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">BLOGS</a>
-
-{#                                    <div class="dropdown-menu  list-woman shop show"#}
-{#                                         style="width:600px; left : -200px;">#}
-{#                                        <div class=" ">#}
-{##}
-{##}
-{#                                            <div class="row">#}
-{##}
-{#                                                <div class="order-md-1 mb-3 col-md-6">#}
-{#                                                    <div class="row">#}
-{#                                                        <div class="col-md-6">#}
-{#                                                            <a href="/" title="SINGLE POST"#}
-{#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">SINGLE#}
-{#                                                                POST</a>#}
-{#                                                            <ul class="px-0">#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
-{#                                                                        title="No Sidebar"#}
-{#                                                                        class="relative delay03  menu_lv3 ">No#}
-{#                                                                    Sidebar#}
-{#                                                                    <span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"#}
-{#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-{#                                                                    <style>#}
-{#                                                                        .label_menu-no-sidebarnew-1ad441-1:before {#}
-{#                                                                            border-top: 4px solid SINGLE POST;#}
-{#                                                                        }#}
-{#                                                                    </style>#}
-{#                                                                </a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428734651"#}
-{#                                                                        title="Left Sidebar"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Left#}
-{#                                                                    Sidebar</a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428767419"#}
-{#                                                                        title="Right Sidebar"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Right#}
-{#                                                                    Sidebar</a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
-{#                                                                        title="Standard"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Standard</a>#}
-{#                                                                </li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/4-skills-and-hobbies-worth-your-time-to-learn/?preview_theme_id=116219379899"#}
-{#                                                                        title="Audio"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Audio</a>#}
-{#                                                                </li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/a-word-of-caution-to-novice-guitarists/?preview_theme_id=116219379899"#}
-{#                                                                        title="Video"#}
-{#                                                                        class="relative delay03  menu_lv3 ">Video#}
-{#                                                                    <span class="absolute label_menu label_menu-videohot-e62e05-6"#}
-{#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-{#                                                                    <style>#}
-{#                                                                        .label_menu-videohot-e62e05-6:before {#}
-{#                                                                            border-top: 4px solid SINGLE POST;#}
-{#                                                                        }#}
-{#                                                                    </style>#}
-{#                                                                </a></li>#}
-{#                                                            </ul>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-md-6">#}
-{#                                                            <a href="/" title="LAYOUT"#}
-{#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">LAYOUT</a>#}
-{#                                                            <ul class="px-0">#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116219379899"#}
-{#                                                                        title="No Sidebar"#}
-{#                                                                        class="delay03 relative menu_lv3 ">No#}
-{#                                                                    Sidebar</a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428734651"#}
-{#                                                                        title="Left Sidebar"#}
-{#                                                                        class="relative delay03  menu_lv3 ">Left#}
-{#                                                                    Sidebar#}
-{#                                                                    <span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"#}
-{#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-{#                                                                    <style>#}
-{#                                                                        .label_menu-left-sidebarnew-1ad441-2:before {#}
-{#                                                                            border-top: 4px solid LAYOUT;#}
-{#                                                                        }#}
-{#                                                                    </style>#}
-{#                                                                </a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428767419"#}
-{#                                                                        title="Right Sidebar"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Right#}
-{#                                                                    Sidebar</a></li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428800187"#}
-{#                                                                        title="Standar"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Standar</a>#}
-{#                                                                </li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428832955"#}
-{#                                                                        title="Classic"#}
-{#                                                                        class="delay03 relative menu_lv3 ">Classic</a>#}
-{#                                                                </li>#}
-{#                                                                <li class="list-unstyled px-0 py-1"><a#}
-{#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116433486011"#}
-{#                                                                        title="Grid"#}
-{#                                                                        class="relative delay03  menu_lv3 ">Grid#}
-{#                                                                    <span class="absolute label_menu label_menu-gridhot-e62e05-6"#}
-{#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-{#                                                                    <style>#}
-{#                                                                        .label_menu-gridhot-e62e05-6:before {#}
-{#                                                                            border-top: 4px solid LAYOUT;#}
-{#                                                                        }#}
-{#                                                                    </style>#}
-{#                                                                </a></li>#}
-{#                                                            </ul>#}
-{#                                                        </div>#}
-{##}
-{#                                                    </div>#}
-{#                                                </div>#}
-{##}
-{##}
-{#                                                <div class="order-md-3 mb-3 col-md-6">#}
-{#                                                    <div class="mega-col-inner ">#}
-{#                                                        <div class="products_menu">#}
-{#                                                            <div class="menu-title">#}
-{#                                                                NEW PRODUCTS#}
-{#                                                            </div>#}
-{#                                                            <div class="product-block ">#}
-{#                                                                <ul class="prod_sidebar_menu js_prod_menu slick-initialized slick-slider slick-vertical">#}
-{#                                                                    <button type="button"#}
-{#                                                                            class="slick-brand-prev fa fa-angle-left slick-arrow slick-disabled"#}
-{#                                                                            aria-disabled="true" style=""></button>#}
-{#                                                                    <div aria-live="polite"#}
-{#                                                                         class="slick-list draggable"#}
-{#                                                                         style="height: 297.3px;">#}
-{#                                                                        <div class="slick-track"#}
-{#                                                                             style="opacity: 1; height: 793px; transform: translate3d(0px, 0px, 0px);"#}
-{#                                                                             role="listbox">#}
-{#                                                                            <li class="product_info px-0 slick-slide slick-current slick-active"#}
-{#                                                                                style="padding-top: 0px; width: 255px;"#}
-{#                                                                                data-slick-index="0"#}
-{#                                                                                aria-hidden="false" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide50">#}
-{#                                                                                <a href="/products/mapex-30th-anniversary"#}
-{#                                                                                   tabindex="0">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1.jpg?v=1606587239"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="Mapex 30th Anniversary">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/mapex-30th-anniversary"#}
-{#                                                                                    tabindex="0">#}
-{#                                                                            </a><a href="/products/mapex-30th-anniversary"#}
-{#                                                                                   tabindex="0">Mapex 30th#}
-{#                                                                                Anniversary</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{#                              <s class="price-old">$558.00</s>#}
-{#                              <span class="price">$239.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
-{#                                                                                data-slick-index="1"#}
-{#                                                                                aria-hidden="false"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide51">#}
-{#                                                                                <a href="/products/yc-combo-organ"#}
-{#                                                                                   tabindex="0">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/8.1.jpg?v=1606586785"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="YC Combo Organ">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/yc-combo-organ"#}
-{#                                                                                    tabindex="0">#}
-{#                                                                            </a><a href="/products/yc-combo-organ"#}
-{#                                                                                   tabindex="0">YC Combo Organ</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{##}
-{#                              <span class="price">$223.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
-{#                                                                                data-slick-index="2"#}
-{#                                                                                aria-hidden="false"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide52">#}
-{#                                                                                <a href="/products/keyboard-with-usb-midi"#}
-{#                                                                                   tabindex="0">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1.jpg?v=1606586472"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="Keyboard with USB MIDI">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/keyboard-with-usb-midi"#}
-{#                                                                                    tabindex="0">#}
-{#                                                                            </a><a href="/products/keyboard-with-usb-midi"#}
-{#                                                                                   tabindex="0">Keyboard with USB#}
-{#                                                                                MIDI</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{#                              <s class="price-old">$99.00</s>#}
-{#                              <span class="price">$79.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide"#}
-{#                                                                                data-slick-index="3"#}
-{#                                                                                aria-hidden="true"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide53">#}
-{#                                                                                <a href="/products/electric-violin"#}
-{#                                                                                   tabindex="-1">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/6.1.jpg?v=1606585934"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="Electric Violin">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/electric-violin"#}
-{#                                                                                    tabindex="-1">#}
-{#                                                                            </a><a href="/products/electric-violin"#}
-{#                                                                                   tabindex="-1">Electric Violin</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{##}
-{#                              <span class="price">$169.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide"#}
-{#                                                                                data-slick-index="4"#}
-{#                                                                                aria-hidden="true"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide54">#}
-{#                                                                                <a href="/products/recording-and-monitoring-bundle"#}
-{#                                                                                   tabindex="-1">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/5.1.jpg?v=1606585751"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="Recording and Monitoring Bundle">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/recording-and-monitoring-bundle"#}
-{#                                                                                    tabindex="-1">#}
-{#                                                                            </a><a href="/products/recording-and-monitoring-bundle"#}
-{#                                                                                   tabindex="-1">Recording and#}
-{#                                                                                Monitoring Bundle</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{#                              <s class="price-old">$256.00</s>#}
-{#                              <span class="price">$229.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide"#}
-{#                                                                                data-slick-index="5"#}
-{#                                                                                aria-hidden="true"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide55">#}
-{#                                                                                <a href="/products/la-electric-guitar-amp-pack-sunburst"#}
-{#                                                                                   tabindex="-1">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/3.1.jpg?v=1606585273"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="LA Electric Guitar + Amp Pack, Sunburst">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/la-electric-guitar-amp-pack-sunburst"#}
-{#                                                                                    tabindex="-1">#}
-{#                                                                            </a><a href="/products/la-electric-guitar-amp-pack-sunburst"#}
-{#                                                                                   tabindex="-1">LA Electric Guitar#}
-{#                                                                                + Amp Pack, Sunburst</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{##}
-{#                              <span class="price">$119.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide"#}
-{#                                                                                data-slick-index="6"#}
-{#                                                                                aria-hidden="true"#}
-{#                                                                                style="width: 255px;" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide56">#}
-{#                                                                                <a href="/products/bdk-1-full-size-starter-drum"#}
-{#                                                                                   tabindex="-1">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/2.1.jpg?v=1606575968"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="BDK-1 Full Size Starter Drum">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/bdk-1-full-size-starter-drum"#}
-{#                                                                                    tabindex="-1">#}
-{#                                                                            </a><a href="/products/bdk-1-full-size-starter-drum"#}
-{#                                                                                   tabindex="-1">BDK-1 Full Size#}
-{#                                                                                Starter Drum</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{#                              <s class="price-old">$235.00</s>#}
-{#                              <span class="price">$199.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                            <li class="product_info px-0 slick-slide"#}
-{#                                                                                style="border-bottom: none; width: 255px;"#}
-{#                                                                                data-slick-index="7"#}
-{#                                                                                aria-hidden="true" tabindex="-1"#}
-{#                                                                                role="option"#}
-{#                                                                                aria-describedby="slick-slide57">#}
-{#                                                                                <a href="/products/single-cutaway-electro-acoustic-guitar"#}
-{#                                                                                   tabindex="-1">#}
-{#                                                                                    <img style="width: 100%"#}
-{#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/1.1.jpg?v=1606574995"#}
-{#                                                                                         class="img-responsive"#}
-{#                                                                                         alt="Single Cutaway Electro Acoustic Guitar">#}
-{#                                                                                </a><h4 class="title-product"><a#}
-{#                                                                                    href="/products/single-cutaway-electro-acoustic-guitar"#}
-{#                                                                                    tabindex="-1">#}
-{#                                                                            </a><a href="/products/single-cutaway-electro-acoustic-guitar"#}
-{#                                                                                   tabindex="-1">Single Cutaway#}
-{#                                                                                Electro Acoustic Guitar</a>#}
-{#                                                                            </h4>                    <span>#}
-{##}
-{##}
-{##}
-{#                            <p class="price-product">#}
-{##}
-{#                              <span class="price">$65.00</span>#}
-{#                            </p>#}
-{#                          </span>#}
-{#                                                                            </li>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                    <button type="button"#}
-{#                                                                            class="slick-brand-next fa fa-angle-right slick-arrow"#}
-{#                                                                            style="" aria-disabled="false"></button>#}
-{#                                                                </ul>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
+                                    <a href="/blog" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">BLOGS</a>
                                 </li>
+                                {#                                    <div class="dropdown-menu  list-woman shop show"#}
+                                    {#                                         style="width:600px; left : -200px;">#}
+                                    {#                                        <div class=" ">#}
+                                    {##}
+                                    {##}
+                                    {#                                            <div class="row">#}
+                                    {##}
+                                    {#                                                <div class="order-md-1 mb-3 col-md-6">#}
+                                    {#                                                    <div class="row">#}
+                                    {#                                                        <div class="col-md-6">#}
+                                    {#                                                            <a href="/" title="SINGLE POST"#}
+                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">SINGLE#}
+                                    {#                                                                POST</a>#}
+                                    {#                                                            <ul class="px-0">#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
+                                    {#                                                                        title="No Sidebar"#}
+                                    {#                                                                        class="relative delay03  menu_lv3 ">No#}
+                                    {#                                                                    Sidebar#}
+                                    {#                                                                    <span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"#}
+                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                    {#                                                                    <style>#}
+                                    {#                                                                        .label_menu-no-sidebarnew-1ad441-1:before {#}
+                                    {#                                                                            border-top: 4px solid SINGLE POST;#}
+                                    {#                                                                        }#}
+                                    {#                                                                    </style>#}
+                                    {#                                                                </a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428734651"#}
+                                    {#                                                                        title="Left Sidebar"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Left#}
+                                    {#                                                                    Sidebar</a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428767419"#}
+                                    {#                                                                        title="Right Sidebar"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Right#}
+                                    {#                                                                    Sidebar</a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
+                                    {#                                                                        title="Standard"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Standard</a>#}
+                                    {#                                                                </li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/4-skills-and-hobbies-worth-your-time-to-learn/?preview_theme_id=116219379899"#}
+                                    {#                                                                        title="Audio"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Audio</a>#}
+                                    {#                                                                </li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/a-word-of-caution-to-novice-guitarists/?preview_theme_id=116219379899"#}
+                                    {#                                                                        title="Video"#}
+                                    {#                                                                        class="relative delay03  menu_lv3 ">Video#}
+                                    {#                                                                    <span class="absolute label_menu label_menu-videohot-e62e05-6"#}
+                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                    {#                                                                    <style>#}
+                                    {#                                                                        .label_menu-videohot-e62e05-6:before {#}
+                                    {#                                                                            border-top: 4px solid SINGLE POST;#}
+                                    {#                                                                        }#}
+                                    {#                                                                    </style>#}
+                                    {#                                                                </a></li>#}
+                                    {#                                                            </ul>#}
+                                    {#                                                        </div>#}
+                                    {#                                                        <div class="col-md-6">#}
+                                    {#                                                            <a href="/" title="LAYOUT"#}
+                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">LAYOUT</a>#}
+                                    {#                                                            <ul class="px-0">#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116219379899"#}
+                                    {#                                                                        title="No Sidebar"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">No#}
+                                    {#                                                                    Sidebar</a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428734651"#}
+                                    {#                                                                        title="Left Sidebar"#}
+                                    {#                                                                        class="relative delay03  menu_lv3 ">Left#}
+                                    {#                                                                    Sidebar#}
+                                    {#                                                                    <span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"#}
+                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                    {#                                                                    <style>#}
+                                    {#                                                                        .label_menu-left-sidebarnew-1ad441-2:before {#}
+                                    {#                                                                            border-top: 4px solid LAYOUT;#}
+                                    {#                                                                        }#}
+                                    {#                                                                    </style>#}
+                                    {#                                                                </a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428767419"#}
+                                    {#                                                                        title="Right Sidebar"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Right#}
+                                    {#                                                                    Sidebar</a></li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428800187"#}
+                                    {#                                                                        title="Standar"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Standar</a>#}
+                                    {#                                                                </li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428832955"#}
+                                    {#                                                                        title="Classic"#}
+                                    {#                                                                        class="delay03 relative menu_lv3 ">Classic</a>#}
+                                    {#                                                                </li>#}
+                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116433486011"#}
+                                    {#                                                                        title="Grid"#}
+                                    {#                                                                        class="relative delay03  menu_lv3 ">Grid#}
+                                    {#                                                                    <span class="absolute label_menu label_menu-gridhot-e62e05-6"#}
+                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                    {#                                                                    <style>#}
+                                    {#                                                                        .label_menu-gridhot-e62e05-6:before {#}
+                                    {#                                                                            border-top: 4px solid LAYOUT;#}
+                                    {#                                                                        }#}
+                                    {#                                                                    </style>#}
+                                    {#                                                                </a></li>#}
+                                    {#                                                            </ul>#}
+                                    {#                                                        </div>#}
+                                    {##}
+                                    {#                                                    </div>#}
+                                    {#                                                </div>#}
+                                    {##}
+                                    {##}
+                                    {#                                                <div class="order-md-3 mb-3 col-md-6">#}
+                                    {#                                                    <div class="mega-col-inner ">#}
+                                    {#                                                        <div class="products_menu">#}
+                                    {#                                                            <div class="menu-title">#}
+                                    {#                                                                NEW PRODUCTS#}
+                                    {#                                                            </div>#}
+                                    {#                                                            <div class="product-block ">#}
+                                    {#                                                                <ul class="prod_sidebar_menu js_prod_menu slick-initialized slick-slider slick-vertical">#}
+                                    {#                                                                    <button type="button"#}
+                                    {#                                                                            class="slick-brand-prev fa fa-angle-left slick-arrow slick-disabled"#}
+                                    {#                                                                            aria-disabled="true" style=""></button>#}
+                                    {#                                                                    <div aria-live="polite"#}
+                                    {#                                                                         class="slick-list draggable"#}
+                                    {#                                                                         style="height: 297.3px;">#}
+                                    {#                                                                        <div class="slick-track"#}
+                                    {#                                                                             style="opacity: 1; height: 793px; transform: translate3d(0px, 0px, 0px);"#}
+                                    {#                                                                             role="listbox">#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide slick-current slick-active"#}
+                                    {#                                                                                style="padding-top: 0px; width: 255px;"#}
+                                    {#                                                                                data-slick-index="0"#}
+                                    {#                                                                                aria-hidden="false" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide50">#}
+                                    {#                                                                                <a href="/products/mapex-30th-anniversary"#}
+                                    {#                                                                                   tabindex="0">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1.jpg?v=1606587239"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="Mapex 30th Anniversary">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/mapex-30th-anniversary"#}
+                                    {#                                                                                    tabindex="0">#}
+                                    {#                                                                            </a><a href="/products/mapex-30th-anniversary"#}
+                                    {#                                                                                   tabindex="0">Mapex 30th#}
+                                    {#                                                                                Anniversary</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {#                              <s class="price-old">$558.00</s>#}
+                                    {#                              <span class="price">$239.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
+                                    {#                                                                                data-slick-index="1"#}
+                                    {#                                                                                aria-hidden="false"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide51">#}
+                                    {#                                                                                <a href="/products/yc-combo-organ"#}
+                                    {#                                                                                   tabindex="0">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/8.1.jpg?v=1606586785"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="YC Combo Organ">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/yc-combo-organ"#}
+                                    {#                                                                                    tabindex="0">#}
+                                    {#                                                                            </a><a href="/products/yc-combo-organ"#}
+                                    {#                                                                                   tabindex="0">YC Combo Organ</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {##}
+                                    {#                              <span class="price">$223.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
+                                    {#                                                                                data-slick-index="2"#}
+                                    {#                                                                                aria-hidden="false"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide52">#}
+                                    {#                                                                                <a href="/products/keyboard-with-usb-midi"#}
+                                    {#                                                                                   tabindex="0">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1.jpg?v=1606586472"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="Keyboard with USB MIDI">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/keyboard-with-usb-midi"#}
+                                    {#                                                                                    tabindex="0">#}
+                                    {#                                                                            </a><a href="/products/keyboard-with-usb-midi"#}
+                                    {#                                                                                   tabindex="0">Keyboard with USB#}
+                                    {#                                                                                MIDI</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {#                              <s class="price-old">$99.00</s>#}
+                                    {#                              <span class="price">$79.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                    {#                                                                                data-slick-index="3"#}
+                                    {#                                                                                aria-hidden="true"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide53">#}
+                                    {#                                                                                <a href="/products/electric-violin"#}
+                                    {#                                                                                   tabindex="-1">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/6.1.jpg?v=1606585934"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="Electric Violin">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/electric-violin"#}
+                                    {#                                                                                    tabindex="-1">#}
+                                    {#                                                                            </a><a href="/products/electric-violin"#}
+                                    {#                                                                                   tabindex="-1">Electric Violin</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {##}
+                                    {#                              <span class="price">$169.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                    {#                                                                                data-slick-index="4"#}
+                                    {#                                                                                aria-hidden="true"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide54">#}
+                                    {#                                                                                <a href="/products/recording-and-monitoring-bundle"#}
+                                    {#                                                                                   tabindex="-1">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/5.1.jpg?v=1606585751"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="Recording and Monitoring Bundle">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/recording-and-monitoring-bundle"#}
+                                    {#                                                                                    tabindex="-1">#}
+                                    {#                                                                            </a><a href="/products/recording-and-monitoring-bundle"#}
+                                    {#                                                                                   tabindex="-1">Recording and#}
+                                    {#                                                                                Monitoring Bundle</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {#                              <s class="price-old">$256.00</s>#}
+                                    {#                              <span class="price">$229.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                    {#                                                                                data-slick-index="5"#}
+                                    {#                                                                                aria-hidden="true"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide55">#}
+                                    {#                                                                                <a href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                    {#                                                                                   tabindex="-1">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/3.1.jpg?v=1606585273"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="LA Electric Guitar + Amp Pack, Sunburst">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                    {#                                                                                    tabindex="-1">#}
+                                    {#                                                                            </a><a href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                    {#                                                                                   tabindex="-1">LA Electric Guitar#}
+                                    {#                                                                                + Amp Pack, Sunburst</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {##}
+                                    {#                              <span class="price">$119.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                    {#                                                                                data-slick-index="6"#}
+                                    {#                                                                                aria-hidden="true"#}
+                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide56">#}
+                                    {#                                                                                <a href="/products/bdk-1-full-size-starter-drum"#}
+                                    {#                                                                                   tabindex="-1">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/2.1.jpg?v=1606575968"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="BDK-1 Full Size Starter Drum">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/bdk-1-full-size-starter-drum"#}
+                                    {#                                                                                    tabindex="-1">#}
+                                    {#                                                                            </a><a href="/products/bdk-1-full-size-starter-drum"#}
+                                    {#                                                                                   tabindex="-1">BDK-1 Full Size#}
+                                    {#                                                                                Starter Drum</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {#                              <s class="price-old">$235.00</s>#}
+                                    {#                              <span class="price">$199.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                    {#                                                                                style="border-bottom: none; width: 255px;"#}
+                                    {#                                                                                data-slick-index="7"#}
+                                    {#                                                                                aria-hidden="true" tabindex="-1"#}
+                                    {#                                                                                role="option"#}
+                                    {#                                                                                aria-describedby="slick-slide57">#}
+                                    {#                                                                                <a href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                    {#                                                                                   tabindex="-1">#}
+                                    {#                                                                                    <img style="width: 100%"#}
+                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/1.1.jpg?v=1606574995"#}
+                                    {#                                                                                         class="img-responsive"#}
+                                    {#                                                                                         alt="Single Cutaway Electro Acoustic Guitar">#}
+                                    {#                                                                                </a><h4 class="title-product"><a#}
+                                    {#                                                                                    href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                    {#                                                                                    tabindex="-1">#}
+                                    {#                                                                            </a><a href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                    {#                                                                                   tabindex="-1">Single Cutaway#}
+                                    {#                                                                                Electro Acoustic Guitar</a>#}
+                                    {#                                                                            </h4>                    <span>#}
+                                    {##}
+                                    {##}
+                                    {##}
+                                    {#                            <p class="price-product">#}
+                                    {##}
+                                    {#                              <span class="price">$65.00</span>#}
+                                    {#                            </p>#}
+                                    {#                          </span>#}
+                                    {#                                                                            </li>#}
+                                    {#                                                                        </div>#}
+                                    {#                                                                    </div>#}
+                                    {#                                                                    <button type="button"#}
+                                    {#                                                                            class="slick-brand-next fa fa-angle-right slick-arrow"#}
+                                    {#                                                                            style="" aria-disabled="false"></button>#}
+                                    {#                                                                </ul>#}
+                                    {#                                                            </div>#}
+                                    {#                                                        </div>#}
+                                    {#                                                    </div>#}
+                                    {#                                                </div>#}
+                                    {##}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
 
 
                             </ul>
@@ -1335,15 +1347,16 @@
                                         <a href="{% url "accounts:log_in" %}"
                                            class="access_link">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
-                                         width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                         xmlns:cc="http://creativecommons.org/ns#"
-                                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                                 width="400" id="svg2" version="1.1"
+                                                 xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                                 xmlns:cc="http://creativecommons.org/ns#"
+                                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                 xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
                                                     rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
-                                        <defs id="defs6"></defs>
-                                        <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1506.87,2587.11 c -225.04,0 -408.14,-183.08 -408.14,-408.11 0,-225.06 183.1,-408.13 408.14,-408.13 225.02,0 408.13,183.07 408.13,408.13 0,225.03 -183.11,408.11 -408.13,408.11 z m 0,-1038.56 c -347.64,0 -630.432,282.79 -630.432,630.45 0,347.63 282.792,630.43 630.432,630.43 347.63,0 630.42,-282.8 630.42,-630.43 0,-347.66 -282.79,-630.45 -630.42,-630.45 v 0"></path><path
-                                                id="path16" style="fill-opacity:1;fill-rule:nonzero;stroke:none"
-                                                d="M 399.648,361.789 H 2614.07 c -25.06,261.531 -139.49,503.461 -327.47,689.831 -124.25,123.14 -300.78,193.96 -483.86,193.96 h -591.76 c -183.61,0 -359.601,-70.82 -483.863,-193.96 C 539.148,865.25 424.719,623.32 399.648,361.789 Z M 2730.69,139.461 H 283.035 c -61.558,0 -111.16,49.59 -111.16,111.16 0,363.438 141.68,704 398.32,959.019 165.657,164.55 399.414,258.82 640.785,258.82 h 591.76 c 241.94,0 475.14,-94.27 640.8,-258.82 256.63,-255.019 398.31,-595.581 398.31,-959.019 0,-61.57 -49.59,-111.16 -111.16,-111.16 v 0"></path></g></g></svg>
+                                                <defs id="defs6"></defs>
+                                                <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1506.87,2587.11 c -225.04,0 -408.14,-183.08 -408.14,-408.11 0,-225.06 183.1,-408.13 408.14,-408.13 225.02,0 408.13,183.07 408.13,408.13 0,225.03 -183.11,408.11 -408.13,408.11 z m 0,-1038.56 c -347.64,0 -630.432,282.79 -630.432,630.45 0,347.63 282.792,630.43 630.432,630.43 347.63,0 630.42,-282.8 630.42,-630.43 0,-347.66 -282.79,-630.45 -630.42,-630.45 v 0"></path><path
+                                                        id="path16" style="fill-opacity:1;fill-rule:nonzero;stroke:none"
+                                                        d="M 399.648,361.789 H 2614.07 c -25.06,261.531 -139.49,503.461 -327.47,689.831 -124.25,123.14 -300.78,193.96 -483.86,193.96 h -591.76 c -183.61,0 -359.601,-70.82 -483.863,-193.96 C 539.148,865.25 424.719,623.32 399.648,361.789 Z M 2730.69,139.461 H 283.035 c -61.558,0 -111.16,49.59 -111.16,111.16 0,363.438 141.68,704 398.32,959.019 165.657,164.55 399.414,258.82 640.785,258.82 h 591.76 c 241.94,0 475.14,-94.27 640.8,-258.82 256.63,-255.019 398.31,-595.581 398.31,-959.019 0,-61.57 -49.59,-111.16 -111.16,-111.16 v 0"></path></g></g></svg>
                                         </a>
                                     {% endif %}
 
@@ -1352,7 +1365,8 @@
                                             <a href="{% url "api:logout" %}" class="btn btn-primary"
                                                style="display: block;">Logout</a>
                                         {% else %}
-                                            <a href="{% url 'accounts:log_in' %}" id="sign-in" class="btn_1">Sign In or Sign Up</a>
+                                            <a href="{% url 'accounts:log_in' %}" id="sign-in" class="btn_1">Sign In or
+                                                Sign Up</a>
                                         {% endif %}
 
                                         <ul>
@@ -1437,7 +1451,7 @@
                         <div class="info_footer end">
                             <div class="logo-top">
 
-                                <a href="https://musicmo-store-demo.myshopify.com" class="logo">
+                                <a href="{% url 'shop:index' %}" class="logo">
 
                                     <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
                                          width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme"
@@ -1616,18 +1630,14 @@
             $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
         });
 
-        $('#sign-in').magnificPopup({
-            type: 'inline',
-            fixedContentPos: true,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            closeMarkup: '<button title="%title%" type="button" class="mfp-close"></button>',
-            mainClass: 'my-mfp-zoom-in'
-        });
+        {% if messages %}
+        {% for message in messages %}
+        setTimeout(function () {
+            let hulla = new hullabaloo();
+            hulla.send("{{ message }}", "{{ message.tags }}");
+        }, 300);
+        {% endfor %}{% endif %}
+
     </script>
 
     {% block scripts %}

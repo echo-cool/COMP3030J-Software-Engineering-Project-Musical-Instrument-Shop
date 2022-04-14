@@ -135,8 +135,10 @@ class Order(models.Model):
     subtotal = models.FloatField(null=False, default=0)
 
     newsletter = models.BooleanField(default=False)
-    shopper_confirmed = models.BooleanField(default=False)
-    delivery_confirmed = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
+    packed = models.BooleanField(default=False)
+    shipped = models.BooleanField(default=False)
+    delivered = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -149,7 +151,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'user', "order_id", 'name', 'last_name', 'full_address', 'city', 'postal_code', 'country', 'telephone',
         'payment', 'subtotal',
-        'shipping', 'instrument', 'quantity', 'newsletter', 'shopper_confirmed', 'delivery_confirmed', 'created_at')
+        'shipping', 'instrument', 'quantity', 'newsletter', 'accepted', 'packed', 'shipped', 'delivered', 'created_at')
 
 
 # class OrderItem(models.Model):

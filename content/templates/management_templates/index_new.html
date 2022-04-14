@@ -491,7 +491,7 @@
                                         </div>
                                         <div class="media-body text-right align-self-bottom mt-3">
                                             <span class="d-block mb-1 font-medium-1">Total Customers</span>
-                                            <h1 class="warning mb-0">8654</h1>
+                                            <h1 class="warning mb-0">{{ users.count }}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -508,7 +508,7 @@
                                         </div>
                                         <div class="media-body text-right align-self-bottom mt-3">
                                             <span class="d-block mb-1 font-medium-1">Total Order</span>
-                                            <h1 class="success mb-0">1562</h1>
+                                            <h1 class="success mb-0">{{ orders.count }}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -525,7 +525,18 @@
                                         </div>
                                         <div class="media-body text-right align-self-bottom mt-3">
                                             <span class="d-block mb-1 font-medium-1">Total Revenue</span>
-                                            <h1 class="danger mb-0">$18,123</h1>
+                                            <h1 class="danger mb-0">$
+                                                {% widthratio 0 1 0 as total %}
+                                                {% for order in orders %}
+                                                    {% if not forloop.last %}
+                                                        {% widthratio order.instrument.price 1 order.quantity as price %}
+                                                        {% widthratio total|add:price 1 1 as total %}
+                                                    {% else %}
+                                                        {% widthratio order.instrument.price 1 order.quantity as price %}
+                                                        {% widthratio total|add:price 1 1 %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </h1>
                                         </div>
                                     </div>
                                 </div>

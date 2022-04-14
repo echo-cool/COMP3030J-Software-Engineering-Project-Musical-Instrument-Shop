@@ -62,10 +62,10 @@
                 y2: 0
             }).elem('stop', {
                 offset: 0,
-                'stop-color': 'rgba(248,161,236, 1)'
+                'stop-color': 'rgba(248, 161, 236, 1)'
             }).parent().elem('stop', {
                 offset: 1,
-                'stop-color': 'rgba(115,150,255, 1)'
+                'stop-color': 'rgba(115, 150, 255, 1)'
             });
     
             return defs;
@@ -77,7 +77,7 @@
                 var circle = new Chartist.Svg('circle', {
                     cx: data.x,
                     cy: data.y,
-                    'ct:value': data.y,
+                    'ct:value': data.value.y,
                     r: circleRadius,
                     class: data.value.y === 180 || data.value.y === 150 ? 'ct-point-circle ct-point' : 'ct-point ct-point-circle-transperent'
                 });

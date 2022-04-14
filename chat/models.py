@@ -21,6 +21,8 @@ class MessageModel(models.Model):
                                      db_index=True)
     body = models.TextField('body')
 
+    read = models.BooleanField(default=False)
+
     def __str__(self):
         return str(self.id)
 

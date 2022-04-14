@@ -13,7 +13,6 @@
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <link href="{% static "assets/js_for_model/google_font_used.css" %}" rel="stylesheet">
-
     <link href="{% static "assets/assets_for_bees/css/themify-icons.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "assets/assets_for_bees/css/flaticon.css" %}" rel="stylesheet">
@@ -36,13 +35,23 @@
         }
 
         .container-v2 {
-            margin-top: 4%;
-            max-width: 1440px;
+        {#margin-top: 4%;#} max-width: 1440px;
         }
 
         li.item-designer {
             margin: 14px;
         }
+
+        .title-tab {
+            font-family: 'Poppins', serif;
+        }
+
+        .title-box-default {
+            padding-bottom: 25px;
+        }
+    </style>
+    <style>
+
 
     </style>
 {% endblock %}
@@ -73,7 +82,7 @@
             </div>
             <div class=" background">
                 <div class="container container-model" style="max-width:1452px;">
-                    <div class="banner-box-adv" style="margin-top: 40%;">
+                    <div class="banner-box-adv" style="margin-top: 33%;">
                         <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
                                 onclick="active3DShowing()"> 3D
                             Preview
@@ -104,6 +113,8 @@
                                              src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
                                              alt=""/>
                                     </a>
+                                    <a href="/product_search/?search=western" type="button" class="btn-toogle-info"
+                                       id="btn-left">Western Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
@@ -120,16 +131,8 @@
                                     <video loop preload
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                    {#                                <div class="text-adv-intro">#}
-                                    {#                                    <h2>Men’s</h2>#}
-                                    {#                                    <h3>Collection</h3>#}
-                                    {#                                </div>#}
-                                    {#                                    <div class="box-search-adv"></div>#}
-                                    {#                                <a href="#" class="box-search-adv-link"><i class="fa fa-search"></i></a>#}
-                                    {#                                    <div class="text-adv-hidden">#}
-                                    {#                                        <p class="name">PIPA</p>#}
-                                    {#                                        <p><span>Chinese</span> Musical Instruments section</p>#}
-                                    {#                                    </div>#}
+                                    <a href="/product_search/?search=chinese" type="button" class="btn-toogle-info"
+                                       id="btn-center">Chinese Products</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -139,6 +142,8 @@
                                                 src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
                                                 alt=""/>
                                     </a>
+                                    <a href="/chinese" type="button" class="btn-toogle-info"
+                                       id="btn-right">When To CHINESE Section >>></a>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +158,7 @@
             <div class="container container-v2">
                 <div class="title-box-default">
                     <a href="#" class="prev-new-arrival arrow-prev-1"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ Western ~' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' Western ' %} &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-1"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -180,7 +185,7 @@
             <div class="container container-v2">
                 <div class="title-box-default no-back ">
                     <a href="#" class="prev-new-arrival arrow-prev-2"><i class="fa fa-arrow-circle-left"></i></a>
-                    <span class="title-tab"><span>{% trans '~ CHINESE ~' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
+                    <span class="title-tab"><span>{% trans ' CHINESE ' %}   &nbsp;</span>{% trans 'Musical Instruments' %}</span>
                     <a href="#" class="next-new-arrival arrow-next-2"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- End Title Slider -->
@@ -205,46 +210,50 @@
         </div>
         <!--  End Products Section Part -->
 
-        <!--  Begin News Part -->
-        <div class="news-scroll">
-            <div class="container">
-                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
-                <div class="content-news-scroll">
-                    <div class="row">
-                        {% for blog in blogs %}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
-                                    <div class="item-news">
-                                        <div class="item-news-thumb">
-                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
-                                                <span>{{ blog.created_on }} </span>
-                                            </div>
-                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
-                                                <img src="{{ blog.main_image.url }}" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div class="item-news-info">
-                                            <h3>
-                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
-                                            </h3>
-                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
-                                            <span>{{ blog.author }}</span>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+     <div class="banner-grid-adv">
+            <div class="clearfix" style="margin-bottom: 120px;margin-top: 100px;">
+                <div class="banner-grid-left">
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt=""></a>
+                        </div>
+                        <div class="grid-text-box gray-box" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>Your</h3>
+                                <h2>Own style</h2>
+                                <h3>Design Instrument</h3>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="wrap-grid-adv-box clearfix">
+                        <div class="grid-text-box active" style="height: 329px;">
+                            <div class="inner-grid-text-box">
+                                <h3>Try 3D Model</h3>
+                                <h2>Design differently</h2>
+                                <h3>Piano and Guitar</h3>
+                            </div>
+                        </div>
+                        <div class="grid-image-box">
+                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6511.JPG' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-grid-right">
+                    <div class="grid-image-box">
+                        <a href="#"><img src="{% static 'assets/images/home_1/dashi.jpeg' %}" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--  End News Part -->
+        <!-- End Banner Grid Adv -->
 
         <div class="custom-services">
             <div class="container">
                 <div class="title-box-default">
                     <h2><span
-                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans '~Color Design~' %} </span></span>
+                            class="title-tab">{% trans 'Musical Instrument' %} &nbsp; <span> {% trans 'Color Design' %} </span></span>
                     </h2>
                 </div>
 
@@ -254,34 +263,6 @@
         <!-- End Custom Services -->
 
         <div class="new-arrival-product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'idea Design' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
-                            <a href="#" class="item-service-link"><img
-                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="container container-v2">
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
@@ -303,7 +284,7 @@
                                                href="/model_design/color?name={{ design_model.name }}style={{ design_model.style }}">
                                                 {% trans 'Start Design' %}</a>
                                         </div>
-                                        <span class="status-product-new">{% trans 'New' %}</span>
+                                        <span class="status-product-new">{% trans '3D Model' %}</span>
                                     </div>
                                 </div>
                             </div>
@@ -312,6 +293,8 @@
                 </div>
                 <!-- End Content Slider Product -->
             </div>
+
+
         </div>
         <!-- End Model Design -->
 
@@ -355,123 +338,94 @@
             </div>
         </div>
         <!-- End Design Team -->
+    <div style="margin-top: 76px;">
 
-
-        <div class="banner-grid-adv">
-            <div class="clearfix">
-                <div class="banner-grid-left">
-                    {% for i in three %}
-                        <div class="wrap-grid-adv-box clearfix">
-                            <div class="grid-image-box">
-                                <a href="#"><img src="{% static 'assets/images/home_1/ad_05.png' %}" alt=""/></a>
-                            </div>
-                            <div class="grid-text-box gray-box">
-                                <div class="inner-grid-text-box">
-                                    <h3>{% trans 'Women’s' %}</h3>
-                                    <h2>{% trans 'Live style' %}</h2>
-                                    <h3>{% trans 'Danlien Polosa' %}</h3>
-                                </div>
-                            </div>
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'idea Design' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
+                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
                         </div>
-                    {% endfor %}
-
-
-                </div>
-                <div class="banner-grid-right">
-                    <div class="grid-image-box">
-                        <a href="#"><img src="{% static 'assets/images/home_1/ad_08.png' %}" alt=""/></a>
                     </div>
-                    <div class="grid-text-box active">
-                        <div class="inner-grid-text-box">
-                            <h3>{% trans 'Collection' %}</h3>
-                            <h2>{% trans 'Jewerly' %}</h2>
-                            <h3>{% trans 'For Girl' %}</h3>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
+                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item-service-box">
+                            <h3>{% trans 'Confection' %}</h3>
+                            <a href="#" class="item-service-link"><img
+                                    src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
+                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End Banner Grid Adv -->
 
-        {##}
-        {#        <div class="category-leading">#}
-        {#            <div class="container">#}
-        {#                <div class="thumb-category-leading">#}
-        {#                    <a href="#"><img alt="" src="{% static 'assets/images/product_home1/10.jpg' %}"></a>#}
-        {#                    <div class="text-category-leading">#}
-        {#                        <span>New</span>#}
-        {#                        <h2>Collection</h2>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#                <div class="content-category-leading">#}
-        {#                    {% for i in ten %}#}
-        {#                        <div class="item-product-category-leading">#}
-        {#                            <div class="item-thumb-product">#}
-        {#                                <a class="product-thumb-link" href="#">#}
-        {#                                    <img alt="" src="{% static 'assets/images/product_home1/1.jpg' %}">#}
-        {#                                </a>#}
-        {#                                <div class="leading-info-product-cart">#}
-        {#                                    <a class="product-thumb-link" href="#">#}
-        {#                                        <img alt="" src="{% static 'assets/images/product_home1/1-1.jpg' %}">#}
-        {#                                    </a>#}
-        {#                                    <div class="info-product-cart">#}
-        {#                                        <div class="inner-info-product-cart">#}
-        {#                                            <ul>#}
-        {#                                                <li><a class="link-wishlist" href="#"><i class="fa fa-heart"></i></a>#}
-        {#                                                </li>#}
-        {#                                                <li><a class="link-quick-view" href="#"><i class="fa fa-search"></i></a>#}
-        {#                                                </li>#}
-        {#                                                <li><a class="link-compare" href="#"><i#}
-        {#                                                        class="fa fa-external-link-square"></i></a></li>#}
-        {#                                            </ul>#}
-        {#                                            <a class="link-product-add-cart" href="#">Add to cart</a>#}
-        {#                                            <div class="info-product-price">#}
-        {#                                                <span>$489.99</span>#}
-        {#                                            </div>#}
-        {#                                        </div>#}
-        {#                                    </div>#}
-        {#                                </div>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    {% endfor %}#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#        <!-- End Category Leading -->#}
-        {##}
-        {#        <div class="from-our-blog">#}
-        {#            <div class="container">#}
-        {#                <div class="title-box-default white-arrow-style">#}
-        {#                    <h2><span class="title-tab">FROM OUR BLOG</span></h2>#}
-        {#                </div>#}
-        {#                <div class="row">#}
-        {#                    {% for i in six %}#}
-        {#                        <div class="col-md-4 col-sm-6 col-xs-12">#}
-        {#                            <div class="item-our-blog">#}
-        {#                                <div class="our-blog-thumb">#}
-        {#                                    <a href="#">#}
-        {#                                        <img src="{% static 'assets/images/home_1/blog/blog1.png' %}" alt=""/>#}
-        {#                                    </a>#}
-        {#                                </div>#}
-        {#                                <div class="our-blog-info">#}
-        {#                                    <div class="inner-our-blog-info">#}
-        {#                                        <span>Jun 23 2014</span>#}
-        {#                                        <h3><a href="#">Cupidatat none proident amet</a></h3>#}
-        {#                                        <span>9 Comments</span>#}
-        {#                                        <div class="post-extra-link">#}
-        {#                                            <a href="#"><img src="{% static 'assets/images/home_1/icon-search.png' %}"#}
-        {#                                                             alt=""/></a>#}
-        {#                                            <a href="#"><i class="fa fa-link"></i></a>#}
-        {#                                        </div>#}
-        {#                                    </div>#}
-        {#                                </div>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    {% endfor %}#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#        <!-- End From our blog -->#}
+    </div>
+
+    <!--  Begin News Part -->
+        <div class="news-scroll">
+            <div class="container">
+                <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
+                <div class="content-news-scroll">
+                    <div class="row">
+                        {% for blog in blogs %}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="{% if forloop.counter0|divisibleby:2 %}item-left{% else %}item-right{% endif %}">
+                                    <div class="item-news">
+                                        <div class="item-news-thumb">
+                                            <div class="news-date"><i class="fa fa-calendar-check-o"></i>
+                                                <span>{{ blog.created_on }} </span>
+                                            </div>
+                                            <a href="{% url 'blog:view' post_id=blog.id %}" class="news-thumb-link">
+                                                <img src="{{ blog.main_image.url }}" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="item-news-info">
+                                            <h3>
+                                                <a href="{% url 'blog:view' post_id=blog.id %}">{{ blog.title | truncatechars:37 }}</a>
+                                            </h3>
+                                            <p style="color: white">{{ blog.body | truncatechars:100 }}</p>
+                                            <span>{{ blog.author }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End News Part -->
+
+
+
+
+
+        <div class="footer-newsletter" style="height: 200px;margin-top: 50px;">
+            <div class="container">
+                <div class="newsletter-intro">
+                    <span class="envalope-icon"><i class="fa fa-envelope-o"></i></span>
+                    <p>SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br>UPDATES, AND ANOTHER STUFF BY EMAIL.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form method="post">
+                        <input type="text" name="newsletter" value="Enter your email..."
+                               onfocus="if (this.value==this.defaultValue) this.value = ''"
+                               onblur="if (this.value=='') this.value = this.defaultValue">
+                        <input type="submit" value="subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     {% for instrument in instruments %}
@@ -518,10 +472,10 @@
                                                                               value="30">
                                                         <label for="2"></label>
                                                     </li>
-{#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
-{#                                                                              value="30">#}
-{#                                                        <label for="3"></label>#}
-{#                                                    </li>#}
+                                                    {#                                                    <li class="color3"><input id="3" type="radio" name="color"#}
+                                                    {#                                                                              value="30">#}
+                                                    {#                                                        <label for="3"></label>#}
+                                                    {#                                                    </li>#}
                                                 </ul>
                                             </div>
                                         </div>
@@ -554,8 +508,8 @@
                                                 <div class="dec qtybutton"></div>
                                                 <div class="inc qtybutton"></div>
                                             </div>
-                                            <a href="cart__{{ instrument.id }}"
-                                               class="theme-btn">{% trans 'Add to cart' %}</a>
+                                            <a href="javascript: void(0)" id="cart__{{ instrument.id }}"
+                                               class="theme-btn quick-cart">{% trans 'Add to cart' %}</a>
                                         </div>
                                         <div class="social-share">
                                             <span>{% trans 'Share with : ' %}</span>
@@ -695,7 +649,45 @@
                 url: "/api/add_cart/",
                 method: 'POST',
                 data: {
-                    instrument_id: this.id.split("__")[1]
+                    instrument_id: this.id.split("__")[1],
+                    count: 1,
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your cart!", "warning");
+                        }, 300);
+                    } else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    } else if (res === 300) {
+                        alert("Error!")
+                    } else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
+
+        $('.quick-cart').on('click', function () {
+            $.ajax({
+                url: "/api/add_cart/",
+                method: 'POST',
+                data: {
+                    instrument_id: this.id.split("__")[1],
+                    count: $(this).prev().find('input').val(),
                 },
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
