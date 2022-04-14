@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Q, Max
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from django.urls import reverse
 
+from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm
 from shop.models import Order, Instrument, Profile, Category, Review
 from django.contrib.auth.decorators import login_required, permission_required
@@ -59,9 +60,19 @@ def index_new(request):
         tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
     popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
 
-    orders = Order.objects.all()
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
 
     users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    print(messages)
+
+    orders = Order.objects.all()
 
     return render(request, 'management_templates/index_new.html', {
         'counts': counts,
@@ -70,7 +81,8 @@ def index_new(request):
         'data_length': len(pie_data),
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'orders': orders,
-        'users': users
+        'users': users,
+        'messages': messages
     })
 
 
