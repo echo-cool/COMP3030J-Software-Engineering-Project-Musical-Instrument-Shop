@@ -780,144 +780,146 @@
                                     {% if not request.user.is_staff %}
                                         <li class="nav-item dropdown">
 
-                                        <a href="{% url 'chat:index_new' to=1 %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
-                                    </li>
+                                            <a href="{% url 'chat:index_new' to=1 %}" title="PAGES"
+                                               class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                        </li>
                                     {% endif %}
-                                    {% else %}
+                                {% else %}
                                     <li class="nav-item dropdown">
 
-                                        <a href="{% url 'accounts:log_in' %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                        <a href="{% url 'accounts:log_in' %}" title="PAGES"
+                                           class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
                                     </li>
                                 {% endif %}
 
-                                    {#                                    <div class="dropdown-menu  list-woman shop show"#}
-                                    {#                                         style="width:650px; left : -220px;">#}
-                                    {#                                        <div class=" ">#}
-                                    {##}
-                                    {##}
-                                    {#                                            <div class="row">#}
-                                    {##}
-                                    {#                                                <div class="order-md-1 mb-3 col-md-12">#}
-                                    {#                                                    <div class="row">#}
-                                    {#                                                        <div class="col-md-4">#}
-                                    {#                                                            <a href="/" title="DEMO LAYOUTS"#}
-                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">DEMO#}
-                                    {#                                                                LAYOUTS</a>#}
-                                    {#                                                            <ul class="px-0">#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
-                                    {#                                                                                                       title="Full Screen"#}
-                                    {#                                                                                                       class="relative delay03  menu_lv3 ">Full#}
-                                    {#                                                                    Screen#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-full-screennew-1ad441-1"#}
-                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-full-screennew-1ad441-1:before {#}
-                                    {#                                                                            border-top: 4px solid DEMO LAYOUTS;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
-                                    {#                                                                                                       title="Heading Background"#}
-                                    {#                                                                                                       class="delay03 relative menu_lv3 ">Heading#}
-                                    {#                                                                    Background</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
-                                    {#                                                                                                       title="Simple"#}
-                                    {#                                                                                                       class="delay03 relative menu_lv3 ">Simple</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                            </ul>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="col-md-4">#}
-                                    {#                                                            <a href="/" title="PRE-BUILD PAGES"#}
-                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRE-BUILD#}
-                                    {#                                                                PAGES</a>#}
-                                    {#                                                            <ul class="px-0">#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/pages/about-us" title="About Us #1"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">About Us#}
-                                    {#                                                                    #1#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-about-us-1hot-e62e05-1"#}
-                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-about-us-1hot-e62e05-1:before {#}
-                                    {#                                                                            border-top: 4px solid PRE-BUILD PAGES;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/pages/about-us-2" title="About Us #2"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">About Us#}
-                                    {#                                                                    #2</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/pages/contact-us"#}
-                                    {#                                                                        title="Contact Us #1"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Contact#}
-                                    {#                                                                    Us#}
-                                    {#                                                                    #1</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/pages/contact-us-2"#}
-                                    {#                                                                        title="Contact us #2"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Contact#}
-                                    {#                                                                    us#}
-                                    {#                                                                    #2</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/pages/faqs" title="FAQS"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">FAQS</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/404"#}
-                                    {#                                                                                                       title="404 Page"#}
-                                    {#                                                                                                       class="delay03 relative menu_lv3 ">404#}
-                                    {#                                                                    Page</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/account/register"#}
-                                    {#                                                                        title="Login/Register"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">Login/Register#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-login-registernew-1ad441-7"#}
-                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-login-registernew-1ad441-7:before {#}
-                                    {#                                                                            border-top: 4px solid PRE-BUILD PAGES;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                            </ul>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="col-md-4">#}
-                                    {#                                                            <a href="/" title="ECOMERCE"#}
-                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">ECOMERCE</a>#}
-                                    {#                                                            <ul class="px-0">#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/cart"#}
-                                    {#                                                                                                       title="Cart"#}
-                                    {#                                                                                                       class="relative delay03  menu_lv3 ">Cart#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-carthot-e62e05-1"#}
-                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-carthot-e62e05-1:before {#}
-                                    {#                                                                            border-top: 4px solid ECOMERCE;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
-                                    {#                                                                                                       title="Shop"#}
-                                    {#                                                                                                       class="delay03 relative menu_lv3 ">Shop</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
-                                    {#                                                                                                       title="Checkout"#}
-                                    {#                                                                                                       class="delay03 relative menu_lv3 ">Checkout</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="/account/register" title="My Account"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">My#}
-                                    {#                                                                    Account</a></li>#}
-                                    {#                                                            </ul>#}
-                                    {#                                                        </div>#}
-                                    {##}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {##}
-                                    {##}
-                                    {#                                            </div>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
+                                {#                                    <div class="dropdown-menu  list-woman shop show"#}
+                                {#                                         style="width:650px; left : -220px;">#}
+                                {#                                        <div class=" ">#}
+                                {##}
+                                {##}
+                                {#                                            <div class="row">#}
+                                {##}
+                                {#                                                <div class="order-md-1 mb-3 col-md-12">#}
+                                {#                                                    <div class="row">#}
+                                {#                                                        <div class="col-md-4">#}
+                                {#                                                            <a href="/" title="DEMO LAYOUTS"#}
+                                {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">DEMO#}
+                                {#                                                                LAYOUTS</a>#}
+                                {#                                                            <ul class="px-0">#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
+                                {#                                                                                                       title="Full Screen"#}
+                                {#                                                                                                       class="relative delay03  menu_lv3 ">Full#}
+                                {#                                                                    Screen#}
+                                {#                                                                    <span class="absolute label_menu label_menu-full-screennew-1ad441-1"#}
+                                {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-full-screennew-1ad441-1:before {#}
+                                {#                                                                            border-top: 4px solid DEMO LAYOUTS;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
+                                {#                                                                                                       title="Heading Background"#}
+                                {#                                                                                                       class="delay03 relative menu_lv3 ">Heading#}
+                                {#                                                                    Background</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
+                                {#                                                                                                       title="Simple"#}
+                                {#                                                                                                       class="delay03 relative menu_lv3 ">Simple</a>#}
+                                {#                                                                </li>#}
+                                {#                                                            </ul>#}
+                                {#                                                        </div>#}
+                                {#                                                        <div class="col-md-4">#}
+                                {#                                                            <a href="/" title="PRE-BUILD PAGES"#}
+                                {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRE-BUILD#}
+                                {#                                                                PAGES</a>#}
+                                {#                                                            <ul class="px-0">#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/pages/about-us" title="About Us #1"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">About Us#}
+                                {#                                                                    #1#}
+                                {#                                                                    <span class="absolute label_menu label_menu-about-us-1hot-e62e05-1"#}
+                                {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-about-us-1hot-e62e05-1:before {#}
+                                {#                                                                            border-top: 4px solid PRE-BUILD PAGES;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/pages/about-us-2" title="About Us #2"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">About Us#}
+                                {#                                                                    #2</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/pages/contact-us"#}
+                                {#                                                                        title="Contact Us #1"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Contact#}
+                                {#                                                                    Us#}
+                                {#                                                                    #1</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/pages/contact-us-2"#}
+                                {#                                                                        title="Contact us #2"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Contact#}
+                                {#                                                                    us#}
+                                {#                                                                    #2</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/pages/faqs" title="FAQS"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">FAQS</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/404"#}
+                                {#                                                                                                       title="404 Page"#}
+                                {#                                                                                                       class="delay03 relative menu_lv3 ">404#}
+                                {#                                                                    Page</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/account/register"#}
+                                {#                                                                        title="Login/Register"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">Login/Register#}
+                                {#                                                                    <span class="absolute label_menu label_menu-login-registernew-1ad441-7"#}
+                                {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-login-registernew-1ad441-7:before {#}
+                                {#                                                                            border-top: 4px solid PRE-BUILD PAGES;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                            </ul>#}
+                                {#                                                        </div>#}
+                                {#                                                        <div class="col-md-4">#}
+                                {#                                                            <a href="/" title="ECOMERCE"#}
+                                {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">ECOMERCE</a>#}
+                                {#                                                            <ul class="px-0">#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/cart"#}
+                                {#                                                                                                       title="Cart"#}
+                                {#                                                                                                       class="relative delay03  menu_lv3 ">Cart#}
+                                {#                                                                    <span class="absolute label_menu label_menu-carthot-e62e05-1"#}
+                                {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-carthot-e62e05-1:before {#}
+                                {#                                                                            border-top: 4px solid ECOMERCE;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
+                                {#                                                                                                       title="Shop"#}
+                                {#                                                                                                       class="delay03 relative menu_lv3 ">Shop</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a href="/"#}
+                                {#                                                                                                       title="Checkout"#}
+                                {#                                                                                                       class="delay03 relative menu_lv3 ">Checkout</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="/account/register" title="My Account"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">My#}
+                                {#                                                                    Account</a></li>#}
+                                {#                                                            </ul>#}
+                                {#                                                        </div>#}
+                                {##}
+                                {#                                                    </div>#}
+                                {#                                                </div>#}
+                                {##}
+                                {##}
+                                {#                                            </div>#}
+                                {#                                        </div>#}
+                                {#                                    </div>#}
 
 
                                 <li class="nav-item dropdown">
@@ -925,375 +927,375 @@
                                     <a href="/blog" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">BLOGS</a>
                                 </li>
                                 {#                                    <div class="dropdown-menu  list-woman shop show"#}
-                                    {#                                         style="width:600px; left : -200px;">#}
-                                    {#                                        <div class=" ">#}
-                                    {##}
-                                    {##}
-                                    {#                                            <div class="row">#}
-                                    {##}
-                                    {#                                                <div class="order-md-1 mb-3 col-md-6">#}
-                                    {#                                                    <div class="row">#}
-                                    {#                                                        <div class="col-md-6">#}
-                                    {#                                                            <a href="/" title="SINGLE POST"#}
-                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">SINGLE#}
-                                    {#                                                                POST</a>#}
-                                    {#                                                            <ul class="px-0">#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
-                                    {#                                                                        title="No Sidebar"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">No#}
-                                    {#                                                                    Sidebar#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"#}
-                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-no-sidebarnew-1ad441-1:before {#}
-                                    {#                                                                            border-top: 4px solid SINGLE POST;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428734651"#}
-                                    {#                                                                        title="Left Sidebar"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Left#}
-                                    {#                                                                    Sidebar</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428767419"#}
-                                    {#                                                                        title="Right Sidebar"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Right#}
-                                    {#                                                                    Sidebar</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
-                                    {#                                                                        title="Standard"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Standard</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/4-skills-and-hobbies-worth-your-time-to-learn/?preview_theme_id=116219379899"#}
-                                    {#                                                                        title="Audio"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Audio</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/a-word-of-caution-to-novice-guitarists/?preview_theme_id=116219379899"#}
-                                    {#                                                                        title="Video"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">Video#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-videohot-e62e05-6"#}
-                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-videohot-e62e05-6:before {#}
-                                    {#                                                                            border-top: 4px solid SINGLE POST;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                            </ul>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="col-md-6">#}
-                                    {#                                                            <a href="/" title="LAYOUT"#}
-                                    {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">LAYOUT</a>#}
-                                    {#                                                            <ul class="px-0">#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116219379899"#}
-                                    {#                                                                        title="No Sidebar"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">No#}
-                                    {#                                                                    Sidebar</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428734651"#}
-                                    {#                                                                        title="Left Sidebar"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">Left#}
-                                    {#                                                                    Sidebar#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"#}
-                                    {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-left-sidebarnew-1ad441-2:before {#}
-                                    {#                                                                            border-top: 4px solid LAYOUT;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428767419"#}
-                                    {#                                                                        title="Right Sidebar"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Right#}
-                                    {#                                                                    Sidebar</a></li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428800187"#}
-                                    {#                                                                        title="Standar"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Standar</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428832955"#}
-                                    {#                                                                        title="Classic"#}
-                                    {#                                                                        class="delay03 relative menu_lv3 ">Classic</a>#}
-                                    {#                                                                </li>#}
-                                    {#                                                                <li class="list-unstyled px-0 py-1"><a#}
-                                    {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116433486011"#}
-                                    {#                                                                        title="Grid"#}
-                                    {#                                                                        class="relative delay03  menu_lv3 ">Grid#}
-                                    {#                                                                    <span class="absolute label_menu label_menu-gridhot-e62e05-6"#}
-                                    {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
-                                    {#                                                                    <style>#}
-                                    {#                                                                        .label_menu-gridhot-e62e05-6:before {#}
-                                    {#                                                                            border-top: 4px solid LAYOUT;#}
-                                    {#                                                                        }#}
-                                    {#                                                                    </style>#}
-                                    {#                                                                </a></li>#}
-                                    {#                                                            </ul>#}
-                                    {#                                                        </div>#}
-                                    {##}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {##}
-                                    {##}
-                                    {#                                                <div class="order-md-3 mb-3 col-md-6">#}
-                                    {#                                                    <div class="mega-col-inner ">#}
-                                    {#                                                        <div class="products_menu">#}
-                                    {#                                                            <div class="menu-title">#}
-                                    {#                                                                NEW PRODUCTS#}
-                                    {#                                                            </div>#}
-                                    {#                                                            <div class="product-block ">#}
-                                    {#                                                                <ul class="prod_sidebar_menu js_prod_menu slick-initialized slick-slider slick-vertical">#}
-                                    {#                                                                    <button type="button"#}
-                                    {#                                                                            class="slick-brand-prev fa fa-angle-left slick-arrow slick-disabled"#}
-                                    {#                                                                            aria-disabled="true" style=""></button>#}
-                                    {#                                                                    <div aria-live="polite"#}
-                                    {#                                                                         class="slick-list draggable"#}
-                                    {#                                                                         style="height: 297.3px;">#}
-                                    {#                                                                        <div class="slick-track"#}
-                                    {#                                                                             style="opacity: 1; height: 793px; transform: translate3d(0px, 0px, 0px);"#}
-                                    {#                                                                             role="listbox">#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide slick-current slick-active"#}
-                                    {#                                                                                style="padding-top: 0px; width: 255px;"#}
-                                    {#                                                                                data-slick-index="0"#}
-                                    {#                                                                                aria-hidden="false" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide50">#}
-                                    {#                                                                                <a href="/products/mapex-30th-anniversary"#}
-                                    {#                                                                                   tabindex="0">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1.jpg?v=1606587239"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="Mapex 30th Anniversary">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/mapex-30th-anniversary"#}
-                                    {#                                                                                    tabindex="0">#}
-                                    {#                                                                            </a><a href="/products/mapex-30th-anniversary"#}
-                                    {#                                                                                   tabindex="0">Mapex 30th#}
-                                    {#                                                                                Anniversary</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {#                              <s class="price-old">$558.00</s>#}
-                                    {#                              <span class="price">$239.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
-                                    {#                                                                                data-slick-index="1"#}
-                                    {#                                                                                aria-hidden="false"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide51">#}
-                                    {#                                                                                <a href="/products/yc-combo-organ"#}
-                                    {#                                                                                   tabindex="0">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/8.1.jpg?v=1606586785"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="YC Combo Organ">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/yc-combo-organ"#}
-                                    {#                                                                                    tabindex="0">#}
-                                    {#                                                                            </a><a href="/products/yc-combo-organ"#}
-                                    {#                                                                                   tabindex="0">YC Combo Organ</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {##}
-                                    {#                              <span class="price">$223.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
-                                    {#                                                                                data-slick-index="2"#}
-                                    {#                                                                                aria-hidden="false"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide52">#}
-                                    {#                                                                                <a href="/products/keyboard-with-usb-midi"#}
-                                    {#                                                                                   tabindex="0">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1.jpg?v=1606586472"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="Keyboard with USB MIDI">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/keyboard-with-usb-midi"#}
-                                    {#                                                                                    tabindex="0">#}
-                                    {#                                                                            </a><a href="/products/keyboard-with-usb-midi"#}
-                                    {#                                                                                   tabindex="0">Keyboard with USB#}
-                                    {#                                                                                MIDI</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {#                              <s class="price-old">$99.00</s>#}
-                                    {#                              <span class="price">$79.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
-                                    {#                                                                                data-slick-index="3"#}
-                                    {#                                                                                aria-hidden="true"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide53">#}
-                                    {#                                                                                <a href="/products/electric-violin"#}
-                                    {#                                                                                   tabindex="-1">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/6.1.jpg?v=1606585934"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="Electric Violin">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/electric-violin"#}
-                                    {#                                                                                    tabindex="-1">#}
-                                    {#                                                                            </a><a href="/products/electric-violin"#}
-                                    {#                                                                                   tabindex="-1">Electric Violin</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {##}
-                                    {#                              <span class="price">$169.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
-                                    {#                                                                                data-slick-index="4"#}
-                                    {#                                                                                aria-hidden="true"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide54">#}
-                                    {#                                                                                <a href="/products/recording-and-monitoring-bundle"#}
-                                    {#                                                                                   tabindex="-1">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/5.1.jpg?v=1606585751"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="Recording and Monitoring Bundle">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/recording-and-monitoring-bundle"#}
-                                    {#                                                                                    tabindex="-1">#}
-                                    {#                                                                            </a><a href="/products/recording-and-monitoring-bundle"#}
-                                    {#                                                                                   tabindex="-1">Recording and#}
-                                    {#                                                                                Monitoring Bundle</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {#                              <s class="price-old">$256.00</s>#}
-                                    {#                              <span class="price">$229.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
-                                    {#                                                                                data-slick-index="5"#}
-                                    {#                                                                                aria-hidden="true"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide55">#}
-                                    {#                                                                                <a href="/products/la-electric-guitar-amp-pack-sunburst"#}
-                                    {#                                                                                   tabindex="-1">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/3.1.jpg?v=1606585273"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="LA Electric Guitar + Amp Pack, Sunburst">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/la-electric-guitar-amp-pack-sunburst"#}
-                                    {#                                                                                    tabindex="-1">#}
-                                    {#                                                                            </a><a href="/products/la-electric-guitar-amp-pack-sunburst"#}
-                                    {#                                                                                   tabindex="-1">LA Electric Guitar#}
-                                    {#                                                                                + Amp Pack, Sunburst</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {##}
-                                    {#                              <span class="price">$119.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
-                                    {#                                                                                data-slick-index="6"#}
-                                    {#                                                                                aria-hidden="true"#}
-                                    {#                                                                                style="width: 255px;" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide56">#}
-                                    {#                                                                                <a href="/products/bdk-1-full-size-starter-drum"#}
-                                    {#                                                                                   tabindex="-1">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/2.1.jpg?v=1606575968"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="BDK-1 Full Size Starter Drum">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/bdk-1-full-size-starter-drum"#}
-                                    {#                                                                                    tabindex="-1">#}
-                                    {#                                                                            </a><a href="/products/bdk-1-full-size-starter-drum"#}
-                                    {#                                                                                   tabindex="-1">BDK-1 Full Size#}
-                                    {#                                                                                Starter Drum</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {#                              <s class="price-old">$235.00</s>#}
-                                    {#                              <span class="price">$199.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                            <li class="product_info px-0 slick-slide"#}
-                                    {#                                                                                style="border-bottom: none; width: 255px;"#}
-                                    {#                                                                                data-slick-index="7"#}
-                                    {#                                                                                aria-hidden="true" tabindex="-1"#}
-                                    {#                                                                                role="option"#}
-                                    {#                                                                                aria-describedby="slick-slide57">#}
-                                    {#                                                                                <a href="/products/single-cutaway-electro-acoustic-guitar"#}
-                                    {#                                                                                   tabindex="-1">#}
-                                    {#                                                                                    <img style="width: 100%"#}
-                                    {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/1.1.jpg?v=1606574995"#}
-                                    {#                                                                                         class="img-responsive"#}
-                                    {#                                                                                         alt="Single Cutaway Electro Acoustic Guitar">#}
-                                    {#                                                                                </a><h4 class="title-product"><a#}
-                                    {#                                                                                    href="/products/single-cutaway-electro-acoustic-guitar"#}
-                                    {#                                                                                    tabindex="-1">#}
-                                    {#                                                                            </a><a href="/products/single-cutaway-electro-acoustic-guitar"#}
-                                    {#                                                                                   tabindex="-1">Single Cutaway#}
-                                    {#                                                                                Electro Acoustic Guitar</a>#}
-                                    {#                                                                            </h4>                    <span>#}
-                                    {##}
-                                    {##}
-                                    {##}
-                                    {#                            <p class="price-product">#}
-                                    {##}
-                                    {#                              <span class="price">$65.00</span>#}
-                                    {#                            </p>#}
-                                    {#                          </span>#}
-                                    {#                                                                            </li>#}
-                                    {#                                                                        </div>#}
-                                    {#                                                                    </div>#}
-                                    {#                                                                    <button type="button"#}
-                                    {#                                                                            class="slick-brand-next fa fa-angle-right slick-arrow"#}
-                                    {#                                                                            style="" aria-disabled="false"></button>#}
-                                    {#                                                                </ul>#}
-                                    {#                                                            </div>#}
-                                    {#                                                        </div>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {##}
-                                    {#                                            </div>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
+                                {#                                         style="width:600px; left : -200px;">#}
+                                {#                                        <div class=" ">#}
+                                {##}
+                                {##}
+                                {#                                            <div class="row">#}
+                                {##}
+                                {#                                                <div class="order-md-1 mb-3 col-md-6">#}
+                                {#                                                    <div class="row">#}
+                                {#                                                        <div class="col-md-6">#}
+                                {#                                                            <a href="/" title="SINGLE POST"#}
+                                {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">SINGLE#}
+                                {#                                                                POST</a>#}
+                                {#                                                            <ul class="px-0">#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
+                                {#                                                                        title="No Sidebar"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">No#}
+                                {#                                                                    Sidebar#}
+                                {#                                                                    <span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"#}
+                                {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-no-sidebarnew-1ad441-1:before {#}
+                                {#                                                                            border-top: 4px solid SINGLE POST;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428734651"#}
+                                {#                                                                        title="Left Sidebar"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Left#}
+                                {#                                                                    Sidebar</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428767419"#}
+                                {#                                                                        title="Right Sidebar"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Right#}
+                                {#                                                                    Sidebar</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"#}
+                                {#                                                                        title="Standard"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Standard</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/4-skills-and-hobbies-worth-your-time-to-learn/?preview_theme_id=116219379899"#}
+                                {#                                                                        title="Audio"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Audio</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/a-word-of-caution-to-novice-guitarists/?preview_theme_id=116219379899"#}
+                                {#                                                                        title="Video"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">Video#}
+                                {#                                                                    <span class="absolute label_menu label_menu-videohot-e62e05-6"#}
+                                {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-videohot-e62e05-6:before {#}
+                                {#                                                                            border-top: 4px solid SINGLE POST;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                            </ul>#}
+                                {#                                                        </div>#}
+                                {#                                                        <div class="col-md-6">#}
+                                {#                                                            <a href="/" title="LAYOUT"#}
+                                {#                                                               class="delay03 d-inline-block mb-2 relative menu_lv2 ">LAYOUT</a>#}
+                                {#                                                            <ul class="px-0">#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116219379899"#}
+                                {#                                                                        title="No Sidebar"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">No#}
+                                {#                                                                    Sidebar</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428734651"#}
+                                {#                                                                        title="Left Sidebar"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">Left#}
+                                {#                                                                    Sidebar#}
+                                {#                                                                    <span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"#}
+                                {#                                                                          style="background-color: #1ad441;"><span>NEW</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-left-sidebarnew-1ad441-2:before {#}
+                                {#                                                                            border-top: 4px solid LAYOUT;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428767419"#}
+                                {#                                                                        title="Right Sidebar"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Right#}
+                                {#                                                                    Sidebar</a></li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428800187"#}
+                                {#                                                                        title="Standar"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Standar</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428832955"#}
+                                {#                                                                        title="Classic"#}
+                                {#                                                                        class="delay03 relative menu_lv3 ">Classic</a>#}
+                                {#                                                                </li>#}
+                                {#                                                                <li class="list-unstyled px-0 py-1"><a#}
+                                {#                                                                        href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116433486011"#}
+                                {#                                                                        title="Grid"#}
+                                {#                                                                        class="relative delay03  menu_lv3 ">Grid#}
+                                {#                                                                    <span class="absolute label_menu label_menu-gridhot-e62e05-6"#}
+                                {#                                                                          style="background-color: #e62e05;"><span>HOT</span></span>#}
+                                {#                                                                    <style>#}
+                                {#                                                                        .label_menu-gridhot-e62e05-6:before {#}
+                                {#                                                                            border-top: 4px solid LAYOUT;#}
+                                {#                                                                        }#}
+                                {#                                                                    </style>#}
+                                {#                                                                </a></li>#}
+                                {#                                                            </ul>#}
+                                {#                                                        </div>#}
+                                {##}
+                                {#                                                    </div>#}
+                                {#                                                </div>#}
+                                {##}
+                                {##}
+                                {#                                                <div class="order-md-3 mb-3 col-md-6">#}
+                                {#                                                    <div class="mega-col-inner ">#}
+                                {#                                                        <div class="products_menu">#}
+                                {#                                                            <div class="menu-title">#}
+                                {#                                                                NEW PRODUCTS#}
+                                {#                                                            </div>#}
+                                {#                                                            <div class="product-block ">#}
+                                {#                                                                <ul class="prod_sidebar_menu js_prod_menu slick-initialized slick-slider slick-vertical">#}
+                                {#                                                                    <button type="button"#}
+                                {#                                                                            class="slick-brand-prev fa fa-angle-left slick-arrow slick-disabled"#}
+                                {#                                                                            aria-disabled="true" style=""></button>#}
+                                {#                                                                    <div aria-live="polite"#}
+                                {#                                                                         class="slick-list draggable"#}
+                                {#                                                                         style="height: 297.3px;">#}
+                                {#                                                                        <div class="slick-track"#}
+                                {#                                                                             style="opacity: 1; height: 793px; transform: translate3d(0px, 0px, 0px);"#}
+                                {#                                                                             role="listbox">#}
+                                {#                                                                            <li class="product_info px-0 slick-slide slick-current slick-active"#}
+                                {#                                                                                style="padding-top: 0px; width: 255px;"#}
+                                {#                                                                                data-slick-index="0"#}
+                                {#                                                                                aria-hidden="false" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide50">#}
+                                {#                                                                                <a href="/products/mapex-30th-anniversary"#}
+                                {#                                                                                   tabindex="0">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1.jpg?v=1606587239"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="Mapex 30th Anniversary">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/mapex-30th-anniversary"#}
+                                {#                                                                                    tabindex="0">#}
+                                {#                                                                            </a><a href="/products/mapex-30th-anniversary"#}
+                                {#                                                                                   tabindex="0">Mapex 30th#}
+                                {#                                                                                Anniversary</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {#                              <s class="price-old">$558.00</s>#}
+                                {#                              <span class="price">$239.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
+                                {#                                                                                data-slick-index="1"#}
+                                {#                                                                                aria-hidden="false"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide51">#}
+                                {#                                                                                <a href="/products/yc-combo-organ"#}
+                                {#                                                                                   tabindex="0">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/8.1.jpg?v=1606586785"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="YC Combo Organ">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/yc-combo-organ"#}
+                                {#                                                                                    tabindex="0">#}
+                                {#                                                                            </a><a href="/products/yc-combo-organ"#}
+                                {#                                                                                   tabindex="0">YC Combo Organ</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {##}
+                                {#                              <span class="price">$223.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide slick-active"#}
+                                {#                                                                                data-slick-index="2"#}
+                                {#                                                                                aria-hidden="false"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide52">#}
+                                {#                                                                                <a href="/products/keyboard-with-usb-midi"#}
+                                {#                                                                                   tabindex="0">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1.jpg?v=1606586472"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="Keyboard with USB MIDI">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/keyboard-with-usb-midi"#}
+                                {#                                                                                    tabindex="0">#}
+                                {#                                                                            </a><a href="/products/keyboard-with-usb-midi"#}
+                                {#                                                                                   tabindex="0">Keyboard with USB#}
+                                {#                                                                                MIDI</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {#                              <s class="price-old">$99.00</s>#}
+                                {#                              <span class="price">$79.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                {#                                                                                data-slick-index="3"#}
+                                {#                                                                                aria-hidden="true"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide53">#}
+                                {#                                                                                <a href="/products/electric-violin"#}
+                                {#                                                                                   tabindex="-1">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/6.1.jpg?v=1606585934"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="Electric Violin">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/electric-violin"#}
+                                {#                                                                                    tabindex="-1">#}
+                                {#                                                                            </a><a href="/products/electric-violin"#}
+                                {#                                                                                   tabindex="-1">Electric Violin</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {##}
+                                {#                              <span class="price">$169.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                {#                                                                                data-slick-index="4"#}
+                                {#                                                                                aria-hidden="true"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide54">#}
+                                {#                                                                                <a href="/products/recording-and-monitoring-bundle"#}
+                                {#                                                                                   tabindex="-1">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/5.1.jpg?v=1606585751"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="Recording and Monitoring Bundle">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/recording-and-monitoring-bundle"#}
+                                {#                                                                                    tabindex="-1">#}
+                                {#                                                                            </a><a href="/products/recording-and-monitoring-bundle"#}
+                                {#                                                                                   tabindex="-1">Recording and#}
+                                {#                                                                                Monitoring Bundle</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {#                              <s class="price-old">$256.00</s>#}
+                                {#                              <span class="price">$229.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                {#                                                                                data-slick-index="5"#}
+                                {#                                                                                aria-hidden="true"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide55">#}
+                                {#                                                                                <a href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                {#                                                                                   tabindex="-1">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/3.1.jpg?v=1606585273"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="LA Electric Guitar + Amp Pack, Sunburst">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                {#                                                                                    tabindex="-1">#}
+                                {#                                                                            </a><a href="/products/la-electric-guitar-amp-pack-sunburst"#}
+                                {#                                                                                   tabindex="-1">LA Electric Guitar#}
+                                {#                                                                                + Amp Pack, Sunburst</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {##}
+                                {#                              <span class="price">$119.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                {#                                                                                data-slick-index="6"#}
+                                {#                                                                                aria-hidden="true"#}
+                                {#                                                                                style="width: 255px;" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide56">#}
+                                {#                                                                                <a href="/products/bdk-1-full-size-starter-drum"#}
+                                {#                                                                                   tabindex="-1">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/2.1.jpg?v=1606575968"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="BDK-1 Full Size Starter Drum">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/bdk-1-full-size-starter-drum"#}
+                                {#                                                                                    tabindex="-1">#}
+                                {#                                                                            </a><a href="/products/bdk-1-full-size-starter-drum"#}
+                                {#                                                                                   tabindex="-1">BDK-1 Full Size#}
+                                {#                                                                                Starter Drum</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {#                              <s class="price-old">$235.00</s>#}
+                                {#                              <span class="price">$199.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                            <li class="product_info px-0 slick-slide"#}
+                                {#                                                                                style="border-bottom: none; width: 255px;"#}
+                                {#                                                                                data-slick-index="7"#}
+                                {#                                                                                aria-hidden="true" tabindex="-1"#}
+                                {#                                                                                role="option"#}
+                                {#                                                                                aria-describedby="slick-slide57">#}
+                                {#                                                                                <a href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                {#                                                                                   tabindex="-1">#}
+                                {#                                                                                    <img style="width: 100%"#}
+                                {#                                                                                         src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/1.1.jpg?v=1606574995"#}
+                                {#                                                                                         class="img-responsive"#}
+                                {#                                                                                         alt="Single Cutaway Electro Acoustic Guitar">#}
+                                {#                                                                                </a><h4 class="title-product"><a#}
+                                {#                                                                                    href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                {#                                                                                    tabindex="-1">#}
+                                {#                                                                            </a><a href="/products/single-cutaway-electro-acoustic-guitar"#}
+                                {#                                                                                   tabindex="-1">Single Cutaway#}
+                                {#                                                                                Electro Acoustic Guitar</a>#}
+                                {#                                                                            </h4>                    <span>#}
+                                {##}
+                                {##}
+                                {##}
+                                {#                            <p class="price-product">#}
+                                {##}
+                                {#                              <span class="price">$65.00</span>#}
+                                {#                            </p>#}
+                                {#                          </span>#}
+                                {#                                                                            </li>#}
+                                {#                                                                        </div>#}
+                                {#                                                                    </div>#}
+                                {#                                                                    <button type="button"#}
+                                {#                                                                            class="slick-brand-next fa fa-angle-right slick-arrow"#}
+                                {#                                                                            style="" aria-disabled="false"></button>#}
+                                {#                                                                </ul>#}
+                                {#                                                            </div>#}
+                                {#                                                        </div>#}
+                                {#                                                    </div>#}
+                                {#                                                </div>#}
+                                {##}
+                                {#                                            </div>#}
+                                {#                                        </div>#}
+                                {#                                    </div>#}
 
 
                             </ul>
@@ -1583,6 +1585,19 @@
         {#        </div>#}
     </footer>
 
+    {#inset: auto auto 0px 0;    #}
+    <div id="iAtlasChatDiv"
+         style="  display: none; position: fixed;  inset: auto 0px 36px auto;display: inline-block; z-index: 21 !important;    height: calc(78% - 0px); width: 400px; cursor: auto;"
+         draggable="false">
+        <div id="iAtlasChatHandle"
+             style="display: none; position: absolute; width: 20px; height: 20px; top: 0px; left: 0px; background: rgba(0, 0, 0, 0); overflow: hidden; vertical-align: middle; line-height: 5px; letter-spacing: 2px; color: rgb(204, 204, 204); text-shadow: black 1px 0px 1px; box-sizing: unset;">
+            ... ... ...
+        </div>
+
+        <iframe src="/chat_ai" id="iAtlasChat"
+                style="top: auto; box-sizing: unset; margin: 0px !important; border: none !important; overflow: hidden !important; display: block !important; z-index: 2147483647 !important; height: 100%; width: 400px; bottom: 0px;">
+        </iframe>
+    </div>
 
     <!-- End Footer -->
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
