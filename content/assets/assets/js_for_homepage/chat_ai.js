@@ -112,8 +112,16 @@ $("#iAtlasChatDiv").ready(function () {
             showScreen("launcher", true);
         }
     });
+    $('#divChatLauncherOpen').on({
+        click: function () {
+            // console.log("开启对话框");
+            // hasInteracted = true;
+            // ToggleChatMenu(true);
+            showScreen("start", true);
+        }
+    });
 
-    $('#chat_clear').on({});
+    // $('#chat_clear').on({});
 
     $("#chatMenu").on({
         click: function (e) {
@@ -151,8 +159,8 @@ $("#iAtlasChatDiv").ready(function () {
             } else {
                 setParentSize(curHeight, curWidth, "chat");
             }
-            $(".chat_header_text").show();
-            ChatInputManager.applyState({display: true, disable: false});
+            // $(".chat_header_text").show();
+            // ChatInputManager.applyState({display: true, disable: false});
             $(".chat_discussion_div").show();
             $(".chat_div").delay(200).fadeIn(function () {
                 ScrollToBottom();
@@ -163,12 +171,36 @@ $("#iAtlasChatDiv").ready(function () {
             $(".chat_error").hide();
         } else {
             // hide chat screen elements
-            $(".chat_header_text").hide();
-            ChatInputManager.applyState({display: false, disable: true});
+            // $(".chat_header_text").hide();
+            // ChatInputManager.applyState({display: false, disable: true});
             $(".chat_discussion_div").hide();
             $("#chatMenu").hide();
         }
-    };
+    }
+
+
+    function disableLoader() {
+        $(".chat_aside").hide()
+    }
+
+    function ScrollToBottom() {
+        scrollToBottom("discussion");
+    }
+
+    function scrollToBottom(viewportId, animateDelay) {
+        if (!animateDelay) {
+            animateDelay = 1500;
+        }
+
+        var objViewPort = document.getElementById(viewportId);
+        if (objViewPort !== null) {
+            var sHeight = objViewPort.scrollHeight;
+            if (sHeight > 0) {
+                $('#' + viewportId).stop().animate({scrollTop: sHeight}, animateDelay);
+            }
+        }
+    }
+
 
     function showEstablishScreen(doShow) {
         if (doShow === true) {
@@ -177,15 +209,15 @@ $("#iAtlasChatDiv").ready(function () {
             } else {
                 setParentSize(curHeight, curWidth, "chat");
             }
-            $(".chat_header_text").show();
-            ChatInputManager.applyState({display: true, establishingConnection: true});
+            // $(".chat_header_text").show();
+            // ChatInputManager.applyState({display: true, establishingConnection: true});
             $(".chat_establish_connection").show();
             $(".chat_div").delay(200).fadeIn(function () {
                 ScrollToBottom();
             });
         } else {
-            $(".chat_header_text").hide();
-            ChatInputManager.applyState({display: false, establishingConnection: false});
+            // $(".chat_header_text").hide();
+            // ChatInputManager.applyState({display: false, establishingConnection: false});
             $(".chat_establish_connection").hide();
         }
     }
@@ -202,13 +234,15 @@ $("#iAtlasChatDiv").ready(function () {
         if (doShow === true) {
             // display launcher screen elements
             // setLauncherSize();
-            $("#divChatLauncherCounter").css("display", "block");
+            $("#divChatLauncher").css("display", "block");
+            $("#resizable").css("display", "none");
             // $('#launcher').css("transform", "unset");
             // $(".chat_launcher_container").fadeIn();
 
         } else {
-            // hide launcher screen elements
-            $(".chat_launcher_container").hide();
+            // hide launcher screen elements\
+            $("#divChatLauncher").css("display", "none");
+            $("#resizable").css("display", "flex");
         }
     };
 
@@ -226,19 +260,15 @@ $("#iAtlasChatDiv").ready(function () {
 
     function showScreen(screenName, isFromCustomerClick) {
         $('#tbScreenState').val(screenName);
-
         if (screenName === "launcher") {
-            $(".chat_div").hide();
+            // $(".chat_div").hide();
             showEstablishScreen(false);
             showSatisfactionScreen(false);
             showLauncher(true);
-
-        } else if (screenName === "login") {
-            showLauncher(false);
-            showChatScreen(false);
+        } else if (screenName === "start") {
+            showEstablishScreen(false);
             showSatisfactionScreen(false);
-
-
+            showLauncher(false);
         } else if (screenName === "chat") {
             showLauncher(false);
 

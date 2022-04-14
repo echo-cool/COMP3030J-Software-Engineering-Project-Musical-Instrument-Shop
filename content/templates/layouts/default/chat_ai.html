@@ -10,52 +10,52 @@
     <link href="{% static 'assets/css_for_homepage/chat_ai.css' %}" rel="stylesheet">
 
     <style>a:hover, .chat_primary {
-        color: #cc3333
+        color: #d7ad5b
     }</style>
     <style>.chat_primary_bg {
-        background-color: #cc3333;
+        background-color: #d7ad5b;
         color: #FFFFFF;
     }</style>
     <style>svg.chat_primary, div.chat_primary > svg {
-        fill: #cc3333
+        fill: #d7ad5b
     }</style>
     <style>.external_contact_menu a:link, .external_contact_menu a:hover, .external_contact_menu a:visited {
         color: #FFFFFF
     }</style>
     <style>.login_text_box:focus, .login_text_box:active {
-        border-color: #cc3333
+        border-color: #d7ad5b
     }</style>
     <style>.chat_avatar {
-        border-color: #cc3333
+        border-color: #d7ad5b
     }</style>
     <style>.chat_header_top {
-        background: #cc3333;
+        background: #d7ad5b;
         color: #FFFFFF;
     }</style>
     <style>.chat_button_suggested_response_field.chat_primary {
-        border-color: #cc3333;
-        color: #cc3333
+        border-color: #d7ad5b;
+        color: #d7ad5b
     }</style>
     <style>.chat_field_submit.chat_primary_bg {
-        background-color: #cc3333;
+        background-color: #d7ad5b;
     }</style>
     <style>.chat_button_link.chat_primary, .chat_button_redirect.chat_primary, .chat_button_suggested_response.chat_primary, .chat_button_suggested_response_field.chat_primary {
-        border-color: #cc3333;
-        color: #cc3333
+        border-color: #d7ad5b;
+        color: #d7ad5b
     }</style>
     <style>#chat_satisfaction, .chat_launcher_outer.chat_primary_bg {
-        background: #cc3333;
+        background: #d7ad5b;
     }</style>
     <style>.chat_launcher_icon_tail.chat_primary > svg {
-        fill: #cc3333;
+        fill: #d7ad5b;
     }</style>
     <style>.chat_button_suggested_response.chat_primary, .chat_button_link.chat_primary, .chat_button_redirect.chat_primary {
-        border-color: #cc3333;
-        color: #cc3333
+        border-color: #d7ad5b;
+        color: #d7ad5b
     }</style>
 
     <style>.on_white_color {
-        color: #cc3333;
+        color: #d7ad5b;
     }</style>
     <style>.chat_launcher_open_icon_div {
         background-image: url('https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png')
@@ -87,16 +87,16 @@
         <input type="text" id="tbUseLightClientText" style="display: none">
 
         <div id="resizable" class="chat_div positionabs"
-             style=" border-radius: 100%;width: calc(100vw - 5px); height: calc(100vh - 2px);">
+             style="display:none;border-radius: 100%;width: calc(100vw - 5px); height: calc(100vh - 2px);">
             <div class="chat_header">
                 <div class="chat_header_top">
                     <div class="content-maxwidth">
                         <div class="chat_header_name">
-                            <div class="chat_contact_toggle icon" style="display: none;">
-                                <svg>
-                                    <use id="chatToggle" xlink:href="/images/webchat/icons.svg?v=2#chevron-right"></use>
-                                </svg>
-                            </div>
+                            {#                            <div class="chat_contact_toggle icon" style="display: none;">#}
+                            {#                                <svg>#}
+                            {#                                    <use id="chatToggle" xlink:href="/images/webchat/icons.svg?v=2#chevron-right"></use>#}
+                            {#                                </svg>#}
+                            {#                            </div>#}
                             <div id="chatHeaderIcon" class="chat_primary_bg">
                                 <img src="https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png"
                                      alt="Header Icon" draggable="false">
@@ -333,29 +333,11 @@
                 </svg>
             </div>
         </div>
-
-        <div id="divChatLauncherContainer" class="chat_launcher_container" style="display: none;">
-            {#            <div id="divChatLauncherPopoutContainer" class="chat_launcher_popout_container" style="display:none">#}
-            {#                <div class="chat_launcher_popout_close on_white_color">#}
-            {#                    <svg class="chat_launcher_popout_close_image" fill="white" viewBox="0 0 16 16" height="16"#}
-            {#                         width="16" style="float: right" alt="Close callout">#}
-            {#                        <use xlink:href="/images/webchat/icons.svg?v=2#times"></use>#}
-            {#                    </svg>#}
-            {#                </div>#}
-            {#                <div id="divChatLauncherPopout" class="chat_launcher_popout">#}
-            {#                    <div id="divChatLauncherPopoutTextContainer" class="chat_launcher_popout_text_container">#}
-            {#                        <div id="divChatLauncherPopoutText" class="chat_launcher_popout_text"></div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="chat_launcher_popout_tail">#}
-            {#                    <svg viewBox="0 0 60 40" height="22px" width="30px">#}
-            {#                        <path class="chat_launcher_popout_tail_svg_path" d="M30 0 Q 60 5 60 50 L 60 0"></path>#}
-            {#                    </svg>#}
-            {#                </div>#}
-            {#            </div>#}
+        <div id="divChatLauncherContainer" class="chat_launcher_container"
+        >
             <div id="divChatLauncher" class="chat_launcher">
                 <div id="divChatLauncherCounter" class="chat_launcher_counter"
-                     style="display: block; background-color: rgb(0, 0, 0);">
+                     style="display: block; background-color: #fe5151;">
                 </div>
                 <div class="chat_launcher_outer chat_primary_bg">
                     <div id="divChatLauncherOpen" class="chat_launcher_icon_open">
@@ -372,7 +354,6 @@
                 </div>
             </div>
         </div>
-
     </form>
 </aside>
 <script id="externalContactTemplate" type="text/template">
