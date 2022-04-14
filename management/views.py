@@ -70,8 +70,6 @@ def index_new(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    print(messages)
-
     orders = Order.objects.all()
 
     return render(request, 'management_templates/index_new.html', {

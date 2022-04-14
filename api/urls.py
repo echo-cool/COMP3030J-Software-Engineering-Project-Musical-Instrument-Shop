@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet
-from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read
+from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month
 
 app_name = 'api'
 
@@ -28,4 +28,5 @@ urlpatterns = router.urls + [
     path('add_wishlist/', add_wishlist, name='add_wishlist'),
     path('add_cart/', add_cart, name='add_cart'),
     path('all_read/', all_read, name='all_read'),
+    path('revenue_month/', revenue_month, name='revenue_month'),
 ]

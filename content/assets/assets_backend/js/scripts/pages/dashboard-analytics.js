@@ -1,12 +1,4 @@
-/*=========================================================================================
-    File Name: dashboard-analytics.js
-    Description: intialize advance cards
-    ----------------------------------------------------------------------------------------
-    Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-    Version: 1.2
-    Author: ThemeSelection
-    Author URL: https://themeselection.com/
-    ==========================================================================================*/
+
     $(window).on('load', function () {
 
 
