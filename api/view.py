@@ -5,6 +5,8 @@
 @File ：view.py
 @IDE ：PyCharm
 """
+from datetime import datetime, timezone
+
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.db.models import Q, Max, Count
@@ -62,8 +64,9 @@ def rank_user_list(request):
     users = User.objects
     profiles = Profile.objects
     sender_rank = messages.values("user").annotate(
-        max=Max("timestamp"), unread=Count("read", filter=Q(read=False))).exclude(
+        max=Max("timestamp"), unread=Count("read", filter=Q(read=False)), latest_message=Max("body")).exclude(
         user=request.user.id).order_by("user")
+    print(sender_rank)
     receiver_rank = messages.values("recipient").annotate(
         max=Max("timestamp")).exclude(
         recipient=request.user.id).order_by("recipient")
@@ -79,12 +82,19 @@ def rank_user_list(request):
                 avatar = profile.image.url
             else:
                 avatar = '/static/assets/images/avatars/avatar.png'
+            if sender_rank[p1]['max'] > receiver_rank[p2]['max']:
+                latest_time = sender_rank[p1]['max']
+                latest_message = MessageModel.objects.get(timestamp=latest_time, user=user)
+            else:
+                latest_time = receiver_rank[p2]['max']
+                latest_message = MessageModel.objects.get(timestamp=latest_time, recipient=user)
             data.append({'id': user.id,
                          'username': user.username,
                          'email': user.email,
                          'image': avatar,
-                         'time': max(sender_rank[p1]['max'], receiver_rank[p2]['max']),
-                         'unread': sender_rank[p1]['unread']})
+                         'time': latest_time,
+                         'unread': sender_rank[p1]['unread'],
+                         'latest_message': latest_message.body})
             p1 += 1
             p2 += 1
         elif sender_rank[p1]['user'] < receiver_rank[p2]['user']:
@@ -99,7 +109,8 @@ def rank_user_list(request):
                          'email': user.email,
                          'image': avatar,
                          'time': sender_rank[p1]['max'],
-                         'unread': sender_rank[p1]['unread']})
+                         'unread': sender_rank[p1]['unread'],
+                         'latest_message': MessageModel.objects.get(timestamp=sender_rank[p1]['max'], user=user).body})
             p1 += 1
         else:
             user = users.get(id=receiver_rank[p2]['recipient'])
@@ -113,7 +124,8 @@ def rank_user_list(request):
                          'email': user.email,
                          'image': avatar,
                          'time': receiver_rank[p2]['max'],
-                         'unread': 0})
+                         'unread': 0,
+                         'latest_message': MessageModel.objects.get(timestamp=receiver_rank[p2]['max'], recipient=user).body})
             p2 += 1
     if p1 == len_sender:
         for i in range(p2, len_receiver):
@@ -128,7 +140,8 @@ def rank_user_list(request):
                          'email': user.email,
                          'image': avatar,
                          'time': receiver_rank[i]['max'],
-                         'unread': 0})
+                         'unread': 0,
+                         'latest_message': MessageModel.objects.get(timestamp=receiver_rank[i]['max'], recipient=user).body})
     else:
         for i in range(p1, len_sender):
             user = users.get(id=sender_rank[i]['user'])
@@ -142,8 +155,10 @@ def rank_user_list(request):
                          'email': user.email,
                          'image': avatar,
                          'time': sender_rank[i]['max'],
-                         'unread': sender_rank[i]['unread']})
+                         'unread': sender_rank[i]['unread'],
+                         'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'], user=user).body})
     data = sorted(data, key=lambda x: x['time'], reverse=True)
+    print(data)
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
