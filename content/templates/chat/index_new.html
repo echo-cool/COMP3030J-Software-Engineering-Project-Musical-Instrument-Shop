@@ -128,7 +128,6 @@
                             <div id="user-list" class="users-list-padding media-list">
 
 
-
                             </div>
                         </div>
                     </div>
@@ -235,7 +234,7 @@
                     'X-CSRFTOKEN': '{{ csrf_token }}'
                 },
                 success: function (res) {
-                    $('#unread__'+id).remove()
+                    $('#unread__' + id).remove()
                 },
                 error: function () {
                     alert('Error! Check console!');
@@ -245,13 +244,22 @@
         }
 
         function updateUserList() {
-            $.getJSON('/api/rank_user_list', function (data) {
-                console.log(data)
-                userList.children('.media').remove();
-                for (let i = 0; i < data.length; i++) {
-                    let date = new Date(data[i]['time']);
-                    date = date.toLocaleString();
-                    let userItem = `
+            $.ajax({
+                url: "/api/rank_user_list/",
+                method: 'POST',
+                data: {
+                    to: {{ to }},
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    console.log(data)
+                    userList.children('.media').remove();
+                    for (let i = 0; i < data.length; i++) {
+                        let date = new Date(data[i]['time']);
+                        date = date.toLocaleString();
+                        let userItem = `
                     <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']}, '${data[i]['username']}')">
                         <div class="media-left pr-1">
                         <span class="avatar avatar-md">
@@ -263,38 +271,74 @@
                         <div class="media-body w-100">
                             <h6 class="list-group-item-heading font-medium-1 text-bold-700">${data[i]['username']}&nbsp;
                                 <i class="ft-circle font-small-2 success"></i><span
-                                        class="float-right primary">`+
-                        (data[i]['unread'] === 0 ? `` : `<span class="badge badge-pill badge-danger lighten-3" id="unread__${data[i]['id']}">${data[i]['unread']}</span>`)
-                        + `</span></h6>
+                                        class="float-right primary">` +
+                            (data[i]['unread'] === 0 ? `` : `<span class="badge badge-pill badge-danger lighten-3" id="unread__${data[i]['id']}">${data[i]['unread']}</span>`)
+                            + `</span></h6>
                             <p class="font-small-3 text-muted text-bold-500">${date}</p>
                             <p class="list-group-item-text text-muted mb-0 lighten-1">${data[i]['latest_message']}</p>
                         </div>
                     </a>`;
-                    $(userItem).appendTo('#user-list')
+                        $(userItem).appendTo('#user-list')
+                    }
+                },
+                error: function () {
+                    alert('Error! Check console!');
                 }
-                {#$('.user').click(function () {#}
-                {#    $('.active').removeClass('active');#}
-                {#    let selected = event.target;#}
-                {#    console.log(selected);#}
-                {#    $(selected).addClass('active');#}
-                {#    chat_with_current = $(selected).attr('value');#}
-                {#    setCurrentRecipient(chat_with_current);#}
-                {#    $('#chat_with').text(chat_with_current);});#}
 
+            })
 
-            });
-        }
+            {#$.getJSON('/api/rank_user_list', function (data) {#}
+            {#    console.log(data)#}
+            {#    userList.children('.media').remove();#}
+            {#    for (let i = 0; i < data.length; i++) {#}
+            {#        let date = new Date(data[i]['time']);#}
+            {#        date = date.toLocaleString();#}
+            {#        let userItem = `#}
+            {#        <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']}, '${data[i]['username']}')">#}
+            {#            <div class="media-left pr-1">#}
+            {#            <span class="avatar avatar-md">#}
+            {#                <img class="media-object rounded-circle"#}
+            {#                     src=${data[i]['image']}#}
+            {#                     alt="Generic placeholder image">#}
+            {#            </span>#}
+            {#            </div>#}
+            {#            <div class="media-body w-100">#}
+            {#                <h6 class="list-group-item-heading font-medium-1 text-bold-700">${data[i]['username']}&nbsp;#}
+            {#                    <i class="ft-circle font-small-2 success"></i><span#}
+            {#                            class="float-right primary">`+#}
+            {#            (data[i]['unread'] === 0 ? `` : `<span class="badge badge-pill badge-danger lighten-3" id="unread__${data[i]['id']}">${data[i]['unread']}</span>`)#}
+            {#            + `</span></h6>#}
+            {#                <p class="font-small-3 text-muted text-bold-500">${date}</p>#}
+            {#                <p class="list-group-item-text text-muted mb-0 lighten-1">${data[i]['latest_message']}</p>#}
+            {#            </div>#}
+            {#        </a>`;#}
+            {#        $(userItem).appendTo('#user-list')#}
+            {#    }#}
+            {#$('.user').click(function () {#}
+            {#    $('.active').removeClass('active');#}
+            {#    let selected = event.target;#}
+            {#    console.log(selected);#}
+            {#    $(selected).addClass('active');#}
+            {#    chat_with_current = $(selected).attr('value');#}
+            {#    setCurrentRecipient(chat_with_current);#}
+            {#    $('#chat_with').text(chat_with_current);});#}
+            {##}
+            {##}
+            //})
+            //    ;
+            {#// #}
+            }
 
-        function drawMessage(message) {
-            let position = 'left';
-            let position_new = 'cleft';
-            let messageItem = '';
-            let date = new Date(message.timestamp);
-            date = date.toLocaleString();
-            if (message.user === currentUser) position = '';
-            if (message.user === currentUser) position_new = 'cright';
-            if (message.user === currentUser) {
-                messageItem = `
+            function drawMessage(message) {
+                let position = 'left';
+                let position_new = 'cleft';
+                let messageItem = '';
+                let date = new Date(message.timestamp);
+                date = date.toLocaleString();
+                if (message.user === currentUser) position = '';
+                if (message.user === currentUser) position_new = 'cright';
+                if (message.user === currentUser) {
+                    messageItem = `
 
                 <div class="chat">
                 <p class="time">${date}</p>
@@ -312,8 +356,8 @@
                     </div>
                     <div>
                 `;
-            } else {
-                messageItem = `
+                } else {
+                    messageItem = `
             <div class="chat chat-left">
                 <p class="time">${date}</p>
                 <div class="chat-avatar">
@@ -330,123 +374,148 @@
                 </div>
                 <div>
 `;
-            }
-            $(messageItem).appendTo('#messages');
+                }
+                $(messageItem).appendTo('#messages');
 
-            $.getJSON(`../api/user/${current_user_id}`, function (user) {
-                $.getJSON(`../api/profile/?user=${user.id}`, function (profile) {
-                    $('.chat_avatar').attr('src', profile[0].image);
+                $.getJSON(`/api/user/${current_user_id}`, function (user) {
+                    $.getJSON(`/api/profile/?user=${user.id}`, function (profile) {
+                        $('.chat_avatar').attr('src', profile[0].image);
+                    });
                 });
-            });
-        }
+            }
 
 
-        function getConversation(recipient) {
-            $.getJSON(`/api/message/?target=${recipient}`, function (data) {
-                {#console.log(data['results'][0].body)#}
-                {#console.log(chat_history)#}
-                if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
-                    {#console.log(chat_with);#}
-                    {#console.log(chat_with_current);#}
-                    chat_with_current = chat_with;
+            function getConversation(recipient) {
+                $.getJSON(`/api/message/?target=${recipient}`, function (data) {
+                    {#console.log(data['results'][0].body)#}
+                    {#console.log(chat_history)#}
+                    if (chat_with != chat_with_current || data['results'][0].id != chat_history) {
+                        {#console.log(chat_with);#}
+                        {#console.log(chat_with_current);#}
+                        chat_with_current = chat_with;
 
-                    chat_history = data['results'][0].id;
-                    messageList.children('.chat').remove();
-                    for (let i = data['results'].length - 1; i >= 0; i--) {
-                        drawMessage(data['results'][i]);
+                        chat_history = data['results'][0].id;
+                        messageList.children('.chat').remove();
+                        for (let i = data['results'].length - 1; i >= 0; i--) {
+                            drawMessage(data['results'][i]);
+                        }
+                        messageList.animate({scrollTop: messageList.prop('scrollHeight')});
+                    }
+
+                });
+
+            }
+
+            function getMessageById(message) {
+                id = JSON.parse(message).message
+                $.getJSON(`/api/message/${id}/`, function (data) {
+                    if (data.user === currentRecipient ||
+                        (data.recipient === currentRecipient && data.user == currentUser)) {
+                        drawMessage(data);
                     }
                     messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-                }
+                });
+            }
 
-            });
+            function sendMessage(recipient, body) {
+                $.ajax({
+                    url: "/api/message/",
+                    method: 'POST',
+                    data: {
+                        recipient: recipient,
+                        body: body
+                    },
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    success: function (res) {
+                        updateUserList()
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
 
-        }
-
-        function getMessageById(message) {
-            id = JSON.parse(message).message
-            $.getJSON(`/api/message/${id}/`, function (data) {
-                if (data.user === currentRecipient ||
-                    (data.recipient === currentRecipient && data.user == currentUser)) {
-                    drawMessage(data);
-                }
-                messageList.animate({scrollTop: messageList.prop('scrollHeight')});
-            });
-        }
-
-        function sendMessage(recipient, body) {
-            $.ajax({
-                url: "/api/message/",
-                method: 'POST',
-                data: {
-                    recipient: recipient,
-                    body: body
-                },
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                success: function (res) {
-                    updateUserList()
-                },
-                error: function () {
-                    alert('Error! Check console!');
-                }
-
-            })
-
-        }
-
-        function setCurrentRecipient(username) {
-            currentRecipient = username;
-            console.log(currentRecipient)
-            getConversation(currentRecipient);
-
-            enableInput();
-        }
-
-
-        function enableInput() {
-            chatInput.prop('disabled', false);
-            chatButton.prop('disabled', false);
-            chatInput.focus();
-        }
-
-        function disableInput() {
-            chatInput.prop('disabled', true);
-            chatButton.prop('disabled', true);
-        }
-
-        $(document).ready(function () {
-                updateUserList();
-                $.getJSON('/api/rank_user_list', function (data) {
-                    select(data[0]['id'], data[0]['username']);
                 })
 
-                chatInput.keypress(function (e) {
-                    if (e.keyCode == 13)
-                        chatButton.click();
-                });
-
-                chatButton.click(function () {
-                    if (chatInput.val().length > 0) {
-                        sendMessage(currentRecipient, chatInput.val());
-                        chatInput.val('');
-                    }
-                });
-
-                setInterval(function () {
-                    if (currentRecipient.length > 0) {
-                        getConversation(currentRecipient);
-                    }
-                }, 500);
-
-
             }
-        );
-        $(document).ready(function () {
-            $('#action_menu_btn').click(function () {
-                $('.action_menu').toggle();
+
+            function setCurrentRecipient(username) {
+                currentRecipient = username;
+                console.log(currentRecipient)
+                getConversation(currentRecipient);
+
+                enableInput();
+            }
+
+
+            function enableInput() {
+                chatInput.prop('disabled', false);
+                chatButton.prop('disabled', false);
+                chatInput.focus();
+            }
+
+            function disableInput() {
+                chatInput.prop('disabled', true);
+                chatButton.prop('disabled', true);
+            }
+
+            $(document).ready(function () {
+                updateUserList();
+                $.ajax({
+                    url: "/api/rank_user_list/",
+                    method: 'POST',
+                    data: {
+                        to: {{ to }},
+                    },
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    success: function (data) {
+                        let to = {{ to }};
+                        if (to != -1) {
+                            for (let i = 0; i < data.length; i++) {
+                                if (data[i]['id'] == to) {
+                                    select(data[i]['id'], data[i]['username']);
+                                    console.log(data[i])
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            select(data[0]['id'], data[0]['username']);
+                        }
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
+                })
+
+                    chatInput.keypress(function (e) {
+                        if (e.keyCode == 13)
+                            chatButton.click();
+                    });
+
+                    chatButton.click(function () {
+                        if (chatInput.val().length > 0) {
+                            sendMessage(currentRecipient, chatInput.val());
+                            chatInput.val('');
+                        }
+                    });
+
+                    setInterval(function () {
+                        if (currentRecipient.length > 0) {
+                            getConversation(currentRecipient);
+                        }
+                    }, 500);
+
+
+                }
+            );
+            $(document).ready(function () {
+                $('#action_menu_btn').click(function () {
+                    $('.action_menu').toggle();
+                });
             });
-        });
 
     </script>
 {% endblock %}

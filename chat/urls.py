@@ -13,5 +13,5 @@ from chat.views import index, index_new
 app_name = 'chat'
 urlpatterns = [
     path('', index, name='index'),
-    path('new', index_new, name="index_new"),
+    path('new/<int:to>', index_new, name="index_new"),
 ]

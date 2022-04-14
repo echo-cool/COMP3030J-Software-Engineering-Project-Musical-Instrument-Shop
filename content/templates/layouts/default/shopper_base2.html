@@ -776,9 +776,19 @@
                                 </li>
 
 
-                                <li class="nav-item dropdown">
+                                {% if request.user %}
+                                    {% if not request.user.is_staff %}
+                                        <li class="nav-item dropdown">
 
-                                    <a href="/" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">PAGES</a>
+                                        <a href="{% url 'chat:index_new' to=1 %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                    </li>
+                                    {% endif %}
+                                    {% else %}
+                                    <li class="nav-item dropdown">
+
+                                        <a href="{% url 'accounts:log_in' %}" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                    </li>
+                                {% endif %}
 
                                     {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                     {#                                         style="width:650px; left : -220px;">#}
@@ -908,14 +918,13 @@
                                     {#                                            </div>#}
                                     {#                                        </div>#}
                                     {#                                    </div>#}
-                                </li>
 
 
                                 <li class="nav-item dropdown">
 
                                     <a href="/blog" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">BLOGS</a>
-
-                                    {#                                    <div class="dropdown-menu  list-woman shop show"#}
+                                </li>
+                                {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                     {#                                         style="width:600px; left : -200px;">#}
                                     {#                                        <div class=" ">#}
                                     {##}
@@ -1285,7 +1294,6 @@
                                     {#                                            </div>#}
                                     {#                                        </div>#}
                                     {#                                    </div>#}
-                                </li>
 
 
                             </ul>
