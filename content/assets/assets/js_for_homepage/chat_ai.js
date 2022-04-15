@@ -236,8 +236,10 @@ $("#iAtlasChatDiv").ready(function () {
             // display launcher screen elements
             // setLauncherSize();
             console.log("DSD",);
-            $("#iAtlasChatDiv").css("height", "calc(17% - 0px)");
-            $("#iAtlasChatDiv").css("width", "calc(8%)");
+            window.parent.document.getElementById("iAtlasChatDiv")
+                .setAttribute("style", "position:fixed;inset:auto 0 45px auto;z-index: 21 !important; height: calc(17% - 0px); width: 8%; cursor: auto;");
+            // $("#iAtlasChatDiv").css("height", "calc(17% - 0px)");
+            // $("#iAtlasChatDiv").css("width", "calc(8%)");
             $("#divChatLauncher").css("display", "block");
             $("#resizable").css("display", "none");
             // $('#launcher').css("transform", "unset");
@@ -248,8 +250,11 @@ $("#iAtlasChatDiv").ready(function () {
             $(".iAtlasChatDiv").css("color", "red");
             $(".chat_icon_group").css("color", "red");
 
-            $("#iAtlasChatDiv").css("height", "calc(79% - 0px)");
-            $("#iAtlasChatDiv").css("width", "calc(26%)");
+            window.parent.document.getElementById("iAtlasChatDiv")
+                .setAttribute("style", "position:fixed;inset:auto 0 45px auto;z-index: 21 !important; height: calc(76% - 0px); width: 26%; cursor: auto;");
+
+            // $("#iAtlasChatDiv").css("height", "calc(79% - 0px)");
+            // $("#iAtlasChatDiv").css("width", "calc(26%)");
             $("#divChatLauncher").css("display", "none");
             $("#resizable").css("display", "flex");
         }
