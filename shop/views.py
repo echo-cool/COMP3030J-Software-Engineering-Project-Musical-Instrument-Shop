@@ -17,7 +17,7 @@ from django.urls import reverse
 import blog
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -355,9 +355,16 @@ def checkout(request):
                 zip_Code=zip_Code
             )
             uncompletedOrder.save()
-            return redirect(reverse('shop:shipping_details'), {
-                "uncompletedOrder": uncompletedOrder,
-            })
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.quantity
+                )
+                uncompletedOrderItem.save()
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -381,10 +388,14 @@ def checkout(request):
 
 def shipping_details(request, uncompletedOrder_id):
     carts = Cart.objects.filter(user=request.user)
+    user = request.user
     uncompletedOrder = UncompletedOrder.objects.get(id=uncompletedOrder_id)
-    return render(request, 'shop_templates/checkout/shipping_details.html', {
+    shipping_price = 20.44
+    return render(request, 'shop_templates/checkout/shipping.htm', {
         "uncompletedOrder": uncompletedOrder,
-        "carts": carts
+        "carts": carts,
+        "user": user,
+        "shipping_price": shipping_price
     })
 
 
