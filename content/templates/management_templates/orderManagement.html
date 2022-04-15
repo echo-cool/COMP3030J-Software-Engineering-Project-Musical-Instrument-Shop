@@ -52,9 +52,9 @@
                 </label>
             </th>
             <th class="detail-col">Details</th>
-            <th>Item</th>
-            <th>Price</th>
-            <th class="hidden-480">Count</th>
+            <th>Customer</th>
+            <th>Items Involved</th>
+            <th class="hidden-480">Total Price</th>
 
             <th>
                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
@@ -68,526 +68,314 @@
 
         <tbody>
         {% for order_item in orders %}
-            {% if order_item.instrument is not None %}
-                <tr>
-                    <td class="center">
-                        <label class="pos-rel">
-                            <input type="checkbox" class="ace">
-                            <span class="lbl"></span>
-                        </label>
-                    </td>
+            <tr>
+                <td class="center">
+                    <label class="pos-rel">
+                        <input type="checkbox" class="ace">
+                        <span class="lbl"></span>
+                    </label>
+                </td>
 
-                    <td class="center">
-                        <div class="action-buttons">
-                            <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                <i class="ace-icon fa fa-angle-double-down"></i>
-                                <span class="sr-only">Details</span>
-                            </a>
-                        </div>
-                    </td>
-
-                    <td>
-                        <a href="#">
-                            {{ order_item.instrument.name|truncatewords:5 }}
+                <td class="center">
+                    <div class="action-buttons">
+                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                            <i class="ace-icon fa fa-angle-double-down"></i>
+                            <span class="sr-only">Details</span>
                         </a>
-                    </td>
-                    <td>${{ order_item.instrument.price }}</td>
-                    <td class="hidden-480">{{ order_item.order.count }}</td>
-                    <td>{{ order_item.order.created_at }}</td>
+                    </div>
+                </td>
 
-                    <td class="hidden-480">
-                        {% if order_item.order.delivered %}
-                             <a href="{% url 'management:order_state' order_item.order.id %}">
-                                <span class="label label-sm label-success arrowed-right arrowed-in">Delivered</span>
-                            </a>
-                        {% elif order_item.order.shipped %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                                <span class="label label-sm label-info arrowed-right">Shipped</span>
-                            </a>
-                        {% elif order_item.order.packed %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                                <span class="label label-sm label-purple">Packed</span>
-                            </a>
-                        {% elif order_item.order.accepted %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                                <span class="label label-sm label-warning arrowed-in-right">Accepted</span>
-                            </a>
-                        {% else %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                                <span class="label label-sm label-inverse arrowed-in-right arrowed">Placed</span>
-                            </a>
-                        {% endif %}
-                    </td>
+                <td>
+                    <a href="#">
+                        {{ order_item.user.username|truncatewords:5 }}
+                    </a>
+                </td>
+                <td>{{ order_item.quantity }}</td>
+                <td class="hidden-480">${{ order_item.total_price }}</td>
+                <td>{{ order_item.created_at }}</td>
 
-                    <td>
-                        <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
-                                <i class="ace-icon fa fa-check bigger-120"></i>
-                            </button>
-                            <script>
-                                $("#confirm_button-{{ order_item.order.id }}").on("click", function (res) {
-                                    $("#dialog-confirm").removeClass('hide').dialog({
-                                        resizable: false,
-                                        width: '320',
-                                        modal: true,
-                                        title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
-                                        title_html: true,
-                                        buttons: [
-                                            {
-                                                html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
-                                                "class": "btn btn-danger btn-minier",
-                                                click: function () {
-                                                    $.ajax({
-                                                        url: "/api/order/{{ order_item.order.id }}/",
-                                                        method: "PATCH",
-                                                        headers: {
-                                                            'X-CSRFTOKEN': '{{ csrf_token }}'
-                                                        },
-                                                        data: {
-                                                            "shopper_confirmed": true
-                                                        },
-                                                        success: function (res) {
-                                                            $.ajax({
-                                                                url: "#",
-                                                                method: "GET",
-                                                                success: function (res) {
-                                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                                    table_events()
-                                                                }
-                                                            });
-                                                            {#alert("Success!");#}
-                                                            console.log(res);
-                                                        }
-                                                    })
-                                                    $(this).dialog("close");
+                <td class="hidden-480">
+                    {% if order_item.delivered %}
+                        <a href="{% url 'management:order_state' order_item.id %}">
+                            <span class="label label-sm label-success arrowed-right arrowed-in">Delivered</span>
+                        </a>
+                    {% elif order_item.shipped %}
+                        <a href="{% url 'management:order_state' order_item.id %}">
+                            <span class="label label-sm label-info arrowed-right">Shipped</span>
+                        </a>
+                    {% elif order_item.packed %}
+                        <a href="{% url 'management:order_state' order_item.id %}">
+                            <span class="label label-sm label-purple">Packed</span>
+                        </a>
+                    {% elif order_item.accepted %}
+                        <a href="{% url 'management:order_state' order_item.id %}">
+                            <span class="label label-sm label-warning arrowed-in-right">Accepted</span>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'management:order_state' order_item.id %}">
+                            <span class="label label-sm label-inverse arrowed-in-right arrowed">Placed</span>
+                        </a>
+                    {% endif %}
+                </td>
 
-                                                }
+                <td>
+                    <div class="hidden-sm hidden-xs btn-group">
+                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-check bigger-120"></i>
+                        </button>
+                        <script>
+                            $("#confirm_button-{{ order_item.id }}").on("click", function (res) {
+                                $("#dialog-confirm").removeClass('hide').dialog({
+                                    resizable: false,
+                                    width: '320',
+                                    modal: true,
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                    title_html: true,
+                                    buttons: [
+                                        {
+                                            html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
+                                            "class": "btn btn-danger btn-minier",
+                                            click: function () {
+                                                $.ajax({
+                                                    url: "/api/order/{{ order_item.id }}/",
+                                                    method: "PATCH",
+                                                    headers: {
+                                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                                    },
+                                                    data: {
+                                                        "shopper_confirmed": true
+                                                    },
+                                                    success: function (res) {
+                                                        $.ajax({
+                                                            url: "#",
+                                                            method: "GET",
+                                                            success: function (res) {
+                                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                                table_events()
+                                                            }
+                                                        });
+                                                        {#alert("Success!");#}
+                                                        console.log(res);
+                                                    }
+                                                })
+                                                $(this).dialog("close");
+
                                             }
-                                            ,
-                                            {
-                                                html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
-                                                "class": "btn btn-minier",
-                                                click: function () {
-                                                    $(this).dialog("close");
-                                                }
-                                            }
-                                        ]
-                                    });
-
-                                });
-
-                            </script>
-
-                            <button class="btn btn-xs btn-info"
-                                    onclick="window.location.href='{% url 'management:update_order' order_item.order.id %}'">
-                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </button>
-
-
-                            <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.order.id }}">
-                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </button>
-                            <script>
-                                $("#delete_button-{{ order_item.order.id }}").on("click", function (res) {
-                                    $.ajax({
-                                        url: "/api/order/{{ order_item.order.id }}/",
-                                        method: "DELETE",
-                                        headers: {
-                                            'X-CSRFTOKEN': '{{ csrf_token }}'
-                                        },
-                                        success: function (res) {
-                                            $.ajax({
-                                                url: "#",
-                                                method: "GET",
-                                                success: function (res) {
-                                                    $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                    table_events()
-
-                                                }
-                                            });
-                                            alert("Success!");
-                                            console.log(res);
                                         }
-                                    })
+                                        ,
+                                        {
+                                            html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
+                                            "class": "btn btn-minier",
+                                            click: function () {
+                                                $(this).dialog("close");
+                                            }
+                                        }
+                                    ]
                                 });
 
-                            </script>
+                            });
 
-                            <button class="btn btn-xs btn-warning">
-                                <i class="ace-icon fa fa-flag bigger-120"></i>
+                        </script>
+
+                        <button class="btn btn-xs btn-info"
+                                onclick="window.location.href='{% url 'management:update_order' order_item.id %}'">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button>
+
+
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
+                        <script>
+                            $("#delete_button-{{ order_item.id }}").on("click", function (res) {
+                                $.ajax({
+                                    url: "/api/order/{{ order_item.id }}/",
+                                    method: "DELETE",
+                                    headers: {
+                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                    },
+                                    success: function (res) {
+                                        $.ajax({
+                                            url: "#",
+                                            method: "GET",
+                                            success: function (res) {
+                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                table_events()
+
+                                            }
+                                        });
+                                        alert("Success!");
+                                        console.log(res);
+                                    }
+                                })
+                            });
+
+                        </script>
+
+                        <button class="btn btn-xs btn-warning">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
+                        </button>
+                    </div>
+
+                    <div class="hidden-md hidden-lg">
+                        <div class="inline pos-rel">
+                            <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    data-position="auto">
+                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
                             </button>
-                        </div>
 
-                        <div class="hidden-md hidden-lg">
-                            <div class="inline pos-rel">
-                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown"
-                                        data-position="auto">
-                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                                </button>
-
-                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                    <li>
-                                        <a href="#" class="tooltip-info" data-rel="tooltip" title=""
-                                           data-original-title="View">
+                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#" class="tooltip-info" data-rel="tooltip" title=""
+                                       data-original-title="View">
                                             <span class="blue">
                                                 <i class="ace-icon fa fa-search-plus bigger-120"></i>
                                             </span>
-                                        </a>
-                                    </li>
+                                    </a>
+                                </li>
 
-                                    <li>
-                                        <a href="#" class="tooltip-success" data-rel="tooltip" title=""
-                                           data-original-title="Edit">
+                                <li>
+                                    <a href="#" class="tooltip-success" data-rel="tooltip" title=""
+                                       data-original-title="Edit">
                                             <span class="green">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </span>
-                                        </a>
+                                    </a>
 
-                                    </li>
+                                </li>
 
-                                    <li>
-                                        <a href="#" class="tooltip-error" data-rel="tooltip" title=""
-                                           data-original-title="Delete">
+                                <li>
+                                    <a href="#" class="tooltip-error" data-rel="tooltip" title=""
+                                       data-original-title="Delete">
                                             <span class="red">
                                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <tr class="detail-row">
-                    <td colspan="8">
-                        <div class="table-detail">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-2">
-                                    <div class="text-center">
-                                        <img height="150" class="thumbnail inline no-margin-bottom"
-                                             alt="Domain Owner's Avatar"
-                                             src="/media/{{ order_item.profile.image }}">
-                                        <br>
-                                        <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                            <div class="inline position-relative">
-                                                <a class="user-title-label" href="#">
-                                                    <i class="ace-icon fa fa-circle light-green"></i>
-                                                    &nbsp;
-                                                    <span class="white">{{ order_item.user.username }}</span>
-                                                </a>
-                                            </div>
+            <tr class="detail-row">
+                <td colspan="8">
+                    <div class="table-detail">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2">
+                                <div class="text-center">
+                                    <img height="150" class="thumbnail inline no-margin-bottom"
+                                         alt="Domain Owner's Avatar"
+                                         src="{{ order_item.user.profile.image.url }}">
+                                    <br>
+                                    <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                        <div class="inline position-relative">
+                                            <a class="user-title-label" href="#">
+                                                <i class="ace-icon fa fa-circle light-green"></i>
+                                                &nbsp;
+                                                <span class="white">{{ order_item.user.username }}</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col-xs-12 col-sm-7">
-                                    <div class="space visible-xs"></div>
+                            <div class="col-xs-12 col-sm-7">
+                                <div class="space visible-xs"></div>
 
-                                    <div class="profile-user-info profile-user-info-striped">
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Buyer</div>
+                                <div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Buyer</div>
 
-                                            <div class="profile-info-value">
-                                                <span>{{ order_item.user.username }}</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.user.username }}</span>
                                         </div>
+                                    </div>
 
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Location</div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Destination</div>
 
-                                            <div class="profile-info-value">
-                                                <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                                <span>Netherlands, Amsterdam</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                            <span>{{ order_item.country }} {{ order_item.state }} {{ order_item.city }} {{ order_item.apartment }} {{ order_item.address }}</span>
                                         </div>
+                                    </div>
 
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Age</div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> First Name</div>
 
-                                            <div class="profile-info-value">
-                                                <span>38</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.first_name }}</span>
                                         </div>
+                                    </div>
 
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Joined</div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Last Name</div>
 
-                                            <div class="profile-info-value">
-                                                <span>2010/06/20</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.last_name }}</span>
                                         </div>
+                                    </div>
 
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Last Online</div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Created At</div>
 
-                                            <div class="profile-info-value">
-                                                <span>3 hours ago</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.created_at }}</span>
                                         </div>
+                                    </div>
 
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> About Me</div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Zip Code</div>
 
-                                            <div class="profile-info-value">
-                                                <span>Bio</span>
-                                            </div>
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.zip_Code }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Newsletter</div>
+
+                                        <div class="profile-info-value">
+                                            <span>{{ order_item.newsletter }}</span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col-xs-12 col-sm-3">
-                                    <div class="space visible-xs"></div>
-                                    <h4 class="header blue lighter less-margin">Send a message
-                                        to {{ order_item.user.username }}</h4>
+                            <div class="col-xs-12 col-sm-3">
+                                <div class="space visible-xs"></div>
+                                <h4 class="header blue lighter less-margin">Send a message
+                                    to {{ order_item.user.username }}</h4>
 
-                                    <div class="space-6"></div>
+                                <div class="space-6"></div>
 
-                                    <form>
-                                        <fieldset>
+                                <form>
+                                    <fieldset>
                                             <textarea class="width-100" resize="none"
                                                       placeholder="Type something…"></textarea>
-                                        </fieldset>
+                                    </fieldset>
 
-                                        <div class="hr hr-dotted"></div>
+                                    <div class="hr hr-dotted"></div>
 
-                                        <div class="clearfix">
-                                            <label class="pull-left">
-                                                <input type="checkbox" class="ace">
-                                                <span class="lbl"> Email me a copy</span>
-                                            </label>
+                                    <div class="clearfix">
+                                        <label class="pull-left">
+                                            <input type="checkbox" class="ace">
+                                            <span class="lbl"> Email me a copy</span>
+                                        </label>
 
-                                            <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                    type="button">
-                                                Submit
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td class="center">
-                        <label class="pos-rel">
-                            <input type="checkbox" class="ace">
-                            <span class="lbl"></span>
-                        </label>
-                    </td>
-
-                    <td class="center">
-                        <div class="action-buttons">
-                            <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                <i class="ace-icon fa fa-angle-double-down"></i>
-                                <span class="sr-only">Details</span>
-                            </a>
-                        </div>
-                    </td>
-
-                    <td>
-                        <a href="#">
-                            Deleted
-                        </a>
-                    </td>
-                    <td> Deleted</td>
-                    <td class="hidden-480"> {{ order_item.order.count }} </td>
-                    <td>{{ order_item.order.created_at }}</td>
-
-                    <td class="hidden-480">
-                        {% if order_item.order.delivery_confirmed and order_item.order.shopper_conformed %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                            <span class="label label-sm label-success">Delivery-Confirmed</span>
-                            </a>
-                        {% elif order_item.order.shopper_confirmed %}
-                            <a href="{% url 'management:order_state' order_item.order.id %}">
-                            <span class="label label-sm label-warning">Shopper-Confirmed</span>
-                            </a>
-                        {% else %}
-                            <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-inverse arrowed-in">Unconfirmed</span>
-                            </a>
-                        {% endif %}
-                    </td>
-
-                    <td>
-                        <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.order.id }}">
-                                <i class="ace-icon fa fa-check bigger-120"></i>
-                            </button>
-                            <script>
-                                const button = $("#confirm_button-{{ order_item.order.id }}");
-                                button.on("click", function (res) {
-                                    console.log(res);
-                                });
-
-                            </script>
-
-                            <button class="btn btn-xs btn-info">
-                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </button>
-
-                            <button class="btn btn-xs btn-danger">
-                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </button>
-
-                            <button class="btn btn-xs btn-warning">
-                                <i class="ace-icon fa fa-flag bigger-120"></i>
-                            </button>
-                        </div>
-
-                        <div class="hidden-md hidden-lg">
-                            <div class="inline pos-rel">
-                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown"
-                                        data-position="auto">
-                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                                </button>
-
-                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                    <li>
-                                        <a href="#" class="tooltip-info" data-rel="tooltip" title=""
-                                           data-original-title="View">
-                                            <span class="blue">
-                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="tooltip-success" data-rel="tooltip" title=""
-                                           data-original-title="Edit">
-                                            <span class="green">
-                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="tooltip-error" data-rel="tooltip" title=""
-                                           data-original-title="Delete">
-                                            <span class="red">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr class="detail-row">
-                    <td colspan="8">
-                        <div class="table-detail">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-2">
-                                    <div class="text-center">
-                                        <img height="150" class="thumbnail inline no-margin-bottom"
-                                             alt="Domain Owner's Avatar"
-                                             src="/static/assets/images/avatars/profile-pic.jpg">
-                                        <br>
-                                        <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                            <div class="inline position-relative">
-                                                <a class="user-title-label" href="#">
-                                                    <i class="ace-icon fa fa-circle light-green"></i>
-                                                    &nbsp;
-                                                    <span class="white">Alex M. Doe</span>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
+                                                type="button">
+                                            Submit
+                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                        </button>
                                     </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-7">
-                                    <div class="space visible-xs"></div>
-
-                                    <div class="profile-user-info profile-user-info-striped">
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Username</div>
-
-                                            <div class="profile-info-value">
-                                                <span>alexdoe</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Location</div>
-
-                                            <div class="profile-info-value">
-                                                <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                                <span>Netherlands, Amsterdam</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Age</div>
-
-                                            <div class="profile-info-value">
-                                                <span>38</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Joined</div>
-
-                                            <div class="profile-info-value">
-                                                <span>2010/06/20</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Last Online</div>
-
-                                            <div class="profile-info-value">
-                                                <span>3 hours ago</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> About Me</div>
-
-                                            <div class="profile-info-value">
-                                                <span>Bio</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-3">
-                                    <div class="space visible-xs"></div>
-                                    <h4 class="header blue lighter less-margin">Send a message to Alex</h4>
-
-                                    <div class="space-6"></div>
-
-                                    <form>
-                                        <fieldset>
-                                            <textarea class="width-100" resize="none"
-                                                      placeholder="Type something…"></textarea>
-                                        </fieldset>
-
-                                        <div class="hr hr-dotted"></div>
-
-                                        <div class="clearfix">
-                                            <label class="pull-left">
-                                                <input type="checkbox" class="ace">
-                                                <span class="lbl"> Email me a copy</span>
-                                            </label>
-
-                                            <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                    type="button">
-                                                Submit
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+                                </form>
                             </div>
                         </div>
-                    </td>
-                </tr>
-            {% endif %}
+                    </div>
+                </td>
+            </tr>
 
         {% endfor %}
 

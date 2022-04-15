@@ -542,7 +542,10 @@ def product_search(request):
 
     print("==========", game_style, search_text)
 
-    carts = Cart.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+    else:
+        carts = {}
 
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
