@@ -1,0 +1,38 @@
+{#{% extends 'layouts/default/shopper_base2.html' %}#}
+{% load static %}
+{##}
+{#{% load i18n %}#}
+{#{% load bootstrap4 %}#}
+{##}
+{##}
+{#{% block head_link %}#}
+{#    #}
+{##}
+{#{% endblock %}#}
+<script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
+<body>
+    <ul id="messages">
+        <li>TEST</li>
+    </ul>
+    <input type="text" id="text-input">
+    <button id="send-button">Send</button>
+    <script>
+        $(document).ready(function () {
+            $('#send-button').click(function () {
+                var text = $('#text-input').val();
+                $.ajax({
+                    url: '/chat/rasa/',
+                    type: 'POST',
+                    data: {
+                        'message': text
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        $('#messages').append('<li>' + text +" | "+ data + '</li>');
+                    }
+                })
+            });
+        });
+    </script>
+
+</body>

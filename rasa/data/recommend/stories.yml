@@ -1,0 +1,24 @@
+version: "3.1"
+
+stories:
+
+- story: name-path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_name
+  - action: utter_give_name
+
+- story: recommend-path-westren
+  steps:
+  - intent: get_recommendaion
+  - action: utter_ask_instrument_type
+  - intent: get_western_instrument
+  - action: utter_recommend_westren
+
+- story: recommend-path-chinese
+  steps:
+  - intent: get_recommendaion
+  - action: utter_ask_instrument_type
+  - intent: get_chinese_instrument
+  - action: utter_recommend_chinese

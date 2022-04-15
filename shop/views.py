@@ -2,6 +2,7 @@
 # iframe
 import time
 
+from asgiref.sync import sync_to_async
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -33,10 +34,11 @@ def new_header(request):
     })
 
 
-def index(request):
+def _index(request):
     # order by count
     order_items = OrderItem.objects.all()
-    order_rank = order_items.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
+    order_rank = order_items.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by(
+        '-count')[
                  :5]
     order_rank = list(order_rank)
     for i in order_rank:
@@ -73,6 +75,9 @@ def index(request):
     })
 
 
+index = sync_to_async(_index)
+
+
 @xframe_options_exempt
 def chat_ai(request):
     return render(request, 'layouts/default/chat_ai.html', {
@@ -80,7 +85,7 @@ def chat_ai(request):
     })
 
 
-def home(request):
+def _home(request):
     instruments = Instrument.objects.all()
 
     instruments = instruments.order_by("-object_gltf")
@@ -154,6 +159,9 @@ def home(request):
                           {"name": "piano", "style": 3,
                            "url": "/static/assets/img_for_shop/img_for_model_design/model_design_piano3"}, ],
     })
+
+
+home = sync_to_async(_home)
 
 
 def about(request):
