@@ -117,7 +117,7 @@ def index(request):
 
 @login_required
 def order_management_all(request):
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -126,9 +126,20 @@ def order_management_all(request):
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
 
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 0
     })
 
@@ -137,6 +148,17 @@ def order_management_all(request):
 def order_management_all_new(request):
     data = []
     orders = Order.objects.all()
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
     for order_item in orders:
         tmp = {
             'order': order_item,
@@ -150,13 +172,14 @@ def order_management_all_new(request):
     return render(request, 'management/orderManagement.html', {
         'orders': data,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 0
     })
 
 
 @login_required
 def order_management_placed(request):
-    orders = Order.objects.filter(accepted=False)
+    orders = Order.objects.filter(accepted=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -164,8 +187,20 @@ def order_management_placed(request):
         for item in items:
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
+        'messages': messages,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 1
     })
@@ -173,7 +208,7 @@ def order_management_placed(request):
 
 @login_required
 def order_management_accepted(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=False)
+    orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -181,16 +216,27 @@ def order_management_accepted(request):
         for item in items:
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 2
     })
 
 
 @login_required
 def order_management_packed(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False)
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -198,16 +244,27 @@ def order_management_packed(request):
         for item in items:
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 3
     })
 
 
 @login_required
 def order_management_shipped(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False)
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -215,16 +272,27 @@ def order_management_shipped(request):
         for item in items:
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 4
     })
 
 
 @login_required
 def order_management_delivered(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True)
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -232,9 +300,19 @@ def order_management_delivered(request):
         for item in items:
             total_price += item.instrument.price * item.quantity
         order.total_price = total_price
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
         'mode': 5
     })
 
@@ -256,7 +334,7 @@ def update_order_item(request, order_item_id):
         f = OrderItemForm(request.POST, request.FILES, instance=order_item)
         if f.is_valid():
             f.save()
-        return redirect(reverse('management:order_item_management'))
+        return redirect('management:order_item_management', order_id=order_item.order.id)
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         order = OrderItem.objects.get(id=order_item_id)

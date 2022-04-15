@@ -644,8 +644,10 @@ def product_details_test_model(request, product_id):
 @login_required
 def orders(request):
     user = request.user
-    all_orders = Order.objects.filter(user_id=user.id)
+    all_orders = Order.objects.filter(user_id=user.id).order_by('-created_at')
     carts = Cart.objects.filter(user_id=request.user.id)
+    for order in all_orders:
+        order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     count = {
         "order": Order.objects.filter(user_id=user.id).count(),
         "cart": Cart.objects.filter(user_id=user.id).count(),
