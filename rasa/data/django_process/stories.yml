@@ -1,0 +1,11 @@
+version: "3.1"
+
+stories:
+
+- story: ask_popular_instrument
+  steps:
+  - intent: ask_popular_instrument
+  - action: utter_ask_login_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
