@@ -232,7 +232,7 @@
                                             <a class="user-title-label" href="#">
                                                 <i class="ace-icon fa fa-circle light-green"></i>
                                                 &nbsp;
-                                                <span class="white">{{ instrument.name }}</span>
+                                                <span class="white">{{ instrument.name | truncatewords:3 }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -252,43 +252,43 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Location</div>
+                                        <div class="profile-info-name"> Price</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                            <span>Netherlands, Amsterdam</span>
+                                            <span>${{ instrument.price }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Age</div>
+                                        <div class="profile-info-name"> Old Price</div>
 
                                         <div class="profile-info-value">
-                                            <span>38</span>
+                                            <span>${{ instrument.old_price }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Joined</div>
+                                        <div class="profile-info-name"> Category</div>
 
                                         <div class="profile-info-value">
-                                            <span>2010/06/20</span>
+                                            <span>{{ instrument.category }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Last Online</div>
+                                        <div class="profile-info-name"> Created At</div>
 
                                         <div class="profile-info-value">
-                                            <span>3 hours ago</span>
+                                            <span>{{ instrument.created_at }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> About Me</div>
+                                        <div class="profile-info-name"> Description</div>
 
                                         <div class="profile-info-value">
-                                            <span>Bio</span>
+                                            <span>{{ instrument.details }}</span>
                                         </div>
                                     </div>
                                 </div>
