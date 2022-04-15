@@ -162,7 +162,7 @@ def order_management_placed(request):
         order.quantity = items.count()
         total_price = 0
         for item in items:
-            total_price += item.instrument * item.quantity
+            total_price += item.instrument.price * item.quantity
         order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
@@ -179,7 +179,7 @@ def order_management_accepted(request):
         order.quantity = items.count()
         total_price = 0
         for item in items:
-            total_price += item.instrument * item.quantity
+            total_price += item.instrument.price * item.quantity
         order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
@@ -196,7 +196,7 @@ def order_management_packed(request):
         order.quantity = items.count()
         total_price = 0
         for item in items:
-            total_price += item.instrument * item.quantity
+            total_price += item.instrument.price * item.quantity
         order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
@@ -213,7 +213,7 @@ def order_management_shipped(request):
         order.quantity = items.count()
         total_price = 0
         for item in items:
-            total_price += item.instrument * item.quantity
+            total_price += item.instrument.price * item.quantity
         order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
@@ -230,7 +230,7 @@ def order_management_delivered(request):
         order.quantity = items.count()
         total_price = 0
         for item in items:
-            total_price += item.instrument * item.quantity
+            total_price += item.instrument.price * item.quantity
         order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
