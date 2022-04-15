@@ -15,7 +15,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
 from chat.models import MessageModel
-from shop.models import Profile, Wishlist, Cart, Order
+from shop.models import Profile, Wishlist, Cart, Order, OrderItem
 
 
 def login(request):
@@ -225,13 +225,13 @@ def all_read(request):
 
 
 def revenue_month(request):
-    orders = Order.objects
+    orders = OrderItem.objects
     total_revenue = []
     chinese_revenue = []
     western_revenue = []
 
     for i in range(1, 13):
-        total_orders_month = orders.filter(created_at__month=i)
+        total_orders_month = orders.filter(order__created_at__month=i)
         chinese_orders = total_orders_month.filter(instrument__chinese=True)
         western_orders = total_orders_month.filter(instrument__chinese=False)
         revenue = 0
