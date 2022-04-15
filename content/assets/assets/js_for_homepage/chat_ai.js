@@ -114,7 +114,7 @@ $("#iAtlasChatDiv").ready(function () {
     });
     $('#divChatLauncherOpen').on({
         click: function () {
-            // console.log("开启对话框");
+            console.log("开启对话框");
             // hasInteracted = true;
             // ToggleChatMenu(true);
             showScreen("start", true);
@@ -232,19 +232,28 @@ $("#iAtlasChatDiv").ready(function () {
 
     function showLauncher(doShow) {
         if (doShow === true) {
+            // 关闭对话框
             // display launcher screen elements
             // setLauncherSize();
+            console.log("DSD",);
+            $("#iAtlasChatDiv").css("height", "calc(17% - 0px)");
+            $("#iAtlasChatDiv").css("width", "calc(8%)");
             $("#divChatLauncher").css("display", "block");
             $("#resizable").css("display", "none");
             // $('#launcher').css("transform", "unset");
             // $(".chat_launcher_container").fadeIn();
-
         } else {
-            // hide launcher screen elements\
+            // 开启对话框
+            // hide launcher screen elements
+            $(".iAtlasChatDiv").css("color", "red");
+            $(".chat_icon_group").css("color", "red");
+
+            $("#iAtlasChatDiv").css("height", "calc(79% - 0px)");
+            $("#iAtlasChatDiv").css("width", "calc(26%)");
             $("#divChatLauncher").css("display", "none");
             $("#resizable").css("display", "flex");
         }
-    };
+    }
 
     function showSatisfactionScreen(doShow) {
         if (doShow) {
