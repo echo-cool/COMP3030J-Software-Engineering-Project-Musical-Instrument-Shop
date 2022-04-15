@@ -8,4 +8,15 @@ stories:
   - action: utter_greet
   - intent: ask_name
   - action: utter_give_name
+  - action: utter_ask_user_name
+  - slot_was_set:
+      - have_name: true
+  - action: utter_greet
 
+
+#- story: give-name-path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: give_name
+#  - action: utter_give_name
