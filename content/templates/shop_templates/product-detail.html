@@ -349,8 +349,8 @@
                                 </button>
                             </div>
                         </form>
-                        <div class="btn-addwhlist">
-                            <a href="/account/login"
+                        <div class="btn-addwhlist" id="wishlist__{{ instrument.id }}">
+                            <a href="javascript:void(0)"
                                class="box-shadow  inline-block maxus-product__wishlist wish text-center"
                                data-toggle="tooltip" data-placement="top" data-original-title="Add to Wishlist">
                                 <i class="fsz-unset"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
@@ -986,6 +986,42 @@
         $(".underline_scale").click(function (e) {
             $(".underline_scale").removeClass("active");
             this.className = "underline_scale active";
+        });
+
+        $('.btn-addwhlist').on('click', function () {
+            $.ajax({
+                url: "/api/add_wishlist/",
+                method: 'POST',
+                data: {
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your wishlist!", "warning");
+                        }, 300);
+                    } else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    } else if (res === 300) {
+                        alert("Error!")
+                    } else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
         });
     </script>
 {% endblock %}
