@@ -123,6 +123,7 @@ class UncompletedOrder(models.Model):
     address = models.CharField(max_length=200, default="")
     apartment = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=20, default="")
+    state = models.CharField(max_length=20, default="")
     country = models.CharField(max_length=200, default="")
     zip_Code = models.CharField(max_length=50, default="")
     created_at = models.DateTimeField(auto_now_add=True)
