@@ -242,14 +242,11 @@
                                                     <div class="d-flex flex-column justify-content-between order-summary">
                                                         <div class="d-flex align-items-center">
                                                             <div class="text-uppercase">Order
-                                                                #{{ order.order_id | truncatechars:8 }}</div>
+                                                                #{{ order.id | truncatechars:8 }}</div>
                                                             <div class="blue-label ms-auto text-uppercase">paid</div>
                                                         </div>
-                                                        <div class="fs-8">Products: <b>
-                                                            {% for item_data in order.items_data %}
-                                                                <span>{{ item_data.instrument.name }}</span>
-                                                            {% endfor %}
-                                                        </b></div>
+                                                        <div class="fs-8">Quantity: <b>{{ order.quantity }}</b>
+                                                        </div>
                                                         <div class="fs-8">{{ order.created_at }}</div>
                                                         <div class="rating d-flex align-items-center pt-1"><img
                                                                 src="{% static 'assets/images/icons/hand-thumb.png' %}"
