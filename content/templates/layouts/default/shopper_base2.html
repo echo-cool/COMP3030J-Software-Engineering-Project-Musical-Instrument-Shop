@@ -299,8 +299,25 @@
                                     {#                                        </div>#}
                                     {#                                    </div>#}
                                 </li>
+                                <script>
+                                    function heightToTop(ele) {
+                                        //ele为指定跳转到该位置的DOM节点
+                                        let root = document.body;
+                                        let height = 0;
+                                        do {
+                                            height += ele.offsetTop;
+                                            ele = ele.offsetParent;
+                                        } while (ele !== root)
+                                        return height;
+                                    }
+
+                                </script>
                                 <li class="nav-item dropdown">
-                                    <a href="/" title="SHOP" class="delay03  relative nav-link menu_lv1 ">SHOP
+                                    <a href="javascript:void(0)" onclick=" window.scrollTo({
+                                            top: heightToTop(window.document.getElementById('jump_customize')),
+                                            behavior: 'smooth'
+                                        })" title="3D Model Customize" class="delay03  relative nav-link menu_lv1 ">
+                                        CUSTOMIZE
                                         <span class="absolute label_menu label_menu-shophot-e62e05-2"
                                               style="background-color: #e62e05;"><span>HOT</span></span>
                                         <style>
@@ -621,12 +638,9 @@
                                     {#                                        </div>#}
                                     {#                                    </div>#}
                                 </li>
-
-
                                 <li class="nav-item dropdown">
-
-                                    <a href="/" title="FEATURED"
-                                       class="delay03 relative nav-link  menu_lv1 ">FEATURED</a>
+                                    <a href="/chinese" title="CHINESE"
+                                       class="delay03 relative nav-link  menu_lv1 ">CHINESE</a>
 
                                     {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                     {#                                         style="width:700px; left : -190px;">#}
@@ -775,20 +789,18 @@
                                     {#                                    </div>#}
                                 </li>
 
-
                                 {% if request.user %}
                                     {% if not request.user.is_staff %}
                                         <li class="nav-item dropdown">
-
                                             <a href="{% url 'chat:index_new' to=1 %}" title="PAGES"
-                                               class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                               class="delay03 relative nav-link  menu_lv1 ">CHAT</a>
                                         </li>
                                     {% endif %}
                                 {% else %}
                                     <li class="nav-item dropdown">
 
                                         <a href="{% url 'accounts:log_in' %}" title="PAGES"
-                                           class="delay03 relative nav-link  menu_lv1 ">FEEDBACK</a>
+                                           class="delay03 relative nav-link  menu_lv1 ">CHAT</a>
                                     </li>
                                 {% endif %}
 
