@@ -411,7 +411,7 @@
                                         <li>
                                             <a id="report_btn"
                                                class="btn btn-sm btn-danger danger box-shadow-3 round btn-min-width pull-right"
-                                               href="#" target="_blank">
+                                               href="{% url 'echarts:chart2' %}" target="_blank">
                                                 <span class="white">Report</span>
                                                 <i class="ft-bar-chart pl-1 white"></i>
                                             </a>
@@ -447,10 +447,10 @@
                                             </div>
                                         </div>
                                         <div class="media-body text-right mt-2">
-                                            <h3 class=" font-large-2 blue-grey lighten-1 ">35,656
+                                            <h3 class=" font-large-2 blue-grey lighten-1 ">{{ finished_orders }}
                                             </h3>
                                             <h6 class="mt-1">
-                                                    <span class="text-muted">tasks completed in
+                                                    <span class="text-muted">orders finished in
                                                         <a href="#" class="darken-2">this year.</a>
                                                     </span>
                                             </h6>

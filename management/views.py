@@ -76,6 +76,7 @@ def index_new(request):
     return render(request, 'management_templates/index_new.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'orders': orders,
+        'finished_orders': orders.filter(delivered=True).count(),
         'carts': carts,
         'order_items': order_items,
         'instruments': instruments,
@@ -117,7 +118,7 @@ def index(request):
 
 @login_required
 def order_management_all(request):
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by("-created_at")
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -256,7 +257,7 @@ def update_order_item(request, order_item_id):
         f = OrderItemForm(request.POST, request.FILES, instance=order_item)
         if f.is_valid():
             f.save()
-        return redirect(reverse('management:order_item_management'))
+        return redirect('management:order_item_management', order_id=order_item.order_id)
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         order = OrderItem.objects.get(id=order_item_id)
@@ -683,7 +684,7 @@ def update_blog_category(request, category_id):
         return redirect(reverse('management:blog_category_management'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
-        category = shop.models.Category.objects.get(id=category_id)
+        category = blog.models.Category.objects.get(id=category_id)
         f = BlogCategoryForm(instance=category)
         return render(request, 'management_templates/update_blog_category.html', {
             'form': f
