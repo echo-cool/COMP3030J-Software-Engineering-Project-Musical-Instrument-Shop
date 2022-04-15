@@ -35,8 +35,8 @@ def new_header(request):
 
 def index(request):
     # order by count
-    orders = Order.objects.all()
-    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
+    order_items = OrderItem.objects.all()
+    order_rank = order_items.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
                  :5]
     order_rank = list(order_rank)
     for i in order_rank:
@@ -299,6 +299,8 @@ def personal_profile(request):
         return redirect(reverse('shop:personal_profile'))
     # print(form)
     orders = Order.objects.order_by('-created_at')[:5]
+    for order in orders:
+        order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     carts = Cart.objects.filter(user_id=request.user.id)
     return render(request, 'shop_templates/personal_profile.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -542,7 +544,10 @@ def product_search(request):
 
     print("==========", game_style, search_text)
 
-    carts = Cart.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+    else:
+        carts = {}
 
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,

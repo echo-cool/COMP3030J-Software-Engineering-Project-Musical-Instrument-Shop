@@ -1,7 +1,8 @@
 from django.urls import path
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
-    ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet
+    ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet, \
+    OrderItemViewSet
 from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month
 
 app_name = 'api'
@@ -10,6 +11,7 @@ router = routers.DefaultRouter()
 router.register('instruments', InstrumentsViewSet, 'instruments')
 router.register('category', CategoryViewSet, 'category')
 router.register('order', OrderViewSet, 'order')
+router.register('order_item', OrderItemViewSet, 'order_item')
 router.register('review', ReviewViewSet, 'review')
 router.register('instrumentDetail', InstrumentDetailViewSet, 'instrumentDetail')
 router.register('profile', ProfileViewSet, 'profile')

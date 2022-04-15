@@ -9,7 +9,7 @@ from rest_framework.serializers import ModelSerializer
 import blog.models
 from blog.models import Post
 from chat.models import MessageModel
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem
 
 
 class InstrumentSerializer(serializers.ModelSerializer):
@@ -27,6 +27,12 @@ class CategorySerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
+        fields = "__all__"
+
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
         fields = "__all__"
 
 
