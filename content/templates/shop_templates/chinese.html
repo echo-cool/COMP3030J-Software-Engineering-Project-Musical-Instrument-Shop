@@ -11,7 +11,7 @@
     <meta name="keywords" content="Holiday Planners - Travel & Tour HTML5 Template">
     <meta name="description" content="Holiday Planners - Travel & Tour HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Holiday Planners - Travel & Tour HTML5 Template</title>
+    <title>{% trans "Holiday Planners - Travel & Tour HTML5 Template" %}</title>
 
     <!-- FavIcon Link -->
     <link rel="icon" href="/static/assets_chinese/images//favicon.png" type="image/gif" sizes="16x16">
@@ -67,7 +67,7 @@
     {#                            <li>#}
     {#                                <a href="mailto:holidayplanners@gmail.com" title="holidayplanners@gmail.com">#}
     {#                                    <span class="icon"><i class="far fa-envelope"></i></span>#}
-    {#                                    <span class="text">holidayplanners@gmail.com</span>#}
+    {#                                    <span class="text">{% trans 'holidayplanners@gmail.com' %}</span>#}
     {#                                </a>#}
     {#                            </li>#}
     {#                            <li>#}
@@ -112,7 +112,7 @@
             {#                        <div class="col-lg-8">#}
             {#                            <div class="header-menu-side">#}
             {#                                <div class="header-reserve-btn for-des">#}
-            {#                                    <a href="tour.html" class="sec-btn" title="Reserve"><span>Reserve</span></a>#}
+            {#                                    <a href="tour.html" class="sec-btn" title="Reserve"><span>{% trans 'Reserve' %}</span></a>#}
             {#                                </div>#}
             {#                                <div class="search-wp">#}
             {#                                    <div class="search-icon">#}
@@ -166,46 +166,46 @@
             {#                                                    <div class="menu-container">#}
             {#                                                        <ul>#}
             {#                                                            <li class="active">#}
-            {#                                                                <a href="index.html">Home</a>#}
+            {#                                                                <a href="index.html">{% trans 'Home' %}</a>#}
             {#                                                            </li>#}
             {#                                                            <li>#}
-            {#                                                                <a href="about.html">About</a>#}
+            {#                                                                <a href="about.html">{% trans 'About' %}</a>#}
             {#                                                            </li>#}
             {#                                                            <li class="dropdown-items">#}
-            {#                                                                <a href="javascript:void(0);">Destination</a>#}
+            {#                                                                <a href="javascript:void(0);">{% trans 'Destination' %}</a>#}
             {#                                                                <ul class="sub-menu">#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="destination.html">Destination</a>#}
+            {#                                                                        <a href="destination.html">{% trans 'Destination' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="destination-detail.html">Destination Detail</a>#}
+            {#                                                                        <a href="destination-detail.html">{% trans 'Destination Detail' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                </ul>#}
             {#                                                            </li>#}
             {#                                                            <li class="dropdown-items">#}
-            {#                                                                <a href="javascript:void(0);">Tour</a>#}
+            {#                                                                <a href="javascript:void(0);">{% trans 'Tour' %}</a>#}
             {#                                                                <ul class="sub-menu">#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="tour.html">Tour</a>#}
+            {#                                                                        <a href="tour.html">{% trans 'Tour' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="tour-detail.html">Tour Detail</a>#}
+            {#                                                                        <a href="tour-detail.html">{% trans 'Tour Detail' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                </ul>#}
             {#                                                            </li>#}
             {#                                                            <li class="dropdown-items">#}
-            {#                                                                <a href="javascript:void(0);">Blog</a>#}
+            {#                                                                <a href="javascript:void(0);">{% trans 'Blog' %}</a>#}
             {#                                                                <ul class="sub-menu">#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="blog.html">Blog</a>#}
+            {#                                                                        <a href="blog.html">{% trans 'Blog' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                    <li>#}
-            {#                                                                        <a href="blog-detail.html">Blog Detail</a>#}
+            {#                                                                        <a href="blog-detail.html">{% trans 'Blog Detail' %}</a>#}
             {#                                                                    </li>#}
             {#                                                                </ul>#}
             {#                                                            </li>#}
             {#                                                            <li>#}
-            {#                                                                <a href="contact.html">Contact us</a>#}
+            {#                                                                <a href="contact.html">{% trans 'Contact us' %}</a>#}
             {#                                                            </li>#}
             {#                                                        </ul>#}
             {#                                                    </div>#}
@@ -255,9 +255,8 @@
                         <div class="col-lg-8 m-auto">
                             <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
                                  data-wow-delay="0.1s">
-                                <h1 class="h1-title">Enjoy The <span>Chinese Instruments</span></h1>
-                                <p>Serve as a communication bridge between Chinese instruments and Western
-                                    instruments</p>
+                                <h1 class="h1-title">{% trans "Enjoy The" %} <span>{% trans "Chinese Instruments" %}</span></h1>
+                                <p>{% trans "Serve as a communication bridge between Chinese instruments and Western instruments" %}</p>
                             </div>
                         </div>
                     </div>
@@ -273,8 +272,8 @@
                         <div class="col-lg-8 m-auto">
                             <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
                                  data-wow-delay="0.1s">
-                                <h1 class="h1-title">Music and Instruments are <span>Universal.</span></h1>
-                                <p>A Convivial Journey of Chinese Instruments</p>
+                                <h1 class="h1-title">{% trans "Music and Instruments are" %} <span>{% trans "Universal." %}</span></h1>
+                                <p>{% trans "A Convivial Journey of Chinese Instruments" %}</p>
                             </div>
                         </div>
                     </div>
@@ -290,8 +289,8 @@
                         <div class="col-lg-8 m-auto">
                             <div class="banner-content wow fadeup-animation" data-wow-duration="1s"
                                  data-wow-delay="0.1s">
-                                <h1 class="h1-title">Let us Shop <span>Chinese Instruments.</span></h1>
-                                <p>Melodious Instruments offer you a break from routine life.</p>
+                                <h1 class="h1-title">{% trans "Let us Shop" %} <span>{% trans "Chinese Instruments." %}</span></h1>
+                                <p>{% trans "Melodious Instruments offer you a break from routine life." %}</p>
                             </div>
                         </div>
                     </div>
@@ -320,19 +319,19 @@
                     {#                                    <span class="form-control-span when-wrap">#}
                     {#                                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>#}
                     {#                                    <select class="form-input">#}
-                    {#                                            <option>When?</option>#}
-                    {#                                            <option>January</option>#}
-                    {#                                            <option>February</option>#}
-                    {#                                            <option>March</option>#}
-                    {#                                            <option>April</option>#}
-                    {#                                            <option>May</option>#}
-                    {#                                            <option>June</option>#}
-                    {#                                            <option>July</option>#}
-                    {#                                            <option>August</option>#}
-                    {#                                            <option>September</option>#}
-                    {#                                            <option>October</option>#}
-                    {#                                            <option>November</option>#}
-                    {#                                            <option>December</option>#}
+                    {#                                            <option>{% trans 'When?' %}</option>#}
+                    {#                                            <option>{% trans 'January' %}</option>#}
+                    {#                                            <option>{% trans 'February' %}</option>#}
+                    {#                                            <option>{% trans 'March' %}</option>#}
+                    {#                                            <option>{% trans 'April' %}</option>#}
+                    {#                                            <option>{% trans 'May' %}</option>#}
+                    {#                                            <option>{% trans 'June' %}</option>#}
+                    {#                                            <option>{% trans 'July' %}</option>#}
+                    {#                                            <option>{% trans 'August' %}</option>#}
+                    {#                                            <option>{% trans 'September' %}</option>#}
+                    {#                                            <option>{% trans 'October' %}</option>#}
+                    {#                                            <option>{% trans 'November' %}</option>#}
+                    {#                                            <option>{% trans 'December' %}</option>#}
                     {#                                        </select>#}
                     {#                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>#}
                     {#                                    </span>#}
@@ -341,19 +340,19 @@
                     {#                                    <span class="form-control-span travel-wrap">#}
                     {#                                        <span class="icon"><i class="fas fa-flag"></i></span>#}
                     {#                                    <select class="form-input">#}
-                    {#                                            <option>Travel Type</option>#}
-                    {#                                            <option>Cultural</option>#}
-                    {#                                            <option>Adventure</option>#}
-                    {#                                            <option>Historical</option>#}
-                    {#                                            <option>Seaside</option>#}
-                    {#                                            <option>Discovery</option>#}
+                    {#                                            <option>{% trans 'Travel Type' %}</option>#}
+                    {#                                            <option>{% trans 'Cultural' %}</option>#}
+                    {#                                            <option>{% trans 'Adventure' %}</option>#}
+                    {#                                            <option>{% trans 'Historical' %}</option>#}
+                    {#                                            <option>{% trans 'Seaside' %}</option>#}
+                    {#                                            <option>{% trans 'Discovery' %}</option>#}
                     {#                                        </select>#}
                     {#                                    <span class="arrow"><i class="fas fa-caret-down"></i></span>#}
                     {#                                    </span>#}
                     {#                                </div>#}
                     {#                                <div class="input-col button-col wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">#}
                     {#                                    <span class="form-control-span button-wrap">#}
-                    {#                                        <button class="sec-btn"><span>Find Now</span></button>#}
+                    {#                                        <button class="sec-btn"><span>{% trans 'Find Now' %}</span></button>#}
                     {#                                    </span>#}
                     {#                                </div>#}
                     {#                            </form>#}
@@ -390,27 +389,17 @@
                 <div class="col-lg-6">
                     <div class="about-content wow left-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="line-title">
-                            <h4 class="h4-title">About us</h4>
+                            <h4 class="h4-title">{% trans "About us" %}</h4>
                         </div>
-                        <h2 class="h2-title"><span>Chinese</span> Instruments Shop <span>Now</span></h2>
+                        <h2 class="h2-title"><span>{% trans "Chinese" %}</span> {% trans "Instruments Shop" %} <span>{% trans "Now" %}</span></h2>
                         <div class="about-content-text">
                             <p>
-                                The project displays Chinese and Western musical instruments in the separate zone to
-                                attract potential customers
-                                from different cultural backgrounds. The following figures shows the shopping zone
-                                specially designed to promote
-                                Chinese instruments. <br>
-                                Music is a language, and the more “words” you learn the more you will be able to say.
-                                You will soon find yourself wanting to apply the information you’ve learned to
-                                create music of your own and express your own voice. Music is not just about knowing
-                                how to play specific songs, it is about expressing emotion through sound. Whether it
-                                is just playing your own version of a song, or creating an entirely new one,
-                                learning how to play an instrument enables you to use your creativity to say
-                                something original.
+                                {% trans "The project displays Chinese and Western musical instruments in the separate zone to attract potential customers from different cultural backgrounds. The following figures shows the shopping zone specially designed to promote Chinese instruments." %} <br>
+                                {% trans "Music is a language, and the more “words” you learn the more you will be able to say. You will soon find yourself wanting to apply the information you’ve learned to create music of your own and express your own voice. Music is not just about knowing how to play specific songs, it is about expressing emotion through sound. Whether it is just playing your own version of a song, or creating an entirely new one, learning how to play an instrument enables you to use your creativity to say something original." %}
                             </p>
                         </div>
                         <a href="/product_search/?search=chinese" title="Read More"
-                           class="sec-btn"><span>Shop Now</span></a>
+                           class="sec-btn"><span>{% trans "Shop Now" %}</span></a>
                     </div>
                 </div>
             </div>
@@ -428,10 +417,10 @@
                 <div class="col-lg-6">
                     <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="line-title">
-                            <h4 class="h4-title">Amazing Instruments</h4>
+                            <h4 class="h4-title">{% trans "Amazing Instruments" %}</h4>
                         </div>
-                        <h2 class="h2-title">Choose The <span>Chinese Instruments</span> Just Extend Your
-                            <span>Music Style</span></h2>
+                        <h2 class="h2-title">{% trans "Choose The" %} <span>{% trans "Chinese Instruments" %}</span> {% trans "Just Extend Your" %}
+                            <span>{% trans "Music Style" %}</span></h2>
                     </div>
                 </div>
             </div>
@@ -445,7 +434,7 @@
                             </div>
                             <div class="destination-box-content">
                                 <div class="destination-box-content-inner">
-                                    <h3 class="h3-title">Pipa</h3>
+                                    <h3 class="h3-title">{% trans "Pipa" %}</h3>
                                 </div>
                             </div>
                         </a>
@@ -460,7 +449,7 @@
                                     </div>
                                     <div class="destination-box-content">
                                         <div class="destination-box-content-inner">
-                                            <h3 class="h3-title">Fengling</h3>
+                                            <h3 class="h3-title">{% trans "Fengling" %}</h3>
                                         </div>
                                     </div>
                                 </a>
@@ -475,7 +464,7 @@
                                     </div>
                                     <div class="destination-box-content">
                                         <div class="destination-box-content-inner">
-                                            <h3 class="h3-title">Drum</h3>
+                                            <h3 class="h3-title">{% trans "Drum" %}</h3>
                                         </div>
                                     </div>
                                 </a>
@@ -492,7 +481,7 @@
                             </div>
                             <div class="destination-box-content">
                                 <div class="destination-box-content-inner">
-                                    <h3 class="h3-title">Lusheng</h3>
+                                    <h3 class="h3-title">{% trans "Lusheng" %}</h3>
                                 </div>
                             </div>
                         </a>
@@ -502,7 +491,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="destination-see-more">
-                        <a href="destination.html" title="See More" class="sec-btn"><span>View All</span></a>
+                        <a href="destination.html" title="See More" class="sec-btn"><span>{% trans "View All" %}</span></a>
                     </div>
                 </div>
             </div>
@@ -519,9 +508,9 @@
                 <div class="col-lg-6">
                     <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="line-title">
-                            <h4 class="h4-title">Amazing Offers</h4>
+                            <h4 class="h4-title">{% trans "Amazing Offers" %}</h4>
                         </div>
-                        <h2 class="h2-title">View of <span>Chinese Instruments</span> and <span>Shop Now</span></h2>
+                        <h2 class="h2-title">{% trans "View of" %} <span>{% trans "Chinese Instruments" %}</span> {% trans "and" %} <span>{% trans "Shop Now" %}</span></h2>
                     </div>
                 </div>
             </div>
@@ -537,12 +526,12 @@
                             <div class="tour-offer-box-image-wp">
                                 <div class="tour-offer-box-image back-image"
                                      style="background-image: url(/static/assets_chinese/images//show46.png);">
-                                    <span class="discount-label">22% off</span>
+                                    <span class="discount-label">{% trans "22% off" %}</span>
                                 </div>
                             </div>
                             <div class="tour-offer-box-content">
-                                <h4 class="h4-title">Cinque Terre, Italy</h4>
-                                <span class="price-label">$1200</span>
+                                <h4 class="h4-title">{% trans "Cinque Terre, Italy" %}</h4>
+                                <span class="price-label">{% trans "$1200" %}</span>
                             </div>
                         </a>
                     </div>
@@ -553,11 +542,11 @@
                             <div class="tour-offer-box-image-wp">
                                 <div class="tour-offer-box-image back-image"
                                      style="background-image: url(/static/assets_chinese/images//show1.png);">
-                                    <span class="discount-label">15% off</span>
+                                    <span class="discount-label">{% trans '15% off' %}</span>
                                 </div>
                             </div>
                             <div class="tour-offer-box-content">
-                                <h4 class="h4-title">Parthenon, Greece</h4>
+                                <h4 class="h4-title">{% trans 'Parthenon, Greece' %}</h4>
                                 <span class="price-label">$2500</span>
                             </div>
                         </a>
@@ -569,11 +558,11 @@
                             <div class="tour-offer-box-image-wp">
                                 <div class="tour-offer-box-image back-image"
                                      style="background-image: url(/static/assets_chinese/images//show6.png);">
-                                    <span class="discount-label">38% off</span>
+                                    <span class="discount-label">{% trans '38% off' %}</span>
                                 </div>
                             </div>
                             <div class="tour-offer-box-content">
-                                <h4 class="h4-title">Jaisalmer Fort, Jaisalmer</h4>
+                                <h4 class="h4-title">{% trans 'Jaisalmer Fort, Jaisalmer' %}</h4>
                                 <span class="price-label">$750</span>
                             </div>
                         </a>
@@ -585,11 +574,11 @@
                             <div class="tour-offer-box-image-wp">
                                 <div class="tour-offer-box-image back-image"
                                      style="background-image: url(/static/assets_chinese/images//show22.png);">
-                                    <span class="discount-label">32% off</span>
+                                    <span class="discount-label">{% trans '32% off' %}</span>
                                 </div>
                             </div>
                             <div class="tour-offer-box-content">
-                                <h4 class="h4-title">JungGrenzgipfel, Thailand</h4>
+                                <h4 class="h4-title">{% trans 'JungGrenzgipfel, Thailand' %}</h4>
                                 <span class="price-label">$970</span>
                             </div>
                         </a>
@@ -601,11 +590,11 @@
                             <div class="tour-offer-box-image-wp">
                                 <div class="tour-offer-box-image back-image"
                                      style="background-image: url(/static/assets_chinese/images//show41.png);">
-                                    <span class="discount-label">15% off</span>
+                                    <span class="discount-label">{% trans '15% off' %}</span>
                                 </div>
                             </div>
                             <div class="tour-offer-box-content">
-                                <h4 class="h4-title">Jungfrau Mountain, Switzerland</h4>
+                                <h4 class="h4-title">{% trans 'Jungfrau Mountain, Switzerland' %}</h4>
                                 <span class="price-label">$1280</span>
                             </div>
                         </a>
@@ -643,11 +632,8 @@
                                      alt="tour-service-icon1">
                             </div>
                             <div class="tour-service-content">
-                                <h4 class="h4-title">700+ Instruments</h4>
-                                <p>The Chinese philosopher Confucius said long ago that "Music produces a kind
-                                    of pleasure which human nature cannot do without." Playing a musical
-                                    instrument has many benefits and can bring joy to you and to everyone
-                                    around you. </p>
+                                <h4 class="h4-title">{% trans '700+ Instruments' %}</h4>
+                                <p>{% trans 'The Chinese philosopher Confucius said long ago that "Music produces a kind of pleasure which human nature cannot do without." Playing a musical instrument has many benefits and can bring joy to you and to everyone around you.' %} </p>
                             </div>
                         </div>
                     </div>
@@ -658,12 +644,8 @@
                                      alt="tour-service-icon2">
                             </div>
                             <div class="tour-service-content">
-                                <h4 class="h4-title">BEST PRICE GUARANTEE</h4>
-                                <p>You don’t have to become a virtuoso to reap the benefits of music. You will develop a
-                                    taste for the
-                                    different composers, styles, and genres of music. Not only does this cause you to be
-                                    more well-versed in music, but it also leads to a higher appreciation of the
-                                    skill. </p>
+                                <h4 class="h4-title">{% trans 'BEST PRICE GUARANTEE' %}</h4>
+                                <p>{% trans 'You don’t have to become a virtuoso to reap the benefits of music. You will develop a taste for the different composers, styles, and genres of music. Not only does this cause you to be more well-versed in music, but it also leads to a higher appreciation of the skill.' %} </p>
                             </div>
                         </div>
                     </div>
@@ -674,10 +656,8 @@
                                      alt="tour-service-icon3">
                             </div>
                             <div class="tour-service-content">
-                                <h4 class="h4-title">TOP NOTCH SUPPORT</h4>
-                                <p> Once you learn how to effectively play an instrument, not only do you have the
-                                    ability to share your gift with family and friends, you can bless those at nursing
-                                    homes, church, banquets and more. You might even get paid for your work!</p>
+                                <h4 class="h4-title">{% trans 'TOP NOTCH SUPPORT' %}</h4>
+                                <p> {% trans 'Once you learn how to effectively play an instrument, not only do you have the ability to share your gift with family and friends, you can bless those at nursing homes, church, banquets and more. You might even get paid for your work!' %}</p>
                             </div>
                         </div>
                     </div>
@@ -691,9 +671,9 @@
                 <div class="col-lg-6">
                     <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="line-title">
-                            <h4 class="h4-title">Chinese instrument in International</h4>
+                            <h4 class="h4-title">{% trans 'Chinese instrument in International' %}</h4>
                         </div>
-                        <h2 class="h2-title">Trending, <span>Best Selling Instruments</span> And Amazing Musics</h2>
+                        <h2 class="h2-title">{% trans 'Trending, <span>Best Selling Instruments</span> And Amazing Musics' %}</h2>
                     </div>
                 </div>
             </div>
@@ -705,14 +685,14 @@
                         <div class="tour-box-content">
                             <div class="tour-box-label">
                                 <div class="tour-box-inner-label">
-                                    <h4 class="h4-title">Matouqin</h4>
+                                    <h4 class="h4-title">{% trans 'Matouqin' %}</h4>
                                 </div>
                             </div>
                             <div class="tour-box-title">
-                                <h4 class="h4-title">(Mongolian) A two-string stringed musical instrument.</h4>
+                                <h4 class="h4-title">{% trans '(Mongolian) A two-string stringed musical instrument.' %}</h4>
                             </div>
                             <div class="tour-box-description">
-                                <p>It has a trapezoidal body and a horse-head-shaped handle </p>
+                                <p>{% trans 'It has a trapezoidal body and a horse-head-shaped handle ' %}</p>
                             </div>
                             {#                            <div class="tour-info-box">#}
                             {#                                <div class="row">#}
@@ -722,8 +702,8 @@
                             {#                                                <i class="fas fa-clock"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Duration</h5>#}
-                            {#                                                <p>2 days</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Duration' %}</h5>#}
+                            {#                                                <p>{% trans '2 days' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -733,8 +713,8 @@
                             {#                                                <i class="fas fa-user-friends"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Group Size</h5>#}
-                            {#                                                <p>6 People</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Group Size' %}</h5>#}
+                            {#                                                <p>{% trans '6 People' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -746,7 +726,7 @@
                             {#                                </div>#}
                             {#                                <div class="book-now-button">#}
                             {#                                    <a href="tour-detail.html" title="Book Now"#}
-                            {#                                       class="sec-btn"><span>View More</span></a>#}
+                            {#                                       class="sec-btn"><span>{% trans 'View More' %}</span></a>#}
                             {#                                </div>#}
                             {#                            </div>#}
                         </div>
@@ -756,19 +736,18 @@
                     <div class="tour-box">
                         <div class="tour-box-image back-image"
                              style="background-image: url(/static/assets_chinese/images//inter6.jpg);"><span
-                                class="discount-label">15% off</span></div>
+                                class="discount-label">{% trans '15% off' %}</span></div>
                         <div class="tour-box-content">
                             <div class="tour-box-label">
                                 <div class="tour-box-inner-label">
-                                    <h4 class="h4-title">Rebagu</h4>
+                                    <h4 class="h4-title">{% trans 'Rebagu' %}</h4>
                                 </div>
                             </div>
                             <div class="tour-box-title">
-                                <h4 class="h4-title">(Tibetan) A percussion instrument in dancing</h4>
+                                <h4 class="h4-title">{% trans '(Tibetan) A percussion instrument in dancing' %}</h4>
                             </div>
                             <div class="tour-box-description">
-                                <p>Women hold a drum in her right hand and a handle in her left hand, changing movements
-                                    by spinning and tapping </p>
+                                <p>{% trans 'Women hold a drum in her right hand and a handle in her left hand, changing movements by spinning and tapping ' %}</p>
                             </div>
                             {#                            <div class="tour-info-box">#}
                             {#                                <div class="row">#}
@@ -778,8 +757,8 @@
                             {#                                                <i class="fas fa-clock"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Duration</h5>#}
-                            {#                                                <p>6 days 3 hours</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Duration' %}</h5>#}
+                            {#                                                <p>{% trans '6 days 3 hours' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -789,8 +768,8 @@
                             {#                                                <i class="fas fa-user-friends"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Group Size</h5>#}
-                            {#                                                <p>15+ People</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Group Size' %}</h5>#}
+                            {#                                                <p>{% trans '15+ People' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -802,7 +781,7 @@
                             {#                                </div>#}
                             {#                                <div class="book-now-button">#}
                             {#                                    <a href="tour-detail.html" title="Book Now"#}
-                            {#                                       class="sec-btn"><span>View More</span></a>#}
+                            {#                                       class="sec-btn"><span>{% trans 'View More' %}</span></a>#}
                             {#                                </div>#}
                             {#                            </div>#}
                         </div>
@@ -812,20 +791,18 @@
                     <div class="tour-box">
                         <div class="tour-box-image back-image"
                              style="background-image: url(/static/assets_chinese/images//inter7.jpg);"><span
-                                class="discount-label">38% off</span></div>
+                                class="discount-label">{% trans '38% off' %}</span></div>
                         <div class="tour-box-content">
                             <div class="tour-box-label">
                                 <div class="tour-box-inner-label">
-                                    <h4 class="h4-title">Lishidagu</h4>
+                                    <h4 class="h4-title">{% trans 'Lishidagu' %}</h4>
                                 </div>
                             </div>
                             <div class="tour-box-title">
-                                <h4 class="h4-title">(Han)Holiday celebration drum, used to strengthen the military
-                                    momentum</h4>
+                                <h4 class="h4-title">{% trans '(Han)Holiday celebration drum, used to strengthen the military momentum' %}</h4>
                             </div>
                             <div class="tour-box-description">
-                                <p>The tympanic membrane is about 1000m in diameter and is struck by one or two people
-                                    each holding a double stick </p>
+                                <p>{% trans 'The tympanic membrane is about 1000m in diameter and is struck by one or two people each holding a double stick' %} </p>
                             </div>
                             {#                            <div class="tour-info-box">#}
                             {#                                <div class="row">#}
@@ -835,8 +812,8 @@
                             {#                                                <i class="fas fa-clock"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Duration</h5>#}
-                            {#                                                <p>1 days 8 hours</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Duration' %}</h5>#}
+                            {#                                                <p>{% trans '1 days 8 hours' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -846,8 +823,8 @@
                             {#                                                <i class="fas fa-user-friends"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Group Size</h5>#}
-                            {#                                                <p>50+ People</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Group Size' %}</h5>#}
+                            {#                                                <p>{% trans '50+ People' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -859,7 +836,7 @@
                             {#                                </div>#}
                             {#                                <div class="book-now-button">#}
                             {#                                    <a href="tour-detail.html" title="Book Now"#}
-                            {#                                       class="sec-btn"><span>View More</span></a>#}
+                            {#                                       class="sec-btn"><span>{% trans 'View More' %}</span></a>#}
                             {#                                </div>#}
                             {#                            </div>#}
                         </div>
@@ -872,14 +849,14 @@
                         <div class="tour-box-content">
                             <div class="tour-box-label">
                                 <div class="tour-box-inner-label">
-                                    <h4 class="h4-title">Yueqin</h4>
+                                    <h4 class="h4-title">{% trans 'Yueqin' %}</h4>
                                 </div>
                             </div>
                             <div class="tour-box-title">
-                                <h4 class="h4-title">(Han) A plucked stringed instruments from Han Dynasty</h4>
+                                <h4 class="h4-title">{% trans '(Han) A plucked stringed instruments from Han Dynasty' %}</h4>
                             </div>
                             <div class="tour-box-description">
-                                <p>The neck of the piano is short, and the sound of the piano is leisurely </p>
+                                <p>{% trans 'The neck of the piano is short, and the sound of the piano is leisurely ' %}</p>
                             </div>
                             {#                            <div class="tour-info-box">#}
                             {#                                <div class="row">#}
@@ -889,8 +866,8 @@
                             {#                                                <i class="fas fa-clock"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Duration</h5>#}
-                            {#                                                <p>7 days 8 hours</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Duration' %}</h5>#}
+                            {#                                                <p>{% trans '7 days 8 hours' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -900,8 +877,8 @@
                             {#                                                <i class="fas fa-user-friends"></i>#}
                             {#                                            </div>#}
                             {#                                            <div class="tour-info-content">#}
-                            {#                                                <h5 class="h6-title">Group Size</h5>#}
-                            {#                                                <p>50+ People</p>#}
+                            {#                                                <h5 class="h6-title">{% trans 'Group Size' %}</h5>#}
+                            {#                                                <p>{% trans '50+ People' %}</p>#}
                             {#                                            </div>#}
                             {#                                        </div>#}
                             {#                                    </div>#}
@@ -913,7 +890,7 @@
                             {#                                </div>#}
                             {#                                <div class="book-now-button">#}
                             {#                                    <a href="tour-detail.html" title="Book Now"#}
-                            {#                                       class="sec-btn"><span>View More</span></a>#}
+                            {#                                       class="sec-btn"><span>{% trans 'View More' %}</span></a>#}
                             {#                                </div>#}
                             {#                            </div>#}
                         </div>
@@ -934,9 +911,9 @@
                      data-wow-delay="0.1s">
                     <div class="sec-title">
                         <div class="line-title">
-                            <h4 class="h4-title">Testimonials</h4>
+                            <h4 class="h4-title">{% trans 'Testimonials' %}</h4>
                         </div>
-                        <h2 class="h2-title">Customer <span>Reviews</span></h2>
+                        <h2 class="h2-title"><span>{% trans 'Customer <span>Reviews' %}</span></h2>
                     </div>
                     <div class="testimonial-quote">
                         <img src="/static/assets_chinese/images//testimonial-quote.svg" alt="testimonial-quote">
@@ -955,14 +932,11 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <div class="overflow-text">
-                                <p>The Chinese philosopher Confucius said long ago that "Music produces a kind
-                                    of pleasure which human nature cannot do without." Playing a musical
-                                    instrument has many benefits and can bring joy to you and to everyone
-                                    around you. </p>
+                                <p>{% trans 'The Chinese philosopher Confucius said long ago that "Music produces a kind of pleasure which human nature cannot do without." Playing a musical instrument has many benefits and can bring joy to you and to everyone around you.' %} </p>
                             </div>
                             <div class="testimonial-name">
-                                <h3 class="h3-title">John Doe</h3>
-                                <p class="rated">Rated by instruments player on facebook</p>
+                                <h3 class="h3-title">{% trans 'John Doe' %}</h3>
+                                <p class="rated">{% trans 'Rated by instruments player on facebook' %}</p>
                             </div>
                         </div>
 
@@ -975,14 +949,11 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <div class="overflow-text">
-                                <p>The Chinese philosopher Confucius said long ago that "Music produces a kind
-                                    of pleasure which human nature cannot do without." Playing a musical
-                                    instrument has many benefits and can bring joy to you and to everyone
-                                    around you. </p>
+                                <p>{% trans 'The Chinese philosopher Confucius said long ago that "Music produces a kind of pleasure which human nature cannot do without." Playing a musical instrument has many benefits and can bring joy to you and to everyone around you.' %} </p>
                             </div>
                             <div class="testimonial-name">
-                                <h3 class="h3-title">Minh Chau</h3>
-                                <p class="rated">Rated by instruments player on instagram</p>
+                                <h3 class="h3-title">{% trans 'Minh Chau' %}</h3>
+                                <p class="rated">{% trans 'Rated by instruments player on instagram' %}</p>
                             </div>
                         </div>
 
@@ -995,14 +966,11 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <div class="overflow-text">
-                                <p>The Chinese philosopher Confucius said long ago that "Music produces a kind
-                                    of pleasure which human nature cannot do without." Playing a musical
-                                    instrument has many benefits and can bring joy to you and to everyone
-                                    around you. </p>
+                                <p>{% trans 'The Chinese philosopher Confucius said long ago that "Music produces a kind of pleasure which human nature cannot do without." Playing a musical instrument has many benefits and can bring joy to you and to everyone around you.' %} </p>
                             </div>
                             <div class="testimonial-name">
-                                <h3 class="h3-title">Mathew A. Stephenson</h3>
-                                <p class="rated">Rated by instruments player on twitter</p>
+                                <h3 class="h3-title">{% trans 'Mathew A. Stephenson' %}</h3>
+                                <p class="rated">{% trans 'Rated by instruments player on twitter' %}</p>
                             </div>
                         </div>
                     </div>
@@ -1020,14 +988,14 @@
             <div class="col-lg-8">
                 <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                     <div class="line-title">
-                        <h4 class="h4-title">Latest News</h4>
+                        <h4 class="h4-title">{% trans 'Latest News' %}</h4>
                     </div>
-                    <h2 class="h2-title">Learn More <span>About Instruments</span></h2>
+                    <h2 class="h2-title"><span>{% trans 'Learn More <span>About Instruments' %}</span></h2>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="blog-learn-btn for-des wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <a href="/blog" class="sec-btn" title="Learn More"><span>Go to Blog</span></a>
+                    <a href="/blog" class="sec-btn" title="Learn More"><span>{% trans 'Go to Blog' %}</span></a>
                 </div>
             </div>
         </div>
@@ -1054,7 +1022,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog-learn-btn for-mob wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
-                    <a href="blog.html" class="sec-btn" title="Learn More"><span>Learn More</span></a>
+                    <a href="blog.html" class="sec-btn" title="Learn More"><span>{% trans 'Learn More' %}</span></a>
                 </div>
             </div>
         </div>
@@ -1073,9 +1041,9 @@
                 <div class="col-lg-12">
                     <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="line-title">
-                            <h4 class="h4-title">Instagram</h4>
+                            <h4 class="h4-title">{% trans 'Instagram' %}</h4>
                         </div>
-                        <h2 class="h2-title"><span><a href="javascript:void(0);">Instrumentsplayer</a></span></h2>
+                        <h2 class="h2-title"><span><a href="javascript:void(0);">{% trans 'Instrumentsplayer' %}</a></span></h2>
                     </div>
                 </div>
             </div>
@@ -1143,9 +1111,9 @@
 {#                <div class="col-lg-12">#}
 {#                    <div class="sec-title wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">#}
 {#                        <div class="line-title">#}
-{#                            <h4 class="h4-title">Partners</h4>#}
+{#                            <h4 class="h4-title">{% trans 'Partners' %}</h4>#}
 {#                        </div>#}
-{#                        <h2 class="h2-title">Our <span>Members</span></h2>#}
+{#                        <h2 class="h2-title">{% trans 'Our <span>Members' %}</span></h2>#}
 {#                    </div>#}
 {#                </div>#}
 {#            </div>#}
@@ -1196,7 +1164,7 @@
 {#                        </div>#}
 {#                        <div class="footer-text mb-30 wow fadeup-animation" data-wow-duration="1s"#}
 {#                             data-wow-delay="0.2s">#}
-{#                            <p><b>Holiday Planners</b> sit amet consectetur adipisicing elit. Perferendis sapiente#}
+{#                            <p><b>{% trans 'Holiday Planners' %}</b> sit amet consectetur adipisicing elit. Perferendis sapiente#}
 {#                                tenetur officiis explicabo fugit, sit mollitia eum atque excepturi quaerat autem.</p>#}
 {#                        </div>#}
 {#                        <div class="newsletter-form mb-30 wow fadeup-animation" data-wow-duration="1s"#}
@@ -1204,7 +1172,7 @@
 {#                            <form>#}
 {#                                    <span class="form-control-span email-wrap">#}
 {#                                        <input type="email" class="form-input" placeholder="Enter Your Email" required>#}
-{#                                        <button type="submit" class="sec-btn sm-btn"><span>Submit</span></button>#}
+{#                                        <button type="submit" class="sec-btn sm-btn"><span>{% trans 'Submit' %}</span></button>#}
 {#                                    </span>#}
 {#                            </form>#}
 {#                        </div>#}
@@ -1217,27 +1185,27 @@
 {#                    <div class="col-lg-4 col-md-6">#}
 {#                        <div class="footer-nav-wp wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.5s">#}
 {#                            <div class="footer-title">#}
-{#                                <div class="h3-title">Navigation</div>#}
+{#                                <div class="h3-title">{% trans 'Navigation' %}</div>#}
 {#                            </div>#}
 {#                            <div class="footer-menu">#}
 {#                                <ul>#}
 {#                                    <li>#}
-{#                                        <a href="index.html">Home</a>#}
+{#                                        <a href="index.html">{% trans 'Home' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <a href="about.html">About</a>#}
+{#                                        <a href="about.html">{% trans 'About' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <a href="destination.html">Destination</a>#}
+{#                                        <a href="destination.html">{% trans 'Destination' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <a href="tour.html">Tour</a>#}
+{#                                        <a href="tour.html">{% trans 'Tour' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <a href="blog.html">Blog</a>#}
+{#                                        <a href="blog.html">{% trans 'Blog' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <a href="contact.html">Contact us</a>#}
+{#                                        <a href="contact.html">{% trans 'Contact us' %}</a>#}
 {#                                    </li>#}
 {#                                </ul>#}
 {#                            </div>#}
@@ -1247,24 +1215,24 @@
 {#                        <div class="footer-contact-wp wow fadeup-animation" data-wow-duration="1s"#}
 {#                             data-wow-delay="0.6s">#}
 {#                            <div class="footer-title">#}
-{#                                <div class="h3-title">Need Help ?</div>#}
+{#                                <div class="h3-title">{% trans 'Need Help ?' %}</div>#}
 {#                            </div>#}
 {#                            <div class="footer-contact">#}
 {#                                <ul>#}
 {#                                    <li>#}
-{#                                        <span class="contact-label">Call Us</span>#}
+{#                                        <span class="contact-label">{% trans 'Call Us' %}</span>#}
 {#                                        <a href="tel:1234567890">+123 456 7890</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <span class="contact-label">Email for Us</span>#}
-{#                                        <a href="mailto:holidayplanners@gmail.com">holidayplanners@gmail.com</a>#}
+{#                                        <span class="contact-label">{% trans 'Email for Us' %}</span>#}
+{#                                        <a href="mailto:holidayplanners@gmail.com">{% trans 'holidayplanners@gmail.com' %}</a>#}
 {#                                    </li>#}
 {#                                    <li>#}
-{#                                        <span class="contact-label">Location</span>#}
-{#                                        <a href="javascript:void(0);">Main Street, Victoria 8007.</a>#}
+{#                                        <span class="contact-label">{% trans 'Location' %}</span>#}
+{#                                        <a href="javascript:void(0);">{% trans 'Main Street, Victoria 8007.' %}</a>#}
 {#                                    </li>#}
 {#                                    <li class="social-icons">#}
-{#                                        <span class="contact-label">Follow us</span>#}
+{#                                        <span class="contact-label">{% trans 'Follow us' %}</span>#}
 {#                                        <ul>#}
 {#                                            <li>#}
 {#                                                <a href="javascript:void(0);" title="Follow us on Facebook">#}
@@ -1292,16 +1260,16 @@
 {#            <div class="bottom-footer">#}
 {#                <div class="row">#}
 {#                    <div class="col-lg-6">#}
-{#                        <p class="copyright-text text-lg-left">Copyright © 2021 <a href="http://www.bootstrapmb.com"#}
-{#                                                                                   target="_blank">Geek Code Lab</a>.#}
+{#                        <p class="copyright-text text-lg-left">{% trans 'Copyright © 2021 ' %}<a href="http://www.bootstrapmb.com"#}
+{#                                                                                   target="_blank">{% trans 'Geek Code Lab' %}</a>.#}
 {#                            All Rights Reserved.</p>#}
 {#                    </div>#}
 {#                    <div class="col-lg-6">#}
 {#                        <div class="copyright-link">#}
 {#                            <ul>#}
-{#                                <li><a href="javascript:void(0);" title="Privacy Policy">Privacy Policy</a></li>#}
-{#                                <li><a href="javascript:void(0);" title="Terms of Use">Terms of Use</a></li>#}
-{#                                <li><a href="javascript:void(0);" title="Cookie Policy">Cookie Policy</a></li>#}
+{#                                <li><a href="javascript:void(0);" title="Privacy Policy">{% trans 'Privacy Policy' %}</a></li>#}
+{#                                <li><a href="javascript:void(0);" title="Terms of Use">{% trans 'Terms of Use' %}</a></li>#}
+{#                                <li><a href="javascript:void(0);" title="Cookie Policy">{% trans 'Cookie Policy' %}</a></li>#}
 {#                            </ul>#}
 {#                        </div>#}
 {#                    </div>#}
