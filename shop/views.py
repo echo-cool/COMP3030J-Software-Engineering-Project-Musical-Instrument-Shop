@@ -1,5 +1,7 @@
 # Create your views here
 # iframe
+import time
+
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -17,7 +19,8 @@ from django.urls import reverse
 import blog
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
+    OrderItem
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -342,7 +345,6 @@ def checkout(request):
             apartment = checkout_form.cleaned_data['Apartment']
             city = checkout_form.cleaned_data['City']
             zip_Code = checkout_form.cleaned_data['Zip_Code']
-            messages.success(request, "Address saved successfully")
             uncompletedOrder = UncompletedOrder(
                 user=user,
                 country=country,
@@ -355,9 +357,17 @@ def checkout(request):
                 zip_Code=zip_Code
             )
             uncompletedOrder.save()
-            return redirect(reverse('shop:shipping_details'), {
-                "uncompletedOrder": uncompletedOrder,
-            })
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.count
+                )
+                uncompletedOrderItem.save()
+                item.delete()
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -381,11 +391,52 @@ def checkout(request):
 
 def shipping_details(request, uncompletedOrder_id):
     carts = Cart.objects.filter(user=request.user)
+    user = request.user
     uncompletedOrder = UncompletedOrder.objects.get(id=uncompletedOrder_id)
-    return render(request, 'shop_templates/checkout/shipping_details.html', {
+    order_items = uncompletedOrder.items.all()
+    shipping_price = 20.44
+    subtotal = 0
+    if request.method == "POST":
+        print(request.POST)
+        time.sleep(1)  # 假装在处理提交的数据
+        order = Order(
+            user=user,
+            country=uncompletedOrder.country,
+            state=uncompletedOrder.state,
+            first_name=uncompletedOrder.first_name,
+            last_name=uncompletedOrder.last_name,
+            address=uncompletedOrder.address,
+            apartment=uncompletedOrder.apartment,
+            city=uncompletedOrder.city,
+            zip_Code=uncompletedOrder.zip_Code
+        )
+        order.save()
+        for item in order_items:
+            orderItem = OrderItem(
+                instrument=item.instrument,
+                quantity=item.quantity,
+                order=order
+            )
+            orderItem.save()
+            item.delete()
+        messages.success(request, "Order successfully submitted!")
+        return redirect(reverse('shop:checkout_success'))
+
+    for item in order_items:
+        subtotal += item.instrument.price * item.quantity
+    total = subtotal + shipping_price
+    return render(request, 'shop_templates/checkout/shipping.htm', {
         "uncompletedOrder": uncompletedOrder,
-        "carts": carts
+        "order_items": order_items,
+        "user": user,
+        "shipping_price": shipping_price,
+        "subtotal": subtotal,
+        "total": total,
     })
+
+
+def checkout_success(request):
+    return render(request, 'shop_templates/checkout/success.html')
 
 
 #

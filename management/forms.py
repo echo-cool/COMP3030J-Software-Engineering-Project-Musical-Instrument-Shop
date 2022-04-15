@@ -1,7 +1,10 @@
 from django import forms
 from django.forms import widgets
 
-from shop.models import Order, Instrument, Review
+import blog
+import shop
+from blog.models import Post
+from shop.models import Order, Instrument, Review, Cart, Wishlist
 
 
 class OrderForm(forms.ModelForm):
@@ -19,6 +22,36 @@ class InstrumentForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
+        fields = "__all__"
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+class CartForm(forms.ModelForm):
+    class Meta:
+        model = Cart
+        fields = "__all__"
+
+
+class WishlistForm(forms.ModelForm):
+    class Meta:
+        model = Wishlist
+        fields = "__all__"
+
+
+class InstrumentCategoryForm(forms.ModelForm):
+    class Meta:
+        model = shop.models.Category
+        fields = "__all__"
+
+
+class BlogCategoryForm(forms.ModelForm):
+    class Meta:
+        model = blog.models.Category
         fields = "__all__"
 
 

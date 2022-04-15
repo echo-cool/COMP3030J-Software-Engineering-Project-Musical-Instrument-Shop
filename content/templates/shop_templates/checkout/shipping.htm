@@ -89,7 +89,7 @@
         Shopify.Checkout.step = "shipping_method";
         Shopify.Checkout.token = "f6e6e63d3a778f79e2a97bba669fe477";
         Shopify.Checkout.currency = "USD";
-        Shopify.Checkout.estimatedPrice = 199.00;
+        Shopify.Checkout.estimatedPrice = {{ subtotal }};
         Shopify.Checkout.dynamicCheckoutPaymentInstrumentsConfig = {
             "paymentInstruments": {
                 "accessToken": "0115b737ac23315b2417a8640f37ad9c",
@@ -254,7 +254,7 @@
           <dt class="visually-hidden"><span>Sale price</span></dt>
           <dd>
             <span class="order-summary__emphasis total-recap__final-price skeleton-while-loading"
-                  data-checkout-payment-due-target="21957">$219.57</span>
+                  data-checkout-payment-due-target="21957">${{ total | floatformat:2}}</span>
             </dd>
         </dl>
   </span></span></button>
@@ -267,43 +267,11 @@
             <header class="main__header" role="banner">
 
                 <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
-                        class="logo__text heading-1">Musicmo -  Musical Instruments Shop Shopify Theme</span></a>
+                        class="logo__text heading-1">Shipping</span></a>
 
                 <h1 class="visually-hidden">
                     Shipping
                 </h1>
-
-
-                <nav aria-label="Breadcrumb">
-                    <ol class="breadcrumb " role="list">
-                        <li class="breadcrumb__item breadcrumb__item--completed">
-                            <a class="breadcrumb__link" href="https://musicmo-store-demo.myshopify.com/cart">Cart</a>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-
-                        <li class="breadcrumb__item breadcrumb__item--completed">
-                            <a class="breadcrumb__link"
-                               href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">Information</a>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--current" aria-current="step">
-                            <span class="breadcrumb__text">Shipping</span>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--blank">
-                            <span class="breadcrumb__text">Payment</span>
-                        </li>
-                    </ol>
-                </nav>
 
 
                 <div class="shown-if-js" data-alternative-payments="">
@@ -341,12 +309,12 @@ window.additionalScripts = function () {
 
                 <div class="step" data-step="shipping_method" data-last-step="false">
                     <form class="edit_checkout" data-shipping-method-form="true" data-ignore-floating-label="true"
-                          action="/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477" accept-charset="UTF-8"
+                          action="" accept-charset="UTF-8"
                           method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input
                             type="hidden" name="authenticity_token"
                             value="zL2hdymdLaICEtNcQmjg5iviTM-HeYEvMHt_39dy3P2ksColMTE8ESMiV2_tVeP2urNhce9Y3Slc8VZVLZkrkA"
                             autocomplete="off">
-
+                        {% csrf_token %}
                         <input type="hidden" name="previous_step" id="previous_step" value="shipping_method"
                                autocomplete="off">
                         <input type="hidden" name="step" value="payment_method" autocomplete="off">
@@ -362,13 +330,13 @@ window.additionalScripts = function () {
                                                     Contact
                                                 </div>
                                                 <div role="cell" class="review-block__content">
-                                                    <bdo dir="ltr">w1109790800@gmail.com</bdo>
+                                                    <bdo dir="ltr">{{ user.email }}</bdo>
                                                 </div>
                                             </div>
                                             <div role="cell" class="review-block__link">
                                                 <a class="link--small"
                                                    href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">
-                                                    <span aria-hidden="true">Change</span>
+                                                    {#                                                    <span aria-hidden="true">Change</span>#}
                                                     <span class="visually-hidden">Change contact information</span>
                                                 </a></div>
                                         </div>
@@ -381,7 +349,7 @@ window.additionalScripts = function () {
                                                 </div>
                                                 <div role="cell" class="review-block__content">
                                                     <address class="address address--tight">
-                                                        aaa, aaa, aaaa NY 12233, United States
+                                                        {{ uncompletedOrder.first_name }}, {{ uncompletedOrder.last_name }}, {{ uncompletedOrder.city }} {{ uncompletedOrder.state }} {{ uncompletedOrder.zip_Code }}, {{ uncompletedOrder.country }}
                                                         <address>
                                                         </address>
                                                     </address>
@@ -418,17 +386,18 @@ window.additionalScripts = function () {
                                         <div class="content-box__row">
                                             <div class="radio-wrapper" data-shipping-method="shopify-Standard-20.57">
                                                 <div class="radio__input">
-                                                    <input class="input-radio" data-checkout-total-shipping="$20.57"
+                                                    <input class="input-radio"
+                                                           data-checkout-total-shipping="${{ shipping_price }}"
                                                            data-checkout-total-shipping-cents="2057"
                                                            data-checkout-discounted-shipping-price="20.57"
                                                            data-checkout-shipping-rate="$20.57"
                                                            data-checkout-original-shipping-rate="$20.57"
-                                                           data-checkout-total-price="$219.57"
+                                                           data-checkout-total-price="${{ total | floatformat:2}}"
                                                            data-checkout-total-price-cents="21957"
-                                                           data-checkout-payment-due="$219.57"
+                                                           data-checkout-payment-due="${{ total | floatformat:2}}"
                                                            data-checkout-payment-due-cents="21957"
                                                            data-checkout-payment-subform="required"
-                                                           data-checkout-subtotal-price="$199.00"
+                                                           data-checkout-subtotal-price="${{ subtotal | floatformat:2}}"
                                                            data-checkout-subtotal-price-cents="19900"
                                                            data-checkout-total-taxes="$0.00"
                                                            data-checkout-total-taxes-cents="0"
@@ -448,7 +417,7 @@ window.additionalScripts = function () {
           </span>
                                                     <span class="radio__label__accessory">
             <span class="content-box__emphasis">
-              $20.57
+              ${{ shipping_price | floatformat:2 }}
             </span>
           </span>
                                                 </label></div> <!-- /radio-wrapper-->
@@ -550,33 +519,37 @@ window.additionalScripts = function () {
                                     </tr>
                                     </thead>
                                     <tbody data-order-summary-section="line-items">
-                                    <tr class="product" data-product-id="6112418562235" data-variant-id="37684377813179"
-                                        data-product-type="" data-customer-ready-visible="">
-                                        <td class="product__image">
-                                            <div class="product-thumbnail ">
-                                                <div class="product-thumbnail__wrapper">
-                                                    <img alt="BDK-1 Full Size Starter Drum - Black"
-                                                         class="product-thumbnail__image"
-                                                         src="Shipping%20-%20Musicmo%20-%20Musical%20Instruments%20Shop%20Shopify%20Theme%20-%20Checkout_files/2.webp">
+                                    {% for item in order_items %}
+                                        <tr class="product" data-product-id="6112418562235"
+                                            data-variant-id="37684377813179"
+                                            data-product-type="" data-customer-ready-visible="">
+                                            <td class="product__image">
+                                                <div class="product-thumbnail ">
+                                                    <div class="product-thumbnail__wrapper">
+                                                        <img alt="{{ item.instrument.name }}"
+                                                             class="product-thumbnail__image"
+                                                             src="{{ item.instrument.image.url }}">
+                                                    </div>
+                                                    <span class="product-thumbnail__quantity"
+                                                          aria-hidden="true">1</span>
                                                 </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                            </div>
 
-                                        </td>
-                                        <th class="product__description" scope="row">
-                                            <span class="product__description__name order-summary__emphasis">BDK-1 Full Size Starter Drum</span>
-                                            <span class="product__description__variant order-summary__small-text">Black</span>
+                                            </td>
+                                            <th class="product__description" scope="row">
+                                                <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>
+                                                <span class="product__description__variant order-summary__small-text">Add: {{ item.created_at }}</span>
 
-                                        </th>
-                                        <td class="product__quantity">
-            <span class="visually-hidden">
-              1
-            </span>
-                                        </td>
-                                        <td class="product__price">
-                                            <span class="order-summary__emphasis skeleton-while-loading">$199.00</span>
-                                        </td>
-                                    </tr>
+                                            </th>
+                                            <td class="product__quantity">
+                                            <span class="visually-hidden">
+                                              {{ item.count }}
+                                            </span>
+                                            </td>
+                                            <td class="product__price">
+                                                <span class="order-summary__emphasis skeleton-while-loading">${{ item.instrument.price }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
 
@@ -606,7 +579,7 @@ window.additionalScripts = function () {
                                     <th class="total-line__name" scope="row">Subtotal</th>
                                     <td class="total-line__price">
                                         <span class="order-summary__emphasis skeleton-while-loading"
-                                              data-checkout-subtotal-price-target="19900">$199.00</span>
+                                              data-checkout-subtotal-price-target="19900">${{ subtotal | floatformat:2}}</span>
                                     </td>
                                 </tr>
 
@@ -618,7 +591,7 @@ window.additionalScripts = function () {
                                     </th>
                                     <td class="total-line__price">
                                         <span class="skeleton-while-loading order-summary__emphasis"
-                                              data-checkout-total-shipping-target="2057">$20.57</span>
+                                              data-checkout-total-shipping-target="2057">${{ shipping_price | floatformat:2}}</span>
                                     </td>
                                 </tr>
 
@@ -643,7 +616,7 @@ window.additionalScripts = function () {
                                     <td class="total-line__price payment-due" data-presentment-currency="USD">
                                         <span class="payment-due__currency remove-while-loading">USD</span>
                                         <span class="payment-due__price skeleton-while-loading--lg"
-                                              data-checkout-payment-due-target="21957">$219.57</span>
+                                              data-checkout-payment-due-target="21957">${{ total | floatformat:2}}</span>
                                     </td>
                                 </tr>
 
@@ -657,7 +630,7 @@ window.additionalScripts = function () {
                 <div class="visually-hidden" data-order-summary-section="accessibility-live-region">
                     <div aria-live="polite" aria-atomic="true" role="status">
                         Updated total price:
-                        <span data-checkout-payment-due-target="21957">$219.57</span>
+                        <span data-checkout-payment-due-target="21957">${{ total | floatformat}}</span>
                     </div>
                 </div>
 

@@ -6,6 +6,8 @@ from rest_framework.fields import CharField
 from rest_framework.generics import get_object_or_404
 from rest_framework.serializers import ModelSerializer
 
+import blog.models
+from blog.models import Post
 from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
 
@@ -87,3 +89,15 @@ class MessageModelSerializer(ModelSerializer):
     class Meta:
         model = MessageModel
         fields = ('id', 'user', 'recipient', 'timestamp', 'body')
+
+
+class PostModelSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+class BlogCategorySerializer(ModelSerializer):
+    class Meta:
+        model = blog.models.Category
+        fields = "__all__"
