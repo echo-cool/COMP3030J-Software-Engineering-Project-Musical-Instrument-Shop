@@ -24,5 +24,14 @@ urlpatterns = [
     path('review_management/', views.review_management, name='review_management'),
     path('update_review/<int:review_id>/', views.update_review, name='update_review'),
     path('add_review/', views.add_review, name='add_review'),
-    path('order_state/<order_id>', views.order_state, name='order_state')
+    path('order_state/<order_id>', views.order_state, name='order_state'),
+    path('post_management/', views.post_management, name='post_management'),
+    path('update_post/<int:post_id>/', views.update_post, name='update_post'),
+    path('add_post/', views.add_post, name='add_post'),
+    path('cart_management/', views.cart_management, name='cart_management'),
+    path('update_cart/<int:cart_id>/', views.update_cart, name='update_cart'),
+    path('add_cart/', views.add_cart, name='add_cart'),
+    path('wishlist_management/', views.wishlist_management, name='wishlist_management'),
+    path('update_wishlist/<int:wishlist_id>/', views.update_wishlist, name='update_wishlist'),
+    path('add_wishlist/', views.add_wishlist, name='add_wishlist'),
 ]

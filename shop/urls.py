@@ -2,9 +2,9 @@ from django.urls import path
 
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     product_details_test_model, wishlist, personal_profile, \
-    checkout, confirm, model_design2, home, \
+    checkout, model_design2, home, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    about, game, chinese, new_header, chat_ai
+    about, game, chinese, new_header, chat_ai, shipping_details
 
 app_name = 'shop'
 urlpatterns = [
@@ -16,7 +16,8 @@ urlpatterns = [
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
-    path('confirm/', confirm, name='confirm'),
+    path('shipping_details/<int:uncompletedOrder_id>', shipping_details, name='shipping_details'),
+    # path('confirm/', confirm, name='confirm'),
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
     # path('cart2/', cart2, name='cart'),

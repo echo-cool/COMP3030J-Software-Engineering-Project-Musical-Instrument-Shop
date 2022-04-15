@@ -8,11 +8,12 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from app import settings
+from blog.models import Post
 from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer
+    UserModelSerializer, PostModelSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -146,6 +147,15 @@ class MessageModelViewSet(ModelViewSet):
                                  Q(pk=kwargs['pk'])))
         serializer = self.get_serializer(msg)
         return Response(serializer.data)
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = PostModelSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 # class UserModelViewSet(ModelViewSet):
 #     queryset = User.objects.all()
