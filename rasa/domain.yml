@@ -2,6 +2,7 @@ version: "3.1"
 
 intents:
   - ask_name
+  - give_name
   - greet
   - goodbye
   - affirm
@@ -18,13 +19,33 @@ intents:
   - ask_forgot_password_url
   - ask_orders
   - ask_wishlist
+  - ask_cart
+  - ask_popular_instrument
 
-slot:
+slots:
+  have_name:
+    type: bool
+    influence_conversation: False
+    mappings:
+      - type: custom
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
 
 
 responses:
   utter_greet:
+    - condition:
+        - type: slot
+          name: have_name
+          value: true
+      text: "Hey, {name}. Nice to see you again! How are you?"
     - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
+
+  utter_ask_user_name:
+    - text: "So...What is your name?"
 
   utter_welcome:
     - text: "You are wellcome."
@@ -69,8 +90,14 @@ responses:
   utter_happy_to_help:
     - text: "I am happy to help you."
 
+  utter_ask_cart:
+    - text: "This is the cart url: ."
+
   utter_sorry_not_help:
     - text: "Sorry, I am not able to help you."
+
+  utter_ask_popular_instrument:
+    - text: "POPULAR-INSTRUMENTS"
 
 session_config:
   session_expiration_time: 60

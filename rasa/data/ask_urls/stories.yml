@@ -117,3 +117,19 @@ stories:
     - action: utter_did_that_help
     - intent: deny
     - action: utter_sorry_not_help
+
+- story: ask_cart
+  steps:
+    - intent: ask_cart
+    - action: utter_ask_cart
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy_to_help
+
+- story: ask_cart
+  steps:
+    - intent: ask_cart
+    - action: utter_ask_cart
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_sorry_not_help
