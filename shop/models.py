@@ -127,10 +127,10 @@ class OrderItem(models.Model):
 class UncompletedOrderItem(models.Model):
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
-    order = models.ForeignKey('UncompletedOrder', on_delete=models.CASCADE, related_name='items')
+    uncompleted_order = models.ForeignKey('UncompletedOrder', on_delete=models.CASCADE, related_name='items')
 
     def __str__(self):
-        return f'{self.instrument}<{self.count}>'
+        return f'{self.instrument}<{self.quantity}>'
 
 
 class UncompletedOrder(models.Model):
@@ -167,6 +167,7 @@ class Order(models.Model):
     address = models.CharField(max_length=200, default="")
     apartment = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=20, default="")
+    state = models.CharField(max_length=20, default="")
     country = models.CharField(max_length=200, default="")
     zip_Code = models.CharField(max_length=50, default="")
 
