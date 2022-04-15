@@ -299,6 +299,8 @@ def personal_profile(request):
         return redirect(reverse('shop:personal_profile'))
     # print(form)
     orders = Order.objects.order_by('-created_at')[:5]
+    for order in orders:
+        order.items_data = order.items.all()
     carts = Cart.objects.filter(user_id=request.user.id)
     return render(request, 'shop_templates/personal_profile.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -643,6 +645,8 @@ def product_details_test_model(request, product_id):
 def orders(request):
     user = request.user
     all_orders = Order.objects.filter(user_id=user.id)
+    for order in all_orders:
+        order.items_data = order.items.all()
     carts = Cart.objects.filter(user_id=request.user.id)
     count = {
         "order": Order.objects.filter(user_id=user.id).count(),

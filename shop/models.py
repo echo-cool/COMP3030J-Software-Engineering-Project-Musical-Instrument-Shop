@@ -121,7 +121,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='items')
 
     def __str__(self):
-        return f'{self.instrument}<{self.count}>'
+        return f'{self.instrument}<{self.quantity}>'
 
 
 class UncompletedOrderItem(models.Model):
