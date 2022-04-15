@@ -315,7 +315,6 @@ def order_management_delivered(request):
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'messages': messages,
         'mode': 5
     })
 
