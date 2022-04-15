@@ -1,4 +1,5 @@
-from django.urls import path
+from django.shortcuts import redirect
+from django.urls import path, reverse
 
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     product_details_test_model, wishlist, personal_profile, \
@@ -8,7 +9,8 @@ from .views import model_view, index, cart, product_details, model_design, leave
 
 app_name = 'shop'
 urlpatterns = [
-    path('', index, name='index'),
+    path('', home, name='index'),
+    path('home', lambda x: redirect(reverse("shop:index")), name='home'),
     path('shopping', index, name='shopping'),
     path("product_details/<int:product_id>", product_details, name="product_details"),
     path("product_details_test_model/<int:product_id>", product_details_test_model,
@@ -32,7 +34,7 @@ urlpatterns = [
     path("category/<str:category_id>", category_view, name='category_view'),
     path('wishlist/', wishlist, name='wishlist'),
     path('orders/', orders, name='orders'),
-    path('home', home, name='index'),
+
     path('about', about, name='about'),
     path('game', game, name='game'),
     path('chinese', chinese, name='chinese'),
