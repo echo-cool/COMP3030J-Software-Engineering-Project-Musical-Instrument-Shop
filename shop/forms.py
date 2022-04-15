@@ -23,3 +23,13 @@ class ReviewForm(forms.Form):
     main_image = forms.ImageField(required=False)
 
 
+class CheckoutForm(forms.Form):
+    # Saved_Address = forms.Select(choices=[(1, 'China'), (2, 'Ireland'), (3, 'Japan')])
+    First_Name = forms.CharField(max_length=50, required=True)
+    Last_Name = forms.CharField(max_length=50, required=True)
+    Address = forms.CharField(max_length=100, required=True)
+    Apartment = forms.CharField(max_length=100, required=False)
+    City = forms.CharField(max_length=100, required=True)
+    # Country = forms.CharField(max_length=100, required=True)
+    # State = forms.CharField(max_length=100, required=True)
+    Zip_Code = forms.CharField(max_length=100, required=True)
