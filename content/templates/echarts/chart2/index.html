@@ -93,7 +93,7 @@
                                     <span>{{ order.created_at | date:"Y/m/d" }}</span>
                                     <span>{{ order.user.username }}</span>
                                     <span>{{ order.city }}</span>
-                                    <span>{{ order.telephone }}</span>
+{#                                    <span>{{ order.telephone }}</span>#}
                                     <span>{{ order.full_address | truncatechars:20 }}</span>
                                     {% if order.delivery_confirmed %}
                                         <span class="text-green">Delivered</span>

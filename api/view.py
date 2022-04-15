@@ -5,7 +5,7 @@
 @File ：view.py
 @IDE ：PyCharm
 """
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 
 from django.contrib import auth
 from django.contrib.auth.models import User
@@ -15,7 +15,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
 from chat.models import MessageModel
-from shop.models import Profile, Wishlist, Cart
+from shop.models import Profile, Wishlist, Cart, Order, OrderItem
 
 
 def login(request):
@@ -223,3 +223,33 @@ def all_read(request):
         except:
             return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
 
+
+def revenue_month(request):
+    orders = OrderItem.objects
+    total_revenue = []
+    chinese_revenue = []
+    western_revenue = []
+
+    for i in range(1, 13):
+        total_orders_month = orders.filter(order__created_at__month=i)
+        chinese_orders = total_orders_month.filter(instrument__chinese=True)
+        western_orders = total_orders_month.filter(instrument__chinese=False)
+        revenue = 0
+        c_revenue = 0
+        w_revenue = 0
+        for order in total_orders_month:
+            revenue += order.quantity * order.instrument.price
+
+        for order in chinese_orders:
+            c_revenue += order.quantity * order.instrument.price
+
+        for order in western_orders:
+            w_revenue += order.quantity * order.instrument.price
+
+        total_revenue.append(revenue)
+        chinese_revenue.append(c_revenue)
+        western_revenue.append(w_revenue)
+
+    result = [total_revenue, chinese_revenue, western_revenue]
+
+    return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})

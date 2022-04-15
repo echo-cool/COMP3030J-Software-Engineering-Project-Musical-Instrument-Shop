@@ -108,6 +108,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+    #     'NAME': 'comp3030j',  # 数据库名
+    #     'USER': 'comp3030j',  # 账号
+    #     'PASSWORD': 'HcKsb2cfEKTb7T7W',  # 密码
+    #     'HOST': 'echo.cool',  # HOST
+    #     'POST': 3306,  # 端口
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [

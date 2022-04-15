@@ -1,4 +1,8 @@
-# Create your views here.
+# Create your views here
+# iframe
+import time
+
+from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
 from datetime import timedelta, datetime
@@ -14,9 +18,10 @@ from django.urls import reverse
 
 import blog
 from management.forms import SearchForm
-from shop.forms import UpdateProfileForm, ReviewForm
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
+    OrderItem
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
@@ -30,8 +35,8 @@ def new_header(request):
 
 def index(request):
     # order by count
-    orders = Order.objects.all()
-    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
+    order_items = OrderItem.objects.all()
+    order_rank = order_items.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
                  :5]
     order_rank = list(order_rank)
     for i in order_rank:
@@ -65,6 +70,13 @@ def index(request):
         "categories": categories,
         "index_categories": index_categories,
         "order_rank": order_rank,
+    })
+
+
+@xframe_options_exempt
+def chat_ai(request):
+    return render(request, 'layouts/default/chat_ai.html', {
+        "home": 1,
     })
 
 
@@ -287,6 +299,8 @@ def personal_profile(request):
         return redirect(reverse('shop:personal_profile'))
     # print(form)
     orders = Order.objects.order_by('-created_at')[:5]
+    for order in orders:
+        order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     carts = Cart.objects.filter(user_id=request.user.id)
     return render(request, 'shop_templates/personal_profile.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -321,49 +335,138 @@ def wishlist(request):
 @login_required
 def checkout(request):
     # get or post
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.count
+                )
+                uncompletedOrderItem.save()
+                item.delete()
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
     else:
-        subtotal_all = 0
-        carts = Cart.objects.filter(user=request.user)
-        for cart in carts:
-            subtotal_all += cart.instrument.price * cart.count
-        shipping = 7.0
-        total = subtotal_all + shipping
-        return render(request, 'shop_templates/checkout.html', {
-            "carts": Cart.objects.filter(user=request.user),
-            "subtotal_all": subtotal_all,
-            "shipping": shipping,
-            "total": total,
+        checkout_form = CheckoutForm()
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+        subtotal = 0
+        cart_items = Cart.objects.filter(user=request.user)
+        for item in cart_items:
+            subtotal += item.instrument.price * item.count
+
+        return render(request, 'shop_templates/checkout/checkout.html', {
+            "cart_items": cart_items,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form
         })
 
 
-@login_required
-def confirm(request):
-    # get current max order_id
-    if Order.objects.all().count() == 0:
-        order_id = 1
-    else:
-        order_id = Order.objects.all().aggregate(Max('order_id'))['order_id__max'] + 1
+def shipping_details(request, uncompletedOrder_id):
     carts = Cart.objects.filter(user=request.user)
-    subtotal_all = 0
-    for cart in carts:
-        instrument = cart.instrument
-        quantity = cart.count
-        subtotal = quantity * instrument.price
-        subtotal_all += subtotal
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
-                          quantity=quantity, subtotal=subtotal, name=request.POST['name'],
-                          last_name=request.POST['last_name'],
-                          full_address=request.POST['full_address'], city=request.POST['city'],
-                          postal_code=request.POST['postal_code'], country=request.POST['country'],
-                          telephone=request.POST['telephone'], payment=request.POST['payment'],
-                          shipping=request.POST['shipping'])
-        new_order.save()
-        cart.delete()
-    return render(request, 'shop_templates/confirm.html')
+    user = request.user
+    uncompletedOrder = UncompletedOrder.objects.get(id=uncompletedOrder_id)
+    order_items = uncompletedOrder.items.all()
+    shipping_price = 20.44
+    subtotal = 0
+    if request.method == "POST":
+        print(request.POST)
+        time.sleep(1)  # 假装在处理提交的数据
+        order = Order(
+            user=user,
+            country=uncompletedOrder.country,
+            state=uncompletedOrder.state,
+            first_name=uncompletedOrder.first_name,
+            last_name=uncompletedOrder.last_name,
+            address=uncompletedOrder.address,
+            apartment=uncompletedOrder.apartment,
+            city=uncompletedOrder.city,
+            zip_Code=uncompletedOrder.zip_Code
+        )
+        order.save()
+        for item in order_items:
+            orderItem = OrderItem(
+                instrument=item.instrument,
+                quantity=item.quantity,
+                order=order
+            )
+            orderItem.save()
+            item.delete()
+        messages.success(request, "Order successfully submitted!")
+        return redirect(reverse('shop:checkout_success'))
 
+    for item in order_items:
+        subtotal += item.instrument.price * item.quantity
+    total = subtotal + shipping_price
+    return render(request, 'shop_templates/checkout/shipping.htm', {
+        "uncompletedOrder": uncompletedOrder,
+        "order_items": order_items,
+        "user": user,
+        "shipping_price": shipping_price,
+        "subtotal": subtotal,
+        "total": total,
+    })
+
+
+def checkout_success(request):
+    return render(request, 'shop_templates/checkout/success.html')
+
+
+#
+# @login_required
+# def confirm(request):
+#     # get current max order_id
+#     if Order.objects.all().count() == 0:
+#         order_id = 1
+#     else:
+#         order_id = Order.objects.all().aggregate(Max('order_id'))['order_id__max'] + 1
+#     carts = Cart.objects.filter(user=request.user)
+#     subtotal_all = 0
+#     for cart in carts:
+#         instrument = cart.instrument
+#         quantity = cart.count
+#         subtotal = quantity * instrument.price
+#         subtotal_all += subtotal
+#         new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
+#                           quantity=quantity, subtotal=subtotal, name=request.POST['name'],
+#                           last_name=request.POST['last_name'],
+#                           full_address=request.POST['full_address'], city=request.POST['city'],
+#                           postal_code=request.POST['postal_code'], country=request.POST['country'],
+#                           telephone=request.POST['telephone'], payment=request.POST['payment'],
+#                           shipping=request.POST['shipping'])
+#         new_order.save()
+#         cart.delete()
+#     return render(request, 'shop_templates/confirm.html')
+#
 
 # model design with params
 def model_design(request):
@@ -441,7 +544,10 @@ def product_search(request):
 
     print("==========", game_style, search_text)
 
-    carts = Cart.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+    else:
+        carts = {}
 
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,

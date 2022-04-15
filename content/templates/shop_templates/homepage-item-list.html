@@ -35,6 +35,9 @@
                 <img style="width: 100%;padding-bottom: 5px;" id="3d-icon"
                      src="/static/assets/img_for_shop/3d-icon.png"></span>
             {% endif %}
+            <figure style="background : #e12c43; color: #ffffff" class="absolute uppercase label-sale text-center">
+                <span class="sale-percent">{% widthratio instrument.old_price 1 -1 as minus %}{% widthratio instrument.price|add:minus instrument.old_price 100 %}%</span>
+            </figure>
         </div>
         <div class="item-info-product">
             <h3>

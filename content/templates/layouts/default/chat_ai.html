@@ -1,0 +1,380 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <meta charset="utf-8">
+    <title>AtlasRTX Webchat</title>
+    <link href="{% static 'assets/css_for_homepage/chat_ai.css' %}" rel="stylesheet">
+
+    <style>a:hover, .chat_primary {
+        color: #d7ad5b
+    }</style>
+    <style>.chat_primary_bg {
+        background-color: #d7ad5b;
+        color: #FFFFFF;
+    }</style>
+    <style>svg.chat_primary, div.chat_primary > svg {
+        fill: #d7ad5b
+    }</style>
+    <style>.external_contact_menu a:link, .external_contact_menu a:hover, .external_contact_menu a:visited {
+        color: #FFFFFF
+    }</style>
+    <style>.login_text_box:focus, .login_text_box:active {
+        border-color: #d7ad5b
+    }</style>
+    <style>.chat_avatar {
+        border-color: #d7ad5b
+    }</style>
+    <style>.chat_header_top {
+        background: #d7ad5b;
+        color: #FFFFFF;
+    }</style>
+    <style>.chat_button_suggested_response_field.chat_primary {
+        border-color: #d7ad5b;
+        color: #d7ad5b
+    }</style>
+    <style>.chat_field_submit.chat_primary_bg {
+        background-color: #d7ad5b;
+    }</style>
+    <style>.chat_button_link.chat_primary, .chat_button_redirect.chat_primary, .chat_button_suggested_response.chat_primary, .chat_button_suggested_response_field.chat_primary {
+        border-color: #d7ad5b;
+        color: #d7ad5b
+    }</style>
+    <style>#chat_satisfaction, .chat_launcher_outer.chat_primary_bg {
+        background: #d7ad5b;
+    }</style>
+    <style>.chat_launcher_icon_tail.chat_primary > svg {
+        fill: #d7ad5b;
+    }</style>
+    <style>.chat_button_suggested_response.chat_primary, .chat_button_link.chat_primary, .chat_button_redirect.chat_primary {
+        border-color: #d7ad5b;
+        color: #d7ad5b
+    }</style>
+
+    <style>.on_white_color {
+        color: #d7ad5b;
+    }</style>
+    <style>.chat_launcher_open_icon_div {
+        background-image: url('https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png')
+    }
+
+    .chat_icon_group a {
+        padding: 10px;
+    }
+    </style>
+
+
+    <link href="{% static 'assets/css_for_homepage/chat_ai.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet"
+          type="text/css">
+
+    <link href="{% static 'assets/css_for_homepage/fotorama-4.6.4.css' %}" rel="stylesheet">
+
+</head>
+<body class="content" style="background: transparent;">
+<aside class="chat_aside">
+    <form class="chat_form">
+        <input type="text" id="tbConnID" style="display: none">
+        <input type="text" id="tbTokenAuth" style="display: none" value="">
+        <input type="text" id="tbMinimized" style="display: none">
+        <input type="text" id="tbWebChatSessionID" style="display: none">
+        <input type="text" id="tbFeedbackID" style="display: none">
+        <input type="text" id="tbCustomerID" style="display: none">
+        <input type="text" id="tbScreenState" style="display: none">
+        <input type="text" id="tbUseLightClientText" style="display: none">
+
+        <div id="resizable" class="chat_div positionabs"
+             style="display:none;border-radius: 100%;width: calc(100vw - 5px); height: calc(100vh - 2px);">
+            <div class="chat_header">
+                <div class="chat_header_top">
+                    <div class="content-maxwidth">
+                        <div class="chat_header_name">
+                            {#                            <div class="chat_contact_toggle icon" style="display: none;">#}
+                            {#                                <svg>#}
+                            {#                                    <use id="chatToggle" xlink:href="/images/webchat/icons.svg?v=2#chevron-right"></use>#}
+                            {#                                </svg>#}
+                            {#                            </div>#}
+                            <div id="chatHeaderIcon" class="chat_primary_bg">
+                                <img src="https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png"
+                                     alt="Header Icon" draggable="false">
+                            </div>
+                            <div class="chat_header_text" style="">
+                                <span id="spanHeaderText">Music More</span>
+                            </div>
+                        </div>
+
+                        <div class="flex-spacer"></div>
+                        <div class="chat_icon_group">
+                            <a href="javascript:void(0);" id="chat_clear" class="on_white_color">
+                                <i style="color:#ffffff;" class="far fa-trash-alt"></i>
+                            </a>
+
+                            <a href="javascript:void(0);" id="chat_close" class="icon icon_close">
+                                <i style="color:#ffffff;" class="far fa-window-close"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="external_contact_menu content-maxwidth">
+                    </div>
+                </div>
+                <div class="chat_header_bottom"></div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="chat_panel login_discussion" style="display: none;">
+                <div class="content-maxwidth">
+                    <div class="chat_header_logo" style="display: none;">
+                        <img id="img_header_logo" src="" alt="Header Logo" draggable="false">
+                    </div>
+                    <div class="login_container_text">
+                        <div class="login_header_salutation_big">Chat with Us!</div>
+                        <div class="login_header_salutation_small">Please enter your info to start chatting</div>
+                    </div>
+                    <input id="tbFirstNameIn" type="text" placeholder="First Name*" class="login_text_box">
+                    <input id="tbLastNameIn" type="text" placeholder="Last Name*" class="login_text_box">
+                    <input id="tbEmailIn" type="text" placeholder="Email*" class="login_text_box">
+                    <input id="tbPhoneIn" type="text" placeholder="Phone Number*" class="login_text_box">
+                    <div class="chat_error_text">
+                        <div id="lblLogInfo" class="chatform-label"></div>
+                    </div>
+                    <span id="termsText2" class="terms_and_conditions_text2">By submitting you <a
+                            href="https://www.atlasrtx.com/messaging-terms-conditions" target="_blank">agree</a> to receive text messages at the number provided. Message/data rates apply.</span>
+                    <div class="chat_login" style="display: none;">
+                        <button id="btnSendLogin" class="chat_primary_bg" onclick="this.disabled = true;" disabled="">
+                            <div class="login_text">Start Chatting!!</div>
+                        </button>
+                    </div>
+                    <div class="flex-spacer"></div>
+                    <div class="footer_line footer_line_login">
+                        <div class="footer_container">
+                            <a class="footer_link" target="_blank" href="" style="display: none;"></a>
+                            <span class="footer_divider" style="display: none;">|</span>
+                            <span class="footer_text">Powered by <a
+                                    href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
+                                    target="_blank">AtlasRTX </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="discussion_div" class="chat_discussion_div panel_shadow">
+                <div id="discussion" class="chat_panel chat_discussion">
+                    <div class="chat_discussion_spacer"></div>
+                    <div class="chat_image_wrapper">
+                        <style></style>
+                        <div class="fotorama--hidden"></div>
+                        <div class="fotorama fotorama-root fotorama1649923555429 initialized"
+                             data-image-data="[{&quot;id&quot;:0,&quot;href&quot;:&quot;&quot;,&quot;src&quot;:&quot;https://stuff.fendergarage.com/images/W/2/P/00-HERO__2x.jpg&quot;,&quot;atlas-value&quot;:&quot;https://stuff.fendergarage.com/images/W/2/P/00-HERO__2x.jpg&quot;,&quot;atlas-action&quot;:&quot;chat&quot;,&quot;atlas-isCta&quot;:false,&quot;atlas-messageToSend&quot;:&quot;Electric&quot;}]">
+                            <div class="fotorama__wrap fotorama__wrap--css3 fotorama__wrap--toggle-arrows fotorama__wrap--fade fotorama__wrap--no-controls"
+                                 style="width: 100%; min-width: 0px; max-width: 100%;">
+                                <div class="fotorama__stage" style="width: 346px; height: 147px;">
+                                    <div class="fotorama__stage__shaft"
+                                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); width: 346.2px; margin-left: 0px;">
+                                        <div class="fotorama__stage__frame fotorama__loaded fotorama__loaded--img fotorama__fade-rear fotorama__active"
+                                             style="left: 0px; transition-duration: 0ms; opacity: 1;"><img
+                                                src="https://stuff.fendergarage.com/images/W/2/P/00-HERO__2x.jpg" alt=""
+                                                class="fotorama__img"
+                                                style="width: 347.126px; height: 147px; left: -0.463158px; top: 0px;">
+                                            <div class="fotorama__html">
+                                                <div data-img="https://stuff.fendergarage.com/images/W/2/P/00-HERO__2x.jpg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fotorama__arr fotorama__arr--prev" tabindex="0" role="button"
+                                         style="display: none;"></div>
+                                    <div class="fotorama__arr fotorama__arr--next" tabindex="0" role="button"
+                                         style="display: none;"></div>
+                                    <div class="fotorama__video-close"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_message_wrapper">
+                        <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
+                             style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
+                        <div class="chat_user_name"><span>PlayerOne | 16:04</span></div>
+                        <div class="chat_message_bubble"><span id="element1" style="display:inline;">How can I help you?</span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="chat_message_wrapper">
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
+                            I am the customer service of the Musimo. I am ready to help you if you have any questions.
+                        </span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="chat_message_wrapper">
+                        <div class="chat_message_bubble"><span id="element3" style="display:inline;">Where do you want to start?</span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="chat_message_wrapper chat_button_wrapper">
+                        <div class="chat_button_bubble"><span data-atlas-action="chat" data-atlas-iscta="false"
+                                                              data-atlas-messagetosend=""
+                                                              class="chat_button_suggested_response chat_primary"
+                                                              data-atlas-value="Learn about guitars">Learn about guitars</span><span
+                                data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">Buy a guitar</span><span
+                                data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                class="chat_button_suggested_response chat_primary" data-atlas-value="Learn to play">Learn to play</span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div id="uploadprogress">
+                    <div class="uploadbar" style="width: 0%; height: 0px"></div>
+                </div>
+                <div class="footer_line">
+                    <div class="footer_container">
+                        <a class="footer_link" target="_blank" href="" style="display: none;"></a>
+                        <span class="footer_divider" style="display: none;">|</span>
+                        <span class="footer_text">Group 8 <a
+                                href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
+                                target="_blank">Not finished</a></span>
+                    </div>
+                </div>
+                <div id="chat_message_rating_context">
+                    <div class="chat_message_rating_context_prompt chat_primary_bg">
+                        <svg id="sentiment_close" class="icon icon_close">
+                            <use xlink:href="/images/webchat/icons.svg?v=2#times"></use>
+                        </svg>
+                        <p>Thank you for your feedback.<br>How can I improve?</p>
+                    </div>
+                    <div class="chat_input_area chat_bottom">
+                        <div class="content-maxwidth">
+                            <div id="chat_message_rating_count">250</div>
+                            <textarea id="tbRatingMessage" class="chat_input_text" placeholder="Comments" rows="1"
+                                      maxlength="250" style="height: auto;"></textarea>
+                            <div class="chat_input_icon_group_satisfaction">
+                                <svg id="imgRatingMessageSubmit" class="chat_input_icon icon on_white_color">
+                                    <use id="imgRatingMessageSubmitIcon"
+                                         xlink:href="/images/webchat/icons.svg?v=2#arrow-circle-up"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+                    <script id="chat_message_rating_widget" type="text/template">
+                        <div class="chat_message_rating">
+                                <span class="chat_message_rating_ask">
+                                    Was this helpful?
+                                    <svg id="chat_message_rating_positive" class="icon" data-rating="1"
+                                         title="Yes, this was helpful."><use
+                                            xlink:href="/images/webchat/icons.svg?v=2#smile"></use></svg>
+                                    <svg id="chat_message_rating_negative" class="icon" data-rating="0"
+                                         title="No, this was not helpful."><use
+                                            xlink:href="/images/webchat/icons.svg?v=2#frown"></use></svg>
+                                </span>
+                            <div class="chat_message_rating_thanks" style="display:none">
+                                <span class="undo"><a href="javascript:void(0);" class="chat_link">Undo</a>&nbsp;&mdash;&nbsp;</span>
+                                <span class="chat_message_rating_thanks_positive">
+                                        Thank you.<svg class="icon"><use
+                                        xlink:href="/images/webchat/icons.svg?v=2#smile"></use></svg>
+                                    </span>
+                                <span class="chat_message_rating_thanks_negative" style="display:none">Thank you for your feedback.</span>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+
+            <div class="chat_establish_connection" style="display: none">
+                <div class="chat_connection_loader panel_shadow">
+                    <div class="chat_establish_bubble">
+                        <div class="content-maxwidth">
+                            Establishing secure connection...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat_error" style="display: none;">
+                <span id="chatErrorMessage" class="chat_error_message">Error</span>
+                <div class="chat_error_dismiss">
+                    <svg class="chat_footer_close_img" viewBox="0 0 16 16" height="16" width="16" alt="Dismiss error">
+                        <use xlink:href="/images/webchat/icons.svg?v=2#times"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="chat_input" style="">
+                <div id="divChatInputArea" class="chat_input_area chat_bottom">
+                    <div id="divPcgContainer">
+                    </div>
+                    <div class="content-maxwidth">
+                        <div class="chat_input_icon_group m-l-20 disabled">
+                            <span id="emoticonSpan"></span>
+                            <svg id="emoticon" class="chat_input_icon icon grey" style="display: none;">
+                                <use xlink:href="/images/webchat/icons.svg?v=2#smile"></use>
+                            </svg>
+                            <svg id="img_attach" class="chat_input_icon icon grey" style="display: none;">
+                                <use xlink:href="/images/webchat/icons.svg?v=2#paperclip"></use>
+                            </svg>
+                            <input id="fileupload" type="file" name="files[]" multiple="" style="display: none;">
+                        </div>
+                        <label class="sr-only" for="tbMessage">Message Text</label>
+                        <!-- maxlength set to 1500 because backend data limit for user messages is 1547 -->
+                        <textarea id="tbMessage" class="chat_input_text" placeholder="Please select an option" rows="1"
+                                  maxlength="1500" disabled=""></textarea>
+                        <textarea id="tbHidden" style="display:none;" rows="1"></textarea>
+
+                        <div class="chat_input_icon_group disabled">
+                            <svg id="img_submit" class="chat_input_icon icon on_white_color" style="display:none">
+                                <use id="img_submit_icon"
+                                     xlink:href="/images/webchat/icons.svg?v=2#arrow-circle-up"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <span style="display:none;word-break:break-word;visibility:hidden;white-space:pre-wrap;"></span>
+                </div>
+            </div>
+            <div class="chat_tail">
+                <svg viewBox="0 0 60 40" height="40px" width="60px" style="float: right">
+                    <path class="chat_tail_svg_path" d="M0 0 Q 50 5 60 40 L 60 0"></path>
+                </svg>
+            </div>
+        </div>
+        <div id="divChatLauncherContainer" class="chat_launcher_container"
+        >
+            <div id="divChatLauncher" class="chat_launcher">
+                <div id="divChatLauncherCounter" class="chat_launcher_counter"
+                     style="display: block; background-color: #fe5151;">
+                </div>
+                <div class="chat_launcher_outer chat_primary_bg">
+                    <div id="divChatLauncherOpen" class="chat_launcher_icon_open">
+                        <div id="launcherIcon" class="chat_launcher_open_icon_div" role="img"
+                             aria-label="Web chat icon"></div>
+                        <div class="chat_launcher_open_text_div">
+                        </div>
+                    </div>
+                </div>
+                <div class="chat_launcher_icon_tail chat_primary">
+                    <svg viewBox="0 0 60 40" height="22px" width="30px" style="float: right">
+                        <path d="M0 0 Q 50 5 59.6 40 L 60 0"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </form>
+</aside>
+<script id="externalContactTemplate" type="text/template">
+    <div class="contact">
+        <a>
+            <svg class="icon">
+                <use xlink:href=""></use>
+            </svg>
+            <span class="contact_label"></span>
+        </a>
+    </div>
+</script>
+<script type="text/javascript"
+        src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+{#  <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>#}
+
+<script type="text/javascript"
+        src="{% static 'assets/js_for_homepage/chat_ai.js' %}"
+        async=""
+        defer=""></script>
+</body>
+</html>

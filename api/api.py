@@ -7,12 +7,14 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+import blog
 from app import settings
+from blog.models import Post
 from chat.models import MessageModel
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer
+    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -43,7 +45,16 @@ class OrderViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = OrderSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', "user", 'instrument', 'accepted', 'packed', 'shipped', 'delivered']
+    filterset_fields = ['id', "user", 'accepted', 'packed', 'shipped', 'delivered']
+
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = OrderItemSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
@@ -147,6 +158,23 @@ class MessageModelViewSet(ModelViewSet):
         serializer = self.get_serializer(msg)
         return Response(serializer.data)
 
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = PostModelSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+
+
+class BlogCategoryViewSet(viewsets.ModelViewSet):
+    queryset = blog.models.Category.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = BlogCategorySerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 # class UserModelViewSet(ModelViewSet):
 #     queryset = User.objects.all()
 #     serializer_class = UserModelSerializer

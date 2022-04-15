@@ -221,106 +221,38 @@
                 <li class="green dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-                        <span class="badge badge-success">5</span>
+                        {% if messages.count != 0 %}
+                            <span class="badge badge-success">{{ messages.count }}</span>
+                        {% endif %}
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
                             <i class="ace-icon fa fa-envelope-o"></i>
-                            5 Messages
+                            {{ messages.count }} Messages
                         </li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="/static/assets/images/avatars/avatar.png" class="msg-photo"
-                                             alt="Alex's Avatar"/>
-                                        <span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Alex:</span>
-														Ciao sociis natoque penatibus et auctor ...
-													</span>
+                                {% for message in messages %}
+                                    <li>
+                                        <a href="{% url 'chat:index_new' to=message.user.id %}" class="clearfix">
+                                            <img src="{{ message.user.profile.image.url }}" class="msg-photo"
+                                                 alt="{{ message.user.username }}'s Avatar"/>
+                                            <span class="msg-body">
+                                                        <span class="msg-title">
+                                                            <span class="blue">{{ message.user.username }}:</span>
+                                                            {{ message.body }}
+                                                        </span>
 
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>a moment ago</span>
-													</span>
-												</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="/static/assets/images/avatars/avatar3.png" class="msg-photo"
-                                             alt="Susan's Avatar"/>
-                                        <span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Susan:</span>
-														Vestibulum id ligula porta felis euismod ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>20 minutes ago</span>
-													</span>
-												</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="/static/assets/images/avatars/avatar4.png" class="msg-photo"
-                                             alt="Bob's Avatar"/>
-                                        <span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Bob:</span>
-														Nullam quis risus eget urna mollis ornare ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>3:15 pm</span>
-													</span>
-												</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="/static/assets/images/avatars/avatar2.png" class="msg-photo"
-                                             alt="Kate's Avatar"/>
-                                        <span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Kate:</span>
-														Ciao sociis natoque eget urna mollis ornare ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>1:33 pm</span>
-													</span>
-												</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="/static/assets/images/avatars/avatar5.png" class="msg-photo"
-                                             alt="Fred's Avatar"/>
-                                        <span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Fred:</span>
-														Vestibulum id penatibus et auctor  ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>10:09 am</span>
-													</span>
-												</span>
-                                    </a>
-                                </li>
+                                                        <span class="msg-time">
+                                                            <i class="ace-icon fa fa-clock-o"></i>
+                                                            <span>{{ message.time }}</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </li>
 
@@ -439,12 +371,35 @@
             </li>
 
             <li class="">
-                <a href="{% url 'management:instrument_management' %}">
-                    <i class="menu-icon fa fa-picture-o"></i>
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-music"></i>
                     <span class="menu-text"> Instruments </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
                 </a>
 
                 <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a href="{% url 'management:instrument_management' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Instruments
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="" id="c">
+                        <a href="{% url 'management:instrument_category_management' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Instrument Categories
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                </ul>
             </li>
 
             <li class="">
@@ -517,7 +472,7 @@
             <li class="">
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-pencil-square-o"></i>
-                    <span class="menu-text"> Forms </span>
+                    <span class="menu-text"> Blogs </span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -526,49 +481,23 @@
 
                 <ul class="submenu">
                     <li class="">
-                        <a href="form-elements.html">
+                        <a href="{% url 'management:post_management' %}">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Form Elements
+                            Posts
                         </a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
-                        <a href="form-elements-2.html">
+                        <a href="{% url 'management:blog_category_management' %}">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Form Elements 2
+                            Blog Categories
                         </a>
 
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="">
-                        <a href="form-wizard.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Wizard &amp; Validation
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="wysiwyg.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Wysiwyg &amp; Markdown
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="dropzone.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Dropzone File Upload
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
                 </ul>
             </li>
 
@@ -582,15 +511,12 @@
             </li>
 
             <li class="">
-                <a href="calendar.html">
-                    <i class="menu-icon fa fa-calendar"></i>
+                <a href="{% url 'management:cart_management' %}">
+                    <i class="menu-icon fa fa-shopping-cart" aria-hidden="true"></i>
 
                     <span class="menu-text">
-								Calendar
+								Carts
 
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
 							</span>
                 </a>
 
@@ -598,161 +524,14 @@
             </li>
 
             <li class="">
-                <a href="gallery.html">
-                    <i class="menu-icon fa fa-picture-o"></i>
-                    <span class="menu-text"> Gallery </span>
+                <a href="{% url 'management:wishlist_management' %}">
+                    <i class="menu-icon fa fa-heart" aria-hidden="true"></i>
+                    <span class="menu-text"> Wishlists </span>
                 </a>
 
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-tag"></i>
-                    <span class="menu-text"> More Pages </span>
-
-                    <b class="arrow fa fa-angle-down"></b>
-                </a>
-
-                <b class="arrow"></b>
-
-                <ul class="submenu">
-                    <li class="">
-                        <a href="profile.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            User Profile
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="inbox.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Inbox
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="pricing.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Pricing Tables
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="invoice.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Invoice
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="timeline.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Timeline
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="search.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Search Results
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="email.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Email Templates
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="login.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Login &amp; Register
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-file-o"></i>
-
-                    <span class="menu-text">
-								Other Pages
-
-								<span class="badge badge-primary">5</span>
-							</span>
-
-                    <b class="arrow fa fa-angle-down"></b>
-                </a>
-
-                <b class="arrow"></b>
-
-                <ul class="submenu">
-                    <li class="">
-                        <a href="faq.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            FAQ
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="error-404.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Error 404
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="error-500.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Error 500
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="grid.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Grid
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="blank.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Blank Page
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                </ul>
-            </li>
         </ul><!-- /.nav-list -->
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

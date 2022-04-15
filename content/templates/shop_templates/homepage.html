@@ -114,7 +114,7 @@
                                              alt=""/>
                                     </a>
                                     <a href="/product_search/?search=western" type="button" class="btn-toogle-info"
-                                       id="btn-left">Western Products</a>
+                                       id="btn-left">Western Instruments</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
@@ -132,7 +132,7 @@
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
                                     <a href="/product_search/?search=chinese" type="button" class="btn-toogle-info"
-                                       id="btn-center">Chinese Products</a>
+                                       id="btn-center">Chinese Instruments</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -143,7 +143,16 @@
                                                 alt=""/>
                                     </a>
                                     <a href="/chinese" type="button" class="btn-toogle-info"
-                                       id="btn-right">When To CHINESE Section >>></a>
+                                       id="btn-right"><<< GO To CHINESE Section >>></a>
+
+                                    {#                                    <a href="/chinese">#}
+                                    {#                                        <img#}
+                                    {#                                                src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"#}
+                                    {#                                                alt=""/>#}
+                                    {#                                    </a>#}
+                                    {#                                    #}
+                                    {#                                    <a href="/chinese" type="button" class="btn-toogle-info"#}
+                                    {#                                       id="btn-right">When To CHINESE Section >>></a>#}
                                 </div>
                             </div>
                         </div>
@@ -210,10 +219,8 @@
         </div>
         <!--  End Products Section Part -->
 
-
-
-     <div class="banner-grid-adv">
-            <div class="clearfix" style="margin-bottom: 120px;margin-top: 100px;">
+        <div class="banner-grid-adv" id="jump_customize">
+            <div class="clearfix" style="margin-bottom: 63px;margin-top: 100px;">
                 <div class="banner-grid-left">
                     <div class="wrap-grid-adv-box clearfix">
                         <div class="grid-image-box">
@@ -231,7 +238,7 @@
                         <div class="grid-text-box active" style="height: 329px;">
                             <div class="inner-grid-text-box">
                                 <h3>Try 3D Model</h3>
-                                <h2>Design differently</h2>
+                                <h2>Customize various</h2>
                                 <h3>Piano and Guitar</h3>
                             </div>
                         </div>
@@ -338,40 +345,40 @@
             </div>
         </div>
         <!-- End Design Team -->
-    <div style="margin-top: 76px;">
+        <div style="margin-top: 76px;">
 
-                <div class="container">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>{% trans 'idea Design' %}</h3>
+                            <h3>{% trans 'Craftsman spirit' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
-                            <p>{% trans 'Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus.' %}</p>
+                            <p>{% trans 'Professional ethics, ability, ang quality of the embodiment, is a professional value orientation and behavior of practitioners. ' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
+                            <h3>{% trans 'Manufacturer' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
-                            <p>{% trans 'Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas' %}</p>
+                            <p>{% trans 'The basic connotation of "craftsmanship" includes dedication, leaning, concentration, innovation and other aspects.' %}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
-                            <h3>{% trans 'Confection' %}</h3>
+                            <h3>{% trans 'Iluminous Designer' %}</h3>
                             <a href="#" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
-                            <p>{% trans 'Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras.' %} </p>
+                            <p>{% trans 'Innovation and understanding of what users want make our online shop distinguished from others.' %} </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-    </div>
+        </div>
 
-    <!--  Begin News Part -->
+        <!--  Begin News Part -->
         <div class="news-scroll">
             <div class="container">
                 <h2 class="title-news-scroll">{% trans 'latest news' %}</h2>
@@ -405,9 +412,6 @@
             </div>
         </div>
         <!--  End News Part -->
-
-
-
 
 
         <div class="footer-newsletter" style="height: 200px;margin-top: 50px;">

@@ -1,14 +1,16 @@
-from django.urls import path
+from django.shortcuts import redirect
+from django.urls import path, reverse
 
 from .views import model_view, index, cart, product_details, model_design, leave_review, \
     product_details_test_model, wishlist, personal_profile, \
-    checkout, confirm, model_design2, home, \
+    checkout, model_design2, home, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    about, game, chinese, new_header
+    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success
 
 app_name = 'shop'
 urlpatterns = [
-    path('', index, name='index'),
+    path('', home, name='index'),
+    path('home', lambda x: redirect(reverse("shop:index")), name='home'),
     path('shopping', index, name='shopping'),
     path("product_details/<int:product_id>", product_details, name="product_details"),
     path("product_details_test_model/<int:product_id>", product_details_test_model,
@@ -16,7 +18,10 @@ urlpatterns = [
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
-    path('confirm/', confirm, name='confirm'),
+    path('checkout/success/', checkout_success, name='checkout_success'),
+
+    path('shipping_details/<int:uncompletedOrder_id>', shipping_details, name='shipping_details'),
+    # path('confirm/', confirm, name='confirm'),
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
     # path('cart2/', cart2, name='cart'),
@@ -29,9 +34,10 @@ urlpatterns = [
     path("category/<str:category_id>", category_view, name='category_view'),
     path('wishlist/', wishlist, name='wishlist'),
     path('orders/', orders, name='orders'),
-    path('home', home, name='index'),
+
     path('about', about, name='about'),
     path('game', game, name='game'),
     path('chinese', chinese, name='chinese'),
-    path('new_header', new_header, name='new_header')
+    path('new_header', new_header, name='new_header'),
+    path('chat_ai', chat_ai, name='chat_ai')
 ]
