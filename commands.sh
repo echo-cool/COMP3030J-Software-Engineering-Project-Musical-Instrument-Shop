@@ -31,3 +31,6 @@ python manage.py compilemessages
 
 java -jar crowdin-cli.jar upload
 java -jar crowdin-cli.jar download
+
+
+#pip install --no-cache-dir spacy
