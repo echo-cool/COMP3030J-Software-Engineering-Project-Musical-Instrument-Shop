@@ -9,8 +9,8 @@ from django.urls import reverse
 
 from blog.models import Post
 from chat.models import MessageModel
-from management.forms import OrderForm, InstrumentForm, ReviewForm
-from shop.models import Order, Instrument, Profile, Category, Review
+from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm
+from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -463,7 +463,7 @@ def update_review(request, review_id):
 @login_required
 def add_review(request):
     if request.method == "POST":
-        f = Review(request.POST, request.FILES)
+        f = ReviewForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
@@ -472,7 +472,7 @@ def add_review(request):
             })
         return redirect(reverse('management:review_management'))
     else:
-        f = Review()
+        f = ReviewForm()
         return render(request, 'management_templates/update_review.html', {
             'form': f
         })
@@ -491,12 +491,12 @@ def order_state(request, order_id):
 
 
 @login_required
-def blog_management(request):
+def post_management(request):
     search = request.GET.get("search")
     if search is not None:
         post_list = Post.objects.filter(Q(name__contains=search) | Q(details__contains=search))
     else:
-        post_list = Instrument.objects.all()
+        post_list = Post.objects.all()
     paginator = Paginator(post_list, 10, 0)
     page = request.GET.get("page")
     try:
@@ -516,8 +516,179 @@ def blog_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
-    return render(request, 'management_templates/instrumentManagement.html', {
+    return render(request, 'management_templates/postManagement.html', {
         'posts': posts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages
     })
+
+
+@login_required
+def update_post(request, post_id):
+    if request.method == "POST":
+        post = Post.objects.get(id=post_id)
+        f = PostForm(request.POST, request.FILES, instance=post)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:post_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        post = Post.objects.get(id=post_id)
+        f = PostForm(instance=post)
+        return render(request, 'management_templates/update_post.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_post(request):
+    if request.method == "POST":
+        f = PostForm(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_post.html', {
+                'form': f
+            })
+        return redirect(reverse('management:post_management'))
+    else:
+        f = PostForm()
+        return render(request, 'management_templates/update_post.html', {
+            'form': f
+        })
+
+
+@login_required
+def cart_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        cart_list = Cart.objects.filter(Q(user__username__contains=search) | Q(instrument__name__contains=search))
+    else:
+        cart_list = Cart.objects.all()
+    paginator = Paginator(cart_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        carts = paginator.page(page)
+    except PageNotAnInteger:
+        carts = paginator.page(1)
+    except EmptyPage:
+        carts = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+    return render(request, 'management_templates/cartManagement.html', {
+        'carts': carts,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
+
+
+@login_required
+def update_cart(request, cart_id):
+    if request.method == "POST":
+        cart = Cart.objects.get(id=cart_id)
+        f = CartForm(request.POST, request.FILES, instance=cart)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:cart_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        cart = Cart.objects.get(id=cart_id)
+        f = CartForm(instance=cart)
+        return render(request, 'management_templates/update_cart.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_cart(request):
+    if request.method == "POST":
+        f = CartForm(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_cart.html', {
+                'form': f
+            })
+        return redirect(reverse('management:cart_management'))
+    else:
+        f = Review()
+        return render(request, 'management_templates/update_cart.html', {
+            'form': f
+        })
+
+
+@login_required
+def wishlist_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        wishlist_list = Wishlist.objects.filter(Q(user__username__contains=search) | Q(instrument__name__contains=search))
+    else:
+        wishlist_list = Wishlist.objects.all()
+    paginator = Paginator(wishlist_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        wishlists = paginator.page(page)
+    except PageNotAnInteger:
+        wishlists = paginator.page(1)
+    except EmptyPage:
+        wishlists = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+    return render(request, 'management_templates/wishlistManagement.html', {
+        'wishlists': wishlists,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
+
+
+@login_required
+def update_wishlist(request, wishlist_id):
+    if request.method == "POST":
+        wishlist = Wishlist.objects.get(id=wishlist_id)
+        f = WishlistForm(request.POST, request.FILES, instance=wishlist)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:wishlist_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        wishlist = Wishlist.objects.get(id=wishlist_id)
+        f = WishlistForm(instance=wishlist)
+        return render(request, 'management_templates/update_wishlist.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_wishlist(request):
+    if request.method == "POST":
+        f = WishlistForm(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_wishlist.html', {
+                'form': f
+            })
+        return redirect(reverse('management:wishlist_management'))
+    else:
+        f = WishlistForm()
+        return render(request, 'management_templates/update_wishlist.html', {
+            'form': f
+        })

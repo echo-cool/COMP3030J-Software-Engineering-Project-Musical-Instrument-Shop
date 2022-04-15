@@ -10,11 +10,11 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Manage Posts</a>
+            <a href="#">Manage Wishlists</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
-        <form class="form-search" id="post-search">
+        <form class="form-search" id="wishlist-search">
             <span class="input-icon">
                 <input type="text" placeholder="Search ..." class="nav-search-input"
                        id="nav-search-input" autocomplete="off"/>
@@ -24,7 +24,7 @@
         <script src="{% static 'assets/js/add_url.js' %}"></script>
         <script>
 
-            $('#post-search').on('submit', function () {
+            $('#wishlist-search').on('submit', function () {
                 window.location.href = addUrlPara(window.location.href, 'search', $('#nav-search-input').val())
                 return false;
             })
@@ -35,10 +35,10 @@
 {% block page_header %}
     <div class="row page-header">
         <h1 class="col-md-10">
-            Post Management
+            Wishlist Management
         </h1>
         <button class="btn btn-xs btn-success pull-right"
-                onclick="window.location.href='{% url 'management:add_post' %}'">
+                onclick="window.location.href='{% url 'management:add_wishlist' %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
@@ -56,18 +56,18 @@
                 </label>
             </th>
             <th class="detail-col">Details</th>
-            <th>Title</th>
-            <th>Body</th>
+            <th>Instrument</th>
+            <th>Quantity</th>
             <th class="hidden-480">
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                Author
+                Customer
             </th>
 
             <th>
                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                 Created At
             </th>
-            <th class="hidden-480">Category</th>
+            <th class="hidden-480">Instrument Category</th>
 
             <th></th>
         </tr>
@@ -75,7 +75,7 @@
 
         <tbody>
 
-        {% for post in posts %}
+        {% for wishlist in wishlists %}
             <tr>
                 <td class="center">
                     <label class="pos-rel">
@@ -95,31 +95,31 @@
 
                 <td>
                     <a href="#">
-                        {{ post.title | truncatewords:3 }}
+                        {{ wishlist.instrument.name | truncatewords:3 }}
                     </a>
                 </td>
-                <td>{{ post.body | truncatewords:3 }}</td>
-                <td class="hidden-480">{{ post.author }}</td>
-                <td>{{ post.created_on }}</td>
+                <td>{{ wishlist.count}}</td>
+                <td class="hidden-480">{{ wishlist.user.username }}</td>
+                <td>{{ wishlist.created_at }}</td>
 
                 <td class="hidden-480">
-                    {{ post.category }}
+                    {{ wishlist.instrument.catetgory }}
                 </td>
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
 
                         <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_post' post.id %}'">
+                                onclick="window.location.href='{% url 'management:update_wishlist' wishlist.id %}'">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 
 
-                        <button class="btn btn-xs btn-danger" id="delete_button-{{ post.id }}">
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ wishlist.id }}">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                         <script>
-                            $("#delete_button-{{ post.id }}").on("click", function (res) {
+                            $("#delete_button-{{ wishlist.id }}").on("click", function (res) {
                                 $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
                                     width: '320',
@@ -132,7 +132,7 @@
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
-                                                    url: "/api/post/{{ post.id }}/",
+                                                    url: "/api/wishlist/{{ wishlist.id }}/",
                                                     method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
@@ -224,15 +224,15 @@
                             <div class="col-xs-12 col-sm-2">
                                 <div class="text-center">
                                     <img height="150" class="thumbnail inline no-margin-bottom"
-                                         alt="{{ post.title }}'s image"
-                                         src="{{ post.main_image.url }}">
+                                         alt="{{ wishlist.instrument.name }}'s image"
+                                         src="{{ wishlist.instrument.image.url }}">
                                     <br>
                                     <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                         <div class="inline position-relative">
                                             <a class="user-title-label" href="#">
                                                 <i class="ace-icon fa fa-circle light-green"></i>
                                                 &nbsp;
-                                                <span class="white">{{ post.title | truncatechars:9 }}</span>
+                                                <span class="white">{{ wishlist.instrument.name | truncatechars:9 }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -244,27 +244,27 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Title</div>
+                                        <div class="profile-info-name"> Instrument</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ post.title }}</span>
+                                            <span>{{ wishlist.instrument.name }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Author</div>
+                                        <div class="profile-info-name"> Customer</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                            <span>{{ post.author }}</span>
+                                            <span>{{ wishlist.user.username }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Category</div>
+                                        <div class="profile-info-name"> Instrument Category</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ post.category }}</span>
+                                            <span>{{ wishlist.instrument.category }}</span>
                                         </div>
                                     </div>
 
@@ -272,23 +272,23 @@
                                         <div class="profile-info-name"> Created at</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ post.created_on }}</span>
+                                            <span>{{ wishlist.created_at }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Last Modified</div>
+                                        <div class="profile-info-name"> Quantity</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ post.last_modified }}</span>
+                                            <span>{{ wishlist.count }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Body</div>
+                                        <div class="profile-info-name"> Instrument Description</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ post.body | truncatewords:30 }}</span>
+                                            <span>{{ wishlist.instrument.details | truncatewords:30 }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -331,8 +331,8 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >Page: {{ posts.number }} Total: {{ posts.paginator.num_pages }}</span>
-            {% if posts.has_previous %}
+            >Page: {{ wishlists.number }} Total: {{ wishlists.paginator.num_pages }}</span>
+            {% if wishlists.has_previous %}
                 <button id="first_page" class="btn btn-round btn-success">First Page</button>
                 <button id="prev_page" class="btn btn-round btn-info">
                     Previous Page
@@ -341,7 +341,7 @@
 
 
             {% for pg in part_pages %}
-                {% if pg == posts.number %}
+                {% if pg == wishlists.number %}
                     <button class="btn btn-round btn-pink page-button">{{ pg }}</button>
                 {% else %}
                     <button class="btn btn-round page-button">{{ pg }}</button>
@@ -349,7 +349,7 @@
             {% endfor %}
 
 
-            {% if posts.has_next %}
+            {% if wishlists.has_next %}
                 <button id="next_page" class="btn btn-round btn-info">
                     Next Page
                 </button>
@@ -362,25 +362,25 @@
         </div>
         <script>
             $("#prev_page").on('click', function (res) {
-                {% if posts.has_previous %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ posts.previous_page_number }})
+                {% if wishlists.has_previous %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ wishlists.previous_page_number }})
                 {% endif %}
 
             })
             $("#next_page").on('click', function (res) {
-                {% if posts.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ posts.next_page_number }})
+                {% if wishlists.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ wishlists.next_page_number }})
                 {% endif %}
 
             })
             $("#first_page").on('click', function (res) {
-                {% if posts.has_next %}
+                {% if wishlists.has_next %}
                     window.location.href = addUrlPara(window.location.href, 'page', 1)
                 {% endif %}
             })
             $("#last_page").on('click', function (res) {
-                {% if posts.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ posts.paginator.num_pages }})
+                {% if wishlists.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ wishlists.paginator.num_pages }})
                 {% endif %}
             })
             $(".page-button").on('click', function (res) {
@@ -396,7 +396,7 @@
 
     <div id="dialog-delete" class="hide">
         <div class="alert alert-info bigger-110">
-            The post will be deleted and the operation can not be revoked
+            The wishlist will be deleted and the operation can not be revoked
         </div>
 
         <div class="space-6"></div>
@@ -532,7 +532,7 @@
 
         })
 
-        $('li:contains(Posts)').attr("class", "active");
+        $('li:contains(Wishlists)').attr("class", "active");
 
     </script>
 
