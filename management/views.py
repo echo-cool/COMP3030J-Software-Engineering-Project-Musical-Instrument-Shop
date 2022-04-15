@@ -69,6 +69,8 @@ def index_new(request):
     uncompleted_orders = UncompletedOrder.objects.all()
     instruments = Instrument.objects.all()
 
+    finished_orders = orders.filter(delivered=True)
+
     carts = Cart.objects.all()
     blogs = Post.objects.all()
     wishlist = Wishlist.objects.all()
@@ -78,6 +80,7 @@ def index_new(request):
         'orders': orders,
         'carts': carts,
         'order_items': order_items,
+        "finished_orders": finished_orders,
         'instruments': instruments,
         'blogs': blogs,
         'wishlist': wishlist,
