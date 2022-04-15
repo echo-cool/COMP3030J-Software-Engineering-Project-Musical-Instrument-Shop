@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp3030j\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 16:19+0800\n"
-"PO-Revision-Date: 2022-04-13 10:50\n"
+"POT-Creation-Date: 2022-04-13 18:21+0800\n"
+"PO-Revision-Date: 2022-04-15 12:14\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -21,6 +21,85 @@ msgstr ""
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /content/locale/strings/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 10\n"
+
+#: .\accounts\forms.py:18
+msgid "Password"
+msgstr ""
+
+#: .\accounts\forms.py:24 .\content\templates\shop_templates\account.html:56
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+#: .\accounts\forms.py:33
+msgid "You entered an invalid password."
+msgstr ""
+
+#: .\accounts\forms.py:39
+msgid "Username"
+msgstr ""
+
+#: .\accounts\forms.py:52
+msgid "You entered an invalid username."
+msgstr ""
+
+#: .\accounts\forms.py:55 .\accounts\forms.py:79 .\accounts\forms.py:103
+#: .\accounts\forms.py:190 .\accounts\forms.py:208 .\accounts\forms.py:251
+msgid "This account is not active."
+msgstr ""
+
+#: .\accounts\forms.py:63 .\accounts\forms.py:115 .\accounts\forms.py:154
+#: .\accounts\forms.py:180 .\accounts\forms.py:221 .\accounts\forms.py:241
+msgid "Email"
+msgstr ""
+
+#: .\accounts\forms.py:76 .\accounts\forms.py:161 .\accounts\forms.py:187
+#: .\accounts\forms.py:248
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: .\accounts\forms.py:87 .\accounts\forms.py:128 .\accounts\forms.py:198
+msgid "Email or Username"
+msgstr ""
+
+#: .\accounts\forms.py:100 .\accounts\forms.py:135 .\accounts\forms.py:205
+msgid "You entered an invalid email address or username."
+msgstr ""
+
+#: .\accounts\forms.py:115
+msgid "Required. Enter an existing email address."
+msgstr ""
+
+#: .\accounts\forms.py:122
+msgid "You can not use this email address."
+msgstr ""
+
+#: .\accounts\forms.py:138 .\accounts\forms.py:164
+msgid "This account has already been activated."
+msgstr ""
+
+#: .\accounts\forms.py:142 .\accounts\forms.py:168
+msgid "Activation code not found."
+msgstr ""
+
+#: .\accounts\forms.py:146 .\accounts\forms.py:172
+msgid "Activation code has already been sent. You can request a new code in 24 hours."
+msgstr ""
+
+#: .\accounts\forms.py:216
+msgid "First name"
+msgstr ""
+
+#: .\accounts\forms.py:217
+msgid "Last name"
+msgstr ""
+
+#: .\accounts\forms.py:231
+msgid "Please enter another email."
+msgstr ""
+
+#: .\accounts\forms.py:235
+msgid "You can not use this mail."
+msgstr ""
 
 #: .\accounts\templates\accounts\account.html:111
 #: .\accounts\templates\accounts\sign_up.html:111
@@ -73,6 +152,7 @@ msgid "Change your email"
 msgstr "Changer votre adresse e-mail"
 
 #: .\accounts\templates\accounts\profile\change_email.html:39
+#: .\accounts\utils.py:28
 msgid "Change email"
 msgstr "Changer d'adresse e-mail"
 
@@ -123,6 +203,7 @@ msgstr "Restaurer votre mot de passe"
 #: .\accounts\templates\accounts\restore_password.html:39
 #: .\accounts\templates\accounts\restore_password_confirm.html:39
 #: .\accounts\templates\accounts\restore_password_done.html:39
+#: .\accounts\utils.py:37
 msgid "Restore password"
 msgstr "Restaurer le mot de passe"
 
@@ -153,6 +234,91 @@ msgstr "Vous devriez les recevoir sous peu."
 #: .\accounts\templates\accounts\restore_password_done.html:47
 msgid "If you don't receive an email, please make sure you've entered the address you signed up with, and check your spam folder."
 msgstr "Si vous ne recevez pas d'e-mail, assurez-vous que vous avez entré l'adresse avec laquelle vous vous êtes inscrite, et vérifiez votre dossier spam."
+
+#: .\accounts\utils.py:19
+msgid "Profile activation"
+msgstr ""
+
+#: .\accounts\utils.py:47
+msgid "Your username"
+msgstr ""
+
+#: .\accounts\views.py:126
+msgid "You are signed up. To activate the account, follow the link sent to the mail."
+msgstr ""
+
+#: .\accounts\views.py:133
+msgid "You are successfully signed up!"
+msgstr ""
+
+#: .\accounts\views.py:153
+msgid "You have successfully activated your account!"
+msgstr ""
+
+#: .\accounts\views.py:183
+msgid "A new activation code has been sent to your email address."
+msgstr ""
+
+#: .\accounts\views.py:228
+msgid "Profile data has been successfully updated."
+msgstr ""
+
+#: .\accounts\views.py:262
+msgid "To complete the change of email address, click on the link sent to it."
+msgstr ""
+
+#: .\accounts\views.py:267
+msgid "Email successfully changed."
+msgstr ""
+
+#: .\accounts\views.py:285
+msgid "You have successfully changed your email!"
+msgstr ""
+
+#: .\accounts\views.py:298
+msgid "Your username has been successfully sent to your email."
+msgstr ""
+
+#: .\accounts\views.py:313
+msgid "Your password was changed."
+msgstr ""
+
+#: .\accounts\views.py:325
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+
+#: .\app\conf\development\settings.py:149
+#: .\app\conf\production\settings.py:115
+#: .\content\templates\shop_templates\account.html:306
+msgid "English"
+msgstr "Anglais"
+
+#: .\app\conf\development\settings.py:150
+#: .\app\conf\production\settings.py:116
+#: .\content\templates\shop_templates\account.html:309
+msgid "Russian"
+msgstr "Russe"
+
+#: .\app\conf\development\settings.py:151
+#: .\app\conf\production\settings.py:117
+msgid "Simplified Chinese"
+msgstr ""
+
+#: .\app\conf\development\settings.py:152
+msgid "Simplified Chinese new"
+msgstr ""
+
+#: .\app\conf\development\settings.py:153
+#: .\app\conf\production\settings.py:118
+#: .\content\templates\shop_templates\account.html:307
+msgid "French"
+msgstr "Français"
+
+#: .\app\conf\development\settings.py:154
+#: .\app\conf\production\settings.py:119
+#: .\content\templates\shop_templates\account.html:308
+msgid "Spanish"
+msgstr "Espagnol"
 
 #: .\content\templates\chat\index.html:36
 msgid "Welcome to ChatApp"
@@ -262,13 +428,13 @@ msgid "view my cart"
 msgstr "voir mon panier"
 
 #: .\content\templates\layouts\default\shopper_base.html:126
-#: .\content\templates\shop_templates\product-detail.html:709
+#: .\content\templates\shop_templates\product-detail.html:708
 msgid "Checkout"
 msgstr "Payer"
 
 #: .\content\templates\layouts\default\shopper_base.html:143
 #: .\content\templates\shop_templates\account.html:26
-#: .\content\templates\shop_templates\cart2.html:24
+#: .\content\templates\shop_templates\cart2.html:29
 #: .\content\templates\shop_templates\product-detail.html:82
 msgid "Home"
 msgstr "Domicile"
@@ -302,7 +468,7 @@ msgid "Corssbody"
 msgstr "Corssbody"
 
 #: .\content\templates\layouts\default\shopper_base.html:159
-#: .\content\templates\shop_templates\homepage.html:423
+#: .\content\templates\shop_templates\homepage.html:386
 msgid "Collection"
 msgstr "Collecte"
 
@@ -455,10 +621,6 @@ msgstr "Email*"
 #: .\content\templates\shop_templates\account.html:100
 msgid "Password*"
 msgstr "Mot de passe*"
-
-#: .\content\templates\shop_templates\account.html:56
-msgid "Remember me"
-msgstr "Se souvenir de moi"
 
 #: .\content\templates\shop_templates\account.html:61
 msgid "Lost Password?"
@@ -622,22 +784,6 @@ msgstr "Votre adresse e-mail"
 msgid "Follow Us"
 msgstr "Suivez-nous"
 
-#: .\content\templates\shop_templates\account.html:306
-msgid "English"
-msgstr "Anglais"
-
-#: .\content\templates\shop_templates\account.html:307
-msgid "French"
-msgstr "Français"
-
-#: .\content\templates\shop_templates\account.html:308
-msgid "Spanish"
-msgstr "Espagnol"
-
-#: .\content\templates\shop_templates\account.html:309
-msgid "Russian"
-msgstr "Russe"
-
 #: .\content\templates\shop_templates\account.html:316
 msgid "US Dollars"
 msgstr "Dollars US"
@@ -650,126 +796,126 @@ msgstr "Euros"
 msgid "Privacy"
 msgstr "Confidentialité"
 
-#: .\content\templates\shop_templates\cart2.html:21
+#: .\content\templates\shop_templates\cart2.html:26
 msgid "Cart"
 msgstr "Panier"
 
-#: .\content\templates\shop_templates\cart2.html:25
+#: .\content\templates\shop_templates\cart2.html:31
 msgid "Your Shopping Cart"
 msgstr "Votre panier"
 
-#: .\content\templates\shop_templates\cart2.html:38
+#: .\content\templates\shop_templates\cart2.html:44
 msgid "Shopping Cart"
 msgstr "Panier"
 
-#: .\content\templates\shop_templates\cart2.html:44
+#: .\content\templates\shop_templates\cart2.html:50
 msgid "Product Photo"
 msgstr "Photo du produit"
 
-#: .\content\templates\shop_templates\cart2.html:45
+#: .\content\templates\shop_templates\cart2.html:51
 msgid "Product Name"
 msgstr "Nom du produit"
 
-#: .\content\templates\shop_templates\cart2.html:46
+#: .\content\templates\shop_templates\cart2.html:52
 #: .\content\templates\shop_templates\product-detail.html:416
 msgid "Description"
 msgstr "Libellé"
 
-#: .\content\templates\shop_templates\cart2.html:47
+#: .\content\templates\shop_templates\cart2.html:53
 msgid "Price"
 msgstr "Prix"
 
-#: .\content\templates\shop_templates\cart2.html:48
+#: .\content\templates\shop_templates\cart2.html:54
 msgid "Quantity"
 msgstr "Quantité"
 
-#: .\content\templates\shop_templates\cart2.html:49
+#: .\content\templates\shop_templates\cart2.html:55
 msgid "Total price"
 msgstr "Prix total"
 
-#: .\content\templates\shop_templates\cart2.html:68
+#: .\content\templates\shop_templates\cart2.html:74
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 msgstr "Lorem Ipsum est tout simplement un texte factice de l'industrie de l'imprimerie et de la composition."
 
-#: .\content\templates\shop_templates\cart2.html:104
+#: .\content\templates\shop_templates\cart2.html:110
 msgid "Caculate shipping"
 msgstr "Caculer l'expédition"
 
-#: .\content\templates\shop_templates\cart2.html:109
+#: .\content\templates\shop_templates\cart2.html:116
 msgid "Select your Counttry"
 msgstr "Sélectionnez votre compte"
 
-#: .\content\templates\shop_templates\cart2.html:111
+#: .\content\templates\shop_templates\cart2.html:118
 msgid "United States (USA)..."
 msgstr "États-Unis (USA)..."
 
-#: .\content\templates\shop_templates\cart2.html:115
+#: .\content\templates\shop_templates\cart2.html:123
 msgid "Select your State"
 msgstr "Sélectionnez votre Etat"
 
-#: .\content\templates\shop_templates\cart2.html:117
+#: .\content\templates\shop_templates\cart2.html:125
 msgid "State / City..."
 msgstr "Etat / Ville..."
 
-#: .\content\templates\shop_templates\cart2.html:118
+#: .\content\templates\shop_templates\cart2.html:126
 msgid "City1"
 msgstr "Ville 1"
 
-#: .\content\templates\shop_templates\cart2.html:119
+#: .\content\templates\shop_templates\cart2.html:127
 msgid "City2"
 msgstr "Ville 2"
 
-#: .\content\templates\shop_templates\cart2.html:120
+#: .\content\templates\shop_templates\cart2.html:128
 msgid "City3"
 msgstr "Ville 3"
 
-#: .\content\templates\shop_templates\cart2.html:124
+#: .\content\templates\shop_templates\cart2.html:132
 msgid "Zip Code"
 msgstr "Code postal"
 
-#: .\content\templates\shop_templates\cart2.html:126
+#: .\content\templates\shop_templates\cart2.html:134
 msgid "Zip code..."
 msgstr "Code postal..."
 
-#: .\content\templates\shop_templates\cart2.html:131
+#: .\content\templates\shop_templates\cart2.html:140
 msgid "Update Shipping"
 msgstr "Mettre à jour la livraison"
 
-#: .\content\templates\shop_templates\cart2.html:141
+#: .\content\templates\shop_templates\cart2.html:150
 msgid "Coupon code"
 msgstr "Code promo"
 
-#: .\content\templates\shop_templates\cart2.html:144
+#: .\content\templates\shop_templates\cart2.html:153
 msgid "You can find coupon code from our Activities !"
 msgstr "Vous pouvez trouver le code coupon de nos Activités !"
 
-#: .\content\templates\shop_templates\cart2.html:151
+#: .\content\templates\shop_templates\cart2.html:160
 msgid "Enter your Coupon code..."
 msgstr "Entrez votre code coupon ..."
 
-#: .\content\templates\shop_templates\cart2.html:154
+#: .\content\templates\shop_templates\cart2.html:164
 msgid "REdeem code"
 msgstr "REdeem code"
 
-#: .\content\templates\shop_templates\cart2.html:163
+#: .\content\templates\shop_templates\cart2.html:173
 msgid "Cart totals"
 msgstr "Total du panier"
 
-#: .\content\templates\shop_templates\cart2.html:166
-#: .\content\templates\shop_templates\cart2.html:205
+#: .\content\templates\shop_templates\cart2.html:176
+#: .\content\templates\shop_templates\cart2.html:216
 msgid "Cart Subtotal"
 msgstr "Sous-total du panier"
 
-#: .\content\templates\shop_templates\cart2.html:168
+#: .\content\templates\shop_templates\cart2.html:178
 msgid "Shipping and Handling"
 msgstr "Expédition et manutention"
 
-#: .\content\templates\shop_templates\cart2.html:170
-#: .\content\templates\shop_templates\cart2.html:206
+#: .\content\templates\shop_templates\cart2.html:180
+#: .\content\templates\shop_templates\cart2.html:217
 msgid "Cart Totals"
 msgstr "Totaux du panier"
 
-#: .\content\templates\shop_templates\cart2.html:173
+#: .\content\templates\shop_templates\cart2.html:184
 msgid "Proceed to checkout"
 msgstr "Procéder à la commande"
 
@@ -864,110 +1010,102 @@ msgstr "Vous allez bientôt recevoir un email de confirmation !"
 msgid "SHOP NOW"
 msgstr "ACHETER MAINTENANT"
 
-#: .\content\templates\shop_templates\homepage.html:195
+#: .\content\templates\shop_templates\homepage.html:156
 msgid "~ Western ~"
 msgstr "~ Ouest ~"
 
-#: .\content\templates\shop_templates\homepage.html:195
-#: .\content\templates\shop_templates\homepage.html:222
+#: .\content\templates\shop_templates\homepage.html:156
+#: .\content\templates\shop_templates\homepage.html:183
 msgid "Musical Instruments"
 msgstr "Instruments de Musique"
 
-#: .\content\templates\shop_templates\homepage.html:222
+#: .\content\templates\shop_templates\homepage.html:183
 msgid "~ CHINESE ~"
 msgstr "~ CHINOISIR ~"
 
-#: .\content\templates\shop_templates\homepage.html:250
+#: .\content\templates\shop_templates\homepage.html:211
 msgid "latest news"
 msgstr "dernières actualités"
 
-#: .\content\templates\shop_templates\homepage.html:284
+#: .\content\templates\shop_templates\homepage.html:247
 msgid "Musical Instrument"
 msgstr "Instrument de Musique"
 
-#: .\content\templates\shop_templates\homepage.html:284
+#: .\content\templates\shop_templates\homepage.html:247
 msgid "~Color Design~"
 msgstr "~Design de couleur~"
 
-#: .\content\templates\shop_templates\homepage.html:298
+#: .\content\templates\shop_templates\homepage.html:261
 msgid "idea Design"
 msgstr "conception d'idées"
 
-#: .\content\templates\shop_templates\homepage.html:301
+#: .\content\templates\shop_templates\homepage.html:264
 msgid "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
 msgstr "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
 
-#: .\content\templates\shop_templates\homepage.html:306
-#: .\content\templates\shop_templates\homepage.html:314
+#: .\content\templates\shop_templates\homepage.html:269
+#: .\content\templates\shop_templates\homepage.html:277
 msgid "Confection"
 msgstr "Confection"
 
-#: .\content\templates\shop_templates\homepage.html:309
+#: .\content\templates\shop_templates\homepage.html:272
 msgid "Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas"
 msgstr "Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas"
 
-#: .\content\templates\shop_templates\homepage.html:317
+#: .\content\templates\shop_templates\homepage.html:280
 msgid "Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras."
 msgstr "Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras."
 
-#: .\content\templates\shop_templates\homepage.html:341
+#: .\content\templates\shop_templates\homepage.html:304
 msgid "Start Design"
 msgstr "Lancer le design"
 
-#: .\content\templates\shop_templates\homepage.html:343
-#: .\content\templates\shop_templates\product-detail.html:524
+#: .\content\templates\shop_templates\homepage.html:306
+#: .\content\templates\shop_templates\product-detail.html:523
 msgid "New"
 msgstr "Nouveau"
 
-#: .\content\templates\shop_templates\homepage.html:366
+#: .\content\templates\shop_templates\homepage.html:329
 msgid "David Cilezege"
 msgstr "David Cilezege"
 
-#: .\content\templates\shop_templates\homepage.html:373
-#: .\content\templates\shop_templates\homepage.html:380
-#: .\content\templates\shop_templates\homepage.html:387
+#: .\content\templates\shop_templates\homepage.html:336
+#: .\content\templates\shop_templates\homepage.html:343
+#: .\content\templates\shop_templates\homepage.html:350
 msgid "Ana Hovurt"
 msgstr "Ana Hovurt"
 
-#: .\content\templates\shop_templates\homepage.html:407
+#: .\content\templates\shop_templates\homepage.html:370
 msgid "Women’s"
 msgstr "Femmes"
 
-#: .\content\templates\shop_templates\homepage.html:408
+#: .\content\templates\shop_templates\homepage.html:371
 msgid "Live style"
 msgstr "Style Live"
 
-#: .\content\templates\shop_templates\homepage.html:409
+#: .\content\templates\shop_templates\homepage.html:372
 msgid "Danlien Polosa"
 msgstr "Danlien Polosa"
 
-#: .\content\templates\shop_templates\homepage.html:424
+#: .\content\templates\shop_templates\homepage.html:387
 msgid "Jewerly"
 msgstr "Bijoux"
 
-#: .\content\templates\shop_templates\homepage.html:425
+#: .\content\templates\shop_templates\homepage.html:388
 msgid "For Girl"
 msgstr "Pour Fille"
 
-#: .\content\templates\shop_templates\homepage.html:534
-msgid "Queen Bee Honey"
-msgstr "Miel de la reine des abeilles"
-
-#: .\content\templates\shop_templates\homepage.html:543
-msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit."
-msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit."
-
-#: .\content\templates\shop_templates\homepage.html:547
+#: .\content\templates\shop_templates\homepage.html:511
 msgid "Color :"
 msgstr "Couleur :"
 
-#: .\content\templates\shop_templates\homepage.html:593
+#: .\content\templates\shop_templates\homepage.html:558
 #: .\content\templates\shop_templates\index.html:375
-#: .\content\templates\shop_templates\product-detail.html:550
+#: .\content\templates\shop_templates\product-detail.html:549
 msgid "Add to cart"
 msgstr "Ajouter au panier"
 
-#: .\content\templates\shop_templates\homepage.html:596
+#: .\content\templates\shop_templates\homepage.html:561
 msgid "Share with : "
 msgstr "Partager avec : "
 
@@ -1017,11 +1155,11 @@ msgid "New Arrival"
 msgstr "Nouvelle arrivée"
 
 #: .\content\templates\shop_templates\index.html:316
+#: .\content\templates\shop_templates\product-detail.html:517
 msgid "Products"
 msgstr "Produits"
 
 #: .\content\templates\shop_templates\index.html:317
-#: .\content\templates\shop_templates\product-detail.html:518
 msgid "Cum doctus civibus efficiantur in imperdiet deterruisset."
 msgstr "Cum doctus civibus efficiantur in imperdiet deterruisset."
 
@@ -1038,12 +1176,12 @@ msgid "Sale"
 msgstr "Vente"
 
 #: .\content\templates\shop_templates\index.html:361
-#: .\content\templates\shop_templates\product-detail.html:543
+#: .\content\templates\shop_templates\product-detail.html:542
 msgid "Add to favorites"
 msgstr "Ajouter aux favoris"
 
 #: .\content\templates\shop_templates\index.html:368
-#: .\content\templates\shop_templates\product-detail.html:546
+#: .\content\templates\shop_templates\product-detail.html:545
 msgid "Add to compare"
 msgstr "Ajouter à la comparaison"
 
@@ -1143,15 +1281,19 @@ msgstr "Choses que vous devez savoir"
 msgid "Leave a review"
 msgstr "Laisser un commentaire"
 
-#: .\content\templates\shop_templates\product-detail.html:686
+#: .\content\templates\shop_templates\product-detail.html:516
+msgid "Related"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:685
 msgid "1 product added to cart"
 msgstr "1 produit ajouté au panier"
 
-#: .\content\templates\shop_templates\product-detail.html:708
+#: .\content\templates\shop_templates\product-detail.html:707
 msgid "View cart"
 msgstr "Voir le panier"
 
-#: .\content\templates\shop_templates\product-detail.html:716
+#: .\content\templates\shop_templates\product-detail.html:715
 msgid "Who bought this product also bought"
 msgstr "Qui a acheté ce produit"
 

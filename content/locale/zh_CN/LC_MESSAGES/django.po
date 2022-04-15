@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp3030j\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 16:19+0800\n"
-"PO-Revision-Date: 2022-04-13 10:42\n"
+"POT-Creation-Date: 2022-04-13 18:21+0800\n"
+"PO-Revision-Date: 2022-04-15 13:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -21,6 +21,85 @@ msgstr ""
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /content/locale/strings/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 10\n"
+
+#: .\accounts\forms.py:18
+msgid "Password"
+msgstr "密码"
+
+#: .\accounts\forms.py:24 .\content\templates\shop_templates\account.html:56
+msgid "Remember me"
+msgstr "记住我"
+
+#: .\accounts\forms.py:33
+msgid "You entered an invalid password."
+msgstr "您输入了一个无效的密码。"
+
+#: .\accounts\forms.py:39
+msgid "Username"
+msgstr "用户名"
+
+#: .\accounts\forms.py:52
+msgid "You entered an invalid username."
+msgstr "您输入了无效的用户名。"
+
+#: .\accounts\forms.py:55 .\accounts\forms.py:79 .\accounts\forms.py:103
+#: .\accounts\forms.py:190 .\accounts\forms.py:208 .\accounts\forms.py:251
+msgid "This account is not active."
+msgstr "此帐户未激活。"
+
+#: .\accounts\forms.py:63 .\accounts\forms.py:115 .\accounts\forms.py:154
+#: .\accounts\forms.py:180 .\accounts\forms.py:221 .\accounts\forms.py:241
+msgid "Email"
+msgstr "电子邮件"
+
+#: .\accounts\forms.py:76 .\accounts\forms.py:161 .\accounts\forms.py:187
+#: .\accounts\forms.py:248
+msgid "You entered an invalid email address."
+msgstr "您输入了一个无效的电子邮件地址。"
+
+#: .\accounts\forms.py:87 .\accounts\forms.py:128 .\accounts\forms.py:198
+msgid "Email or Username"
+msgstr "电子邮件或用户名"
+
+#: .\accounts\forms.py:100 .\accounts\forms.py:135 .\accounts\forms.py:205
+msgid "You entered an invalid email address or username."
+msgstr "您输入了一个无效的电子邮件地址或用户名。"
+
+#: .\accounts\forms.py:115
+msgid "Required. Enter an existing email address."
+msgstr "必填。请输入一个现有的电子邮件地址。"
+
+#: .\accounts\forms.py:122
+msgid "You can not use this email address."
+msgstr "您不能使用此电子邮件地址。"
+
+#: .\accounts\forms.py:138 .\accounts\forms.py:164
+msgid "This account has already been activated."
+msgstr "此帐户已被激活。"
+
+#: .\accounts\forms.py:142 .\accounts\forms.py:168
+msgid "Activation code not found."
+msgstr "找不到激活码。"
+
+#: .\accounts\forms.py:146 .\accounts\forms.py:172
+msgid "Activation code has already been sent. You can request a new code in 24 hours."
+msgstr "激活码已发送。您可以在 24 小时内请求一个新代码。"
+
+#: .\accounts\forms.py:216
+msgid "First name"
+msgstr "名"
+
+#: .\accounts\forms.py:217
+msgid "Last name"
+msgstr "姓"
+
+#: .\accounts\forms.py:231
+msgid "Please enter another email."
+msgstr "请输入另一个电子邮件。"
+
+#: .\accounts\forms.py:235
+msgid "You can not use this mail."
+msgstr "您不能使用此邮件。"
 
 #: .\accounts\templates\accounts\account.html:111
 #: .\accounts\templates\accounts\sign_up.html:111
@@ -73,6 +152,7 @@ msgid "Change your email"
 msgstr "更改你的电子邮箱"
 
 #: .\accounts\templates\accounts\profile\change_email.html:39
+#: .\accounts\utils.py:28
 msgid "Change email"
 msgstr "更换邮箱"
 
@@ -123,6 +203,7 @@ msgstr "重置密码"
 #: .\accounts\templates\accounts\restore_password.html:39
 #: .\accounts\templates\accounts\restore_password_confirm.html:39
 #: .\accounts\templates\accounts\restore_password_done.html:39
+#: .\accounts\utils.py:37
 msgid "Restore password"
 msgstr "重置密码"
 
@@ -153,6 +234,91 @@ msgstr "您将很快收到它们。"
 #: .\accounts\templates\accounts\restore_password_done.html:47
 msgid "If you don't receive an email, please make sure you've entered the address you signed up with, and check your spam folder."
 msgstr "如果您没有收到电子邮件，请确保您输入了您注册的地址，并检查您的垃圾邮件文件夹。"
+
+#: .\accounts\utils.py:19
+msgid "Profile activation"
+msgstr "个人资料激活"
+
+#: .\accounts\utils.py:47
+msgid "Your username"
+msgstr "您的用户名"
+
+#: .\accounts\views.py:126
+msgid "You are signed up. To activate the account, follow the link sent to the mail."
+msgstr "您已注册。要激活帐户，请点击发送到邮件的链接。"
+
+#: .\accounts\views.py:133
+msgid "You are successfully signed up!"
+msgstr "您已成功注册 ！"
+
+#: .\accounts\views.py:153
+msgid "You have successfully activated your account!"
+msgstr "您的账户已成功激活！"
+
+#: .\accounts\views.py:183
+msgid "A new activation code has been sent to your email address."
+msgstr "验证码已发送至您的电子邮件地址。"
+
+#: .\accounts\views.py:228
+msgid "Profile data has been successfully updated."
+msgstr "您的个人信息更新成功！"
+
+#: .\accounts\views.py:262
+msgid "To complete the change of email address, click on the link sent to it."
+msgstr "要完成电子邮件地址的更改，请点击发送到它的链接。"
+
+#: .\accounts\views.py:267
+msgid "Email successfully changed."
+msgstr "电子邮件修改成功"
+
+#: .\accounts\views.py:285
+msgid "You have successfully changed your email!"
+msgstr "您已成功修改电子邮件地址！"
+
+#: .\accounts\views.py:298
+msgid "Your username has been successfully sent to your email."
+msgstr "您的用户名已成功发送到您的电子邮件。"
+
+#: .\accounts\views.py:313
+msgid "Your password was changed."
+msgstr "您的密码已更改。"
+
+#: .\accounts\views.py:325
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "您的密码已设置。您可以现在登录。"
+
+#: .\app\conf\development\settings.py:149
+#: .\app\conf\production\settings.py:115
+#: .\content\templates\shop_templates\account.html:306
+msgid "English"
+msgstr "英语"
+
+#: .\app\conf\development\settings.py:150
+#: .\app\conf\production\settings.py:116
+#: .\content\templates\shop_templates\account.html:309
+msgid "Russian"
+msgstr "俄语"
+
+#: .\app\conf\development\settings.py:151
+#: .\app\conf\production\settings.py:117
+msgid "Simplified Chinese"
+msgstr "简体中文"
+
+#: .\app\conf\development\settings.py:152
+msgid "Simplified Chinese new"
+msgstr "简体中文 new"
+
+#: .\app\conf\development\settings.py:153
+#: .\app\conf\production\settings.py:118
+#: .\content\templates\shop_templates\account.html:307
+msgid "French"
+msgstr "法语"
+
+#: .\app\conf\development\settings.py:154
+#: .\app\conf\production\settings.py:119
+#: .\content\templates\shop_templates\account.html:308
+msgid "Spanish"
+msgstr "西班牙语"
 
 #: .\content\templates\chat\index.html:36
 msgid "Welcome to ChatApp"
@@ -262,13 +428,13 @@ msgid "view my cart"
 msgstr "浏览我的购物车"
 
 #: .\content\templates\layouts\default\shopper_base.html:126
-#: .\content\templates\shop_templates\product-detail.html:709
+#: .\content\templates\shop_templates\product-detail.html:708
 msgid "Checkout"
 msgstr "结账"
 
 #: .\content\templates\layouts\default\shopper_base.html:143
 #: .\content\templates\shop_templates\account.html:26
-#: .\content\templates\shop_templates\cart2.html:24
+#: .\content\templates\shop_templates\cart2.html:29
 #: .\content\templates\shop_templates\product-detail.html:82
 msgid "Home"
 msgstr "首页"
@@ -302,7 +468,7 @@ msgid "Corssbody"
 msgstr "Corssbody"
 
 #: .\content\templates\layouts\default\shopper_base.html:159
-#: .\content\templates\shop_templates\homepage.html:423
+#: .\content\templates\shop_templates\homepage.html:386
 msgid "Collection"
 msgstr "收藏"
 
@@ -455,10 +621,6 @@ msgstr "邮箱"
 #: .\content\templates\shop_templates\account.html:100
 msgid "Password*"
 msgstr "密码"
-
-#: .\content\templates\shop_templates\account.html:56
-msgid "Remember me"
-msgstr "记住我"
 
 #: .\content\templates\shop_templates\account.html:61
 msgid "Lost Password?"
@@ -622,22 +784,6 @@ msgstr "您的邮箱"
 msgid "Follow Us"
 msgstr "关注我们"
 
-#: .\content\templates\shop_templates\account.html:306
-msgid "English"
-msgstr "英语"
-
-#: .\content\templates\shop_templates\account.html:307
-msgid "French"
-msgstr "法语"
-
-#: .\content\templates\shop_templates\account.html:308
-msgid "Spanish"
-msgstr "西班牙语"
-
-#: .\content\templates\shop_templates\account.html:309
-msgid "Russian"
-msgstr "俄语"
-
 #: .\content\templates\shop_templates\account.html:316
 msgid "US Dollars"
 msgstr "美元"
@@ -650,126 +796,126 @@ msgstr "欧元"
 msgid "Privacy"
 msgstr "隐私政策"
 
-#: .\content\templates\shop_templates\cart2.html:21
+#: .\content\templates\shop_templates\cart2.html:26
 msgid "Cart"
 msgstr "购物车"
 
-#: .\content\templates\shop_templates\cart2.html:25
+#: .\content\templates\shop_templates\cart2.html:31
 msgid "Your Shopping Cart"
 msgstr "您的购物车"
 
-#: .\content\templates\shop_templates\cart2.html:38
+#: .\content\templates\shop_templates\cart2.html:44
 msgid "Shopping Cart"
 msgstr "购物车"
 
-#: .\content\templates\shop_templates\cart2.html:44
+#: .\content\templates\shop_templates\cart2.html:50
 msgid "Product Photo"
 msgstr "商品图片"
 
-#: .\content\templates\shop_templates\cart2.html:45
+#: .\content\templates\shop_templates\cart2.html:51
 msgid "Product Name"
 msgstr "商品名称"
 
-#: .\content\templates\shop_templates\cart2.html:46
+#: .\content\templates\shop_templates\cart2.html:52
 #: .\content\templates\shop_templates\product-detail.html:416
 msgid "Description"
 msgstr "简介"
 
-#: .\content\templates\shop_templates\cart2.html:47
+#: .\content\templates\shop_templates\cart2.html:53
 msgid "Price"
 msgstr "价格"
 
-#: .\content\templates\shop_templates\cart2.html:48
+#: .\content\templates\shop_templates\cart2.html:54
 msgid "Quantity"
 msgstr "数量"
 
-#: .\content\templates\shop_templates\cart2.html:49
+#: .\content\templates\shop_templates\cart2.html:55
 msgid "Total price"
 msgstr "总金额"
 
-#: .\content\templates\shop_templates\cart2.html:68
+#: .\content\templates\shop_templates\cart2.html:74
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 msgstr "“Lorem Ipsum”仅仅是印刷和排版行业使用的虚拟文本。"
 
-#: .\content\templates\shop_templates\cart2.html:104
+#: .\content\templates\shop_templates\cart2.html:110
 msgid "Caculate shipping"
 msgstr "计算运费"
 
-#: .\content\templates\shop_templates\cart2.html:109
+#: .\content\templates\shop_templates\cart2.html:116
 msgid "Select your Counttry"
 msgstr "选择您的国家"
 
-#: .\content\templates\shop_templates\cart2.html:111
+#: .\content\templates\shop_templates\cart2.html:118
 msgid "United States (USA)..."
 msgstr "美国"
 
-#: .\content\templates\shop_templates\cart2.html:115
+#: .\content\templates\shop_templates\cart2.html:123
 msgid "Select your State"
 msgstr "选择您所在的州"
 
-#: .\content\templates\shop_templates\cart2.html:117
+#: .\content\templates\shop_templates\cart2.html:125
 msgid "State / City..."
 msgstr "州，邦 / 城市..."
 
-#: .\content\templates\shop_templates\cart2.html:118
+#: .\content\templates\shop_templates\cart2.html:126
 msgid "City1"
 msgstr "城市1"
 
-#: .\content\templates\shop_templates\cart2.html:119
+#: .\content\templates\shop_templates\cart2.html:127
 msgid "City2"
 msgstr "城市2"
 
-#: .\content\templates\shop_templates\cart2.html:120
+#: .\content\templates\shop_templates\cart2.html:128
 msgid "City3"
 msgstr "城市3"
 
-#: .\content\templates\shop_templates\cart2.html:124
+#: .\content\templates\shop_templates\cart2.html:132
 msgid "Zip Code"
 msgstr "邮政编码"
 
-#: .\content\templates\shop_templates\cart2.html:126
+#: .\content\templates\shop_templates\cart2.html:134
 msgid "Zip code..."
 msgstr "邮政编码..."
 
-#: .\content\templates\shop_templates\cart2.html:131
+#: .\content\templates\shop_templates\cart2.html:140
 msgid "Update Shipping"
 msgstr "更新物流"
 
-#: .\content\templates\shop_templates\cart2.html:141
+#: .\content\templates\shop_templates\cart2.html:150
 msgid "Coupon code"
 msgstr "优惠券代码"
 
-#: .\content\templates\shop_templates\cart2.html:144
+#: .\content\templates\shop_templates\cart2.html:153
 msgid "You can find coupon code from our Activities !"
 msgstr "您可以从我们的活动中找到优惠券代码 ！"
 
-#: .\content\templates\shop_templates\cart2.html:151
+#: .\content\templates\shop_templates\cart2.html:160
 msgid "Enter your Coupon code..."
 msgstr "输入您的优惠券代码："
 
-#: .\content\templates\shop_templates\cart2.html:154
+#: .\content\templates\shop_templates\cart2.html:164
 msgid "REdeem code"
 msgstr "兑换代码"
 
-#: .\content\templates\shop_templates\cart2.html:163
+#: .\content\templates\shop_templates\cart2.html:173
 msgid "Cart totals"
 msgstr "购物车总计"
 
-#: .\content\templates\shop_templates\cart2.html:166
-#: .\content\templates\shop_templates\cart2.html:205
+#: .\content\templates\shop_templates\cart2.html:176
+#: .\content\templates\shop_templates\cart2.html:216
 msgid "Cart Subtotal"
 msgstr "购物车小计"
 
-#: .\content\templates\shop_templates\cart2.html:168
+#: .\content\templates\shop_templates\cart2.html:178
 msgid "Shipping and Handling"
 msgstr "运费和手续费"
 
-#: .\content\templates\shop_templates\cart2.html:170
-#: .\content\templates\shop_templates\cart2.html:206
+#: .\content\templates\shop_templates\cart2.html:180
+#: .\content\templates\shop_templates\cart2.html:217
 msgid "Cart Totals"
 msgstr "购物车总计"
 
-#: .\content\templates\shop_templates\cart2.html:173
+#: .\content\templates\shop_templates\cart2.html:184
 msgid "Proceed to checkout"
 msgstr "去结账"
 
@@ -864,110 +1010,102 @@ msgstr "您将很快收到一封确认邮件！"
 msgid "SHOP NOW"
 msgstr "立即购买"
 
-#: .\content\templates\shop_templates\homepage.html:195
+#: .\content\templates\shop_templates\homepage.html:156
 msgid "~ Western ~"
 msgstr "~西洋乐器~"
 
-#: .\content\templates\shop_templates\homepage.html:195
-#: .\content\templates\shop_templates\homepage.html:222
+#: .\content\templates\shop_templates\homepage.html:156
+#: .\content\templates\shop_templates\homepage.html:183
 msgid "Musical Instruments"
 msgstr "乐器"
 
-#: .\content\templates\shop_templates\homepage.html:222
+#: .\content\templates\shop_templates\homepage.html:183
 msgid "~ CHINESE ~"
 msgstr "~中国传统乐器~"
 
-#: .\content\templates\shop_templates\homepage.html:250
+#: .\content\templates\shop_templates\homepage.html:211
 msgid "latest news"
 msgstr "最新资讯"
 
-#: .\content\templates\shop_templates\homepage.html:284
+#: .\content\templates\shop_templates\homepage.html:247
 msgid "Musical Instrument"
 msgstr "乐器"
 
-#: .\content\templates\shop_templates\homepage.html:284
+#: .\content\templates\shop_templates\homepage.html:247
 msgid "~Color Design~"
 msgstr "~色彩设计~"
 
-#: .\content\templates\shop_templates\homepage.html:298
+#: .\content\templates\shop_templates\homepage.html:261
 msgid "idea Design"
 msgstr "理念设计"
 
-#: .\content\templates\shop_templates\homepage.html:301
+#: .\content\templates\shop_templates\homepage.html:264
 msgid "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
 msgstr "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
 
-#: .\content\templates\shop_templates\homepage.html:306
-#: .\content\templates\shop_templates\homepage.html:314
+#: .\content\templates\shop_templates\homepage.html:269
+#: .\content\templates\shop_templates\homepage.html:277
 msgid "Confection"
 msgstr "密文"
 
-#: .\content\templates\shop_templates\homepage.html:309
+#: .\content\templates\shop_templates\homepage.html:272
 msgid "Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas"
 msgstr "这是一种有效的治疗方法。圣诞老人是努阿代拉"
 
-#: .\content\templates\shop_templates\homepage.html:317
+#: .\content\templates\shop_templates\homepage.html:280
 msgid "Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras."
 msgstr "这是一种利口酒，它能使你的身体健康。Santacus isque nulladeras。"
 
-#: .\content\templates\shop_templates\homepage.html:341
+#: .\content\templates\shop_templates\homepage.html:304
 msgid "Start Design"
 msgstr "开始设计"
 
-#: .\content\templates\shop_templates\homepage.html:343
-#: .\content\templates\shop_templates\product-detail.html:524
+#: .\content\templates\shop_templates\homepage.html:306
+#: .\content\templates\shop_templates\product-detail.html:523
 msgid "New"
 msgstr "新增"
 
-#: .\content\templates\shop_templates\homepage.html:366
+#: .\content\templates\shop_templates\homepage.html:329
 msgid "David Cilezege"
 msgstr "David Cilezege"
 
-#: .\content\templates\shop_templates\homepage.html:373
-#: .\content\templates\shop_templates\homepage.html:380
-#: .\content\templates\shop_templates\homepage.html:387
+#: .\content\templates\shop_templates\homepage.html:336
+#: .\content\templates\shop_templates\homepage.html:343
+#: .\content\templates\shop_templates\homepage.html:350
 msgid "Ana Hovurt"
 msgstr "Ana Hovurt"
 
-#: .\content\templates\shop_templates\homepage.html:407
+#: .\content\templates\shop_templates\homepage.html:370
 msgid "Women’s"
 msgstr "女性："
 
-#: .\content\templates\shop_templates\homepage.html:408
+#: .\content\templates\shop_templates\homepage.html:371
 msgid "Live style"
 msgstr "实时风格"
 
-#: .\content\templates\shop_templates\homepage.html:409
+#: .\content\templates\shop_templates\homepage.html:372
 msgid "Danlien Polosa"
 msgstr "Danlien Polosa"
 
-#: .\content\templates\shop_templates\homepage.html:424
+#: .\content\templates\shop_templates\homepage.html:387
 msgid "Jewerly"
 msgstr "Jewerly"
 
-#: .\content\templates\shop_templates\homepage.html:425
+#: .\content\templates\shop_templates\homepage.html:388
 msgid "For Girl"
 msgstr "适合女童"
 
-#: .\content\templates\shop_templates\homepage.html:534
-msgid "Queen Bee Honey"
-msgstr "蜜蜂女王蜂蜜。"
-
-#: .\content\templates\shop_templates\homepage.html:543
-msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit."
-msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius felis sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit."
-
-#: .\content\templates\shop_templates\homepage.html:547
+#: .\content\templates\shop_templates\homepage.html:511
 msgid "Color :"
 msgstr "颜色： "
 
-#: .\content\templates\shop_templates\homepage.html:593
+#: .\content\templates\shop_templates\homepage.html:558
 #: .\content\templates\shop_templates\index.html:375
-#: .\content\templates\shop_templates\product-detail.html:550
+#: .\content\templates\shop_templates\product-detail.html:549
 msgid "Add to cart"
 msgstr "添加到购物车"
 
-#: .\content\templates\shop_templates\homepage.html:596
+#: .\content\templates\shop_templates\homepage.html:561
 msgid "Share with : "
 msgstr "分享到"
 
@@ -1017,11 +1155,11 @@ msgid "New Arrival"
 msgstr "新品上架"
 
 #: .\content\templates\shop_templates\index.html:316
+#: .\content\templates\shop_templates\product-detail.html:517
 msgid "Products"
 msgstr "商品"
 
 #: .\content\templates\shop_templates\index.html:317
-#: .\content\templates\shop_templates\product-detail.html:518
 msgid "Cum doctus civibus efficiantur in imperdiet deterruisset."
 msgstr "Cum doctus civibus efficiantur in imperdiet deterruisset."
 
@@ -1038,12 +1176,12 @@ msgid "Sale"
 msgstr "特卖"
 
 #: .\content\templates\shop_templates\index.html:361
-#: .\content\templates\shop_templates\product-detail.html:543
+#: .\content\templates\shop_templates\product-detail.html:542
 msgid "Add to favorites"
 msgstr "添加至收藏夹"
 
 #: .\content\templates\shop_templates\index.html:368
-#: .\content\templates\shop_templates\product-detail.html:546
+#: .\content\templates\shop_templates\product-detail.html:545
 msgid "Add to compare"
 msgstr "加入比较"
 
@@ -1143,15 +1281,19 @@ msgstr "您需要知道的事项"
 msgid "Leave a review"
 msgstr "留下评论"
 
-#: .\content\templates\shop_templates\product-detail.html:686
+#: .\content\templates\shop_templates\product-detail.html:516
+msgid "Related"
+msgstr "相关的"
+
+#: .\content\templates\shop_templates\product-detail.html:685
 msgid "1 product added to cart"
 msgstr "1 件商品已添加到购物车"
 
-#: .\content\templates\shop_templates\product-detail.html:708
+#: .\content\templates\shop_templates\product-detail.html:707
 msgid "View cart"
 msgstr "浏览购物车"
 
-#: .\content\templates\shop_templates\product-detail.html:716
+#: .\content\templates\shop_templates\product-detail.html:715
 msgid "Who bought this product also bought"
 msgstr "购买此商品的买家还买了："
 
