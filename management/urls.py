@@ -4,8 +4,8 @@ from . import views
 
 app_name = 'management'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('index', views.index_new, name='new_index'),
+    # path('', views.index, name='index'),
+    path('', views.index_new, name='index'),
     # path('new', views.new, name='new'),
     path('order_management/all/new', views.order_management_all_new, name='order_management_all_new'),
     path('instrument_management/new', views.instrument_management_new, name='instrument_management_new'),
@@ -17,7 +17,7 @@ urlpatterns = [
     path('order_management/delivered/', views.order_management_delivered, name='order_management_delivered'),
     path('update_order/<int:order_id>/', views.update_order, name='update_order'),
     path('order_item_management/<int:order_id>/', views.order_item_management, name='order_item_management'),
-
+    path('update_order_item/<int:order_item_id>/', views.update_order_item, name='update_order_item'),
     path('instrument_management/', views.instrument_management, name='instrument_management'),
     path('update_instrument/<int:instrument_id>/', views.update_instrument, name='update_instrument'),
     path('add_instrument/', views.add_instrument, name='add_instrument'),
