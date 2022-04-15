@@ -90,9 +90,9 @@
                         {{ order_item.instrument.name|truncatewords:5 }}
                     </a>
                 </td>
-                <td>{{ order_item.user.username }}</td>
-                <td class="hidden-480">{{ order_item.quantity }}</td>
-                <td>{{ order_item.created_at }}</td>
+                <td>{{ order_item.order.user.username }}</td>
+                <td class="hidden-480"> {{ order_item.quantity }} </td>
+                <td>{{ order_item.order.created_at }}</td>
 
                 <td class="hidden-480">
                     {% widthratio order_item.instrument.price 1 order_item.quantity %}
@@ -100,62 +100,6 @@
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}">
-                            <i class="ace-icon fa fa-check bigger-120"></i>
-                        </button>
-                        <script>
-                            $("#confirm_button-{{ order_item.id }}").on("click", function (res) {
-                                $("#dialog-confirm").removeClass('hide').dialog({
-                                    resizable: false,
-                                    width: '320',
-                                    modal: true,
-                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
-                                    title_html: true,
-                                    buttons: [
-                                        {
-                                            html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
-                                            "class": "btn btn-danger btn-minier",
-                                            click: function () {
-                                                $.ajax({
-                                                    url: "/api/order_item/{{ order_item.id }}/",
-                                                    method: "PATCH",
-                                                    headers: {
-                                                        'X-CSRFTOKEN': '{{ csrf_token }}'
-                                                    },
-                                                    data: {
-                                                        "shopper_confirmed": true
-                                                    },
-                                                    success: function (res) {
-                                                        $.ajax({
-                                                            url: "#",
-                                                            method: "GET",
-                                                            success: function (res) {
-                                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                                table_events()
-                                                            }
-                                                        });
-                                                        {#alert("Success!");#}
-                                                        console.log(res);
-                                                    }
-                                                })
-                                                $(this).dialog("close");
-
-                                            }
-                                        }
-                                        ,
-                                        {
-                                            html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
-                                            "class": "btn btn-minier",
-                                            click: function () {
-                                                $(this).dialog("close");
-                                            }
-                                        }
-                                    ]
-                                });
-
-                            });
-
-                        </script>
 
                         <button class="btn btn-xs btn-info"
                                 onclick="window.location.href='{% url 'management:update_order_item' order_item.id %}'">
@@ -268,7 +212,7 @@
                                         <div class="profile-info-name"> Buyer</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ order_item.user.username }}</span>
+                                            <span>{{ order_item.order.user.username }}</span>
                                         </div>
                                     </div>
 
@@ -310,7 +254,7 @@
                             <div class="col-xs-12 col-sm-3">
                                 <div class="space visible-xs"></div>
                                 <h4 class="header blue lighter less-margin">Send a message
-                                    to {{ order_item.user.username }}</h4>
+                                    to {{ order_item.order.user.username }}</h4>
 
                                 <div class="space-6"></div>
 

@@ -12,7 +12,7 @@ import shop
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
-    InstrumentCategoryForm, BlogCategoryForm
+    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -243,10 +243,27 @@ def order_management_delivered(request):
 def order_item_management(request, order_id):
     order_items = OrderItem.objects.filter(order_id=order_id)
 
-    return render(request, 'management_templates/orderManagement.html', {
+    return render(request, 'management_templates/orderItemManagement.html', {
         'order_items': order_items,
         'profile': Profile.objects.filter(user=request.user.id).first(),
     })
+
+
+@login_required
+def update_order_item(request, order_item_id):
+    if request.method == "POST":
+        order_item = OrderItem.objects.get(id=order_item_id)
+        f = OrderItemForm(request.POST, request.FILES, instance=order_item)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:order_item_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        order = OrderItem.objects.get(id=order_item_id)
+        f = OrderItemForm(instance=order)
+        return render(request, 'management_templates/update_order_item.html', {
+            'form': f
+        })
 
 
 @login_required

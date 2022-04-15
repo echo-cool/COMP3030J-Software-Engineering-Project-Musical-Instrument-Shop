@@ -6,7 +6,7 @@ from django.views.decorators.http import require_http_methods
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
-from shop.models import Order, Instrument
+from shop.models import Order, Instrument, OrderItem
 
 
 def getUserActivationRatio(request):
@@ -30,7 +30,7 @@ def GetOrderDeliveredRatio(request):
     delivered = 0
     notDelivered = 0
     for order in orders:
-        if order.delivery_confirmed:
+        if order.delivered:
             delivered += 1
         else:
             notDelivered += 1
@@ -42,22 +42,22 @@ def GetOrderDeliveredRatio(request):
 
 
 def getTotalTurnOver(request):
-    orders = Order.objects.all()
+    orders = OrderItem.objects.all()
     totalTurnOver = 0
     for order in orders:
-        totalTurnOver += order.subtotal
+        totalTurnOver += order.quantity * order.instrument.price
     return totalTurnOver
 
 
 def getTopThreeInstrument(request):
-    orders = Order.objects.all()
+    orders = OrderItem.objects.all()
     res = {
     }
     for i in orders:
         if i.instrument.name in res:
-            res[i.instrument.name] += i.subtotal
+            res[i.instrument.name] += i.quantity * i.instrument.price
         else:
-            res[i.instrument.name] = i.subtotal
+            res[i.instrument.name] = i.quantity * i.instrument.price
     sorted_res = sorted(res.items(), key=lambda x: x[1], reverse=True)
     return sorted_res[:3]
 
