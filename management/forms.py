@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import widgets
 
+import blog
+import shop
 from blog.models import Post
 from shop.models import Order, Instrument, Review, Cart, Wishlist
 
@@ -38,6 +40,18 @@ class CartForm(forms.ModelForm):
 class WishlistForm(forms.ModelForm):
     class Meta:
         model = Wishlist
+        fields = "__all__"
+
+
+class InstrumentCategoryForm(forms.ModelForm):
+    class Meta:
+        model = shop.models.Category
+        fields = "__all__"
+
+
+class BlogCategoryForm(forms.ModelForm):
+    class Meta:
+        model = blog.models.Category
         fields = "__all__"
 
 

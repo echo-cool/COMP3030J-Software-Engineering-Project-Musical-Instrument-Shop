@@ -7,9 +7,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from django.urls import reverse
 
+import blog
+import shop
 from blog.models import Post
 from chat.models import MessageModel
-from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm
+from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
+    InstrumentCategoryForm, BlogCategoryForm
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -379,6 +382,78 @@ def add_instrument(request):
 
 
 @login_required
+def instrument_category_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        category_list = shop.models.Category.objects.filter(Q(name__contains=search) | Q(description__contains=search))
+    else:
+        category_list = shop.models.Category.objects.all()
+    paginator = Paginator(category_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        categories = paginator.page(page)
+    except PageNotAnInteger:
+        categories = paginator.page(1)
+    except EmptyPage:
+        categories = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    for category in categories:
+        category.quantity = Instrument.objects.filter(category_id=category.id).count()
+
+    return render(request, 'management_templates/instrumentCategoryManagement.html', {
+        'categories': categories,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
+
+
+@login_required
+def update_instrument_category(request, category_id):
+    if request.method == "POST":
+        category = shop.models.Category.objects.get(id=category_id)
+        f = InstrumentCategoryForm(request.POST, request.FILES, instance=category)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:instrument_category_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        category = shop.models.Category.objects.get(id=category_id)
+        f = InstrumentCategoryForm(instance=category)
+        return render(request, 'management_templates/update_instrument_category.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_instrument_category(request):
+    if request.method == "POST":
+        f = InstrumentCategoryForm(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_instrument_category.html', {
+                'form': f
+            })
+        return redirect(reverse('management:instrument_category_management'))
+    else:
+        f = InstrumentCategoryForm()
+        return render(request, 'management_templates/update_instrument_category.html', {
+            'form': f
+        })
+
+
+@login_required
 def add_order(request):
     if request.method == "POST":
         f = OrderForm(request.POST, request.FILES)
@@ -554,6 +629,78 @@ def add_post(request):
     else:
         f = PostForm()
         return render(request, 'management_templates/update_post.html', {
+            'form': f
+        })
+
+
+@login_required
+def blog_category_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        category_list = blog.models.Category.objects.filter(Q(name__contains=search))
+    else:
+        category_list = blog.models.Category.objects.all()
+    paginator = Paginator(category_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        categories = paginator.page(page)
+    except PageNotAnInteger:
+        categories = paginator.page(1)
+    except EmptyPage:
+        categories = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    for category in categories:
+        category.quantity = Post.objects.filter(category_id=category.id).count()
+
+    return render(request, 'management_templates/blogCategoryManagement.html', {
+        'categories': categories,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
+    })
+
+
+@login_required
+def update_blog_category(request, category_id):
+    if request.method == "POST":
+        category = blog.models.Category.objects.get(id=category_id)
+        f = BlogCategoryForm(request.POST, request.FILES, instance=category)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:blog_category_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        category = shop.models.Category.objects.get(id=category_id)
+        f = BlogCategoryForm(instance=category)
+        return render(request, 'management_templates/update_blog_category.html', {
+            'form': f
+        })
+
+
+@login_required
+def add_blog_category(request):
+    if request.method == "POST":
+        f = BlogCategoryForm(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_blog_category.html', {
+                'form': f
+            })
+        return redirect(reverse('management:blog_category_management'))
+    else:
+        f = BlogCategoryForm()
+        return render(request, 'management_templates/update_blog_category.html', {
             'form': f
         })
 
