@@ -11,10 +11,10 @@ import blog
 from app import settings
 from blog.models import Post
 from chat.models import MessageModel
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer, PostModelSerializer, BlogCategorySerializer
+    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -46,6 +46,15 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['id', "user", 'accepted', 'packed', 'shipped', 'delivered']
+
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = OrderItemSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

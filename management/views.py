@@ -240,6 +240,16 @@ def order_management_delivered(request):
 
 
 @login_required
+def order_item_management(request, order_id):
+    order_items = OrderItem.objects.filter(order_id=order_id)
+
+    return render(request, 'management_templates/orderManagement.html', {
+        'order_items': order_items,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+    })
+
+
+@login_required
 def update_order(request, order_id):
     if request.method == "POST":
         order = Order.objects.get(id=order_id)
