@@ -35,8 +35,8 @@ def new_header(request):
 
 def index(request):
     # order by count
-    orders = Order.objects.all()
-    order_rank = orders.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
+    order_items = OrderItem.objects.all()
+    order_rank = order_items.values('instrument').annotate(count=Sum('quantity'), name=Sum('quantity')).order_by('-count')[
                  :5]
     order_rank = list(order_rank)
     for i in order_rank:

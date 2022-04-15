@@ -41,7 +41,6 @@ class Migration(migrations.Migration):
                 ('object_3d', models.FileField(blank=True, null=True, upload_to='uploads/instrument/obj/')),
                 ('object_mtl', models.FileField(blank=True, null=True, upload_to='uploads/instrument/mtl/')),
                 ('object_gltf', models.FileField(blank=True, null=True, upload_to='uploads/instrument/gltf/')),
-                ('extras', models.JSONField(blank=True, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='shop.category')),
                 ('posted_by', models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
