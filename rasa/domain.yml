@@ -11,6 +11,16 @@ intents:
   - get_western_instrument
   - get_chinese_instrument
   - thanks
+  - ask_login_url
+  - ask_register_url
+  - ask_profile_url
+  - ask_password_url
+  - ask_forgot_password_url
+  - ask_orders
+  - ask_wishlist
+
+slot:
+
 
 responses:
   utter_greet:
@@ -41,6 +51,26 @@ responses:
   utter_recommend_chinese:
     - text: "Please refer to our Chinese category. http://127.0.0.1:8000/chinese"
       image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_ask_login_url:
+    - text: "This is the login url: ."
+  utter_ask_register_url:
+    - text: "This is the register url: ."
+  utter_ask_profile_url:
+    - text: "This is the profile url: ."
+  utter_ask_password_url:
+    - text: "This is the password url: ."
+  utter_forgot_password_url:
+    - text: "This is the forgot password url: ."
+  utter_ask_orders:
+    - text: "This is the orders url: ."
+  utter_ask_wishlist:
+    - text: "This is the wishlist url: ."
+  utter_happy_to_help:
+    - text: "I am happy to help you."
+
+  utter_sorry_not_help:
+    - text: "Sorry, I am not able to help you."
 
 session_config:
   session_expiration_time: 60
