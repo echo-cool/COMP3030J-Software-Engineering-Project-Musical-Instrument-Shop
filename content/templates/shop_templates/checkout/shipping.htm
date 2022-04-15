@@ -267,43 +267,11 @@
             <header class="main__header" role="banner">
 
                 <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
-                        class="logo__text heading-1">Musicmo -  Musical Instruments Shop Shopify Theme</span></a>
+                        class="logo__text heading-1">Shipping</span></a>
 
                 <h1 class="visually-hidden">
                     Shipping
                 </h1>
-
-
-                <nav aria-label="Breadcrumb">
-                    <ol class="breadcrumb " role="list">
-                        <li class="breadcrumb__item breadcrumb__item--completed">
-                            <a class="breadcrumb__link" href="https://musicmo-store-demo.myshopify.com/cart">Cart</a>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-
-                        <li class="breadcrumb__item breadcrumb__item--completed">
-                            <a class="breadcrumb__link"
-                               href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">Information</a>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--current" aria-current="step">
-                            <span class="breadcrumb__text">Shipping</span>
-                            <svg class="icon-svg icon-svg--color-adaptive-light icon-svg--size-10 breadcrumb__chevron-icon"
-                                 aria-hidden="true" focusable="false">
-                                <use xlink:href="#chevron-right"></use>
-                            </svg>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--blank">
-                            <span class="breadcrumb__text">Payment</span>
-                        </li>
-                    </ol>
-                </nav>
 
 
                 <div class="shown-if-js" data-alternative-payments="">
@@ -362,13 +330,13 @@ window.additionalScripts = function () {
                                                     Contact
                                                 </div>
                                                 <div role="cell" class="review-block__content">
-                                                    <bdo dir="ltr">w1109790800@gmail.com</bdo>
+                                                    <bdo dir="ltr">{{ user.email }}</bdo>
                                                 </div>
                                             </div>
                                             <div role="cell" class="review-block__link">
                                                 <a class="link--small"
                                                    href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">
-                                                    <span aria-hidden="true">Change</span>
+                                                    {#                                                    <span aria-hidden="true">Change</span>#}
                                                     <span class="visually-hidden">Change contact information</span>
                                                 </a></div>
                                         </div>
@@ -381,7 +349,7 @@ window.additionalScripts = function () {
                                                 </div>
                                                 <div role="cell" class="review-block__content">
                                                     <address class="address address--tight">
-                                                        aaa, aaa, aaaa NY 12233, United States
+                                                        {{ uncompletedOrder.first_name }}, {{ uncompletedOrder.last_name }}, {{ uncompletedOrder.city }} {{ uncompletedOrder.state }} {{ uncompletedOrder.zip_Code }}, {{ uncompletedOrder.country }}
                                                         <address>
                                                         </address>
                                                     </address>
@@ -418,7 +386,8 @@ window.additionalScripts = function () {
                                         <div class="content-box__row">
                                             <div class="radio-wrapper" data-shipping-method="shopify-Standard-20.57">
                                                 <div class="radio__input">
-                                                    <input class="input-radio" data-checkout-total-shipping="$20.57"
+                                                    <input class="input-radio"
+                                                           data-checkout-total-shipping="${{ shipping_price }}"
                                                            data-checkout-total-shipping-cents="2057"
                                                            data-checkout-discounted-shipping-price="20.57"
                                                            data-checkout-shipping-rate="$20.57"
@@ -448,7 +417,7 @@ window.additionalScripts = function () {
           </span>
                                                     <span class="radio__label__accessory">
             <span class="content-box__emphasis">
-              $20.57
+              ${{ shipping_price }}
             </span>
           </span>
                                                 </label></div> <!-- /radio-wrapper-->

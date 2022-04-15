@@ -38,6 +38,18 @@
         {% else %}
 
         {% endif %}
+
+        .status-product-new {
+            background: #19ca5c none repeat scroll 0 0;
+            color: #fff;
+            display: inline-block;
+            left: 0;
+            padding: 0 10px 1px;
+            position: absolute;
+            text-transform: lowercase;
+            top: 0;
+            z-index: 10;
+        }
     </style>
 {% endblock %}
 
@@ -400,6 +412,13 @@
                                                              class="img-responsive ls-is-cached lazyloaded"
                                                              alt="{{ instrument.name }}">
                                                     </a>
+                                                    {% if  instrument.object_gltf != "" %}
+                                                        <span class="status-product-new" style="width: 12%;">
+                                                            3D
+                                                        <img style="width: 100%;padding-bottom: 5px;" id="3d-icon"
+                                                             src="/static/assets/img_for_shop/3d-icon.png"></span>
+                                                    {% endif %}
+
                                                     <figure style="background : #e12c43; color: #ffffff"
                                                             class="absolute uppercase label-sale text-center">
                                                         <span class="sale-percent">{% widthratio instrument.old_price 1 -1 as minus %}{% widthratio instrument.price|add:minus instrument.old_price 100 %}%</span>
@@ -468,7 +487,8 @@
                                                               class="inline-block icon-addcart  box-shadow">
                                                             <input type="hidden" name="id" value="37684377813179">
                                                             <button name="add"
-                                                                    class="enj-add-to-cart-btn" id="cart__{{ instrument.id }}">
+                                                                    class="enj-add-to-cart-btn"
+                                                                    id="cart__{{ instrument.id }}">
                                                                 Add to Cart
                                                             </button>
                                                         </form>
