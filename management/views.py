@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from django.urls import reverse
 
+from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm
 from shop.models import Order, Instrument, Profile, Category, Review
@@ -486,4 +487,37 @@ def order_state(request, order_id):
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'form': f,
         'users': User.objects.all()
+    })
+
+
+@login_required
+def blog_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        post_list = Post.objects.filter(Q(name__contains=search) | Q(details__contains=search))
+    else:
+        post_list = Instrument.objects.all()
+    paginator = Paginator(post_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+    return render(request, 'management_templates/instrumentManagement.html', {
+        'posts': posts,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages
     })
