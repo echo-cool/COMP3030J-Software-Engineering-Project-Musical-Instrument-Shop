@@ -371,12 +371,35 @@
             </li>
 
             <li class="">
-                <a href="{% url 'management:instrument_management' %}">
-                    <i class="menu-icon fa fa-music" aria-hidden="true"></i>
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-music"></i>
                     <span class="menu-text"> Instruments </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
                 </a>
 
                 <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a href="{% url 'management:instrument_management' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Instruments
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="" id="c">
+                        <a href="{% url 'management:instrument_category_management' %}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Instrument Categories
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                </ul>
             </li>
 
             <li class="">
@@ -467,9 +490,9 @@
                     </li>
 
                     <li class="">
-                        <a href="">
+                        <a href="{% url 'management:blog_category_management' %}">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Categories
+                            Blog Categories
                         </a>
 
                         <b class="arrow"></b>

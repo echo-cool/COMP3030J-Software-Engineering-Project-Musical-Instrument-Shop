@@ -7,13 +7,14 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+import blog
 from app import settings
 from blog.models import Post
 from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer, PostModelSerializer
+    UserModelSerializer, PostModelSerializer, BlogCategorySerializer
 from rest_framework import viewsets, permissions
 
 
@@ -157,6 +158,14 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostModelSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
+
+class BlogCategoryViewSet(viewsets.ModelViewSet):
+    queryset = blog.models.Category.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = BlogCategorySerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 # class UserModelViewSet(ModelViewSet):
 #     queryset = User.objects.all()
 #     serializer_class = UserModelSerializer
