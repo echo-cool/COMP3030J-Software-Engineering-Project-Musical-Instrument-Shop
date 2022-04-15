@@ -4,13 +4,19 @@ from django.forms import widgets
 import blog
 import shop
 from blog.models import Post
-from shop.models import Order, Instrument, Review, Cart, Wishlist
+from shop.models import Order, Instrument, Review, Cart, Wishlist, OrderItem
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = "__all__"
+
+
+class OrderItemForm(forms.ModelForm):
+    class Meta:
+        model = OrderItem
+        fields = ('instrument', 'quantity')
 
 
 class InstrumentForm(forms.ModelForm):
