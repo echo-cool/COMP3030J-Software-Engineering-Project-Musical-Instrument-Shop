@@ -1,33 +1,46 @@
 version: "3.1"
 
 intents:
+  - ask_name
   - greet
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+  - get_recommendaion
+  - get_western_instrument
+  - get_chinese_instrument
+  - thanks
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_welcome:
+    - text: "You are wellcome."
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_ask_instrument_type:
+    - text: "What type of instrument do you want to buy(e.g. Western)?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Group-8-IllegalGroupNameException."
+
+  utter_give_name:
+    - text: "My name is Group-8-IllegalGroupNameException."
+
+  utter_recommend_westren:
+    - text: "Please refer to our Western category. http://127.0.0.1:8000/"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_recommend_chinese:
+    - text: "Please refer to our Chinese category. http://127.0.0.1:8000/chinese"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
 
 session_config:
   session_expiration_time: 60
