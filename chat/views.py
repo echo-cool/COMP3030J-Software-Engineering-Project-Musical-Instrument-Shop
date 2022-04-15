@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
 from chat.models import MessageModel
 import requests
 
@@ -29,18 +31,31 @@ def index_new(request, to=-1):
     })
 
 
-@login_required
-def _rasa_chat(request, message):
-    message: str = str(message)
-    print(message)
-    url = 'http://localhost:18888/webhooks/rest/webhook'
-    data = {
-        'sender': request.user.username,
-        'message': message
-    }
-    response = requests.post(url, json=data)
-    print(response.json())
-    return HttpResponse(response.json())
+@csrf_exempt
+def rasa_chat(request):
+    if request.method == "POST":
+        message = request.POST.get('message')
+        message: str = str(message)
+        print(message)
+        url = 'http://127.0.0.1:18888/webhooks/rest/webhook'
+        data = {
+            'sender': request.user.username,
+            'message': message
+        }
+        print(data)
+        response = requests.post(url, json=data)
+        print(response.text)
+        print(response.json())
+        return HttpResponse(response.json())
+        return {
+        "recipient_id": "fff",
+        "text": "What type of instrument do you want to buy(e.g. Western)?"
+        }
+    return "Please send a POST request"
 
 
-rasa_chat = sync_to_async(_rasa_chat)
+# rasa_chat = sync_to_async(_rasa_chat)
+
+@csrf_exempt
+def ai_chat_test(request):
+    return render(request, 'chat/ai_chat_test.html')

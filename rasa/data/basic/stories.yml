@@ -1,0 +1,11 @@
+version: "3.1"
+
+stories:
+
+- story: name-path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_name
+  - action: utter_give_name
+
