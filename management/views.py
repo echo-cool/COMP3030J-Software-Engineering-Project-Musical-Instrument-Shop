@@ -13,61 +13,52 @@ from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
     InstrumentCategoryForm, BlogCategoryForm
-from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist
+from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
 from django.contrib.auth.decorators import login_required, permission_required
 
 
-@login_required
-def new(request):
-    counts = {
-        'user': User.objects.count(),
-        'instrument': Instrument.objects.count(),
-        'order': Order.objects.count(),
-        'category': Category.objects.count(),
-        'review': Review.objects.count(),
-    }
-    pie_data = {}
-    for category_item in Category.objects.all():
-        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
-            category=category_item.id).count()
-
-    tmp = {}
-    for instrument_item in Instrument.objects.all():
-        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
-    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
-
-    return render(request, 'management/index.html', {
-        'counts': counts,
-        'pie_data': pie_data,
-        'popular_instruments': popular_instruments,
-        'data_length': len(pie_data),
-        'profile': Profile.objects.filter(user=request.user.id).first()
-    })
+# @login_required
+# def new(request):
+#     counts = {
+#         'user': User.objects.count(),
+#         'instrument': Instrument.objects.count(),
+#         'order': Order.objects.count(),
+#         'category': Category.objects.count(),
+#         'review': Review.objects.count(),
+#     }
+#     pie_data = {}
+#     for category_item in Category.objects.all():
+#         pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
+#             category=category_item.id).count()
+#
+#     tmp = {}
+#     for instrument_item in Instrument.objects.all():
+#         tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+#     popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+#
+#     return render(request, 'management/index.html', {
+#         'counts': counts,
+#         'pie_data': pie_data,
+#         'popular_instruments': popular_instruments,
+#         'data_length': len(pie_data),
+#         'profile': Profile.objects.filter(user=request.user.id).first()
+#     })
 
 
 @login_required
 def index_new(request):
-    counts = {
-        'user': User.objects.count(),
-        'instrument': Instrument.objects.count(),
-        'order': Order.objects.count(),
-        'category': Category.objects.count(),
-        'review': Review.objects.count(),
-    }
-    pie_data = {}
-    for category_item in Category.objects.all():
-        pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
-            category=category_item.id).count()
 
-    tmp = {}
-    for instrument_item in Instrument.objects.all():
-        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
-    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+    # tmp = {}
+    # for instrument_item in Instrument.objects.all():
+    #     tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    # popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
 
     messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
         time=Max("timestamp")).exclude(user=request.user).order_by("time")
 
     users = User.objects.all()
+
+    order_items = OrderItem.objects.all()
 
     for message in messages:
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
@@ -75,14 +66,22 @@ def index_new(request):
         message['body'] = body
 
     orders = Order.objects.all()
+    uncompleted_orders = UncompletedOrder.objects.all()
+    instruments = Instrument.objects.all()
+
+    carts = Cart.objects.all()
+    blogs = Post.objects.all()
+    wishlist = Wishlist.objects.all()
 
     return render(request, 'management_templates/index_new.html', {
-        'counts': counts,
-        'pie_data': pie_data,
-        'popular_instruments': popular_instruments,
-        'data_length': len(pie_data),
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'orders': orders,
+        'carts': carts,
+        'order_items': order_items,
+        'instruments': instruments,
+        'blogs': blogs,
+        'wishlist': wishlist,
+        'uncompleted_orders': uncompleted_orders,
         'users': users,
         'messages': messages
     })
@@ -102,15 +101,15 @@ def index(request):
         pie_data[category_item.name.replace('\n', '').replace('\r', '')] = Instrument.objects.filter(
             category=category_item.id).count()
 
-    tmp = {}
-    for instrument_item in Instrument.objects.all():
-        tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
-    popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
+    # tmp = {}
+    # for instrument_item in Instrument.objects.all():
+    #     tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
+    # popular_instruments = sorted(tmp.items(), key=lambda x: x[1], reverse=True)[0:5]
 
     return render(request, 'management_templates/index.html', {
         'counts': counts,
         'pie_data': pie_data,
-        'popular_instruments': popular_instruments,
+        # 'popular_instruments': popular_instruments,
         'data_length': len(pie_data),
         'profile': Profile.objects.filter(user=request.user.id).first()
     })
@@ -118,20 +117,17 @@ def index(request):
 
 @login_required
 def order_management_all(request):
-    data = []
     orders = Order.objects.all()
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first(),
-            'profile': Profile.objects.filter(
-                user=order_item.user.id).first()
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument.price * item.quantity
+        order.total_price = total_price
+
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 0
     })
@@ -160,20 +156,16 @@ def order_management_all_new(request):
 
 @login_required
 def order_management_placed(request):
-    data = []
     orders = Order.objects.filter(accepted=False)
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument * item.quantity
+        order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 1
     })
@@ -181,20 +173,16 @@ def order_management_placed(request):
 
 @login_required
 def order_management_accepted(request):
-    data = []
     orders = Order.objects.filter(accepted=True).filter(packed=False)
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument * item.quantity
+        order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 2
     })
@@ -202,20 +190,16 @@ def order_management_accepted(request):
 
 @login_required
 def order_management_packed(request):
-    data = []
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False)
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument * item.quantity
+        order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 3
     })
@@ -223,20 +207,16 @@ def order_management_packed(request):
 
 @login_required
 def order_management_shipped(request):
-    data = []
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False)
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument * item.quantity
+        order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 4
     })
@@ -244,22 +224,28 @@ def order_management_shipped(request):
 
 @login_required
 def order_management_delivered(request):
-    data = []
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True)
-    for order_item in orders:
-        tmp = {
-            'order': order_item,
-            'user': User.objects.filter(id=order_item.user.id).first(),
-            'instrument': Instrument.objects.filter(
-                id=order_item.instrument.id).first() if order_item.instrument.id is not None else None,
-            'profile': Profile.objects.filter(
-                id=order_item.user.profile.id).first() if order_item.user.profile.id is not None else None
-        }
-        data.append(tmp)
+    for order in orders:
+        items = OrderItem.objects.filter(order_id=order.id)
+        order.quantity = items.count()
+        total_price = 0
+        for item in items:
+            total_price += item.instrument * item.quantity
+        order.total_price = total_price
     return render(request, 'management_templates/orderManagement.html', {
-        'orders': data,
+        'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'mode': 5
+    })
+
+
+@login_required
+def order_item_management(request, order_id):
+    order_items = OrderItem.objects.filter(order_id=order_id)
+
+    return render(request, 'management_templates/orderManagement.html', {
+        'order_items': order_items,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
     })
 
 

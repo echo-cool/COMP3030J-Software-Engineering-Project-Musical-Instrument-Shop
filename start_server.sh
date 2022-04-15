@@ -14,3 +14,5 @@ python3 -m pip install -r requirements.txt
 
 
 nohup python3 manage.py runserver 0.0.0.0:5008 &
+
+rasa run --enable-api
