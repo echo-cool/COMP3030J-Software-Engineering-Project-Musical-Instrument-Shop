@@ -651,8 +651,11 @@ def orders(request):
         "cart": Cart.objects.filter(user_id=user.id).count(),
         "wishlist": Wishlist.objects.filter(user_id=user.id).count(),
     }
+    orders = all_orders.order_by('-created_at')
+    for order in orders:
+        order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     return render(request, 'shop_templates/orders.html', {
-        "orders": all_orders,
+        "orders": orders,
         "count": count,
         "carts": carts
     })
