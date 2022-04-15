@@ -34,3 +34,5 @@ java -jar crowdin-cli.jar download
 
 
 #pip install --no-cache-dir spacy
+
+python -m pip install --upgrade pip
