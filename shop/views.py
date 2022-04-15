@@ -16,9 +16,9 @@ from django.urls import reverse
 
 import blog
 from management.forms import SearchForm
-from shop.forms import UpdateProfileForm, ReviewForm
+from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist
-from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart
+from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
@@ -330,49 +330,90 @@ def wishlist(request):
 @login_required
 def checkout(request):
     # get or post
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+            messages.success(request, "Address saved successfully")
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            return redirect(reverse('shop:shipping_details'), {
+                "uncompletedOrder": uncompletedOrder,
+            })
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
     else:
-        subtotal_all = 0
-        carts = Cart.objects.filter(user=request.user)
-        for cart in carts:
-            subtotal_all += cart.instrument.price * cart.count
-        shipping = 7.0
-        total = subtotal_all + shipping
-        return render(request, 'shop_templates/checkout.html', {
-            "carts": Cart.objects.filter(user=request.user),
-            "subtotal_all": subtotal_all,
-            "shipping": shipping,
-            "total": total,
+        checkout_form = CheckoutForm()
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+        subtotal = 0
+        cart_items = Cart.objects.filter(user=request.user)
+        for item in cart_items:
+            subtotal += item.instrument.price * item.count
+
+        return render(request, 'shop_templates/checkout/checkout.html', {
+            "cart_items": cart_items,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form
         })
 
 
-@login_required
-def confirm(request):
-    # get current max order_id
-    if Order.objects.all().count() == 0:
-        order_id = 1
-    else:
-        order_id = Order.objects.all().aggregate(Max('order_id'))['order_id__max'] + 1
+def shipping_details(request, uncompletedOrder_id):
     carts = Cart.objects.filter(user=request.user)
-    subtotal_all = 0
-    for cart in carts:
-        instrument = cart.instrument
-        quantity = cart.count
-        subtotal = quantity * instrument.price
-        subtotal_all += subtotal
-        new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
-                          quantity=quantity, subtotal=subtotal, name=request.POST['name'],
-                          last_name=request.POST['last_name'],
-                          full_address=request.POST['full_address'], city=request.POST['city'],
-                          postal_code=request.POST['postal_code'], country=request.POST['country'],
-                          telephone=request.POST['telephone'], payment=request.POST['payment'],
-                          shipping=request.POST['shipping'])
-        new_order.save()
-        cart.delete()
-    return render(request, 'shop_templates/confirm.html')
+    uncompletedOrder = UncompletedOrder.objects.get(id=uncompletedOrder_id)
+    return render(request, 'shop_templates/checkout/shipping_details.html', {
+        "uncompletedOrder": uncompletedOrder,
+        "carts": carts
+    })
 
+
+#
+# @login_required
+# def confirm(request):
+#     # get current max order_id
+#     if Order.objects.all().count() == 0:
+#         order_id = 1
+#     else:
+#         order_id = Order.objects.all().aggregate(Max('order_id'))['order_id__max'] + 1
+#     carts = Cart.objects.filter(user=request.user)
+#     subtotal_all = 0
+#     for cart in carts:
+#         instrument = cart.instrument
+#         quantity = cart.count
+#         subtotal = quantity * instrument.price
+#         subtotal_all += subtotal
+#         new_order = Order(user=request.user, order_id=order_id, instrument=instrument,
+#                           quantity=quantity, subtotal=subtotal, name=request.POST['name'],
+#                           last_name=request.POST['last_name'],
+#                           full_address=request.POST['full_address'], city=request.POST['city'],
+#                           postal_code=request.POST['postal_code'], country=request.POST['country'],
+#                           telephone=request.POST['telephone'], payment=request.POST['payment'],
+#                           shipping=request.POST['shipping'])
+#         new_order.save()
+#         cart.delete()
+#     return render(request, 'shop_templates/confirm.html')
+#
 
 # model design with params
 def model_design(request):
