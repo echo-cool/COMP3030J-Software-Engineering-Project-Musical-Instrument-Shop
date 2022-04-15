@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Pre-Tesks') {
             steps {
-                   sh 'ls'
-//                 sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
+                   sh 'python -m pip install --upgrade pip'
+                   sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
             }
         }
         stage('Build') {
