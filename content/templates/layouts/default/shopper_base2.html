@@ -1600,9 +1600,9 @@
     </div>
 
     <!-- End Footer -->
-    <script type="text/javascript"
-            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
-    {#    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>#}
+    {#    <script type="text/javascript"#}
+    {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
@@ -1655,14 +1655,6 @@
         }, 300);
         {% endfor %}{% endif %}
 
-        console.log("DASDAS", $("#iAtlasChatDiv"));
-        $("#iAtlasChatDiv").ready(function () {
-            $("#iAtlasChatDiv").click(function () {
-                console.log($("#iAtlasChatDiv"));
-                $("#iAtlasChatDiv").css("height", "calc(79% - 0px)");
-                $("#iAtlasChatDiv").css("width", "calc(26%)");
-            })
-        });
     </script>
 
 
