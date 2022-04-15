@@ -49,7 +49,7 @@ class Instrument(models.Model):
     object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
-    extras = models.JSONField(null=True, blank=True)
+    # extras = models.JSONField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
