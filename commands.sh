@@ -36,3 +36,5 @@ java -jar crowdin-cli.jar download
 #pip install --no-cache-dir spacy
 
 python -m pip install --upgrade pip
+
+rasa run -p 18888 --enable-api --cors "*"
