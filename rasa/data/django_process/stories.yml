@@ -5,7 +5,31 @@ stories:
 - story: ask_popular_instrument
   steps:
   - intent: ask_popular_instrument
-  - action: utter_ask_login_url
+  - action: utter_ask_popular_instrument
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy_to_help
+
+- story: ask_popular_instrument
+  steps:
+  - intent: ask_popular_instrument
+  - action: utter_ask_popular_instrument
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+- story: ask_order_number
+  steps:
+  - intent: ask_order_number
+  - action: utter_ask_order_number
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_order_number
+  steps:
+  - intent: ask_order_number
+  - action: utter_ask_order_number
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
