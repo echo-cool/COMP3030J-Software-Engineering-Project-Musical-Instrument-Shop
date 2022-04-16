@@ -22,33 +22,117 @@ intents:
   - ask_cart
   - ask_popular_instrument
   - ask_order_number
+  - want_to_check_his_name
+  - get_PERSON_slot
+  - get_LANGUAGE_slot
+  - get_PRODUCT_slot
+  - get_DATE_slot
+  - get_TIME_slot
+  - get_have_name_slot
+  - search_product
+  - set_user_language
 
 entities:
   - name
+  - PERSON
+  - LANGUAGE
+  - PRODUCT
+  - DATE
+  - TIME
+
 
 slots:
   have_name:
     type: bool
+    initial_value: False
     influence_conversation: False
     mappings:
-      - type: custom
+    - type: custom
+
   name:
     type: text
     mappings:
       - type: from_entity
         entity: name
 
+  PERSON:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+  LANGUAGE:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: LANGUAGE
+
+  PRODUCT:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PRODUCT
+
+  DATE:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: DATE
+
+  TIME:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: TIME
 
 responses:
+#  utter_greet:
+#    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
   utter_greet:
     - condition:
         - type: slot
           name: have_name
           value: true
-      text: "Hey, {name}. Nice to see you again! How are you?"
-    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
+      text: "Hey, {name}. Nice to see you! How are you?"
+    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How should I call you?"
+
+  utter_greet_with_name:
+    - condition:
+        - type: slot
+          name: have_name
+          value: true
+      text: "Hey {PERSON}. Nice to see you! How are you?"
+    - text: "I don't know your name. What is your name?"
+
+  utter_thanks_for_give_name:
+    - text: "Nice to meet you!"
+
+  utter_get_have_name_slot:
+    - text: "The slot of have_name is {have_name}."
+
+  utter_get_PERSON_slot:
+    - text: "The slot of PERSON is {PERSON}."
+  utter_get_LANGUAGE_slot:
+    - text: "The slot of LANGUAGE is {LANGUAGE}."
+  utter_get_PRODUCT_slot:
+    - text: "The slot of PRODUCT is {PRODUCT}."
+  utter_get_DATE_slot:
+    - text: "The slot of DATE is {DATE}."
+  utter_get_TIME_slot:
+    - text: "The slot of TIME is {TIME}."
+
+  utter_search_product:
+    - text: "You want to buy {PRODUCT}?"
+
+  utter_set_language:
+    - text: "I have set your language to {LANGUAGE}."
 
   utter_ask_user_name:
+    - condition:
+        - type: slot
+          name: have_name
+          value: true
+      text: "I know you are {PERSON}. Nice to see you! How are you?"
     - text: "So...What is your name?"
 
   utter_welcome:
@@ -98,7 +182,7 @@ responses:
     - text: "This is the cart url: ."
 
   utter_sorry_not_help:
-    - text: "Sorry, I am not able to help you."
+    - text: Sorry, I am not able to help you.
 
   utter_ask_popular_instrument:
     - text: "POPULAR-INSTRUMENTS"
@@ -108,3 +192,6 @@ responses:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+actions:
+  - action_set_have_name
