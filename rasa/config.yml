@@ -9,8 +9,11 @@ language: en
 pipeline:
   - name: SpacyNLP                # 预训练词向量
     model: "en_core_web_trf"
-    intent_tokenization_flag: True
-    intent_split_symbol: "_"
+    intent_tokenization_flag: False
+    # Symbol on which intent should be split
+    "intent_split_symbol": "_"
+    # Regular expression to detect tokens
+    "token_pattern": None
   - name: SpacyEntityExtractor    #文本特征化
     dimensions: ["PERSON", "LANGUAGE", "PRODUCT", "DATE", "TIME"]
   - name: SpacyTokenizer          # 文本分词器
@@ -25,6 +28,11 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier          #意图分类
     epochs: 300
+#    - name: LogisticRegressionClassifier
+#      max_iter: 200
+#      solver: lbfgs
+#      tol: 0.0001
+#      random_state: 42
     constrain_similarities: True
   - name: EntitySynonymMapper     #同义实体
   - name: ResponseSelector
