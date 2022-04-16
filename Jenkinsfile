@@ -36,7 +36,6 @@ pipeline {
                             python3 -m pip install -r requirements.txt
                             cd rasa
                             chmod 777 train.sh
-                            ./train.sh
                        '
                        """
                 }
