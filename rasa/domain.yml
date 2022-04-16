@@ -21,6 +21,7 @@ intents:
   - ask_wishlist
   - ask_cart
   - ask_popular_instrument
+  - ask_order_number
 
 slots:
   have_name:
@@ -98,6 +99,8 @@ responses:
 
   utter_ask_popular_instrument:
     - text: "POPULAR-INSTRUMENTS"
+  utter_ask_order_number:
+    - text: "ORDER-NUMBER"
 
 session_config:
   session_expiration_time: 60
