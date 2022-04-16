@@ -16,3 +16,33 @@ rules:
   steps:
   - intent: thanks
   - action: utter_welcome
+
+- rule: Give user name utter_greet_with_name
+  steps:
+  - intent: want_to_check_his_name
+  - action: utter_greet_with_name
+
+- rule: utter_get_PERSON_slot
+  steps:
+  - intent: get_PERSON_slot
+  - action: utter_get_PERSON_slot
+
+- rule: utter_get_LANGUAGE_slot
+  steps:
+  - intent: get_LANGUAGE_slot
+  - action: utter_get_LANGUAGE_slot
+
+- rule: utter_get_PRODUCT_slot
+  steps:
+  - intent: get_PRODUCT_slot
+  - action: utter_get_PRODUCT_slot
+
+- rule: utter_get_DATE_slot
+  steps:
+  - intent: get_DATE_slot
+  - action: utter_get_DATE_slot
+
+- rule: utter_get_TIME_slot
+  steps:
+  - intent: get_TIME_slot
+  - action: utter_get_TIME_slot
