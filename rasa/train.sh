@@ -1,4 +1,4 @@
 rm -rf models
 rm -rf .rasa
-rasa train
+/home/group8/.local/bin/rasa train
 
