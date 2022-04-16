@@ -46,3 +46,23 @@ rules:
   steps:
   - intent: get_TIME_slot
   - action: utter_get_TIME_slot
+
+
+- rule: name-path-2
+  steps:
+  - intent: give_name
+  - slot_was_set:
+      - have_name: true
+  - action: utter_greet
+#  - action: utter_greet_with_name
+
+- rule: search-product-path
+  steps:
+  - intent: search_product
+  - action: utter_search_product
+
+
+- rule: set-language-path
+  steps:
+  - intent: set_user_language
+  - action: utter_set_language

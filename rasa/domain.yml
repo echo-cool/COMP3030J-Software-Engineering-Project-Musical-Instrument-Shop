@@ -41,6 +41,12 @@ entities:
 
 
 slots:
+  have_name:
+    type: bool
+    influence_conversation: False
+    mappings:
+      - type: custom
+
   name:
     type: text
     mappings:
@@ -78,8 +84,15 @@ slots:
         entity: TIME
 
 responses:
+#  utter_greet:
+#    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
   utter_greet:
-    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
+    - condition:
+        - type: slot
+          name: have_name
+          value: true
+      text: "Hey, {name}. Nice to see you! How are you?"
+    - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How should I call you?"
 
   utter_greet_with_name:
     - text: "Hey {PERSON}. Nice to see you! How are you?"
