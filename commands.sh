@@ -41,3 +41,6 @@ rasa run -p 18888 --enable-api --cors "*"
 python -m spacy download en_core_web_sm
 
 rm -rf models && rasa train $$ rasa shell
+
+
+tensorflow-gpu==2.7.0
