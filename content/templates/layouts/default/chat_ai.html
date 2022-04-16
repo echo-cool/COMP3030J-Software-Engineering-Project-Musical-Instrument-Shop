@@ -195,7 +195,8 @@
                         <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                              style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
                         <div class="chat_user_name"><span>PlayerOne | 16:04</span></div>
-                        <div class="chat_message_bubble"><span id="element1" style="display:inline;">How can I help you?</span>
+                        <div class="chat_message_bubble"><span id="element1"
+                                                               style="display:inline;">How can I help you?</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -206,20 +207,26 @@
                         </div>
                     </div>
                     <div style="clear:both"></div>
+
                     <div class="chat_message_wrapper">
                         <div class="chat_message_bubble"><span id="element3" style="display:inline;">Where do you want to start?</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
                     <div class="chat_message_wrapper chat_button_wrapper">
-                        <div class="chat_button_bubble"><span data-atlas-action="chat" data-atlas-iscta="false"
-                                                              data-atlas-messagetosend=""
-                                                              class="chat_button_suggested_response chat_primary"
-                                                              data-atlas-value="Learn about guitars">Learn about guitars</span><span
-                                data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
-                                class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">Buy a guitar</span><span
-                                data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
-                                class="chat_button_suggested_response chat_primary" data-atlas-value="Learn to play">Learn to play</span>
+                        <div class="chat_button_bubble">
+                            <span data-atlas-action="chat" data-atlas-iscta="false"
+                                  data-atlas-messagetosend=""
+                                  class="chat_button_suggested_response chat_primary"
+                                  data-atlas-value="Learn about guitars">Learn about guitars</span>
+                            <span
+                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                    class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">Buy a guitar</span>
+                            <span
+                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                    class="chat_button_suggested_response chat_primary"
+                                    data-atlas-value="Learn to play">Learn
+                            to play</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -315,9 +322,14 @@
                         </div>
                         <label class="sr-only" for="tbMessage">Message Text</label>
                         <!-- maxlength set to 1500 because backend data limit for user messages is 1547 -->
-                        <textarea id="tbMessage" class="chat_input_text" placeholder="Please select an option" rows="1"
-                                  maxlength="1500" disabled=""></textarea>
-                        <textarea id="tbHidden" style="display:none;" rows="1"></textarea>
+                        <form onsubmit="return false;">
+                            <input id="tbMessage" class="chat_input_text"
+                                   placeholder="Type something or select an option" rows="1"
+                                   maxlength="1500"></textarea>
+                            {#                            <textarea id="tbHidden" style="display:none;" rows="1"></textarea>#}
+                            <button type="submit" id="submit_service"><i class="fa fa-arrow-right"
+                                                                         aria-hidden="true"></i></button>
+                        </form>
 
                         <div class="chat_input_icon_group disabled">
                             <svg id="img_submit" class="chat_input_icon icon on_white_color" style="display:none">
@@ -358,6 +370,7 @@
         </div>
     </form>
 </aside>
+<script src='/static/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js'></script>
 <script id="externalContactTemplate" type="text/template">
     <div class="contact">
         <a>
@@ -376,5 +389,172 @@
         src="{% static 'assets/js_for_homepage/chat_ai.js' %}"
         async=""
         defer=""></script>
+
+<script>
+
+    function updateScrollbar() {
+        $('#discussion').animate({scrollTop: $('#discussion').prop('scrollHeight')});
+    }
+
+    $('#tbMessage').keypress(function (e) {
+        if (e.which == 13) {
+            $('#submit_service').click();
+            return false;
+        }
+    });
+
+    $('.chat_button_suggested_response').on('click', function () {
+        let content = $(this).text();
+
+        {#$(`<div class="chat_wrapper_user">#}
+        {#    <div class="user_message_bubble">#}
+        {#        <span id="element2" style="display:inline;">#}
+        {#            ${content}#}
+        {#        </span>#}
+        {#    </div>#}
+        {#</div>#}
+        {#<div style="clear:both"></div>`).appendTo('#discussion');#}
+
+        $(`<div class="chat_wrapper_user">
+            <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
+                 style="background-image: url({{ request.user.profile.image.url }});"></div>
+            <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
+            <div class="user_message_bubble"><span id="element1"
+                                                   style="">${content}</span>
+            </div>
+        </div>
+        <div style="clear:both"></div>`).appendTo('#discussion');
+
+        interact(content)
+        updateScrollbar();
+
+    });
+
+
+    $('#submit_service').click(function (e) {
+        e.preventDefault();
+        let content = $(this).prev().val();
+        $(this).prev().val("");
+
+        {#$(`<div class="chat_wrapper_user">#}
+        {#    <div class="user_message_bubble">#}
+        {#        <span id="element2" style="display:inline;">#}
+        {#            ${content}#}
+        {#        </span>#}
+        {#    </div>#}
+        {#</div>#}
+        {#<div style="clear:both"></div>`).appendTo('#discussion');#}
+
+        $(`<div class="chat_wrapper_user">
+            <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
+                 style="background-image: url({{ request.user.profile.image.url }});"></div>
+            <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
+            <div class="user_message_bubble"><span id="element1"
+                                                   style="">${content}</span>
+            </div>
+        </div>
+        <div style="clear:both"></div>`).appendTo('#discussion');
+
+        interact(content)
+        updateScrollbar();
+
+        return false;
+    });
+
+    function interact(message) {
+        // loading message
+        {#$('<div class="message loading new"><figure class="avatar"><img src="/static/res/easybot.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));#}
+        // make a POST request [ajax call]
+        $.ajax({
+            url: '/chat/rasa/',
+            type: 'POST',
+            data: {
+                message: message
+            },
+            success: function (response) {
+                console.log(response);
+                if (response[0].text && response[0].image) {
+                    $(`<div class="chat_message_wrapper">
+            <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
+                 style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
+            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
+                            ${response[0]['text']}
+                            <img src="${response[0]['image']}" style="width:100%">
+                        </span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>`).appendTo('#discussion');
+                } else if (response[0].image) {
+                    $(`<div class="chat_message_wrapper">
+            <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
+                 style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
+            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+                        <div class="chat_message_bubble">
+                        <span id="element2" style="display:inline;">
+                            <img src="${response[0]['image']}" style="width:100%">
+                        </span>
+                        </div>`).appendTo('#discussion');
+                } else if (response[0].text) {
+                    $(`<div class="chat_message_wrapper">
+            <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
+                 style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
+            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
+                            ${response[0]['text']}
+                        </span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>`).appendTo('#discussion');
+                }
+
+                if (response.length > 1) {
+                    for (let i = 1; i < response.length; i++) {
+                        if (response[i].text && response[i].image) {
+                            $(`<div class="chat_message_wrapper">
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
+                            ${response[i]['text']}
+                            <img src="${response[i]['image']}" style="width:100%">
+                        </span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>`).appendTo('#discussion');
+                        } else if (response[i].image) {
+                            $(`<div class="chat_message_wrapper">
+                        <div class="chat_message_bubble">
+                        <span id="element2" style="display:inline;">
+                            <img src="${response[i]['image']}" style="width:100%">
+                        </span>
+                        </div>`).appendTo('#discussion');
+                        } else if (response[i].text) {
+                            $(`<div class="chat_message_wrapper">
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
+                            ${response[i]['text']}
+                        </span>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>`).appendTo('#discussion');
+                        }
+                    }
+                }
+
+                updateScrollbar();
+
+                // remove loading message
+                {#$('.message.loading').remove();#}
+                // add response message
+                {#$('<div class="message new"><figure class="avatar"><img src="/static/assets/ai_chat_test/res/easybot.png" /></figure>' + response + '</div>').appendTo($('.mCSB_container')).addClass('new');#}
+                // update scrollbar
+                {#setDate();#}
+                {#updateScrollbar();#}
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    }
+
+</script>
+
 </body>
 </html>
