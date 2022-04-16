@@ -10,23 +10,12 @@ stories:
   - action: utter_give_name
   - action: utter_ask_user_name
   - intent: give_name
-  - action: utter_greet_with_name
-
-- story: name-path-2
-  steps:
-  - intent: give_name
-  - action: utter_greet_with_name
-
-- story: search-product-path
-  steps:
-  - intent: search_product
-  - action: utter_search_product
+  - slot_was_set:
+      - have_name: true
+  - action: utter_greet
+#  - action: utter_greet_with_name
 
 
-- story: set-language-path
-  steps:
-  - intent: set_user_language
-  - action: utter_set_language
 
 #- story: give-name-path
 #  steps:
