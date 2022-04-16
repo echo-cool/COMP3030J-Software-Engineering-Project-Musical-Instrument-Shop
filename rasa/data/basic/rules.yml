@@ -51,9 +51,7 @@ rules:
 - rule: name-path-2
   steps:
   - intent: give_name
-  - action: utter_thanks_for_give_name
-  - slot_was_set:
-      - have_name: True
+  - action: action_set_have_name
   - action: utter_greet
 
 #  - action: utter_greet_with_name
@@ -68,3 +66,8 @@ rules:
   steps:
   - intent: set_user_language
   - action: utter_set_language
+
+- rule: get_have_name_slot-path
+  steps:
+  - intent: get_have_name_slot
+  - action: utter_get_have_name_slot
