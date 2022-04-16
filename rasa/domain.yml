@@ -28,6 +28,7 @@ intents:
   - get_PRODUCT_slot
   - get_DATE_slot
   - get_TIME_slot
+  - get_have_name_slot
   - search_product
   - set_user_language
 
@@ -46,7 +47,7 @@ slots:
     initial_value: False
     influence_conversation: False
     mappings:
-      - type: custom
+    - type: custom
 
   name:
     type: text
@@ -106,6 +107,9 @@ responses:
   utter_thanks_for_give_name:
     - text: "Nice to meet you!"
 
+  utter_get_have_name_slot:
+    - text: "The slot of have_name is {have_name}."
+
   utter_get_PERSON_slot:
     - text: "The slot of PERSON is {PERSON}."
   utter_get_LANGUAGE_slot:
@@ -124,6 +128,11 @@ responses:
     - text: "I have set your language to {LANGUAGE}."
 
   utter_ask_user_name:
+    - condition:
+        - type: slot
+          name: have_name
+          value: true
+      text: "I know you are {PERSON}. Nice to see you! How are you?"
     - text: "So...What is your name?"
 
   utter_welcome:
@@ -183,3 +192,6 @@ responses:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+actions:
+  - action_set_have_name
