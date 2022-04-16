@@ -36,5 +36,7 @@ class ActionSetHaveName(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         dispatcher.utter_message(text="Nice to meet you!")
+        dispatcher.utter_message(text="I'm Bot from Group 8!")
+        print(domain)
 
         return [SlotSet("have_name", True)]

@@ -49,12 +49,6 @@ slots:
     mappings:
     - type: custom
 
-  name:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: name
-
   PERSON:
     type: text
     mappings:
@@ -93,7 +87,7 @@ responses:
         - type: slot
           name: have_name
           value: true
-      text: "Hey, {name}. Nice to see you! How are you?"
+      text: "Hey, {PERSON}. Nice to see you! How are you?"
     - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How should I call you?"
 
   utter_greet_with_name:
