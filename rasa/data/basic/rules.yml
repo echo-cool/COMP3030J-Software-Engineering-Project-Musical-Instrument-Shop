@@ -51,9 +51,11 @@ rules:
 - rule: name-path-2
   steps:
   - intent: give_name
+  - action: utter_thanks_for_give_name
   - slot_was_set:
-      - have_name: true
+      - have_name: True
   - action: utter_greet
+
 #  - action: utter_greet_with_name
 
 - rule: search-product-path
