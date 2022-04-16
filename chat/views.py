@@ -1,3 +1,5 @@
+import json
+
 from asgiref.sync import sync_to_async
 from django.contrib.auth.decorators import login_required
 from django.db.models import QuerySet, Count
@@ -43,14 +45,18 @@ def rasa_chat(request):
             'message': message
         }
         print(data)
-        response = requests.post(url, json=data)
-        print(response.text)
-        print(response.json())
-        return HttpResponse(response.json())
-        return {
-        "recipient_id": "fff",
-        "text": "What type of instrument do you want to buy(e.g. Western)?"
-        }
+        try:
+            response = requests.post(url, json=data)
+            print(response.text)
+            print(response.json())
+            return HttpResponse(response.json())
+        except Exception as e:
+            print("RASA NOT STARTED")
+            data = {
+                "recipient_id": request.user.username,
+                "text": "RASA NOT STARTED!"
+            }
+            return HttpResponse(data)
     return "Please send a POST request"
 
 
@@ -59,3 +65,9 @@ def rasa_chat(request):
 @csrf_exempt
 def ai_chat_test(request):
     return render(request, 'chat/ai_chat_test.html')
+
+
+@csrf_exempt
+@login_required
+def ai_chat_test2(request):
+    return render(request, 'chat/ai_chat_test_2.html')

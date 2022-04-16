@@ -55,18 +55,40 @@ function interact(message){
 	// loading message
   $('<div class="message loading new"><figure class="avatar"><img src="/static/res/easybot.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
 	// make a POST request [ajax call]
-	$.post('/message', {
-		msg: message,
-	}).done(function(reply) {
-		// Message Received
-		// 	remove loading meassage
-    $('.message.loading').remove();
-		// Add message to chatbox
-    $('<div class="message new"><figure class="avatar"><img src="/static/res/easybot.png" /></figure>' + reply['text'] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-
-		}).fail(function() {
-				alert('error calling function');
-				});
+    $.ajax({
+        url: '/chat/rasa/',
+        type: 'POST',
+        data: {
+            message: message
+        },
+        success: function(response){
+          console.log(response)
+            // remove loading message
+            $('.message.loading').remove();
+            // add response message
+            $('<div class="message new"><figure class="avatar"><img src="/static/assets/ai_chat_test/res/easybot.png" /></figure>' + response + '</div>').appendTo($('.mCSB_container')).addClass('new');
+            // update scrollbar
+            setDate();
+            updateScrollbar();
+        },
+        error: function(error){
+            console.log(error)
+        }
+    });
+	// $.post('/chat/rasa/', {
+	// 	'message': message,
+	// }).done(function(reply) {
+    //   console.log(reply)
+	// 	// Message Received
+	// 	// 	remove loading meassage
+    // $('.message.loading').remove();
+	// 	// Add message to chatbox
+    // $('<div class="message new"><figure class="avatar"><img src="/static/res/easybot.png" /></figure>' + reply + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    // setDate();
+    // updateScrollbar();
+    //
+	// 	}).fail(function(res) {
+    //   console.log(res)
+	// 			alert('error calling function');
+	// 			});
 }
