@@ -24,11 +24,12 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: DIETClassifier          #意图分类
-    epochs: 100
+    epochs: 300
     constrain_similarities: True
   - name: EntitySynonymMapper     #同义实体
   - name: ResponseSelector
-    epochs: 100
+    constrain_similarities: True
+    epochs: 300
 
 #pipeline:
 ## # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
@@ -62,9 +63,9 @@ policies:
    - name: MemoizationPolicy
    - name: UnexpecTEDIntentPolicy
      max_history: 5
-     epochs: 100
+     epochs: 300
    - name: TEDPolicy
      max_history: 5
-     epochs: 100
+     epochs: 300
      constrain_similarities: True
    - name: RulePolicy
