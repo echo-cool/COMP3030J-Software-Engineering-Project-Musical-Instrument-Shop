@@ -15,6 +15,15 @@ nlu:
     - just call me [frank Brett Catherine Eddie](name)
     - please call me [frank Brett Catherine Eddie](name)
     
+- intent: want_to_check_his_name
+  examples: |
+    - do you know my name?
+    - what is my name?
+    - what is my name
+    - what's my name?
+    - can you tell me my name?
+    - can you guess my name?
+    - tell me my name
 
 - intent: thanks
   examples: |
@@ -80,3 +89,45 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: search_product
+  examples: |
+    - I want to search for [product](product)
+    - I want to buy [product](product)
+    - Do you have [product](product)
+    - I want to buy [product](product)
+    - Do you have [product](product) in your shop?
+
+- intent: set_user_language
+  examples: |
+    - I want to set my language to [language](language)
+    - Set my language to [language](language)
+    - Set interface language to [language](language)
+    - I speak [language](language)
+
+
+
+- intent: get_PERSON_slot
+  examples: |
+    - show PERSON slot
+    - show me PERSON slot
+
+- intent: get_LANGUAGE_slot
+  examples: |
+    - show LANGUAGE slot
+    - show me LANGUAGE slot
+
+- intent: get_PRODUCT_slot
+  examples: |
+    - show PRODUCT slot
+    - show me PRODUCT slot
+
+- intent: get_DATE_slot
+  examples: |
+    - show DATE slot
+    - show me DATE slot
+
+- intent: get_TIME_slot
+  examples: |
+    - show TIME slot
+    - show me TIME slot

@@ -22,9 +22,23 @@ intents:
   - ask_cart
   - ask_popular_instrument
   - ask_order_number
+  - want_to_check_his_name
+  - get_PERSON_slot
+  - get_LANGUAGE_slot
+  - get_PRODUCT_slot
+  - get_DATE_slot
+  - get_TIME_slot
+  - search_product
+  - set_user_language
 
 entities:
   - name
+  - PERSON
+  - LANGUAGE
+  - PRODUCT
+  - DATE
+  - TIME
+
 
 slots:
   name:
@@ -33,13 +47,59 @@ slots:
       - type: from_entity
         entity: name
 
+  PERSON:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+  LANGUAGE:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: LANGUAGE
+
+  PRODUCT:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PRODUCT
+
+  DATE:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: DATE
+
+  TIME:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: TIME
 
 responses:
   utter_greet:
     - text: "Welcome. I am the bot of Group-8-IllegalGroupNameException, How can I help you?"
 
   utter_greet_with_name:
-    - text: "Hey, {name}. Nice to see you! How are you?"
+    - text: "Hey {PERSON}. Nice to see you! How are you?"
+
+  utter_get_PERSON:
+    - text: "The slot of PERSON is {PERSON}."
+  utter_get_LANGUAGE:
+    - text: "The slot of LANGUAGE is {LANGUAGE}."
+  utter_get_PRODUCT:
+    - text: "The slot of PRODUCT is {PRODUCT}."
+  utter_get_DATE:
+    - text: "The slot of DATE is {DATE}."
+  utter_get_TIME:
+    - text: "The slot of TIME is {TIME}."
+
+  utter_search_product:
+    - text: "You want to buy {PRODUCT}?"
+
+  utter_set_language:
+    - text: "I have set your language to {LANGUAGE}."
 
   utter_ask_user_name:
     - text: "So...What is your name?"
@@ -91,7 +151,7 @@ responses:
     - text: "This is the cart url: ."
 
   utter_sorry_not_help:
-    - text: "Sorry, I am not able to help you."
+    - text: Sorry, I am not able to help you.
 
   utter_ask_popular_instrument:
     - text: "POPULAR-INSTRUMENTS"
