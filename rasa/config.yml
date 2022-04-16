@@ -11,10 +11,14 @@ pipeline:
   - name: SpacyNLP                # 预训练词向量
 #    model: "en_core_web_sm"
      model: "en_core_web_trf"
-  - name: SpacyTokenizer          # 文本分词器
+     intent_tokenization_flag: True
+     intent_split_symbol: "_"
   - name: SpacyEntityExtractor    #文本特征化
+    dimensions: ["PERSON", "LOC", "ORG", "PRODUCT", "DATE", "TIME", "GPE"]
+  - name: SpacyTokenizer          # 文本分词器
   - name: SpacyFeaturizer         #特征提取器 将一句话变成一个向量
     pooling: mean
+  - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer  #创建用户信息和标签(意图和响应)的词袋表征 为意图分类和 response selection创建特征
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
