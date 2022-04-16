@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Pre-Tesks') {
             steps {
-                   sh 'python -m pip install --upgrade pip'
+                   sh 'python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple'
                    sh 'pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
             }
         }
@@ -35,6 +35,7 @@ pipeline {
                             git pull
                             python3 -m pip install -r requirements.txt
                             cd rasa
+                            chmod 777 train.sh
                             ./train.sh
                        '
                        """
