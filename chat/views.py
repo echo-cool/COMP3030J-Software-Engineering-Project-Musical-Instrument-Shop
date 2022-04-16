@@ -3,7 +3,7 @@ import json
 from asgiref.sync import sync_to_async
 from django.contrib.auth.decorators import login_required
 from django.db.models import QuerySet, Count
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -49,14 +49,14 @@ def rasa_chat(request):
             response = requests.post(url, json=data)
             print(response.text)
             print(response.json())
-            return HttpResponse(response.json())
+            return JsonResponse(response.json(), safe=False, json_dumps_params={'ensure_ascii': False})
         except Exception as e:
             print("RASA NOT STARTED")
-            data = {
+            data = [{
                 "recipient_id": request.user.username,
                 "text": "RASA NOT STARTED!"
-            }
-            return HttpResponse(data)
+            }]
+            return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
     return "Please send a POST request"
 
 
