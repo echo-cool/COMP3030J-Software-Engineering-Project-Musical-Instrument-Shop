@@ -31,6 +31,7 @@ intents:
   - get_have_name_slot
   - search_product
   - set_user_language
+  - show_recent_orders
 
 entities:
   - name
@@ -182,6 +183,9 @@ responses:
     - text: "POPULAR-INSTRUMENTS"
   utter_ask_order_number:
     - text: "ORDER-NUMBER"
+
+  utter_recent_order:
+    - text: "GET_ORDER_LIST"
 
 session_config:
   session_expiration_time: 60

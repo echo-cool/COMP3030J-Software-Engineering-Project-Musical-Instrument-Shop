@@ -1,4 +1,5 @@
 import json
+import time
 
 from asgiref.sync import sync_to_async
 from django.contrib.auth.decorators import login_required
@@ -11,6 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from chat.models import MessageModel
 import requests
+
+from shop.models import Order
 
 
 @login_required
@@ -33,6 +36,29 @@ def index_new(request, to=-1):
     })
 
 
+def get_order_list(request) -> JsonResponse:
+    user = request.user
+    order_list = user.orders.all()
+    if len(order_list) > 3:
+        order_list = order_list[:3]
+    data = []
+    for order in order_list:
+        data.append({
+                "recipient_id": request.user.username,
+                "text": "Order ID: " + str(order.id)
+            })
+        data.append({
+                "recipient_id": request.user.username,
+                "text": "Order created_at: " + str(order.created_at)
+            })
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+action_list = {
+    "GET_ORDER_LIST": get_order_list,
+}
+
+
 @csrf_exempt
 def rasa_chat(request):
     if request.method == "POST":
@@ -49,8 +75,14 @@ def rasa_chat(request):
             response = requests.post(url, json=data)
             print(response.text)
             print(response.json())
+            action = response.json()[0]['text']
+            print(action)
+            time.sleep(2)
+            if action in action_list.keys():
+                return action_list[action](request)
             return JsonResponse(response.json(), safe=False, json_dumps_params={'ensure_ascii': False})
         except Exception as e:
+            print(e)
             print("RASA NOT STARTED")
             data = [{
                 "recipient_id": request.user.username,
