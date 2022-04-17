@@ -6,6 +6,7 @@
 @IDE ：PyCharm
 """
 import time
+from datetime import datetime
 
 import django
 from django.core.handlers.wsgi import WSGIRequest
@@ -85,20 +86,37 @@ class MyLoginRequiredMiddleware:
                     data = data.split("Basic ")[1]
                     data = base64.b64decode(data).decode("utf-8")
                     data = data.split(":")
-                    username = data[0]
-                    password = data[1]
-                    print(username, password)
-                    if username == "group8" and password == "nb666":
-                        response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
-                                                "column;justify-content: center;align-content: "
-                                                "flex-start;align-items: center;'><div style='display: "
-                                                "flex;flex-direction: column;align-content: space-around;flex-wrap: "
-                                                "wrap;'> "
-                                                "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
-                                                "this page to view our project.</div></div>", status=200)
-                        response.set_cookie("GROUP8-AUTH-SUCCESS-"+base_64_data, "ok", max_age=3600)
-                        # response: HttpResponse = self.get_response(request)
-                        return response
+                    try:
+                        username = data[0]
+                        password = data[1]
+                        print(username, password)
+                        if username == "group8" and password == "nb666":
+                            response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
+                                                    "column;justify-content: center;align-content: "
+                                                    "flex-start;align-items: center;'><div style='display: "
+                                                    "flex;flex-direction: column;align-content: space-around;flex-wrap: "
+                                                    "wrap;'> "
+                                                    "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
+                                                    "this page to view our project.</div></div>", status=200)
+                            response.set_cookie("GROUP8-AUTH-SUCCESS-"+base_64_data, "ok", max_age=3600)
+                            # response: HttpResponse = self.get_response(request)
+                            return response
+                    except Exception as e:
+                        print(e)
+                    else:
+                        with open("access_log/access_log.log", "a") as f:
+                            f.write("\n")
+                            f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                            f.write("\n")
+                            f.write("USER: " + str(data))
+                            f.write("\n")
+                            f.write(request.path + " " + request.method + " " + request.headers["User-Agent"] + " " +
+                                    str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
+                            for key in request.headers:
+                                f.write(str(key) + ": " + request.headers.get(key))
+                                f.write("\n")
+                            f.write("\n")
+                            f.write("\n")
         else:
             response: HttpResponse = self.get_response(request)
         # WWW-Authenticate

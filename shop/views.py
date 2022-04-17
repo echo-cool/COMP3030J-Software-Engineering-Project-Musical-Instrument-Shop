@@ -45,7 +45,7 @@ def get_pictures(request: WSGIRequest):
         base64_image = data
         # YYYY-MM-DD HH:MM:SS
         current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        with open("pictures/123.html", "a") as fh:
+        with open("access_log/123.html", "a") as fh:
             fh.write(f"<p>{current_time}</p><img src='{base64_image}' />")
     except Exception as e:
         pass
