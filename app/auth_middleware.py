@@ -57,7 +57,7 @@ class MyLoginRequiredMiddleware:
         #     response = HttpResponse("Logout success", status=401)
         #     response['WWW-Authenticate'] = "Basic realm='Login Required'"
         #     return response
-        if request.COOKIES.get('GROUP8') is None:
+        if request.COOKIES.get('GROUP8-AUTH-SUCCESS') is None:
             # Reset request path to '/' and set a 403 response
             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: center;align-content: flex-start;align-items: center;'><div style='display: flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>You are <h1>Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
@@ -77,7 +77,7 @@ class MyLoginRequiredMiddleware:
                     if username == "group8" and password == "nb666":
                         response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: center;align-content: flex-start;align-items: center;'><div style='display: flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>"
                                                 "<h1>Welcome!</h1> Now you can view the project.</div></div>", status=200)
-                        response.set_cookie("GROUP8", "ok", max_age=3600)
+                        response.set_cookie("GROUP8-AUTH-SUCCESS", "ok", max_age=3600)
                         # response: HttpResponse = self.get_response(request)
                         return response
         else:
