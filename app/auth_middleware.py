@@ -59,7 +59,10 @@ class MyLoginRequiredMiddleware:
         #     return response
         if request.COOKIES.get('GROUP8') is None:
             # Reset request path to '/' and set a 403 response
-            response = HttpResponse("You are not Allowed to view this project", status=401)
+            response = HttpResponse("You are <h1>Not Allowed</h1> to view this project<br>" +
+                                    "This is the project built by Group8.<br>" +
+                                    "Please contact <strong>Group8</strong> to view this project.<br>"
+                                    , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
             if "Authorization" in request.headers:
                 data = request.headers["Authorization"]
@@ -71,7 +74,7 @@ class MyLoginRequiredMiddleware:
                     password = data[1]
                     print(username, password)
                     if username == "group8" and password == "nb666":
-                        response = HttpResponse("Welcome! Now you can view the project.", status=200)
+                        response = HttpResponse("<h1>Welcome!</h1> Now you can view the project.", status=200)
                         response.set_cookie("GROUP8", "ok", max_age=3600)
                         # response: HttpResponse = self.get_response(request)
                         return response
