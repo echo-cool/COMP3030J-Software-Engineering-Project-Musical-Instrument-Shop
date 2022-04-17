@@ -5,6 +5,8 @@
 @File ：auth_middleware.py
 @IDE ：PyCharm
 """
+import time
+
 import django
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
@@ -57,7 +59,9 @@ class MyLoginRequiredMiddleware:
         #     response = HttpResponse("Logout success", status=401)
         #     response['WWW-Authenticate'] = "Basic realm='Login Required'"
         #     return response
-        if request.COOKIES.get('GROUP8-AUTH-SUCCESS') is None:
+        date = time.strftime("%Y_%m_%d", time.localtime())
+        base_64_data = base64.b64encode(bytes(date, encoding="utf-8")).decode('ascii').replace("=", "").replace("\\", "").replace("/", "")
+        if request.COOKIES.get('GROUP8-AUTH-SUCCESS-'+base_64_data) is None:
             # Reset request path to '/' and set a 403 response
             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: "
                                     "center;align-content: flex-start;align-items: center;'><div style='display: "
@@ -86,7 +90,7 @@ class MyLoginRequiredMiddleware:
                                                 "wrap;'> "
                                                 "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
                                                 "this page to view our project.</div></div>", status=200)
-                        response.set_cookie("GROUP8-AUTH-SUCCESS", "ok", max_age=3600)
+                        response.set_cookie("GROUP8-AUTH-SUCCESS-"+base_64_data, "ok", max_age=3600)
                         # response: HttpResponse = self.get_response(request)
                         return response
         else:
