@@ -69,7 +69,7 @@ class MyLoginRequiredMiddleware:
                                     "are <h1>Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
                                     "Please contact <strong>Group8</strong> to view this project.<br>" +
-                                    "Your request has been intercept by our <strong>Auth Middleware.</strong> <p "
+                                    "Your request has been intercepted by our <strong>Auth Middleware.</strong> <p "
                                     "style='color:red'>This incident has been reported.</p></div></div> "
                                     , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
