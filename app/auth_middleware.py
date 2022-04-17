@@ -98,6 +98,7 @@ class MyLoginRequiredMiddleware:
                                     str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
                                 f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
                                 f.write("    AUTH_SUCCESS    ")
+                                f.write(request.META["REMOTE_ADDR"])
                                 f.write("\n")
                             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
                                                     "column;justify-content: center;align-content: "
@@ -117,6 +118,8 @@ class MyLoginRequiredMiddleware:
                             f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
                             f.write("\n")
                             f.write("USER: " + str(data))
+                            f.write("\n")
+                            f.write(request.META["REMOTE_ADDR"])
                             f.write("\n")
                             f.write(request.path + " " + request.method + " " + request.headers["User-Agent"] + " " +
                                     str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
