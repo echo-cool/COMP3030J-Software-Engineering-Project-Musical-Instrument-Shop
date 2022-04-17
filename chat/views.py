@@ -60,7 +60,7 @@ action_list = {
 
 
 @csrf_exempt
-def rasa_chat(request):
+def _rasa_chat(request):
     if request.method == "POST":
         message = request.POST.get('message')
         message: str = str(message)
@@ -98,7 +98,7 @@ def rasa_chat(request):
     return "Please send a POST request"
 
 
-# rasa_chat = sync_to_async(_rasa_chat)
+rasa_chat = sync_to_async(_rasa_chat)
 
 @csrf_exempt
 def ai_chat_test(request):
