@@ -62,7 +62,7 @@ class MyLoginRequiredMiddleware:
             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: center;align-content: flex-start;align-items: center;'><div style='display: flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>You are <h1>Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
                                     "Please contact <strong>Group8</strong> to view this project.<br>" +
-                                    "Your request has been intercept our <strong>Auth Middleware.</strong><br> <p style='color:red'>This incident has been reported.</p></div></div>"
+                                    "Your request has been intercept by our <strong>Auth Middleware.</strong> <p style='color:red'>This incident has been reported.</p></div></div>"
                                     , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
             if "Authorization" in request.headers:
