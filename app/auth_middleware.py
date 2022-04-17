@@ -91,6 +91,14 @@ class MyLoginRequiredMiddleware:
                         password = data[1]
                         print(username, password)
                         if username == "group8" and password == "nb666":
+                            with open("access_log/access_log.log", "a") as f:
+                                f.write("\n")
+                                f.write(
+                                    request.path + " " + request.method + " " + request.headers["User-Agent"] + " " +
+                                    str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
+                                f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                                f.write("    AUTH_SUCCESS    ")
+                                f.write("\n")
                             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
                                                     "column;justify-content: center;align-content: "
                                                     "flex-start;align-items: center;'><div style='display: "
