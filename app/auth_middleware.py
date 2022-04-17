@@ -72,7 +72,7 @@ class MyLoginRequiredMiddleware:
                                     "Your request has been intercepted by our Auth Middleware. <p "
                                     "style='color:red'>This incident has been reported.</p>"+
                                     "<h1>您无权查看此项目</h1><br>" +
-                                    "此项目由COMP3030J Group8-IllegalGroupNameException 维护<br>" +
+                                    "此项目由 COMP3030J Group8-IllegalGroupNameException 维护<br>" +
                                     "请联系<strong>Group8</strong>以获得权限查看此项目<br>" +
                                     "您的请求已被 Auth Middleware 拦截<p "
                                     "style='color:red'>此事件已报告.</p></div>"
