@@ -76,7 +76,8 @@ class MyLoginRequiredMiddleware:
                     print(username, password)
                     if username == "group8" and password == "nb666":
                         response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: center;align-content: flex-start;align-items: center;'><div style='display: flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>"
-                                                "<h1>Welcome!</h1> Now you can view the project.</div></div>", status=200)
+                                                "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
+                                                "this page to view our project.</div></div>", status=200)
                         response.set_cookie("GROUP8-AUTH-SUCCESS", "ok", max_age=3600)
                         # response: HttpResponse = self.get_response(request)
                         return response
