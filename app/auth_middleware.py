@@ -66,7 +66,7 @@ class MyLoginRequiredMiddleware:
             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: "
                                     "center;align-content: flex-start;align-items: center;'><div style='display: "
                                     "flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>"
-                                    "<h1>Not Allowed to view this project</h1><br>" +
+                                    "<h1>You are Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
                                     "Please contact <strong>Group8</strong> to view this project.<br>" +
                                     "Your request has been intercepted by our Auth Middleware. <p "
