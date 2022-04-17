@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
+from django.http import HttpResponse
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from drf_yasg import openapi
@@ -8,21 +9,26 @@ from rest_framework import permissions
 
 import blog
 from main.views import ChangeLanguageView
+
 # import Pillow
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Snippets API",
-      default_version='v1',
-      description="Test description",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=[permissions.AllowAny],
+    openapi.Info(
+        title="Snippets API",
+        default_version='v1',
+        description="Test description",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
 )
 
+
+
+
 urlpatterns = [
+    # path('forbidden/', forbidden, name="forbidden"),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls'), name="blog"),
 

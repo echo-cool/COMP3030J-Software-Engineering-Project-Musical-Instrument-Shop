@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Max, Count, Sum
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
@@ -27,6 +27,8 @@ from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
+def forbidden(request):
+    return HttpResponse("You are not allowed to view this project!")
 
 def new_header(request):
     return render(request, 'layouts/default/shopper_base2.html', {
