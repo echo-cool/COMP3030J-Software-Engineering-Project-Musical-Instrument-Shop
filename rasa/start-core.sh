@@ -1,5 +1,5 @@
 echo Starting Rasa NLU...
-rasa run -p 18888 --enable-api --cors "*"
+rabbit run -p 18888 --enable-api --cors "*"
 #echo Starting Rasa Action...
 #rasa run actions -p 18889
 echo Done.
