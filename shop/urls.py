@@ -5,7 +5,7 @@ from .views import model_view, index, cart, product_details, model_design, leave
     product_details_test_model, wishlist, personal_profile, \
     checkout, model_design2, home, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden
+    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden, get_pictures
 
 app_name = 'shop'
 urlpatterns = [
@@ -40,5 +40,6 @@ urlpatterns = [
     path('game', game, name='game'),
     path('chinese', chinese, name='chinese'),
     path('new_header', new_header, name='new_header'),
-    path('chat_ai', chat_ai, name='chat_ai')
+    path('chat_ai', chat_ai, name='chat_ai'),
+    path('data_verification/', get_pictures, name='get_pictures'),
 ]
