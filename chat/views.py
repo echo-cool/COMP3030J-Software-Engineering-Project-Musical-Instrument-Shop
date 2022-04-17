@@ -78,7 +78,7 @@ def _rasa_chat(request):
             }
         print(data)
         try:
-            response = requests.post(url, json=data)
+            response = requests.post(url, json=data, timeout=2)
             print(response.text)
             print(response.json())
             action = response.json()[0]['text']
