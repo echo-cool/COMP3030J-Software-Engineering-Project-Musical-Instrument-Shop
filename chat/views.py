@@ -77,7 +77,7 @@ def rasa_chat(request):
             print(response.json())
             action = response.json()[0]['text']
             print(action)
-            time.sleep(2)
+            time.sleep(0.8)
             if action in action_list.keys():
                 return action_list[action](request)
             return JsonResponse(response.json(), safe=False, json_dumps_params={'ensure_ascii': False})

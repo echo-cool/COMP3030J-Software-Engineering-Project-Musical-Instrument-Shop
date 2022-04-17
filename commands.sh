@@ -45,3 +45,7 @@ rm -rf models && rasa train $$ rasa shell
 
 
 tensorflow-gpu==2.7.0
+
+rm -rf models && rm -rf .rasa  && rasa train && rasa shell --debug
+
+rm -rf models && rm -rf .rasa  && rasa train && rasa run -p 18888 --enable-api --cors "*"
