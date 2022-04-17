@@ -65,12 +65,18 @@ class MyLoginRequiredMiddleware:
             # Reset request path to '/' and set a 403 response
             response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: "
                                     "center;align-content: flex-start;align-items: center;'><div style='display: "
-                                    "flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>You "
-                                    "are <h1>Not Allowed to view this project</h1><br>" +
+                                    "flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>"
+                                    "<h1>Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
                                     "Please contact <strong>Group8</strong> to view this project.<br>" +
-                                    "Your request has been intercepted by our <strong>Auth Middleware.</strong> <p "
-                                    "style='color:red'>This incident has been reported.</p></div></div> "
+                                    "Your request has been intercepted by our Auth Middleware. <p "
+                                    "style='color:red'>This incident has been reported.</p>"+
+                                    "<h1>您无权查看此项目</h1><br>" +
+                                    "此项目由COMP3030J Group8-IllegalGroupNameException 维护<br>" +
+                                    "请联系<strong>Group8</strong>以获得权限查看此项目<br>" +
+                                    "您的请求已被 Auth Middleware 拦截<p "
+                                    "style='color:red'>此事件已报告.</p></div>"
+                                    "</div>"
                                     , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
             if "Authorization" in request.headers:
