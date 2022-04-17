@@ -61,7 +61,8 @@ class MyLoginRequiredMiddleware:
             # Reset request path to '/' and set a 403 response
             response = HttpResponse("You are <h1>Not Allowed</h1> to view this project<br>" +
                                     "This is the project built by Group8.<br>" +
-                                    "Please contact <strong>Group8</strong> to view this project.<br>"
+                                    "Please contact <strong>Group8</strong> to view this project.<br>"+
+                                    "Your request has been intercept our <strong>Auth Middleware</strong><br>"
                                     , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
             if "Authorization" in request.headers:
