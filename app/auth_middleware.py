@@ -70,12 +70,12 @@ class MyLoginRequiredMiddleware:
                                     "<h1>You are Not Allowed to view this project</h1><br>" +
                                     "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
                                     "Please contact <strong>Group8</strong> to view this project.<br>" +
-                                    "Your request has been intercepted by our Auth Middleware. <p "
+                                    "Your request has been intercepted by our Authentication Middleware. <p "
                                     "style='color:red'>This incident has been reported.</p>"+
                                     "<h1>您无权查看此项目</h1><br>" +
                                     "此项目由 COMP3030J Group8-IllegalGroupNameException 维护<br>" +
                                     "请联系<strong>Group8</strong>以获得权限查看此项目<br>" +
-                                    "您的请求已被 Auth Middleware 拦截<p "
+                                    "您的请求已被 Authentication Middleware 拦截<p "
                                     "style='color:red'>此事件已报告.</p></div>"
                                     "</div>"
                                     , status=401)
