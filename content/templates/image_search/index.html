@@ -1,0 +1,28 @@
+
+{#{% extends 'layouts/default/page.html' %}#}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+
+
+    <h4>Search</h4>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <button class="btn btn-primary">Upload</button>
+
+    </form>
+
+    {% for item in instruments %}
+        <p>{{ item }}</p>
+        <p>{{ item.name }}</p>
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" height="200">
+    {% endfor %}
+
+    <hr>
+
+
