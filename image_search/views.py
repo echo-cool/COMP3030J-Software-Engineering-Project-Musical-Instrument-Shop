@@ -50,6 +50,8 @@ def _generate_hist_data(request, item_id):
     Generate Hist Data for {instrument.name}
     Hist Data: {hist_data}
     """)
+
+
 generate_hist_data = sync_to_async(_generate_hist_data)
 
 
@@ -77,7 +79,10 @@ def _generate_all_hist_data(request):
     Generate Hist Data for all items<br>
     There are {instrument_search_data.count()} items in database instrument_search_data.
     """)
+
+
 generate_all_hist_data = sync_to_async(_generate_all_hist_data)
+
 
 def _image_search(request):
     form = ImageSearchForm()
