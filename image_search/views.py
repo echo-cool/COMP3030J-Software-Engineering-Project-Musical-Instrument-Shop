@@ -1,4 +1,5 @@
 import numpy as np
+from asgiref.sync import sync_to_async
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -33,7 +34,7 @@ def generate_database_index(request):
 extractor = None
 
 
-def generate_hist_data(request, item_id):
+def _generate_hist_data(request, item_id):
     print(f"generate_hist_data({item_id})")
     instrument_search_data = ImageSearchData.objects.get(id=item_id)
     instrument = instrument_search_data.instrument
@@ -49,9 +50,10 @@ def generate_hist_data(request, item_id):
     Generate Hist Data for {instrument.name}
     Hist Data: {hist_data}
     """)
+generate_hist_data = sync_to_async(_generate_hist_data)
 
 
-def generate_all_hist_data(request):
+def _generate_all_hist_data(request):
     instrument_search_data = ImageSearchData.objects.all()
     global extractor
     if extractor is None:
@@ -75,9 +77,9 @@ def generate_all_hist_data(request):
     Generate Hist Data for all items<br>
     There are {instrument_search_data.count()} items in database instrument_search_data.
     """)
+generate_all_hist_data = sync_to_async(_generate_all_hist_data)
 
-
-def image_search(request):
+def _image_search(request):
     form = ImageSearchForm()
     if request.method == 'POST':
         form = ImageSearchForm(request.POST, request.FILES)
@@ -111,3 +113,6 @@ def image_search(request):
     return render(request, 'image_search/index.html', {
         'form': form,
     })
+
+
+image_search = sync_to_async(_image_search)
