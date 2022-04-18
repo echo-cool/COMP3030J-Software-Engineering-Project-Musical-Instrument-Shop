@@ -8,7 +8,7 @@
 
 from django.urls import path
 
-from image_search.views import index, generate_database_index, generate_hist_data, generate_all_hist_data, image_search
+from image_search.views import generate_database_index, generate_hist_data, generate_all_hist_data, image_search
 
 app_name = 'image_search'
 urlpatterns = [
