@@ -8,7 +8,7 @@ import bootstrap4
 import django_filters
 from django_seed import Seed
 # DO NOT REMOVE THESE IMPORT !!!!!!!
-warnings.simplefilter('error', DeprecationWarning)
+# warnings.simplefilter('error', DeprecationWarning)
 
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CONTENT_DIR = os.path.join(BASE_DIR, 'content')
