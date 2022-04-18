@@ -1,12 +1,15 @@
+import numpy as np
 from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-from image_search.ml.core import ResNetFeatureExtractor
+from image_search.forms import ImageSearchForm
+from image_search.ml.core import ResNetFeatureExtractor, distance
 from image_search.models import ImageSearchData
 from shop.models import Instrument
 import warnings
-warnings.filterwarnings("ignore",category=DeprecationWarning)
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 def index(request):
@@ -72,3 +75,39 @@ def generate_all_hist_data(request):
     Generate Hist Data for all items<br>
     There are {instrument_search_data.count()} items in database instrument_search_data.
     """)
+
+
+def image_search(request):
+    form = ImageSearchForm()
+    if request.method == 'POST':
+        form = ImageSearchForm(request.POST, request.FILES)
+        if form.is_valid():
+            res = {}
+            image = form.cleaned_data['image']
+            print(f"image: {image}")
+            # save image
+            with open("content/media/uploads/tmp/tmp.jpg", 'wb') as f:
+                f.write(image.read())
+            global extractor
+            if extractor is None:
+                extractor = ResNetFeatureExtractor()
+            hist_data = extractor.extract_feature("content/media/uploads/tmp/tmp.jpg")
+            print(hist_data)
+            all_image_search_data = ImageSearchData.objects.all()
+            for item in all_image_search_data:
+                item_hist_data = item.data
+                item_hist_data = item_hist_data.split(",")
+                item_hist_data = [float(x) for x in item_hist_data]
+                item_hist_data = np.array(item_hist_data)
+                res[item.id] = distance(hist_data, item_hist_data)
+
+            sorted_res = sorted(res.items(), key=lambda x: x[1])
+            print(sorted_res)
+            instruments = []
+            for id in sorted_res:
+                instruments.append(ImageSearchData.objects.get(id=id[0]).instrument)
+            print(instruments)
+            return render(request, 'image_search/index.html', {'form': form, 'instruments': instruments})
+    return render(request, 'image_search/index.html', {
+        'form': form,
+    })
