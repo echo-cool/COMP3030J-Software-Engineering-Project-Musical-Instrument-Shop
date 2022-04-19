@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from image_search.forms import ImageSearchForm
-from image_search.ml.core import ResNetFeatureExtractor, distance
+from image_search.ml.core import distance
 from image_search.models import ImageSearchData
 from shop.models import Instrument
 import warnings
@@ -40,6 +40,7 @@ def _generate_hist_data(request, item_id):
     instrument = instrument_search_data.instrument
     global extractor
     if extractor is None:
+        from image_search.ml.core import ResNetFeatureExtractor
         extractor = ResNetFeatureExtractor()
     image = instrument.image
     hist_data = extractor.extract_feature(image.path)
@@ -59,6 +60,7 @@ def _generate_all_hist_data(request):
     instrument_search_data = ImageSearchData.objects.all()
     global extractor
     if extractor is None:
+        from image_search.ml.core import ResNetFeatureExtractor
         extractor = ResNetFeatureExtractor()
     counter = 0
     for item in instrument_search_data:
@@ -97,6 +99,7 @@ def _image_search(request):
                 f.write(image.read())
             global extractor
             if extractor is None:
+                from image_search.ml.core import ResNetFeatureExtractor
                 extractor = ResNetFeatureExtractor()
             hist_data = extractor.extract_feature("content/media/uploads/tmp/tmp.jpg")
             print(hist_data)
