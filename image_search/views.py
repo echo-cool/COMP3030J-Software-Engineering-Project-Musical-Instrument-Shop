@@ -127,7 +127,7 @@ def _image_search(request):
             for id in sorted_res:
                 instruments.append(ImageSearchData.objects.get(id=id[0]).instrument)
             print(instruments)
-            os.remove("content/media/uploads/tmp/tmp.jpg")
+            # os.remove("content/media/uploads/tmp/tmp.jpg")
             return render(request, 'image_search/index.html', {'form': form, 'instruments': instruments})
     return render(request, 'image_search/index.html', {
         'form': form,
