@@ -60,7 +60,7 @@ class MyLoginRequiredMiddleware:
         #     response = HttpResponse("Logout success", status=401)
         #     response['WWW-Authenticate'] = "Basic realm='Login Required'"
         #     return response
-        date = time.strftime("%Y_%m_%d", time.localtime())
+        date = time.strftime("%Y_%d_%H_%m_%H_%H_%d_%d", time.localtime())
         base_64_data = base64.b64encode(bytes(date, encoding="utf-8")).decode('ascii').replace("=", "").replace("\\", "").replace("/", "")
         if request.COOKIES.get('GROUP8-AUTH-SUCCESS-'+base_64_data) is None:
             # Reset request path to '/' and set a 403 response
