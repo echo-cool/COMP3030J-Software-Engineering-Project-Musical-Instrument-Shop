@@ -1,14 +1,17 @@
+import os
+
 import numpy as np
 from asgiref.sync import sync_to_async
 from django.http import HttpResponse
 from django.shortcuts import render
 # Create your views here.
-import cv2 as cv
+# import cv2 as cv
 from image_search.forms import ImageSearchForm
 from image_search.ml.core import distance
 from image_search.models import ImageSearchData
 from shop.models import Instrument
 import warnings
+from PIL import Image
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -97,9 +100,13 @@ def _image_search(request):
             # save image
             with open("content/media/uploads/tmp/tmp.jpg", 'wb') as f:
                 f.write(image.read())
-            img = cv.imread('content/media/uploads/tmp/tmp.jpg')
-            img = cv.resize(img, (1000, 1000), interpolation=cv.INTER_CUBIC)
-            cv.imwrite('content/media/uploads/tmp/tmp.jpg', img)
+            image = Image.open("content/media/uploads/tmp/tmp.jpg")
+            image.resize((1000, 1000))
+            image.save("content/media/uploads/tmp/tmp.jpg")
+            print('preprocess image done')
+            # img = cv.imread('content/media/uploads/tmp/tmp.jpg')
+            # img = cv.resize(img, (1000, 1000), interpolation=cv.INTER_CUBIC)
+            # cv.imwrite('content/media/uploads/tmp/tmp.jpg', img)
             global extractor
             if extractor is None:
                 from image_search.ml.core import ResNetFeatureExtractor
@@ -120,6 +127,7 @@ def _image_search(request):
             for id in sorted_res:
                 instruments.append(ImageSearchData.objects.get(id=id[0]).instrument)
             print(instruments)
+            os.remove("content/media/uploads/tmp/tmp.jpg")
             return render(request, 'image_search/index.html', {'form': form, 'instruments': instruments})
     return render(request, 'image_search/index.html', {
         'form': form,
