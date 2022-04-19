@@ -101,7 +101,7 @@ def _image_search(request):
             with open("content/media/uploads/tmp/tmp.jpg", 'wb') as f:
                 f.write(image.read())
             image = Image.open("content/media/uploads/tmp/tmp.jpg")
-            image.resize((1000, 1000))
+            image = image.resize((1000, 1000), Image.ANTIALIAS)
             image.save("content/media/uploads/tmp/tmp.jpg")
             print('preprocess image done')
             # img = cv.imread('content/media/uploads/tmp/tmp.jpg')
