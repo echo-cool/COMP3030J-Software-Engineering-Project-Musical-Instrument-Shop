@@ -9,9 +9,12 @@ stories:
   - intent: ask_name
   - action: utter_give_name
   - action: utter_ask_user_name
-  - slot_was_set:
-      - have_name: true
+  - intent: give_name
+  - action: action_set_have_name
   - action: utter_greet
+
+#  - action: utter_greet_with_name
+
 
 
 #- story: give-name-path

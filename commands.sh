@@ -36,3 +36,16 @@ java -jar crowdin-cli.jar download
 #pip install --no-cache-dir spacy
 
 python -m pip install --upgrade pip
+
+rasa run -p 18888 --enable-api --cors "*"
+python -m spacy download en_core_web_sm
+rasa run actions -p 18889
+
+rm -rf models && rasa train $$ rasa shell
+
+
+tensorflow-gpu==2.7.0
+
+rm -rf models && rm -rf .rasa  && rasa train && rasa shell --debug
+
+rm -rf models && rm -rf .rasa  && rasa train && rasa run -p 18888 --enable-api --cors "*"

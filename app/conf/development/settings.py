@@ -8,7 +8,7 @@ import bootstrap4
 import django_filters
 from django_seed import Seed
 # DO NOT REMOVE THESE IMPORT !!!!!!!
-warnings.simplefilter('error', DeprecationWarning)
+# warnings.simplefilter('error', DeprecationWarning)
 
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CONTENT_DIR = os.path.join(BASE_DIR, 'content')
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'chat',
     'echarts',
     'landing_page',
+    'image_search',
 
     # API Framework
     'drf_yasg',
@@ -63,7 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'app.cors_middleware.CORSMiddleware'
+    'app.cors_middleware.CORSMiddleware',
+    'app.auth_middleware.MyLoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'

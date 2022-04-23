@@ -4,6 +4,15 @@
 {% load static %}
 
 {% block location %}
+
+    <style>
+
+        .ui-dialog-buttonset {
+            text-align: center;
+        }
+
+    </style>
+
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
@@ -122,9 +131,9 @@
                             $("#delete_button-{{ instrument.id }}").on("click", function (res) {
                                 $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
-                                    width: '320',
+                                    width: '300',
                                     modal: true,
-                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the operation?</h4></div>",
                                     title_html: true,
                                     buttons: [
                                         {

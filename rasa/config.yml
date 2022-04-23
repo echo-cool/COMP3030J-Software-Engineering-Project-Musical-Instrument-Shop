@@ -7,27 +7,60 @@ recipe: default.v1
 language: en
 
 pipeline:
-# # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
-# # If you'd like to customize it, uncomment and adjust the pipeline.
-# # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-   - name: WhitespaceTokenizer
-   - name: RegexFeaturizer
-   - name: LexicalSyntacticFeaturizer
-   - name: CountVectorsFeaturizer
-   - name: CountVectorsFeaturizer
-     analyzer: char_wb
-     min_ngram: 1
-     max_ngram: 4
-   - name: DIETClassifier
-     epochs: 100
-     constrain_similarities: true
-   - name: EntitySynonymMapper
-   - name: ResponseSelector
-     epochs: 100
-     constrain_similarities: true
-   - name: FallbackClassifier
-     threshold: 0.3
-     ambiguity_threshold: 0.1
+  - name: SpacyNLP                # 预训练词向量
+    model: "en_core_web_trf"
+    intent_tokenization_flag: False
+    # Symbol on which intent should be split
+    "intent_split_symbol": "_"
+    # Regular expression to detect tokens
+    "token_pattern": None
+  - name: SpacyEntityExtractor    #文本特征化
+    dimensions: ["PERSON", "LANGUAGE", "PRODUCT", "DATE", "TIME"]
+  - name: SpacyTokenizer          # 文本分词器
+  - name: SpacyFeaturizer         #特征提取器 将一句话变成一个向量
+    pooling: mean
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer #词性特征提取器
+  - name: CountVectorsFeaturizer  #创建用户信息和标签(意图和响应)的词袋表征 为意图分类和 response selection创建特征
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier          #意图分类
+    epochs: 300
+#    - name: LogisticRegressionClassifier
+#      max_iter: 200
+#      solver: lbfgs
+#      tol: 0.0001
+#      random_state: 42
+    constrain_similarities: True
+  - name: EntitySynonymMapper     #同义实体
+  - name: ResponseSelector
+    constrain_similarities: True
+    epochs: 300
+
+#pipeline:
+## # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
+## # If you'd like to customize it, uncomment and adjust the pipeline.
+## # See https://rasa.com/docs/rasa/tuning-your-model for more information.
+#   - name: WhitespaceTokenizer
+#   - name: RegexFeaturizer
+#   - name: LexicalSyntacticFeaturizer
+#   - name: CountVectorsFeaturizer
+#   - name: CountVectorsFeaturizer
+#     analyzer: char_wb
+#     min_ngram: 1
+#     max_ngram: 4
+#   - name: DIETClassifier
+#     epochs: 100
+#     constrain_similarities: true
+#   - name: EntitySynonymMapper
+#   - name: ResponseSelector
+#     epochs: 100
+#     constrain_similarities: true
+#   - name: FallbackClassifier
+#     threshold: 0.3
+#     ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
@@ -35,12 +68,13 @@ policies:
 # # No configuration for policies was provided. The following default policies were used to train your model.
 # # If you'd like to customize them, uncomment and adjust the policies.
 # # See https://rasa.com/docs/rasa/policies for more information.
-#   - name: MemoizationPolicy
-#   - name: RulePolicy
-#   - name: UnexpecTEDIntentPolicy
-#     max_history: 5
-#     epochs: 100
-#   - name: TEDPolicy
-#     max_history: 5
-#     epochs: 100
-#     constrain_similarities: true
+   - name: MemoizationPolicy
+   - name: AugmentedMemoizationPolicy # 增强版本
+   - name: UnexpecTEDIntentPolicy
+     max_history: 5
+     epochs: 300
+   - name: TEDPolicy
+     max_history: 5
+     epochs: 300
+     constrain_similarities: True
+   - name: RulePolicy

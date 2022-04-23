@@ -42,4 +42,5 @@ urlpatterns = [
     path('wishlist_management/', views.wishlist_management, name='wishlist_management'),
     path('update_wishlist/<int:wishlist_id>/', views.update_wishlist, name='update_wishlist'),
     path('add_wishlist/', views.add_wishlist, name='add_wishlist'),
+    path('view_log', views.view_log, name='view_log'),
 ]
