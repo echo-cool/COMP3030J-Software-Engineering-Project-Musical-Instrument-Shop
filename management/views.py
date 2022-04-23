@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 
 from django.contrib.auth.models import User
@@ -643,11 +644,18 @@ def add_review(request):
 def order_state(request, order_id):
     order = Order.objects.filter(id=order_id).first()
     f = OrderForm(instance=order)
+
+    date = str(datetime.today().date())
+    time = str(datetime.today().time()).split(".")[0]
+
     return render(request, 'management_templates/order_state.html', {
         'order': order,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'form': f,
-        'users': User.objects.all()
+        'users': User.objects.all(),
+        # TIME INFORMATION
+        'date': date,
+        'time': time,
     })
 
 
