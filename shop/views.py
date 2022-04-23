@@ -30,13 +30,16 @@ from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
 
+
 def forbidden(request):
     return HttpResponse("You are not allowed to view this project!")
+
 
 def new_header(request):
     return render(request, 'layouts/default/shopper_base2.html', {
         "back": 0
     })
+
 
 @csrf_exempt
 def get_pictures(request: WSGIRequest):
@@ -100,6 +103,13 @@ index = sync_to_async(_index)
 def chat_ai(request):
     return render(request, 'layouts/default/chat_ai.html', {
         "home": 1,
+    })
+
+
+@xframe_options_exempt
+def image_upload(request):
+    return render(request, 'layouts/default/image_upload.html', {
+
     })
 
 
