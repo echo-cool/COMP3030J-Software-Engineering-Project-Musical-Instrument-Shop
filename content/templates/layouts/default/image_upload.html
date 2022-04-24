@@ -49,11 +49,73 @@
     <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
     <script>
-        $.fn.fileinputBsVersion = "3.3.7"; // if not set, this will be auto-derived
+        {#$.fn.fileinputBsVersion = "3.3.7"; // if not set, this will be auto-derived#}
         // initialize plugin with defaults
-        $("#input-id").fileinput();
         // with plugin options
-        $("#input-id").fileinput({'showUpload': false, 'previewFileType': 'any'});
+        {#$("#input-id").fileinput({'showUpload': false, 'previewFileType': 'any'});#}
+
+
+
+        {#$("#input-id").unbind().change(function (e) {#}
+        {#    console.log("芜湖，有这些图片:", e.target.files);#}
+        {#/})#}
+
+
+        $("#input-id").fileinput({
+            language: "zh",
+            uploadUrl: "/staff/newImages",
+            uploadAsync: true,
+            encrypt: 'multipart/form-data',
+            enableResumableUpload: true,
+            resumableUploadOptions: {
+                // uncomment below if you wish to test the file for previous partial uploaded chunks
+                // to the server and resume uploads from that point afterwards
+                // testUrl: "http://localhost/test-upload.php"
+            },
+            // maxFileCount: 5,
+            allowedFileTypes: ['image'],    // allow only images
+            showRemove: true, //显示移除按钮
+            showPreview: true, //是否显示预览
+            showCaption: true,//是否显示标题
+            dropZoneEnabled: false,//是否显示拖拽区域
+            browseClass: "btn btn-primary", //按钮样式
+            deleteUrl: "deleteImages",
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreviewShowDelete: true,
+            theme: 'fas',
+        })
+
+        function SycData() {
+            console.log("zhenshigelaoliu");
+            const myFile = $("#input-id");
+            // 触发
+            $('#input-id').on('change', function (event) {
+                console.log("芜湖，change后有这些图片:", event.target.files);
+            });
+            $('#input-id').on('filedeleted', function (event, key) {
+                console.log("芜湖，delete后有这些图片:", event.target.files);
+            });
+
+            myFile.click();
+            // 监听change事件
+            {#myFile.unbind().change(function (e) {#}
+            {#    console.log("芜湖，有这些图片:", e.target.files);#}
+            {#/});#}
+
+        }
+
+        /**
+         * 触发input type="file"
+         */
+        {#$("#uploadImage").click(function () {#}
+        {#   #}
+
+
+        {#$.post('/img_upload_with_instrument').done(function (data) {#}
+        {#    console.log("DSADSADAS", data.id);#}
+        {#    console.log();#}
+        {#/})#}
     </script>
 
     <style>
@@ -67,6 +129,7 @@
     </style>
 </head>
 <body>
+<button id="uploadImage" onclick="SycData()">zhenshige laoliu</button>
 <input id="input-id" type="file" class="file" data-preview-file-type="text" multiple>
 </body>
 </html>
