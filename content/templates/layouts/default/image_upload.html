@@ -89,6 +89,7 @@
 
 <script>
     $(document).ready(function () {
+        var upload_images = [];
 
         let file_input = $('#input-24');
         file_input.fileinput({
@@ -119,11 +120,14 @@
         });
 
         $("#input-24").on("filebatchselected", function (event, files) {
-            console.log("芜湖，i[[;pad后有这些图片:", files);
+            upload_images = files;
+            console.log("芜湖，文件选择后有这些图片:", upload_images);
         });
 
-        $("#input-24").on("fileimageuploaded", function (event, files) {
-            console.log("芜湖，i[[后有这些图片:", files);
+        $("#input-24").on("filepreremove", function (event, file) {
+            console.log("芜湖，删除这张图片:", file);
+            {#upload_images = upload_images.filter(item => item.name !== file)#}
+            console.log("芜湖，文件删除后有这些图片:", upload_images);
         });
 
     });
