@@ -271,10 +271,16 @@
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
                                         <li>
+                                            <style>
+                                                .card-header .heading-elements, .card-header .heading-elements-toggle {
+                                                    top: 12px;
+                                                }
+                                            </style>
                                             <button type="button"
                                                     class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
                                                     style="border-radius: 20% !important">
-                                                <a href="{% url 'echarts:chart1' %}"> More </a>
+                                                <a href="{% url 'echarts:chart1' %}"
+                                                   style="color: white "> More </a>
                                             </button>
                                         </li>
                                     </ul>
@@ -303,6 +309,23 @@
                                 {#                                        </li>#}
                                 {#                                    </ul>#}
                                 {#                                </div>#}
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li>
+                                            <style>
+                                                .card-header .heading-elements, .card-header .heading-elements-toggle {
+                                                    top: 12px;
+                                                }
+                                            </style>
+                                            <button type="button"
+                                                    class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
+                                                    style="border-radius: 20% !important">
+                                                <a href="{% url 'echarts:chart1' %}"
+                                                   style="color: white "> More </a>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body p-0 pb-0">
