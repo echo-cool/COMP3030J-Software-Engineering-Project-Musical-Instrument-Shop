@@ -66,10 +66,16 @@ def rasa_chat(request):
         message: str = str(message)
         print(message)
         url = 'http://127.0.0.1:18888/webhooks/rest/webhook'
-        data = {
-            'sender': request.user.username,
-            'message': message
-        }
+        if request.user.is_authenticated:
+            data = {
+                'sender': request.user.username,
+                'message': message
+            }
+        else:
+            data = {
+                'sender': 'Anonymous_'+request.get_host(),
+                'message': message
+            }
         print(data)
         try:
             response = requests.post(url, json=data)

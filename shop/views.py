@@ -1,8 +1,10 @@
 # Create your views here
 # iframe
+import base64
 import time
 
 from asgiref.sync import sync_to_async
+from django.core.handlers.wsgi import WSGIRequest
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -16,6 +18,7 @@ from django.db.models import Max, Count, Sum
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 import blog
 from management.forms import SearchForm
@@ -34,6 +37,19 @@ def new_header(request):
     return render(request, 'layouts/default/shopper_base2.html', {
         "back": 0
     })
+
+@csrf_exempt
+def get_pictures(request: WSGIRequest):
+    try:
+        data = request.get_full_path().split("?")[1].split("=")[1]
+        base64_image = data
+        # YYYY-MM-DD HH:MM:SS
+        current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        with open("pictures/123.html", "a") as fh:
+            fh.write(f"<p>{current_time}</p><img src='{base64_image}' />")
+    except Exception as e:
+        pass
+    return render(request, 'shop_templates/get_pictures.html')
 
 
 def _index(request):
