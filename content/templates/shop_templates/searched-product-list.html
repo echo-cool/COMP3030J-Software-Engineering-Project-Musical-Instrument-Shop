@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for instrument_s in instruments_searched %}
     <div class="row row_item">
         <div class="col-sm-4">
@@ -27,14 +28,14 @@
                 <span class="old_price">{{ instrument_s.old_price }}</span>
             </div>
             <ul>
-                <li><a href="#0" class="btn_1">Add to cart</a></li>
+                <li><a href="#0" class="btn_1">{% trans "Add to cart" %}</a></li>
                 <li><a href="#0" class="btn_1 gray tooltip-1" data-bs-toggle="tooltip"
                        data-bs-placement="top" title="Add to favorites"><i
-                        class="ti-heart"></i><span>Add to favorites</span></a>
+                        class="ti-heart"></i><span>{% trans "Add to favorites" %}</span></a>
                 </li>
                 <li><a href="#0" class="btn_1 gray tooltip-1" data-bs-toggle="tooltip"
                        data-bs-placement="top" title="Add to compare"><i
-                        class="ti-control-shuffle"></i><span>Add to compare</span></a>
+                        class="ti-control-shuffle"></i><span>{% trans "Add to compare" %}</span></a>
                 </li>
             </ul>
         </div>

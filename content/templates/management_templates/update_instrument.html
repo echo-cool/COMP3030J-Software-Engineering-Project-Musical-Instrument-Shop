@@ -28,6 +28,14 @@
 {% endblock %}
 
 {% block content %}
+
+    <iframe src="/image_upload" id="image_frame"
+            style="box-sizing: unset; margin: 0px !important; border: none !important;
+            overflow: hidden !important; display: block !important;
+                min-height: 500px;
+    height: auto;
+    width: 100%;">
+    </iframe>
     {{ form.errors }}
     <form method="post" enctype="multipart/form-data">
 

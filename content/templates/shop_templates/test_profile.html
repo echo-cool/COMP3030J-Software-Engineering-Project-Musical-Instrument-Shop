@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>media profile - Bootdey.com</title>
+    <title>{% trans "media profile - Bootdey.com" %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -22,10 +23,9 @@
                 </a>
             </div>
             <div class="media-body va-m">
-                <h2 class="media-heading">Michael Halls
-                    <small> - Profile</small>
+                <h2 class="media-heading">{% trans "Michael Halls" %}<small>{% trans " - Profile" %}</small>
                 </h2>
-                <p class="lead">Lorem ipsum dolor sit amet ctetur adicing elit, sed do eiusmod tempor incididunt</p>
+                <p class="lead">{% trans "Lorem ipsum dolor sit amet ctetur adicing elit, sed do eiusmod tempor incididunt" %}</p>
                 <div class="media-links">
                     <ul class="list-inline list-unstyled">
                         <li>
@@ -91,15 +91,15 @@
               <span class="panel-icon">
                 <i class="fa fa-star"></i>
               </span>
-                    <span class="panel-title"> User Popularity</span>
+                    <span class="panel-title">{% trans "User Popularity" %}</span>
                 </div>
                 <div class="panel-body pn">
                     <table class="table mbn tc-icon-1 tc-med-2 tc-bold-last">
                         <thead>
                         <tr class="hidden">
                             <th class="mw30">#</th>
-                            <th>First Name</th>
-                            <th>Revenue</th>
+                            <th>{% trans "First Name" %}</th>
+                            <th>{% trans "Revenue" %}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -107,7 +107,7 @@
                             <td>
                                 <span class="fa fa-desktop text-warning"></span>
                             </td>
-                            <td>Television</td>
+                            <td>{% trans "Television" %}</td>
                             <td>
                                 <i class="fa fa-caret-up text-info pr10"></i>$855,913
                             </td>
@@ -116,7 +116,7 @@
                             <td>
                                 <span class="fa fa-microphone text-primary"></span>
                             </td>
-                            <td>Radio</td>
+                            <td>{% trans "Radio" %}</td>
                             <td>
                                 <i class="fa fa-caret-down text-danger pr10"></i>$349,712
                             </td>
@@ -125,7 +125,7 @@
                             <td>
                                 <span class="fa fa-newspaper-o text-info"></span>
                             </td>
-                            <td>Newspaper</td>
+                            <td>{% trans "Newspaper" %}</td>
                             <td>
                                 <i class="fa fa-caret-up text-info pr10"></i>$1,259,742
                             </td>
@@ -142,15 +142,15 @@
                     <span class="panel-title"> My Skills</span>
                 </div>
                 <div class="panel-body pb5">
-                    <span class="label label-warning mr5 mb10 ib lh15">Default</span>
-                    <span class="label label-primary mr5 mb10 ib lh15">Primary</span>
-                    <span class="label label-info mr5 mb10 ib lh15">Success</span>
-                    <span class="label label-success mr5 mb10 ib lh15">Info</span>
-                    <span class="label label-alert mr5 mb10 ib lh15">Warning</span>
-                    <span class="label label-system mr5 mb10 ib lh15">Danger</span>
-                    <span class="label label-info mr5 mb10 ib lh15">Success</span>
-                    <span class="label label-success mr5 mb10 ib lh15">Ui Design</span>
-                    <span class="label label-primary mr5 mb10 ib lh15">Primary</span>
+                    <span class="label label-warning mr5 mb10 ib lh15">{% trans "Default" %}</span>
+                    <span class="label label-primary mr5 mb10 ib lh15">{% trans "Primary" %}</span>
+                    <span class="label label-info mr5 mb10 ib lh15">{% trans "Success" %}</span>
+                    <span class="label label-success mr5 mb10 ib lh15">{% trans "Info" %}</span>
+                    <span class="label label-alert mr5 mb10 ib lh15">{% trans "Warning" %}</span>
+                    <span class="label label-system mr5 mb10 ib lh15">{% trans "Danger" %}</span>
+                    <span class="label label-info mr5 mb10 ib lh15">{% trans "Success" %}</span>
+                    <span class="label label-success mr5 mb10 ib lh15">{% trans "Ui Design" %}</span>
+                    <span class="label label-primary mr5 mb10 ib lh15">{% trans "Primary" %}</span>
 
                 </div>
             </div>
@@ -159,34 +159,28 @@
               <span class="panel-icon">
                 <i class="fa fa-pencil"></i>
               </span>
-                    <span class="panel-title">About Me</span>
+                    <span class="panel-title">{% trans "About Me" %}</span>
                 </div>
                 <div class="panel-body pb5">
 
-                    <h6>Experience</h6>
+                    <h6>{% trans "Experience" %}</h6>
 
-                    <h4>Facebook Internship</h4>
-                    <p class="text-muted"> University of Missouri, Columbia
-                        <br> Student Health Center, June 2010 - 2012
-                    </p>
+                    <h4>{% trans "Facebook Internship" %}</h4>
+                    <p class="text-muted">{% trans "University of Missouri, Columbia" %}<br>{% trans "Student Health Center, June 2010 - 2012" %}</p>
 
                     <hr class="short br-lighter">
 
-                    <h6>Education</h6>
+                    <h6>{% trans "Education" %}</h6>
 
-                    <h4>Bachelor of Science, PhD</h4>
-                    <p class="text-muted"> University of Missouri, Columbia
-                        <br> Student Health Center, June 2010 through Aug 2011
-                    </p>
+                    <h4>{% trans "Bachelor of Science, PhD" %}</h4>
+                    <p class="text-muted">{% trans "University of Missouri, Columbia" %}<br>{% trans "Student Health Center, June 2010 through Aug 2011" %}</p>
 
                     <hr class="short br-lighter">
 
-                    <h6>Accomplishments</h6>
+                    <h6>{% trans "Accomplishments" %}</h6>
 
-                    <h4>Successful Business</h4>
-                    <p class="text-muted pb10"> University of Missouri, Columbia
-                        <br> Student Health Center, June 2010 through Aug 2011
-                    </p>
+                    <h4>{% trans "Successful Business" %}</h4>
+                    <p class="text-muted pb10">{% trans "University of Missouri, Columbia" %}<br>{% trans "Student Health Center, June 2010 through Aug 2011" %}</p>
 
                 </div>
             </div>
@@ -196,13 +190,13 @@
             <div class="tab-block">
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a href="#tab1" data-toggle="tab">Activity</a>
+                        <a href="#tab1" data-toggle="tab">{% trans "Activity" %}</a>
                     </li>
                     <li>
-                        <a href="#tab1" data-toggle="tab">Social</a>
+                        <a href="#tab1" data-toggle="tab">{% trans "Social" %}</a>
                     </li>
                     <li>
-                        <a href="#tab1" data-toggle="tab">Media</a>
+                        <a href="#tab1" data-toggle="tab">{% trans "Media" %}</a>
                     </li>
                 </ul>
                 <div class="tab-content p30" style="height: 730px;">
@@ -212,21 +206,20 @@
                                                                 src="https://bootdey.com/img/Content/avatar/avatar1.png"
                                                                 alt="..."> </a>
                             <div class="media-body">
-                                <h5 class="media-heading mb20">Simon Rivers Posted
-                                    <small> - 3 hours ago</small>
+                                <h5 class="media-heading mb20">{% trans "Simon Rivers Posted" %}<small>{% trans " - 3 hours ago" %}</small>
                                 </h5>
                                 <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="mw140 mr25 mb20">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="mw140 mr25 mb20">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mw140 mb20">
                                 <div class="media-links">
                       <span class="text-light fs12 mr10">
-                        <span class="fa fa-thumbs-o-up text-primary mr5"></span> Like </span>
+                        <span class="fa fa-thumbs-o-up text-primary mr5"></span>{% trans "Like " %}</span>
                                     <span class="text-light fs12 mr10">
-                        <span class="fa fa-share text-primary mr5"></span> Share </span>
+                        <span class="fa fa-share text-primary mr5"></span>{% trans "Share " %}</span>
                                     <span class="text-light fs12 mr10">
-                        <span class="fa fa-floppy-o text-primary mr5"></span> Save </span>
+                        <span class="fa fa-floppy-o text-primary mr5"></span>{% trans "Save " %}</span>
                                     <span class="text-light fs12 mr10">
-                        <span class="fa fa-comment text-primary mr5"></span> Comment </span>
+                        <span class="fa fa-comment text-primary mr5"></span>{% trans "Comment " %}</span>
                                 </div>
                             </div>
                         </div>
@@ -235,8 +228,7 @@
                                     class="media-object mn thumbnail thumbnail-sm rounded mw40"
                                     src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."> </a>
                             <div class="media-body mb5">
-                                <h5 class="media-heading mbn">Simon Rivers Posted
-                                    <small> - 3 hours ago</small>
+                                <h5 class="media-heading mbn">{% trans "Simon Rivers Posted" %}<small>{% trans " - 3 hours ago" %}</small>
                                 </h5>
                                 <p> Omg so freaking sweet dude.</p>
                                 <div class="media pb10">
@@ -244,10 +236,9 @@
                                             class="media-object mn thumbnail thumbnail-sm rounded mw40"
                                             src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."> </a>
                                     <div class="media-body mb5">
-                                        <h5 class="media-heading mbn">Jessica Wong
-                                            <small> - 3 hours ago</small>
+                                        <h5 class="media-heading mbn">{% trans "Jessica Wong" %}<small>{% trans " - 3 hours ago" %}</small>
                                         </h5>
-                                        <p>Omgosh I'm in love</p>
+                                        <p>{% trans "Omgosh I'm in love" %}</p>
                                     </div>
                                 </div>
                                 <div class="media mtn">
@@ -255,10 +246,9 @@
                                             class="media-object mn thumbnail thumbnail-sm rounded mw40"
                                             src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."> </a>
                                     <div class="media-body mb5">
-                                        <h5 class="media-heading mbn">Jessica Wong
-                                            <small> - 3 hours ago</small>
+                                        <h5 class="media-heading mbn">{% trans "Jessica Wong" %}<small>{% trans " - 3 hours ago" %}</small>
                                         </h5>
-                                        <p>Omgosh I'm in love</p>
+                                        <p>{% trans "Omgosh I'm in love" %}</p>
                                     </div>
                                 </div>
                             </div>
