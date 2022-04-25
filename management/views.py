@@ -1,3 +1,6 @@
+from datetime import datetime
+import os
+
 from django.contrib.auth.models import User
 from django.db.models import Q, Max
 from django.http import HttpResponse
@@ -47,7 +50,6 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
 def index_new(request):
-
     # tmp = {}
     # for instrument_item in Instrument.objects.all():
     #     tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
@@ -267,7 +269,8 @@ def order_management_packed(request):
 
 @login_required
 def order_management_shipped(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+        delivered=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -295,7 +298,8 @@ def order_management_shipped(request):
 
 @login_required
 def order_management_delivered(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+        delivered=True).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -640,11 +644,18 @@ def add_review(request):
 def order_state(request, order_id):
     order = Order.objects.filter(id=order_id).first()
     f = OrderForm(instance=order)
+
+    date = str(datetime.today().date())
+    time = str(datetime.today().time()).split(".")[0]
+
     return render(request, 'management_templates/order_state.html', {
         'order': order,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'form': f,
-        'users': User.objects.all()
+        'users': User.objects.all(),
+        # TIME INFORMATION
+        'date': date,
+        'time': time,
     })
 
 
@@ -860,7 +871,8 @@ def add_cart(request):
 def wishlist_management(request):
     search = request.GET.get("search")
     if search is not None:
-        wishlist_list = Wishlist.objects.filter(Q(user__username__contains=search) | Q(instrument__name__contains=search))
+        wishlist_list = Wishlist.objects.filter(
+            Q(user__username__contains=search) | Q(instrument__name__contains=search))
     else:
         wishlist_list = Wishlist.objects.all()
     paginator = Paginator(wishlist_list, 10, 0)
@@ -922,3 +934,14 @@ def add_wishlist(request):
         return render(request, 'management_templates/update_wishlist.html', {
             'form': f
         })
+
+
+@login_required
+def view_log(request):
+    # check if file exists
+    if os.path.isfile("access_log/access_log.log"):
+        # read file
+        with open("access_log/access_log.log", "r") as f:
+            log = f.read()
+        return HttpResponse(log, content_type="text/plain")
+    return HttpResponse("LOG FILE NOT FOUND")

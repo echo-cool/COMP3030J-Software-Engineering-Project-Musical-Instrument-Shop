@@ -44,13 +44,13 @@ def get_order_list(request) -> JsonResponse:
     data = []
     for order in order_list:
         data.append({
-                "recipient_id": request.user.username,
-                "text": "Order ID: " + str(order.id)
-            })
+            "recipient_id": request.user.username,
+            "text": "Order ID: " + str(order.id)
+        })
         data.append({
-                "recipient_id": request.user.username,
-                "text": "Order created_at: " + str(order.created_at)
-            })
+            "recipient_id": request.user.username,
+            "text": "Order created_at: " + str(order.created_at)
+        })
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
@@ -60,7 +60,7 @@ action_list = {
 
 
 @csrf_exempt
-def rasa_chat(request):
+def _rasa_chat(request):
     if request.method == "POST":
         message = request.POST.get('message')
         message: str = str(message)
@@ -73,12 +73,12 @@ def rasa_chat(request):
             }
         else:
             data = {
-                'sender': 'Anonymous_'+request.get_host(),
+                'sender': 'Anonymous_' + request.get_host(),
                 'message': message
             }
         print(data)
         try:
-            response = requests.post(url, json=data)
+            response = requests.post(url, json=data, timeout=2)
             print(response.text)
             print(response.json())
             action = response.json()[0]['text']
@@ -98,7 +98,8 @@ def rasa_chat(request):
     return "Please send a POST request"
 
 
-# rasa_chat = sync_to_async(_rasa_chat)
+rasa_chat = sync_to_async(_rasa_chat)
+
 
 @csrf_exempt
 def ai_chat_test(request):
