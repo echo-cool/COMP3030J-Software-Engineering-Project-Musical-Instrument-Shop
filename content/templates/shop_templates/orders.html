@@ -18,41 +18,41 @@
         <div class="row">
             {#        <div class="col-lg-3 my-lg-0 my-md-1">#}
             {#            <div id="sidebar" class="bg-purple">#}
-            {#                <div class="h4 text-white">Account</div>#}
+            {#                <div class="h4 text-white">{% trans "Accoun"t%}</div>#}
             {#                <ul>#}
             {#                    <li class="active"> <a href="#" class="text-decoration-none d-flex align-items-start">#}
             {#                            <div class="fas fa-box pt-2 me-3"></div>#}
             {#                            <div class="d-flex flex-column">#}
-            {#                                <div class="link">My Account</div>#}
-            {#                                <div class="link-desc">View & Manage orders and returns</div>#}
+            {#                                <div class="link">{% trans "My Accoun"t%}</div>#}
+            {#                                <div class="link-desc">{% trans "View & Manage orders and return"s%}</div>#}
             {#                            </div>#}
             {#                        </a> </li>#}
             {#                    <li> <a href="#" class="text-decoration-none d-flex align-items-start">#}
             {#                            <div class="fas fa-box-open pt-2 me-3"></div>#}
             {#                            <div class="d-flex flex-column">#}
-            {#                                <div class="link">My Orders</div>#}
-            {#                                <div class="link-desc">View & Manage orders and returns</div>#}
+            {#                                <div class="link">{% trans "My Order"s%}</div>#}
+            {#                                <div class="link-desc">{% trans "View & Manage orders and return"s%}</div>#}
             {#                            </div>#}
             {#                        </a> </li>#}
             {#                    <li> <a href="#" class="text-decoration-none d-flex align-items-start">#}
             {#                            <div class="far fa-address-book pt-2 me-3"></div>#}
             {#                            <div class="d-flex flex-column">#}
-            {#                                <div class="link">Address Book</div>#}
-            {#                                <div class="link-desc">View & Manage Addresses</div>#}
+            {#                                <div class="link">{% trans "Address Boo"k%}</div>#}
+            {#                                <div class="link-desc">{% trans "View & Manage Addresse"s%}</div>#}
             {#                            </div>#}
             {#                        </a> </li>#}
             {#                    <li> <a href="#" class="text-decoration-none d-flex align-items-start">#}
             {#                            <div class="far fa-user pt-2 me-3"></div>#}
             {#                            <div class="d-flex flex-column">#}
-            {#                                <div class="link">My Profile</div>#}
-            {#                                <div class="link-desc">Change your profile details & password</div>#}
+            {#                                <div class="link">{% trans "My Profil"e%}</div>#}
+            {#                                <div class="link-desc">{% trans "Change your profile details & passwor"d%}</div>#}
             {#                            </div>#}
             {#                        </a> </li>#}
             {#                    <li> <a href="#" class="text-decoration-none d-flex align-items-start">#}
             {#                            <div class="fas fa-headset pt-2 me-3"></div>#}
             {#                            <div class="d-flex flex-column">#}
-            {#                                <div class="link">Help & Support</div>#}
-            {#                                <div class="link-desc">Contact Us for help and support</div>#}
+            {#                                <div class="link">{% trans "Help & Suppor"t%}</div>#}
+            {#                                <div class="link-desc">{% trans "Contact Us for help and suppor"t%}</div>#}
             {#                            </div>#}
             {#                        </a> </li>#}
             {#                </ul>#}
@@ -62,37 +62,37 @@
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
                         {% if user.is_authenticated %}
-                            <div class="h5">Hello {{ user.username }},</div>
-                            <div>Logged in as: {{ user.email }}</div>
+                            <div class="h5">{% trans "Hello {{ user.username }}",%}</div>
+                            <div>{% trans "Logged in as: {{ user.email }"}%}</div>
                         {% else %}
-                            <div class="h5">Hello Guest,</div>
-                            <div>You are not logged in</div>
+                            <div class="h5">{% trans "Hello Guest",%}</div>
+                            <div>{% trans "You are not logged i"n%}</div>
                         {% endif %}
                     </div>
                     <div class="d-flex my-4 flex-wrap">
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">Orders placed</div>
+                                <div class="tag">{% trans "Orders place"d%}</div>
                                 <div class="ms-auto number">{{ count.order }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">Items in Cart</div>
+                                <div class="tag">{% trans "Items in Car"t%}</div>
                                 <div class="ms-auto number">{{ count.cart }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img src="{% static 'assets/images/icons/love-heart.png' %}"
                                                                  alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">Wishlist</div>
+                                <div class="tag">{% trans "Wishlis"t%}</div>
                                 <div class="ms-auto number">{{ count.wishlist }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-uppercase">My recent orders</div>
+                    <div class="text-uppercase">{% trans "My recent order"s%}</div>
                     {% for order in orders %}
                         <div class="order my-3 bg-light">
                             <div class="row">
@@ -101,15 +101,15 @@
                                         <div class="d-flex align-items-center">
                                             <div class="text-uppercase">Order
                                                 #{{ order.id | truncatechars:8 }}</div>
-                                            {#                                    <div class="blue-label ms-auto text-uppercase">paid</div>#}
+                                            {#                                    <div class="blue-label ms-auto text-uppercase">{% trans "pai"d%}</div>#}
                                         </div>
-                                        <div class="fs-8">Quantity: <b>
+                                        <div class="fs-8">{% trans "Quantity:" %}<b>
                                             {{ order.quantity }}
                                         </b></div>
                                         <div class="fs-8">{{ order.created_at }}</div>
                                         <div class="rating d-flex align-items-center pt-1"><img
                                                 src="{% static 'assets/images/icons/hand-thumb.png' %}" alt=""><span
-                                                class="px-2">Rating:</span> <span class="fas fa-star"></span> <span
+                                                class="px-2">{% trans "Rating:" %}</span> <span class="fas fa-star"></span><span
                                                 class="fas fa-star"></span> <span class="fas fa-star"></span> <span
                                                 class="fas fa-star"></span> <span class="far fa-star"></span></div>
                                     </div>
@@ -117,19 +117,19 @@
                                 <div class="col-lg-8">
                                     <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
                                         <div class="status">
-                                            Status: {% if order.delivered %}
-                                            Delivered
+                                            {% trans "Status:" %} {% if order.delivered %}
+                                            {% trans "Delivered" %}
                                         {% elif order.shipped %}
-                                            Shopper Confirmed
+                                            {% trans "Shopper Confirmed" %}
                                         {% elif order.packed %}
-                                            Packed
+                                            {% trans "Packed" %}
                                         {% elif order.accepted %}
-                                            Accepted
+                                            {% trans "Accepted" %}
                                         {% else %}
-                                            Placed
+                                            {% trans "Placed" %}
                                         {% endif %}
                                         </div>
-                                        <div class="btn btn-primary text-uppercase">order info</div>
+                                        <div class="btn btn-primary text-uppercase">{% trans "order info" %}</div>
                                     </div>
                                     <div class="progressbar-track">
                                         <ul class="progressbar">
