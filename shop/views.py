@@ -330,6 +330,7 @@ def leave_review(request, instrument_id):
 def personal_profile(request):
     if request.method == "POST":
         profile_item = Profile.objects.filter(user=request.user.id).first()
+        print(request.FILES)
         profile_item.image = request.FILES.get('photo')
         profile_item.save()
         return redirect(reverse('shop:personal_profile'))
