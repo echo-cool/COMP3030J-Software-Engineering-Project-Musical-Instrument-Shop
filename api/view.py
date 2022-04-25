@@ -13,9 +13,10 @@ from django.db.models import Q, Max, Count
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 from chat.models import MessageModel
-from shop.models import Profile, Wishlist, Cart, Order, OrderItem
+from shop.models import Profile, Wishlist, Cart, Order, OrderItem, Instrument
 
 
 def login(request):
@@ -113,7 +114,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': sender_rank[p1]['max'],
                              'unread': sender_rank[p1]['unread'],
-                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[p1]['max'], user=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[p1]['max'],
+                                                                        user=user).body})
                 p1 += 1
             else:
                 user = users.get(id=receiver_rank[p2]['recipient'])
@@ -128,7 +130,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': receiver_rank[p2]['max'],
                              'unread': 0,
-                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[p2]['max'], recipient=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[p2]['max'],
+                                                                        recipient=user).body})
                 p2 += 1
         if p1 == len_sender:
             for i in range(p2, len_receiver):
@@ -144,7 +147,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': receiver_rank[i]['max'],
                              'unread': 0,
-                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[i]['max'], recipient=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[i]['max'],
+                                                                        recipient=user).body})
         else:
             for i in range(p1, len_sender):
                 user = users.get(id=sender_rank[i]['user'])
@@ -159,7 +163,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': sender_rank[i]['max'],
                              'unread': sender_rank[i]['unread'],
-                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'], user=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'],
+                                                                        user=user).body})
         data = sorted(data, key=lambda x: x['time'], reverse=True)
         if to != -1 and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
             user = users.get(id=to)
@@ -193,7 +198,7 @@ def add_wishlist(request):
                 except:
                     return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
-             return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
 def add_cart(request):
@@ -203,7 +208,8 @@ def add_cart(request):
                 return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
             else:
                 try:
-                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'), count=request.POST.get('count') or 1)
+                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'),
+                                count=request.POST.get('count') or 1)
                     cart.save()
                     return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
                 except:
@@ -214,7 +220,8 @@ def add_cart(request):
 
 def all_read(request):
     if request.method == 'POST':
-        unread_messages = MessageModel.objects.filter(user_id=request.POST.get('sender_id'), recipient=request.user, read=False)
+        unread_messages = MessageModel.objects.filter(user_id=request.POST.get('sender_id'), recipient=request.user,
+                                                      read=False)
         try:
             for message in unread_messages:
                 message.read = True
@@ -253,3 +260,13 @@ def revenue_month(request):
     result = [total_revenue, chinese_revenue, western_revenue]
 
     return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+@csrf_exempt
+def change_image(request):
+    if request.method == 'POST':
+        print(request.FILES)
+        instrument = Instrument.objects.filter(name="Pipa").first()
+        instrument.image = request.FILES.get("input24[]")
+        instrument.save()
+    return JsonResponse({"state": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
