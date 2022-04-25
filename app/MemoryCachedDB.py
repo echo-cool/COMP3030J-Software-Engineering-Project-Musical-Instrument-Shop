@@ -11,6 +11,11 @@ class MemoryCachedDB(object):
     def md5(key):
         return hashlib.md5(key.encode()).hexdigest()
 
+    def insert(self, value: object):
+        key = value.__hash__()
+        self.data[key] = value
+        return key
+
     def insert(self, key, value):
         self.data[key] = value
 
@@ -37,7 +42,3 @@ class MemoryCachedDB(object):
 
     def get_all_values(self):
         return self.data.values()
-
-
-
-
