@@ -17,28 +17,28 @@
                 <div class="page_header">
                     <div class="breadcrumbs">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
+                            <li><a href="#">{% trans "Home" %}</a></li>
+                            <li><a href="#">{% trans "Category" %}</a></li>
+                            <li>{% trans "Page active" %}</li>
                         </ul>
                     </div>
-                    <h1>Cart page</h1>
+                    <h1>{% trans "Cart page" %}</h1>
                 </div>
                 <!-- /page_header -->
                 <table class="table table-striped cart-list">
                     <thead>
                     <tr>
                         <th>
-                            Product
+                            {% trans "Product" %}
                         </th>
                         <th>
-                            Price($)
+                            {% trans "Price($)" %}
                         </th>
                         <th>
-                            Quantity
+                            {% trans "Quantity" %}
                         </th>
                         <th>
-                            Subtotal($)
+                            {% trans "Subtotal($)" %}
                         </th>
                         <th>
 
@@ -115,7 +115,7 @@
 
                 <div class="row add_top_30 flex-sm-row-reverse cart_actions">
                     <div class="col-sm-4 text-end">
-                        {#                        <button type="button" class="btn_1 gray">Update Cart</button>#}
+                        {#                        <button type="button" class="btn_1 gray">{% trans "Update Cart" %}</button>#}
                     </div>
                     <div class="col-sm-8">
                         <div class="apply-coupon">
@@ -124,7 +124,7 @@
                                     <div class="col-md-6"><input type="text" name="coupon-code" value=""
                                                                  placeholder="Promo code" class="form-control"></div>
                                     <div class="col-md-4">
-                                        <button type="button" class="btn_1 outline">Apply Coupon</button>
+                                        <button type="button" class="btn_1 outline">{% trans "Apply Coupon" %}</button>
                                     </div>
                                 </div>
                             </div>
@@ -142,16 +142,16 @@
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <ul>
                                 <li id="subtotal-all">
-                                    <span>Subtotal:</span>$ 240
+                                    <span>{% trans "Subtotal:" %}</span>$ 240
                                 </li>
                                 {#                                <li id="shipping" name="shipping">#}
-                                {#                                    <span>Shipping:</span>$ 0#}
+                                {#                                    <span>{% trans "Shipping:" %}</span>$ 0#}
                                 {#                                </li>#}
                                 <li id="all-total" name="total">
-                                    <span>Total:</span>$ 240
+                                    <span>{% trans "Total:" %}</span>$ 240
                                 </li>
                             </ul>
-                            <button type="submit" class="btn_1 full-width cart">Proceed to Checkout</button>
+                            <button type="submit" class="btn_1 full-width cart">{% trans "Proceed to Checkout" %}</button>
                         </div>
                     </div>
                 </div>
@@ -183,8 +183,8 @@
                 {#let total_money_element = document.getElementById("total-" + id);#}
                 {#total_money_element.innerHTML = total_money;#}
             }
-            $("#subtotal-all").html("<span>Subtotal:</span>$ " + all_total_money.toFixed(1));
-            $("#all-total").html("<span>Total:</span>$ " + all_total_money.toFixed(1));
+            $("#subtotal-all").html("<span>{% trans "Subtotal:" %}</span>$ " + all_total_money.toFixed(1));
+            $("#all-total").html("<span>{% trans "Total:" %}</span>$ " + all_total_money.toFixed(1));
 
 
         }
