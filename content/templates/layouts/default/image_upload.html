@@ -96,7 +96,7 @@
 
         let file_input = $('#input-24');
         file_input.fileinput({
-            uploadUrl: "/chat_ai",
+            uploadUrl: "/api/change_image/",
             showPrev: true,
             showRemove: true,
             deleteUrl: "/chat_ai",
@@ -118,8 +118,8 @@
             //alert(file);
             {#var suffix = file.substr(file.lastIndexOf("\\") + 1);#}
             //alert(suffix);
+            {#var file = $(this).get(0).files[0];#}
             console.log("芜湖，change后有这些图片:", file);
-
         });
 
         $("#input-24").on("filebatchselected", function (event, files) {
