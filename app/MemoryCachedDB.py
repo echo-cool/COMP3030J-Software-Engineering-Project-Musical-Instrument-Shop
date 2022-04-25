@@ -9,10 +9,10 @@ class MemoryCachedDB(object):
 
     @staticmethod
     def md5(key):
-        return hashlib.md5(key.encode()).hexdigest()
+        return hashlib.md5(str(key).encode()).hexdigest()
 
-    def insert(self, value: object):
-        key = value.__hash__()
+    def insert_value(self, value: object):
+        key = self.md5(id(value))
         self.data[key] = value
         return key
 
@@ -42,3 +42,11 @@ class MemoryCachedDB(object):
 
     def get_all_values(self):
         return self.data.values()
+
+if __name__ == '__main__':
+    db = MemoryCachedDB()
+    db.insert(1, 'a')
+    db.insert(2, 'b')
+    db.insert(3, 'c')
+    db.insert_value(6)
+    print(db.get_all())
