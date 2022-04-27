@@ -97,7 +97,6 @@
         {% bootstrap_form form %}
 
 
-
         <div class="form-group">
             <label for="object_3d">Object 3D</label>
             <div class="col-xs-12">
@@ -138,6 +137,7 @@
             "#id_object_mtl",
             "#id_object_gltf"
         ]
+        {#$("label[for=\'" + i + "\']").parent().css("display", "none");#}
         for (let i of hidden_list) {
             {#console.log($(i).parent())#}
             $(i).parent().css("display", "none");
@@ -228,8 +228,8 @@
                 url: "/management/add_instrument/",
                 data: formData,
                 async: true,
-                contentType:false,
-                processData:false,
+                contentType: false,
+                processData: false,
                 error: function (request) {
                     alert("Connection error:" + request.error);
                 },
