@@ -457,43 +457,26 @@ def update_instrument(request, instrument_id):
 def upload_ins(request):
     if request.method == "POST":
         instrument = Instrument.objects.all().last()
-        # instrument = InstrumentWithIForm(request.POST, instance=instrument)
-        # if f.is_valid():
-        #     f.save()
-        print("sss", request.FILES)
-        images = request.FILES["input24[]"]
-        # instrument.created_at = datetime.utcnow()
-        print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
-        if instrument.image == "default.jpg":
-            instrument.image = images
-            instrument.save()
-        else:
-            if instrument.image1 == "default.jpg":
+        all_images = request.FILES.getlist("input24[]")
+        # print("sss", all_images, request.FILES["input24[]"])
+        # print(len(all_images))
+        for i in range(len(all_images)):
+            # instrument.created_at = datetime.utcnow()
+            # print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+            images = all_images[i]
+            # print(images)
+            if i == 0:
+                instrument.image = images
+            elif i == 1:
                 instrument.image1 = images
-                instrument.save()
-            else:
-                if instrument.image2 == "default.jpg":
-                    instrument.image2 = images
-                    instrument.save()
-                else:
-                    if instrument.image3 == "default.jpg":
-                        instrument.image3 = images
-                        instrument.save()
-                    else:
-                        if instrument.image4 == "default.jpg":
-                            instrument.image4 = images
-                            instrument.save()
-
-        # images = request.files.values()
-        # pic_dir = Config.PRODUCT_PIC_IMG
-        # for i in images:
-        #     filename = name
-        #     i.save(os.path.join(pic_dir, filename))
-        #     img = Image(imgProduct_id=product_id, img_path=filename)
-        #     db.session.add(img)
-        #     db.session.commit()
-        # return jsonify({'success': 0})
-
+            elif i == 2:
+                instrument.image2 = images
+            elif i == 3:
+                instrument.image3 = images
+            elif i == 4:
+                instrument.image4 = images
+            instrument.save()
+        # return {'success': 0}
     return HttpResponse(status=204)
 
 

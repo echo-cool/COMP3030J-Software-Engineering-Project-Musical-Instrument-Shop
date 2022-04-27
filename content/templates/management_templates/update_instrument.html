@@ -69,14 +69,15 @@
             align-items: stretch;
             width: 80% !important;
         }
+
+        .file-caption.icon-visible .file-caption-name {
+            width: 94%;
+            height: 42px;
+        }
     </style>
 
 
-
-
-    <label for="input-24">Planets and Satellites</label>
-
-    <button id="dddd" onclick="child_click2()">ds</button>
+    {#    <button id="dddd" onclick="child_click2()">ds</button>#}
     {#    <iframe src="/image_upload" id="image_frame" name="childPage"#}
     {#            style="box-sizing: unset; margin: 0px !important; border: none !important;#}
     {#            overflow: hidden !important; display: block !important;#}
@@ -89,6 +90,8 @@
     {{ form.errors }}
     <form id="upload_form" method="post" enctype="multipart/form-data" onsubmit="return false">
         {% csrf_token %}
+
+        <label for="input-24">Musical Instrument Images:</label>
         <input id="input-24" name="input24[]" type="file" multiple>
 
         {% bootstrap_form form %}
@@ -99,7 +102,19 @@
 
 
     <script>
-        var upload_images = [];
+
+        let hidden_list = [
+            "#id_image",
+            "#id_image1",
+            "#id_image2",
+            "#id_image3",
+            "#id_image4"
+        ]
+        for (let i of hidden_list) {
+            {#console.log($(i).parent())#}
+            $(i).parent().css("display", "none");
+        }
+        let upload_images = [];
 
         var file_input = $('#input-24');
         file_input.fileinput({
@@ -108,6 +123,7 @@
             showRemove: true,
             deleteUrl: "/chat_ai",
             {#overwriteInitial: false,#}
+            uploadAsync: false,
             maxFileCount: 5,
             initialCaption: "Select or Drag images for musical instruments... (max: 5)",
             headers: {
@@ -141,8 +157,8 @@
             }
 
             upload_images = data;
-            console.log("芜湖，文件选择后有这些图片:", upload_images);
-            connectToRealInput(upload_images);
+            {#console.log("芜湖，文件选择后有这些图片:", upload_images);#}
+            {#connectToRealInput(upload_images);#}
         });
 
         $("#input-24").on("filepreremove", function (event, file_delete) {
@@ -160,44 +176,19 @@
                     data.push(file[1]);
                 }
             }
-
             upload_images = data;
-            console.log("芜湖，文件删除后有这些图片:", upload_images);
-            connectToRealInput(upload_images);
+            {#console.log("芜湖，文件删除后有这些图片:", upload_images);#}
+            {#connectToRealInput(upload_images);#}
         });
 
-        {##TODO: input 框不能赋值, 表单用的form不知道咋改，改成type=text能使嘛#}
 
-        function connectToRealInput(images) {
-            console.log("我现在要上传这些照片, input 框不能赋值，不会了", images);
-            for (let i = 0; i < images.length; i++) {
-                // console.log("raw_file", file);
-                console.log("芜湖，这是", images[i]);
-                {#if (i === 0) {#}
-                {#    $("#id_image").val(images[i]);#}
-                {#    console.log($("#id_image").val());} else {#}
-                {#    $("#id_image" + i).val(images[i]);#}
-                {#    console.log($("#id_image" + i).val())}#}
-            }
-        }
+        $("#input-24").on("filebatchuploadcomplete", function (event, file_delete) {
+            let url = window.location.href;
+            window.location.href = String(url).replace("add_instrument", "instrument_management");
+        });
 
-        function child_click() {
-            console.log("调用的子页面函数");
-            $("#input-24").fileinput();
-        }
-    </script>
-    <script>
+
         function Upload() {
-            {#var data2 = new FormData();#}
-            {#console.log("DADSSA", data2, $("#upload_form").data());#}
-            {#console.log("sda",);#}
-            {#let data = {};#}
-            {#let value = $("#upload_form").serializeArray();#}
-            {#$.each(value, function (index, item) {#}
-            {#    data[item.name] = item.value;#}
-            {#    let aa = item.name;#}
-            {#    data2.append(aa, item.value)});#}
-            {#let json = JSON.stringify(data);#}
             $.ajax({
                 {#cache: true,#}
                 headers: {
@@ -207,27 +198,15 @@
                 url: "/management/add_instrument/",
 
                 data: $('#upload_form').serialize(),
-                {#data: {name: "dsads", old_price: 200},#}
-                {#data: data2,#}
-                async: false,
+                async: true,
                 error: function (request) {
                     alert("Connection error:" + request.error);
                 },
                 success: function (data) {
                     console.log("SUCCESS!", window.frames[0]);
                     file_input.fileinput('upload')
-                    {#let upload = window.frames[0].document.getElementById("input-24");#}
-                    {#console.log(upload, $(upload));#}
-                    {#$(upload).fileinput('upload');#}
-
-                    {#var iframeWin2 = $("#image_frame").contents().find(".fileinput-upload-button");#}
-                    {#console.log("SUCCESS!", iframeWin2);#}
-                    {#iframeWin2.click();#}
                 }
             });
-
-            {#console.log(json, new FormData(data));#}
-
             return false;
         }
     </script>
