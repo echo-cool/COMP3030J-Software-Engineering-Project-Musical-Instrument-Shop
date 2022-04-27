@@ -29,21 +29,61 @@
 
 {% block content %}
 
-    <iframe src="/image_upload" id="image_frame"
-            style="box-sizing: unset; margin: 0px !important; border: none !important;
-            overflow: hidden !important; display: block !important;
-                min-height: 500px;
-    height: auto;
-    width: 100%;">
-    </iframe>
+        <iframe src="/image_upload" id="image_frame"
+                style="box-sizing: unset; margin: 0px !important; border: none !important;
+                overflow: hidden !important; display: block !important;
+                    min-height: 500px;
+        height: auto;
+        width: 100%;">
+        </iframe>
     {{ form.errors }}
     <form method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
         {% bootstrap_form form %}
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title">Custom File Input</h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+
+                    <a href="#" data-action="close">
+                        <i class="ace-icon fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input type="file" id="id-input-file-3" name="image-test"/>
+                        </div>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" name="file-format" id="id-file-format" class="ace"/>
+                        <span class="lbl"> Allow only images</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
 
         <button class="btn btn-primary">{% trans 'Submit' %}</button>
 
     </form>
+
+    <script>
+        jQuery(function ($) {
+           let file_input = $('#id_image');
+           console.log(file_input.val());
+           console.log(file_input.get(0).files[0])
+        });
+    </script>
 
 {% endblock %}

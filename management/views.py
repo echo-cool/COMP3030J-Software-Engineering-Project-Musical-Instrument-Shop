@@ -454,6 +454,8 @@ def update_instrument(request, instrument_id):
 def add_instrument(request):
     if request.method == "POST":
         f = InstrumentForm(request.POST, request.FILES)
+        print(request.POST)
+        print(request.FILES)
         if f.is_valid():
             f.save()
         else:

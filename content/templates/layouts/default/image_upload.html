@@ -85,6 +85,7 @@
     <input id="input-24" name="input24[]" type="file" multiple>
 </div>
 {#<input id="input-fa" name="input-fa[]" type="file" multiple>#}
+<input id="file-input" type="file">
 </body>
 
 <script src="{% static 'js/bootstrap-fileinput-5.2.7/js/fileinput.min.js' %}"></script>
@@ -115,11 +116,12 @@
 
         $("#input-24").bind('change', function () {
             var file = $(this).val();
+            var file1 = $(this).get(0)
             //alert(file);
             {#var suffix = file.substr(file.lastIndexOf("\\") + 1);#}
             //alert(suffix);
             {#var file = $(this).get(0).files[0];#}
-            console.log("芜湖，change后有这些图片:", file);
+            console.log("芜湖，change后有这些图片:", file1);
         });
 
         $("#input-24").on("filebatchselected", function (event, files) {

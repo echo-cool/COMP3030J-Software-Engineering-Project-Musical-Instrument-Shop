@@ -43,6 +43,7 @@ class MemoryCachedDB(object):
     def get_all_values(self):
         return self.data.values()
 
+
 if __name__ == '__main__':
     db = MemoryCachedDB()
     db.insert(1, 'a')
