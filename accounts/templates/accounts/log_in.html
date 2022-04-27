@@ -6,6 +6,8 @@
 
 {% block head_link %}
     <!-- BASE CSS -->
+
+
     <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
 
@@ -14,12 +16,24 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static 'assets/css_for_shop/custom.css' %}" rel="stylesheet">
+    <style>
+        .wrapper-hidden {
+            display: none;
+        }
+
+    </style>
 {% endblock %}
 
 {% block content %}
     <main class="bg_gray">
+        <button onclick="changeLoginStyle()">Modern Style</button>
+        <div class="container margin_30 login-wrapper wrapper-hidden">
+            <iframe src="/accounts/cool_login/" id="login-frame" name="login-frame"
+                    style="">
 
-        <div class="container margin_30">
+            </iframe>
+        </div>
+        <div class="container margin_30 login-wrapper ">
             <div class="page_header">
                 <div class="breadcrumbs">
                     <ul>
@@ -73,6 +87,15 @@
     <script src="{% static "/assets/js_for_shop/common_scripts.min.js" %}"></script>
     <script src="{% static "/assets/js_for_shop/main.js" %}"></script>
     <script>
+        function changeLoginStyle() {
+            $(".login-wrapper").toggle("wrapper-hidden");
+            $(".csstransitions").html(document.getElementById("login-frame").contentDocument.body.innerHTML);
+
+            $(".bg_gray").html(document.getElementById("login-frame"));
+
+
+        }
+
         {#$(document).ready(function () {#}
         {#    $('#submit').on('click', function (e) {#}
         {#        if ($('#checkbox').is(':checked')) {#}

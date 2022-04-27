@@ -3,12 +3,13 @@ from django.urls import path
 from .views import (
     LogInView, ResendActivationCodeView, RemindUsernameView, SignUpView, ActivateView, LogOutView,
     ChangeEmailView, ChangeEmailActivateView, ChangeProfileView, ChangePasswordView,
-    RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView
+    RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView, cool_login
 )
 
 app_name = 'accounts'
 
 urlpatterns = [
+    path('cool_login/', cool_login, name='cool_login'),
     path('log-in/', LogInView.as_view(), name='log_in'),
     path('log-out/', LogOutView.as_view(), name='log_out'),
 

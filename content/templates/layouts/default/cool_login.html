@@ -1,0 +1,174 @@
+{% extends 'layouts/default/shopper_base2.html' %}
+{% load static %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block head_link %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Cool Login</title>
+
+    <script src="{% static 'assets/assets_for_login/login.js' %}"></script>
+    <link href="{% static 'assets/assets_for_login/login.css' %}" rel="stylesheet">
+    <style>
+        .footer_v1 {
+            display: none;
+        }
+
+        .switch-to-sign-up, .switch-to-sign-in {
+            line-height: 1.2;
+        }
+
+        label2 {
+            display: block;
+            width: 260px;
+            margin: 0 auto 0;
+            text-align: center;
+            font-size: 12px;
+            color: #cfcfcf;
+            text-transform: uppercase;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content start -->
+    <div class="content">
+        <!-- User Login start -->
+        <div class="form login-in">
+
+            <form action="login" method="post">
+                <input id="csrf_token" name="csrf_token" type="hidden"
+                       value="IjBiMmNiNTIyMGJlMTBhNDJhZTU0OGQxNTNhMmM3OGE0ZWRkOWVjMTUi.Ymk_rA.GbNshIYxy-61sRi5ZShS5ZvX8HM">
+                <h2>User LOGIN</h2>
+                <!-- Input username start -->
+                <label for="username">USERNAME</label>
+                <label2><input class="username_l" id="username_l" name="username" required="" type="text"
+                               value=""></label2>
+
+
+                <!-- Input username end -->
+
+                <!-- Input password start -->
+                <label for="password">PASSWORD</label>
+                <label2><input class="password_l" id="password_l" name="password" required="" type="password"
+                               value=""></label2>
+
+                <label>Keep Login State (one month)<input id="remember_me" name="remember_me" type="checkbox"
+                                                          value="y"></label>
+                <!-- Input password end -->
+
+                <p> <!-- User Sign in button start -->
+
+                    <button type="submit" id="submit_l" class="submit">Sign In</button>
+                </p>   <!-- User Sign in button end -->
+
+                <!-- User Sign in button end -->
+                <p></p>
+                <div class="switch-to-sign-up">Sign Up</div>
+                <!-- Visitor Sign in button start -->
+                <button type="button" class="visitor_button">
+                    <span> Visitors </span>
+                    <span>entrance</span>
+                </button>
+                <!-- Visitor Sign in button end -->
+                <p></p>
+                <p class="college">Beijing-Dublin International College at BJUT (BDIC)</p>
+            </form>
+
+        </div>
+        <!-- User Loin end -->
+
+        <div class="form sign-up">
+            <form action="signup" method="post">
+                <input id="csrf_token" name="csrf_token" type="hidden"
+                       value="IjBiMmNiNTIyMGJlMTBhNDJhZTU0OGQxNTNhMmM3OGE0ZWRkOWVjMTUi.Ymk_rA.GbNshIYxy-61sRi5ZShS5ZvX8HM">
+                <h2>User REGISTER</h2>
+
+                <!-- Input username start -->
+                <label for="username">USERNAME</label>
+                <label2><input class="username_r" id="username_r" name="username" required="" type="text"
+                               value=""></label2>
+                <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">
+                <p id="hint" class="limitation_for_username"> 6-16 characters</p>
+                <!-- Input username end -->
+                <!-- Input password start -->
+                <label for="password">PASSWORD</label>
+                <label2><input class="password_r" id="password_r" name="password" required="" type="password"
+                               value=""></label2>
+                <img id="icon-password" src="/static/images/icon/icon-correct.png" alt="">
+                <p id="hint" class="limitation_for_password"> 6-12 characters</p>
+                <label>
+                    <span>PASSWORD AGAIN</span>
+                    <input class="password" id="password_r2" type="password" required="">
+                </label>
+                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">
+                <!-- Input password end -->
+                <p> <!-- User Sign in button start -->
+                    <button type="submit" id="submit_r" class="submit">Sign In</button>
+                </p><!-- User Sign in button end -->
+
+                <p>
+                </p>
+                <div class="information"></div>
+                <p></p>
+                <div class="switch-to-sign-in">Sign In</div>
+                <!-- Visitor Sign in button start -->
+
+                <!-- Visitor Sign in button end -->
+
+                <p class="college">Beijing-Dublin International College at BJUT (BDIC)</p>
+            </form>
+        </div>
+
+        <!-- Sub Content start -->
+        <div class="sub-content">
+            <!-- image on the right start -->
+            <div class="right-img">
+                <div class="right-img-text change">
+                    <h2>Administrator?</h2>
+                    <p>Login in here!</p>
+                </div>
+                <div class="change-way-btn">
+                    <span class="change">Change Way</span>
+                </div>
+            </div>
+            <!-- image on the right end -->
+
+            <!-- Administrator login start -->
+            <div class="form login-in-second">
+                <form action="login2" method="post">
+
+                    <h2>ADMINISTRATOR LOGIN</h2>
+
+                    <!-- Administrator username start -->
+                    <label>
+                        <span>USERNAME</span>
+                        <input class="username_l2" id="username_l2" name="username" required="" type="text" value="">
+                        <p id="p1"></p>
+                    </label>
+                    <!-- Administrator username end -->
+
+                    <!-- Administrator password start -->
+                    <label>
+                        <span>PASSWORD</span>
+                        <input class="password_l2" id="password_l2" name="password" required="" type="password"
+                               value="">
+                    </label>
+                    <!-- Administrator password end -->
+
+                    <!-- Administrator sign in button start -->
+                    <p>
+                        <button type="submit" id="submit_l2" class="submit">Sign In</button>
+                    </p>
+                    <!-- Administrator sign in button end -->
+                    <p class="college">Beijing-Dublin International College at BJUT</p>
+                </form>
+            </div>
+            <!-- Administrator login end -->
+        </div>
+        <!-- Sub Content end -->
+    </div>
+{% endblock %}

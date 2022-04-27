@@ -1,0 +1,325 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial;
+    background: url('../images/banner.webp') no-repeat top center;
+    background-size: cover;
+}
+
+input, button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: Arial;
+}
+
+
+/* Main content */
+.content {
+    margin: 90px auto 100px;
+    overflow: hidden;
+    position: relative;
+    width: 900px;
+    height: 550px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+/* The form in the main content box */
+.form {
+    position: relative;
+    width: 600px;
+    height: 100%;
+    transition: -webkit-transform 1.2s ease-in-out;
+}
+
+/*form for log in of user*/
+.form.login-in {
+    padding-top: 5%;
+}
+
+/*form for register (display:none) when default*/
+.form.sign-up {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: -40px;
+    padding-top: 100px;
+    padding-bottom: 700px;
+    background: white;
+}
+
+/*form for */
+.form.login-in-second {
+    padding-top: 22%;
+}
+
+#hint {
+    margin-left: 421px;
+    text-align: center;
+    color: #a1cd99;
+}
+
+#icon-username {
+    display: none;
+    top: 180px;
+    width: 30px;
+    position: absolute;
+    right: 116px;
+}
+
+#icon-password {
+    display: none;
+    top: 270px;
+    width: 30px;
+    position: absolute;
+    right: 116px;
+}
+
+#icon-password2 {
+    display: none;
+    top: 340px;
+    width: 30px;
+    position: absolute;
+    right: 116px;
+}
+
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.sub-content {
+    overflow: hidden;
+    position: absolute;
+    left: 600px;
+    top: 0;
+    width: 900px;
+    height: 100%;
+    padding-left: 260px;
+    background: #fff;
+}
+
+/* Learn transform from: https://developer.mozilla.org/en-US/docs/Web/CSS/transform */
+.content.sign-switch
+.sub-content {
+    -webkit-transform: translate3d(-560px, 0, 0);
+    transform: translate3d(-560px, 0, 0);
+    -webkit-transition: -webkit-transform 1.2s ease-in-out;
+}
+
+
+/* right-img */
+.right-img {
+    overflow: hidden;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    padding-top: 360px;
+}
+
+.right-img:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 900px;
+    height: 100%;
+    background-image: url("../images/background.png");
+    background-size: cover;
+}
+
+.right-img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* img_text*/
+.right-img-text {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 20% 15%;
+    text-align: center;
+    color: #fff;
+}
+
+.right-img-text h2 {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.right-img-text p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* Change Way Button */
+.change-way-btn {
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    width: 100px;
+    height: 36px;
+    margin: 0 auto;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+h2 {
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: #cfcfcf;
+    text-transform: uppercase;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+/* BDIC */
+.college {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: #cfcfcf;
+}
+
+/* sign in button */
+.submit {
+    margin-top: 40px;
+    text-transform: uppercase;
+    background: #c09c4e;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
+}
+
+.submit:hover {
+    background-color: #e5bb60;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* visitor button */
+.visitor_button {
+    position: relative;
+    bottom: 5px;
+    border: 2px solid #d3dae9;
+    color: #8fa1c7;
+}
+
+.visitor_button span {
+    font-weight: bold;
+    color: #455a81;
+}
+
+.information {
+    position: absolute;
+    text-align: center;
+    margin-top: -80px;
+    width: 600px;
+}
+
+.switch-to-sign-up {
+    position: relative;
+    color: #c09c4e;
+    top: 92px;
+    left: 520px;
+    text-align: center;
+    font-size: 4px;
+    font-weight: 600;
+    border-style: solid;
+    width: 34px;
+    height: 32px;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.switch-to-sign-up:hover {
+    color: white;
+    background-color: #e5bb60;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+}
+
+.switch-to-sign-in {
+    position: relative;
+    color: #c09c4e;
+    top: 30px;
+    left: 520px;
+    text-align: center;
+    font-size: 4px;
+    font-weight: 600;
+    border-style: solid;
+    width: 34px;
+    height: 32px;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+
+.switch-to-sign-in:hover {
+    color: white;
+    background-color: #e5bb60;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+}
+
+
+/*put the sign up close to the login in button */
+/*.switch-to-sign-up {*/
+/*    position: relative;*/
+/*    color: #c09c4e;*/
+/*    bottom: 11px;*/
+/*    left: 287px;*/
+/*    text-align: center;*/
+/*    font-size: 4px;*/
+/*    font-weight: 600;*/
+/*    border-style: solid;*/
+/*    width: 68px;*/
+/*    line-height: 2;*/
+/*    height: 27px;*/
+/*    border-width: 1px;*/
+/*    border-radius: 15px;*/
+/*}*/
+
