@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 import os
 
@@ -9,13 +10,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 import blog
 import shop
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
-    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm
+    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -450,19 +453,57 @@ def update_instrument(request, instrument_id):
         })
 
 
+@method_decorator(csrf_exempt)
+def upload_ins(request):
+    if request.method == "POST":
+        instrument = Instrument.objects.all().last()
+        all_images = request.FILES.getlist("input24[]")
+        # print("sss", all_images, request.FILES["input24[]"])
+        # print(len(all_images))
+        for i in range(len(all_images)):
+            # instrument.created_at = datetime.utcnow()
+            # print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+            images = all_images[i]
+            # print(images)
+            if i == 0:
+                instrument.image = images
+            elif i == 1:
+                instrument.image1 = images
+            elif i == 2:
+                instrument.image2 = images
+            elif i == 3:
+                instrument.image3 = images
+            elif i == 4:
+                instrument.image4 = images
+            instrument.save()
+        # return {'success': 0}
+    return HttpResponse(status=204)
+
+
 @login_required
+@method_decorator(csrf_exempt)
 def add_instrument(request):
     if request.method == "POST":
-        f = InstrumentForm(request.POST, request.FILES)
+        print(request.POST)
+        f = InstrumentWithIForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
+            ret = {'status': True, 'error': None, 'data': None}
+
+            print(f.errors)
+            print(f.errors.as_json())
+            # ret['error'] = f.errors['mobile'][0]
+            ret['status'] = False
+            return HttpResponse(json.dumps(ret))
             return render(request, 'management_templates/update_instrument.html', {
                 'form': f
             })
-        return redirect(reverse('management:instrument_management'))
+        return HttpResponse(status=204)
+        # return {"code": 200}
+        # return redirect(reverse('management:instrument_management'))
     else:
-        f = InstrumentForm()
+        f = InstrumentWithIForm()
         return render(request, 'management_templates/update_instrument.html', {
             'form': f
         })

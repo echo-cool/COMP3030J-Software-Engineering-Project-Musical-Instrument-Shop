@@ -25,7 +25,6 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/colors.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/components.css" %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/vendors/css/charts/chartist.css" %}">
     <link rel="stylesheet" type="text/css"
           href="{% static "assets_backend/vendors/css/charts/chartist-plugin-tooltip.css" %}">
 
@@ -46,10 +45,11 @@
           href="{% static "assets_backend/css/core/menu/menu-types/vertical-menu.css" %}">
     <link rel="stylesheet" type="text/css"
           href="{% static "assets_backend/css/core/colors/palette-gradient.css" %}">
-    <link rel="stylesheet" type="text/css"
-          href="{% static "assets_backend/css/core/colors/palette-gradient.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/plugins/charts/chartist.css" %}">
+
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/pages/chat-application.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets_backend/css/pages/dashboard-analytics.css" %}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -266,14 +266,21 @@
                     <div class="col-lg-8 col-md-12 big-card">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Revenue</h4>
+                                <h4 class="card-title">Changes in the number of instruments in the whole station</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
                                         <li>
+                                            <style>
+                                                .card-header .heading-elements, .card-header .heading-elements-toggle {
+                                                    top: 12px;
+                                                }
+                                            </style>
                                             <button type="button"
-                                                    class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">
-                                                <a href="{% url 'echarts:chart1' %}"> More </a>
+                                                    class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
+                                                    style="border-radius: 20% !important">
+                                                <a href="{% url 'echarts:chart1' %}"
+                                                   style="color: white "> More </a>
                                             </button>
                                         </li>
                                     </ul>
@@ -283,6 +290,47 @@
                                 <div class="card-body p-0 pb-0">
                                     <div class="chartist">
                                         <div id="project-stats" class="height-350 areaGradientShadow1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Revenue</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                {#                                <div class="heading-elements">#}
+                                {#                                    <ul class="list-inline mb-0">#}
+                                {#                                        <li>#}
+                                {#                                            <button type="button"#}
+                                {#                                                    class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">#}
+                                {#                                                <a href="{% url 'echarts:chart1' %}"> More </a>#}
+                                {#                                            </button>#}
+                                {#                                        </li>#}
+                                {#                                    </ul>#}
+                                {#                                </div>#}
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li>
+                                            <style>
+                                                .card-header .heading-elements, .card-header .heading-elements-toggle {
+                                                    top: 12px;
+                                                }
+                                            </style>
+                                            <button type="button"
+                                                    class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
+                                                    style="border-radius: 20% !important">
+                                                <a href="{% url 'echarts:chart1' %}"
+                                                   style="color: white "> More </a>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body p-0 pb-0">
+                                    <div class="chartist">
+                                        <div id="gradient-line-chart1" class="height-400 GradientlineShadow1"></div>
                                     </div>
                                 </div>
                             </div>
@@ -403,59 +451,111 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card ">
-                            <div class="card-header bg-hexagons">
-                                <h4 class="card-title ">Statistics</h4>
+
+                        <div class="card pull-up bg-gradient-directional-danger">
+                            <div class="card-header bg-hexagons-danger">
+                                <h4 class="card-title white">Analytics</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
-                                    <ul class="list-inline d-block mb-0">
+                                    <ul class="list-inline mb-0">
                                         <li>
-                                            <a id="report_btn"
-                                               class="btn btn-sm btn-danger danger box-shadow-3 round btn-min-width pull-right"
-                                               href="{% url 'echarts:chart2' %}" target="_blank">
-                                                <span class="white">Report</span>
-                                                <i class="ft-bar-chart pl-1 white"></i>
-                                            </a>
+                                            <a class="btn btn-sm btn-white danger box-shadow-1 round btn-min-width pull-right"
+                                               href="#" target="_blank">Report <i class="ft-bar-chart pl-1"></i></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="card-content collapse show bg-hexagons">
-                                <div class="card-body pt-0 pb-1">
+                            <div class="card-content collapse show bg-hexagons-danger">
+                                <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="align-self-center width-100">
-                                            <div id="statistics-donut-chart" class="height-100 donutShadow">
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%"
-                                                     height="100%" class="ct-chart-donut"
-                                                     style="width: 100%; height: 100%;">
-                                                    <g class="ct-series ct-series-a">
-                                                        <path d="M49.992,5A45,45,0,1,0,50,5L50,10A40,40,0,1,1,49.993,10Z"
-                                                              class="ct-slice-donut-solid" ct:value="100"></path>
-                                                    </g>
-                                                    <g>
-                                                        <text dx="50" dy="54.700000286102295" text-anchor="middle"
-                                                              class="ct-label" font-family="feather">
-                                                        </text>
-                                                    </g>
-                                                    <defs>
-                                                        <linearGradient id="donutGradient2" x1="0" y1="1" x2="0" y2="0">
-                                                            <stop offset="0%" stop-color="rgba(253,99,107,1)"></stop>
-                                                            <stop offset="95%"
-                                                                  stop-color="rgba(253,99,107, 0.3)"></stop>
-                                                        </linearGradient>
-                                                    </defs>
-                                                </svg>
-                                            </div>
+                                            <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
                                         </div>
-                                        <div class="media-body text-right mt-2">
-                                            <h3 class=" font-large-2 blue-grey lighten-1 ">{{ finished_orders.count }}
-                                            </h3>
-                                            <h6 class="mt-1">
-                                                    <span class="text-muted">orders finished in
-                                                        <a href="#" class="darken-2">this year.</a>
-                                                    </span>
+                                        <div class="media-body text-right mt-1">
+                                            <h3 class="font-large-2 white">{{ finished_orders.count }}</h3>
+                                            <h6 class="mt-1"><span class="text-muted white">Analytics in the <a href="#"
+                                                                                                                class="darken-2 white">last year.</a></span>
                                             </h6>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        {#                        <div class="card ">#}
+                        {#                            <div class="card-header bg-hexagons">#}
+                        {#                                <h4 class="card-title ">Statistics</h4>#}
+                        {#                                <div class="heading-elements">#}
+                        {#                                    <ul class="list-inline d-block mb-0">#}
+                        {#                                        <li>#}
+                        {#                                            <a id="report_btn"#}
+                        {#                                               class="btn btn-sm btn-danger danger box-shadow-3 round btn-min-width pull-right"#}
+                        {#                                               href="{% url 'echarts:chart2' %}" target="_blank">#}
+                        {#                                                <span class="white">Report</span>#}
+                        {#                                                <i class="ft-bar-chart pl-1 white"></i>#}
+                        {#                                            </a>#}
+                        {#                                        </li>#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="card-content collapse show bg-hexagons">#}
+                        {#                                <div class="card-body pt-0 pb-1">#}
+                        {#                                    <div class="media d-flex">#}
+                        {#                                        <div class="align-self-center width-100">#}
+                        {#                                            <div id="statistics-donut-chart" class="height-100 donutShadow">#}
+                        {#                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%"#}
+                        {#                                                     height="100%" class="ct-chart-donut"#}
+                        {#                                                     style="width: 100%; height: 100%;">#}
+                        {#                                                    <g class="ct-series ct-series-a">#}
+                        {#                                                        <path d="M49.992,5A45,45,0,1,0,50,5L50,10A40,40,0,1,1,49.993,10Z"#}
+                        {#                                                              class="ct-slice-donut-solid" ct:value="100"></path>#}
+                        {#                                                    </g>#}
+                        {#                                                    <g>#}
+                        {#                                                        <text dx="50" dy="54.700000286102295" text-anchor="middle"#}
+                        {#                                                              class="ct-label" font-family="feather">#}
+                        {#                                                        </text>#}
+                        {#                                                    </g>#}
+                        {#                                                    <defs>#}
+                        {#                                                        <linearGradient id="donutGradient2" x1="0" y1="1" x2="0" y2="0">#}
+                        {#                                                            <stop offset="0%" stop-color="rgba(253,99,107,1)"></stop>#}
+                        {#                                                            <stop offset="95%"#}
+                        {#                                                                  stop-color="rgba(253,99,107, 0.3)"></stop>#}
+                        {#                                                        </linearGradient>#}
+                        {#                                                    </defs>#}
+                        {#                                                </svg>#}
+                        {#                                            </div>#}
+                        {#                                        </div>#}
+                        {#                                        <div class="media-body text-right mt-2">#}
+                        {#                                            <h3 class=" font-large-2 blue-grey lighten-1 ">{{ finished_orders.count }}#}
+                        {#                                            </h3>#}
+                        {#                                            <h6 class="mt-1">#}
+                        {#                                                                            <span class="text-muted">orders finished in#}
+                        {#                                                                                <a href="#"#}
+                        {#                                                                                   class="darken-2">this year.</a>#}
+                        {#                                                                            </span>#}
+                        {#                                            </h6>#}
+                        {#                                        </div>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+
+                        <div class="card pull-up">
+                            <div class="card-header">
+                                <h4 class="card-title blue">Your product inventory</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li>
+                                            <a class="btn btn-sm btn-white danger box-shadow-1 round btn-min-width pull-right"
+                                               href="#" target="_blank">go to RESTOCK<i
+                                                    class="ft-bar-chart pl-1"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div id="vertical-bar2" class="height-400 BarChartShadow"></div>
                                 </div>
                             </div>
                         </div>
@@ -642,6 +742,7 @@
                 },
                 async: false,
                 success: function (data) {
+                    data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];
                     revenue_data = data
                 },
                 error: function () {
@@ -650,12 +751,120 @@
 
             })
 
-            console.log(revenue_data)
+            console.log(revenue_data);
 
-            var projectStats = new Chartist.Line('#project-stats', {
-
+            let all_product1 = [250, 20, 25, 30, 45, 50, 60, 70, 80, 120, 150, 200]
+            let all_product2 = [10, 5, 20, 30, 45, 55, 45, 60, 80, 100, 120, 150]
+            let all_product3 = []
+            for (let i = 0; i < 12; i++) {
+                all_product3[i] = all_product1[i] + all_product2[i]
+            }
+            let all_product = [all_product1, all_product2, all_product3]
+            var lineGradientChart1 = new Chartist.Line('#gradient-line-chart1', {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-                series: revenue_data
+                series:
+                    [{
+                        name: 'series-1',
+                        data: all_product2
+                    }, {
+                        name: 'series-2',
+                        data: all_product3
+                    },]
+                {#revenue_data#}
+                {#revenue_data#}
+                {#[, all_product3]#}
+                {#[#}
+                {#    [125, 175, 125, 200, 175, 275, 125, 175, 125, 200, 175, 275,],#}
+                {#    [175, 225, 140, 230, 140, 225, 125, 175, 125, 200, 175, 275,]#}
+                {#]#}
+            }, {
+                series: {
+                    'series-1': {
+                        low: 0,
+                        fullWidth: true,
+                        onlyInteger: true,
+                        axisY: {
+                            low: 0,
+                            scaleMinSpace: 50,
+                        },
+                        axisX: {
+                            showGrid: false
+                        },
+                        lineSmooth: Chartist.Interpolation.simple({
+                            divisor: 2
+                        }),
+                        plugins: [
+                            Chartist.plugins.tooltip({
+                                appendToBody: true,
+                                pointClass: 'ct-point-circle-transperent'
+                            })
+                        ]
+                    },
+                    'series-2': {
+                        low: 0,
+                        showArea: true,
+                        showPoint: false,
+                        fullWidth: true
+                    }
+                }
+
+            });
+            lineGradientChart1.on('created', function (data) {
+                var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
+                defs.elem('linearGradient', {
+                    id: 'lineLinear1',
+                    {#x1: 0,#}
+                    {#y1: 0,#}
+                    {#x2: 1,#}
+                    {#y2: 0#}
+                }).elem('stop', {
+                    offset: '0%',
+                    'stop-color': 'rgba(250,116,137,0.1)'
+                }).parent().elem('stop', {
+                    offset: '10%',
+                    'stop-color': 'rgba(250,116,137,1)'
+                }).parent().elem('stop', {
+                    offset: '80%',
+                    'stop-color': 'rgba(173,86,241, 1)'
+                }).parent().elem('stop', {
+                    offset: '98%',
+                    'stop-color': 'rgba(173,86,241, 0.1)'
+                });
+                return defs;
+            }).on('draw', function (data) {
+                var circleRadius = 10;
+                if (data.type === 'point') {
+                    var circle = new Chartist.Svg('circle', {
+                        cx: data.x,
+                        cy: data.y,
+                        'ct:value': data.y,
+                        r: circleRadius,
+                        class: 'ct-point-circle-transperent'
+                    });
+                    data.element.replace(circle);
+                }
+                if (data.type === 'line') {
+                    data.element.animate({
+                        d: {
+                            begin: 1000,
+                            dur: 1000,
+                            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                            to: data.path.clone().stringify(),
+                            easing: Chartist.Svg.Easing.easeOutQuint
+                        }
+                    });
+                }
+            });
+
+            {#第一个Area图表#}
+            let product_W = [5, 10, 15, 20, 30, 20, 50, 60, 75, 120, 110, 200]
+            let product_C = [20, 20, 25, 40, 30, 50, 55, 65, 80, 100, 110, 120]
+            let product_WC = [product_W, product_C]
+            var projectStats = new Chartist.Line('#project-stats', {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+                series:
+                    {#revenue_data#}
+                product_WC
             }, {
                 lineSmooth: Chartist.Interpolation.simple({
                     divisor: 2
@@ -665,16 +874,15 @@
                 chartPadding: {
                     right: 35
                 },
-
                 axisX: {
                     showGrid: false,
                 },
                 axisY: {
                     labelInterpolationFnc: function (value) {
-                        return value + 'k';
+                        return value + '';
                     },
-                    scaleMinSpace: 40,
-                    showGrid: false,
+                    scaleMinSpace: 10,
+                    showGrid: true,
                 },
                 plugins: [
                     Chartist.plugins.tooltip({
@@ -696,15 +904,12 @@
                     y2: 0
                 }).elem('stop', {
                     offset: 0,
-                    'stop-color': 'rgba(248, 161, 236, 1)'
+                    'stop-color': 'rgba(248, 161, 236, 0.5)'
                 }).parent().elem('stop', {
                     offset: 1,
-                    'stop-color': 'rgba(115, 150, 255, 1)'
+                    'stop-color': 'rgba(115, 150, 255, 0.5)'
                 });
-
                 return defs;
-
-
             }).on('draw', function (data) {
                 var circleRadius = 9;
                 if (data.type === 'point') {
@@ -728,6 +933,74 @@
                         }
                     });
                 }
+            });
+
+            let my_product_list = [[], []]
+            for (let i = 0; i < 12; i++) {
+                my_product_list[0].push("P" + i);
+                if (i % 2 === 0) {
+                    my_product_list[1].push(10);
+                } else {
+                    my_product_list[1].push(20);
+                }
+            }
+
+            var verticalBar2 = new Chartist.Bar('#vertical-bar2', {
+                labels: my_product_list[0],
+                {#['Q1', 'Q1', 'Q1', 'Q1', 'Q1', 'Q1', 'Q2', 'Q2', 'Q2', 'Q2', 'Q2', 'Q2', 'Q3', 'Q3', 'Q3', 'Q3', 'Q3', 'Q3', 'Q4', 'Q4', 'Q4', 'Q4', 'Q4', 'Q4'],#}
+                series: [
+                    my_product_list[1]
+                    {#[2000, 1000, 3000, 5000, 7000, 4000, 8000, 6000, 12000, 14000, 11000, 9000, 7000, 4000, 8000, 12000, 13000, 11000, 7000, 4000, 3000, 2000, 1000, 2000],#}
+                ]
+            }, {
+                axisY: {
+                    labelInterpolationFnc: function (value) {
+                        return (value) + '';
+                    },
+                    scaleMinSpace: 50,
+                },
+                axisX: {
+                    showGrid: false,
+                    labelInterpolationFnc: function (value, index) {
+                        return index % 6 === 0 ? value : null;
+                    }
+                },
+                plugins: [
+                    Chartist.plugins.tooltip({
+                        appendToBody: true
+                    })
+                ]
+            });
+            verticalBar2.on('draw', function (data) {
+                if (data.type === 'bar') {
+                    data.element.attr({
+                        style: 'stroke-width: 10px',
+                        y1: 350,
+                        x1: data.x1 + 0.001
+                    });
+                    data.group.append(new Chartist.Svg('circle', {
+                        cx: data.x2,
+                        cy: data.y2,
+                        r: 5
+                    }, 'ct-slice-pie'));
+                }
+            });
+            verticalBar2.on('created', function (data) {
+                var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
+                defs.elem('linearGradient', {
+                    id: 'barGradient1',
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2: 1
+                }).elem('stop', {
+                    offset: 0,
+                    'stop-color': 'rgba(253,99,107,1)'
+                }).parent().elem('stop', {
+                    offset: 1,
+                    'stop-color': 'rgba(253,99,107, 0.6)'
+                });
+                return defs;
             });
 
             /*************************************************
@@ -942,9 +1215,12 @@
                 wheelPropagation: false
             });
 
-        });
+        })
+        ;
 
         $('li:contains(Dashboard)').attr("class", "active");
+
+
     </script>
 
 {% endblock %}
