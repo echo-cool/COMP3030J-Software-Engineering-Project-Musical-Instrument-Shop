@@ -84,6 +84,7 @@
 <div class="file-loading">
     <input id="input-24" name="input24[]" type="file" multiple>
 </div>
+<button id="dddd" onclick="child_click2()">ds</button>
 {#<input id="input-fa" name="input-fa[]" type="file" multiple>#}
 </body>
 
@@ -97,6 +98,7 @@
         let file_input = $('#input-24');
         file_input.fileinput({
             uploadUrl: "/chat_ai",
+            encrypt: 'multipart/form-data',
             showPrev: true,
             showRemove: true,
             deleteUrl: "/chat_ai",
@@ -158,6 +160,7 @@
         });
 
         {##TODO: input 框不能赋值, 表单用的form不知道咋改，改成type=text能使嘛#}
+
         function connectToRealInput(images) {
             console.log("我现在要上传这些照片, input 框不能赋值，不会了", images);
             for (let i = 0; i < images.length; i++) {
@@ -173,7 +176,18 @@
             }
         }
 
+        function child_click() {
+            console.log("调用的子页面函数");
+            $("#input-24").fileinput();
+        }
+
+
     });
+
+    child_click2 = function () {
+        $("#input-24").fileinput('upload');
+        console.log("调用的子页面函数2");
+    }
 
 
 </script>

@@ -28,22 +28,210 @@
 {% endblock %}
 
 {% block content %}
+    {#    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">#}
 
-    <iframe src="/image_upload" id="image_frame"
-            style="box-sizing: unset; margin: 0px !important; border: none !important;
-            overflow: hidden !important; display: block !important;
-                min-height: 500px;
-    height: auto;
-    width: 100%;">
-    </iframe>
+    <!-- default icons used in the plugin are from Bootstrap 5.x icon library (which can be enabled by loading CSS below) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
+          crossorigin="anonymous">
+    {#     <link href="{% static 'vendor/bootstrap/css/bootstrap.ic' %}" rel="stylesheet">#}
+
+    <!-- alternatively you can use the font awesome icon library if using with `fas` theme (or Bootstrap 4.x) by uncommenting below. -->
+    <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous" -->
+
+    <!-- the fileinput plugin styling CSS file -->
+    {#    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all"#}
+    {#          rel="stylesheet" type="text/css"/>#}
+
+    <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+    <!-- link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+
+    <!-- the jQuery Library -->
+    {#    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>#}
+    <script src="{% static 'vendor/jquery/jquery-3.4.1.min.js' %}"></script>
+
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <link href="{% static 'js/bootstrap-fileinput-5.2.7/css/fileinput.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'js/bootstrap-fileinput-5.2.7/themes/explorer-fas/theme.css' %}" rel="stylesheet">
+
+    <script href="{% static 'js/bootstrap-fileinput-5.2.7/js/plugins/piexif.min.js' %}"></script>
+
+    <script href="{% static 'js/bootstrap-fileinput-5.2.7/js/plugins/sortable.min.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap-fileinput-5.2.7/js/fileinput.min.js' %}"></script>
+
+    <style>
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 80% !important;
+        }
+    </style>
+
+
+
+
+    <label for="input-24">Planets and Satellites</label>
+
+    <button id="dddd" onclick="child_click2()">ds</button>
+    {#    <iframe src="/image_upload" id="image_frame" name="childPage"#}
+    {#            style="box-sizing: unset; margin: 0px !important; border: none !important;#}
+    {#            overflow: hidden !important; display: block !important;#}
+    {#                min-height: 500px;#}
+    {#    height: auto;#}
+    {#    width: 100%;">#}
+
+    {#        <input type="hidden" id="csrf_token" name="_token" value="{{ csrf_token }}">#}
+    {#    </iframe>#}
     {{ form.errors }}
-    <form method="post" enctype="multipart/form-data">
-
+    <form id="upload_form" method="post" enctype="multipart/form-data" onsubmit="return false">
         {% csrf_token %}
-        {% bootstrap_form form %}
+        <input id="input-24" name="input24[]" type="file" multiple>
 
-        <button class="btn btn-primary">{% trans 'Submit' %}</button>
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" onclick="Upload()">{% trans 'Submit' %}</button>
 
     </form>
 
+
+
+    <script>
+        var upload_images = [];
+
+        var file_input = $('#input-24');
+        file_input.fileinput({
+            uploadUrl: "/management/upload_ins",
+            showPrev: true,
+            showRemove: true,
+            deleteUrl: "/chat_ai",
+            {#overwriteInitial: false,#}
+            maxFileCount: 5,
+            initialCaption: "Select or Drag images for musical instruments... (max: 5)",
+            headers: {
+                'X-CSRF-TOKEN': $('#csrfmiddlewaretoken').attr('content')
+            },
+            {#removeIcon: '<i class="fa fa-trash"></i>',   // 删除图标#}
+            {#uploadIcon: '<i class="fa fa-upload"></i>',     // 上传图标#}
+            {#uploadRetryIcon: '<i class="fa fa-repeat"></i>'  // 重试图标#}
+        });
+
+        {#file_input.on('change', function (event) {#}
+        {#    console.log("芜湖，change后有这些图片:", event.target.files);#}
+
+
+        $("#input-24").bind('change', function () {
+            var file = $(this).val();
+            //alert(file);
+            {#var suffix = file.substr(file.lastIndexOf("\\") + 1);#}
+            //alert(suffix);
+            console.log("芜湖，change后有这些图片:", file);
+
+        });
+
+        $("#input-24").on("filebatchselected", function (event, files) {
+            upload_images = files;
+            console.log("芜湖，文件选择后有这些图片:", upload_images);
+
+            let data = [];
+            for (const file of Object.entries(upload_images)) {
+                data.push(file[1]);
+            }
+
+            upload_images = data;
+            console.log("芜湖，文件选择后有这些图片:", upload_images);
+            connectToRealInput(upload_images);
+        });
+
+        $("#input-24").on("filepreremove", function (event, file_delete) {
+            {#console.log("芜湖，删除这张图片:", file_delete);#}
+            {#upload_images = upload_images.filter(item => item.name !== file)#}
+            {#console.log("芜湖，文件删除前有这些图片:", upload_images);#}
+
+            let data = [];
+            // solution to handle FileList as normal arraylist
+            {#console.log("芜湖", typeof upload_images);#}
+            for (const file of Object.entries(upload_images)) {
+                // console.log("raw_file", file);
+                {#console.log("芜湖", file[0])#}
+                if (file[0] !== file_delete.replace("thumb-input-24-", "")) {
+                    data.push(file[1]);
+                }
+            }
+
+            upload_images = data;
+            console.log("芜湖，文件删除后有这些图片:", upload_images);
+            connectToRealInput(upload_images);
+        });
+
+        {##TODO: input 框不能赋值, 表单用的form不知道咋改，改成type=text能使嘛#}
+
+        function connectToRealInput(images) {
+            console.log("我现在要上传这些照片, input 框不能赋值，不会了", images);
+            for (let i = 0; i < images.length; i++) {
+                // console.log("raw_file", file);
+                console.log("芜湖，这是", images[i]);
+                {#if (i === 0) {#}
+                {#    $("#id_image").val(images[i]);#}
+                {#    console.log($("#id_image").val());} else {#}
+                {#    $("#id_image" + i).val(images[i]);#}
+                {#    console.log($("#id_image" + i).val())}#}
+            }
+        }
+
+        function child_click() {
+            console.log("调用的子页面函数");
+            $("#input-24").fileinput();
+        }
+    </script>
+    <script>
+        function Upload() {
+            {#var data2 = new FormData();#}
+            {#console.log("DADSSA", data2, $("#upload_form").data());#}
+            {#console.log("sda",);#}
+            {#let data = {};#}
+            {#let value = $("#upload_form").serializeArray();#}
+            {#$.each(value, function (index, item) {#}
+            {#    data[item.name] = item.value;#}
+            {#    let aa = item.name;#}
+            {#    data2.append(aa, item.value)});#}
+            {#let json = JSON.stringify(data);#}
+            $.ajax({
+                {#cache: true,#}
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                method: "POST",
+                url: "/management/add_instrument/",
+
+                data: $('#upload_form').serialize(),
+                {#data: {name: "dsads", old_price: 200},#}
+                {#data: data2,#}
+                async: false,
+                error: function (request) {
+                    alert("Connection error:" + request.error);
+                },
+                success: function (data) {
+                    console.log("SUCCESS!", window.frames[0]);
+                    file_input.fileinput('upload')
+                    {#let upload = window.frames[0].document.getElementById("input-24");#}
+                    {#console.log(upload, $(upload));#}
+                    {#$(upload).fileinput('upload');#}
+
+                    {#var iframeWin2 = $("#image_frame").contents().find(".fileinput-upload-button");#}
+                    {#console.log("SUCCESS!", iframeWin2);#}
+                    {#iframeWin2.click();#}
+                }
+            });
+
+            {#console.log(json, new FormData(data));#}
+
+            return false;
+        }
+    </script>
+
+
 {% endblock %}
+

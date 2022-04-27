@@ -35,13 +35,13 @@ class Instrument(models.Model):
     old_price = models.FloatField(max_length=200, default=0)
     price = models.FloatField(max_length=200, default=0)
     details = models.TextField(max_length=3000, default="")
-    image = models.ImageField(upload_to='uploads/instrument/image/', null=True)
+    image = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image1 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image2 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image3 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
     image4 = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
-    ex_detail = models.TextField(max_length=3000, default="")
-    ad_info = models.TextField(max_length=3000, default="")
+    ex_detail = models.TextField(max_length=3000, default="", null=True)
+    ad_info = models.TextField(max_length=3000, default="", null=True)
     chinese = models.BooleanField(default=False)
 
     object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
@@ -193,7 +193,8 @@ class Order(models.Model):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        'user', 'first_name', 'last_name', 'address', 'apartment', 'city', 'country', 'zip_Code', 'newsletter', 'accepted', 'packed', 'shipped', 'delivered', 'created_at')
+        'user', 'first_name', 'last_name', 'address', 'apartment', 'city', 'country', 'zip_Code', 'newsletter',
+        'accepted', 'packed', 'shipped', 'delivered', 'created_at')
 
 
 # class OrderItem(models.Model):

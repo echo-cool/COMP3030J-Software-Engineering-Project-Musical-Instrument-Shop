@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 import os
 
@@ -9,13 +10,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 import blog
 import shop
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
-    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm
+    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -450,19 +453,74 @@ def update_instrument(request, instrument_id):
         })
 
 
+@method_decorator(csrf_exempt)
+def upload_ins(request):
+    if request.method == "POST":
+        instrument = Instrument.objects.all().last()
+        # instrument = InstrumentWithIForm(request.POST, instance=instrument)
+        # if f.is_valid():
+        #     f.save()
+        print("sss", request.FILES)
+        images = request.FILES["input24[]"]
+        # instrument.created_at = datetime.utcnow()
+        print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+        if instrument.image == "default.jpg":
+            instrument.image = images
+            instrument.save()
+        else:
+            if instrument.image1 == "default.jpg":
+                instrument.image1 = images
+                instrument.save()
+            else:
+                if instrument.image2 == "default.jpg":
+                    instrument.image2 = images
+                    instrument.save()
+                else:
+                    if instrument.image3 == "default.jpg":
+                        instrument.image3 = images
+                        instrument.save()
+                    else:
+                        if instrument.image4 == "default.jpg":
+                            instrument.image4 = images
+                            instrument.save()
+
+        # images = request.files.values()
+        # pic_dir = Config.PRODUCT_PIC_IMG
+        # for i in images:
+        #     filename = name
+        #     i.save(os.path.join(pic_dir, filename))
+        #     img = Image(imgProduct_id=product_id, img_path=filename)
+        #     db.session.add(img)
+        #     db.session.commit()
+        # return jsonify({'success': 0})
+
+    return HttpResponse(status=204)
+
+
 @login_required
+@method_decorator(csrf_exempt)
 def add_instrument(request):
     if request.method == "POST":
-        f = InstrumentForm(request.POST, request.FILES)
+        print(request.POST)
+        f = InstrumentWithIForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
+            ret = {'status': True, 'error': None, 'data': None}
+
+            print(f.errors)
+            print(f.errors.as_json())
+            # ret['error'] = f.errors['mobile'][0]
+            ret['status'] = False
+            return HttpResponse(json.dumps(ret))
             return render(request, 'management_templates/update_instrument.html', {
                 'form': f
             })
-        return redirect(reverse('management:instrument_management'))
+        return HttpResponse(status=204)
+        # return {"code": 200}
+        # return redirect(reverse('management:instrument_management'))
     else:
-        f = InstrumentForm()
+        f = InstrumentWithIForm()
         return render(request, 'management_templates/update_instrument.html', {
             'form': f
         })
