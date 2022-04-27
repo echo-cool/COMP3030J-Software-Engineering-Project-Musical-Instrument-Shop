@@ -85,7 +85,6 @@
     <input id="input-24" name="input24[]" type="file" multiple>
 </div>
 {#<input id="input-fa" name="input-fa[]" type="file" multiple>#}
-<input id="file-input" type="file">
 </body>
 
 <script src="{% static 'js/bootstrap-fileinput-5.2.7/js/fileinput.min.js' %}"></script>
@@ -97,7 +96,7 @@
 
         let file_input = $('#input-24');
         file_input.fileinput({
-            uploadUrl: "/api/change_image/",
+            uploadUrl: "/chat_ai",
             showPrev: true,
             showRemove: true,
             deleteUrl: "/chat_ai",
@@ -116,12 +115,11 @@
 
         $("#input-24").bind('change', function () {
             var file = $(this).val();
-            var file1 = $(this).get(0)
             //alert(file);
             {#var suffix = file.substr(file.lastIndexOf("\\") + 1);#}
             //alert(suffix);
-            {#var file = $(this).get(0).files[0];#}
-            console.log("芜湖，change后有这些图片:", file1);
+            console.log("芜湖，change后有这些图片:", file);
+
         });
 
         $("#input-24").on("filebatchselected", function (event, files) {
@@ -159,7 +157,6 @@
             connectToRealInput(upload_images);
         });
 
-        {##TODO: input 框不能赋值, 表单用的form不知道咋改，改成type=text能使嘛#}
         function connectToRealInput(images) {
             console.log("我现在要上传这些照片, input 框不能赋值，不会了", images);
             for (let i = 0; i < images.length; i++) {
