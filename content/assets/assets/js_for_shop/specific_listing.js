@@ -130,13 +130,6 @@ function activateCategorySearch() {
                     }
                 });
             }
-        } else {
-            $checkboxes.each(function () {
-                $(this).attr("checked", true);
-                if (!$(this).next().hasClass('active')) {
-                    $(this).next().addClass('active')
-                }
-            })
         }
 
 
