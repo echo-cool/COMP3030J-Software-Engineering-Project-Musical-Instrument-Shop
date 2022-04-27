@@ -1,24 +1,19 @@
+{% load i18n %}
 <!doctype html>
 <html lang='en'>
 
 <head>
     <meta charset='UTF-8'>
-    <title>Forbidden</title>
-</head>
+    <title>{% trans "Forbidden" %}</title></head>
 
 <body style='display: flex;height: 100%;flex-direction: column;justify-content:
                                     center;align-content: flex-start;align-items: center;'>
 <div style='display: flex;height: 100%;flex-direction: column;justify-content:
                                     center;align-content: flex-start;align-items: center;'>
     <div style='display:
-                                    flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>You
-        are <h1>Not Allowed to view this project</h1><br>
-        This is the project built by COMP3030J Group8-IllegalGroupNameException.<br>
-        Please contact <strong>Group8</strong> to view this project.<br>
-        Your request has been intercept by our <strong>Auth Middleware.</strong>
-        <p
-                style='color:red'>This incident has been reported.</p>
-        <button id='take' hidden>a</button>
+                                    flex;flex-direction: column;align-content: space-around;flex-wrap: wrap;'>{% trans "You are " %}<h1>{% trans "Not Allowed to view this project" %}</h1><br>{% trans "This is the project built by COMP3030J Group8-IllegalGroupNameException." %}<br>{% trans "Please contact " %}<strong>{% trans "Group8" %}</strong>{% trans " to view this project." %}<br>{% trans "Your request has been intercept by our " %}<strong>{% trans "Auth Middleware." %}</strong>
+        <p style='color:red'>{% trans "This incident has been reported." %}</p>
+        <button id='take' hidden>{% trans "a" %}</button>
 <br/>
 <video id='v' style='width: 640px;height: 480px;' hidden></video>
 <canvas id='canvas' style='display:none;'></canvas>

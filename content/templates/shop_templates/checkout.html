@@ -16,12 +16,12 @@
 {#            <div class="page_header">#}
 {#                <div class="breadcrumbs">#}
 {#                    <ul>#}
-{#                        <li><a href="#">Home</a></li>#}
-{#                        <li><a href="#">Category</a></li>#}
-{#                        <li>Page active</li>#}
+{#                        <li><a href="#">{% trans "Home" %}</a></li>#}
+{#                        <li><a href="#">{% trans "Category" %}</a></li>#}
+{#                        <li>{% trans "Page active" %}</li>#}
 {#                    </ul>#}
 {#                </div>#}
-{#                <h1>Sign In or Create an Account</h1>#}
+{#                <h1>{% trans "Sign In or Create an Account" %}</h1>#}
 {##}
 {#            </div>#}
             <!-- /page_header -->
@@ -128,10 +128,10 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="step middle payments">
-                            <h3>2. Payment and Shipping</h3>
+                            <h3>{% trans "2. Payment and Shipping" %}</h3>
                             <ul>
                                 <li>
-                                    <label class="container_radio">Credit Card<a href="#0" class="info"
+                                    <label class="container_radio">{% trans "Credit Card" %}<a href="#0" class="info"
                                                                                  data-bs-toggle="modal"
                                                                                  data-bs-target="#payments_method"></a>
                                         <input type="radio" name="payment" value="Credit Card" checked>
@@ -139,7 +139,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_radio">Paypal<a href="#0" class="info"
+                                    <label class="container_radio">{% trans "Paypal" %}<a href="#0" class="info"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#payments_method"></a>
                                         <input type="radio" name="payment" value="Paypal">
@@ -147,7 +147,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_radio">Cash on delivery<a href="#0" class="info"
+                                    <label class="container_radio">{% trans "Cash on delivery" %}<a href="#0" class="info"
                                                                                       data-bs-toggle="modal"
                                                                                       data-bs-target="#payments_method"></a>
                                         <input type="radio" name="payment" value="Cash on delivery">

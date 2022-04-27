@@ -33,33 +33,33 @@
         <div class="text-center bg-breadcrumb"
              style="background-image : url({% static '/assets/img_for_shop/banner_wishlist.jpg' %})">
             <div class="title-page">
-                <h2 class="">Wishlist</h2>
+                <h2 class="">{% trans "Wishlist" %}</h2>
             </div>
             <div class="bread-crumb">
-                <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                <strong>Your Wishlist</strong>
+                <a href="/" title="Back to the frontpage">{% trans "Home" %}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <strong>{% trans "Your Wishlist" %}</strong>
             </div>
         </div>
     </div>
     <div class="main-content wishlist">
         <div class="container">
             <ul class="breadcrumb">
-                {#                <li><a href="#">Home</a></li>#}
-                {#                <li class="active">Shopping cart</li>#}
+                {#                <li><a href="#">{% trans "Home" %}</a></li>#}
+                {#                <li class="active">{% trans "Shopping cart" %}</li>#}
             </ul>
             <div class="title-product">
-                <h3>Your wishlist</h3>
+                <h3>{% trans "Your wishlist" %}</h3>
             </div>
             <!-- End title product -->
             <table class="table wishlist">
                 <thead>
                 <tr>
-                    <th class="product-photo">Product Photo</th>
-                    <th class="produc-name">Product Name</th>
-                    <th class="description">Description</th>
-                    <th class="product-price">Price</th>
-                    <th class="product-avai">Availability</th>
-                    <th class="add-cart">Add to cart</th>
+                    <th class="product-photo">{% trans "Product Photo" %}</th>
+                    <th class="produc-name">{% trans "Product Name" %}</th>
+                    <th class="description">{% trans "Description" %}</th>
+                    <th class="product-price">{% trans "Price" %}</th>
+                    <th class="product-avai">{% trans "Availability" %}</th>
+                    <th class="add-cart">{% trans "Add to cart" %}</th>
                     <th class="product-remove"></th>
                 </tr>
                 </thead>
@@ -85,7 +85,7 @@
                             <td class="product-price">
                                 <p>$ {{ wishlist.instrument.price }}</p>
                             </td>
-                            <td class="product-avai">in stock</td>
+                            <td class="product-avai">{% trans "in stock" %}</td>
 
                             <td class="add-cart">
                                 <a class="link-product-add-cart" href="javascript:void(0)"
