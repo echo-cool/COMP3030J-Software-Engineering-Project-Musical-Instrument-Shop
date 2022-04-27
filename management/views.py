@@ -484,10 +484,30 @@ def upload_ins(request):
 @method_decorator(csrf_exempt)
 def add_instrument(request):
     if request.method == "POST":
+        print(request.FILES)
         print(request.POST)
         f = InstrumentWithIForm(request.POST, request.FILES)
         if f.is_valid():
-            f.save()
+            instrument = f.save()
+            all_images = request.FILES.getlist("input24[]")
+            # print("sss", all_images, request.FILES["input24[]"])
+            # print(len(all_images))
+            for i in range(len(all_images)):
+                # instrument.created_at = datetime.utcnow()
+                # print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+                images = all_images[i]
+                # print(images)
+                if i == 0:
+                    instrument.image = images
+                elif i == 1:
+                    instrument.image1 = images
+                elif i == 2:
+                    instrument.image2 = images
+                elif i == 3:
+                    instrument.image3 = images
+                elif i == 4:
+                    instrument.image4 = images
+                instrument.save()
         else:
             ret = {'status': True, 'error': None, 'data': None}
 
@@ -496,9 +516,6 @@ def add_instrument(request):
             # ret['error'] = f.errors['mobile'][0]
             ret['status'] = False
             return HttpResponse(json.dumps(ret))
-            return render(request, 'management_templates/update_instrument.html', {
-                'form': f
-            })
         return HttpResponse(status=204)
         # return {"code": 200}
         # return redirect(reverse('management:instrument_management'))
@@ -753,6 +770,7 @@ def update_post(request, post_id):
 @login_required
 def add_post(request):
     if request.method == "POST":
+        print(request.FILES)
         f = PostForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()

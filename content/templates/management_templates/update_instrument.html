@@ -95,6 +95,31 @@
         <input id="input-24" name="input24[]" type="file" multiple>
 
         {% bootstrap_form form %}
+
+
+
+        <div class="form-group">
+            <label for="object_3d">Object 3D</label>
+            <div class="col-xs-12">
+                <input type="file" name="object_3d" class="file_upload" id="object_3d"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="object_mtl">Object MTL</label>
+            <div class="col-xs-12">
+                <input type="file" name="object_mtl" class="file_upload" id="object_mtl"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="object_gltf">Object GLTF</label>
+            <div class="col-xs-12">
+                <input type="file" name="object_gltf" class="file_upload" id="object_gltf"/>
+            </div>
+        </div>
+
+
         <button class="btn btn-primary" onclick="Upload()">{% trans 'Submit' %}</button>
 
     </form>
@@ -108,7 +133,10 @@
             "#id_image1",
             "#id_image2",
             "#id_image3",
-            "#id_image4"
+            "#id_image4",
+            "#id_object_3d",
+            "#id_object_mtl",
+            "#id_object_gltf"
         ]
         for (let i of hidden_list) {
             {#console.log($(i).parent())#}
@@ -144,6 +172,7 @@
             {#var suffix = file.substr(file.lastIndexOf("\\") + 1);#}
             //alert(suffix);
             console.log("芜湖，change后有这些图片:", file);
+            console.log($(this)[0].files[0]);
 
         });
 
@@ -189,6 +218,7 @@
 
 
         function Upload() {
+            let formData = new FormData(document.getElementById("upload_form"));
             $.ajax({
                 {#cache: true,#}
                 headers: {
@@ -196,15 +226,17 @@
                 },
                 method: "POST",
                 url: "/management/add_instrument/",
-
-                data: $('#upload_form').serialize(),
+                data: formData,
                 async: true,
+                contentType:false,
+                processData:false,
                 error: function (request) {
                     alert("Connection error:" + request.error);
                 },
                 success: function (data) {
                     console.log("SUCCESS!", window.frames[0]);
-                    file_input.fileinput('upload')
+                    let url = window.location.href;
+                    window.location.href = String(url).replace("add_instrument", "instrument_management");
                 }
             });
             return false;
