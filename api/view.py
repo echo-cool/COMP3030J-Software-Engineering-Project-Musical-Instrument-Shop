@@ -16,7 +16,14 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
 from chat.models import MessageModel
+from image_search.models import ImageSearchData
 from shop.models import Profile, Wishlist, Cart, Order, OrderItem, Instrument
+from PIL import Image
+import numpy as np
+from image_search.ml.core import distance
+from shop.views import memory_cached_db
+
+extractor = None
 
 
 def login(request):
@@ -262,11 +269,37 @@ def revenue_month(request):
     return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
-@csrf_exempt
-def change_image(request):
+def analyze_image(request):
+    key = 0
     if request.method == 'POST':
         print(request.FILES)
-        instrument = Instrument.objects.filter(name="Pipa").first()
-        instrument.image = request.FILES.get("input24[]")
-        instrument.save()
-    return JsonResponse({"state": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+        res = {}
+        image = request.FILES.get("image_file_upload")
+        with open("content/media/uploads/tmp/tmp.jpg", 'wb') as f:
+            f.write(image.read())
+        image = Image.open("content/media/uploads/tmp/tmp.jpg")
+        image = image.resize((1000, 1000), Image.ANTIALIAS)
+        image.save("content/media/uploads/tmp/tmp.jpg")
+        print('preprocess image done')
+        # img = cv.imread('content/media/uploads/tmp/tmp.jpg')
+        # img = cv.resize(img, (1000, 1000), interpolation=cv.INTER_CUBIC)
+        # cv.imwrite('content/media/uploads/tmp/tmp.jpg', img)
+        global extractor
+        if extractor is None:
+            from image_search.ml.core import ResNetFeatureExtractor
+            extractor = ResNetFeatureExtractor()
+        hist_data = extractor.extract_feature("content/media/uploads/tmp/tmp.jpg")
+        print(hist_data)
+        all_image_search_data = ImageSearchData.objects.all()
+        for item in all_image_search_data:
+            item_hist_data = item.data
+            item_hist_data = item_hist_data.split(",")
+            item_hist_data = [float(x) for x in item_hist_data]
+            item_hist_data = np.array(item_hist_data)
+            res[item.id] = distance(hist_data, item_hist_data)
+
+        sorted_keys = sorted(res.keys(), key=lambda x: res[x])
+        print(sorted_keys)
+        instruments = Instrument.objects.filter(imagesearchdata__in=sorted_keys)
+        key = memory_cached_db.insert_value(instruments)
+    return JsonResponse({"key": key}, safe=False, json_dumps_params={'ensure_ascii': False})

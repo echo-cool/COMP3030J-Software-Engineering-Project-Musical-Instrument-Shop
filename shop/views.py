@@ -21,6 +21,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 import blog
+from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
@@ -29,6 +30,8 @@ from shop.models import Instrument, InstrumentDetail, Category, Order, Review, C
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Profile
+
+memory_cached_db = MemoryCachedDB()
 
 
 def forbidden(request):
@@ -593,6 +596,38 @@ def product_search(request):
         'categories': categories,
         'carts': carts
     })
+
+
+def image_search(request, result_key):
+    search_category_text = request.GET.get("category", None)
+    all_instruments = memory_cached_db.get(result_key)
+
+    if search_category_text:
+        search_category_list = search_category_text.split("|")
+        search_category = [int(i) for i in search_category_list]
+        instruments = all_instruments.filter(category__in=search_category)
+    else:
+        instruments = all_instruments
+
+    categories = {}
+    category_list = Category.objects.all()
+    for i in instruments:
+        i.percentage = round(i.price * 100 / i.old_price, 2)
+    for category in category_list:
+        categories[category] = instruments.filter(category=category).count()
+
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user)
+    else:
+        carts = {}
+
+    return render(request, 'shop_templates/product-search.html', {
+        "instruments": instruments,
+        'categories': categories,
+        'carts': carts
+    })
+
+
 
 
 # search instruments by keyword
