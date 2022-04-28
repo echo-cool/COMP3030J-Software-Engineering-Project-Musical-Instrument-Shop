@@ -1669,7 +1669,7 @@
                 $(this).find("i").css("color", "black");
             });
 
-            image_upload.on('change', function () {
+            image_upload.bind('input propertychange', function () {
                 let formData = new FormData()
                 formData.append("image_file_upload", image_upload[0].files[0]);
                 $.ajax({
@@ -1684,6 +1684,7 @@
                     },
                     success: function (res) {
                         window.location.href = ("/image_search/" + res['key']);
+                        image_upload.val(null);
                     },
                     error: function () {
                         alert('Error! Check console!');
