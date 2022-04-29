@@ -26,6 +26,7 @@ function activeVisitor() {
 
 function activeSwitchSignUp() {
     let switch_button = document.querySelector('.switch-to-sign-up');
+    console.log("切换button", switch_button, document.querySelector('.sign-up'));
     let switch_button2 = document.querySelector('.switch-to-sign-in');
     switch_button.onclick = function () {
         document.querySelector('.sign-up').setAttribute("style", "display:inherit");
