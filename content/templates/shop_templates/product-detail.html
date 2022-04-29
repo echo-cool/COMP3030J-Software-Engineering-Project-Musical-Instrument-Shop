@@ -97,7 +97,8 @@
                         <div class="arrows-product">
                             <div class="prev_prod">
                                 <a href="/products/mapex-30th-anniversary"><i class="fa fa-angle-left"
-                                                                              aria-hidden="true"></i>Prev</a>
+                                                                              aria-hidden="true"></i>{% trans "Prev" %}</a>
+                                                                              aria-hidden="true"></i>{% trans "Prev" %}</a>
                                 <div class="position-absolute img-prev">
                                     <a href="/products/mapex-30th-anniversary">
                                         <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1_80x80.jpg?v=1606587239"
@@ -277,7 +278,8 @@
                               class="cart clearfix mt-3">
                             {% csrf_token %}
                             <input type="hidden" value="{{ instrument.id }}" name="product-id">
-                            <div class="selector-wrapper"><label for="productSelect-option-0">Color</label><select
+                            <div class="selector-wrapper"><label for="productSelect-option-0">{% trans "Color" %}</label><select
+                            <div class="selector-wrapper"><label for="productSelect-option-0">{% trans "Color" %}</label><select
                                     class="single-option-selector" data-option="option1" id="productSelect-option-0">
                                 <option value="Maroon">{% trans 'Maroon' %}</option>
                                 <option value="White">{% trans 'White' %}</option>
@@ -293,7 +295,8 @@
 
                             {#                            <div class="maxus-productdetail__options">#}
                             {#                                <div class="swatch clearfix  align-center flex engoc-flex-wrap" data-option-index="0">#}
-                            {#                                    <p class="text-uppercase title_variant">Color </p>#}
+                            {#                                    <p class="text-uppercase title_variant">{% trans "Color " %}</p>#}
+                            {#                                    <p class="text-uppercase title_variant">{% trans "Color " %}</p>#}
                             {#                                    <div data-value="Maroon" data-style="square"#}
                             {#                                         class="maxus-color none color maroon available">#}
                             {#                                        <input id="swatch-0-maroon" type="radio" name="option-0" value="Maroon"#}
@@ -358,7 +361,8 @@
                                 <i class="fsz-unset"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
                                          width="400" id="svg2" version="1.1"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
@@ -369,7 +373,8 @@
                         <ul class="product-meta-info">
                             <li>
                                 <div class="item-product-meta-info product-category-info">
-                                    <label>Categories :</label>
+                                    <label>{% trans "Categories :" %}</label>
+                                    <label>{% trans "Categories :" %}</label>
                                     <a href="/collections/frontpage">{% trans 'Home page,' %} </a>
                                     <a href="/collections/hot-rate">{% trans 'hot rate' %} </a>
                                 </div>
@@ -383,7 +388,8 @@
                         {#                        <div class="col-lg-12 col-md-4 content-page-detail">#}
                         {#                            <div class="content_box ">#}
                         {#                                <div class="content_text">#}
-                        {#                                    <h3 class="title">Why Choose Us ?</h3>#}
+                        {#                                    <h3 class="title">{% trans "Why Choose Us ?" %}</h3>#}
+                        {#                                    <h3 class="title">{% trans "Why Choose Us ?" %}</h3>#}
                         {#                                    <div class="text">Official Herschel stockist Australian warranty assistance &amp;#}
                         {#                                        support Australian shipping &amp; returns.Customer first experience#}
                         {#                                        environmentally focused#}
@@ -604,9 +610,11 @@
     {#                    <h3 data-bs-target="#collapse_3">{% trans 'Contacts' %}</h3>#}
     {#                    <div class="collapse dont-collapse-sm contacts" id="collapse_3">#}
     {#                        <ul>#}
-    {#                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>#}
+    {#                            <li><i class="ti-home"></i>{% trans "97845 Baker st. 567<br>Los Angeles - US" %}</li>#}
+    {#                            <li><i class="ti-home"></i>{% trans "97845 Baker st. 567<br>Los Angeles - US" %}</li>#}
     {#                            <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>#}
-    {#                            <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>#}
+    {#                            <li><i class="ti-email"></i><a href="#0">{% trans "info@allaia.com" %}</a></li>#}
+    {#                            <li><i class="ti-email"></i><a href="#0">{% trans "info@allaia.com" %}</a></li>#}
     {#                        </ul>#}
     {#                    </div>#}
     {#                </div>#}
@@ -704,7 +712,8 @@
                                      data-src="{% static "assets/img_for_shop/products/shoes/1.jpg" %}" class="lazy"
                                      alt="">
                             </figure>
-                            <h4>1x {% trans instrument.name %}</h4>
+                            <h4>{% trans instrument.name %}</h4>
+                            <h4>{% trans instrument.name %}</h4>
                             <div class="price_panel">
                                 <span class="new_price">${{ instrument.price }}</span>
                                 <span class="percentage">-${{ instrument.percentage }}</span>
@@ -733,7 +742,8 @@
                             </figure>
                         </a>
                         <a href="#0">
-                            <h5>Armor Okwahn II</h5>
+                            <h5>{% trans "Armor Okwahn II" %}</h5>
+                            <h5>{% trans "Armor Okwahn II" %}</h5>
                         </a>
                         <div class="price_panel"><span class="new_price">$90.00</span></div>
                     </div>
@@ -748,7 +758,8 @@
                             </figure>
                         </a>
                         <a href="#0">
-                            <h5>Armor Air Wildwood ACG</h5>
+                            <h5>{% trans "Armor Air Wildwood ACG" %}</h5>
+                            <h5>{% trans "Armor Air Wildwood ACG" %}</h5>
                         </a>
                         <div class="price_panel"><span class="new_price">$75.00</span><span
                                 class="percentage">-20%</span> <span class="old_price">$155.00</span></div>
@@ -764,7 +775,8 @@
                             </figure>
                         </a>
                         <a href="#0">
-                            <h5>Armor ACG React Terra</h5>
+                            <h5>{% trans "Armor ACG React Terra" %}</h5>
+                            <h5>{% trans "Armor ACG React Terra" %}</h5>
                         </a>
                         <div class="price_panel"><span class="new_price">$110.00</span></div>
                     </div>
@@ -780,7 +792,8 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Size guide</h5>
+                    <h5 class="modal-title">{% trans "Size guide" %}</h5>
+                    <h5 class="modal-title">{% trans "Size guide" %}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -791,69 +804,105 @@
                         <table class="table table-striped table-sm sizes">
                             <tbody>
                             <tr>
-                                <th scope="row">US Sizes</th>
+                                <th scope="row">{% trans "US Sizes" %}</th>
+                                <th scope="row">{% trans "US Sizes" %}</th>
                                 <td>6</td>
-                                <td>6,5</td>
+                                <td>{% trans "6,5" %}</td>
+                                <td>{% trans "6,5" %}</td>
                                 <td>7</td>
-                                <td>7,5</td>
+                                <td>{% trans "7,5" %}</td>
+                                <td>{% trans "7,5" %}</td>
                                 <td>8</td>
-                                <td>8,5</td>
+                                <td>{% trans "8,5" %}</td>
+                                <td>{% trans "8,5" %}</td>
                                 <td>9</td>
-                                <td>9,5</td>
+                                <td>{% trans "9,5" %}</td>
+                                <td>{% trans "9,5" %}</td>
                                 <td>10</td>
-                                <td>10,5</td>
+                                <td>{% trans "10,5" %}</td>
+                                <td>{% trans "10,5" %}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Euro Sizes</th>
+                                <th scope="row">{% trans "Euro Sizes" %}</th>
+                                <th scope="row">{% trans "Euro Sizes" %}</th>
                                 <td>39</td>
                                 <td>39</td>
                                 <td>40</td>
-                                <td>40-41</td>
+                                <td>{% trans "40-41" %}</td>
+                                <td>{% trans "40-41" %}</td>
                                 <td>41</td>
-                                <td>41-42</td>
+                                <td>{% trans "41-42" %}</td>
+                                <td>{% trans "41-42" %}</td>
                                 <td>42</td>
-                                <td>42-43</td>
+                                <td>{% trans "42-43" %}</td>
+                                <td>{% trans "42-43" %}</td>
                                 <td>43</td>
-                                <td>43-44</td>
+                                <td>{% trans "43-44" %}</td>
+                                <td>{% trans "43-44" %}</td>
                             </tr>
                             <tr>
-                                <th scope="row">UK Sizes</th>
-                                <td>5,5</td>
+                                <th scope="row">{% trans "UK Sizes" %}</th>
+                                <th scope="row">{% trans "UK Sizes" %}</th>
+                                <td>{% trans "5,5" %}</td>
+                                <td>{% trans "5,5" %}</td>
                                 <td>6</td>
-                                <td>6,5</td>
+                                <td>{% trans "6,5" %}</td>
+                                <td>{% trans "6,5" %}</td>
                                 <td>7</td>
-                                <td>7,5</td>
+                                <td>{% trans "7,5" %}</td>
+                                <td>{% trans "7,5" %}</td>
                                 <td>8</td>
-                                <td>8,5</td>
+                                <td>{% trans "8,5" %}</td>
+                                <td>{% trans "8,5" %}</td>
                                 <td>9</td>
-                                <td>9,5</td>
+                                <td>{% trans "9,5" %}</td>
+                                <td>{% trans "9,5" %}</td>
                                 <td>10</td>
                             </tr>
                             <tr>
-                                <th scope="row">Inches</th>
-                                <td>9.25"</td>
-                                <td>9.5"</td>
-                                <td>9.625"</td>
-                                <td>9.75"</td>
-                                <td>9.9375"</td>
-                                <td>10.125"</td>
-                                <td>10.25"</td>
-                                <td>10.5"</td>
-                                <td>10.625"</td>
-                                <td>10.75"</td>
+                                <th scope="row">{% trans "Inches" %}</th>
+                                <th scope="row">{% trans "Inches" %}</th>
+                                <td>{% trans "9.25" %}</td>
+                                <td>{% trans "9.25" %}</td>
+                                <td>{% trans "9.5" %}</td>
+                                <td>{% trans "9.5" %}</td>
+                                <td>{% trans "9.625" %}</td>
+                                <td>{% trans "9.625" %}</td>
+                                <td>{% trans "9.75" %}</td>
+                                <td>{% trans "9.75" %}</td>
+                                <td>{% trans "9.9375" %}</td>
+                                <td>{% trans "9.9375" %}</td>
+                                <td>{% trans "10.125" %}</td>
+                                <td>{% trans "10.125" %}</td>
+                                <td>{% trans "10.25" %}</td>
+                                <td>{% trans "10.25" %}</td>
+                                <td>{% trans "10.5" %}</td>
+                                <td>{% trans "10.5" %}</td>
+                                <td>{% trans "10.625" %}</td>
+                                <td>{% trans "10.625" %}</td>
+                                <td>{% trans "10.75" %}</td>
+                                <td>{% trans "10.75" %}</td>
                             </tr>
                             <tr>
                                 <th scope="row">CM</th>
-                                <td>23,5</td>
-                                <td>24,1</td>
-                                <td>24,4</td>
-                                <td>24,8</td>
-                                <td>25,4</td>
-                                <td>25,7</td>
+                                <td>{% trans "23,5" %}</td>
+                                <td>{% trans "23,5" %}</td>
+                                <td>{% trans "24,1" %}</td>
+                                <td>{% trans "24,1" %}</td>
+                                <td>{% trans "24,4" %}</td>
+                                <td>{% trans "24,4" %}</td>
+                                <td>{% trans "24,8" %}</td>
+                                <td>{% trans "24,8" %}</td>
+                                <td>{% trans "25,4" %}</td>
+                                <td>{% trans "25,4" %}</td>
+                                <td>{% trans "25,7" %}</td>
+                                <td>{% trans "25,7" %}</td>
                                 <td>26</td>
-                                <td>26,7</td>
+                                <td>{% trans "26,7" %}</td>
+                                <td>{% trans "26,7" %}</td>
                                 <td>27</td>
-                                <td>27,3</td>
+                                <td>{% trans "27,3" %}</td>
+                                <td>{% trans "27,3" %}</td>
                             </tr>
                             </tbody>
                         </table>

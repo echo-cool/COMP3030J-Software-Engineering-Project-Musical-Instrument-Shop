@@ -1,0 +1,79 @@
+﻿{% extends 'layouts/default/shopper_base2.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block style %}
+
+    <!-- Favicon and touch Icons -->
+    <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon"
+          sizes="72x72">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon"
+          sizes="114x114">
+    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon"
+          sizes="144x144">
+    <!-- Lead Style -->
+    <link href="{% static '/assets/css_for_shop/google_font.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/ionicons/css/ionicons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/css_for_shop/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/aos/aos.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/assets/plugins/swiper/swiper.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
+
+{% endblock %}
+
+{% block content %}
+    <!-- pointer start -->
+    <div class="pointer bnz-pointer" id="bnz-pointer"></div>
+
+    <div class="content">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <div class="container">
+                    <h2 class="heading">Post Your Blog</h2>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <button class="btn btn-primary">{% trans 'Submit' %}</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+    <script src="{% static '/assets/js_for_shop/js/bootstrap.min.js' %} "></script>
+    <script src="{% static '/assets/plugins/swiper/swiper.min.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
+    <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/wangEditor.min.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/weditor.js' %} "></script>
+    <script>
+
+        $(document).ready(function () {
+            initEditor('#id_body', 500);
+        });
+
+    </script>
+
+{% endblock %}
+
+

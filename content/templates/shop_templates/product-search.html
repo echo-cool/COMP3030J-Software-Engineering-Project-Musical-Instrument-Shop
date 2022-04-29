@@ -78,12 +78,12 @@
 
             {% endif %}
         <div class="title-page">
-            <h2 class="">Products</h2>
+            <h2 class="">{% trans "Products" %}</h2>
         </div>
         <div class="bread-crumb">
-            <a href="/" title="Back to the frontpage">Home<i class="fa fa-angle-right"
+            <a href="/" title="Back to the frontpage">{% trans "Home" %}<i class="fa fa-angle-right"
                                                              aria-hidden="true"></i></a>
-            <strong>Chinese Instruments</strong>
+            <strong>{% trans "Chinese Instruments" %}</strong>
         </div>
         </div>
         </div>
@@ -101,7 +101,7 @@
                              width="393pt">
                             <path d="m368.3125 0h-351.261719c-6.195312-.0117188-11.875 3.449219-14.707031 8.960938-2.871094 5.585937-2.3671875 12.3125 1.300781 17.414062l128.6875 181.28125c.042969.0625.089844.121094.132813.183594 4.675781 6.3125 7.203125 13.957031 7.21875 21.816406v147.796875c-.027344 4.378906 1.691406 8.582031 4.777344 11.6875 3.085937 3.105469 7.28125 4.847656 11.65625 4.847656 2.226562 0 4.425781-.445312 6.480468-1.296875l72.3125-27.574218c6.480469-1.976563 10.78125-8.089844 10.78125-15.453126v-120.007812c.011719-7.855469 2.542969-15.503906 7.214844-21.816406.042969-.0625.089844-.121094.132812-.183594l128.683594-181.289062c3.667969-5.097657 4.171875-11.820313 1.300782-17.40625-2.832032-5.511719-8.511719-8.9726568-14.710938-8.960938zm-131.53125 195.992188c-7.1875 9.753906-11.074219 21.546874-11.097656 33.664062v117.578125l-66 25.164063v-142.742188c-.023438-12.117188-3.910156-23.910156-11.101563-33.664062l-124.933593-175.992188h338.070312zm0 0"></path>
                         </svg>
-                        <p class="mb-0">filter</p>
+                        <p class="mb-0">{% trans "filter" %}</p>
                     </a>
                 </div>
                 <div class="filter_sortby title_filter pl-0 d-flex d-xl-none">
@@ -110,7 +110,7 @@
                              width="393pt">
                             <path d="m368.3125 0h-351.261719c-6.195312-.0117188-11.875 3.449219-14.707031 8.960938-2.871094 5.585937-2.3671875 12.3125 1.300781 17.414062l128.6875 181.28125c.042969.0625.089844.121094.132813.183594 4.675781 6.3125 7.203125 13.957031 7.21875 21.816406v147.796875c-.027344 4.378906 1.691406 8.582031 4.777344 11.6875 3.085937 3.105469 7.28125 4.847656 11.65625 4.847656 2.226562 0 4.425781-.445312 6.480468-1.296875l72.3125-27.574218c6.480469-1.976563 10.78125-8.089844 10.78125-15.453126v-120.007812c.011719-7.855469 2.542969-15.503906 7.214844-21.816406.042969-.0625.089844-.121094.132812-.183594l128.683594-181.289062c3.667969-5.097657 4.171875-11.820313 1.300782-17.40625-2.832032-5.511719-8.511719-8.9726568-14.710938-8.960938zm-131.53125 195.992188c-7.1875 9.753906-11.074219 21.546874-11.097656 33.664062v117.578125l-66 25.164063v-142.742188c-.023438-12.117188-3.910156-23.910156-11.101563-33.664062l-124.933593-175.992188h338.070312zm0 0"></path>
                         </svg>
-                        <p class="mb-0">filter</p>
+                        <p class="mb-0">{% trans "filter" %}</p>
                     </a>
                 </div>
             </div>
@@ -150,16 +150,16 @@
                         <div class="collection-sorting form-horizontal form-group pull-right text-right">
                             <div class="dropdown">
                                 <button class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLink">
-                                    <span class="dropdown-label">Featured</span>
+                                    <span class="dropdown-label">{% trans "Featured" %}</span>
                                 </button>
                                 <ul class="dropdown-content dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li class="active"><a href="manual">Featured</a></li>
-                                    <li><a href="best-selling">Best Selling</a></li>
-                                    <li><a href="title-ascending">Alphabetically, A-Z</a></li>
-                                    <li><a href="price-descending">Price, high to low</a></li>
-                                    <li><a href="price-ascending">Price, low to high</a></li>
-                                    <li><a href="created-ascending">Date, old to new</a></li>
-                                    <li><a href="created-descending">Date, new to old</a></li>
+                                    <li class="active"><a href="manual">{% trans "Featured" %}</a></li>
+                                    <li><a href="best-selling">{% trans "Best Selling" %}</a></li>
+                                    <li><a href="title-ascending">{% trans "Alphabetically, A-Z" %}</a></li>
+                                    <li><a href="price-descending">{% trans "Price, high to low" %}</a></li>
+                                    <li><a href="price-ascending">{% trans "Price, low to high" %}</a></li>
+                                    <li><a href="created-ascending">{% trans "Date, old to new" %}</a></li>
+                                    <li><a href="created-descending">{% trans "Date, new to old" %}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -192,14 +192,14 @@
                         <div style="overflow: hidden" class=" engoj-collection-sidebar engoc_sw_filter_tag">
                             <div class="widget widget-category filter-category">
                                 <div class="widget-title">
-                                    <h2 class=" mb-0">Categories</h2>
+                                    <h2 class=" mb-0">{% trans "Categories" %}</h2>
                                 </div>
                                 <div class="widget-content">
                                     <ul class="list-category-toggle toggle-tab list-none">
                                         {% for category in categories %}
                                             <li class="item-toggle-tab">
                                                 <input type="checkbox" class="category-checkbox"
-                                                       id="checkbox__{{ category.id }}" checked/>
+                                                       id="checkbox__{{ category.id }}"/>
                                                 <a href="javascript:void(0)" class="category-name"
                                                    id="category__{{ category.id }}">
                                                     {{ category.name }}
@@ -210,7 +210,7 @@
                             </div>
                             <div class="filter-color widget widget-category widget_product_categories filter-tag">
                                 <div class="widget-title">
-                                    <h2 class="mb-0">Color Option</h2>
+                                    <h2 class="mb-0">{% trans "Color Option" %}</h2>
                                 </div>
                                 <ul class="list-none list_color">
                                     <li class="cat-item">
@@ -259,7 +259,7 @@
 
                             <section class="filter-price filter-tag">
                                 <div class="widget-title">
-                                    <h2 class="mb-0">Price Filter</h2>
+                                    <h2 class="mb-0">{% trans "Price Filter" %}</h2>
                                 </div>
 
                                 <ul class="list-none list-price">
@@ -295,7 +295,7 @@
 
                             <div class="widget widget-tags filter-tag">
                                 <div class="widget-title">
-                                    <h2 class=" mb-0 ">Tags</h2>
+                                    <h2 class=" mb-0 ">{% trans "Tags" %}</h2>
                                 </div>
                                 <ul class="list-none wg-list-tags list-tag">
 
@@ -334,7 +334,7 @@
 
                                     <li>
                                         <input type="checkbox" value="black">
-                                        <a href="javascript:void(0)" title="Black" class=" ">Black</a>
+                                        <a href="javascript:void(0)" title="Black" class=" ">{% trans "Black" %}</a>
 
 
                                     </li>
@@ -342,7 +342,7 @@
 
                                     <li>
                                         <input type="checkbox" value="brown">
-                                        <a href="javascript:void(0)" title="Brown" class=" ">Brown</a>
+                                        <a href="javascript:void(0)" title="Brown" class=" ">{% trans "Brown" %}</a>
 
 
                                     </li>
@@ -350,7 +350,7 @@
 
                                     <li>
                                         <input type="checkbox" value="burlywood">
-                                        <a href="javascript:void(0)" title="BurlyWood" class=" ">BurlyWood</a>
+                                        <a href="javascript:void(0)" title="BurlyWood" class=" ">{% trans "BurlyWood" %}</a>
 
 
                                     </li>
@@ -358,7 +358,7 @@
 
                                     <li>
                                         <input type="checkbox" value="gold">
-                                        <a href="javascript:void(0)" title="Gold" class=" ">Gold</a>
+                                        <a href="javascript:void(0)" title="Gold" class=" ">{% trans "Gold" %}</a>
 
 
                                     </li>
@@ -366,7 +366,7 @@
 
                                     <li>
                                         <input type="checkbox" value="maroon">
-                                        <a href="javascript:void(0)" title="Maroon" class=" ">Maroon</a>
+                                        <a href="javascript:void(0)" title="Maroon" class=" ">{% trans "Maroon" %}</a>
 
 
                                     </li>
@@ -374,7 +374,7 @@
 
                                     <li>
                                         <input type="checkbox" value="white">
-                                        <a href="javascript:void(0)" title="White" class=" ">White</a>
+                                        <a href="javascript:void(0)" title="White" class=" ">{% trans "White" %}</a>
 
 
                                     </li>
@@ -435,7 +435,7 @@
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                          viewBox="0 0 400 400" height="400" width="400"
                                                                          id="svg2" version="1.1"
-                                                                         xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                                                         xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                                                         <defs id="defs6"></defs>
                                                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)"
@@ -455,7 +455,7 @@
                                                                          viewBox="0 0 400 400" height="400" width="400"
                                                                          id="svg2" version="1.1"
                                                                          xmlns:svg="http://www.w3.org/2000/svg"
-                                                                         xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                                                         xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                                                         <defs id="defs6"></defs>
                                                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)"
@@ -502,8 +502,8 @@
 
                             </div>
                             <div class="pagi-nav text-right">
-                                <span class="page current">1</span> <span class="page"><a
-                                    href="/collections/all?page=2&amp;sort_by=best-selling" title="">2</a></span> <span
+                                <span class="page current">{% trans "1</span> " %}<span class="page"><a
+                                    href="/collections/all?page=2&amp;sort_by=best-selling" title="">{% trans "2</a></span> " %}<span
                                     class="next"><a href="/collections/all?page=2&amp;sort_by=best-selling" title=""><i
                                     class="fa fa-angle-right"></i></a></span>
                             </div>
@@ -524,10 +524,10 @@
                     <li>
                         <div class="sort_select">
                             <select name="sort" id="sort">
-                                <option value="popularity" selected="selected">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by price: low to high</option>
+                                <option value="popularity" selected="selected">{% trans "Sort by popularity" %}</option>
+                                <option value="rating">{% trans "Sort by average rating" %}</option>
+                                <option value="date">{% trans "Sort by newness" %}</option>
+                                <option value="price">{% trans "Sort by price: low to high" %}</option>
                                 <option value="price-desc">Sort by price: high to
                             </select>
                         </div>
@@ -538,7 +538,7 @@
                     </li>
                     <li>
                         <a href="#0" class="open_filters">
-                            <i class="ti-filter"></i><span>Filters</span>
+                            <i class="ti-filter"></i><span>{% trans "Filters" %}</span>
                         </a>
                     </li>
                 </ul>
@@ -548,7 +548,7 @@
             <div class="filter_col">
                 <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
                 <div class="filter_type version_2">
-                    <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Wide Categories</a>
+                    <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">{% trans "Wide Categories" %}</a>
                     </h4>
                     <div class="collapse show category_search" id="filter_1">
                         <ul>
@@ -576,13 +576,13 @@
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Percussion Instruments <small>23</small>
+                                <label class="container_check">{% trans "Percussion Instruments" %} <small>{% trans "23" %}</small>
                                     <input type="checkbox" name="category_3" id="category_3" checked>
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Keyboard Instruments<small>11</small>
+                                <label class="container_check">{% trans "Keyboard Instruments" %} <small>{% trans "11" %}</small>
                                     <input type="checkbox" name="category_4" id="category_4" checked>
                                     <span class="checkmark"></span>
                                 </label>
@@ -596,30 +596,30 @@
                     <!-- /filter_type -->
                 </div>
                 <div class="filter_type version_2">
-                    <h4><a href="#filter_2" data-bs-toggle="collapse" class="opened">Specific Categories</a>
+                    <h4><a href="#filter_2" data-bs-toggle="collapse" class="opened">{% trans "Specific Categories" %}</a>
                     </h4>
                     <div class="collapse show" id="filter_2">
                         <ul>
                             <li>
-                                <label class="container_check">Guitar <small>12</small>
+                                <label class="container_check">{% trans "Guitar" %} <small>{% trans "12" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Piano <small>24</small>
+                                <label class="container_check">{% trans "Piano" %} <small>{% trans "24" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Violin <small>23</small>
+                                <label class="container_check">{% trans "Violin" %} <small>{% trans "23" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Bass<small>11</small>
+                                <label class="container_check">{% trans "Bass" %}<small>{% trans "11" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
@@ -630,29 +630,29 @@
                 </div>
                 <!-- /filter_type -->
                 <div class="filter_type version_2">
-                    <h4><a href="#filter_3" data-bs-toggle="collapse" class="opened">Color</a></h4>
+                    <h4><a href="#filter_3" data-bs-toggle="collapse" class="opened">{% trans "Color" %}</a></h4>
                     <div class="collapse show" id="filter_3">
                         <ul>
                             <li>
-                                <label class="container_check">Blue <small>06</small>
+                                <label class="container_check">{% trans "Blue " %}<small>{% trans "06" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Red <small>12</small>
+                                <label class="container_check">{% trans "Red " %}<small>{% trans "12" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Orange <small>17</small>
+                                <label class="container_check">{% trans "Orange " %}<small>{% trans "17" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Black <small>43</small>
+                                <label class="container_check">{% trans "Black " %}<small>{% trans "43" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
@@ -662,29 +662,29 @@
                 </div>
                 <!-- /filter_type -->
                 <div class="filter_type version_2">
-                    <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">Brands</a></h4>
+                    <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">{% trans "Brands" %}</a></h4>
                     <div class="collapse" id="filter_4">
                         <ul>
                             <li>
-                                <label class="container_check">Adidas <small>11</small>
+                                <label class="container_check">{% trans "Adidas " %}<small>{% trans "11" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Nike <small>08</small>
+                                <label class="container_check">{% trans "Nike " %}<small>{% trans "08" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Vans <small>05</small>
+                                <label class="container_check">{% trans "Vans " %}<small>{% trans "05" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </li>
                             <li>
-                                <label class="container_check">Puma <small>18</small>
+                                <label class="container_check">{% trans "Puma " %}<small>{% trans "18" %}</small>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
@@ -694,7 +694,7 @@
                 </div>
                 <!-- /filter_type -->
                 <div class="filter_type version_2">
-                    <h4><a href="#filter_5" data-bs-toggle="collapse" class="closed">Price</a></h4>
+                    <h4><a href="#filter_5" data-bs-toggle="collapse" class="closed">{% trans "Price" %}</a></h4>
                     <div class="collapse" id="filter_5">
                         <ul>
                             <li>
@@ -726,7 +726,7 @@
                 </div>
                 <!-- /filter_type -->
                 <div class="buttons">
-                    <a href="#0" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
+                    <a href="#0" class="btn_1">{% trans "Filter" %}</a> <a href="#0" class="btn_1 gray">{% trans "Reset" %}</a>
                 </div>
             </div>
         </aside>

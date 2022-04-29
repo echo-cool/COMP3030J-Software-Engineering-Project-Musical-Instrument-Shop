@@ -5,7 +5,7 @@
 {% get_current_language as language_code %}
 
 <!DOCTYPE HTML>
-<html lang="en-US">
+<html lang="en-US" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -103,16 +103,23 @@
     <div class="search-full-destop">
         <div class="search-eveland js-box-search">
             <div class="drawer-search-top">
-                <h3 class="drawer-search-title">Start typing and hit Enter</h3>
+                <h3 class="drawer-search-title" id="search_title">Start typing and hit Enter</h3>
             </div>
             <form class="wg-search-form" id="search_form">
                 <input type="text" placeholder="Search anything" class="search-input js_engo_autocomplate"
-                       id="search_text">
+                       id="search_text"/>
                 <button type="submit" class="set-20-svg">
 
                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
+                <button id="image_retrieval" style="color: #000;" title="Search by Image">
+
+                    <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                    <i class="fa fa-camera-retro" aria-hidden="true"></i>
+                </button>
+
+                <input type="file" style="display: none;" id="image_file_upload" accept="image/*">
             </form>
             <div class="drawer_back">
                 <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg" id="close-search">
@@ -1650,6 +1657,44 @@
                 window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
                 return false;
             });
+
+            let image_upload = $("#image_file_upload");
+
+            $('#image_retrieval').on('click', function () {
+                image_upload.trigger('click')
+                return false;
+            }).mouseover(function () {
+                $(this).find("i").css("color", "#02d5fa");
+            }).mouseout(function () {
+                $(this).find("i").css("color", "black");
+            });
+
+            image_upload.bind('input propertychange', function () {
+                let search_title = $("#search_title");
+                search_title.text("Processing...");
+                let formData = new FormData()
+                formData.append("image_file_upload", image_upload[0].files[0]);
+                $.ajax({
+                    url: "/api/analyze_image/",
+                    method: 'POST',
+                    data: formData,
+                    async: true,
+                    contentType:false,
+                    processData:false,
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    success: function (res) {
+                        window.location.href = ("/image_search/" + res['key']);
+                        image_upload.val(null);
+                        search_title.text("Start typing and hit Enter")
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
+                })
+            });
+
         })
 
         $('.dropdown-cart, .dropdown-access').hover(function () {

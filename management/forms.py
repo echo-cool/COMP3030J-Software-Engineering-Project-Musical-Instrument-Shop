@@ -22,7 +22,33 @@ class OrderItemForm(forms.ModelForm):
 class InstrumentForm(forms.ModelForm):
     class Meta:
         model = Instrument
+        fields = (
+            "name",
+            "old_price",
+            "price",
+            "details",
+            "ex_detail",
+            "ad_info",
+            "chinese",
+            "posted_by",
+            "category",
+        )
+
+
+class InstrumentWithIForm(forms.ModelForm):
+    class Meta:
+        model = Instrument
         fields = "__all__"
+
+
+# class InstrumentForm(forms.Form):
+#     image = forms.CharField(max_length=50)
+#     image1 = forms.CharField(max_length=50)
+#     image2 = forms.CharField(max_length=50)
+#     image3 = forms.CharField(max_length=50)
+#     image4 = forms.CharField(max_length=50)
+#
+#     imagereal = forms.FileField()
 
 
 class ReviewForm(forms.ModelForm):

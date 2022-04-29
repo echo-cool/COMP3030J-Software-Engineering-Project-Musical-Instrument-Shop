@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.urls import reverse
 
+from blog.forms import PostForm
 from blog.models import Post, Comment
 
 
@@ -63,3 +65,29 @@ def view(request, post_id):
         'latest3Posts': latest3Posts,
         'comments': comments,
     })
+
+@login_required
+def post(request):
+    if request.method == "POST":
+        f = PostForm(request.POST, request.FILES)
+        if f.is_valid():
+            new_post = Post(
+                title=f.cleaned_data['title'],
+                body=f.cleaned_data['body'],
+                category=f.cleaned_data['category'],
+                main_image=f.cleaned_data['main_image'],
+                author=request.user
+            )
+            new_post.save()
+        else:
+            return render(request, 'blog_templates/post-blogs.html', {
+                'form': f
+            })
+        return redirect(reverse('blog:post'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        f = PostForm()
+        return render(request, 'blog_templates/post-blogs.html', {
+            'form': f
+        })
+

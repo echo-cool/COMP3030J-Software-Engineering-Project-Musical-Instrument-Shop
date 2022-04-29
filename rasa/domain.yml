@@ -31,6 +31,7 @@ intents:
   - get_have_name_slot
   - search_product
   - set_user_language
+  - show_recent_orders
 
 entities:
   - name
@@ -148,12 +149,12 @@ responses:
     - text: "My name is Group-8-IllegalGroupNameException."
 
   utter_recommend_westren:
-    - text: "Please refer to our Western category. http://127.0.0.1:8000/"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "<a href='/' target='_blank'>Please refer to our Western category.</a>"
+      image: "/static/assets/images/banner.webp"
 
   utter_recommend_chinese:
-    - text: "Please refer to our Chinese category. http://127.0.0.1:8000/chinese"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "<a href='/chinese' target='_blank'>Please refer to our Chinese category.</a>"
+      image: "/static/assets_chinese/images/ban4.jpg"
 
   utter_ask_login_url:
     - text: "This is the login url: ."
@@ -182,6 +183,9 @@ responses:
     - text: "POPULAR-INSTRUMENTS"
   utter_ask_order_number:
     - text: "ORDER-NUMBER"
+
+  utter_recent_order:
+    - text: "GET_ORDER_LIST"
 
 session_config:
   session_expiration_time: 60

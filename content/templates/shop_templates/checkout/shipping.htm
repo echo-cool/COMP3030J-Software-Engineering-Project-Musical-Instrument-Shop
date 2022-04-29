@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html dir="ltr"
       class="js windows firefox desktop page--no-banner page--logo-main page--show page--show card-fields cors svg opacity placeholder no-touchevents displaytable display-table generatedcontent cssanimations flexbox no-flexboxtweener anyflexbox shopemoji fwvflrsd idc0_338"
@@ -10,7 +11,7 @@
           content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
     <meta name="referrer" content="origin">
 
-    <title> Shipping - Checkout</title>
+    <title>{% trans "Shipping - Checkout" %}</title>
 
     <meta data-browser="firefox" data-browser-major="99">
     <meta data-body-font-family="Helvetica Neue" data-body-font-type="system">
@@ -180,7 +181,7 @@
             crossorigin="anonymous"></script>
 
 
-    <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
+    <script>{% trans "window.ShopifyPaypalV4VisibilityTracking = true;" %}</script>
 
 
     <script type="text/javascript">
@@ -210,19 +211,15 @@
             async=""></script>
 </head>
 <body>
-<a href="#main-header" class="skip-to-content">
-    Skip to content
-</a>
+<a href="#main-header" class="skip-to-content">{% trans "Skip to content" %}</a>
 
 
 <header class="banner" data-header="" role="banner">
     <div class="wrap">
 
-        <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span class="logo__text heading-1">Musicmo -  Musical Instruments Shop Shopify Theme</span></a>
+        <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop Shopify Theme" %}</span></a>
 
-        <h1 class="visually-hidden">
-            Shipping
-        </h1>
+        <h1 class="visually-hidden">{% trans "Shipping" %}</h1>
 
 
     </div>
@@ -239,19 +236,19 @@
           </svg>
         </span>
         <span class="order-summary-toggle__text order-summary-toggle__text--show">
-          <span>Show order summary</span>
+          <span>{% trans "Show order summary" %}</span>
           <svg width="11" height="6" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle__dropdown"
                fill="#000"><path
                   d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z"></path></svg>
         </span>
         <span class="order-summary-toggle__text order-summary-toggle__text--hide">
-          <span>Hide order summary</span>
+          <span>{% trans "Hide order summary" %}</span>
           <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle__dropdown"
                fill="#000"><path
                   d="M6.138.876L5.642.438l-.496.438L.504 4.972l.992 1.124L6.138 2l-.496.436 3.862 3.408.992-1.122L6.138.876z"></path></svg>
         </span>
         <dl class="order-summary-toggle__total-recap total-recap" data-order-summary-section="toggle-total-recap">
-          <dt class="visually-hidden"><span>Sale price</span></dt>
+          <dt class="visually-hidden"><span>{% trans "Sale price" %}</span></dt>
           <dd>
             <span class="order-summary__emphasis total-recap__final-price skeleton-while-loading"
                   data-checkout-payment-due-target="21957">${{ total | floatformat:2}}</span>
@@ -267,11 +264,9 @@
             <header class="main__header" role="banner">
 
                 <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
-                        class="logo__text heading-1">Shipping</span></a>
+                        class="logo__text heading-1">{% trans "Shipping" %}</span></a>
 
-                <h1 class="visually-hidden">
-                    Shipping
-                </h1>
+                <h1 class="visually-hidden">{% trans "Shipping" %}</h1>
 
 
                 <div class="shown-if-js" data-alternative-payments="">
@@ -326,9 +321,7 @@ window.additionalScripts = function () {
                                     <div role="table" class="content-box__row content-box__row--tight-spacing-vertical">
                                         <div role="row" class="review-block">
                                             <div class="review-block__inner">
-                                                <div role="rowheader" class="review-block__label">
-                                                    Contact
-                                                </div>
+                                                <div role="rowheader" class="review-block__label">{% trans "Contact" %}</div>
                                                 <div role="cell" class="review-block__content">
                                                     <bdo dir="ltr">{{ user.email }}</bdo>
                                                 </div>
@@ -336,17 +329,15 @@ window.additionalScripts = function () {
                                             <div role="cell" class="review-block__link">
                                                 <a class="link--small"
                                                    href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">
-                                                    {#                                                    <span aria-hidden="true">Change</span>#}
-                                                    <span class="visually-hidden">Change contact information</span>
+                                                    {#                                                    <span aria-hidden="true">{% trans "Change" %}</span>#}
+                                                    <span class="visually-hidden">{% trans "Change contact information" %}</span>
                                                 </a></div>
                                         </div>
 
 
                                         <div role="row" class="review-block">
                                             <div class="review-block__inner">
-                                                <div role="rowheader" class="review-block__label">
-                                                    Ship to
-                                                </div>
+                                                <div role="rowheader" class="review-block__label">{% trans "Ship to" %}</div>
                                                 <div role="cell" class="review-block__content">
                                                     <address class="address address--tight">
                                                         {{ uncompletedOrder.first_name }}, {{ uncompletedOrder.last_name }}, {{ uncompletedOrder.city }} {{ uncompletedOrder.state }} {{ uncompletedOrder.zip_Code }}, {{ uncompletedOrder.country }}
@@ -358,8 +349,8 @@ window.additionalScripts = function () {
                                             <div role="cell" class="review-block__link">
                                                 <a class="link--small"
                                                    href="https://musicmo-store-demo.myshopify.com/51831734459/checkouts/f6e6e63d3a778f79e2a97bba669fe477?step=contact_information">
-                                                    <span aria-hidden="true">Change</span>
-                                                    <span class="visually-hidden">Change shipping address</span>
+                                                    <span aria-hidden="true">{% trans "Change" %}</span>
+                                                    <span class="visually-hidden">{% trans "Change shipping address" %}</span>
                                                 </a></div>
                                         </div>
 
@@ -371,9 +362,7 @@ window.additionalScripts = function () {
 
                             <div class="section section--shipping-method">
                                 <div class="section__header">
-                                    <h2 class="section__title" id="main-header" tabindex="-1">
-                                        Shipping method
-                                    </h2>
+                                    <h2 class="section__title" id="main-header" tabindex="-1">{% trans "Shipping method" %}</h2>
 
                                 </div>
 
@@ -410,11 +399,7 @@ window.additionalScripts = function () {
                                                 </div>
                                                 <label class="radio__label"
                                                        for="checkout_shipping_rate_id_shopify-standard-20_57">
-          <span class="radio__label__primary" data-shipping-method-label-title="Standard">
-            Standard
-
-
-          </span>
+          <span class="radio__label__primary" data-shipping-method-label-title="Standard">{% trans "Standard" %}</span>
                                                     <span class="radio__label__accessory">
             <span class="content-box__emphasis">
               ${{ shipping_price | floatformat:2 }}
@@ -435,7 +420,7 @@ window.additionalScripts = function () {
 
                             <button name="button" type="submit" id="continue_button"
                                     class="step__footer__continue-btn btn" aria-busy="false"><span class="btn__content"
-                                                                                                   data-continue-button-content="true">Continue to payment</span>
+                                                                                                   data-continue-button-content="true">{% trans "Continue to payment" %}</span>
                                 <svg class="icon-svg icon-svg--size-18 btn__spinner icon-svg--spinner-button"
                                      aria-hidden="true" focusable="false">
                                     <use xlink:href="#spinner-button"></use>
@@ -448,7 +433,7 @@ window.additionalScripts = function () {
                                      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
                                     <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path>
                                 </svg>
-                                <span class="step__footer__previous-link-content">Return to information</span></a>
+                                <span class="step__footer__previous-link-content">{% trans "Return to information" %}</span></a>
                         </div>
 
 
@@ -462,29 +447,19 @@ window.additionalScripts = function () {
 
 
                 <div class="hidden">
-  <span class="visually-hidden" id="forwarding-external-new-window-message">
-    Opens external website in a new window.
-  </span>
+  <span class="visually-hidden" id="forwarding-external-new-window-message">{% trans "Opens external website in a new window." %}</span>
 
-                    <span class="visually-hidden" id="forwarding-new-window-message">
-    Opens in a new window.
-  </span>
+                    <span class="visually-hidden" id="forwarding-new-window-message">{% trans "Opens in a new window." %}</span>
 
-                    <span class="visually-hidden" id="forwarding-external-message">
-    Opens external website.
-  </span>
+                    <span class="visually-hidden" id="forwarding-external-message">{% trans "Opens external website." %}</span>
 
-                    <span class="visually-hidden" id="checkout-context-step-one">
-    Customer information - Musicmo -  Musical Instruments Shop Shopify Theme - Checkout
-  </span>
+                    <span class="visually-hidden" id="checkout-context-step-one">{% trans "Customer information - Musicmo -  Musical Instruments Shop Shopify Theme - Checkout" %}</span>
                 </div>
 
 
             </main>
             <footer class="main__footer" role="contentinfo">
-                <p class="copyright-text ">
-                    All rights reserved Musicmo - Musical Instruments Shop Shopify Theme
-                </p>
+                <p class="copyright-text ">{% trans "All rights reserved Musicmo - Musical Instruments Shop Shopify Theme" %}</p>
 
 
             </footer>
@@ -493,29 +468,27 @@ window.additionalScripts = function () {
             <div class="sidebar__header">
 
                 <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
-                        class="logo__text heading-1">Musicmo -  Musical Instruments Shop Shopify Theme</span></a>
+                        class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop Shopify Theme" %}</span></a>
 
-                <h1 class="visually-hidden">
-                    Shipping
-                </h1>
+                <h1 class="visually-hidden">{% trans "Shipping" %}</h1>
 
 
             </div>
             <div class="sidebar__content">
                 <div id="order-summary" class="order-summary order-summary--is-collapsed" data-order-summary="">
-                    <h2 class="visually-hidden-if-js">Order summary</h2>
+                    <h2 class="visually-hidden-if-js">{% trans "Order summary" %}</h2>
 
                     <div class="order-summary__sections">
                         <div class="order-summary__section order-summary__section--product-list">
                             <div class="order-summary__section__content">
                                 <table class="product-table">
-                                    <caption class="visually-hidden">Shopping cart</caption>
+                                    <caption class="visually-hidden">{% trans "Shopping cart" %}</caption>
                                     <thead class="product-table__header">
                                     <tr>
-                                        <th scope="col"><span class="visually-hidden">Product image</span></th>
-                                        <th scope="col"><span class="visually-hidden">Description</span></th>
-                                        <th scope="col"><span class="visually-hidden">Quantity</span></th>
-                                        <th scope="col"><span class="visually-hidden">Price</span></th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Product image" %}</span></th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Description" %}</span></th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Quantity" %}</span></th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Price" %}</span></th>
                                     </tr>
                                     </thead>
                                     <tbody data-order-summary-section="line-items">
@@ -537,7 +510,7 @@ window.additionalScripts = function () {
                                             </td>
                                             <th class="product__description" scope="row">
                                                 <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>
-                                                <span class="product__description__variant order-summary__small-text">Add: {{ item.created_at }}</span>
+                                                <span class="product__description__variant order-summary__small-text">{% trans "Add: {{ item.created_at }}" %}</span>
 
                                             </th>
                                             <td class="product__quantity">
@@ -554,9 +527,7 @@ window.additionalScripts = function () {
                                 </table>
 
                                 <div class="order-summary__scroll-indicator" aria-hidden="true" tabindex="-1"
-                                     id="order-summary__scroll-indicator">
-                                    Scroll for more items
-                                    <svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-12">
+                                     id="order-summary__scroll-indicator">{% trans "Scroll for more items" %}<svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-12">
                                         <use xlink:href="#down-arrow"></use>
                                     </svg>
                                 </div>
@@ -567,16 +538,16 @@ window.additionalScripts = function () {
                         <div class="order-summary__section order-summary__section--total-lines"
                              data-order-summary-section="payment-lines">
                             <table class="total-line-table">
-                                <caption class="visually-hidden">Cost summary</caption>
+                                <caption class="visually-hidden">{% trans "Cost summary" %}</caption>
                                 <thead>
                                 <tr>
-                                    <th scope="col"><span class="visually-hidden">Description</span></th>
-                                    <th scope="col"><span class="visually-hidden">Price</span></th>
+                                    <th scope="col"><span class="visually-hidden">{% trans "Description" %}</span></th>
+                                    <th scope="col"><span class="visually-hidden">{% trans "Price" %}</span></th>
                                 </tr>
                                 </thead>
                                 <tbody class="total-line-table__tbody">
                                 <tr class="total-line total-line--subtotal">
-                                    <th class="total-line__name" scope="row">Subtotal</th>
+                                    <th class="total-line__name" scope="row">{% trans "Subtotal" %}</th>
                                     <td class="total-line__price">
                                         <span class="order-summary__emphasis skeleton-while-loading"
                                               data-checkout-subtotal-price-target="19900">${{ subtotal | floatformat:2}}</span>
@@ -586,7 +557,7 @@ window.additionalScripts = function () {
 
                                 <tr class="total-line total-line--shipping">
                                     <th class="total-line__name" scope="row">
-                                        <span>Shipping</span>
+                                        <span>{% trans "Shipping" %}</span>
 
                                     </th>
                                     <td class="total-line__price">
@@ -611,10 +582,10 @@ window.additionalScripts = function () {
                                 <tfoot class="total-line-table__footer">
                                 <tr class="total-line">
                                     <th class="total-line__name payment-due-label" scope="row">
-                                        <span class="payment-due-label__total">Total</span>
+                                        <span class="payment-due-label__total">{% trans "Total" %}</span>
                                     </th>
                                     <td class="total-line__price payment-due" data-presentment-currency="USD">
-                                        <span class="payment-due__currency remove-while-loading">USD</span>
+                                        <span class="payment-due__currency remove-while-loading">{% trans "USD" %}</span>
                                         <span class="payment-due__price skeleton-while-loading--lg"
                                               data-checkout-payment-due-target="21957">${{ total | floatformat:2}}</span>
                                     </td>
@@ -628,9 +599,8 @@ window.additionalScripts = function () {
                 </div>
 
                 <div class="visually-hidden" data-order-summary-section="accessibility-live-region">
-                    <div aria-live="polite" aria-atomic="true" role="status">
-                        Updated total price:
-                        <span data-checkout-payment-due-target="21957">${{ total | floatformat}}</span>
+                    <div aria-live="polite" aria-atomic="true" role="status">{% trans "Updated total price:" %}<span
+                            data-checkout-payment-due-target="21957">${{ total | floatformat}}</span>
                     </div>
                 </div>
 

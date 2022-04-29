@@ -8,14 +8,26 @@
 from datetime import datetime, timezone, date
 
 from django.contrib import auth
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q, Max, Count
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
+from app import settings
 from chat.models import MessageModel
-from shop.models import Profile, Wishlist, Cart, Order, OrderItem
+from image_search.models import ImageSearchData
+from shop.models import Profile, Wishlist, Cart, Order, OrderItem, Instrument
+from PIL import Image
+import numpy as np
+from image_search.ml.core import distance
+from shop.views import memory_cached_db
+
+extractor = None
 
 
 def login(request):
@@ -113,7 +125,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': sender_rank[p1]['max'],
                              'unread': sender_rank[p1]['unread'],
-                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[p1]['max'], user=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[p1]['max'],
+                                                                        user=user).body})
                 p1 += 1
             else:
                 user = users.get(id=receiver_rank[p2]['recipient'])
@@ -128,7 +141,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': receiver_rank[p2]['max'],
                              'unread': 0,
-                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[p2]['max'], recipient=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[p2]['max'],
+                                                                        recipient=user).body})
                 p2 += 1
         if p1 == len_sender:
             for i in range(p2, len_receiver):
@@ -144,7 +158,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': receiver_rank[i]['max'],
                              'unread': 0,
-                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[i]['max'], recipient=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=receiver_rank[i]['max'],
+                                                                        recipient=user).body})
         else:
             for i in range(p1, len_sender):
                 user = users.get(id=sender_rank[i]['user'])
@@ -159,7 +174,8 @@ def rank_user_list(request):
                              'image': avatar,
                              'time': sender_rank[i]['max'],
                              'unread': sender_rank[i]['unread'],
-                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'], user=user).body})
+                             'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'],
+                                                                        user=user).body})
         data = sorted(data, key=lambda x: x['time'], reverse=True)
         if to != -1 and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
             user = users.get(id=to)
@@ -193,7 +209,7 @@ def add_wishlist(request):
                 except:
                     return JsonResponse({'code': 300}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
-             return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse({'code': 400}, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
 def add_cart(request):
@@ -203,7 +219,8 @@ def add_cart(request):
                 return JsonResponse({'code': 100}, safe=False, json_dumps_params={'ensure_ascii': False})
             else:
                 try:
-                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'), count=request.POST.get('count') or 1)
+                    cart = Cart(user=request.user, instrument_id=request.POST.get('instrument_id'),
+                                count=request.POST.get('count') or 1)
                     cart.save()
                     return JsonResponse({'code': 200}, safe=False, json_dumps_params={'ensure_ascii': False})
                 except:
@@ -214,7 +231,8 @@ def add_cart(request):
 
 def all_read(request):
     if request.method == 'POST':
-        unread_messages = MessageModel.objects.filter(user_id=request.POST.get('sender_id'), recipient=request.user, read=False)
+        unread_messages = MessageModel.objects.filter(user_id=request.POST.get('sender_id'), recipient=request.user,
+                                                      read=False)
         try:
             for message in unread_messages:
                 message.read = True
@@ -253,3 +271,75 @@ def revenue_month(request):
     result = [total_revenue, chinese_revenue, western_revenue]
 
     return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def analyze_image(request):
+    key = 0
+    if request.method == 'POST':
+        print(request.FILES)
+        res = {}
+        image = request.FILES.get("image_file_upload")
+        with open("content/media/uploads/tmp/tmp.jpg", 'wb') as f:
+            f.write(image.read())
+        image = Image.open("content/media/uploads/tmp/tmp.jpg")
+        image = image.resize((1000, 1000), Image.ANTIALIAS)
+        image.save("content/media/uploads/tmp/tmp.jpg")
+        print('preprocess image done')
+        # img = cv.imread('content/media/uploads/tmp/tmp.jpg')
+        # img = cv.resize(img, (1000, 1000), interpolation=cv.INTER_CUBIC)
+        # cv.imwrite('content/media/uploads/tmp/tmp.jpg', img)
+        global extractor
+        if extractor is None:
+            from image_search.ml.core import ResNetFeatureExtractor
+            extractor = ResNetFeatureExtractor()
+        hist_data = extractor.extract_feature("content/media/uploads/tmp/tmp.jpg")
+        print(hist_data)
+        all_image_search_data = ImageSearchData.objects.all()
+        for item in all_image_search_data:
+            item_hist_data = item.data
+            item_hist_data = item_hist_data.split(",")
+            item_hist_data = [float(x) for x in item_hist_data]
+            item_hist_data = np.array(item_hist_data)
+            res[item.id] = distance(hist_data, item_hist_data)
+
+        sorted_keys = sorted(res.keys(), key=lambda x: res[x])
+        print(sorted_keys)
+        instruments = Instrument.objects.filter(imagesearchdata__in=sorted_keys)
+        key = memory_cached_db.insert_value(instruments)
+    return JsonResponse({"key": key}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+class EditorUploadImage(LoginRequiredMixin, View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        import os
+        import uuid
+        file_data = request.FILES
+        keys = list(file_data.keys())
+        print(settings.CONTENT_DIR + '/' + 'media/upload/')
+        file_path = settings.CONTENT_DIR + '/' + 'media/upload/'
+        if os.path.exists(file_path) is False:
+            os.mkdir(file_path)
+        # 返回数据中需要的data
+        data = []
+        for key in keys:
+            img_dict = {}
+            file = file_data.get(f'{key}')
+            # 重命名文件名称
+            names = list(os.path.splitext(file.name))
+            names[0] = ''.join(str(uuid.uuid4()).split('-'))
+            file.name = ''.join(names)
+            new_path = os.path.join(file_path, file.name)
+            # 开始上传
+            with open(new_path, 'wb+') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
+            # 构造返回数据
+            img_dict['url'] = f'/media/upload/{file.name}'
+            data.append(img_dict)
+        context = {"errno": 0, "data": data}
+        return JsonResponse(context)

@@ -1,3 +1,7 @@
+import json
+from datetime import datetime
+import os
+
 from django.contrib.auth.models import User
 from django.db.models import Q, Max
 from django.http import HttpResponse
@@ -6,13 +10,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 import blog
 import shop
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
-    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm
+    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -47,7 +53,6 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
 def index_new(request):
-
     # tmp = {}
     # for instrument_item in Instrument.objects.all():
     #     tmp[instrument_item] = Order.objects.filter(instrument=instrument_item.id).count()
@@ -267,7 +272,8 @@ def order_management_packed(request):
 
 @login_required
 def order_management_shipped(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=False).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+        delivered=False).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -295,7 +301,8 @@ def order_management_shipped(request):
 
 @login_required
 def order_management_delivered(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(delivered=True).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+        delivered=True).order_by('-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -446,19 +453,74 @@ def update_instrument(request, instrument_id):
         })
 
 
+@method_decorator(csrf_exempt)
+def upload_ins(request):
+    if request.method == "POST":
+        instrument = Instrument.objects.all().last()
+        all_images = request.FILES.getlist("input24[]")
+        # print("sss", all_images, request.FILES["input24[]"])
+        # print(len(all_images))
+        for i in range(len(all_images)):
+            # instrument.created_at = datetime.utcnow()
+            # print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+            images = all_images[i]
+            # print(images)
+            if i == 0:
+                instrument.image = images
+            elif i == 1:
+                instrument.image1 = images
+            elif i == 2:
+                instrument.image2 = images
+            elif i == 3:
+                instrument.image3 = images
+            elif i == 4:
+                instrument.image4 = images
+            instrument.save()
+        # return {'success': 0}
+    return HttpResponse(status=204)
+
+
 @login_required
+@method_decorator(csrf_exempt)
 def add_instrument(request):
     if request.method == "POST":
-        f = InstrumentForm(request.POST, request.FILES)
+        print(request.FILES)
+        print(request.POST)
+        f = InstrumentWithIForm(request.POST, request.FILES)
         if f.is_valid():
-            f.save()
+            instrument = f.save()
+            all_images = request.FILES.getlist("input24[]")
+            # print("sss", all_images, request.FILES["input24[]"])
+            # print(len(all_images))
+            for i in range(len(all_images)):
+                # instrument.created_at = datetime.utcnow()
+                # print(instrument.image, instrument.image1, instrument.image2, instrument.image3, instrument.image4)
+                images = all_images[i]
+                # print(images)
+                if i == 0:
+                    instrument.image = images
+                elif i == 1:
+                    instrument.image1 = images
+                elif i == 2:
+                    instrument.image2 = images
+                elif i == 3:
+                    instrument.image3 = images
+                elif i == 4:
+                    instrument.image4 = images
+                instrument.save()
         else:
-            return render(request, 'management_templates/update_instrument.html', {
-                'form': f
-            })
-        return redirect(reverse('management:instrument_management'))
+            ret = {'status': True, 'error': None, 'data': None}
+
+            print(f.errors)
+            print(f.errors.as_json())
+            # ret['error'] = f.errors['mobile'][0]
+            ret['status'] = False
+            return HttpResponse(json.dumps(ret))
+        return HttpResponse(status=204)
+        # return {"code": 200}
+        # return redirect(reverse('management:instrument_management'))
     else:
-        f = InstrumentForm()
+        f = InstrumentWithIForm()
         return render(request, 'management_templates/update_instrument.html', {
             'form': f
         })
@@ -640,11 +702,18 @@ def add_review(request):
 def order_state(request, order_id):
     order = Order.objects.filter(id=order_id).first()
     f = OrderForm(instance=order)
+
+    date = str(datetime.today().date())
+    time = str(datetime.today().time()).split(".")[0]
+
     return render(request, 'management_templates/order_state.html', {
         'order': order,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'form': f,
-        'users': User.objects.all()
+        'users': User.objects.all(),
+        # TIME INFORMATION
+        'date': date,
+        'time': time,
     })
 
 
@@ -701,6 +770,7 @@ def update_post(request, post_id):
 @login_required
 def add_post(request):
     if request.method == "POST":
+        print(request.FILES)
         f = PostForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
@@ -860,7 +930,8 @@ def add_cart(request):
 def wishlist_management(request):
     search = request.GET.get("search")
     if search is not None:
-        wishlist_list = Wishlist.objects.filter(Q(user__username__contains=search) | Q(instrument__name__contains=search))
+        wishlist_list = Wishlist.objects.filter(
+            Q(user__username__contains=search) | Q(instrument__name__contains=search))
     else:
         wishlist_list = Wishlist.objects.all()
     paginator = Paginator(wishlist_list, 10, 0)
@@ -922,3 +993,14 @@ def add_wishlist(request):
         return render(request, 'management_templates/update_wishlist.html', {
             'form': f
         })
+
+
+@login_required
+def view_log(request):
+    # check if file exists
+    if os.path.isfile("access_log/access_log.log"):
+        # read file
+        with open("access_log/access_log.log", "r") as f:
+            log = f.read()
+        return HttpResponse(log, content_type="text/plain")
+    return HttpResponse("LOG FILE NOT FOUND")

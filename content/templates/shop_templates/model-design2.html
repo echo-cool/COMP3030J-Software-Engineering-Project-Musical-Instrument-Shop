@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>{% trans "Zay Shop eCommerce HTML CSS Template" %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -201,11 +201,11 @@
 {#<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">#}
 {#    <div class="container text-light">#}
 {#        <div class="w-100 d-flex justify-content-between">#}
-{#            <a href="http://threejs.org" target="_blank" rel="noopener">Develop based on three.js</a> -#}
+{#            <a href="http://threejs.org" target="_blank" rel="noopener">{% trans "Develop based on three.js" %}</a> -#}
 {#            Instrument Model#}
 {#            Design#}
 {#            by <a#}
-{#                href="http://eduperiment.com" target="_blank" rel="noopener">Group 8</a><br/><br/>#}
+{#                href="http://eduperiment.com" target="_blank" rel="noopener">{% trans "Group 8" %}</a><br/><br/>#}
 {#            #}
 {#        </div>#}
 {#    </div>#}
@@ -215,20 +215,20 @@
 <div class="container-fluid">
     {#    <div class="row model-page-wrapper">#}
     {#        <div id="info">#}
-    {#            <a href="http://threejs.org" target="_blank" rel="noopener">Develop based on three.js</a> - Instrument Model#}
+    {#            <a href="http://threejs.org" target="_blank" rel="noopener">{% trans "Develop based on three.js" %}</a> - Instrument Model#}
     {#            Design#}
     {#            by <a#}
-    {#                href="http://eduperiment.com" target="_blank" rel="noopener">Group 8</a><br/><br/>#}
+    {#                href="http://eduperiment.com" target="_blank" rel="noopener">{% trans "Group 8" %}</a><br/><br/>#}
     {#        </div>#}
     {#    </div>#}
     <div class="row" style="height: 100%">
         <div class="col-8 model-show-wrapper"></div>
         <div class="col-4 model-design-wrapper" style="background: #f8f8f8">
-            <h1>Welcome to Model Design!</h1>
-            <div>Now raw model: Guitar - 1</div>
-            <p>In here, you can design your own musical instrument.</p>
+            <h1>{% trans "Welcome to Model Design!" %}</h1>
+            <div>{% trans "Now raw model: Guitar - 1" %}</div>
+            <p>{% trans "In here, you can design your own musical instrument." %}</p>
             <div class="container">
-                <h3>Feature</h3>
+                <h3>{% trans "Feature" %}</h3>
                 <div>
                     <img onclick="splitModel()" style="cursor: pointer" width="40px" height="40px"
                          src="{% static "assets/img_for_shop/design/design-explode.png" %}">Instrument
@@ -239,7 +239,7 @@
                     combine
                 </div>
                 <div class="row">
-                    <h3>Recommend Colour</h3>
+                    <h3>{% trans "Recommend Colour" %}</h3>
                     <div style="cursor: pointer">
                         <img onclick="changeColor('#000000')" width="40px" height="40px"
                              src="{% static "assets/img_for_shop/color/Paint_Black.png" %}">
@@ -253,7 +253,7 @@
                              src="{% static "assets/img_for_shop/color/Paint_Red.png" %}">
                     </div>
                     <div>
-                        <h3>Long list of colors</h3>
+                        <h3>{% trans "Long list of colors" %}</h3>
                         colorpicker-longlist:
                         <select name="colorpicker-longlist">
                             <option value="#ac725e">#ac725e</option>
