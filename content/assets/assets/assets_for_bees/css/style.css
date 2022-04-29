@@ -1231,8 +1231,10 @@ img {
 /*mobal-subscribe*/
 .quickview-dialog {
     max-width: 1120px;
-    margin: 200px auto;
+    /*margin: 200px auto;*/
+    margin: 3% auto;
 }
+
 
 @media (max-width: 991px) {
     .quickview-dialog {
@@ -8155,39 +8157,6 @@ input[type=radio]:checked + .topcoat-radio-button:after {
 
 /*# sourceMappingURL=style.css.map */
 
-
-/*mobal-subscribe*/
-.quickview-dialog {
-    max-width: 1120px;
-    margin: 200px auto;
-}
-
-@media (max-width: 991px) {
-    .quickview-dialog {
-        max-width: 500px;
-    }
-}
-
-.quickview-dialog .modal-product img {
-    width: 100%;
-}
-
-.quickview-dialog .product-details {
-    position: relative;
-    z-index: 1;
-}
-
-.quickview-dialog .product-details .m-shape {
-    position: absolute;
-    right: 3rem;
-    bottom: 3rem;
-    content: "";
-    z-index: -1;
-    max-width: 220px;
-    opacity: .3;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
 
 .modal {
     z-index: 9999;
