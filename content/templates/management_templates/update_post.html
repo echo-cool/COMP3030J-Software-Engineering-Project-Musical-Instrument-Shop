@@ -38,4 +38,14 @@
 
     </form>
 
+    <script src="{% static '/assets/js_for_shop/wangEditor.min.js' %} "></script>
+    <script src="{% static '/assets/js_for_shop/weditor.js' %} "></script>
+    <script>
+
+        $(document).ready(function () {
+            initEditor('#id_body', 500);
+        });
+
+    </script>
+
 {% endblock %}
