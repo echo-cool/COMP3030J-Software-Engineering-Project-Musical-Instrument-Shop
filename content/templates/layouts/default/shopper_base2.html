@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_header.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/language.css" %}" media="all"/>
+
 
     {% if home == 1 %}
     {% else %}
@@ -82,7 +84,7 @@
             </a>
         </div>
         <div class="menuright">
-            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1"  xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
                     rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata><defs
                     id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg></span>
             <a href="javascript:void(0)" title="" class="js-call-minicart">
@@ -1337,17 +1339,34 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-5 currencies-login">
                 <div class="cart-login-search align-items-center">
                     <ul class="list-inline list-unstyled mb-0">
+                        <li class="list-inline-item mr-0" data-bs-toggle="modal"
+                            data-bs-target="#popup-quickview-999999999">
+                            <a href="javascript:void(0)"
+                               class="">
+                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     t="1651236333397" class="icon" viewBox="0 0 1024 1024" version="1.1" p-id="5045"
+                                     width="39" height="26">
+                                    <defs>
+                                        <style type="text/css"/>
+                                    </defs>
+                                    <path d="M166 403.612c22.092 0 40-17.908 40-40v-62h140v62c2.112 53.072 77.906 53.032 80 0v-214c-8.264-199.044-291.81-198.89-300 0v214c0 22.092 17.908 40 40 40z m40-254c3.856-92.888 136.178-92.816 140 0v72h-140z m234.172 590.38c42.236 42.716 42.32 112.166 0.25 154.988l-61.524 64.29c-15.292 15.976-40.614 16.502-56.554 1.244-15.96-15.274-16.516-40.594-1.244-56.556l42.436-44.344H212.5C95.328 859.612 0 764.286 0 647.112v-161.5c2.112-53.072 77.906-53.032 80 0v161.5c0 73.06 59.44 132.5 132.5 132.5h153.826l-46.334-45.442c-15.772-15.468-16.018-40.794-0.548-56.566s40.796-16.016 56.566-0.548l63.73 62.502 0.432 0.434zM1024 380.112v161.5c-2.112 53.072-77.906 53.032-80 0v-161.5c0-73.06-59.44-132.5-132.5-132.5h-153.826l46.334 45.442c15.772 15.468 16.018 40.794 0.548 56.566-15.478 15.778-40.802 16.01-56.566 0.548l-63.73-62.502-0.436-0.434c-42.236-42.716-42.32-112.166-0.25-154.988l61.524-64.29c15.272-15.96 40.592-16.516 56.554-1.244 15.96 15.274 16.516 40.594 1.244 56.556L660.46 167.61h151.036C928.672 167.612 1024 262.94 1024 380.112z m-60 319.5c0 22.092-17.908 40-40 40h-21.99c-4.884 42.434-39.134 130.046-84.268 180.73 26.094 14.15 57.262 23.27 94.258 23.27 22.092 0 40 17.908 40 40s-17.908 40-40 40c-57.514 0-109.952-15.826-155.89-47.042-45.574 31.018-98.234 47.042-156.11 47.042-22.092 0-40-17.908-40-40s17.908-40 40-40c34.546 0 66.088-7.724 94.44-23.066-12.404-14.704-23.884-30.858-34.378-48.398-11.342-18.958-5.168-43.52 13.79-54.862 18.956-11.344 43.52-5.168 54.862 13.788 7.5 12.534 16.55 25.656 27.34 38.332a282.312 282.312 0 0 0 17.192-22.642c27.328-39.914 41.51-81.504 47.386-107.152H588c-53.072-2.112-53.032-77.906 0-80h130v-40c2.112-53.072 77.906-53.032 80 0v40h126c22.092 0 40 17.908 40 40z"
+                                          p-id="5046"/>
+                                </svg>
+                            </a>
+                        </li>
+
+
                         <li class="list-inline-item mr-0">
                             <a href="javascript:void(0)" class="search js-search-destop">
-
                                 <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
-                                     width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                     xmlns:cc="http://creativecommons.org/ns#"
-                                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                     width="400" id="svg2" version="1.1"
                                      xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
                                         rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                     <defs id="defs6"></defs>
@@ -1368,9 +1387,6 @@
                                            class="access_link">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
                                                  width="400" id="svg2" version="1.1"
-                                                 xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                                 xmlns:cc="http://creativecommons.org/ns#"
-                                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                                  xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
                                                     rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                                 <defs id="defs6"></defs>
@@ -1617,6 +1633,469 @@
         {#        {% include "layouts/default/chat_ai.html" %}#}
     </div>
 
+    <!-- popup-quickview  -->
+    <div class="footer-social-countryselector">
+        <div class="footer-countryselector">
+            <div id="country-language-popup">
+                <div id="popup-quickview-999999999" class="modal" tabindex="-1">
+                    <div class="modal-dialog quickview-dialog">
+                        <div class="modal-content">
+
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+
+                            <div class="modal-body">
+                                <h3 class="modal-title">Choose your country</h3>
+                                <!-- Asia Region -->
+                                <h3>Asia Pacific</h3>
+
+                                <div class="col-item">
+                                    <table cellpadding="0" cellspacing="0" class="locale-list">
+                                        <tbody>
+                                        <tr id="language-zh">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+        <svg t="1651240073883" class="icon" viewBox="0 0 1024 1024"
+             version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5478"
+             width="39" height="26">
+                                                    <path d="M64 213.52h896v596.96H64z" fill="#E20012" opacity=".75"
+                                                          p-id="5479"></path>
+                                                    <path
+                                                            d="M944 229.52v564.96H80V229.52h864m16-16H64v596.96h896V213.52z"
+                                                            fill="#E20012" p-id="5480"></path>
+                                                    <path
+                                                            d="M213.4 269.37l19.91 65.54 65.36-0.26-52.75 39.45 19.49 60.95-52.01-37.93-52.01 37.93 19.5-60.95-52.76-39.45 65.36 0.26zM421.3 392.81l7 20.61 20.76-0.76-16.35 13.08 6.83 19.15-16.91-11.51-16.13 12.59 5.56-19.56-17.17-11.98 20.77-0.6zM409.48 306.51l14.91 15.86 18.57-9.29-9.45 18.67 14.14 14.6-20.16-3.46-9.46 18.14-3.04-20.11-20.59-3.79 18.65-9.15zM374.47 246.03l-2.3 21.64 19.16 8.03-20.32 5-1.86 20.25-10.51-17.55-19.92 4.65 13.26-15.41-10.55-18.08 19.09 8.17zM374.36 454.63l-1.89 21.68 19.3 7.66-20.22 5.39-1.47 20.28-10.85-17.34-19.82 5.03 12.96-15.67-10.89-17.88 19.25 7.82z"
+                                                            fill="#F6E202" p-id="5481"></path>
+                                                </svg>
+                                                </span>
+                                                中国
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">CN</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+                                        <tr id="language-aus">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+        <svg t="1651240685359" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             p-id="6393" width="39" height="26"><path d="M64 288h896v448H64z" fill="#012775" opacity=".75"
+                                                      p-id="6394"></path><path
+                d="M317.58 683.8l-28.98-26.46-28.66 26.81 2.62-39.16-38.83-5.69 32.25-22.37-19.76-33.9 37.59 11.26 14.2-36.58 14.62 36.41 37.46-11.71-19.35 34.14 32.51 21.97-38.76 6.16zM638.35 512.58l-13.77-12.57-13.62 12.74 1.24-18.61-18.45-2.71 15.33-10.63-9.39-16.11 17.86 5.36 6.75-17.39 6.95 17.3 17.8-5.56-9.2 16.22 15.45 10.44-18.42 2.93zM749.83 390.49l-13.77-12.57-13.62 12.74 1.25-18.61-18.45-2.71 15.32-10.62-9.39-16.12 17.87 5.36 6.74-17.39 6.95 17.31 17.8-5.57-9.2 16.22 15.45 10.45-18.41 2.92zM849.37 482.54l-13.77-12.58-13.62 12.74 1.25-18.6-18.45-2.71 15.32-10.63-9.39-16.11 17.87 5.35 6.74-17.38 6.95 17.3 17.8-5.57-9.2 16.23 15.45 10.44-18.41 2.93zM749.83 690.14l-13.77-12.58-13.62 12.74 1.25-18.61-18.45-2.7 15.32-10.63-9.39-16.11 17.87 5.35 6.74-17.38 6.95 17.3 17.8-5.57-9.2 16.23 15.45 10.44-18.41 2.93zM790.68 545.06l-10.1-5.41-10.18 5.25 2.03-11.28-8.14-8.06 11.35-1.55 5.15-10.24 4.99 10.32 11.32 1.74-8.27 7.92z"
+                fill="#FFFFFF" p-id="6395"></path><path d="M944 304v416H80V304h864m16-16H64v448h896V288z" fill="#012775"
+                                                        p-id="6396"></path><path
+                d="M512 288h-49.95l-136.81 68.59V288h-74.77v67.98L114.88 288H64v24.56l99.84 50.05H64v74.89h99.84L64 487.56v24.56h50.88l135.59-67.98v67.98h74.77v-68.59l136.81 68.59H512v-25.03l-98.91-49.59H512v-74.89h-98.91L512 313.03z"
+                fill="#FFFFFF" p-id="6397"></path><path
+                d="M310.31 288.12h-44.68v89.54H64v44.8h201.63v89.66h44.68v-89.66H512v-44.8H310.31z" fill="#ED293A"
+                p-id="6398"></path><path
+                d="M512 288.12h-33.84l-148.94 74.61h33.85zM64 512.12h33.84l148.94-74.62h-33.85zM212.94 362.61L64.01 288H64v16.95l115.1 57.66zM363.06 437.5l148.93 74.62h0.01v-16.95L396.9 437.5z"
+                fill="#ED293A" p-id="6399"></path><path
+                d="M148.12 304.55l-33.24-16.67H64.01l33.27 16.67zM265.63 288h44.68v16.55h14.93v-16.67h-74.77v16.67h15.16zM64 422.34h16.13v15.05H64zM64 362.49h16.13v15.05H64zM478.16 288H512v-0.12h-49.95l-33.25 16.67h16.32zM512 304.55V288l-33.03 16.55zM64 304.83v7.61l16.13 8.09v-7.62zM80.13 479.35L64 487.44V512l16.13-8.08z"
+                fill="#FFFFFF" p-id="6400"></path><path
+                d="M265.63 288h44.68v16.55h-44.68zM64 377.54h16.13v44.79H64zM445.12 304.55h33.85L512 288h-33.84zM64 512h16.13v-8.08zM80.13 304.55h17.15l-33.27-16.67H64v16.95l16.13 8.08z"
+                fill="#ED293A" p-id="6401"></path></svg>
+
+                                                </span>
+                                                澳大利亚
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">EN</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-item">
+                                    <table cellpadding="0" cellspacing="0" class="locale-list">
+                                        <tbody>
+                                        <tr id="language-ja">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+<svg t="1651239558739" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4853"
+     width="39" height="26"><path d="M64 213.33h896v597.33H64z" fill="#FFFFFF" opacity=".75" p-id="4854"></path><path
+        d="M64 213.33h16v597.33H64zM944 213.33h16v597.33h-16z" fill="#cdcdcd" p-id="4855"
+        data-spm-anchor-id="a313x.7781069.0.i9" class="selected"></path><path
+        d="M64 213.33h896v16H64zM64 794.67h896v16H64z" fill="#cdcdcd" p-id="4856"
+        data-spm-anchor-id="a313x.7781069.0.i8" class="selected"></path><path
+        d="M512 512m-179.17 0a179.17 179.17 0 1 0 358.34 0 179.17 179.17 0 1 0-358.34 0Z" fill="#BC012D"
+        p-id="4857"></path></svg>
+                                                </span>
+                                                日本
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ja')"
+                                                   data-test="ftr-intl-en-AU">JA</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br clear="all">
+
+                                <!-- Europe Region -->
+                                <h3>Europe</h3>
+
+                                <div class="col-item">
+                                    <table cellpadding="0" cellspacing="0" class="locale-list">
+                                        <tbody>
+                                        <tr id="language-en">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                    <svg t="1651239324277" class="icon" viewBox="0 0 1024 1024"
+                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
+                                                         width="39" height="26"><path
+                                                            d="M64 586.85V686.9l199.67-100.05zM436.94 288H165.75l271.19 135.89zM860.1 288H586.47v137.11zM64 337.1v100.05h199.67zM960 437.15v-99.13l-197.82 99.13zM960 685.98v-99.13H762.18zM586.47 736H436.94V600.12L165.75 736H860.1L586.47 598.89z"
+                                                            fill="#00247D" opacity=".75" p-id="4293"></path><path
+                                                            d="M960 288h-99.9L586.47 425.11V288H436.94v135.89L165.75 288H64v49.1l199.67 100.05H64v149.7h199.67L64 686.9V736h101.75l271.19-135.89V736h149.53V598.89L860.1 736H960v-50.02l-197.82-99.13H960v-149.7H762.18L960 338.02z"
+                                                            fill="#FFFFFF" opacity=".75" p-id="4294"></path><path
+                                                            d="M960 304v-16h-99.9l-31.93 16zM197.68 304l-31.93-16H64v16zM436.94 288h149.53v16H436.94zM944 736h16v-50.02l-16-8.02z"
+                                                            fill="#EEEEEE" p-id="4295"></path><path
+                                                            d="M944 346.04l16-8.02V288h-16zM944 437.15h16v149.7h-16zM436.94 720h149.53v16H436.94zM64 720v16h101.75l31.93-16zM828.17 720l31.93 16H960v-16zM80 288H64v49.1l16 8.01zM64 437.15h16v149.7H64z"
+                                                            fill="#EEEEEE" p-id="4296"></path><path
+                                                            d="M80 678.89l-16 8.01V736h16z" fill="#EEEEEE"
+                                                            p-id="4297"></path><path
+                                                            d="M556.62 288.24h-89.36v178.99H64v89.54h403.26V736h89.36V556.77H960v-89.54H556.62z"
+                                                            fill="#CF152B" opacity=".75" p-id="4298"></path><path
+                                                            d="M960 288.24h-67.69L594.44 437.38h67.69zM64 736h67.69l297.87-149.15h-67.69zM361.89 437.15L64.02 288H64v33.88l230.2 115.27zM662.11 586.85L959.98 736h0.02v-33.88L729.8 586.85z"
+                                                            fill="#CF152B" opacity=".75" p-id="4299"></path><path
+                                                            d="M436.94 304v-16H165.75l31.93 16zM828.17 304l31.93-16H586.47v16zM944 437.15h16v-99.13l-16 8.02zM944 677.96l16 8.02v-99.13h-16zM586.47 720v16H436.94v-16H197.68l-31.93 16H860.1l-31.93-16zM80 345.11l-16-8.01v100.05h16zM80 586.85H64V686.9l16-8.01z"
+                                                            fill="#00247D" p-id="4300"></path><path
+                                                            d="M467.26 288.24h89.36v16h-89.36zM467.26 720h89.36v16h-89.36zM64 467.23h16v89.54H64zM944 467.23h16v89.54h-16zM928.05 304.24l31.95-16h-67.69l-31.95 16zM64 304.24h32.45l-31.96-16H64z"
+                                                            fill="#CF152B" p-id="4301"></path><path
+                                                            d="M80 296l-15.98-8H64v33.88l16 8.01zM928.03 720l31.95 16h0.02v-16zM131.69 736l31.95-16H95.96L64 736z"
+                                                            fill="#CF152B" p-id="4302"></path><path
+                                                            d="M944 728l15.98 8h0.02v-33.88l-16-8.02z" fill="#CF152B"
+                                                            p-id="4303"></path></svg>
+                                                </span>
+                                                英国
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">EN</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr id="language-ru">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                  <svg t="1651239921251" class="icon" viewBox="0 0 1024 1024"
+                                                       version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5058"
+                                                       data-spm-anchor-id="a313x.7781069.0.i14" width="39"
+                                                       height="26"><path d="M64 213.45h896v199.03H64z" fill="#FFFFFF"
+                                                                         opacity=".75" p-id="5059"></path><path
+                                                          d="M64 213.45h896v16H64z" fill="#8a8a8a" p-id="5060"
+                                                          data-spm-anchor-id="a313x.7781069.0.i16"
+                                                          class="selected"></path><path d="M64 611.55h896v199H64z"
+                                                                                        fill="#D52B1E" opacity=".75"
+                                                                                        p-id="5061"></path><path
+                                                          d="M64 794.55h896v16H64z" fill="#D52B1E" p-id="5062"></path><path
+                                                          d="M64 412.48h896v199.08H64z" fill="#0039A6" opacity=".75"
+                                                          p-id="5063"></path><path d="M944 213.45h16v199.03h-16z"
+                                                                                   fill="#8a8a8a" p-id="5064"
+                                                                                   data-spm-anchor-id="a313x.7781069.0.i15"
+                                                                                   class="selected"></path><path
+                                                          d="M944 611.55h16v199h-16z" fill="#D52B1E" p-id="5065"></path><path
+                                                          d="M944 412.48h16v199.08h-16z" fill="#0039A6"
+                                                          p-id="5066"></path><path d="M64 213.45h16v199.03H64z"
+                                                                                   fill="#8a8a8a" p-id="5067"
+                                                                                   data-spm-anchor-id="a313x.7781069.0.i17"
+                                                                                   class="selected"></path><path
+                                                          d="M64 611.55h16v199H64z" fill="#D52B1E" p-id="5068"></path><path
+                                                          d="M64 412.48h16v199.08H64z" fill="#0039A6"
+                                                          p-id="5069"></path></svg>
+
+                                                </span>
+                                                俄罗斯
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ru')"
+                                                   data-test="ftr-intl-en-AU">RU</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr id="language-uk">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+
+                                                    <svg t="1651240162240" class="icon" viewBox="0 0 1024 1024"
+                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6052"
+                                                         width="39" height="26"><path d="M64 213.33h896v298.79H64z"
+                                                                                      fill="#015BBB" opacity=".75"
+                                                                                      p-id="6053"></path><path
+                                                            d="M64 213.33h896v16H64z" fill="#015BBB" p-id="6054"></path><path
+                                                            d="M64 512.12h896v298.55H64z" fill="#FED502" opacity=".75"
+                                                            p-id="6055"></path><path d="M64 794.67h896v16H64z"
+                                                                                     fill="#FED502" p-id="6056"></path><path
+                                                            d="M944 213.33h16v298.79h-16z" fill="#015BBB"
+                                                            p-id="6057"></path><path d="M944 512.12h16v298.55h-16z"
+                                                                                     fill="#FED502" p-id="6058"></path><path
+                                                            d="M64 213.33h16v298.79H64z" fill="#015BBB"
+                                                            p-id="6059"></path><path d="M64 512.12h16v298.55H64z"
+                                                                                     fill="#FED502" p-id="6060"></path></svg>
+
+                                                   </span>
+                                                乌克兰
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ua')"
+                                                   data-test="ftr-intl-en-AU">UA</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        {# #TODO：  瑞士 西班牙 爱尔兰 德国 新西兰       太多了搞不完      #}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-item">
+                                    <table cellpadding="0" cellspacing="0" class="locale-list">
+                                        <tbody>
+                                        <tr id="language-fr">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                            <svg t="1651240101449" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="5843"
+                                                 width="39" height="26"><path d="M64 213.45h298.84v597.1H64z"
+                                                                              fill="#002496" opacity=".75"
+                                                                              p-id="5844"></path><path
+                                                    d="M64 213.45h16v597.1H64z" fill="#002496" p-id="5845"></path><path
+                                                    d="M64 213.45h298.84v16H64zM64 794.55h298.84v16H64z" fill="#002496"
+                                                    p-id="5846"></path><path
+                                                    d="M660.69 213.45H960v597.1H660.69z" fill="#ED2938" opacity=".75"
+                                                    p-id="5847"></path><path
+                                                    d="M944 213.45h16v597.1h-16z" fill="#ED2938" p-id="5848"></path><path
+                                                    d="M660.69 213.45H960v16H660.69zM660.69 794.55H960v16H660.69z"
+                                                    fill="#ED2938" p-id="5849"></path><path
+                                                    d="M362.84 213.45h297.84v597.1H362.84z" fill="#FFFFFF" opacity=".75"
+                                                    p-id="5850"></path><path
+                                                    d="M362.84 213.45h297.84v17H362.84zM362.84 793.55h297.84v17H362.84z"
+                                                    fill="#bfbfbf" p-id="5851"
+                                                    data-spm-anchor-id="a313x.7781069.0.i33"
+                                                    class="selected"></path></svg>
+                                                </span>
+                                                法国
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
+                                                   data-test="ftr-intl-en-AU">FR</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr id="language-es">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+<svg t="1651240048600" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5270"
+     data-spm-anchor-id="a313x.7781069.0.i22" width="39" height="26"><path
+        d="M451.65 172.86H960v290.88H451.65zM64 172.86h290.11v290.88H64zM451.65 560.38H960v290.76H451.65zM64 560.38h290.11v290.76H64z"
+        fill="#D00C33" opacity=".75" p-id="5271"></path><path
+        d="M451.65 463.74V172.86h-97.54v290.88H64v96.64h290.11v290.76h97.54V560.38H960v-96.64z" fill="#FFFFFF"
+        opacity=".75" p-id="5272"></path><path d="M354.11 172.86h97.55v16h-97.55zM354.11 835.14h97.55v16h-97.55z"
+                                               fill="#bfbfbf" p-id="5273" data-spm-anchor-id="a313x.7781069.0.i23"
+                                               class="selected"></path><path
+        d="M944 172.86h16v290.88h-16zM64 172.86h16v290.88H64z" fill="#D00C33" p-id="5274"></path><path
+        d="M451.65 172.86H960v16H451.65zM64 172.86h290.11v16H64zM944 560.38h16v290.76h-16zM64 560.38h16v290.76H64z"
+        fill="#D00C33" p-id="5275"></path><path d="M451.65 835.14H960v16H451.65zM64 835.14h290.11v16H64z" fill="#D00C33"
+                                                p-id="5276"></path><path
+        d="M944 463.74h16v96.64h-16zM64 463.74h16v96.64H64z" fill="#bfbfbf" p-id="5277"
+        data-spm-anchor-id="a313x.7781069.0.i24" class="selected"></path></svg>
+                                                 </span>
+                                                西班牙
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('es')"
+                                                   data-test="ftr-intl-en-AU">ES</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr id="language-de">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                    <svg t="1651239324277" class="icon" viewBox="0 0 1024 1024"
+                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
+                                                         width="39" height="26"><path
+                                                            d="M64 586.85V686.9l199.67-100.05zM436.94 288H165.75l271.19 135.89zM860.1 288H586.47v137.11zM64 337.1v100.05h199.67zM960 437.15v-99.13l-197.82 99.13zM960 685.98v-99.13H762.18zM586.47 736H436.94V600.12L165.75 736H860.1L586.47 598.89z"
+                                                            fill="#00247D" opacity=".75" p-id="4293"></path><path
+                                                            d="M960 288h-99.9L586.47 425.11V288H436.94v135.89L165.75 288H64v49.1l199.67 100.05H64v149.7h199.67L64 686.9V736h101.75l271.19-135.89V736h149.53V598.89L860.1 736H960v-50.02l-197.82-99.13H960v-149.7H762.18L960 338.02z"
+                                                            fill="#FFFFFF" opacity=".75" p-id="4294"></path><path
+                                                            d="M960 304v-16h-99.9l-31.93 16zM197.68 304l-31.93-16H64v16zM436.94 288h149.53v16H436.94zM944 736h16v-50.02l-16-8.02z"
+                                                            fill="#EEEEEE" p-id="4295"></path><path
+                                                            d="M944 346.04l16-8.02V288h-16zM944 437.15h16v149.7h-16zM436.94 720h149.53v16H436.94zM64 720v16h101.75l31.93-16zM828.17 720l31.93 16H960v-16zM80 288H64v49.1l16 8.01zM64 437.15h16v149.7H64z"
+                                                            fill="#EEEEEE" p-id="4296"></path><path
+                                                            d="M80 678.89l-16 8.01V736h16z" fill="#EEEEEE"
+                                                            p-id="4297"></path><path
+                                                            d="M556.62 288.24h-89.36v178.99H64v89.54h403.26V736h89.36V556.77H960v-89.54H556.62z"
+                                                            fill="#CF152B" opacity=".75" p-id="4298"></path><path
+                                                            d="M960 288.24h-67.69L594.44 437.38h67.69zM64 736h67.69l297.87-149.15h-67.69zM361.89 437.15L64.02 288H64v33.88l230.2 115.27zM662.11 586.85L959.98 736h0.02v-33.88L729.8 586.85z"
+                                                            fill="#CF152B" opacity=".75" p-id="4299"></path><path
+                                                            d="M436.94 304v-16H165.75l31.93 16zM828.17 304l31.93-16H586.47v16zM944 437.15h16v-99.13l-16 8.02zM944 677.96l16 8.02v-99.13h-16zM586.47 720v16H436.94v-16H197.68l-31.93 16H860.1l-31.93-16zM80 345.11l-16-8.01v100.05h16zM80 586.85H64V686.9l16-8.01z"
+                                                            fill="#00247D" p-id="4300"></path><path
+                                                            d="M467.26 288.24h89.36v16h-89.36zM467.26 720h89.36v16h-89.36zM64 467.23h16v89.54H64zM944 467.23h16v89.54h-16zM928.05 304.24l31.95-16h-67.69l-31.95 16zM64 304.24h32.45l-31.96-16H64z"
+                                                            fill="#CF152B" p-id="4301"></path><path
+                                                            d="M80 296l-15.98-8H64v33.88l16 8.01zM928.03 720l31.95 16h0.02v-16zM131.69 736l31.95-16H95.96L64 736z"
+                                                            fill="#CF152B" p-id="4302"></path><path
+                                                            d="M944 728l15.98 8h0.02v-33.88l-16-8.02z" fill="#CF152B"
+                                                            p-id="4303"></path></svg>
+                                                </span>
+                                                Dutch ？？
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
+                                                   data-test="ftr-intl-en-AU">DE</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br clear="all">
+
+                                <!-- North America Region -->
+                                <h3>North America</h3>
+
+                                <div class="col-item">
+                                    <table cellpadding="0" cellspacing="0" class="locale-list">
+                                        <tbody>
+
+                                        <tr id="language-am">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                   <svg t="1651240555551" class="icon" viewBox="0 0 1024 1024"
+                                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6213"
+                                                        width="39" height="26"><path d="M422.88 276.1H960v36.58H422.88z"
+                                                                                     fill="#B22234" opacity=".75"
+                                                                                     p-id="6214"></path><path
+                                                           d="M422.88 276.1H960v16H422.88z" fill="#B22234"
+                                                           p-id="6215"></path><path d="M422.88 312.68H960v36.16H422.88z"
+                                                                                    fill="#FFFFFF" opacity=".75"
+                                                                                    p-id="6216"></path><path
+                                                           d="M64 276.1v253.55h358.88V276.1z" fill="#3B3B6E"
+                                                           opacity=".75" p-id="6217"></path><path
+                                                           d="M64 276.1V292.1h358.88V276.1z" fill="#3B3B6E"
+                                                           p-id="6218"></path><path d="M64 276.1v253.55h16V276.1z"
+                                                                                    fill="#3B3B6E" p-id="6219"></path><path
+                                                           d="M422.88 457.33H960v36.16H422.88zM422.88 529.65H64v36.85h896v-36.85z"
+                                                           fill="#FFFFFF" opacity=".75" p-id="6220"></path><path
+                                                           d="M422.88 421.16H960v36.16H422.88z" fill="#B22234"
+                                                           opacity=".75" p-id="6221"></path><path
+                                                           d="M422.88 385H960v36.16H422.88z" fill="#FFFFFF"
+                                                           opacity=".75" p-id="6222"></path><path
+                                                           d="M422.88 348.84H960V385H422.88zM422.88 493.49H960v36.16H422.88zM422.88 566.5H64v35.85h896V566.5zM422.88 712.05H64v35.85h896v-35.85z"
+                                                           fill="#B22234" opacity=".75" p-id="6223"></path><path
+                                                           d="M422.88 731.9H64v16h896v-16z" fill="#B22234"
+                                                           p-id="6224"></path><path
+                                                           d="M422.88 675.77H64v36.28h896v-36.28z" fill="#FFFFFF"
+                                                           opacity=".75" p-id="6225"></path><path
+                                                           d="M422.88 639.21H64v36.56h896v-36.56z" fill="#B22234"
+                                                           opacity=".75" p-id="6226"></path><path
+                                                           d="M422.88 602.35H64v36.86h896v-36.86z" fill="#FFFFFF"
+                                                           opacity=".75" p-id="6227"></path><path
+                                                           d="M944 276.1h16v36.58h-16z" fill="#B22234"
+                                                           p-id="6228"></path><path
+                                                           d="M944 312.68h16v36.16h-16zM944 457.33h16v36.16h-16zM944 529.65h16v36.85h-16zM64 529.65h16v36.85H64z"
+                                                           fill="#EEEEEE" p-id="6229"></path><path
+                                                           d="M944 421.16h16v36.16h-16z" fill="#B22234"
+                                                           p-id="6230"></path><path d="M944 385h16v36.16h-16z"
+                                                                                    fill="#EEEEEE" p-id="6231"></path><path
+                                                           d="M944 348.84h16V385h-16zM944 493.49h16v36.16h-16zM944 566.5h16v35.85h-16zM944 712.05h16v35.85h-16z"
+                                                           fill="#B22234" p-id="6232"></path><path
+                                                           d="M944 675.77h16v36.28h-16z" fill="#EEEEEE"
+                                                           p-id="6233"></path><path d="M944 639.21h16v36.57h-16z"
+                                                                                    fill="#B22234" p-id="6234"></path><path
+                                                           d="M944 602.35h16v36.85h-16z" fill="#EEEEEE"
+                                                           p-id="6235"></path><path
+                                                           d="M64 566.5h16v35.85H64zM64 712.05h16v35.85H64z"
+                                                           fill="#B22234" p-id="6236"></path><path
+                                                           d="M64 675.77h16v36.28H64z" fill="#EEEEEE"
+                                                           p-id="6237"></path><path d="M64 639.21h16v36.57H64z"
+                                                                                    fill="#B22234" p-id="6238"></path><path
+                                                           d="M64 602.35h16v36.85H64z" fill="#EEEEEE"
+                                                           p-id="6239"></path><path
+                                                           d="M94.13 287.8l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 287.8l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 287.8l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM384.09 314.45l8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29zM94.13 338.67l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 338.67l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 389.55l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 389.55l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 440.42l-3.3 10.18H80.12l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM153.86 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM213.58 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM273.3 440.42L270 450.6h-10.71l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM333.03 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM392.75 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM97.44 501.48l-3.31-10.18-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM157.16 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM216.89 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM276.61 501.48l-3.31-10.18-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM336.33 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM396.06 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM127.3 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM187.03 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM246.75 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM306.47 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM366.2 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM124 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM124 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3H127.3zM183.72 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM243.44 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM303.17 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3h-10.71zM362.89 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM124 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7z"
+                                                           fill="#FFFFFF" p-id="6240"></path></svg> </span>
+                                                美国
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">DE</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br clear="all">
+                                <h3>Choose your region</h3>
+
+                                <p>Don’t see your country listed above? Please choose your region below</p>
+                                &nbsp;
+
+                                <table cellpadding="0" cellspacing="0" class="regions-list" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" class="first">
+                                            <div class="zone-col"><img alt=""
+                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dwc638b783/africa.png"
+                                                                       title="">
+                                                <h3>Africa</h3>
+                                                <a href="https://www.fender.com/en-US/redirect?c=ZA&amp;l=en"
+                                                   data-test="ftr-intl-en-ZA">En</a> <a
+                                                        href="https://www.fender.com/en-US/redirect?c=SN&amp;l=fr"
+                                                        data-test="ftr-intl-fr-SN">Fr</a></div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="zone-col"><img alt=""
+                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw8d4b15f2/americas.png"
+                                                                       title="">
+                                                <h3>Americas</h3>
+                                                <a href="https://www.fender.com/en-US/redirect?c=CA&amp;l=en"
+                                                   data-test="ftr-intl-en-CA">En</a> <a
+                                                        href="https://www.fender.com/en-US/redirect?c=VE&amp;l=es"
+                                                        data-test="ftr-intl-es-VE">Es</a></div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="zone-col"><img alt=""
+                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/default/dw6d92ef41/asia-pacific.png"
+                                                                       title="">
+                                                <h3>Asia Pacific</h3>
+                                                <a href="https://www.fender.com/en-US/redirect?c=NZ&amp;l=en"
+                                                   data-test="ftr-intl-en-NZ">En</a></div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="zone-col"><img alt=""
+                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw5d072552/europe.png"
+                                                                       title="">
+                                                <h3>Europe</h3>
+                                                <a href="https://www.fender.com/en-US/redirect?c=RU&amp;l=en"
+                                                   data-test="ftr-intl-en-RU">En</a></div>
+                                        </td>
+                                        <td align="right" class="last">
+                                            <div class="zone-col zone-col_last"><img alt=""
+                                                                                     src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw4f5cb6e7/middle-east.png"
+                                                                                     title="">
+                                                <h3>Middle East</h3>
+                                                <a href="https://www.fender.com/en-US/redirect?c=SA&amp;l=en"
+                                                   data-test="ftr-intl-en-SA">En</a></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup-quickview -->
+
     <!-- End Footer -->
     {#    <script type="text/javascript"#}
     {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
@@ -1679,8 +2158,8 @@
                     method: 'POST',
                     data: formData,
                     async: true,
-                    contentType:false,
-                    processData:false,
+                    contentType: false,
+                    processData: false,
                     headers: {
                         'X-CSRFTOKEN': '{{ csrf_token }}'
                     },
@@ -1702,6 +2181,52 @@
         }, function () {
             $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
         });
+
+        function changeLanguage(lan) {
+            console.log("change language", lan);
+            switch (lan) {
+                case "ru":
+                    lan = "ru-RU";
+                    break;
+                case "ja":
+                    lan = "ja-JP";
+                    break;
+                case "uk":
+                    lan = "uk-UA";
+                    break;
+                case "fr":
+                    lan = "fr-FR";
+                    break;
+                case "cn":
+                    lan = "zh-CN";
+                    break;
+                case "es":
+                    lan = "es-ES";
+                    break;
+                case "ds":
+                    lan = "ds-DS";
+                    break;
+                case "en":
+                    lan = "en";
+                    break;
+                {#default:#}
+                {#    lan = "en";#}
+                {#    break;#}
+            }
+            $.ajax({
+                {# #TODO: not found#}
+                url: "/i18n/setlang/",
+                method: "POST",
+                data: JSON.stringify({"language": lan}),
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    {#console.log(res);#}
+                    $(".close").click();
+                }
+            });
+        }
 
         {% if messages %}
         {% for message in messages %}

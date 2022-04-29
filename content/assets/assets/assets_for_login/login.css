@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial;
+    font-family: Arial, serif;
     background: url('../images/banner.webp') no-repeat top center;
     background-size: cover;
 }
@@ -14,7 +14,7 @@ input, button {
     border: none;
     outline: none;
     background: none;
-    font-family: Arial;
+    font-family: Arial, serif;
 }
 
 
@@ -110,6 +110,7 @@ button {
     height: 100%;
     padding-left: 260px;
     background: #fff;
+    transition: transform 1.2s ease-in-out;
 }
 
 /* Learn transform from: https://developer.mozilla.org/en-US/docs/Web/CSS/transform */
@@ -129,6 +130,7 @@ button {
     left: 0;
     top: 0;
     width: 260px;
+    /*width: 282px;*/
     height: 100%;
     padding-top: 360px;
 }
@@ -140,8 +142,9 @@ button {
     top: 0;
     width: 900px;
     height: 100%;
-    background-image: url("../images/background.png");
+    background-image: url('../images/banner.webp');
     background-size: cover;
+    transition: transform 1.2s ease-in-out;
 }
 
 .right-img:after {
@@ -152,6 +155,10 @@ button {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
+}
+
+.content.sign-switch .right-img:before {
+    transform: translate3d(640px, 0, 0);
 }
 
 /* img_text*/
@@ -177,19 +184,19 @@ button {
 }
 
 
-/* Change Way Button */
-.change-way-btn {
-    overflow: hidden;
-    z-index: 2;
-    position: relative;
-    width: 100px;
-    height: 36px;
-    margin: 0 auto;
-    background: transparent;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-}
+/*!* Change Way Button *!*/
+/*.change-way-btn {*/
+/*    overflow: hidden;*/
+/*    z-index: 2;*/
+/*    position: relative;*/
+/*    width: 100px;*/
+/*    height: 36px;*/
+/*    margin: 0 auto;*/
+/*    background: transparent;*/
+/*    color: #fff;*/
+/*    font-size: 15px;*/
+/*    cursor: pointer;*/
+/*}*/
 
 
 h2 {
@@ -231,7 +238,7 @@ input {
     margin-top: 40px;
     text-transform: uppercase;
     background: #c09c4e;
-    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
+    box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, .5);
 }
 
 .submit:hover {
@@ -303,6 +310,128 @@ input {
     background-color: #e5bb60;
     border-radius: 0px;
     transition: all 0.3s ease;
+}
+
+
+.login-in {
+    transition-timing-function: ease-out;
+}
+
+.content.sign-switch .login-in {
+    transition-timing-function: ease-in-out;
+    transition-duration: 1.2s;
+    transform: translate3d(640px, 0, 0);
+}
+
+.sign-up {
+    transform: translate3d(-900px, 0, 0);
+}
+
+.content.sign-switch .sign-up {
+    transform: translate3d(0, 0, 0);
+}
+
+.icon-link {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 32px;
+}
+
+.icon-link img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.icon-link--twitter {
+    left: auto;
+    right: 5px;
+}
+
+
+.img__text {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    color: #fff;
+    transition: transform 1.2s ease-in-out;
+}
+
+.img__text h2 {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.img__text p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.sign-switch .img__text.m--up {
+    transform: translateX(520px);
+}
+
+.img__text.m--in {
+    transform: translateX(-520px);
+}
+
+.sign-switch .img__text.m--in {
+    transform: translateX(0);
+}
+
+.change-way-btn {
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    width: 162px;
+    height: 36px;
+    margin: 0 auto;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.change-way-btn:after {
+    content: "";
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+
+.change-way-btn span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.2s;
+}
+
+.change-way-btn .m--in {
+    transform: translateY(-72px);
+}
+
+.sign-switch .change-way-btn .m--in {
+    transform: translateY(0) !important;
+}
+
+.sign-switch .change-way-btn .m--up {
+    transform: translateY(72px);
 }
 
 
