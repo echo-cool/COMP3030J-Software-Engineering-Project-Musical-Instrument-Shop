@@ -103,7 +103,7 @@
     <div class="search-full-destop">
         <div class="search-eveland js-box-search">
             <div class="drawer-search-top">
-                <h3 class="drawer-search-title">Start typing and hit Enter</h3>
+                <h3 class="drawer-search-title" id="search_title">Start typing and hit Enter</h3>
             </div>
             <form class="wg-search-form" id="search_form">
                 <input type="text" placeholder="Search anything" class="search-input js_engo_autocomplate"
@@ -1670,6 +1670,8 @@
             });
 
             image_upload.bind('input propertychange', function () {
+                let search_title = $("#search_title");
+                search_title.text("Processing...");
                 let formData = new FormData()
                 formData.append("image_file_upload", image_upload[0].files[0]);
                 $.ajax({
@@ -1685,6 +1687,7 @@
                     success: function (res) {
                         window.location.href = ("/image_search/" + res['key']);
                         image_upload.val(null);
+                        search_title.text("Start typing and hit Enter")
                     },
                     error: function () {
                         alert('Error! Check console!');

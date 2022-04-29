@@ -62,3 +62,4 @@ class Post(models.Model):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'body', 'created_on', 'last_modified', 'category')
+

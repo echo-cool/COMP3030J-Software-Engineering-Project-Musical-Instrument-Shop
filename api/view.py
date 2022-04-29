@@ -8,13 +8,17 @@
 from datetime import datetime, timezone, date
 
 from django.contrib import auth
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q, Max, Count
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
+from app import settings
 from chat.models import MessageModel
 from image_search.models import ImageSearchData
 from shop.models import Profile, Wishlist, Cart, Order, OrderItem, Instrument
@@ -303,3 +307,39 @@ def analyze_image(request):
         instruments = Instrument.objects.filter(imagesearchdata__in=sorted_keys)
         key = memory_cached_db.insert_value(instruments)
     return JsonResponse({"key": key}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+class EditorUploadImage(LoginRequiredMixin, View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        import os
+        import uuid
+        file_data = request.FILES
+        keys = list(file_data.keys())
+        print(settings.CONTENT_DIR + '/' + 'media/upload/')
+        file_path = settings.CONTENT_DIR + '/' + 'media/upload/'
+        if os.path.exists(file_path) is False:
+            os.mkdir(file_path)
+        # 返回数据中需要的data
+        data = []
+        for key in keys:
+            img_dict = {}
+            file = file_data.get(f'{key}')
+            # 重命名文件名称
+            names = list(os.path.splitext(file.name))
+            names[0] = ''.join(str(uuid.uuid4()).split('-'))
+            file.name = ''.join(names)
+            new_path = os.path.join(file_path, file.name)
+            # 开始上传
+            with open(new_path, 'wb+') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
+            # 构造返回数据
+            img_dict['url'] = f'/media/upload/{file.name}'
+            data.append(img_dict)
+        context = {"errno": 0, "data": data}
+        return JsonResponse(context)
