@@ -1,0 +1,136 @@
+version: "3.1"
+
+nlu:
+- intent: ask_name
+  examples: |
+    - what is your name
+    - what's your name
+    - what's your name?
+    - Your name?
+
+- intent: give_name
+  examples: |
+    - my name is 
+    - my name is [frank Brett Catherine Eddie](name)
+    - you can call me [frank Brett Catherine Eddie](name)
+    - just call me [frank Brett Catherine Eddie](name)
+    - please call me [frank Brett Catherine Eddie](name)
+    
+- intent: want_to_check_his_name
+  examples: |
+    - do you know my name?
+    - can you tell me my name?
+    - can you guess my name?
+    - tell me my name
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thanks for your help
+    - thank you very much
+    - thank you very much!
+    
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: search_product
+  examples: |
+    - I want to search for [product](product)
+    - I want to buy [product](product)
+    - Do you have [product](product)
+    - I want to buy [product](product)
+    - Do you have [product](product) in your shop?
+
+- intent: set_user_language
+  examples: |
+    - I want to set my language to [language](language)
+    - Set my language to [language](language)
+    - Set interface language to [language](language)
+    - I speak [language](language)
+
+
+
+- intent: get_PERSON_slot
+  examples: |
+    - show PERSON slot
+    - show me PERSON slot
+
+- intent: get_LANGUAGE_slot
+  examples: |
+    - show LANGUAGE slot
+    - show me LANGUAGE slot
+
+- intent: get_PRODUCT_slot
+  examples: |
+    - show PRODUCT slot
+    - show me PRODUCT slot
+
+- intent: get_DATE_slot
+  examples: |
+    - show DATE slot
+    - show me DATE slot
+
+- intent: get_TIME_slot
+  examples: |
+    - show TIME slot
+    - show me TIME slot
+
+- intent: get_have_name_slot
+  examples: |
+    - show have name slot
+    - show me have name slot

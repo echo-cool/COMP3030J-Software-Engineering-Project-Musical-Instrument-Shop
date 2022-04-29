@@ -1,0 +1,135 @@
+version: "3.1"
+
+stories:
+
+- story: ask_login_url
+  steps:
+  - intent: ask_login_url
+  - action: utter_ask_login_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_login_url
+  steps:
+  - intent: ask_login_url
+  - action: utter_ask_login_url
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+- story: ask_register_url
+  steps:
+  - intent: ask_register_url
+  - action: utter_ask_register_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_register_url
+  steps:
+  - intent: ask_register_url
+  - action: utter_ask_register_url
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+- story: ask_profile_url
+  steps:
+  - intent: ask_profile_url
+  - action: utter_ask_profile_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_profile_url
+  steps:
+  - intent: ask_profile_url
+  - action: utter_ask_profile_url
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+
+- story: ask_password_url
+  steps:
+  - intent: ask_password_url
+  - action: utter_ask_password_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_password_url
+  steps:
+  - intent: ask_password_url
+  - action: utter_ask_password_url
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+
+- story: ask_forgot_password_url
+  steps:
+  - intent: ask_forgot_password_url
+  - action: utter_forgot_password_url
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy_to_help
+
+- story: ask_forgot_password_url
+  steps:
+  - intent: ask_forgot_password_url
+  - action: utter_forgot_password_url
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry_not_help
+
+
+- story: ask_orders
+  steps:
+    - intent: ask_orders
+    - action: utter_ask_orders
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy_to_help
+
+
+- story: ask_orders
+  steps:
+    - intent: ask_orders
+    - action: utter_ask_orders
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_sorry_not_help
+
+- story: ask_wishlist
+  steps:
+    - intent: ask_wishlist
+    - action: utter_ask_wishlist
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy_to_help
+
+- story: ask_wishlist
+  steps:
+    - intent: ask_wishlist
+    - action: utter_ask_wishlist
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_sorry_not_help
+
+- story: ask_cart
+  steps:
+    - intent: ask_cart
+    - action: utter_ask_cart
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy_to_help
+
+- story: ask_cart
+  steps:
+    - intent: ask_cart
+    - action: utter_ask_cart
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_sorry_not_help

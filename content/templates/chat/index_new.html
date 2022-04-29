@@ -270,8 +270,11 @@
                     console.log(data)
                     userList.children('.media').remove();
                     for (let i = 0; i < data.length; i++) {
-                        let date = new Date(data[i]['time']);
-                        date = date.toLocaleString();
+                        let date = "";
+                        if (data[i]['time'] !== undefined && data[i]['time'] !== "" ){
+                            date = new Date(data[i]['time']);
+                            date = date.toLocaleString();
+                        }
                         let userItem = `
                     <a href="javascript: void(0)" class="media border-bottom-blue-grey border-bottom-lighten-5" onclick="select(${data[i]['id']}, '${data[i]['username']}')">
                         <div class="media-left pr-1">

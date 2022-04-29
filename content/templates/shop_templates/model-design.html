@@ -345,17 +345,18 @@
                              style="left:4%;bottom: 10%;position: absolute;z-index:3;width:4%">
 
                             <div class="model-zoom-in">
-                                <img onclick="zoomIn()" style="width: 100%;"
+                                <img onclick="zoomIn()" style="cursor: pointer;width: 100%;"
                                      src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
                                 {#                            zoom in#}
                             </div>
                             <div class="model-zoom-out">
-                                <img onclick="zoomOut()" style="width: 100%;"
+                                <img onclick="zoomOut()" style="cursor: pointer;width: 100%;"
                                      src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
                                 {#                            zoom out#}
                             </div>
                             <div onclick=switchRotate()>
-                                <img style="width: 100%;" src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
+                                <img style="cursor: pointer;width: 100%;"
+                                     src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
                                 {#                            rotate#}
                             </div>
                         </div>
@@ -395,28 +396,168 @@
                     <!-- End product-img-box -->
                 </div>
                 <div class="col-md-4 col-sm-6 model_design_controls">
+                    <style>
+                        .model_design_controls .card {
+                            width: 320px;
+                            height: 535px;
+                            margin: 20px;
+                            padding: 40px 30px;
+                            background: #ffffff;
+                            border-radius: 40px;
+                            box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.1);
+                        }
+
+                        .model_design_controls .card:hover {
+                            box-shadow: inset -6px -6px 20px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+                        }
+
+                        .model_design_controls .card .imgBx {
+                            position: relative;
+                            text-align: center;
+                        }
+
+                        .model_design_controls .card .imgBx img {
+                            max-width: 120px;
+                        }
+
+                        .model_design_controls .card .contentBx {
+                            position: relative;
+                        {#margin-top: 20px;#} text-align: center;
+                        }
+
+                        .model_design_controls .card .contentBx h2 {
+                            color: #e4987d;;
+                            font-weight: 700;
+                            font-size: 1.4em;
+                            letter-spacing: 2px;
+                        }
+
+                        .model_design_controls .card .contentBx p {
+                            color: #e4987d;
+                        }
+
+                        .model_design_controls .card .contentBx a {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            margin-right: 50px;
+                            border-radius: 40px;
+                            color: #e4987d;
+                            font-size: 16px;
+                            text-decoration: none;
+                            box-shadow: -4px -4px 15px rgba(255, 255, 255, 1), 4px 4px 15px rgba(0, 0, 0, 0.1);
+                        }
+
+                        .model_design_controls .card .contentBx .content-line {
+                            margin: 15px;
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .model_design_controls .card .contentBx a:hover {
+                            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5), inset 4px 4px 10px rgba(0, 0, 0, 0.1);
+                        }
+
+                        .model_design_controls .card a:hover span {
+                            display: block;
+                            transform: scale(0.98);
+                        }
+
+                        .model_design_controls .card:hover .imgBx,
+                        .model_design_controls .card:hover .contentBx {
+                            transform: scale(0.98);
+                        }
+
+
+                        .neumorphic {
+                            border-radius: 1rem;
+                            animation: 1s -0.3s 1 paused opacify;
+                            backdrop-filter: blur(1.5rem);
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                            box-shadow: -0.25rem -0.25rem 0.5rem rgba(255, 255, 255, 0.07), 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.12), -0.75rem -0.75rem 1.75rem rgba(255, 255, 255, 0.07), 0.75rem 0.75rem 1.75rem rgba(0, 0, 0, 0.12), inset 8rem 8rem 8rem rgba(0, 0, 0, 0.05), inset -8rem -8rem 8rem rgba(255, 255, 255, 0.05);
+                        }
+
+                        @keyframes opacify {
+                            to {
+                                background: transparent;
+                            }
+                        }
+
+                        card {
+                            position: absolute;
+                            width: 400px;
+                            height: 300px;
+                            max-width: 80vw;
+                            max-height: 80vh;
+                            box-sizing: border-box;
+                            padding: 0.5rem;
+                        }
+
+
+                    </style>
+                    <div class="neumorphic model-help-wrapper wrapper-hidden card">
+                        <div class="contentBx">
+                            <h2> Welcome !</h2>
+                            <p>
+                                You can design your own musical instruments.
+                                Now we provide 6 models (3 pianos & 3 guitars)
+                            </p>
+                            <div class="content-line">
+                                <a href="">
+                               <span>
+                                   <img onclick="allSelected()" style="cursor: pointer; width: 100%;"
+                                        height="40px"
+                                        src="{% static "assets/img_for_shop/design/design-select-all.png" %}">
+                                </span>
+                                </a>
+                                <span>All Faces Select</span>
+                            </div>
+                            <div class="content-line">
+                                <a href="">
+                               <span>
+                                    <img onclick="mergeModel()" style="cursor: pointer; width: 100%;"
+                                         height="40px"
+                                         src="{% static "assets/img_for_shop/design/design-combine.png" %}">
+                               </span>
+                                </a>
+                                <span>Model Explode</span>
+                            </div>
+
+                            <div class="content-line">
+                                <a href="">
+                               <span>
+                                      <img onclick="zoomIn()" style="cursor: pointer;width: 100%;"
+                                           height="40px"
+                                           src="{% static "assets/img_for_shop/3d-zoom-out.svg" %}">
+                             </span>
+                                </a>
+                                <span>Model Zoom Out</span>
+                            </div>
+
+                            <div class="content-line">
+                                <a href="">
+                               <span>
+                                     <img onclick="zoomOut()" style="cursor: pointer;width: 100%;"
+                                          height="40px"
+                                          src="{% static "assets/img_for_shop/3d-zoom-in.svg" %}">
+                             </span>
+                                </a>
+                                <span> Model Zoom In</span>
+                            </div>
+
+                            <div class="content-line">
+                                <a href="">
+                               <span>
+                                       <img style="cursor: pointer;width: 100%;"
+                                            height="40px"
+                                            src="{% static "assets/img_for_shop/3d-rotate.svg" %}">
+                             </span>
+                                </a>
+                                <span>Model Rotate</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="model-img-list-wrapper wrapper-hidden">
-                        {#                        <div class="container">#}
-                        {#                           #}
-                        {#                        </div>#}
-                        {#                    <ul class="list">#}
-                        {#                        <li class="images">#}
-                        {#                            <a href="#" title="" class="cart-product-image">#}
-                        {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
-                        {#                            <div class="text">#}
-                        {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
-                        {#                                <p class="product-price">$ 69.90</p>#}
-                        {#                            </div>#}
-                        {#                        </li>#}
-                        {#                        <li class="images">#}
-                        {#                            <a href="#" title="" class="cart-product-image">#}
-                        {#                                <img src="assets/images/products/1.jpg" alt="Product"></a>#}
-                        {#                            <div class="text">#}
-                        {#                                <p class="product-name">Smart TV Ultra HD 40 inch</p>#}
-                        {#                                <p class="product-price">$ 69.90</p>#}
-                        {#                            </div>#}
-                        {#                        </li>#}
-                        {#                    </ul>#}
                         <h2 class="add-img" style="position: absolute;left: 2%; top: 2%;z-index: 10">
                             <a href="javascript:void(0);">
                                 <img width="40px" height="40px"
@@ -450,16 +591,14 @@
                                  height="40px"
                                  src="{% static "assets/img_for_shop/design/design-help.png" %}">
                         </div>
-
-
                         {#                    <h2>- YOUR OWN INSTRUMENT</h2>#}
                         <h1></h1>
                         <div>
-                            <p>Fotorama’s dimensions are the dimensions of the first image. Other pictures are
-                                scaled
-                                proportionally to fit. To reserve the space on the page before the first image is
-                                loaded,
-                                use data-width and data-height:</p>
+                            <p>
+                                The Musicmo Custom Shop is known for creating instruments that look as incredible, with
+                                a dazzling collections of harmless pigments coming out of its Corona, Calif.,
+                                headquarters.
+                            </p>
                         </div>
                         <p>
                         </p>
@@ -1178,13 +1317,17 @@
             a.remove();
         }
 
+        function showHelp() {
+            let img_list_wrapper = $(".model-help-wrapper");
+            img_list_wrapper.toggleClass("wrapper-hidden");
+        }
+
         // 开始截图
         $('.add-to-cart').click(function () {
             let img_list_wrapper = $(".model-img-list-wrapper");
             img_list_wrapper.toggleClass("wrapper-hidden");
             img_holder = $(".model-img-list");
         });
-
         // 返回设计
         $(".return-design").click(function () {
             model_img_list = [];

@@ -1,0 +1,25 @@
+version: "3.1"
+
+stories:
+
+- story: name-path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_name
+  - action: utter_give_name
+  - action: utter_ask_user_name
+  - intent: give_name
+  - action: action_set_have_name
+  - action: utter_greet
+
+#  - action: utter_greet_with_name
+
+
+
+#- story: give-name-path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: give_name
+#  - action: utter_give_name

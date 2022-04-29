@@ -534,6 +534,17 @@ body {
     float: left
 }
 
+.chat_wrapper_user {
+    margin-right: 15px;
+    margin-bottom: 8px;
+    max-width: 70%;
+    float: right;
+}
+
+.user_bubble {
+    background-color: #00ea37;
+}
+
 .chat_image_wrapper {
     margin: 0 16px 16px 16px;
     background-color: #e2e2e2;
@@ -596,6 +607,18 @@ body {
     background-size: contain;
     border: 2px solid #878483;
     float: left
+}
+
+.chat_avatar_user {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    margin-left: 2px;
+    background: no-repeat center;
+    background-size: contain;
+    border: 2px solid #878483;
+    float: right
 }
 
 .chat_user_name {
@@ -770,6 +793,17 @@ body {
 
 .chat_message_bubble {
     background: #e2e2e2;
+    border-radius: 1.1em;
+    margin-left: 15px;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word
+}
+
+.user_message_bubble {
+    background: #00ea37;
     border-radius: 1.1em;
     margin-left: 15px;
     font-size: 14px;

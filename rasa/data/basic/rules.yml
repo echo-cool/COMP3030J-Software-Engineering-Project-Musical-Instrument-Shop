@@ -1,0 +1,73 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Say you are welcome anytime the user says welcome
+  steps:
+  - intent: thanks
+  - action: utter_welcome
+
+- rule: Give user name utter_greet_with_name
+  steps:
+  - intent: want_to_check_his_name
+  - action: utter_greet_with_name
+
+- rule: utter_get_PERSON_slot
+  steps:
+  - intent: get_PERSON_slot
+  - action: utter_get_PERSON_slot
+
+- rule: utter_get_LANGUAGE_slot
+  steps:
+  - intent: get_LANGUAGE_slot
+  - action: utter_get_LANGUAGE_slot
+
+- rule: utter_get_PRODUCT_slot
+  steps:
+  - intent: get_PRODUCT_slot
+  - action: utter_get_PRODUCT_slot
+
+- rule: utter_get_DATE_slot
+  steps:
+  - intent: get_DATE_slot
+  - action: utter_get_DATE_slot
+
+- rule: utter_get_TIME_slot
+  steps:
+  - intent: get_TIME_slot
+  - action: utter_get_TIME_slot
+
+
+- rule: name-path-2
+  steps:
+  - intent: give_name
+  - action: action_set_have_name
+  - action: utter_greet
+
+#  - action: utter_greet_with_name
+
+- rule: search-product-path
+  steps:
+  - intent: search_product
+  - action: utter_search_product
+
+
+- rule: set-language-path
+  steps:
+  - intent: set_user_language
+  - action: utter_set_language
+
+- rule: get_have_name_slot-path
+  steps:
+  - intent: get_have_name_slot
+  - action: utter_get_have_name_slot
