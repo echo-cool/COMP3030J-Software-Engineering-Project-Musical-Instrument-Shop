@@ -42,25 +42,7 @@
             <form action="/accounts/log-in/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User LOGIN</h2>
-                <!-- Input username start -->
-                <label for="username">USERNAME</label>
-                <label2><input class="username_l" id="username_l" name="email_or_username" required="" type="text"
-                               value=""></label2>
-
-
-                <!-- Input username end -->
-
-                <!-- Input password start -->
-                <label for="password">PASSWORD</label>
-                <label2><input class="password_l" id="password_l" name="password" required="" type="password"
-                               value=""></label2>
-
-                <label>
-                    Keep Login State (one month)
-                    <input id="remember_me" name="remember_me" type="checkbox" style="appearance: auto;"
-                           value="y">
-                </label>
-                <!-- Input password end -->
+                {% bootstrap_form form %}
 
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_l" class="submit">Sign In</button>
@@ -86,24 +68,7 @@
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User REGISTER</h2>
 
-                <!-- Input username start -->
-                <label for=" username">USERNAME</label>
-                <label2><input class="username_r" id="username_r" name="username" required="" type="text"
-                               value=""></label2>
-                <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">
-                <p id="hint" class="limitation_for_username"> 6-16 characters</p>
-                <!-- Input username end -->
-                <!-- Input password start -->
-                <label for="password">PASSWORD</label>
-                <label2><input class="password_r" id="password_r" name="password" required="" type="password"
-                               value=""></label2>
-                <img id="icon-password" src="/static/images/icon/icon-correct.png" alt="">
-                <p id="hint" class="limitation_for_password"> 6-12 characters</p>
-                <label>
-                    <span>PASSWORD AGAIN</span>
-                    <input class="password" id="password_r2" type="password" required="">
-                </label>
-                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">
+                {% bootstrap_form form1 %}
                 <!-- Input password end -->
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_r" class="submit">Sign In</button>
