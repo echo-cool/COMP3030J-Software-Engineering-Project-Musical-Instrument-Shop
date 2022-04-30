@@ -605,7 +605,7 @@ def image_search(request, result_key):
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
-        instruments = all_instruments.filter(category__in=search_category)
+        instruments = [instrument for instrument in all_instruments if instrument.category_id in search_category]
     else:
         instruments = all_instruments
 
@@ -614,7 +614,7 @@ def image_search(request, result_key):
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
     for category in category_list:
-        categories[category] = instruments.filter(category=category).count()
+        categories[category] = len([instrument for instrument in instruments if instrument.category == category])
 
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)
