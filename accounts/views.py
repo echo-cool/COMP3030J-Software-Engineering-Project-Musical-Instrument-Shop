@@ -40,18 +40,131 @@ class GuestOnlyView(View):
         return super().dispatch(request, *args, **kwargs)
 
 
+def LogInPost(request):
+    if request.method == "POST":
+        sign_in_form = SignInViaUsernameForm(request.POST)
+        if settings.DISABLE_USERNAME or settings.LOGIN_VIA_EMAIL:
+            sign_in_form = SignInViaEmailForm(request.POST)
+
+        if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
+            sign_in_form = SignInViaEmailOrUsernameForm(request.POST)
+        form = sign_in_form
+        if form.is_valid():
+            print("DSADSA")
+            # If the test cookie worked, go ahead and delete it since its no longer needed
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
+
+            # The default Django's "remember me" lifetime is 2 weeks and can be changed by modifying
+            # the SESSION_COOKIE_AGE settings' option.
+            if settings.USE_REMEMBER_ME:
+                if not form.cleaned_data['remember_me']:
+                    request.session.set_expiry(0)
+
+            login(request, form.user_cache)
+            messages.success(request, "Login successfully")
+
+            redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
+            url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(),
+                                                          require_https=request.is_secure())
+
+            if url_is_safe:
+                return redirect(redirect_to)
+
+            return redirect(settings.LOGIN_REDIRECT_URL)
+        else:
+            print("DSADSAsadasd")
+            form2 = SignUpForm()
+            context = {
+                "form": form,
+                "form2": form2,
+            }
+            return render(request, 'layouts/default/cool_login.html', context)
+
+
+def SignUpPost(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            print("DSADSA")
+            user = form.save(commit=False)
+
+            if settings.DISABLE_USERNAME:
+                # Set a temporary username
+                user.username = get_random_string()
+            else:
+                user.username = form.cleaned_data['username']
+
+            if settings.ENABLE_USER_ACTIVATION:
+                user.is_active = False
+
+            # Create a user record
+            user.save()
+
+            # Change the username to the "user_ID" form
+            if settings.DISABLE_USERNAME:
+                user.username = f'user_{user.id}'
+                user.save()
+
+            if settings.ENABLE_USER_ACTIVATION:
+                code = get_random_string(20)
+
+                act = Activation()
+                act.code = code
+                act.user = user
+                act.save()
+
+                send_activation_email(request, user.email, code)
+
+                messages.success(
+                    request, _('You are signed up. To activate the account, follow the link sent to the mail.'))
+            else:
+                raw_password = form.cleaned_data['password1']
+
+                user = authenticate(username=user.username, password=raw_password)
+                login(request, user)
+
+                messages.success(request, _('You are successfully signed up!'))
+
+            return redirect('shop:index')
+        else:
+            print("DSADSAsadasd")
+            form2 = SignInViaUsernameForm()
+            context = {
+                "form": form2,
+                "form2": form,
+            }
+            return render(request, 'layouts/default/cool_login.html', context)
+
+
+class LogSign3View(View):
+    def get(self, request):
+        sign_in_form = SignInViaUsernameForm
+        if settings.DISABLE_USERNAME or settings.LOGIN_VIA_EMAIL:
+            sign_in_form = SignInViaEmailForm
+
+        if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
+            sign_in_form = SignInViaEmailOrUsernameForm
+
+        context = {
+            'form': sign_in_form,
+            'form2': SignUpForm,
+        }
+        return render(request, 'layouts/default/cool_login.html', context)
+
+
 class LogInView(GuestOnlyView, FormView):
-    template_name = 'accounts/log_in.html'
+    template_name = 'layouts/default/cool_login.html'
 
     @staticmethod
     def get_form_class(**kwargs):
         if settings.DISABLE_USERNAME or settings.LOGIN_VIA_EMAIL:
-            return SignInViaEmailForm
+            return SignInViaEmailForm, SignUpForm
 
         if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
-            return SignInViaEmailOrUsernameForm
+            return SignInViaEmailOrUsernameForm, SignUpForm
 
-        return SignInViaUsernameForm
+        return SignInViaUsernameForm, SignUpForm
 
     @method_decorator(sensitive_post_parameters('password'))
     @method_decorator(csrf_protect)
@@ -339,5 +452,6 @@ class LogOutView(LoginRequiredMixin, BaseLogoutView):
 @xframe_options_exempt
 def cool_login(request):
     return render(request, 'layouts/default/cool_login.html', {
-
+        "form": SignInViaEmailOrUsernameForm(),
+        "form2": SignUpForm(),
     })

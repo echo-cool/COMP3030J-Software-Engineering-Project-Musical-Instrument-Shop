@@ -3,14 +3,18 @@ from django.urls import path
 from .views import (
     LogInView, ResendActivationCodeView, RemindUsernameView, SignUpView, ActivateView, LogOutView,
     ChangeEmailView, ChangeEmailActivateView, ChangeProfileView, ChangePasswordView,
-    RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView, cool_login
+    RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView, cool_login, LogSign3View, LogInPost,
+    SignUpPost
 )
 
 app_name = 'accounts'
 
 urlpatterns = [
+
     path('cool_login/', cool_login, name='cool_login'),
-    path('log-in/', LogInView.as_view(), name='log_in'),
+    path('log-in/', LogSign3View.as_view(), name='log_in'),
+    path('log-in-post/', LogInPost, name='log_in_post'),
+    path('sign-up-post/', SignUpPost, name='sign_up_post'),
     path('log-out/', LogOutView.as_view(), name='log_out'),
 
     path('resend/activation-code/', ResendActivationCodeView.as_view(), name='resend_activation_code'),
