@@ -1641,7 +1641,9 @@
                     <div class="modal-dialog quickview-dialog">
                         <div class="modal-content">
 
-                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            {#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i#}
+                            {#                                    class="fi flaticon-cancel"></i></button>#}
+                            <button type="button" class="close" data-bs-dismiss="modal">×</button>
 
                             <div class="modal-body">
                                 <h3 class="modal-title">Choose your country</h3>
@@ -2094,6 +2096,12 @@
             </div>
         </div>
     </div>
+    <form action="{% url 'set_language' %}" method="post" style="display: none">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+        <input name="language" type="hidden" value=""/>
+        <button class="btn btn-success">{% trans 'Change' %}</button>
+    </form>
     <!-- popup-quickview -->
 
     <!-- End Footer -->
@@ -2213,19 +2221,9 @@
                 {#    lan = "en";#}
                 {#    break;#}
             }
-            $.ajax({
-                {# #TODO: not found#}
-                url: "/i18n/setlang/",
-                method: "POST",
-                data: JSON.stringify({"language": lan}),
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                success: function (res) {
-                    {#console.log(res);#}
-                    $(".close").click();
-                }
-            });
+            $("input[name='language']").val(lan);
+            console.log($("input[name='language']").val());
+            $(".btn-success").click();
         }
 
         {% if messages %}
