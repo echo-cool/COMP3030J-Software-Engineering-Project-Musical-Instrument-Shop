@@ -302,9 +302,11 @@ def analyze_image(request):
             item_hist_data = np.array(item_hist_data)
             res[item.id] = distance(hist_data, item_hist_data)
 
-        sorted_keys = sorted(res.keys(), key=lambda x: res[x])
+        sorted_keys = sorted(res.items(), key=lambda x: x[1])
         print(sorted_keys)
-        instruments = Instrument.objects.filter(imagesearchdata__in=sorted_keys)
+        instruments = []
+        for item in sorted_keys:
+            instruments.append(Instrument.objects.get(imagesearchdata=item[0]))
         key = memory_cached_db.insert_value(instruments)
     return JsonResponse({"key": key}, safe=False, json_dumps_params={'ensure_ascii': False})
 
