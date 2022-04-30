@@ -39,13 +39,12 @@
         <!-- User Login start -->
         <div class="form login-in">
 
-            <form action="login" method="post">
-                <input id="csrf_token" name="csrf_token" type="hidden"
-                       value="IjBiMmNiNTIyMGJlMTBhNDJhZTU0OGQxNTNhMmM3OGE0ZWRkOWVjMTUi.Ymk_rA.GbNshIYxy-61sRi5ZShS5ZvX8HM">
-                <h2>User LOGIN</h2>
+            <form action="/accounts/log-in/" method="post">
+                {% csrf_token %}
+                <h2 style="font-family: fantasy;font-style: italic">User LOGIN</h2>
                 <!-- Input username start -->
                 <label for="username">USERNAME</label>
-                <label2><input class="username_l" id="username_l" name="username" required="" type="text"
+                <label2><input class="username_l" id="username_l" name="email_or_username" required="" type="text"
                                value=""></label2>
 
 
@@ -56,8 +55,9 @@
                 <label2><input class="password_l" id="password_l" name="password" required="" type="password"
                                value=""></label2>
 
-                <label>Keep Login State (one month)
-                    <input id="remember_me" name="remember_me" type="checkbox"
+                <label>
+                    Keep Login State (one month)
+                    <input id="remember_me" name="remember_me" type="checkbox" style="appearance: auto;"
                            value="y">
                 </label>
                 <!-- Input password end -->
@@ -67,7 +67,6 @@
                 </p>   <!-- User Sign in button end -->
 
                 <!-- User Sign in button end -->
-                <p></p>
                 <div class="switch-to-sign-up">Sign Up</div>
                 <!-- Visitor Sign in button start -->
                 <button type="button" class="visitor_button">
@@ -76,20 +75,19 @@
                 </button>
                 <!-- Visitor Sign in button end -->
                 <p></p>
-                <p class="college">Beijing-Dublin International College at BJUT (BDIC)</p>
+                <p class="college">MusicoMo Musical Instrument Online Store</p>
             </form>
 
         </div>
         <!-- User Loin end -->
 
         <div class="form sign-up">
-            <form action="signup" method="post">
-                <input id="csrf_token" name="csrf_token" type="hidden"
-                       value="IjBiMmNiNTIyMGJlMTBhNDJhZTU0OGQxNTNhMmM3OGE0ZWRkOWVjMTUi.Ymk_rA.GbNshIYxy-61sRi5ZShS5ZvX8HM">
-                <h2>User REGISTER</h2>
+            <form action="/accounts/sign-up/" method="post">
+                {% csrf_token %}
+                <h2 style="font-family: fantasy;font-style: italic">User REGISTER</h2>
 
                 <!-- Input username start -->
-                <label for="username">USERNAME</label>
+                <label for=" username">USERNAME</label>
                 <label2><input class="username_r" id="username_r" name="username" required="" type="text"
                                value=""></label2>
                 <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">
@@ -120,7 +118,7 @@
 
                 <!-- Visitor Sign in button end -->
 
-                <p class="college">Beijing-Dublin International College at BJUT (BDIC)</p>
+                <p class="college">MusicoMo Musical Instrument Online Store</p>
             </form>
         </div>
 
@@ -130,36 +128,23 @@
             <div class="right-img">
                 <div class="img__text m--up">
                     <h2>Staff ?</h2>
-                    <p>Publish and manage your products through the Staff portal!</p>
+                    <p>Publish and manage your products through the Staff portal !</p>
                 </div>
                 <div class="img__text m--in">
                     <h2>Customer ?</h2>
-                    <p>If you just want to buy an item, please log in as a customer!</p>
+                    <p>If you just want to buy an item, please log in as a customer !</p>
                 </div>
                 <div class="change-way-btn">
                     <span class="m--up">Merchant Login</span>
                     <span class="m--in">Customer Login</span>
                 </div>
             </div>
-            {#            <div class="right-img">#}
-            {#                <div class="right-img-text change">#}
-            {#                    <h2>Administrator?</h2>#}
-            {#                    <p>Login in here!</p>#}
-            {#                </div>#}
-            {#                <div class="change-way-btn">#}
-            {#                    <span class="change">Change Way</span>#}
-            {#                </div>#}
-            {#                <div class="change-way-btn">#}
-            {#                    <span class="m--up">Sign Up</span>#}
-            {#                    <span class="m--in">Sign In</span>#}
-            {#                </div>#}
-            {#            </div>#}
-            <!-- image on the right end -->
 
             <!-- Administrator login start -->
             <div class="form login-in-second">
                 <form action="login2" method="post">
-                    <h2>ADMINISTRATOR LOGIN</h2>
+                    {% csrf_token %}
+                    <h2 style="font-family: fantasy;font-style: italic">ADMINISTRATOR LOGIN</h2>
                     <!-- Administrator username start -->
                     <label>
                         <span>USERNAME</span>
@@ -181,7 +166,7 @@
                         <button type="submit" id="submit_l2" class="submit">Sign In</button>
                     </p>
                     <!-- Administrator sign in button end -->
-                    <p class="college">Beijing-Dublin International College at BJUT</p>
+                    <p class="college">MusicoMo Musical Instrument Online Store</p>
                 </form>
             </div>
             <!-- Administrator login end -->
