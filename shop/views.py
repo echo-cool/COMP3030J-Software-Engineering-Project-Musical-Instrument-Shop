@@ -628,8 +628,6 @@ def image_search(request, result_key):
     })
 
 
-
-
 # search instruments by keyword
 # def empty_search(request):
 #     if request.method == "POST":
