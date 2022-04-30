@@ -502,22 +502,31 @@
                                 {% endfor %}
 
                             </div>
-                            <div class="pagi-nav text-right">
-                                {% if instruments.has_previous %}
-                                    <span class="next" id="prev_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-left"></i></a></span>
-                                {% endif %}
-                                {% for pg in part_pages %}
-                                    {% if instruments.number == pg %}
-                                        <span class="page current">{{ pg }}</span>
-                                    {% else %}
-                                        <span class="page"><a class="page-number" href="javascript:void(0)">{{ pg }}</a></span>
-                                    {% endif %}
-                                {% endfor %}
-                                {% if instruments.has_next %}
-                                    <span class="next" id="next_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-right"></i></a></span>
-                                {% endif %}
+{#                            <div class="pagi-nav text-right">#}
+                                {#                                {% if instruments.has_previous %}#}
+                                {#                                    <span class="next" id="prev_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-left"></i></a></span>#}
+                                {#                                {% endif %}#}
+                                <ul class="pagination">
+                                    {% for pg in part_pages %}
+                                        {% if instruments.number == pg %}
+                                            <li><a class="page-number current">{{ pg }}</a></li>
+                                        {% else %}
+                                            <li><a class="page-number">{{ pg }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+{#                                                                {% for pg in part_pages %}#}
+{#                                                                    {% if instruments.number == pg %}#}
+{#                                                                        <span class="page current">{{ pg }}</span>#}
+{#                                                                    {% else %}#}
+{#                                                                        <span class="page"><a class="page-number" href="javascript:void(0)">{{ pg }}</a></span>#}
+{#                                                                    {% endif %}#}
+{#                                                                {% endfor %}#}
+{#                                                                {% if instruments.has_next %}#}
+{#                                                                    <span class="next" id="next_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-right"></i></a></span>#}
+{#                                                                {% endif %}#}
 
-                            </div>
+{#                            </div>#}
                             <script src="{% static 'assets/js/add_url.js' %}"></script>
                             <script>
                                 $(".page-number").on('click', function (res) {

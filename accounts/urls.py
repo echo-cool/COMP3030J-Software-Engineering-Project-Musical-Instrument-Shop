@@ -10,7 +10,6 @@ from .views import (
 app_name = 'accounts'
 
 urlpatterns = [
-
     path('cool_login/', cool_login, name='cool_login'),
     path('log-in/', LogSign3View.as_view(), name='log_in'),
     path('log-in-post/', LogInPost, name='log_in_post'),

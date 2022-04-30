@@ -1756,3 +1756,55 @@ button {
 .list-category-toggle .active {
     color: #ff5a00 !important;
 }
+
+.pagination {
+    margin-bottom: 0px;
+    list-style-type: none;
+    align-items: center;
+}
+.pagination {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.pagination li a.page-number:hover, .pagination li a.page-number.current {
+    background: #93a094;
+    color: #fff;
+    box-shadow: 0px 10px 15px rgb(89 129 91 / 19%);
+}
+.pagination li a.page-number {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 100%;
+    font-size: 18px;
+    color: #272727;
+    display: block;
+    text-align: center;
+}
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+.pagination>li>a, .pagination>li>span {
+    padding: 0;
+    border: 0;
+}
+.pagination li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #59815b;
+    display: block;
+    text-align: center;
+}
