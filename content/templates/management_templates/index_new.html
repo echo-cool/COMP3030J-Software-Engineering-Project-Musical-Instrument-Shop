@@ -229,6 +229,15 @@
         .page-header {
             display: none;
         }
+
+        span.color:after {
+            content: '\00a0\00a0\00a0\00a0';
+        }
+
+        span.color {
+            margin: 0 2px;
+            border-radius: 50%;
+        }
     </style>
 {% endblock %}
 
@@ -266,7 +275,18 @@
                     <div class="col-lg-8 col-md-12 big-card">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Changes in the number of instruments in the whole station</h4>
+                                <h4 class="card-title">
+                                    Orders (Chinese
+                                    <span class="color" title="#f83a22"
+                                          style="background-color:#edd5ff;"
+                                          data-color="#f83a22" role="button"
+                                          tabindex="0">
+                                    </span>
+                                    / Western
+                                    <span class="color" title="#f83a22" style="background-color: #c3edda;"
+                                          data-color="#f83a22" role="button" tabindex="0">
+                                    </span>)
+                                </h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -280,7 +300,7 @@
                                                     class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
                                                     style="border-radius: 20% !important">
                                                 <a href="{% url 'echarts:chart1' %}"
-                                                   style="color: white "> More </a>
+                                                   style="color: white "> Order Data Digital Screen </a>
                                             </button>
                                         </li>
                                     </ul>
@@ -297,7 +317,22 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Revenue</h4>
+                                <h4 class="card-title">
+                                    Revenue
+                                    (Real
+                                    <span class="color" title="#f83a22"
+                                          style="background-image:linear-gradient(90deg, #fbb6b9 0%, #db69ad 50%, #b55adf 100%) !important;"
+                                          data-color="#f83a22" role="button"
+                                          tabindex="0">
+                                    </span>
+                                    / Forecast
+                                    <span class="color" title="#f83a22"
+                                          style="background-color:#e1dede;"
+                                          data-color="#f83a22" role="button"
+                                          tabindex="0">
+                                    </span>
+                                    )
+                                </h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 {#                                <div class="heading-elements">#}
                                 {#                                    <ul class="list-inline mb-0">#}
@@ -321,7 +356,7 @@
                                                     class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
                                                     style="border-radius: 20% !important">
                                                 <a href="{% url 'echarts:chart1' %}"
-                                                   style="color: white "> More </a>
+                                                   style="color: white "> Revenue Data Digital Screen </a>
                                             </button>
                                         </li>
                                     </ul>
@@ -340,7 +375,7 @@
                         <div class="card ecom-card-1 bg-white">
                             <div class="card-content ecom-card2 height-180">
                                 <h5 class="text-muted success position-absolute p-1">
-                                    Order Quantity</h5>
+                                    Trend of all Orders</h5>
                                 <div>
                                     <i class="icon-pie-chart success font-large-1 float-right p-1"></i>
                                 </div>
@@ -454,7 +489,7 @@
 
                         <div class="card pull-up bg-gradient-directional-danger">
                             <div class="card-header bg-hexagons-danger">
-                                <h4 class="card-title white">Analytics</h4>
+                                <h4 class="card-title white">Daily Order Analytics</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -472,9 +507,10 @@
                                             <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
                                         </div>
                                         <div class="media-body text-right mt-1">
-                                            <h3 class="font-large-2 white">{{ finished_orders.count }}</h3>
-                                            <h6 class="mt-1"><span class="text-muted white">Analytics in the <a href="#"
-                                                                                                                class="darken-2 white">last year.</a></span>
+                                            {# #TODO: 每日对比 #}
+                                            <h3 class="font-large-2 white">-{{ finished_orders.count }}5</h3>
+                                            <h6 class="mt-1"><span class="text-muted white">Compared <br>
+                                               <a href="#" class="darken-2 white"> to last day</a></span>
                                             </h6>
                                         </div>
                                     </div>
@@ -541,7 +577,7 @@
 
                         <div class="card pull-up">
                             <div class="card-header">
-                                <h4 class="card-title blue">Your product inventory</h4>
+                                <h4 class="card-title blue">Product Inventory</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
