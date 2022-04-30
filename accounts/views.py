@@ -41,7 +41,7 @@ class GuestOnlyView(View):
 
 
 class LogInView(GuestOnlyView, FormView):
-    template_name = 'accounts/log_in.html'
+    template_name = 'layouts/default/cool_login.html'
 
     @staticmethod
     def get_form_class(**kwargs):
@@ -339,5 +339,6 @@ class LogOutView(LoginRequiredMixin, BaseLogoutView):
 @xframe_options_exempt
 def cool_login(request):
     return render(request, 'layouts/default/cool_login.html', {
-
+        "form": SignInViaEmailOrUsernameForm(),
+        "form1": SignUpForm()
     })
