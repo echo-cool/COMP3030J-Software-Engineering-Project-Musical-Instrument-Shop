@@ -1,6 +1,5 @@
 {% extends 'layouts/default/shopper_base2.html' %}
 {% load static %}
-
 {% load i18n %}
 {% load bootstrap4 %}
 
@@ -39,10 +38,74 @@
         <!-- User Login start -->
         <div class="form login-in">
 
-            <form action="/accounts/log-in/" method="post">
+            <form action="/accounts/log-in-post/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User LOGIN</h2>
+                <!-- Input username start -->
+
                 {% bootstrap_form form %}
+                <style>
+                    #header {
+                        display: none !important;
+                    }
+
+                    #divChatLauncherContainer {
+                        display: none !important;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar {
+                        width: 16px;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar-track {
+                        background-color: #e4e4e4;
+                        border-radius: 100px;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar-thumb {
+                        background-color: #d4aa70;
+                        border-radius: 100px;
+                    }
+
+                    .invalid-feedback {
+                        text-align: center;
+                    }
+
+                    .text-muted {
+                        text-align: center;
+                    }
+
+                    #id_remember_me {
+                        appearance: auto;
+                        margin-top: 20px;
+                    }
+
+                    .form-control {
+                        width: 60%;
+                        margin: 0% 20%;
+                    }
+                </style>
+                <script>
+                    $("#id_remember_me").css("appearance", "auto").css("margin-top", "20px");
+                </script>
+                {#                <label for="username">USERNAME</label>#}
+                {#                <label2><input class="username_l" id="username_l" name="email_or_username" required="" type="text"#}
+                {#                               value=""></label2>#}
+                {##}
+                {##}
+                {#                <!-- Input username end -->#}
+                {##}
+                {#                <!-- Input password start -->#}
+                {#                <label for="password">PASSWORD</label>#}
+                {#                <label2><input class="password_l" id="password_l" name="password" required="" type="password"#}
+                {#                               value=""></label2>#}
+                {##}
+                {#                <label>#}
+                {#                    Keep Login State (one month)#}
+                {#                    <input id="remember_me" name="remember_me" type="checkbox" style="appearance: auto;"#}
+                {#                           value="y">#}
+                {#                </label>#}
+                {#                <!-- Input password end -->#}
 
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_l" class="submit">Sign In</button>
@@ -64,12 +127,31 @@
         <!-- User Loin end -->
 
         <div class="form sign-up">
-            <form action="/accounts/sign-up/" method="post">
+            <form action="/accounts/sign-up-post/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User REGISTER</h2>
-
-                {% bootstrap_form form1 %}
-                <!-- Input password end -->
+                <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
+                    {% bootstrap_form form2 %}
+                </div>
+                {#                <!-- Input username start -->#}
+                {#                <label for=" username">USERNAME</label>#}
+                {#                <label2><input class="username_r" id="username_r" name="username" required="" type="text"#}
+                {#                               value=""></label2>#}
+                {#                <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <p id="hint" class="limitation_for_username"> 6-16 characters</p>#}
+                {#                <!-- Input username end -->#}
+                {#                <!-- Input password start -->#}
+                {#                <label for="password">PASSWORD</label>#}
+                {#                <label2><input class="password_r" id="password_r" name="password" required="" type="password"#}
+                {#                               value=""></label2>#}
+                {#                <img id="icon-password" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <p id="hint" class="limitation_for_password"> 6-12 characters</p>#}
+                {#                <label>#}
+                {#                    <span>PASSWORD AGAIN</span>#}
+                {#                    <input class="password" id="password_r2" type="password" required="">#}
+                {#                </label>#}
+                {#                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <!-- Input password end -->#}
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_r" class="submit">Sign In</button>
                 </p><!-- User Sign in button end -->
