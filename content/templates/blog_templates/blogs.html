@@ -80,9 +80,9 @@
 
             <div class="top-social-1 social_links">
                 <ul class="top-social">
-                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="{% url 'blog:post' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                    <li id="scroll_category" onclick="scrollCategory()"><a><i class="ion-social-instagram"></i></a></li>
+                    <li onclick="scrollBlogs()"><a><i class="fa fa-th" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
 
@@ -203,7 +203,7 @@
             </div>
         </div>
 
-        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700">
+        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700" id="blog_categories">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <div class="main-wrapper">
+        <div class="main-wrapper" id="main_blogs">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
@@ -404,5 +404,20 @@
     <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
     <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
     <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+    <script>
+        function scrollCategory() {
+            let scrollOffset = $('#blog_categories').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+
+        function scrollBlogs() {
+            let scrollOffset = $('#main_blogs').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+    </script>
 
 {% endblock %}
