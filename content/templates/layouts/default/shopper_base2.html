@@ -1640,7 +1640,6 @@
                 <div id="popup-quickview-999999999" class="modal" tabindex="-1">
                     <div class="modal-dialog quickview-dialog">
                         <div class="modal-content">
-
                             {#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i#}
                             {#                                    class="fi flaticon-cancel"></i></button>#}
                             <button type="button" class="close" data-bs-dismiss="modal">×</button>
@@ -1648,7 +1647,7 @@
                             <div class="modal-body">
                                 <h3 class="modal-title">Choose your country</h3>
                                 <!-- Asia Region -->
-                                <h3>Asia Pacific</h3>
+                                <h3>{% trans "Asia Pacific" %}</h3>
 
                                 <div class="col-item">
                                     <table cellpadding="0" cellspacing="0" class="locale-list">
@@ -1669,7 +1668,7 @@
                                                             fill="#F6E202" p-id="5481"></path>
                                                 </svg>
                                                 </span>
-                                                中国
+                                                {% trans "China" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-AU">CN</a></td>
@@ -1699,7 +1698,7 @@
                 fill="#ED293A" p-id="6401"></path></svg>
 
                                                 </span>
-                                                澳大利亚
+                                                {% trans "Australia" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-AU">EN</a></td>
@@ -1710,7 +1709,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <div class="col-item">
                                     <table cellpadding="0" cellspacing="0" class="locale-list">
                                         <tbody>
@@ -1726,7 +1724,7 @@
         d="M512 512m-179.17 0a179.17 179.17 0 1 0 358.34 0 179.17 179.17 0 1 0-358.34 0Z" fill="#BC012D"
         p-id="4857"></path></svg>
                                                 </span>
-                                                日本
+                                                {% trans "Japan" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('ja')"
                                                    data-test="ftr-intl-en-AU">JA</a></td>
@@ -1737,12 +1735,9 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <br clear="all">
-
                                 <!-- Europe Region -->
-                                <h3>Europe</h3>
-
+                                <h3>{% trans "Europe" %}</h3>
                                 <div class="col-item">
                                     <table cellpadding="0" cellspacing="0" class="locale-list">
                                         <tbody>
@@ -1775,7 +1770,7 @@
                                                             d="M944 728l15.98 8h0.02v-33.88l-16-8.02z" fill="#CF152B"
                                                             p-id="4303"></path></svg>
                                                 </span>
-                                                英国
+                                                {% trans "England" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-AU">EN</a></td>
@@ -1813,7 +1808,7 @@
                                                           p-id="5069"></path></svg>
 
                                                 </span>
-                                                俄罗斯
+                                                {% trans "Russia" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('ru')"
                                                    data-test="ftr-intl-en-AU">RU</a></td>
@@ -1840,9 +1835,8 @@
                                                             d="M64 213.33h16v298.79H64z" fill="#015BBB"
                                                             p-id="6059"></path><path d="M64 512.12h16v298.55H64z"
                                                                                      fill="#FED502" p-id="6060"></path></svg>
-
                                                    </span>
-                                                乌克兰
+                                                {% trans "Ukraine" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('ua')"
                                                    data-test="ftr-intl-en-AU">UA</a></td>
@@ -1850,14 +1844,118 @@
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
-                                        {# #TODO：  瑞士 西班牙 爱尔兰 德国 新西兰       太多了搞不完      #}
+                                        <tr id="language-ruishi">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                    <svg t="1651309089169" class="icon" viewBox="0 0 1024 1024"
+                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
+                                                         width="39" height="26"><path d="M64 288h896v448H64z"
+                                                                                      fill="#00247D" opacity=".76"
+                                                                                      p-id="4293"></path><path
+                                                            d="M944 304v416H80V304h864m16-16H64v448h896V288z"
+                                                            fill="#00247D" p-id="4294"></path><path
+                                                            d="M512 288h-49.95l-136.81 68.59V288h-74.77v67.98L114.88 288H64v24.56l99.84 50.05H64v74.89h99.84L64 487.56v24.56h50.88l135.59-67.98v67.98h74.77v-68.59l136.81 68.59H512v-25.03l-98.91-49.59H512v-74.89h-98.91L512 313.03z"
+                                                            fill="#FFFFFF" p-id="4295"></path><path
+                                                            d="M310.31 288.12h-44.68v89.54H64v44.8h201.63v89.66h44.68v-89.66H512v-44.8H310.31z"
+                                                            fill="#ED293A" p-id="4296"></path><path
+                                                            d="M512 288.12h-33.84l-148.94 74.61h33.85zM64 512.12h33.84l148.94-74.62h-33.85zM212.94 362.61L64.01 288H64v16.95l115.1 57.66zM363.06 437.5l148.93 74.62h0.01v-16.95L396.9 437.5z"
+                                                            fill="#ED293A" p-id="4297"></path><path
+                                                            d="M735.81 658.93l-19.92 14.46 7.61-23.41-19.92-14.46h24.62l7.61-23.42 7.6 23.42h24.62l-19.92 14.46 7.61 23.41z"
+                                                            fill="#CC152B" p-id="4298"></path><path
+                                                            d="M735.81 618.58l5.26 16.17 0.9 2.76h19.92l-13.76 10-2.35 1.71 0.9 2.76 5.26 16.17-13.76-10-2.35-1.71-2.35 1.71-13.76 10 5.26-16.18 0.9-2.76-2.35-1.71-13.76-10h19.92l0.9-2.76 5.22-16.16m0-12.95l-9.06 27.88h-29.32l23.72 17.23-9.06 27.88 23.72-17.23 23.72 17.23-9.06-27.88 23.72-17.23h-29.32l-9.06-27.88z"
+                                                            fill="#FFFFFF" p-id="4299"></path><path
+                                                            d="M824.63 464.52l-14.95 10.87 5.71-17.58-14.95-10.86h18.48l5.71-17.58 5.71 17.58h18.48l-14.95 10.86 5.71 17.58z"
+                                                            fill="#CC152B" p-id="4300"></path><path
+                                                            d="M824.63 435.85l3.36 10.34 0.9 2.76h13.78l-8.79 6.39-2.35 1.71 0.9 2.76 3.36 10.34-8.79-6.39-2.35-1.71-2.35 1.71-8.79 6.39 3.36-10.34 0.9-2.76-2.35-1.71-8.79-6.39h13.78l0.9-2.76 3.32-10.34m0-12.95l-7.16 22.05h-23.18l18.75 13.63-7.16 22.05L824.63 467l18.75 13.63-7.16-22.05 18.75-13.63H831.8l-7.17-22.05z"
+                                                            fill="#FFFFFF" p-id="4301"></path><path
+                                                            d="M735.76 388.8l-16.82 12.22 6.42-19.78-16.82-12.22h20.8l6.42-19.78 6.43 19.78h20.8l-16.83 12.22 6.43 19.78z"
+                                                            fill="#CC152B" p-id="4302"></path><path
+                                                            d="M735.76 355.71l4.08 12.55 0.9 2.76h16.1l-10.67 7.75-2.35 1.71 0.9 2.76 4.08 12.55-10.67-7.75-2.35-1.71-2.35 1.71-10.67 7.75 4.08-12.55 0.9-2.76-2.35-1.71-10.67-7.75h16.1l0.9-2.76 4.04-12.55m0-12.95l-7.88 24.25h-25.5L723.01 382l-7.88 24.25 20.63-14.99 20.63 14.99-7.88-24.25 20.63-14.99h-25.5l-7.88-24.25z"
+                                                            fill="#FFFFFF" p-id="4303"></path><path
+                                                            d="M631.91 492.49l-16.83 12.22 6.43-19.78-16.83-12.23h20.8l6.43-19.78 6.43 19.78h20.8l-16.83 12.23 6.43 19.78z"
+                                                            fill="#CC152B" p-id="4304"></path><path
+                                                            d="M631.91 459.39l4.08 12.55 0.9 2.76h16.1l-10.67 7.75-2.35 1.71 0.9 2.76 4.08 12.55-10.67-7.75-2.35-1.71-2.35 1.71-10.67 7.75 4.08-12.55 0.9-2.76-2.35-1.71-10.67-7.75h16.1l0.9-2.76 4.04-12.55m0-12.94l-7.88 24.25h-25.5l20.63 14.99-7.88 24.25 20.63-14.99 20.63 14.99-7.88-24.25 20.63-14.99h-25.5l-7.88-24.25z"
+                                                            fill="#FFFFFF" p-id="4305"></path></svg>
+                                                   </span>
+                                                {% trans "New Zealand" %}
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">EN</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+                                        <tr id="language-german">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                   <svg t="1651309217940" class="icon" viewBox="0 0 1024 1024"
+                                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4670"
+                                                        width="39" height="26"><path
+                                                           d="M944 259.2v505.6H80V259.2h864m16-16H64v537.6h896V243.2z"
+                                                           fill="#FECE03" p-id="4671"></path><path
+                                                           d="M64 601.84h896V780.8H64z" fill="#FECE03" opacity=".75"
+                                                           p-id="4672"></path><path d="M64 422.52h896v178.96H64z"
+                                                                                    fill="#DD0200" opacity=".75"
+                                                                                    p-id="4673"></path><path
+                                                           d="M64 243.56h896v178.96H64z" opacity=".75"
+                                                           p-id="4674"></path><path d="M64 243.56h896v16H64z"
+                                                                                    p-id="4675"></path><path
+                                                           d="M64 243.56h16v178.96H64zM944 243.56h16v178.96h-16z"
+                                                           p-id="4676"></path><path
+                                                           d="M64 422.52h16v178.96H64zM944 422.52h16v178.96h-16z"
+                                                           fill="#DD0200" p-id="4677"></path></svg>  </span>
+                                                {% trans "German" %}
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
+                                                   data-test="ftr-intl-en-AU">FR</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <div class="col-item">
                                     <table cellpadding="0" cellspacing="0" class="locale-list">
                                         <tbody>
+                                        <tr id="language-ireland">
+                                            <td>
+                                                <span class="flag flag-icon-en">
+                                                    <svg t="1651309157630" class="icon" viewBox="0 0 1024 1024"
+                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4458"
+                                                         data-spm-anchor-id="a313x.7781069.0.i3" width="39"
+                                                         height="26"><path d="M64 288h297.74v448H64z" fill="#009B48"
+                                                                           opacity=".75" p-id="4459"></path><path
+                                                            d="M64 288h16v448H64z" fill="#009B48" p-id="4460"></path><path
+                                                            d="M361.74 288h300.28v448H361.74z" fill="#FFFFFF"
+                                                            opacity=".75" p-id="4461"></path><path
+                                                            d="M662.02 288H960v448H662.02z" fill="#FF7900" opacity=".75"
+                                                            p-id="4462"></path><path d="M944 288h16v448h-16z"
+                                                                                     fill="#FF7900" p-id="4463"></path><path
+                                                            d="M64 288h297.74v16H64z" fill="#009B48" p-id="4464"></path><path
+                                                            d="M361.74 288h300.28v16H361.74z" fill="#bfbfbf" p-id="4465"
+                                                            data-spm-anchor-id="a313x.7781069.0.i5"
+                                                            class="selected"></path><path d="M662.02 288H960v16H662.02z"
+                                                                                          fill="#FF7900"
+                                                                                          p-id="4466"></path><path
+                                                            d="M64 720h297.74v16H64z" fill="#009B48" p-id="4467"></path><path
+                                                            d="M361.74 720h300.28v16H361.74z" fill="#bfbfbf" p-id="4468"
+                                                            data-spm-anchor-id="a313x.7781069.0.i4"
+                                                            class="selected"></path><path d="M662.02 720H960v16H662.02z"
+                                                                                          fill="#FF7900"
+                                                                                          p-id="4469"></path></svg>
+                                              </span>
+                                                {% trans "Ireland" %}
+                                            </td>
+                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                                   data-test="ftr-intl-en-AU">EN</a></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
                                         <tr id="language-fr">
                                             <td>
                                                 <span class="flag flag-icon-en">
@@ -1881,7 +1979,7 @@
                                                     data-spm-anchor-id="a313x.7781069.0.i33"
                                                     class="selected"></path></svg>
                                                 </span>
-                                                法国
+                                                {% trans "France" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
                                                    data-test="ftr-intl-en-AU">FR</a></td>
@@ -1907,7 +2005,7 @@
         d="M944 463.74h16v96.64h-16zM64 463.74h16v96.64H64z" fill="#bfbfbf" p-id="5277"
         data-spm-anchor-id="a313x.7781069.0.i24" class="selected"></path></svg>
                                                  </span>
-                                                西班牙
+                                                {% trans "Spain" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('es')"
                                                    data-test="ftr-intl-en-AU">ES</a></td>
@@ -1918,33 +2016,25 @@
                                         <tr id="language-de">
                                             <td>
                                                 <span class="flag flag-icon-en">
-                                                    <svg t="1651239324277" class="icon" viewBox="0 0 1024 1024"
-                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
-                                                         width="39" height="26"><path
-                                                            d="M64 586.85V686.9l199.67-100.05zM436.94 288H165.75l271.19 135.89zM860.1 288H586.47v137.11zM64 337.1v100.05h199.67zM960 437.15v-99.13l-197.82 99.13zM960 685.98v-99.13H762.18zM586.47 736H436.94V600.12L165.75 736H860.1L586.47 598.89z"
-                                                            fill="#00247D" opacity=".75" p-id="4293"></path><path
-                                                            d="M960 288h-99.9L586.47 425.11V288H436.94v135.89L165.75 288H64v49.1l199.67 100.05H64v149.7h199.67L64 686.9V736h101.75l271.19-135.89V736h149.53V598.89L860.1 736H960v-50.02l-197.82-99.13H960v-149.7H762.18L960 338.02z"
-                                                            fill="#FFFFFF" opacity=".75" p-id="4294"></path><path
-                                                            d="M960 304v-16h-99.9l-31.93 16zM197.68 304l-31.93-16H64v16zM436.94 288h149.53v16H436.94zM944 736h16v-50.02l-16-8.02z"
-                                                            fill="#EEEEEE" p-id="4295"></path><path
-                                                            d="M944 346.04l16-8.02V288h-16zM944 437.15h16v149.7h-16zM436.94 720h149.53v16H436.94zM64 720v16h101.75l31.93-16zM828.17 720l31.93 16H960v-16zM80 288H64v49.1l16 8.01zM64 437.15h16v149.7H64z"
-                                                            fill="#EEEEEE" p-id="4296"></path><path
-                                                            d="M80 678.89l-16 8.01V736h16z" fill="#EEEEEE"
-                                                            p-id="4297"></path><path
-                                                            d="M556.62 288.24h-89.36v178.99H64v89.54h403.26V736h89.36V556.77H960v-89.54H556.62z"
-                                                            fill="#CF152B" opacity=".75" p-id="4298"></path><path
-                                                            d="M960 288.24h-67.69L594.44 437.38h67.69zM64 736h67.69l297.87-149.15h-67.69zM361.89 437.15L64.02 288H64v33.88l230.2 115.27zM662.11 586.85L959.98 736h0.02v-33.88L729.8 586.85z"
-                                                            fill="#CF152B" opacity=".75" p-id="4299"></path><path
-                                                            d="M436.94 304v-16H165.75l31.93 16zM828.17 304l31.93-16H586.47v16zM944 437.15h16v-99.13l-16 8.02zM944 677.96l16 8.02v-99.13h-16zM586.47 720v16H436.94v-16H197.68l-31.93 16H860.1l-31.93-16zM80 345.11l-16-8.01v100.05h16zM80 586.85H64V686.9l16-8.01z"
-                                                            fill="#00247D" p-id="4300"></path><path
-                                                            d="M467.26 288.24h89.36v16h-89.36zM467.26 720h89.36v16h-89.36zM64 467.23h16v89.54H64zM944 467.23h16v89.54h-16zM928.05 304.24l31.95-16h-67.69l-31.95 16zM64 304.24h32.45l-31.96-16H64z"
-                                                            fill="#CF152B" p-id="4301"></path><path
-                                                            d="M80 296l-15.98-8H64v33.88l16 8.01zM928.03 720l31.95 16h0.02v-16zM131.69 736l31.95-16H95.96L64 736z"
-                                                            fill="#CF152B" p-id="4302"></path><path
-                                                            d="M944 728l15.98 8h0.02v-33.88l-16-8.02z" fill="#CF152B"
-                                                            p-id="4303"></path></svg>
+                                               <svg t="1651309383484" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg" p-id="5153" width="39"
+                                                    height="26"><path d="M64 213.45h896v198.29H64z" fill="#AE1D29"
+                                                                      opacity=".75" p-id="5154"></path><path
+                                                       d="M64 213.45h896v16H64z" fill="#AE1D29" p-id="5155"></path><path
+                                                       d="M64 611.81h896v198.74H64z" fill="#22468A" opacity=".75"
+                                                       p-id="5156"></path><path d="M64 794.55h896v16H64z" fill="#22468A"
+                                                                                p-id="5157"></path><path
+                                                       d="M64 411.74h896v200.07H64z" fill="#FFFFFF" opacity=".75"
+                                                       p-id="5158"></path><path d="M64 213.45h16v198.29H64z"
+                                                                                fill="#AE1D29" p-id="5159"></path><path
+                                                       d="M64 611.81h16v198.74H64z" fill="#22468A" p-id="5160"></path><path
+                                                       d="M64 411.74h16v200.07H64z" fill="#EEEEEE" p-id="5161"></path><path
+                                                       d="M944 213.45h16v198.29h-16z" fill="#AE1D29" p-id="5162"></path><path
+                                                       d="M944 611.81h16v198.74h-16z" fill="#22468A" p-id="5163"></path><path
+                                                       d="M944 411.74h16v200.07h-16z" fill="#EEEEEE" p-id="5164"></path></svg>
+
                                                 </span>
-                                                Dutch ？？
+                                                {% trans 'Netherlands' %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
                                                    data-test="ftr-intl-en-AU">DE</a></td>
@@ -1955,16 +2045,13 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <br clear="all">
 
                                 <!-- North America Region -->
-                                <h3>North America</h3>
-
+                                <h3>{% trans "North America" %}</h3>
                                 <div class="col-item">
                                     <table cellpadding="0" cellspacing="0" class="locale-list">
                                         <tbody>
-
                                         <tr id="language-am">
                                             <td>
                                                 <span class="flag flag-icon-en">
@@ -2021,7 +2108,7 @@
                                                            p-id="6239"></path><path
                                                            d="M94.13 287.8l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 287.8l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 287.8l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM384.09 314.45l8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29zM94.13 338.67l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 338.67l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 389.55l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 389.55l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 440.42l-3.3 10.18H80.12l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM153.86 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM213.58 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM273.3 440.42L270 450.6h-10.71l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM333.03 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM392.75 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM97.44 501.48l-3.31-10.18-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM157.16 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM216.89 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM276.61 501.48l-3.31-10.18-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM336.33 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM396.06 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM127.3 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM187.03 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM246.75 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM306.47 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM366.2 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM124 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM124 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3H127.3zM183.72 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM243.44 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM303.17 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3h-10.71zM362.89 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM124 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7z"
                                                            fill="#FFFFFF" p-id="6240"></path></svg> </span>
-                                                美国
+                                                {% trans "United States" %}
                                             </td>
                                             <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-AU">DE</a></td>
@@ -2034,11 +2121,9 @@
                                 </div>
 
                                 <br clear="all">
-                                <h3>Choose your region</h3>
-
-                                <p>Don’t see your country listed above? Please choose your region below</p>
+                                <h3>{% trans "Choose your region" %}</h3>
+                                <p>{% trans "Don’t see your country listed above? Please choose your region below" %}</p>
                                 &nbsp;
-
                                 <table cellpadding="0" cellspacing="0" class="regions-list" width="100%">
                                     <tbody>
                                     <tr>
@@ -2046,44 +2131,44 @@
                                             <div class="zone-col"><img alt=""
                                                                        src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dwc638b783/africa.png"
                                                                        title="">
-                                                <h3>Africa</h3>
-                                                <a href="https://www.fender.com/en-US/redirect?c=ZA&amp;l=en"
+                                                <h3>{% trans "Africa" %}</h3>
+                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-ZA">En</a> <a
-                                                        href="https://www.fender.com/en-US/redirect?c=SN&amp;l=fr"
+                                                        href="javascript:void(0)" onclick="changeLanguage('fr')"
                                                         data-test="ftr-intl-fr-SN">Fr</a></div>
                                         </td>
                                         <td align="center">
                                             <div class="zone-col"><img alt=""
                                                                        src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw8d4b15f2/americas.png"
                                                                        title="">
-                                                <h3>Americas</h3>
-                                                <a href="https://www.fender.com/en-US/redirect?c=CA&amp;l=en"
+                                                <h3>{% trans 'Americas' %}</h3>
+                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-CA">En</a> <a
-                                                        href="https://www.fender.com/en-US/redirect?c=VE&amp;l=es"
+                                                        href="javascript:void(0)" onclick="changeLanguage('es')"
                                                         data-test="ftr-intl-es-VE">Es</a></div>
                                         </td>
                                         <td align="center">
                                             <div class="zone-col"><img alt=""
                                                                        src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/default/dw6d92ef41/asia-pacific.png"
                                                                        title="">
-                                                <h3>Asia Pacific</h3>
-                                                <a href="https://www.fender.com/en-US/redirect?c=NZ&amp;l=en"
+                                                <h3>{% trans "Asia Pacific" %}</h3>
+                                                <a href="javascript:void(0)" onclick="changeLanguage('es')"
                                                    data-test="ftr-intl-en-NZ">En</a></div>
                                         </td>
                                         <td align="center">
                                             <div class="zone-col"><img alt=""
                                                                        src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw5d072552/europe.png"
                                                                        title="">
-                                                <h3>Europe</h3>
-                                                <a href="https://www.fender.com/en-US/redirect?c=RU&amp;l=en"
+                                                <h3>{% trans "Europe" %}</h3>
+                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-RU">En</a></div>
                                         </td>
                                         <td align="right" class="last">
                                             <div class="zone-col zone-col_last"><img alt=""
                                                                                      src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw4f5cb6e7/middle-east.png"
                                                                                      title="">
-                                                <h3>Middle East</h3>
-                                                <a href="https://www.fender.com/en-US/redirect?c=SA&amp;l=en"
+                                                <h3>{% trans 'Middle East' %}</h3>
+                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
                                                    data-test="ftr-intl-en-SA">En</a></div>
                                         </td>
                                     </tr>
