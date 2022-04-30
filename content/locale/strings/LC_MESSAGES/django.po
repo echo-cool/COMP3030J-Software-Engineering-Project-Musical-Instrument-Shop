@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 18:21+0800\n"
+"POT-Creation-Date: 2022-04-30 16:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Please, go to the following page and choose a new password:"
 msgstr ""
 
-#: .\accounts\templates\accounts\log_in.html:46
+#: .\accounts\templates\accounts\log_in.html:61
 msgid "Login"
 msgstr ""
 
@@ -250,82 +250,107 @@ msgstr ""
 msgid "Your username"
 msgstr ""
 
-#: .\accounts\views.py:126
+#: .\accounts\views.py:127
 msgid ""
 "You are signed up. To activate the account, follow the link sent to the mail."
 msgstr ""
 
-#: .\accounts\views.py:133
+#: .\accounts\views.py:134
 msgid "You are successfully signed up!"
 msgstr ""
 
-#: .\accounts\views.py:153
+#: .\accounts\views.py:154
 msgid "You have successfully activated your account!"
 msgstr ""
 
-#: .\accounts\views.py:183
+#: .\accounts\views.py:184
 msgid "A new activation code has been sent to your email address."
 msgstr ""
 
-#: .\accounts\views.py:228
+#: .\accounts\views.py:229
 msgid "Profile data has been successfully updated."
 msgstr ""
 
-#: .\accounts\views.py:262
+#: .\accounts\views.py:263
 msgid "To complete the change of email address, click on the link sent to it."
 msgstr ""
 
-#: .\accounts\views.py:267
+#: .\accounts\views.py:268
 msgid "Email successfully changed."
 msgstr ""
 
-#: .\accounts\views.py:285
+#: .\accounts\views.py:286
 msgid "You have successfully changed your email!"
 msgstr ""
 
-#: .\accounts\views.py:298
+#: .\accounts\views.py:299
 msgid "Your username has been successfully sent to your email."
 msgstr ""
 
-#: .\accounts\views.py:313
+#: .\accounts\views.py:314
 msgid "Your password was changed."
 msgstr ""
 
-#: .\accounts\views.py:325
+#: .\accounts\views.py:326
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr ""
 
-#: .\app\conf\development\settings.py:149
+#: .\app\conf\development\settings.py:159
 #: .\app\conf\production\settings.py:115
 #: .\content\templates\shop_templates\account.html:306
+#: .\content\templates\shop_templates\product-detail-2.html:966
 msgid "English"
 msgstr ""
 
-#: .\app\conf\development\settings.py:150
+#: .\app\conf\development\settings.py:160
 #: .\app\conf\production\settings.py:116
 #: .\content\templates\shop_templates\account.html:309
+#: .\content\templates\shop_templates\product-detail-2.html:969
 msgid "Russian"
 msgstr ""
 
-#: .\app\conf\development\settings.py:151
+#: .\app\conf\development\settings.py:161
+msgid "Ukrainian"
+msgstr ""
+
+#: .\app\conf\development\settings.py:162
 #: .\app\conf\production\settings.py:117
 msgid "Simplified Chinese"
 msgstr ""
 
-#: .\app\conf\development\settings.py:152
-msgid "Simplified Chinese new"
-msgstr ""
-
-#: .\app\conf\development\settings.py:153
+#: .\app\conf\development\settings.py:163
 #: .\app\conf\production\settings.py:118
 #: .\content\templates\shop_templates\account.html:307
+#: .\content\templates\shop_templates\product-detail-2.html:967
 msgid "French"
 msgstr ""
 
-#: .\app\conf\development\settings.py:154
+#: .\app\conf\development\settings.py:164
 #: .\app\conf\production\settings.py:119
 #: .\content\templates\shop_templates\account.html:308
+#: .\content\templates\shop_templates\product-detail-2.html:968
 msgid "Spanish"
+msgstr ""
+
+#: .\app\conf\development\settings.py:165
+msgid "Dutch"
+msgstr ""
+
+#: .\app\conf\development\settings.py:166
+msgid "Japanese"
+msgstr ""
+
+#: .\content\templates\blog_templates\post-blogs.html:51
+#: .\content\templates\management_templates\update_blog_category.html:37
+#: .\content\templates\management_templates\update_cart.html:37
+#: .\content\templates\management_templates\update_instrument.html:122
+#: .\content\templates\management_templates\update_instrument_category.html:37
+#: .\content\templates\management_templates\update_order.html:36
+#: .\content\templates\management_templates\update_order_item.html:37
+#: .\content\templates\management_templates\update_post.html:37
+#: .\content\templates\management_templates\update_review.html:37
+#: .\content\templates\management_templates\update_wishlist.html:37
+msgid "Submit"
 msgstr ""
 
 #: .\content\templates\chat\index.html:36
@@ -362,14 +387,17 @@ msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:41
 #: .\content\templates\shop_templates\account.html:247
+#: .\content\templates\shop_templates\product-detail-2.html:893
 msgid "Help"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:42
+#: .\content\templates\shop_templates\company-profile.html:228
 msgid "Services"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:43
+#: .\content\templates\shop_templates\checkout\checkout.html:1197
 msgid "USD"
 msgstr ""
 
@@ -378,6 +406,8 @@ msgid "My Account"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:53
+#: .\content\templates\shop_templates\product-detail-2.html:305
+#: .\content\templates\shop_templates\wishlist.html:36
 msgid "Wishlist"
 msgstr ""
 
@@ -428,6 +458,8 @@ msgid "Large Camera Bag"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:119
+#: .\content\templates\shop_templates\cart.html:145
+#: .\content\templates\shop_templates\cart.html:186
 msgid "Subtotal:"
 msgstr ""
 
@@ -436,14 +468,25 @@ msgid "view my cart"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:126
-#: .\content\templates\shop_templates\product-detail.html:708
+#: .\content\templates\shop_templates\product-detail-2.html:298
+#: .\content\templates\shop_templates\product-detail-2.html:1024
+#: .\content\templates\shop_templates\product-detail.html:726
 msgid "Checkout"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:143
 #: .\content\templates\shop_templates\account.html:26
+#: .\content\templates\shop_templates\blog-details.html:55
+#: .\content\templates\shop_templates\blog-details.html:541
+#: .\content\templates\shop_templates\blog-external.html:50
+#: .\content\templates\shop_templates\cart.html:20
 #: .\content\templates\shop_templates\cart2.html:29
-#: .\content\templates\shop_templates\product-detail.html:82
+#: .\content\templates\shop_templates\model-design.html:302
+#: .\content\templates\shop_templates\product-detail-2.html:67
+#: .\content\templates\shop_templates\product-detail-2.html:405
+#: .\content\templates\shop_templates\product-detail.html:88
+#: .\content\templates\shop_templates\product-search.html:84
+#: .\content\templates\shop_templates\wishlist.html:39
 msgid "Home"
 msgstr ""
 
@@ -452,10 +495,14 @@ msgid "Home 1"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:146
+#: .\content\templates\shop_templates\blog-details.html:57
+#: .\content\templates\shop_templates\blog-external.html:52
 msgid "Home 2"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:147
+#: .\content\templates\shop_templates\blog-details.html:58
+#: .\content\templates\shop_templates\blog-external.html:53
 msgid "Home 3"
 msgstr ""
 
@@ -476,7 +523,6 @@ msgid "Corssbody"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:159
-#: .\content\templates\shop_templates\homepage.html:386
 msgid "Collection"
 msgstr ""
 
@@ -502,6 +548,10 @@ msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:222
 #: .\content\templates\shop_templates\account.html:255
+#: .\content\templates\shop_templates\blog-details.html:427
+#: .\content\templates\shop_templates\blog-external.html:491
+#: .\content\templates\shop_templates\product-detail-2.html:901
+#: .\content\templates\shop_templates\product-search.html:195
 msgid "Categories"
 msgstr ""
 
@@ -542,15 +592,22 @@ msgid "Kids"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:268
+#: .\content\templates\shop_templates\product-detail-2.html:209
+#: .\content\templates\shop_templates\product-detail-2.html:219
 msgid "Accessories"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:269
 #: .\content\templates\shop_templates\account.html:249
+#: .\content\templates\shop_templates\blog-details.html:83
+#: .\content\templates\shop_templates\index.html:718
+#: .\content\templates\shop_templates\product-detail-2.html:157
+#: .\content\templates\shop_templates\product-detail-2.html:895
 msgid "Blog"
 msgstr ""
 
 #: .\content\templates\layouts\default\shopper_base.html:270
+#: .\content\templates\shop_templates\company-profile.html:720
 msgid "Contact"
 msgstr ""
 
@@ -586,21 +643,20 @@ msgstr ""
 msgid "Select the language"
 msgstr ""
 
+#: .\content\templates\management_templates\orderItemManagement.html:33
 #: .\content\templates\management_templates\orderManagement.html:33
 msgid "All Orders"
 msgstr ""
 
-#: .\content\templates\management_templates\update_instrument.html:37
-#: .\content\templates\management_templates\update_order.html:36
-#: .\content\templates\management_templates\update_review.html:37
-msgid "Submit"
-msgstr ""
-
 #: .\content\templates\shop_templates\account.html:27
+#: .\content\templates\shop_templates\cart.html:21
+#: .\content\templates\shop_templates\product-detail-2.html:406
 msgid "Category"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:28
+#: .\content\templates\shop_templates\cart.html:22
+#: .\content\templates\shop_templates\product-detail-2.html:407
 msgid "Page active"
 msgstr ""
 
@@ -735,52 +791,66 @@ msgstr ""
 
 #: .\content\templates\shop_templates\account.html:220
 #: .\content\templates\shop_templates\account.html:326
+#: .\content\templates\shop_templates\product-detail-2.html:989
 msgid "Terms and conditions"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:242
+#: .\content\templates\shop_templates\product-detail-2.html:888
 msgid "Quick Links"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:245
+#: .\content\templates\shop_templates\chinese.html:392
+#: .\content\templates\shop_templates\product-detail-2.html:891
 msgid "About us"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:246
+#: .\content\templates\shop_templates\product-detail-2.html:892
 msgid "Faq"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:248
+#: .\content\templates\shop_templates\product-detail-2.html:894
 msgid "My account"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:250
 #: .\content\templates\shop_templates\account.html:268
+#: .\content\templates\shop_templates\product-detail-2.html:896
+#: .\content\templates\shop_templates\product-detail-2.html:914
 msgid "Contacts"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:258
+#: .\content\templates\shop_templates\product-detail-2.html:904
 msgid "Clothes"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:259
+#: .\content\templates\shop_templates\product-detail-2.html:905
 msgid "Electronics"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:260
+#: .\content\templates\shop_templates\product-detail-2.html:906
 msgid "Furniture"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:261
 #: .\content\templates\shop_templates\account.html:262
+#: .\content\templates\shop_templates\product-detail-2.html:907
 msgid "Glasses"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:263
+#: .\content\templates\shop_templates\product-detail-2.html:909
 msgid "Watches"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:278
+#: .\content\templates\shop_templates\product-detail-2.html:924
 msgid "Keep in touch"
 msgstr ""
 
@@ -789,19 +859,582 @@ msgid "Your email"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:287
+#: .\content\templates\shop_templates\product-detail-2.html:935
 msgid "Follow Us"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:316
+#: .\content\templates\shop_templates\product-detail-2.html:976
 msgid "US Dollars"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:317
+#: .\content\templates\shop_templates\product-detail-2.html:977
 msgid "Euro"
 msgstr ""
 
 #: .\content\templates\shop_templates\account.html:327
+#: .\content\templates\shop_templates\product-detail-2.html:990
 msgid "Privacy"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:13
+#: .\content\templates\shop_templates\blog-external.html:13
+msgid "Multipages HTML5 Template"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:61
+#: .\content\templates\shop_templates\blog-details.html:544
+#: .\content\templates\shop_templates\blog-external.html:56
+msgid "Posts"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:64
+#: .\content\templates\shop_templates\blog-external.html:58
+msgid "Blog Details"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:66
+#: .\content\templates\shop_templates\blog-external.html:59
+msgid "Blog Details Fullwidth"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:70
+#: .\content\templates\shop_templates\blog-details.html:376
+#: .\content\templates\shop_templates\blog-details.html:542
+#: .\content\templates\shop_templates\blog-external.html:62
+#: .\content\templates\shop_templates\blog-external.html:440
+msgid "About Author"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:71
+#: .\content\templates\shop_templates\blog-details.html:545
+#: .\content\templates\shop_templates\blog-external.html:63
+#: .\content\templates\shop_templates\company-profile.html:721
+#: .\content\templates\shop_templates\product-detail-2.html:149
+msgid "Contact Us"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:94
+#: .\content\templates\shop_templates\blog-external.html:83
+#: .\content\templates\shop_templates\blog-external.html:229
+msgid "30"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:94
+#: .\content\templates\shop_templates\blog-external.html:83
+#: .\content\templates\shop_templates\blog-external.html:114
+#: .\content\templates\shop_templates\blog-external.html:145
+#: .\content\templates\shop_templates\blog-external.html:229
+#: .\content\templates\shop_templates\blog-external.html:262
+#: .\content\templates\shop_templates\blog-external.html:316
+#: .\content\templates\shop_templates\blog-external.html:335
+#: .\content\templates\shop_templates\blog-external.html:354
+#: .\content\templates\shop_templates\blog-external.html:373
+#: .\content\templates\shop_templates\blog-external.html:392
+#: .\content\templates\shop_templates\blog-external.html:411
+msgid "May"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:103
+msgid "Live with no excuses and travel with no regrets"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:108
+#: .\content\templates\shop_templates\blog-details.html:117
+#: .\content\templates\shop_templates\blog-details.html:140
+#: .\content\templates\shop_templates\blog-details.html:162
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis "
+"nostrum exercitationem mo sequatu autem vel eum iure veniam quis nostrum "
+"exercitationm corporisiex aleisequatur? Quis autem vel eum. At vero eos et "
+"accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium volup "
+"tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:110
+#: .\content\templates\shop_templates\blog-details.html:119
+msgid ""
+"Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et "
+"dolorum fuga. Et harumquid em rerum facilis est et expedita distinctio. Nam "
+"libero tempore cum soluta nobis est eligendioptio cum que nihil impedit quo "
+"minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia "
+"voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni "
+"dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui "
+"dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem "
+"ipsum dolor.\t\t\t\t"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:114
+msgid ""
+"Consectetur adipiscing elit, sed do num eiusmod tempor incididunt magina "
+"aliqua. Quis ipsum secto suspendise ultrces gravida"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:142
+#: .\content\templates\shop_templates\blog-details.html:165
+msgid ""
+"Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et "
+"dolorum fuga. Et harumquidem rerum facilis est et expedita distinctio. Nam "
+"libero tempore cum soluta nobis est eligendioptio cumque nihil impedit quo "
+"minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia "
+"voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni "
+"dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui "
+"dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem "
+"ipsum dolor."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:145
+msgid "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:146
+msgid "Sequatu autem vel eum iure veniam quis nostrum exercitationm corporis"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:147
+msgid "Vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:148
+msgid "Tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:174
+msgid "Share:"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:189
+msgid "#Photography"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:190
+msgid "#Travel"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:203
+#: .\content\templates\shop_templates\blog-details.html:298
+msgid "Patricia Doe"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:204
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis "
+"nostrum"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:205
+msgid "exercitatonem mosequatu autem vel eum ivenia."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:223
+msgid "Similar Posts"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:237
+msgid "To me Life is either a daring adventure or nothing"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:254
+msgid "Life begins at the end of your comfort zone"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:268
+msgid "Comments"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:280
+#: .\content\templates\shop_templates\blog-details.html:317
+msgid "Indie Rossi"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:281
+msgid "Reply"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:284
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis "
+"nostrum exercitationem mosequatu autem."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:285
+msgid "17 Apr 2020"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:299
+#: .\content\templates\shop_templates\blog-details.html:318
+msgid "Reply "
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:302
+#: .\content\templates\shop_templates\blog-details.html:321
+msgid ""
+"Repository-hosted Themes are required to support display of comments on "
+"static Pages as well as on single blog Posts."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:303
+msgid "19 Apr 2020"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:322
+msgid "14 Apr 2020"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:335
+msgid "Make A Comment"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:379
+#: .\content\templates\shop_templates\blog-external.html:443
+msgid ""
+"Lorem ipsum dolor sit amet consec adipiscing elit, sed do eiusmod tempor "
+"inci didunt ut labore et dolore magina aliqua. Quis ipsum suspendise"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:385
+#: .\content\templates\shop_templates\blog-external.html:449
+msgid "Facebook"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:386
+#: .\content\templates\shop_templates\blog-external.html:450
+msgid "45k Likes"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:393
+#: .\content\templates\shop_templates\blog-external.html:457
+msgid "Twitter"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:394
+#: .\content\templates\shop_templates\blog-external.html:458
+msgid "21k Follower"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:401
+#: .\content\templates\shop_templates\blog-details.html:513
+#: .\content\templates\shop_templates\blog-external.html:465
+#: .\content\templates\shop_templates\chinese.html:1044
+msgid "Instagram"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:402
+#: .\content\templates\shop_templates\blog-external.html:466
+msgid "23k Follower"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:410
+#: .\content\templates\shop_templates\blog-external.html:474
+msgid "Recent Posts"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:413
+#: .\content\templates\shop_templates\blog-external.html:477
+msgid "Let’s escape in the  cityscape"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:414
+#: .\content\templates\shop_templates\blog-external.html:478
+msgid "Failure doesn’t define  anything"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:415
+#: .\content\templates\shop_templates\blog-external.html:479
+msgid "Bohemian mountain towards Us"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:430
+msgid "Travel Hacks</a> (5)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:431
+msgid "South Asia</a> (7)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:432
+msgid "Travel Photography</a> (4)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:433
+msgid "Wildlife Adventure</a> (2)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:434
+msgid "Road Trips</a> (4)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:440
+#: .\content\templates\shop_templates\blog-external.html:504
+msgid "Most Read Blogs"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:447
+#: .\content\templates\shop_templates\blog-external.html:510
+msgid "Beautiful afternoon boating in Morine Lake"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:457
+#: .\content\templates\shop_templates\blog-external.html:518
+msgid "Sudden trip to grand Canyons"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:466
+#: .\content\templates\shop_templates\blog-external.html:526
+msgid "First Snow Experience of my life"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:474
+#: .\content\templates\shop_templates\blog-external.html:534
+msgid "Tag Cloud"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:476
+#: .\content\templates\shop_templates\blog-details.html:479
+#: .\content\templates\shop_templates\blog-details.html:543
+#: .\content\templates\shop_templates\blog-external.html:536
+#: .\content\templates\shop_templates\blog-external.html:539
+msgid "Travel"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:477
+#: .\content\templates\shop_templates\blog-details.html:481
+#: .\content\templates\shop_templates\blog-external.html:537
+#: .\content\templates\shop_templates\blog-external.html:541
+msgid "PHOTOGRAPHY"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:478
+#: .\content\templates\shop_templates\blog-external.html:538
+msgid "FASHION"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:480
+#: .\content\templates\shop_templates\blog-external.html:540
+msgid "HOBBY"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:482
+#: .\content\templates\shop_templates\blog-external.html:542
+msgid "NATURE"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:546
+msgid "Photography"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:558
+msgid " &copy; 2020 - Benzo Blog. Created by WP ThemeBooster. All Rights "
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-details.html:559
+msgid "Reserved</a>."
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:89
+#: .\content\templates\shop_templates\blog-external.html:236
+msgid "Live with no excuses & travel with no regrets"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:93
+#: .\content\templates\shop_templates\blog-external.html:124
+#: .\content\templates\shop_templates\blog-external.html:155
+#: .\content\templates\shop_templates\blog-external.html:240
+#: .\content\templates\shop_templates\blog-external.html:273
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise "
+"ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel "
+"facilisis... "
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:97
+#: .\content\templates\shop_templates\blog-external.html:128
+#: .\content\templates\shop_templates\blog-external.html:159
+#: .\content\templates\shop_templates\blog-external.html:244
+#: .\content\templates\shop_templates\blog-external.html:277
+msgid "Continue Reading"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:114
+msgid "26"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:120
+#: .\content\templates\shop_templates\blog-external.html:269
+msgid "50 travel essentials you must have"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:145
+#: .\content\templates\shop_templates\blog-external.html:373
+msgid "22"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:151
+#: .\content\templates\shop_templates\blog-external.html:323
+msgid "With age, comes wisdom. With travel, comes understanding"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:184
+msgid "Travel & Advanture"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:185
+msgid "06</span> Posts"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:193
+msgid "Road Trip"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:194
+#: .\content\templates\shop_templates\product-search.html:604
+#: .\content\templates\shop_templates\product-search.html:643
+msgid "12"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:194
+#: .\content\templates\shop_templates\blog-external.html:203
+#: .\content\templates\shop_templates\blog-external.html:212
+msgid " Posts"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:202
+msgid "Camping Trip"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:203
+msgid "09"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:211
+msgid "Travel Photography"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:212
+msgid "16"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:234
+#: .\content\templates\shop_templates\blog-external.html:267
+#: .\content\templates\shop_templates\blog-external.html:321
+#: .\content\templates\shop_templates\blog-external.html:378
+#: .\content\templates\shop_templates\blog-external.html:397
+msgid " By Partricia Doe"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:262
+#: .\content\templates\shop_templates\blog-external.html:316
+#: .\content\templates\shop_templates\blog-external.html:335
+msgid "27"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:297
+msgid "Subscribe to newsletter"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:298
+msgid "Get each & every new blogs through your e-mail"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:340
+#: .\content\templates\shop_templates\blog-external.html:359
+#: .\content\templates\shop_templates\blog-external.html:416
+msgid "By Partricia Doe"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:342
+msgid "I am not the same having seen the moon shineon the sky"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:354
+#: .\content\templates\shop_templates\product-search.html:610
+msgid "24"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:361
+msgid "Travel and change of place impart new vigor to the mind"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:380
+msgid "A journey is best measured in friends, rather than miles"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:392
+msgid "20"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:399
+msgid "He who would travel happily must travel light"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:411
+msgid "07"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:418
+msgid "You will see what a tiny place occupy in the world"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:432
+msgid "Older Post"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:494
+msgid "Travel Hacks (5)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:495
+msgid "South Asia (7)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:496
+msgid "Travel Photography (4)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:497
+msgid "Wildlife Adventure (2)"
+msgstr ""
+
+#: .\content\templates\shop_templates\blog-external.html:498
+msgid "Road Trips (4)"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:25
+msgid "Cart page"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:32
+msgid "Product"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:35
+msgid "Price($)"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:38
+#: .\content\templates\shop_templates\cart2.html:54
+#: .\content\templates\shop_templates\checkout\checkout.html:1099
+#: .\content\templates\shop_templates\product-detail-2.html:465
+msgid "Quantity"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:41
+msgid "Subtotal($)"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:127
+msgid "Apply Coupon"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:151
+#: .\content\templates\shop_templates\cart.html:187
+msgid "Total:"
+msgstr ""
+
+#: .\content\templates\shop_templates\cart.html:154
+msgid "Proceed to Checkout"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:26
@@ -817,24 +1450,30 @@ msgid "Shopping Cart"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:50
+#: .\content\templates\shop_templates\wishlist.html:57
 msgid "Product Photo"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:51
+#: .\content\templates\shop_templates\wishlist.html:58
 msgid "Product Name"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:52
-#: .\content\templates\shop_templates\product-detail.html:416
+#: .\content\templates\shop_templates\checkout\checkout.html:1098
+#: .\content\templates\shop_templates\checkout\checkout.html:1155
+#: .\content\templates\shop_templates\product-detail-2.html:506
+#: .\content\templates\shop_templates\product-detail.html:431
+#: .\content\templates\shop_templates\wishlist.html:59
 msgid "Description"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:53
+#: .\content\templates\shop_templates\checkout\checkout.html:1100
+#: .\content\templates\shop_templates\checkout\checkout.html:1156
+#: .\content\templates\shop_templates\product-search.html:697
+#: .\content\templates\shop_templates\wishlist.html:60
 msgid "Price"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:54
-msgid "Quantity"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:55
@@ -844,66 +1483,6 @@ msgstr ""
 #: .\content\templates\shop_templates\cart2.html:74
 msgid ""
 "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:110
-msgid "Caculate shipping"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:116
-msgid "Select your Counttry"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:118
-msgid "United States (USA)..."
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:123
-msgid "Select your State"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:125
-msgid "State / City..."
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:126
-msgid "City1"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:127
-msgid "City2"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:128
-msgid "City3"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:132
-msgid "Zip Code"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:134
-msgid "Zip code..."
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:140
-msgid "Update Shipping"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:150
-msgid "Coupon code"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:153
-msgid "You can find coupon code from our Activities !"
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:160
-msgid "Enter your Coupon code..."
-msgstr ""
-
-#: .\content\templates\shop_templates\cart2.html:164
-msgid "REdeem code"
 msgstr ""
 
 #: .\content\templates\shop_templates\cart2.html:173
@@ -966,6 +1545,22 @@ msgstr ""
 msgid "Other billing address"
 msgstr ""
 
+#: .\content\templates\shop_templates\checkout.html:131
+msgid "2. Payment and Shipping"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout.html:134
+msgid "Credit Card"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout.html:142
+msgid "Paypal"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout.html:150
+msgid "Cash on delivery"
+msgstr ""
+
 #: .\content\templates\shop_templates\checkout.html:158
 msgid "Bank Transfer"
 msgstr ""
@@ -987,11 +1582,13 @@ msgid "3. Order Summary"
 msgstr ""
 
 #: .\content\templates\shop_templates\checkout.html:209
+#: .\content\templates\shop_templates\checkout\checkout.html:1161
 msgid "Subtotal"
 msgstr ""
 
 #: .\content\templates\shop_templates\checkout.html:210
-#: .\content\templates\shop_templates\product-detail.html:397
+#: .\content\templates\shop_templates\checkout\checkout.html:1172
+#: .\content\templates\shop_templates\product-detail.html:412
 msgid "Shipping"
 msgstr ""
 
@@ -1007,120 +1604,2104 @@ msgstr ""
 msgid "Confirm and Pay"
 msgstr ""
 
+#: .\content\templates\shop_templates\checkout\checkout.html:187
+msgid "window.ShopifyPaypalV4VisibilityTracking = true;"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:218
+msgid "Skip to content"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:224
+#: .\content\templates\shop_templates\checkout\checkout.html:1080
+msgid "Musicmo -  Musical Instruments Shop Shopify Theme"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:226
+#: .\content\templates\shop_templates\checkout\checkout.html:273
+#: .\content\templates\shop_templates\checkout\checkout.html:1082
+msgid "Information"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:243
+msgid "Show order summary"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:249
+msgid "Hide order summary"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:255
+msgid "Sale price"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:271
+msgid "Musicmo -  Checkout"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:370
+msgid ""
+"We’ll send you an order receipt and recurring shipping updates via text "
+"message. Reply STOP to unsubscribe. Reply HELP for help. Message frequency "
+"varies. Msg &amp; data rates may apply. View our "
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:372
+msgid "Privacy Policy and "
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:374
+msgid "Terms of Service"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:385
+msgid "Shipping address"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:539
+msgid "Country/region"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:547
+#: .\content\templates\shop_templates\checkout\checkout.html:593
+msgid "China"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:549
+msgid "Afghanistan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:551
+msgid "Albania"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:552
+msgid "Algeria"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:553
+msgid "Andorra"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:554
+msgid "Angola"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:555
+msgid "Anguilla"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:556
+msgid "Antigua &amp;Barbuda"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:557
+msgid "Argentina"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:558
+msgid "Armenia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:559
+msgid "Aruba"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:560
+msgid "Ascension Island"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:561
+msgid "Australia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:562
+msgid "Austria"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:563
+msgid "Azerbaijan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:564
+msgid "Bahamas"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:565
+msgid "Bahrain"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:566
+msgid "Bangladesh"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:567
+msgid "Barbados"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:568
+msgid "Belarus"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:569
+msgid "Belgium"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:570
+msgid "Belize"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:571
+msgid "Benin"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:572
+msgid "Bermuda"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:573
+msgid "Bhutan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:574
+msgid "Bolivia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:575
+msgid "Bosnia &amp; Herzegovina"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:576
+msgid "Botswana"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:577
+msgid "Brazil"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:578
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:579
+msgid "British Virgin Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:580
+msgid "Brunei"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:581
+msgid "Bulgaria"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:582
+msgid "Burkina Faso"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:583
+msgid "Burundi"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:584
+msgid "Cambodia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:585
+msgid "Cameroon"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:586
+msgid "Canada"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:587
+msgid "Cape Verde"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:588
+msgid "Caribbean Netherlands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:589
+msgid "Cayman Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:590
+msgid "Central African Republic"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:591
+msgid "Chad"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:592
+msgid "Chile"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:594
+msgid "Christmas Island"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:595
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:596
+msgid "Colombia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:597
+msgid "Comoros"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:598
+msgid "Congo - Brazzaville"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:599
+msgid "Congo - Kinshasa"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:600
+msgid "Cook Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:601
+msgid "Costa Rica"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:602
+msgid "Croatia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:603
+msgid "Curaçao"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:604
+msgid "Cyprus"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:605
+msgid "Czechia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:606
+msgid "Côte d’Ivoire"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:607
+msgid "Denmark"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:608
+msgid "Djibouti"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:609
+msgid "Dominica"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:610
+msgid "Dominican Republic"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:611
+msgid "Ecuador"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:612
+msgid "Egypt"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:613
+msgid "El Salvador"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:614
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:615
+msgid "Eritrea"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:616
+msgid "Estonia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:617
+msgid "Eswatini"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:618
+msgid "Ethiopia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:619
+msgid "Falkland Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:620
+msgid "Faroe Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:621
+msgid "Fiji"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:622
+msgid "Finland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:623
+msgid "France"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:624
+msgid "French Guiana"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:625
+msgid "French Polynesia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:626
+msgid "French Southern Territories"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:627
+msgid "Gabon"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:628
+msgid "Gambia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:629
+msgid "Georgia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:630
+msgid "Germany"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:631
+msgid "Ghana"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:632
+msgid "Gibraltar"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:633
+msgid "Greece"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:634
+msgid "Greenland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:635
+msgid "Grenada"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:636
+msgid "Guadeloupe"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:637
+msgid "Guatemala"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:638
+msgid "Guernsey"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:639
+msgid "Guinea"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:640
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:641
+msgid "Guyana"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:642
+msgid "Haiti"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:643
+msgid "Honduras"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:644
+msgid "Hong Kong SAR"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:645
+msgid "Hungary"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:646
+msgid "Iceland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:647
+msgid "India"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:648
+msgid "Indonesia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:649
+msgid "Iraq"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:650
+msgid "Ireland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:651
+msgid "Isle of Man"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:652
+msgid "Israel"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:653
+msgid "Italy"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:654
+msgid "Jamaica"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:655
+msgid "Japan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:656
+msgid "Jersey"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:657
+msgid "Jordan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:658
+msgid "Kazakhstan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:659
+msgid "Kenya"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:660
+msgid "Kiribati"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:661
+msgid "Kosovo"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:662
+msgid "Kuwait"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:663
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:664
+msgid "Laos"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:665
+msgid "Latvia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:666
+msgid "Lebanon"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:667
+msgid "Lesotho"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:668
+msgid "Liberia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:669
+msgid "Libya"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:670
+msgid "Liechtenstein"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:671
+msgid "Lithuania"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:672
+msgid "Luxembourg"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:673
+msgid "Macao SAR"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:674
+msgid "Madagascar"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:675
+msgid "Malawi"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:676
+msgid "Malaysia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:677
+msgid "Maldives"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:678
+msgid "Mali"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:679
+msgid "Malta"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:680
+msgid "Martinique"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:681
+msgid "Mauritania"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:682
+msgid "Mauritius"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:683
+msgid "Mayotte"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:684
+msgid "Mexico"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:685
+msgid "Moldova"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:686
+msgid "Monaco"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:687
+msgid "Mongolia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:688
+msgid "Montenegro"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:689
+msgid "Montserrat"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:690
+msgid "Morocco"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:691
+msgid "Mozambique"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:692
+msgid "Myanmar (Burma)"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:693
+msgid "Namibia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:694
+msgid "Nauru"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:695
+msgid "Nepal"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:696
+msgid "Netherlands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:697
+msgid "New Caledonia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:698
+msgid "New Zealand"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:699
+msgid "Nicaragua"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:700
+msgid "Niger"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:701
+msgid "Nigeria"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:702
+msgid "Niue"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:703
+msgid "Norfolk Island"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:704
+msgid "North Macedonia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:705
+msgid "Norway"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:706
+msgid "Oman"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:707
+msgid "Pakistan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:708
+msgid "Palestinian Territories"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:709
+msgid "Panama"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:710
+msgid "Papua New Guinea"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:711
+msgid "Paraguay"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:712
+msgid "Peru"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:713
+msgid "Philippines"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:714
+msgid "Pitcairn Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:715
+msgid "Poland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:716
+msgid "Portugal"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:717
+msgid "Qatar"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:718
+msgid "Réunion"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:719
+msgid "Romania"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:720
+msgid "Russia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:721
+msgid "Rwanda"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:722
+msgid "Samoa"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:723
+msgid "San Marino"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:724
+msgid "São Tomé &amp; Príncipe"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:725
+msgid "Saudi Arabia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:726
+msgid "Senegal"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:727
+msgid "Serbia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:728
+msgid "Seychelles"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:729
+msgid "Sierra Leone"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:730
+msgid "Singapore"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:731
+msgid "Sint Maarten"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:732
+msgid "Slovakia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:733
+msgid "Slovenia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:734
+msgid "Solomon Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:735
+msgid "Somalia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:736
+msgid "South Africa"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:737
+msgid "South Georgia &amp; South Sandwich Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:738
+msgid "South Korea"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:739
+msgid "South Sudan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:740
+msgid "Spain"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:741
+msgid "Sri Lanka"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:742
+msgid "St. Barthélemy"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:743
+msgid "St. Helena"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:744
+msgid "St. Kitts &amp; Nevis"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:745
+msgid "St. Lucia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:746
+msgid "St. Martin"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:747
+msgid "St. Pierre &amp; Miquelon"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:748
+msgid "St. Vincent &amp;Grenadines"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:749
+msgid "Sudan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:750
+msgid "Suriname"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:751
+msgid "Svalbard &amp; Jan Mayen"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:752
+msgid "Sweden"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:753
+msgid "Switzerland"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:754
+msgid "Taiwan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:755
+msgid "Tajikistan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:756
+msgid "Tanzania"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:757
+msgid "Thailand"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:758
+msgid "Timor-Leste"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:759
+msgid "Togo"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:760
+msgid "Tokelau"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:761
+msgid "Tonga"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:762
+msgid "Trinidad &amp; Tobago"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:763
+msgid "Tristan da Cunha"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:764
+msgid "Tunisia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:765
+msgid "Turkey"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:766
+msgid "Turkmenistan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:767
+msgid "Turks &amp; Caicos Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:768
+msgid "Tuvalu"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:769
+msgid "U.S. Outlying Islands"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:770
+msgid "Uganda"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:771
+msgid "Ukraine"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:772
+msgid "United Arab Emirates"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:773
+msgid "United Kingdom"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:774
+msgid "United States"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:775
+msgid "Uruguay"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:776
+msgid "Uzbekistan"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:777
+msgid "Vanuatu"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:778
+msgid "Vatican City"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:779
+msgid "Venezuela"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:780
+msgid "Vietnam"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:781
+msgid "Wallis &amp;Futuna"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:782
+msgid "Western Sahara"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:783
+msgid "Yemen"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:784
+msgid "Zambia"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:785
+msgid "Zimbabwe"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:802
+#: .\content\templates\shop_templates\checkout\checkout.html:809
+msgid "State"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1034
+msgid "Continue to shipping"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1046
+msgid "Return to cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1059
+msgid "Opens external website in a new window."
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1061
+msgid "Opens in a new window."
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1063
+msgid "Opens external website."
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1065
+msgid ""
+"Customer information - Musicmo -  Musical Instruments Shop Shopify Theme - "
+"Checkout"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1071
+msgid "All rights reserved Musicmo - Musical Instruments Shop Shopify Theme"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1088
+msgid "Order summary"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1094
+msgid "Shopping cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1097
+msgid "Product image"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1122
+msgid "Add: {{ item.created_at }}"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1141
+msgid "Scroll for more items"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1152
+msgid "Cost summary"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1176
+msgid "Calculated at next step"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1182
+msgid "Taxes (estimated)"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1194
+#: .\content\templates\shop_templates\product-detail-2.html:296
+msgid "Total"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1213
+msgid "Updated total price:"
+msgstr ""
+
+#: .\content\templates\shop_templates\checkout\success.html:29
 #: .\content\templates\shop_templates\confirm.html:29
 msgid "Order completed!"
 msgstr ""
 
+#: .\content\templates\shop_templates\checkout\success.html:30
 #: .\content\templates\shop_templates\confirm.html:30
 msgid "You will receive a confirmation email soon!"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:70
+#: .\content\templates\shop_templates\chinese.html:14
+msgid "Holiday Planners - Travel & Tour HTML5 Template"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:258
+msgid "Enjoy The"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:258
+#: .\content\templates\shop_templates\chinese.html:422
+#: .\content\templates\shop_templates\chinese.html:513
+#: .\content\templates\shop_templates\company-profile.html:124
+#: .\content\templates\shop_templates\homepage.html:135
+#: .\content\templates\shop_templates\product-search.html:86
+msgid "Chinese Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:259
+msgid ""
+"Serve as a communication bridge between Chinese instruments and Western "
+"instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:275
+msgid "Music and Instruments are"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:275
+msgid "Universal."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:276
+msgid "A Convivial Journey of Chinese Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:292
+msgid "Let us Shop"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:292
+msgid "Chinese Instruments."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:293
+msgid "Melodious Instruments offer you a break from routine life."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:394
+#: .\content\templates\shop_templates\company-profile.html:317
+msgid "Chinese"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:394
+msgid "Instruments Shop"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:394
+msgid "Now"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:397
+msgid ""
+"The project displays Chinese and Western musical instruments in the separate "
+"zone to attract potential customers from different cultural backgrounds. The "
+"following figures shows the shopping zone specially designed to promote "
+"Chinese instruments."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:398
+msgid ""
+"Music is a language, and the more “words” you learn the more you will be "
+"able to say. You will soon find yourself wanting to apply the information "
+"you’ve learned to create music of your own and express your own voice. Music "
+"is not just about knowing how to play specific songs, it is about expressing "
+"emotion through sound. Whether it is just playing your own version of a "
+"song, or creating an entirely new one, learning how to play an instrument "
+"enables you to use your creativity to say something original."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:402
+#: .\content\templates\shop_templates\chinese.html:513
+#: .\content\templates\shop_templates\index.html:201
+#: .\content\templates\shop_templates\index.html:668
+msgid "Shop Now"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:420
+msgid "Amazing Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:422
+msgid "Choose The"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:422
+msgid "Just Extend Your"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:423
+msgid "Music Style"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:437
+msgid "Pipa"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:452
+msgid "Fengling"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:467
+msgid "Drum"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:484
+msgid "Lusheng"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:494
+msgid "View All"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:511
+msgid "Amazing Offers"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:513
+msgid "View of"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:513
+msgid "and"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:529
+#, python-format
+msgid "22%% off"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:533
+msgid "Cinque Terre, Italy"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:534
+msgid "$1200"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:545
+#: .\content\templates\shop_templates\chinese.html:593
+#: .\content\templates\shop_templates\chinese.html:739
+#, python-format
+msgid "15%% off"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:549
+msgid "Parthenon, Greece"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:561
+#: .\content\templates\shop_templates\chinese.html:794
+#, python-format
+msgid "38%% off"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:565
+msgid "Jaisalmer Fort, Jaisalmer"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:577
+#, python-format
+msgid "32%% off"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:581
+msgid "JungGrenzgipfel, Thailand"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:597
+msgid "Jungfrau Mountain, Switzerland"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:635
+msgid "700+ Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:636
+#: .\content\templates\shop_templates\chinese.html:935
+#: .\content\templates\shop_templates\chinese.html:952
+#: .\content\templates\shop_templates\chinese.html:969
+msgid ""
+"The Chinese philosopher Confucius said long ago that \"Music produces a kind "
+"of pleasure which human nature cannot do without.\" Playing a musical "
+"instrument has many benefits and can bring joy to you and to everyone around "
+"you."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:647
+msgid "BEST PRICE GUARANTEE"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:648
+msgid ""
+"You don’t have to become a virtuoso to reap the benefits of music. You will "
+"develop a taste for the different composers, styles, and genres of music. "
+"Not only does this cause you to be more well-versed in music, but it also "
+"leads to a higher appreciation of the skill."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:659
+msgid "TOP NOTCH SUPPORT"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:660
+msgid ""
+"Once you learn how to effectively play an instrument, not only do you have "
+"the ability to share your gift with family and friends, you can bless those "
+"at nursing homes, church, banquets and more. You might even get paid for "
+"your work!"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:674
+msgid "Chinese instrument in International"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:676
+msgid "Trending, <span>Best Selling Instruments</span> And Amazing Musics"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:688
+msgid "Matouqin"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:692
+msgid "(Mongolian) A two-string stringed musical instrument."
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:695
+msgid "It has a trapezoidal body and a horse-head-shaped handle "
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:743
+msgid "Rebagu"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:747
+msgid "(Tibetan) A percussion instrument in dancing"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:750
+msgid ""
+"Women hold a drum in her right hand and a handle in her left hand, changing "
+"movements by spinning and tapping "
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:798
+msgid "Lishidagu"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:802
+msgid "(Han)Holiday celebration drum, used to strengthen the military momentum"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:805
+msgid ""
+"The tympanic membrane is about 1000m in diameter and is struck by one or two "
+"people each holding a double stick"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:852
+msgid "Yueqin"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:856
+msgid "(Han) A plucked stringed instruments from Han Dynasty"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:859
+msgid ""
+"The neck of the piano is short, and the sound of the piano is leisurely "
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:914
+msgid "Testimonials"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:916
+msgid "Customer <span>Reviews"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:938
+msgid "John Doe"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:939
+msgid "Rated by instruments player on facebook"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:955
+msgid "Minh Chau"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:956
+msgid "Rated by instruments player on instagram"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:972
+msgid "Mathew A. Stephenson"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:973
+msgid "Rated by instruments player on twitter"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:991
+#: .\content\templates\shop_templates\index.html:717
+msgid "Latest News"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:993
+msgid "Learn More <span>About Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:998
+msgid "Go to Blog"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:1025
+msgid "Learn More"
+msgstr ""
+
+#: .\content\templates\shop_templates\chinese.html:1046
+msgid "Instrumentsplayer"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:91
+msgid "Melodious Instruments Shop ."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:92
+msgid "We are team of talented instruments sellers"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:100
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "3D"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:100
+msgid "Preview"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:106
+msgid "3D Customization"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:112
+msgid "Smart Recommendation"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:118
+msgid "Instruments Games"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:145
+msgid "Shift from brick-and-mortar retail to e-commerce"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:146
+msgid "This is a Melodious Instruments Shop that was "
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:146
+msgid "run in physical business by a family previously"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:149
+msgid "Firstly, our store has essential functions for online shopping"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:150
+msgid ""
+"To give customers immersive shopping experience, our project employs the "
+"usage of 3D instruments preview and instruments playing games in our website."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:151
+msgid ""
+"Our shop is original in allowing customers to interact with 3D models to "
+"customise their preferred instruments, which have not gained much prevalence "
+"in current e-commerce."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:153
+msgid ""
+"In the context of the pandemic, the family-owned instruments local shop was "
+"forced to close their physical business and is now anticipating"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:153
+#: .\content\templates\shop_templates\company-profile.html:297
+msgid "e-commerce as a auxiliary or alternative sales channel."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:199
+msgid "Est labore ad"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:200
+msgid ""
+"Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut "
+"aliquip"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:204
+msgid "Harum esse qui"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:205
+msgid ""
+"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
+"deserunt"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:209
+msgid "Aut occaecati"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:210
+msgid ""
+"Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis "
+"facere"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:214
+msgid "Beatae veritatis"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:215
+msgid ""
+"Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:229
+msgid "Check our Services"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:236
+msgid "Preview 3D Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:237
+msgid "You can view instruments in 3D forms,"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:237
+msgid "giving you a more comprehensive about the instruments."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:245
+msgid "Customize 3D Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:246
+msgid ""
+"You can customize your preferred 3D instruments, better catering to your "
+"preferences."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:254
+msgid "Smart Instruments Recommendations"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:255
+msgid "Our store can better identify your preferred instruments "
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:255
+msgid "by using advanced technologies."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:263
+msgid "Playing Instruments Games"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:264
+msgid ""
+"You can have immersive shopping experience by playing instruments online."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:272
+msgid "Ordering and Delivery"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:273
+msgid ""
+"You can order your desired instruments. We will deliver it to you as soon as "
+"possible."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:281
+msgid "Cultural Communication"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:282
+msgid ""
+"Our store specially designed Chinese instruments zone and Western "
+"instruments zone, "
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:282
+msgid "facilitating the communication between different cultures."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:296
+#: .\content\templates\shop_templates\company-profile.html:298
+msgid "Shop Online Now"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:297
+msgid ""
+"In the context of the pandemic, the family-owned instruments local shop was "
+"forced to close their physical business and is now anticipating "
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:301
+msgid "features"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:309
+msgid "Portfolio"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:310
+msgid "Check our Portfolio"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:316
+#: .\content\templates\shop_templates\index.html:321
+msgid "All"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:318
+msgid "Western"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:331
+msgid "App 1"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:332
+#: .\content\templates\shop_templates\company-profile.html:366
+#: .\content\templates\shop_templates\company-profile.html:417
+msgid "App"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:348
+#: .\content\templates\shop_templates\company-profile.html:467
+msgid "Web 3"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:349
+#: .\content\templates\shop_templates\company-profile.html:400
+#: .\content\templates\shop_templates\company-profile.html:468
+msgid "Web"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:365
+msgid "App 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:382
+msgid "Card 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:383
+#: .\content\templates\shop_templates\company-profile.html:434
+#: .\content\templates\shop_templates\company-profile.html:451
+msgid "Card"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:399
+msgid "Web 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:416
+msgid "App 3"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:433
+msgid "Card 1"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:450
+msgid "Card 3"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:494
+msgid "Adroit Design, Technical, Operation Team"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:495
+msgid ""
+"Our team members are equipped with abilities to provide your a satisfied "
+"shopping experience."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:502
+msgid "Happy Clients"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:502
+msgid "many consumers give positive feedback to our store"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:511
+msgid "Modernization"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:511
+msgid "adapt the physical business to e-commerce"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:520
+msgid "Years of experience"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:520
+msgid "our family-owned instruments store has been run for several years"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:529
+msgid "Originality"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:529
+msgid ""
+"to better cater to users' needs, our store employ new features that are "
+"unprecedented in physical store and e-commerce to make it more appealing to "
+"customers."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:551
+msgid "Wang Yuyang"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:552
+msgid "Ceo &amp; Founder"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:554
+msgid ""
+"I inherited this instruments from my grandparents. It suffers a lot during "
+"the pandemic. But now we are moving it online to make it accessible to our "
+"potential customers."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:563
+msgid "Yang Liuxin"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:564
+msgid "Designer"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:566
+msgid ""
+"I am responsible for the online operations of our instruments selling store. "
+"I hope such a illustrious retail could survive the pandemic and even attract "
+"more customers."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:575
+msgid "Zhan Yi"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:576
+msgid "Store Owner"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:578
+msgid ""
+"I am the manager of the online instruments store. I shoulder the "
+"responsibility of deciding the long-term strategies."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:587
+msgid "Weng Han"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:588
+msgid "Freelancer"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:590
+msgid ""
+"I am a recruiter of the instruments store. The highly respected store hires "
+"me to incorporate the 3D elements into our e-commerce to make it more "
+"attractive."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:599
+msgid "Ma Zixiao"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:600
+#: .\content\templates\shop_templates\company-profile.html:612
+msgid "Entrepreneur"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:602
+msgid ""
+"I am the receptionist of the website. I will recommend instruments to you "
+"based on your preferences. If you have any questions or requests, please "
+"contact me freely."
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:611
+msgid "Chen Zheyu"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:630
+msgid "Team"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:631
+msgid "Check our Team"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:649
+msgid "Walter White"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:650
+msgid "Chief Executive Officer"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:668
+msgid "Sarah Jhonson"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:669
+msgid "Product Manager"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:687
+msgid "William Anderson"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:688
+msgid "CTO"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:706
+msgid "Amanda Jepson"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:707
+msgid "Accountant"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:736
+msgid "Location:"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:737
+msgid "Beijing University of Technology, Pingleyuan 100, Beijing"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:742
+#: .\content\templates\shop_templates\personal_profile.html:195
+msgid "Email:"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:743
+msgid "yuyang.wang@ucdconnect.ie"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:748
+msgid "Call:"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:749
+msgid "18225658312"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:778
+msgid "Loading"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:780
+msgid "Your message has been sent. Thank you!"
+msgstr ""
+
+#: .\content\templates\shop_templates\company-profile.html:783
+msgid "Send Message"
+msgstr ""
+
+#: .\content\templates\shop_templates\game_guitar.html:61
+#: .\content\templates\shop_templates\game_piano.html:17
+msgid "Sample"
+msgstr ""
+
+#: .\content\templates\shop_templates\game_guitar.html:62
+#: .\content\templates\shop_templates\game_piano.html:18
+msgid "Sample2"
+msgstr ""
+
+#: .\content\templates\shop_templates\game_guitar.html:63
+#: .\content\templates\shop_templates\game_piano.html:19
+msgid "Start play"
+msgstr ""
+
+#: .\content\templates\shop_templates\game_guitar.html:65
+#: .\content\templates\shop_templates\game_piano.html:21
+msgid "Stop play"
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:7
+msgid "Forbidden"
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "You are "
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Not Allowed to view this project"
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid ""
+"This is the project built by COMP3030J Group8-IllegalGroupNameException."
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Please contact "
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Group8"
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid " to view this project."
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Your request has been intercept by our "
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Auth Middleware."
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:15
+msgid "This incident has been reported."
+msgstr ""
+
+#: .\content\templates\shop_templates\get_pictures.html:16
+msgid "a"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:67
+msgid "STYLE DESTINATION"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:71
+msgid "Starter Drum Kit"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:79
 msgid "SHOP NOW"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:156
-msgid "~ Western ~"
+#: .\content\templates\shop_templates\homepage.html:117
+msgid "Western Instruments"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:156
-#: .\content\templates\shop_templates\homepage.html:183
+#: .\content\templates\shop_templates\homepage.html:170
+msgid " Western "
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:170
+#: .\content\templates\shop_templates\homepage.html:197
 msgid "Musical Instruments"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:183
-msgid "~ CHINESE ~"
+#: .\content\templates\shop_templates\homepage.html:197
+msgid " CHINESE "
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:211
-msgid "latest news"
+#: .\content\templates\shop_templates\homepage.html:231
+msgid "Your"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:247
+#: .\content\templates\shop_templates\homepage.html:232
+msgid "Own style"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:233
+msgid "Design Instrument"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:240
+msgid "Try 3D Model"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:241
+msgid "Customize various"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:242
+msgid "Piano and Guitar"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:263
 msgid "Musical Instrument"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:247
-msgid "~Color Design~"
+#: .\content\templates\shop_templates\homepage.html:263
+msgid "Color Design"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:261
-msgid "idea Design"
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:264
-msgid ""
-"Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus "
-"posuere Casy yoleacene anritv antacus."
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:269
-#: .\content\templates\shop_templates\homepage.html:277
-msgid "Confection"
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:272
-msgid ""
-"Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas "
-"detyuasirtase. Santac us uisque nuaderas"
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:280
-msgid ""
-"Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas "
-"detyuas. Santacus isque nulladeras."
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:304
+#: .\content\templates\shop_templates\homepage.html:292
+#: .\content\templates\shop_templates\model-design.html:776
+#: .\content\templates\shop_templates\model-design.html:793
+#: .\content\templates\shop_templates\model-design.html:819
+#: .\content\templates\shop_templates\model-design.html:835
+#: .\content\templates\shop_templates\model-design.html:852
+#: .\content\templates\shop_templates\model-design.html:869
 msgid "Start Design"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:306
-#: .\content\templates\shop_templates\product-detail.html:523
-msgid "New"
+#: .\content\templates\shop_templates\homepage.html:294
+msgid "3D Model"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:329
+#: .\content\templates\shop_templates\homepage.html:312
+msgid "DESIGNERS:"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:319
 msgid "David Cilezege"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:336
-#: .\content\templates\shop_templates\homepage.html:343
-#: .\content\templates\shop_templates\homepage.html:350
+#: .\content\templates\shop_templates\homepage.html:326
+#: .\content\templates\shop_templates\homepage.html:333
+#: .\content\templates\shop_templates\homepage.html:340
 msgid "Ana Hovurt"
 msgstr ""
 
+#: .\content\templates\shop_templates\homepage.html:354
+msgid "Craftsman spirit"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:357
+msgid ""
+"Professional ethics, ability, ang quality of the embodiment, is a "
+"professional value orientation and behavior of practitioners. "
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:362
+msgid "Manufacturer"
+msgstr ""
+
+#: .\content\templates\shop_templates\homepage.html:365
+msgid ""
+"The basic connotation of \"craftsmanship\" includes dedication, leaning, "
+"concentration, innovation and other aspects."
+msgstr ""
+
 #: .\content\templates\shop_templates\homepage.html:370
-msgid "Women’s"
+msgid "Iluminous Designer"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:371
-msgid "Live style"
+#: .\content\templates\shop_templates\homepage.html:373
+msgid ""
+"Innovation and understanding of what users want make our online shop "
+"distinguished from others."
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:372
-msgid "Danlien Polosa"
+#: .\content\templates\shop_templates\homepage.html:384
+msgid "latest news"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:387
-msgid "Jewerly"
+#: .\content\templates\shop_templates\homepage.html:421
+msgid ""
+"SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br>UPDATES, AND ANOTHER STUFF "
+"BY EMAIL."
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:388
-msgid "For Girl"
-msgstr ""
-
-#: .\content\templates\shop_templates\homepage.html:511
+#: .\content\templates\shop_templates\homepage.html:469
 msgid "Color :"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:558
+#: .\content\templates\shop_templates\homepage.html:516
 #: .\content\templates\shop_templates\index.html:375
-#: .\content\templates\shop_templates\product-detail.html:549
+#: .\content\templates\shop_templates\product-detail-2.html:696
+#: .\content\templates\shop_templates\product-detail-2.html:730
+#: .\content\templates\shop_templates\product-detail-2.html:764
+#: .\content\templates\shop_templates\product-detail-2.html:799
+#: .\content\templates\shop_templates\product-detail-2.html:834
+#: .\content\templates\shop_templates\product-detail.html:564
+#: .\content\templates\shop_templates\searched-product-list.html:31
+#: .\content\templates\shop_templates\wishlist.html:62
 msgid "Add to cart"
 msgstr ""
 
-#: .\content\templates\shop_templates\homepage.html:561
+#: .\content\templates\shop_templates\homepage.html:519
 msgid "Share with : "
 msgstr ""
 
@@ -1136,32 +3717,34 @@ msgstr ""
 msgid "Limited items available at this price"
 msgstr ""
 
-#: .\content\templates\shop_templates\index.html:201
-msgid "Shop Now"
-msgstr ""
-
 #: .\content\templates\shop_templates\index.html:222
+#: .\content\templates\shop_templates\product-detail-2.html:853
 msgid "Free Shipping"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:223
+#: .\content\templates\shop_templates\product-detail-2.html:854
 msgid "For all oders over $99"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:231
+#: .\content\templates\shop_templates\product-detail-2.html:862
 msgid "Secure Payment"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:232
+#: .\content\templates\shop_templates\product-detail-2.html:863
 #, python-format
 msgid "100%% secure payment"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:240
+#: .\content\templates\shop_templates\product-detail-2.html:871
 msgid "24/7 Support"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:241
+#: .\content\templates\shop_templates\product-detail-2.html:872
 msgid "Online top support"
 msgstr ""
 
@@ -1170,16 +3753,15 @@ msgid "New Arrival"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:316
-#: .\content\templates\shop_templates\product-detail.html:517
+#: .\content\templates\shop_templates\product-detail-2.html:665
+#: .\content\templates\shop_templates\product-detail.html:532
+#: .\content\templates\shop_templates\product-search.html:81
 msgid "Products"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:317
+#: .\content\templates\shop_templates\product-detail-2.html:666
 msgid "Cum doctus civibus efficiantur in imperdiet deterruisset."
-msgstr ""
-
-#: .\content\templates\shop_templates\index.html:321
-msgid "All"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:322
@@ -1187,16 +3769,29 @@ msgid "Popular"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:323
+#: .\content\templates\shop_templates\product-detail-2.html:238
 msgid "Sale"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:361
-#: .\content\templates\shop_templates\product-detail.html:542
+#: .\content\templates\shop_templates\product-detail-2.html:691
+#: .\content\templates\shop_templates\product-detail-2.html:725
+#: .\content\templates\shop_templates\product-detail-2.html:759
+#: .\content\templates\shop_templates\product-detail-2.html:794
+#: .\content\templates\shop_templates\product-detail-2.html:829
+#: .\content\templates\shop_templates\product-detail.html:557
+#: .\content\templates\shop_templates\searched-product-list.html:34
 msgid "Add to favorites"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:368
-#: .\content\templates\shop_templates\product-detail.html:545
+#: .\content\templates\shop_templates\product-detail-2.html:694
+#: .\content\templates\shop_templates\product-detail-2.html:728
+#: .\content\templates\shop_templates\product-detail-2.html:762
+#: .\content\templates\shop_templates\product-detail-2.html:797
+#: .\content\templates\shop_templates\product-detail-2.html:832
+#: .\content\templates\shop_templates\product-detail.html:560
+#: .\content\templates\shop_templates\searched-product-list.html:38
 msgid "Add to compare"
 msgstr ""
 
@@ -1205,114 +3800,1788 @@ msgid "Armor"
 msgstr ""
 
 #: .\content\templates\shop_templates\index.html:661
+#: .\content\templates\shop_templates\product-detail-2.html:751
 msgid "Air Color 720"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:84
+#: .\content\templates\shop_templates\index.html:662
+msgid "Lightweight cushioning and durable support with a Phylon midsole"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:719
+msgid "Cum doctus civibus efficiantur in imperdiet deterruisset"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:728
+#: .\content\templates\shop_templates\index.html:745
+#: .\content\templates\shop_templates\index.html:762
+#: .\content\templates\shop_templates\index.html:779
+msgid "28"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:728
+#: .\content\templates\shop_templates\index.html:745
+#: .\content\templates\shop_templates\index.html:762
+#: .\content\templates\shop_templates\index.html:779
+msgid "Dec"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:731
+msgid "by Mark Twain"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:732
+#: .\content\templates\shop_templates\index.html:749
+#: .\content\templates\shop_templates\index.html:766
+#: .\content\templates\shop_templates\index.html:783
+msgid "20.11.2017"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:734
+msgid "Pri oportere scribentur eu"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:735
+#: .\content\templates\shop_templates\index.html:752
+#: .\content\templates\shop_templates\index.html:769
+#: .\content\templates\shop_templates\index.html:786
+msgid ""
+"Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos "
+"ex. In ius esse ullum vidisse...."
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:748
+msgid "By Jhon Doe"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:751
+msgid "Duo eius postea suscipit ad"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:765
+msgid "By Luca Robinson"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:768
+msgid "Elitr mandamus cu has"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:782
+msgid "By Paula Rodrigez"
+msgstr ""
+
+#: .\content\templates\shop_templates\index.html:785
+msgid "Id est adhuc ignota delenit"
+msgstr ""
+
+#: .\content\templates\shop_templates\leave-review.html:54
+msgid "Write a review for"
+msgstr ""
+
+#: .\content\templates\shop_templates\leave-review.html:57
+msgid "Overall rating"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:57
+msgid "Model Design"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:303
+#: .\content\templates\shop_templates\product-detail-2.html:204
+msgid "Men"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:304
+msgid "Bouble Fabric Blazer"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "Model"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "Design"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:312
+msgid "please just wait for a short time ..."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:503
+msgid ""
+"You can design your own musical instruments. Now we provide 6 models (3 "
+"pianos & 3 guitars)"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:512
+msgid "All Faces Select"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:522
+msgid "Model Explode"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:533
+msgid "Model Zoom Out"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:544
+msgid "Model Zoom In"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:555
+msgid "Model Rotate"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:578
+msgid "Return Design"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:579
+msgid "Check Out"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:583
+msgid "MODEL DESIGN "
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:597
+msgid ""
+"The Musicmo Custom Shop is known for creating instruments that look as "
+"incredible, with a dazzling collections of harmless pigments coming out of "
+"its Corona, Calif., headquarters."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:607
+msgid "Now Model"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:644
+msgid "Part Colors"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:690
+msgid "Sizes*"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:694
+msgid "- Please select -"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:695
+#: .\content\templates\shop_templates\product-detail-2.html:456
+msgid "Small (S)"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:705
+msgid "Number*"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:721
+msgid "Start to Save"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:741
+msgid ""
+"Sounds and effects The Yamaha reface YC has a vintage look and feel with 5 "
+"classic organ sounds. This 37 key portable combo organ has built in effects "
+"such as distortion and reverb, these effects can be combined with any preset "
+"sound. Classic look and feel The reface YC is based on classic organs with a "
+"stripped back interface that includes rotary control and drawbars. Carefully "
+"selected vintage effects increase the authenticity of the sounds even "
+"further making the reface YC an extremely versatile organ. Lightweight and "
+"portable Unlike the majority of vintage style organs, the reface is compact "
+"and lightweight with built in speakers and optional battery power. The "
+"keyboard can be connected to external speakers or PA systems so is ideal for "
+"live performance. Expand your sound with Soundmondo Yamaha has given you the "
+"ability to expand your soundset with a range of premium-quality sounds, with "
+"the Soundmondo community. To discover, create and share sounds simply visit "
+"Soundmondo site, connect your Yamaha Reface and browse the ever expanding "
+"list of high-quality soundbanks. Features Combo Organ Sound Engine with five "
+"vintage organ Waves Retro Distortion, Reverb and Rotary Speaker effects HQ "
+"mini keyboard allows fast, natural performance with premium feel and "
+"response Expression pedal input for foot volume control (organ expression) "
+"2W 3cm stereo speaker system lets you play any place, any time Battery "
+"powered - uses six \"AA\" batteries with five hours of life USB \"TO HOST\" "
+"allows MIDI connectivity to your USB-equipped computer or iOS device A 3.5mm "
+"aux line input lets you connect and hear mobile devices, tablets and more "
+"through the instrument Dual 1/4\" unbalanced line outputs provide connection "
+"to mixers, audio interfaces, DI boxes and more Includes MIDI breakout cable, "
+"Owner\"s Manual, and PA130 power supply Specifications"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:754
+msgid "upsell products"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:764
+#: .\content\templates\shop_templates\model-design.html:781
+#: .\content\templates\shop_templates\model-design.html:797
+#: .\content\templates\shop_templates\product-search.html:604
+msgid "Guitar"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:773
+#: .\content\templates\shop_templates\model-design.html:790
+#: .\content\templates\shop_templates\model-design.html:806
+#: .\content\templates\shop_templates\model-design.html:832
+#: .\content\templates\shop_templates\model-design.html:849
+#: .\content\templates\shop_templates\model-design.html:866
+msgid "Smart TV Ultra HD 40 inch - 40JU6600"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:774
+#: .\content\templates\shop_templates\model-design.html:791
+#: .\content\templates\shop_templates\model-design.html:807
+#: .\content\templates\shop_templates\model-design.html:833
+#: .\content\templates\shop_templates\model-design.html:850
+#: .\content\templates\shop_templates\model-design.html:867
+msgid ""
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:823
+#: .\content\templates\shop_templates\model-design.html:840
+#: .\content\templates\shop_templates\model-design.html:857
+#: .\content\templates\shop_templates\product-search.html:610
+msgid "Piano"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:886
+msgid "Dale Wilson"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:887
+msgid "Paul Waller"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:888
+msgid "Jason Smith"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:889
+msgid "Yuriy Shishkov"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:890
+msgid "Todd Krause"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:905
+#: .\content\templates\shop_templates\model-design.html:937
+#: .\content\templates\shop_templates\model-design.html:968
+#: .\content\templates\shop_templates\model-design.html:1000
+msgid "Master Signature: &nbsp;"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:905
+#: .\content\templates\shop_templates\model-design.html:937
+#: .\content\templates\shop_templates\model-design.html:968
+#: .\content\templates\shop_templates\model-design.html:1000
+msgid " Dale Wilson"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:906
+#: .\content\templates\shop_templates\model-design.html:938
+#: .\content\templates\shop_templates\model-design.html:969
+#: .\content\templates\shop_templates\model-design.html:1001
+#: .\content\templates\shop_templates\model-design.html:1032
+msgid ""
+"Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and "
+"became Master Builder in 2011. A Native of California, he had a passion for "
+"making guitars from an early age. 'For as long as I can remember, I've loved "
+"guitars,' he says. 'Strangely enough, I didn't want to be a rock star. "
+"Iwanted to make a super guitar. The Wilson family is proficient in "
+"carpentry, and exquisite craftsmanship has always been the passion and "
+"pursuit of Fender custom shop, which has long been integrated into dell's "
+"blood. Back in the late 1980s, he was working in guitar repair and tooling "
+"at a studio near his middle school."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:907
+#: .\content\templates\shop_templates\model-design.html:939
+#: .\content\templates\shop_templates\model-design.html:970
+#: .\content\templates\shop_templates\model-design.html:1002
+#: .\content\templates\shop_templates\model-design.html:1033
+msgid ""
+"He then went to work for Dobro and Rickenbacker for a while before entering "
+"Fender; He also worked for guitar brands such as Guild, Gretsch and "
+"Benedetto before becoming an apprentice to a master luthier in a custom "
+"shop. As a craftsman, he relished being able to draw on his extensive "
+"experience in producing high-quality guitars, such as the Resophonic "
+"Thinline Telecaster. In 2011, while still an apprentice, he made five "
+"premium custom guitars for the NAMM Show in January of that year and was "
+"asked to sign the back, earning him the honor of Master Builder."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:1005
+#: .\content\templates\shop_templates\model-design.html:1011
+msgid "Quick Reply"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:1006
+#: .\content\templates\shop_templates\model-design.html:1012
+msgid "Best Performances"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design.html:1031
+msgid "Master Signature: &nbsp;</span> Dale Wilson"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:7
+msgid "Zay Shop eCommerce HTML CSS Template"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:227
+msgid "Welcome to Model Design!"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:228
+msgid "Now raw model: Guitar - 1"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:229
+msgid "In here, you can design your own musical instrument."
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:231
+msgid "Feature"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:242
+msgid "Recommend Colour"
+msgstr ""
+
+#: .\content\templates\shop_templates\model-design2.html:256
+msgid "Long list of colors"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:65
+msgid "Hello {{ user.username }}"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:66
+msgid "Logged in as: {{ user.email }"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:68
+msgid "Hello Guest"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:69
+msgid "You are not logged i"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:76
+msgid "Orders place"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:83
+msgid "Items in Car"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:90
+msgid "Wishlis"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:95
+msgid "My recent order"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:106
+msgid "Quantity:"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:112
+msgid "Rating:"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:120
+msgid "Status:"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:121
+msgid "Delivered"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:123
+msgid "Shopper Confirmed"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:125
+msgid "Packed"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:127
+msgid "Accepted"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:129
+msgid "Placed"
+msgstr ""
+
+#: .\content\templates\shop_templates\orders.html:132
+#: .\content\templates\shop_templates\personal_profile.html:273
+msgid "order info"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:88
+msgid "https://bootdey.com"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:100
+#: .\content\templates\shop_templates\personal_profile.html:126
+#: .\content\templates\shop_templates\personal_profile.html:138
+msgid "bootdey"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:154
+msgid "Username:"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:167
+msgid "First Name:"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:181
+msgid "Last Name:"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:208
+msgid "Join Date:"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:221
+msgid "Phone:"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:237
+msgid "Recent Orders"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:246
+msgid "paid"
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:248
+msgid "Quantity: "
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:253
+msgid "Rating:</span> "
+msgstr ""
+
+#: .\content\templates\shop_templates\personal_profile.html:428
+msgid "Change Avatar"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:69
+msgid "Slider"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:70
+msgid "Video Background"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:71
+msgid "Vertical Slider"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:72
+msgid "GDPR Cookie Bar"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:76
+msgid "Pages"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:80
+msgid "Listing grid"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:82
+msgid "Grid Full Width"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:83
+msgid "Grid Full Width 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:85
+msgid "Grid Boxed"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:97
+msgid "Listing row &amp; Product"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:107
+msgid "Product Large Image"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:108
+msgid "Product Carousel"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:109
+msgid "Product Sticky Info"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:113
+msgid "Other pages"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:115
+msgid "Cart Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:116
+msgid "Check Out Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:117
+msgid "Confirm Purchase Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:118
+msgid "Create Account Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:119
+msgid "Track Order"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:120
+msgid "Help Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:121
+msgid "Help Page 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:122
+msgid "Leave a Review"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:141
+msgid "Extra Pages"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:143
+msgid "Header Style 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:144
+msgid "Header Style 3"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:145
+msgid "Header Style 4"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:146
+msgid "Header Style 5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:147
+msgid "404 Page"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:148
+msgid "Sign In Modal"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:150
+msgid "About 1"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:151
+msgid "About 2"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:152
+msgid "Modal Advertise"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:153
+msgid "Modal Newsletter"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:160
+msgid "Buy Template"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:167
+msgid "Need Help?"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:194
+msgid "Collections"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:196
+msgid "Trending"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:197
+msgid "Life style"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:198
+msgid "Running"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:199
+msgid "Training"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:206
+msgid "Offers"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:207
+#: .\content\templates\shop_templates\product-detail-2.html:220
+#: .\content\templates\shop_templates\product-detail-2.html:908
+msgid "Shoes"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:208
+#: .\content\templates\shop_templates\product-detail-2.html:218
+#: .\content\templates\shop_templates\product-detail-2.html:227
+#: .\content\templates\shop_templates\product-detail-2.html:237
+msgid "Clothing"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:211
+msgid "Equipment"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:215
+msgid "Women"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:217
+#: .\content\templates\shop_templates\product-detail-2.html:239
+msgid "Best Sellers"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:223
+msgid "Boys"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:225
+msgid "Easy On Shoes"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:229
+msgid "Must Have"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:230
+msgid "All Boys"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:234
+msgid "Girls"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:236
+msgid "New Releases"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:243
+msgid "Customize"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:245
+msgid "For Men"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:246
+msgid "For Women"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:248
+msgid "For Boys"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:250
+msgid "For Girls"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:279
+msgid "1x Armor Air x Fear"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:279
+msgid "$90.00"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:290
+msgid "1x Armor Okwahn II"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:290
+msgid "$110.00"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:296
+msgid "$200.00"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:297
+msgid "View Cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:309
+msgid "Account"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:311
+msgid "Sign In or Sign Up"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:314
+msgid "Track your Order"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:317
+msgid "My Orders"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:320
+msgid "My Profile"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:323
+msgid "Help and Faq"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:331
+msgid "Search"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:412
+msgid "Donner DDP-300 Digital Piano"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:414
+msgid "4 reviews"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:439
+#: .\content\templates\shop_templates\product-detail-2.html:551
+#: .\content\templates\shop_templates\product-detail.html:281
+#: .\content\templates\shop_templates\product-detail.html:282
+#: .\content\templates\shop_templates\product-search.html:633
+msgid "Color"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:450
+#: .\content\templates\shop_templates\product-detail-2.html:555
+msgid "Size"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:480
+#: .\content\templates\shop_templates\product-detail.html:343
+msgid "Add to Cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:488
+msgid "Add to Wishlist"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:491
+msgid "Add to Compare"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:509
+msgid "Reviews"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:531
+msgid "Details"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:532
+msgid "Lorem ipsum dolor sit amet, in eleifend "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:546
+msgid "Specifications"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:552
+msgid "Blue, Purple"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:556
+msgid "150x100x100"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:559
+msgid "Weight"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:560
+msgid "0.6kg"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:563
+#: .\content\templates\shop_templates\product-detail-2.html:564
+msgid "Manifacturer"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:593
+#: .\content\templates\shop_templates\product-detail-2.html:642
+msgid "5.0/5.0"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:594
+msgid "Published 54 minutes ago"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:609
+msgid "4.0/5.0"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:610
+msgid "Published 1 day ago"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:626
+msgid "4.5/5.0"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:627
+msgid "Published 3 days ago"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:643
+msgid "Published 4 days ago"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:652
+#: .\content\templates\shop_templates\product-detail.html:520
+msgid "Leave a review"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:664
+#: .\content\templates\shop_templates\product-detail.html:531
+msgid "Related"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:671
+#: .\content\templates\shop_templates\product-detail-2.html:705
+#: .\content\templates\shop_templates\product-detail.html:538
+msgid "New"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:683
+msgid "ACG React Terra"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:717
+msgid "Air Zoom Alpha"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:739
+msgid "Hot"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:785
+msgid "Okwahn II"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:820
+msgid "Air Wildwood ACG"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:917
+msgid "97845 Baker st. 567"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:917
+msgid "Los Angeles - US"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:919
+msgid "info@allaia.com"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1006
+#: .\content\templates\shop_templates\product-detail.html:702
+msgid "1 product added to cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1018
+msgid "1x Armor Air X Fear"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1024
+#: .\content\templates\shop_templates\product-detail.html:725
+msgid "View cart"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1031
+#: .\content\templates\shop_templates\product-detail.html:733
+msgid "Who bought this product also bought"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1042
+#: .\content\templates\shop_templates\product-detail.html:745
+#: .\content\templates\shop_templates\product-detail.html:746
+msgid "Armor Okwahn II"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1056
+#: .\content\templates\shop_templates\product-detail.html:761
+#: .\content\templates\shop_templates\product-detail.html:762
+msgid "Armor Air Wildwood ACG"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1071
+#: .\content\templates\shop_templates\product-detail.html:778
+#: .\content\templates\shop_templates\product-detail.html:779
+msgid "Armor ACG React Terra"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1087
+#: .\content\templates\shop_templates\product-detail.html:795
+#: .\content\templates\shop_templates\product-detail.html:796
+msgid "Size guide"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1098
+#: .\content\templates\shop_templates\product-detail.html:807
+#: .\content\templates\shop_templates\product-detail.html:808
+msgid "US Sizes"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1100
+#: .\content\templates\shop_templates\product-detail-2.html:1127
+#: .\content\templates\shop_templates\product-detail.html:810
+#: .\content\templates\shop_templates\product-detail.html:811
+#: .\content\templates\shop_templates\product-detail.html:849
+#: .\content\templates\shop_templates\product-detail.html:850
+msgid "6,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1102
+#: .\content\templates\shop_templates\product-detail-2.html:1129
+#: .\content\templates\shop_templates\product-detail.html:813
+#: .\content\templates\shop_templates\product-detail.html:814
+#: .\content\templates\shop_templates\product-detail.html:852
+#: .\content\templates\shop_templates\product-detail.html:853
+msgid "7,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1104
+#: .\content\templates\shop_templates\product-detail-2.html:1131
+#: .\content\templates\shop_templates\product-detail.html:816
+#: .\content\templates\shop_templates\product-detail.html:817
+#: .\content\templates\shop_templates\product-detail.html:855
+#: .\content\templates\shop_templates\product-detail.html:856
+msgid "8,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1106
+#: .\content\templates\shop_templates\product-detail-2.html:1133
+#: .\content\templates\shop_templates\product-detail.html:819
+#: .\content\templates\shop_templates\product-detail.html:820
+#: .\content\templates\shop_templates\product-detail.html:858
+#: .\content\templates\shop_templates\product-detail.html:859
+msgid "9,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1108
+#: .\content\templates\shop_templates\product-detail.html:822
+#: .\content\templates\shop_templates\product-detail.html:823
+msgid "10,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1111
+#: .\content\templates\shop_templates\product-detail.html:826
+#: .\content\templates\shop_templates\product-detail.html:827
+msgid "Euro Sizes"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1115
+#: .\content\templates\shop_templates\product-detail.html:831
+#: .\content\templates\shop_templates\product-detail.html:832
+msgid "40-41"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1117
+#: .\content\templates\shop_templates\product-detail.html:834
+#: .\content\templates\shop_templates\product-detail.html:835
+msgid "41-42"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1119
+#: .\content\templates\shop_templates\product-detail.html:837
+#: .\content\templates\shop_templates\product-detail.html:838
+msgid "42-43"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1121
+#: .\content\templates\shop_templates\product-detail.html:840
+#: .\content\templates\shop_templates\product-detail.html:841
+msgid "43-44"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1124
+#: .\content\templates\shop_templates\product-detail.html:844
+#: .\content\templates\shop_templates\product-detail.html:845
+msgid "UK Sizes"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1125
+#: .\content\templates\shop_templates\product-detail.html:846
+#: .\content\templates\shop_templates\product-detail.html:847
+msgid "5,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1137
+#: .\content\templates\shop_templates\product-detail.html:863
+#: .\content\templates\shop_templates\product-detail.html:864
+msgid "Inches"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1138
+msgid "9.25\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1139
+msgid "9.5\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1140
+msgid "9.625\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1141
+msgid "9.75\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1142
+msgid "9.9375\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1143
+msgid "10.125\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1144
+msgid "10.25\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1145
+msgid "10.5\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1146
+msgid "10.625\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1147
+msgid "10.75\""
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1151
+#: .\content\templates\shop_templates\product-detail.html:888
+#: .\content\templates\shop_templates\product-detail.html:889
+msgid "23,5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1152
+#: .\content\templates\shop_templates\product-detail.html:890
+#: .\content\templates\shop_templates\product-detail.html:891
+msgid "24,1"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1153
+#: .\content\templates\shop_templates\product-detail.html:892
+#: .\content\templates\shop_templates\product-detail.html:893
+msgid "24,4"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1154
+#: .\content\templates\shop_templates\product-detail.html:894
+#: .\content\templates\shop_templates\product-detail.html:895
+msgid "24,8"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1155
+#: .\content\templates\shop_templates\product-detail.html:896
+#: .\content\templates\shop_templates\product-detail.html:897
+msgid "25,4"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1156
+#: .\content\templates\shop_templates\product-detail.html:898
+#: .\content\templates\shop_templates\product-detail.html:899
+msgid "25,7"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1158
+#: .\content\templates\shop_templates\product-detail.html:901
+#: .\content\templates\shop_templates\product-detail.html:902
+msgid "26,7"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1160
+#: .\content\templates\shop_templates\product-detail.html:904
+#: .\content\templates\shop_templates\product-detail.html:905
+msgid "27,3"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-model2.html:48
+msgid "Zoom Out"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail-model2.html:49
+msgid "Zoom In"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:90
 msgid "hot deal"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:86
+#: .\content\templates\shop_templates\product-detail.html:92
 msgid "YC Combo Organ"
 msgstr ""
 
 #: .\content\templates\shop_templates\product-detail.html:100
+#: .\content\templates\shop_templates\product-detail.html:101
+msgid "Prev"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:108
 msgid "Mapex 30th Anniversary"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:115
+#: .\content\templates\shop_templates\product-detail.html:123
 msgid "Keyboard with USB MIDI"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:260
+#: .\content\templates\shop_templates\product-detail.html:270
 msgid "No reviews"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:265
-msgid "instrument.details"
-msgstr ""
-
-#: .\content\templates\shop_templates\product-detail.html:273
+#: .\content\templates\shop_templates\product-detail.html:284
+#: .\content\templates\shop_templates\product-search.html:369
 msgid "Maroon"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:274
+#: .\content\templates\shop_templates\product-detail.html:285
+#: .\content\templates\shop_templates\product-search.html:377
 msgid "White"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:279
+#: .\content\templates\shop_templates\product-detail.html:290
 msgid "Maroon - $223.00 USD"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:281
+#: .\content\templates\shop_templates\product-detail.html:292
 msgid "White - $223.00 USD"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:331
-msgid "Add to Cart"
-msgstr ""
-
-#: .\content\templates\shop_templates\product-detail.html:341
+#: .\content\templates\shop_templates\product-detail.html:353
 msgid "Buy it now"
 msgstr ""
 
 #: .\content\templates\shop_templates\product-detail.html:364
+#: .\content\templates\shop_templates\product-detail.html:365
+#: .\content\templates\shop_templates\product-search.html:438
+#: .\content\templates\shop_templates\product-search.html:458
+msgid "image/svg+xml"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:376
+#: .\content\templates\shop_templates\product-detail.html:377
+msgid "Categories :"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:378
 msgid "Home page,"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:365
+#: .\content\templates\shop_templates\product-detail.html:379
 msgid "hot rate"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:388
+#: .\content\templates\shop_templates\product-detail.html:403
 msgid "Returns"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:389
+#: .\content\templates\shop_templates\product-detail.html:404
 msgid ""
 "Return this product within 100 days if you change your mind. Get a refund/"
 "replacement &amp; free return shipping if it arrives damaged or not as "
 "described"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:398
+#: .\content\templates\shop_templates\product-detail.html:413
 msgid ""
 "Free if stated near price. $9.95 Australia wide (up to 10 items). $18.95 for "
 "Express Post (generally 1 business day)."
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:420
+#: .\content\templates\shop_templates\product-detail.html:435
 msgid "Additional Information"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:423
+#: .\content\templates\shop_templates\product-detail.html:438
 msgid "Review"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:440
+#: .\content\templates\shop_templates\product-detail.html:455
 msgid "More Infomation To You"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:441
+#: .\content\templates\shop_templates\product-detail.html:456
 msgid "Things you need to know"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:505
-msgid "Leave a review"
+#: .\content\templates\shop_templates\product-detail.html:865
+#: .\content\templates\shop_templates\product-detail.html:866
+msgid "9.25"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:516
-msgid "Related"
+#: .\content\templates\shop_templates\product-detail.html:867
+#: .\content\templates\shop_templates\product-detail.html:868
+msgid "9.5"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:685
-msgid "1 product added to cart"
+#: .\content\templates\shop_templates\product-detail.html:869
+#: .\content\templates\shop_templates\product-detail.html:870
+msgid "9.625"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:707
-msgid "View cart"
+#: .\content\templates\shop_templates\product-detail.html:871
+#: .\content\templates\shop_templates\product-detail.html:872
+msgid "9.75"
 msgstr ""
 
-#: .\content\templates\shop_templates\product-detail.html:715
-msgid "Who bought this product also bought"
+#: .\content\templates\shop_templates\product-detail.html:873
+#: .\content\templates\shop_templates\product-detail.html:874
+msgid "9.9375"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:875
+#: .\content\templates\shop_templates\product-detail.html:876
+msgid "10.125"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:877
+#: .\content\templates\shop_templates\product-detail.html:878
+msgid "10.25"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:879
+#: .\content\templates\shop_templates\product-detail.html:880
+msgid "10.5"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:881
+#: .\content\templates\shop_templates\product-detail.html:882
+msgid "10.625"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-detail.html:883
+#: .\content\templates\shop_templates\product-detail.html:884
+msgid "10.75"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:104
+#: .\content\templates\shop_templates\product-search.html:113
+msgid "filter"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:153
+#: .\content\templates\shop_templates\product-search.html:156
+msgid "Featured"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:157
+msgid "Best Selling"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:158
+msgid "Alphabetically, A-Z"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:159
+msgid "Price, high to low"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:160
+msgid "Price, low to high"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:161
+msgid "Date, old to new"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:162
+msgid "Date, new to old"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:213
+msgid "Color Option"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:262
+msgid "Price Filter"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:298
+msgid "Tags"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:337
+msgid "Black"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:345
+msgid "Brown"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:353
+msgid "BurlyWood"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:361
+msgid "Gold"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:505
+msgid "1</span> "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:506
+msgid "2</a></span> "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:527
+msgid "Sort by popularity"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:528
+msgid "Sort by average rating"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:529
+msgid "Sort by newness"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:530
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:541
+msgid "Filters"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:551
+msgid "Wide Categories"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:579
+msgid "Percussion Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:579
+#: .\content\templates\shop_templates\product-search.html:616
+msgid "23"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:585
+msgid "Keyboard Instruments"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:585
+#: .\content\templates\shop_templates\product-search.html:622
+#: .\content\templates\shop_templates\product-search.html:669
+msgid "11"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:599
+msgid "Specific Categories"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:616
+msgid "Violin"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:622
+msgid "Bass"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:637
+msgid "Blue "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:637
+msgid "06"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:643
+msgid "Red "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:649
+msgid "Orange "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:649
+msgid "17"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:655
+msgid "Black "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:655
+msgid "43"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:665
+msgid "Brands"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:669
+msgid "Adidas "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:675
+msgid "Nike "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:675
+msgid "08"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:681
+msgid "Vans "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:681
+msgid "05"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:687
+msgid "Puma "
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:687
+msgid "18"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:729
+msgid "Filter"
+msgstr ""
+
+#: .\content\templates\shop_templates\product-search.html:729
+msgid "Reset"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:8
+msgid "media profile - Bootdey.com"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:26
+msgid "Michael Halls"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:26
+msgid " - Profile"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:28
+msgid ""
+"Lorem ipsum dolor sit amet ctetur adicing elit, sed do eiusmod tempor "
+"incididunt"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:94
+msgid "User Popularity"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:101
+msgid "First Name"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:102
+msgid "Revenue"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:110
+msgid "Television"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:119
+msgid "Radio"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:128
+msgid "Newspaper"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:145
+msgid "Default"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:146
+#: .\content\templates\shop_templates\test_profile.html:153
+msgid "Primary"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:147
+#: .\content\templates\shop_templates\test_profile.html:151
+msgid "Success"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:148
+msgid "Info"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:149
+msgid "Warning"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:150
+msgid "Danger"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:152
+msgid "Ui Design"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:162
+msgid "About Me"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:166
+msgid "Experience"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:168
+msgid "Facebook Internship"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:169
+#: .\content\templates\shop_templates\test_profile.html:176
+#: .\content\templates\shop_templates\test_profile.html:183
+msgid "University of Missouri, Columbia"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:169
+msgid "Student Health Center, June 2010 - 2012"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:173
+msgid "Education"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:175
+msgid "Bachelor of Science, PhD"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:176
+#: .\content\templates\shop_templates\test_profile.html:183
+msgid "Student Health Center, June 2010 through Aug 2011"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:180
+msgid "Accomplishments"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:182
+msgid "Successful Business"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:193
+#: .\content\templates\shop_templates\user_profile.html:130
+msgid "Activity"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:196
+msgid "Social"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:199
+msgid "Media"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:209
+#: .\content\templates\shop_templates\test_profile.html:231
+msgid "Simon Rivers Posted"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:209
+#: .\content\templates\shop_templates\test_profile.html:231
+#: .\content\templates\shop_templates\test_profile.html:239
+#: .\content\templates\shop_templates\test_profile.html:249
+msgid " - 3 hours ago"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:216
+msgid "Like "
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:218
+msgid "Share "
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:220
+msgid "Save "
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:222
+msgid "Comment "
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:239
+#: .\content\templates\shop_templates\test_profile.html:249
+msgid "Jessica Wong"
+msgstr ""
+
+#: .\content\templates\shop_templates\test_profile.html:241
+#: .\content\templates\shop_templates\test_profile.html:251
+msgid "Omgosh I'm in love"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:26
+#: .\content\templates\shop_templates\user_profile.html:120
+#: .\content\templates\shop_templates\user_profile.html:121
+#: .\content\templates\shop_templates\user_profile.html:252
+msgid "John Doe "
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:33
+#: .\content\templates\shop_templates\user_profile.html:258
+msgid "Admin"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:42
+msgid "Super User"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:51
+msgid "Orders: "
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:51
+msgid "456"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:52
+msgid "Posts: "
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:52
+msgid "828"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:53
+msgid "Tasks done: "
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:53
+msgid "1024"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:68
+msgid "User info"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:122
+msgid "Black_widow"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:123
+msgid "Avenger_Scarlett"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:131
+msgid "Friends"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:132
+msgid "Chat"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:146
+#: .\content\templates\shop_templates\user_profile.html:182
+#: .\content\templates\shop_templates\user_profile.html:230
+msgid "Avengers Initiative"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:158
+#: .\content\templates\shop_templates\user_profile.html:218
+#: .\content\templates\shop_templates\user_profile.html:275
+#: .\content\templates\shop_templates\user_profile.html:348
+msgid "Pending"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:159
+#: .\content\templates\shop_templates\user_profile.html:219
+msgid "Completed"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:194
+msgid "On Hold"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:195
+msgid "Disabled"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:269
+#: .\content\templates\shop_templates\user_profile.html:342
+msgid "Mila Kunis"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:286
+#: .\content\templates\shop_templates\user_profile.html:359
+msgid "Ryan Gossling"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:300
+msgid "Robert Downey Jr."
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:314
+msgid "Emma Watson"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:328
+msgid "George Clooney"
+msgstr ""
+
+#: .\content\templates\shop_templates\user_profile.html:368
+msgid "View all users"
+msgstr ""
+
+#: .\content\templates\shop_templates\wishlist.html:40
+msgid "Your Wishlist"
+msgstr ""
+
+#: .\content\templates\shop_templates\wishlist.html:51
+msgid "Your wishlist"
+msgstr ""
+
+#: .\content\templates\shop_templates\wishlist.html:61
+msgid "Availability"
+msgstr ""
+
+#: .\content\templates\shop_templates\wishlist.html:88
+msgid "in stock"
+msgstr ""
+
+#: .\image_search\forms.py:14
+msgid "Image"
 msgstr ""

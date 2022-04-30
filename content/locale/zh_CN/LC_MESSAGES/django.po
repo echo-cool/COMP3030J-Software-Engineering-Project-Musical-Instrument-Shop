@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp3030j\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 18:21+0800\n"
-"PO-Revision-Date: 2022-04-15 13:43\n"
+"POT-Creation-Date: 2022-04-30 16:47+0800\n"
+"PO-Revision-Date: 2022-04-30 08:57\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -55,7 +55,7 @@ msgstr "电子邮件"
 #: .\accounts\forms.py:76 .\accounts\forms.py:161 .\accounts\forms.py:187
 #: .\accounts\forms.py:248
 msgid "You entered an invalid email address."
-msgstr "您输入了一个无效的电子邮件地址。"
+msgstr "您输入一个无效的电子邮件地址:\"%1\"。"
 
 #: .\accounts\forms.py:87 .\accounts\forms.py:128 .\accounts\forms.py:198
 msgid "Email or Username"
@@ -131,7 +131,7 @@ msgstr "您收到此电子邮件是因为我们收到了您的帐户的密码重
 msgid "Please, go to the following page and choose a new password:"
 msgstr "请转到以下页面以设置新密码："
 
-#: .\accounts\templates\accounts\log_in.html:46
+#: .\accounts\templates\accounts\log_in.html:61
 msgid "Login"
 msgstr "登录"
 
@@ -243,82 +243,107 @@ msgstr "个人资料激活"
 msgid "Your username"
 msgstr "您的用户名"
 
-#: .\accounts\views.py:126
+#: .\accounts\views.py:127
 msgid "You are signed up. To activate the account, follow the link sent to the mail."
 msgstr "您已注册。要激活帐户，请点击发送到邮件的链接。"
 
-#: .\accounts\views.py:133
+#: .\accounts\views.py:134
 msgid "You are successfully signed up!"
 msgstr "您已成功注册 ！"
 
-#: .\accounts\views.py:153
+#: .\accounts\views.py:154
 msgid "You have successfully activated your account!"
 msgstr "您的账户已成功激活！"
 
-#: .\accounts\views.py:183
+#: .\accounts\views.py:184
 msgid "A new activation code has been sent to your email address."
 msgstr "验证码已发送至您的电子邮件地址。"
 
-#: .\accounts\views.py:228
+#: .\accounts\views.py:229
 msgid "Profile data has been successfully updated."
 msgstr "您的个人信息更新成功！"
 
-#: .\accounts\views.py:262
+#: .\accounts\views.py:263
 msgid "To complete the change of email address, click on the link sent to it."
 msgstr "要完成电子邮件地址的更改，请点击发送到它的链接。"
 
-#: .\accounts\views.py:267
+#: .\accounts\views.py:268
 msgid "Email successfully changed."
 msgstr "电子邮件修改成功"
 
-#: .\accounts\views.py:285
+#: .\accounts\views.py:286
 msgid "You have successfully changed your email!"
 msgstr "您已成功修改电子邮件地址！"
 
-#: .\accounts\views.py:298
+#: .\accounts\views.py:299
 msgid "Your username has been successfully sent to your email."
 msgstr "您的用户名已成功发送到您的电子邮件。"
 
-#: .\accounts\views.py:313
+#: .\accounts\views.py:314
 msgid "Your password was changed."
 msgstr "您的密码已更改。"
 
-#: .\accounts\views.py:325
+#: .\accounts\views.py:326
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr "您的密码已设置。您可以现在登录。"
 
-#: .\app\conf\development\settings.py:149
+#: .\app\conf\development\settings.py:159
 #: .\app\conf\production\settings.py:115
 #: .\content\templates\shop_templates\account.html:306
+#: .\content\templates\shop_templates\product-detail-2.html:966
 msgid "English"
 msgstr "英语"
 
-#: .\app\conf\development\settings.py:150
+#: .\app\conf\development\settings.py:160
 #: .\app\conf\production\settings.py:116
 #: .\content\templates\shop_templates\account.html:309
+#: .\content\templates\shop_templates\product-detail-2.html:969
 msgid "Russian"
 msgstr "俄语"
 
-#: .\app\conf\development\settings.py:151
+#: .\app\conf\development\settings.py:161
+msgid "Ukrainian"
+msgstr "乌克兰语"
+
+#: .\app\conf\development\settings.py:162
 #: .\app\conf\production\settings.py:117
 msgid "Simplified Chinese"
 msgstr "简体中文"
 
-#: .\app\conf\development\settings.py:152
-msgid "Simplified Chinese new"
-msgstr "简体中文 new"
-
-#: .\app\conf\development\settings.py:153
+#: .\app\conf\development\settings.py:163
 #: .\app\conf\production\settings.py:118
 #: .\content\templates\shop_templates\account.html:307
+#: .\content\templates\shop_templates\product-detail-2.html:967
 msgid "French"
 msgstr "法语"
 
-#: .\app\conf\development\settings.py:154
+#: .\app\conf\development\settings.py:164
 #: .\app\conf\production\settings.py:119
 #: .\content\templates\shop_templates\account.html:308
+#: .\content\templates\shop_templates\product-detail-2.html:968
 msgid "Spanish"
 msgstr "西班牙语"
+
+#: .\app\conf\development\settings.py:165
+msgid "Dutch"
+msgstr "荷兰语"
+
+#: .\app\conf\development\settings.py:166
+msgid "Japanese"
+msgstr "日语"
+
+#: .\content\templates\blog_templates\post-blogs.html:51
+#: .\content\templates\management_templates\update_blog_category.html:37
+#: .\content\templates\management_templates\update_cart.html:37
+#: .\content\templates\management_templates\update_instrument.html:122
+#: .\content\templates\management_templates\update_instrument_category.html:37
+#: .\content\templates\management_templates\update_order.html:36
+#: .\content\templates\management_templates\update_order_item.html:37
+#: .\content\templates\management_templates\update_post.html:37
+#: .\content\templates\management_templates\update_review.html:37
+#: .\content\templates\management_templates\update_wishlist.html:37
+msgid "Submit"
+msgstr "提交"
 
 #: .\content\templates\chat\index.html:36
 msgid "Welcome to ChatApp"
@@ -354,14 +379,17 @@ msgstr "屏蔽"
 
 #: .\content\templates\layouts\default\shopper_base.html:41
 #: .\content\templates\shop_templates\account.html:247
+#: .\content\templates\shop_templates\product-detail-2.html:893
 msgid "Help"
 msgstr "帮助"
 
 #: .\content\templates\layouts\default\shopper_base.html:42
+#: .\content\templates\shop_templates\company-profile.html:228
 msgid "Services"
 msgstr "服务"
 
 #: .\content\templates\layouts\default\shopper_base.html:43
+#: .\content\templates\shop_templates\checkout\checkout.html:1197
 msgid "USD"
 msgstr "美元"
 
@@ -370,6 +398,8 @@ msgid "My Account"
 msgstr "我的账户"
 
 #: .\content\templates\layouts\default\shopper_base.html:53
+#: .\content\templates\shop_templates\product-detail-2.html:305
+#: .\content\templates\shop_templates\wishlist.html:36
 msgid "Wishlist"
 msgstr "收藏夹"
 
@@ -420,6 +450,8 @@ msgid "Large Camera Bag"
 msgstr "大相机包"
 
 #: .\content\templates\layouts\default\shopper_base.html:119
+#: .\content\templates\shop_templates\cart.html:145
+#: .\content\templates\shop_templates\cart.html:186
 msgid "Subtotal:"
 msgstr "小计："
 
@@ -428,14 +460,25 @@ msgid "view my cart"
 msgstr "浏览我的购物车"
 
 #: .\content\templates\layouts\default\shopper_base.html:126
-#: .\content\templates\shop_templates\product-detail.html:708
+#: .\content\templates\shop_templates\product-detail-2.html:298
+#: .\content\templates\shop_templates\product-detail-2.html:1024
+#: .\content\templates\shop_templates\product-detail.html:726
 msgid "Checkout"
 msgstr "结账"
 
 #: .\content\templates\layouts\default\shopper_base.html:143
 #: .\content\templates\shop_templates\account.html:26
+#: .\content\templates\shop_templates\blog-details.html:55
+#: .\content\templates\shop_templates\blog-details.html:541
+#: .\content\templates\shop_templates\blog-external.html:50
+#: .\content\templates\shop_templates\cart.html:20
 #: .\content\templates\shop_templates\cart2.html:29
-#: .\content\templates\shop_templates\product-detail.html:82
+#: .\content\templates\shop_templates\model-design.html:302
+#: .\content\templates\shop_templates\product-detail-2.html:67
+#: .\content\templates\shop_templates\product-detail-2.html:405
+#: .\content\templates\shop_templates\product-detail.html:88
+#: .\content\templates\shop_templates\product-search.html:84
+#: .\content\templates\shop_templates\wishlist.html:39
 msgid "Home"
 msgstr "首页"
 
@@ -444,10 +487,14 @@ msgid "Home 1"
 msgstr "首页 1"
 
 #: .\content\templates\layouts\default\shopper_base.html:146
+#: .\content\templates\shop_templates\blog-details.html:57
+#: .\content\templates\shop_templates\blog-external.html:52
 msgid "Home 2"
 msgstr "首页 2"
 
 #: .\content\templates\layouts\default\shopper_base.html:147
+#: .\content\templates\shop_templates\blog-details.html:58
+#: .\content\templates\shop_templates\blog-external.html:53
 msgid "Home 3"
 msgstr "首页 3"
 
@@ -468,7 +515,6 @@ msgid "Corssbody"
 msgstr "Corssbody"
 
 #: .\content\templates\layouts\default\shopper_base.html:159
-#: .\content\templates\shop_templates\homepage.html:386
 msgid "Collection"
 msgstr "收藏"
 
@@ -494,6 +540,10 @@ msgstr "Lorem ipsum dolor sit amet"
 
 #: .\content\templates\layouts\default\shopper_base.html:222
 #: .\content\templates\shop_templates\account.html:255
+#: .\content\templates\shop_templates\blog-details.html:427
+#: .\content\templates\shop_templates\blog-external.html:491
+#: .\content\templates\shop_templates\product-detail-2.html:901
+#: .\content\templates\shop_templates\product-search.html:195
 msgid "Categories"
 msgstr "分类"
 
@@ -534,15 +584,22 @@ msgid "Kids"
 msgstr "儿童"
 
 #: .\content\templates\layouts\default\shopper_base.html:268
+#: .\content\templates\shop_templates\product-detail-2.html:209
+#: .\content\templates\shop_templates\product-detail-2.html:219
 msgid "Accessories"
 msgstr "饰品"
 
 #: .\content\templates\layouts\default\shopper_base.html:269
 #: .\content\templates\shop_templates\account.html:249
+#: .\content\templates\shop_templates\blog-details.html:83
+#: .\content\templates\shop_templates\index.html:718
+#: .\content\templates\shop_templates\product-detail-2.html:157
+#: .\content\templates\shop_templates\product-detail-2.html:895
 msgid "Blog"
 msgstr "博客"
 
 #: .\content\templates\layouts\default\shopper_base.html:270
+#: .\content\templates\shop_templates\company-profile.html:720
 msgid "Contact"
 msgstr "联系我们"
 
@@ -578,21 +635,20 @@ msgstr "更改语言"
 msgid "Select the language"
 msgstr "选择语言"
 
+#: .\content\templates\management_templates\orderItemManagement.html:33
 #: .\content\templates\management_templates\orderManagement.html:33
 msgid "All Orders"
 msgstr "全部订单"
 
-#: .\content\templates\management_templates\update_instrument.html:37
-#: .\content\templates\management_templates\update_order.html:36
-#: .\content\templates\management_templates\update_review.html:37
-msgid "Submit"
-msgstr "提交"
-
 #: .\content\templates\shop_templates\account.html:27
+#: .\content\templates\shop_templates\cart.html:21
+#: .\content\templates\shop_templates\product-detail-2.html:406
 msgid "Category"
 msgstr "分类"
 
 #: .\content\templates\shop_templates\account.html:28
+#: .\content\templates\shop_templates\cart.html:22
+#: .\content\templates\shop_templates\product-detail-2.html:407
 msgid "Page active"
 msgstr "页面已启用"
 
@@ -727,52 +783,66 @@ msgstr "完整地址:"
 
 #: .\content\templates\shop_templates\account.html:220
 #: .\content\templates\shop_templates\account.html:326
+#: .\content\templates\shop_templates\product-detail-2.html:989
 msgid "Terms and conditions"
 msgstr "条款和条件"
 
 #: .\content\templates\shop_templates\account.html:242
+#: .\content\templates\shop_templates\product-detail-2.html:888
 msgid "Quick Links"
 msgstr "快捷链接"
 
 #: .\content\templates\shop_templates\account.html:245
+#: .\content\templates\shop_templates\chinese.html:392
+#: .\content\templates\shop_templates\product-detail-2.html:891
 msgid "About us"
 msgstr "关于我们"
 
 #: .\content\templates\shop_templates\account.html:246
+#: .\content\templates\shop_templates\product-detail-2.html:892
 msgid "Faq"
 msgstr "常见问题解答"
 
 #: .\content\templates\shop_templates\account.html:248
+#: .\content\templates\shop_templates\product-detail-2.html:894
 msgid "My account"
 msgstr "我的帐户"
 
 #: .\content\templates\shop_templates\account.html:250
 #: .\content\templates\shop_templates\account.html:268
+#: .\content\templates\shop_templates\product-detail-2.html:896
+#: .\content\templates\shop_templates\product-detail-2.html:914
 msgid "Contacts"
 msgstr "联系人"
 
 #: .\content\templates\shop_templates\account.html:258
+#: .\content\templates\shop_templates\product-detail-2.html:904
 msgid "Clothes"
 msgstr "衣服"
 
 #: .\content\templates\shop_templates\account.html:259
+#: .\content\templates\shop_templates\product-detail-2.html:905
 msgid "Electronics"
 msgstr "数码电子"
 
 #: .\content\templates\shop_templates\account.html:260
+#: .\content\templates\shop_templates\product-detail-2.html:906
 msgid "Furniture"
 msgstr "家具"
 
 #: .\content\templates\shop_templates\account.html:261
 #: .\content\templates\shop_templates\account.html:262
+#: .\content\templates\shop_templates\product-detail-2.html:907
 msgid "Glasses"
 msgstr "眼镜"
 
 #: .\content\templates\shop_templates\account.html:263
+#: .\content\templates\shop_templates\product-detail-2.html:909
 msgid "Watches"
 msgstr "手表"
 
 #: .\content\templates\shop_templates\account.html:278
+#: .\content\templates\shop_templates\product-detail-2.html:924
 msgid "Keep in touch"
 msgstr "保持联系"
 
@@ -781,20 +851,548 @@ msgid "Your email"
 msgstr "您的邮箱"
 
 #: .\content\templates\shop_templates\account.html:287
+#: .\content\templates\shop_templates\product-detail-2.html:935
 msgid "Follow Us"
 msgstr "关注我们"
 
 #: .\content\templates\shop_templates\account.html:316
+#: .\content\templates\shop_templates\product-detail-2.html:976
 msgid "US Dollars"
 msgstr "美元"
 
 #: .\content\templates\shop_templates\account.html:317
+#: .\content\templates\shop_templates\product-detail-2.html:977
 msgid "Euro"
 msgstr "欧元"
 
 #: .\content\templates\shop_templates\account.html:327
+#: .\content\templates\shop_templates\product-detail-2.html:990
 msgid "Privacy"
 msgstr "隐私政策"
+
+#: .\content\templates\shop_templates\blog-details.html:13
+#: .\content\templates\shop_templates\blog-external.html:13
+msgid "Multipages HTML5 Template"
+msgstr "多页 HTML5 模板"
+
+#: .\content\templates\shop_templates\blog-details.html:61
+#: .\content\templates\shop_templates\blog-details.html:544
+#: .\content\templates\shop_templates\blog-external.html:56
+msgid "Posts"
+msgstr "员额"
+
+#: .\content\templates\shop_templates\blog-details.html:64
+#: .\content\templates\shop_templates\blog-external.html:58
+msgid "Blog Details"
+msgstr "博客详细信息"
+
+#: .\content\templates\shop_templates\blog-details.html:66
+#: .\content\templates\shop_templates\blog-external.html:59
+msgid "Blog Details Fullwidth"
+msgstr "博客详细信息全宽度"
+
+#: .\content\templates\shop_templates\blog-details.html:70
+#: .\content\templates\shop_templates\blog-details.html:376
+#: .\content\templates\shop_templates\blog-details.html:542
+#: .\content\templates\shop_templates\blog-external.html:62
+#: .\content\templates\shop_templates\blog-external.html:440
+msgid "About Author"
+msgstr "关于作者"
+
+#: .\content\templates\shop_templates\blog-details.html:71
+#: .\content\templates\shop_templates\blog-details.html:545
+#: .\content\templates\shop_templates\blog-external.html:63
+#: .\content\templates\shop_templates\company-profile.html:721
+#: .\content\templates\shop_templates\product-detail-2.html:149
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: .\content\templates\shop_templates\blog-details.html:94
+#: .\content\templates\shop_templates\blog-external.html:83
+#: .\content\templates\shop_templates\blog-external.html:229
+msgid "30"
+msgstr "30"
+
+#: .\content\templates\shop_templates\blog-details.html:94
+#: .\content\templates\shop_templates\blog-external.html:83
+#: .\content\templates\shop_templates\blog-external.html:114
+#: .\content\templates\shop_templates\blog-external.html:145
+#: .\content\templates\shop_templates\blog-external.html:229
+#: .\content\templates\shop_templates\blog-external.html:262
+#: .\content\templates\shop_templates\blog-external.html:316
+#: .\content\templates\shop_templates\blog-external.html:335
+#: .\content\templates\shop_templates\blog-external.html:354
+#: .\content\templates\shop_templates\blog-external.html:373
+#: .\content\templates\shop_templates\blog-external.html:392
+#: .\content\templates\shop_templates\blog-external.html:411
+msgid "May"
+msgstr "5 月"
+
+#: .\content\templates\shop_templates\blog-details.html:103
+msgid "Live with no excuses and travel with no regrets"
+msgstr "没有任何借口地生活和旅行，没有遗憾的"
+
+#: .\content\templates\shop_templates\blog-details.html:108
+#: .\content\templates\shop_templates\blog-details.html:117
+#: .\content\templates\shop_templates\blog-details.html:140
+#: .\content\templates\shop_templates\blog-details.html:162
+msgid "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum exercitationem mo sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex aleisequatur? Quis autem vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium volup tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+msgstr "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum exercitationem mo sequatu autem vel eum iure veniam quis nostrum exercitationm corporisiex aleisequatur? Quis autem vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium volup tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+
+#: .\content\templates\shop_templates\blog-details.html:110
+#: .\content\templates\shop_templates\blog-details.html:119
+msgid "Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harumquid em rerum facilis est et expedita distinctio. Nam libero tempore cum soluta nobis est eligendioptio cum que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem ipsum dolor.\t\t\t\t"
+msgstr "Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harumquid em rerum facilis est et expedita distinctio. Nam libero tempore cum soluta nobis est eligendioptio cum que nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem ipsum dolor.\t\t\t\t"
+
+#: .\content\templates\shop_templates\blog-details.html:114
+msgid "Consectetur adipiscing elit, sed do num eiusmod tempor incididunt magina aliqua. Quis ipsum secto suspendise ultrces gravida"
+msgstr "Consectetur adipiscing elit, sed do num eiusmod tempor incididunt magina aliqua. Quis ipsum secto suspendise ultrces gravida"
+
+#: .\content\templates\shop_templates\blog-details.html:142
+#: .\content\templates\shop_templates\blog-details.html:165
+msgid "Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harumquidem rerum facilis est et expedita distinctio. Nam libero tempore cum soluta nobis est eligendioptio cumque nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem ipsum dolor."
+msgstr "Smilique sunt in culpiqui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harumquidem rerum facilis est et expedita distinctio. Nam libero tempore cum soluta nobis est eligendioptio cumque nihil impedit quo minus quod maxime placeat facere possimu.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eosratione volptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit tempor lorem ipsum dolor."
+
+#: .\content\templates\shop_templates\blog-details.html:145
+msgid "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam"
+msgstr "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam"
+
+#: .\content\templates\shop_templates\blog-details.html:146
+msgid "Sequatu autem vel eum iure veniam quis nostrum exercitationm corporis"
+msgstr "Sequatu autem vel eum iure veniam quis nostrum exercitationm corporis"
+
+#: .\content\templates\shop_templates\blog-details.html:147
+msgid "Vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus"
+msgstr "Vel eum. At vero eos et accusamus et iusto odio dignissimos ducimus"
+
+#: .\content\templates\shop_templates\blog-details.html:148
+msgid "Tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+msgstr "Tatum deleniti atque corrupti quos dolores et quas molestias excepturi."
+
+#: .\content\templates\shop_templates\blog-details.html:174
+msgid "Share:"
+msgstr "分享："
+
+#: .\content\templates\shop_templates\blog-details.html:189
+msgid "#Photography"
+msgstr "#照片"
+
+#: .\content\templates\shop_templates\blog-details.html:190
+msgid "#Travel"
+msgstr "#旅行"
+
+#: .\content\templates\shop_templates\blog-details.html:203
+#: .\content\templates\shop_templates\blog-details.html:298
+msgid "Patricia Doe"
+msgstr "Patricia Doe"
+
+#: .\content\templates\shop_templates\blog-details.html:204
+msgid "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum"
+msgstr "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum"
+
+#: .\content\templates\shop_templates\blog-details.html:205
+msgid "exercitatonem mosequatu autem vel eum ivenia."
+msgstr "exercitatonem mosequatu autem vel eum ivenia."
+
+#: .\content\templates\shop_templates\blog-details.html:223
+msgid "Similar Posts"
+msgstr "相似帖子"
+
+#: .\content\templates\shop_templates\blog-details.html:237
+msgid "To me Life is either a daring adventure or nothing"
+msgstr "对我来说，生命要么是一种冒险，要么是一种无尽的冒险。"
+
+#: .\content\templates\shop_templates\blog-details.html:254
+msgid "Life begins at the end of your comfort zone"
+msgstr "生命始于您的舒适区终点"
+
+#: .\content\templates\shop_templates\blog-details.html:268
+msgid "Comments"
+msgstr "评论"
+
+#: .\content\templates\shop_templates\blog-details.html:280
+#: .\content\templates\shop_templates\blog-details.html:317
+msgid "Indie Rossi"
+msgstr "Indie Rossi"
+
+#: .\content\templates\shop_templates\blog-details.html:281
+msgid "Reply"
+msgstr "答复"
+
+#: .\content\templates\shop_templates\blog-details.html:284
+msgid "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis nostrum exercitationem mosequatu autem."
+msgstr "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis nostrum exercitationem mosequatu autem."
+
+#: .\content\templates\shop_templates\blog-details.html:285
+msgid "17 Apr 2020"
+msgstr "17 2020 年"
+
+#: .\content\templates\shop_templates\blog-details.html:299
+#: .\content\templates\shop_templates\blog-details.html:318
+msgid "Reply "
+msgstr "答复 "
+
+#: .\content\templates\shop_templates\blog-details.html:302
+#: .\content\templates\shop_templates\blog-details.html:321
+msgid "Repository-hosted Themes are required to support display of comments on static Pages as well as on single blog Posts."
+msgstr "仓库托管主题需要支持在静态页面以及单个博客帖子上显示评论。"
+
+#: .\content\templates\shop_templates\blog-details.html:303
+msgid "19 Apr 2020"
+msgstr "19 2020 年"
+
+#: .\content\templates\shop_templates\blog-details.html:322
+msgid "14 Apr 2020"
+msgstr "14 2020 年"
+
+#: .\content\templates\shop_templates\blog-details.html:335
+msgid "Make A Comment"
+msgstr "发表评论"
+
+#: .\content\templates\shop_templates\blog-details.html:379
+#: .\content\templates\shop_templates\blog-external.html:443
+msgid "Lorem ipsum dolor sit amet consec adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum suspendise"
+msgstr "Lorem ipsum dolor sit amet consec adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum suspendise"
+
+#: .\content\templates\shop_templates\blog-details.html:385
+#: .\content\templates\shop_templates\blog-external.html:449
+msgid "Facebook"
+msgstr "Facebook"
+
+#: .\content\templates\shop_templates\blog-details.html:386
+#: .\content\templates\shop_templates\blog-external.html:450
+msgid "45k Likes"
+msgstr "45k 赞"
+
+#: .\content\templates\shop_templates\blog-details.html:393
+#: .\content\templates\shop_templates\blog-external.html:457
+msgid "Twitter"
+msgstr "推特"
+
+#: .\content\templates\shop_templates\blog-details.html:394
+#: .\content\templates\shop_templates\blog-external.html:458
+msgid "21k Follower"
+msgstr "21k 追随者"
+
+#: .\content\templates\shop_templates\blog-details.html:401
+#: .\content\templates\shop_templates\blog-details.html:513
+#: .\content\templates\shop_templates\blog-external.html:465
+#: .\content\templates\shop_templates\chinese.html:1044
+msgid "Instagram"
+msgstr "Instagram"
+
+#: .\content\templates\shop_templates\blog-details.html:402
+#: .\content\templates\shop_templates\blog-external.html:466
+msgid "23k Follower"
+msgstr "23k 追随者"
+
+#: .\content\templates\shop_templates\blog-details.html:410
+#: .\content\templates\shop_templates\blog-external.html:474
+msgid "Recent Posts"
+msgstr "最近的帖子"
+
+#: .\content\templates\shop_templates\blog-details.html:413
+#: .\content\templates\shop_templates\blog-external.html:477
+msgid "Let’s escape in the  cityscape"
+msgstr "让我们在城堡逃跑。"
+
+#: .\content\templates\shop_templates\blog-details.html:414
+#: .\content\templates\shop_templates\blog-external.html:478
+msgid "Failure doesn’t define  anything"
+msgstr "失败没有定义任何内容"
+
+#: .\content\templates\shop_templates\blog-details.html:415
+#: .\content\templates\shop_templates\blog-external.html:479
+msgid "Bohemian mountain towards Us"
+msgstr "波西米亚山脉给我们"
+
+#: .\content\templates\shop_templates\blog-details.html:430
+msgid "Travel Hacks</a> (5)"
+msgstr "旅行帽</a> (5)"
+
+#: .\content\templates\shop_templates\blog-details.html:431
+msgid "South Asia</a> (7)"
+msgstr "南亚</a> (7)"
+
+#: .\content\templates\shop_templates\blog-details.html:432
+msgid "Travel Photography</a> (4)"
+msgstr "旅行照片</a> (4)"
+
+#: .\content\templates\shop_templates\blog-details.html:433
+msgid "Wildlife Adventure</a> (2)"
+msgstr "野生动物冒险</a> (2)"
+
+#: .\content\templates\shop_templates\blog-details.html:434
+msgid "Road Trips</a> (4)"
+msgstr "行程</a> (4)"
+
+#: .\content\templates\shop_templates\blog-details.html:440
+#: .\content\templates\shop_templates\blog-external.html:504
+msgid "Most Read Blogs"
+msgstr "阅读最多的博客"
+
+#: .\content\templates\shop_templates\blog-details.html:447
+#: .\content\templates\shop_templates\blog-external.html:510
+msgid "Beautiful afternoon boating in Morine Lake"
+msgstr "莫林湖中美丽的下午弓箭手"
+
+#: .\content\templates\shop_templates\blog-details.html:457
+#: .\content\templates\shop_templates\blog-external.html:518
+msgid "Sudden trip to grand Canyons"
+msgstr "前往大峡谷的突然旅行"
+
+#: .\content\templates\shop_templates\blog-details.html:466
+#: .\content\templates\shop_templates\blog-external.html:526
+msgid "First Snow Experience of my life"
+msgstr "我生活中的第一个雪体验"
+
+#: .\content\templates\shop_templates\blog-details.html:474
+#: .\content\templates\shop_templates\blog-external.html:534
+msgid "Tag Cloud"
+msgstr "标签云"
+
+#: .\content\templates\shop_templates\blog-details.html:476
+#: .\content\templates\shop_templates\blog-details.html:479
+#: .\content\templates\shop_templates\blog-details.html:543
+#: .\content\templates\shop_templates\blog-external.html:536
+#: .\content\templates\shop_templates\blog-external.html:539
+msgid "Travel"
+msgstr "旅费"
+
+#: .\content\templates\shop_templates\blog-details.html:477
+#: .\content\templates\shop_templates\blog-details.html:481
+#: .\content\templates\shop_templates\blog-external.html:537
+#: .\content\templates\shop_templates\blog-external.html:541
+msgid "PHOTOGRAPHY"
+msgstr "照片"
+
+#: .\content\templates\shop_templates\blog-details.html:478
+#: .\content\templates\shop_templates\blog-external.html:538
+msgid "FASHION"
+msgstr "常见问题"
+
+#: .\content\templates\shop_templates\blog-details.html:480
+#: .\content\templates\shop_templates\blog-external.html:540
+msgid "HOBBY"
+msgstr "HOBBY"
+
+#: .\content\templates\shop_templates\blog-details.html:482
+#: .\content\templates\shop_templates\blog-external.html:542
+msgid "NATURE"
+msgstr "地址"
+
+#: .\content\templates\shop_templates\blog-details.html:546
+msgid "Photography"
+msgstr "照片"
+
+#: .\content\templates\shop_templates\blog-details.html:558
+msgid " &copy; 2020 - Benzo Blog. Created by WP ThemeBooster. All Rights "
+msgstr " &copy; 2020 - Benzo Blog。由 WP ThemeBooster创建。所有权利 "
+
+#: .\content\templates\shop_templates\blog-details.html:559
+msgid "Reserved</a>."
+msgstr "保留</a>。"
+
+#: .\content\templates\shop_templates\blog-external.html:89
+#: .\content\templates\shop_templates\blog-external.html:236
+msgid "Live with no excuses & travel with no regrets"
+msgstr "没有任何借口的生活和旅行，没有遗憾的"
+
+#: .\content\templates\shop_templates\blog-external.html:93
+#: .\content\templates\shop_templates\blog-external.html:124
+#: .\content\templates\shop_templates\blog-external.html:155
+#: .\content\templates\shop_templates\blog-external.html:240
+#: .\content\templates\shop_templates\blog-external.html:273
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... "
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... "
+
+#: .\content\templates\shop_templates\blog-external.html:97
+#: .\content\templates\shop_templates\blog-external.html:128
+#: .\content\templates\shop_templates\blog-external.html:159
+#: .\content\templates\shop_templates\blog-external.html:244
+#: .\content\templates\shop_templates\blog-external.html:277
+msgid "Continue Reading"
+msgstr "继续阅读"
+
+#: .\content\templates\shop_templates\blog-external.html:114
+msgid "26"
+msgstr "26"
+
+#: .\content\templates\shop_templates\blog-external.html:120
+#: .\content\templates\shop_templates\blog-external.html:269
+msgid "50 travel essentials you must have"
+msgstr "您必须有 50 个旅行基本值"
+
+#: .\content\templates\shop_templates\blog-external.html:145
+#: .\content\templates\shop_templates\blog-external.html:373
+msgid "22"
+msgstr "22"
+
+#: .\content\templates\shop_templates\blog-external.html:151
+#: .\content\templates\shop_templates\blog-external.html:323
+msgid "With age, comes wisdom. With travel, comes understanding"
+msgstr "随着年龄的增长，到处都有智慧。随着旅行，我们会明白。"
+
+#: .\content\templates\shop_templates\blog-external.html:184
+msgid "Travel & Advanture"
+msgstr "旅行和Advantage"
+
+#: .\content\templates\shop_templates\blog-external.html:185
+msgid "06</span> Posts"
+msgstr "06</span> 帖子"
+
+#: .\content\templates\shop_templates\blog-external.html:193
+msgid "Road Trip"
+msgstr "行程"
+
+#: .\content\templates\shop_templates\blog-external.html:194
+#: .\content\templates\shop_templates\product-search.html:604
+#: .\content\templates\shop_templates\product-search.html:643
+msgid "12"
+msgstr "12"
+
+#: .\content\templates\shop_templates\blog-external.html:194
+#: .\content\templates\shop_templates\blog-external.html:203
+#: .\content\templates\shop_templates\blog-external.html:212
+msgid " Posts"
+msgstr " 员额"
+
+#: .\content\templates\shop_templates\blog-external.html:202
+msgid "Camping Trip"
+msgstr "露营行程"
+
+#: .\content\templates\shop_templates\blog-external.html:203
+msgid "09"
+msgstr "09"
+
+#: .\content\templates\shop_templates\blog-external.html:211
+msgid "Travel Photography"
+msgstr "旅行照片"
+
+#: .\content\templates\shop_templates\blog-external.html:212
+msgid "16"
+msgstr "16"
+
+#: .\content\templates\shop_templates\blog-external.html:234
+#: .\content\templates\shop_templates\blog-external.html:267
+#: .\content\templates\shop_templates\blog-external.html:321
+#: .\content\templates\shop_templates\blog-external.html:378
+#: .\content\templates\shop_templates\blog-external.html:397
+msgid " By Partricia Doe"
+msgstr " 按Particricia Doe"
+
+#: .\content\templates\shop_templates\blog-external.html:262
+#: .\content\templates\shop_templates\blog-external.html:316
+#: .\content\templates\shop_templates\blog-external.html:335
+msgid "27"
+msgstr "27"
+
+#: .\content\templates\shop_templates\blog-external.html:297
+msgid "Subscribe to newsletter"
+msgstr "订阅简讯"
+
+#: .\content\templates\shop_templates\blog-external.html:298
+msgid "Get each & every new blogs through your e-mail"
+msgstr "通过您的电子邮件获取每一个新博客"
+
+#: .\content\templates\shop_templates\blog-external.html:340
+#: .\content\templates\shop_templates\blog-external.html:359
+#: .\content\templates\shop_templates\blog-external.html:416
+msgid "By Partricia Doe"
+msgstr "按Particricia Doe"
+
+#: .\content\templates\shop_templates\blog-external.html:342
+msgid "I am not the same having seen the moon shineon the sky"
+msgstr "我看到月球光天空并不是那么棒了"
+
+#: .\content\templates\shop_templates\blog-external.html:354
+#: .\content\templates\shop_templates\product-search.html:610
+msgid "24"
+msgstr "24"
+
+#: .\content\templates\shop_templates\blog-external.html:361
+msgid "Travel and change of place impart new vigor to the mind"
+msgstr "旅行和地点的改变给人们带来了新的活力。"
+
+#: .\content\templates\shop_templates\blog-external.html:380
+msgid "A journey is best measured in friends, rather than miles"
+msgstr "旅程最好用朋友来衡量，而不是英里。"
+
+#: .\content\templates\shop_templates\blog-external.html:392
+msgid "20"
+msgstr "20"
+
+#: .\content\templates\shop_templates\blog-external.html:399
+msgid "He who would travel happily must travel light"
+msgstr "乐意旅行的人必须轻易行程"
+
+#: .\content\templates\shop_templates\blog-external.html:411
+msgid "07"
+msgstr "07"
+
+#: .\content\templates\shop_templates\blog-external.html:418
+msgid "You will see what a tiny place occupy in the world"
+msgstr "你会看到世界上的一个很小的地方"
+
+#: .\content\templates\shop_templates\blog-external.html:432
+msgid "Older Post"
+msgstr "较早的帖子"
+
+#: .\content\templates\shop_templates\blog-external.html:494
+msgid "Travel Hacks (5)"
+msgstr "5）"
+
+#: .\content\templates\shop_templates\blog-external.html:495
+msgid "South Asia (7)"
+msgstr "南亚(7)"
+
+#: .\content\templates\shop_templates\blog-external.html:496
+msgid "Travel Photography (4)"
+msgstr "旅行摄影(4个)"
+
+#: .\content\templates\shop_templates\blog-external.html:497
+msgid "Wildlife Adventure (2)"
+msgstr "野生动物冒险(2)"
+
+#: .\content\templates\shop_templates\blog-external.html:498
+msgid "Road Trips (4)"
+msgstr "道路行程 (4)"
+
+#: .\content\templates\shop_templates\cart.html:25
+msgid "Cart page"
+msgstr "购物车页面"
+
+#: .\content\templates\shop_templates\cart.html:32
+msgid "Product"
+msgstr "产品"
+
+#: .\content\templates\shop_templates\cart.html:35
+msgid "Price($)"
+msgstr "价格($)"
+
+#: .\content\templates\shop_templates\cart.html:38
+#: .\content\templates\shop_templates\cart2.html:54
+#: .\content\templates\shop_templates\checkout\checkout.html:1099
+#: .\content\templates\shop_templates\product-detail-2.html:465
+msgid "Quantity"
+msgstr "数量"
+
+#: .\content\templates\shop_templates\cart.html:41
+msgid "Subtotal($)"
+msgstr "小计($)"
+
+#: .\content\templates\shop_templates\cart.html:127
+msgid "Apply Coupon"
+msgstr "应用优惠券"
+
+#: .\content\templates\shop_templates\cart.html:151
+#: .\content\templates\shop_templates\cart.html:187
+msgid "Total:"
+msgstr "总计："
+
+#: .\content\templates\shop_templates\cart.html:154
+msgid "Proceed to Checkout"
+msgstr "继续签出"
 
 #: .\content\templates\shop_templates\cart2.html:26
 msgid "Cart"
@@ -809,25 +1407,31 @@ msgid "Shopping Cart"
 msgstr "购物车"
 
 #: .\content\templates\shop_templates\cart2.html:50
+#: .\content\templates\shop_templates\wishlist.html:57
 msgid "Product Photo"
 msgstr "商品图片"
 
 #: .\content\templates\shop_templates\cart2.html:51
+#: .\content\templates\shop_templates\wishlist.html:58
 msgid "Product Name"
 msgstr "商品名称"
 
 #: .\content\templates\shop_templates\cart2.html:52
-#: .\content\templates\shop_templates\product-detail.html:416
+#: .\content\templates\shop_templates\checkout\checkout.html:1098
+#: .\content\templates\shop_templates\checkout\checkout.html:1155
+#: .\content\templates\shop_templates\product-detail-2.html:506
+#: .\content\templates\shop_templates\product-detail.html:431
+#: .\content\templates\shop_templates\wishlist.html:59
 msgid "Description"
 msgstr "简介"
 
 #: .\content\templates\shop_templates\cart2.html:53
+#: .\content\templates\shop_templates\checkout\checkout.html:1100
+#: .\content\templates\shop_templates\checkout\checkout.html:1156
+#: .\content\templates\shop_templates\product-search.html:697
+#: .\content\templates\shop_templates\wishlist.html:60
 msgid "Price"
 msgstr "价格"
-
-#: .\content\templates\shop_templates\cart2.html:54
-msgid "Quantity"
-msgstr "数量"
 
 #: .\content\templates\shop_templates\cart2.html:55
 msgid "Total price"
@@ -836,66 +1440,6 @@ msgstr "总金额"
 #: .\content\templates\shop_templates\cart2.html:74
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 msgstr "“Lorem Ipsum”仅仅是印刷和排版行业使用的虚拟文本。"
-
-#: .\content\templates\shop_templates\cart2.html:110
-msgid "Caculate shipping"
-msgstr "计算运费"
-
-#: .\content\templates\shop_templates\cart2.html:116
-msgid "Select your Counttry"
-msgstr "选择您的国家"
-
-#: .\content\templates\shop_templates\cart2.html:118
-msgid "United States (USA)..."
-msgstr "美国"
-
-#: .\content\templates\shop_templates\cart2.html:123
-msgid "Select your State"
-msgstr "选择您所在的州"
-
-#: .\content\templates\shop_templates\cart2.html:125
-msgid "State / City..."
-msgstr "州，邦 / 城市..."
-
-#: .\content\templates\shop_templates\cart2.html:126
-msgid "City1"
-msgstr "城市1"
-
-#: .\content\templates\shop_templates\cart2.html:127
-msgid "City2"
-msgstr "城市2"
-
-#: .\content\templates\shop_templates\cart2.html:128
-msgid "City3"
-msgstr "城市3"
-
-#: .\content\templates\shop_templates\cart2.html:132
-msgid "Zip Code"
-msgstr "邮政编码"
-
-#: .\content\templates\shop_templates\cart2.html:134
-msgid "Zip code..."
-msgstr "邮政编码..."
-
-#: .\content\templates\shop_templates\cart2.html:140
-msgid "Update Shipping"
-msgstr "更新物流"
-
-#: .\content\templates\shop_templates\cart2.html:150
-msgid "Coupon code"
-msgstr "优惠券代码"
-
-#: .\content\templates\shop_templates\cart2.html:153
-msgid "You can find coupon code from our Activities !"
-msgstr "您可以从我们的活动中找到优惠券代码 ！"
-
-#: .\content\templates\shop_templates\cart2.html:160
-msgid "Enter your Coupon code..."
-msgstr "输入您的优惠券代码："
-
-#: .\content\templates\shop_templates\cart2.html:164
-msgid "REdeem code"
-msgstr "兑换代码"
 
 #: .\content\templates\shop_templates\cart2.html:173
 msgid "Cart totals"
@@ -957,6 +1501,22 @@ msgstr "电话"
 msgid "Other billing address"
 msgstr "其他账单地址"
 
+#: .\content\templates\shop_templates\checkout.html:131
+msgid "2. Payment and Shipping"
+msgstr "2. 付款和运费"
+
+#: .\content\templates\shop_templates\checkout.html:134
+msgid "Credit Card"
+msgstr "信用卡"
+
+#: .\content\templates\shop_templates\checkout.html:142
+msgid "Paypal"
+msgstr "Paypal"
+
+#: .\content\templates\shop_templates\checkout.html:150
+msgid "Cash on delivery"
+msgstr "交货时的现金"
+
 #: .\content\templates\shop_templates\checkout.html:158
 msgid "Bank Transfer"
 msgstr "银行转帐"
@@ -978,11 +1538,13 @@ msgid "3. Order Summary"
 msgstr "订单汇总"
 
 #: .\content\templates\shop_templates\checkout.html:209
+#: .\content\templates\shop_templates\checkout\checkout.html:1161
 msgid "Subtotal"
 msgstr "小计"
 
 #: .\content\templates\shop_templates\checkout.html:210
-#: .\content\templates\shop_templates\product-detail.html:397
+#: .\content\templates\shop_templates\checkout\checkout.html:1172
+#: .\content\templates\shop_templates\product-detail.html:412
 msgid "Shipping"
 msgstr "运费"
 
@@ -998,114 +1560,2018 @@ msgstr "注册到新闻通讯。"
 msgid "Confirm and Pay"
 msgstr "确认并支付"
 
+#: .\content\templates\shop_templates\checkout\checkout.html:187
+msgid "window.ShopifyPaypalV4VisibilityTracking = true;"
+msgstr "window .shopifyPaypalV4VisibilityTracks = true;"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:218
+msgid "Skip to content"
+msgstr "跳转到内容"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:224
+#: .\content\templates\shop_templates\checkout\checkout.html:1080
+msgid "Musicmo -  Musical Instruments Shop Shopify Theme"
+msgstr "Musicmo - 音乐乐器店铺主题"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:226
+#: .\content\templates\shop_templates\checkout\checkout.html:273
+#: .\content\templates\shop_templates\checkout\checkout.html:1082
+msgid "Information"
+msgstr "信息"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:243
+msgid "Show order summary"
+msgstr "显示订单摘要"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:249
+msgid "Hide order summary"
+msgstr "隐藏订单摘要"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:255
+msgid "Sale price"
+msgstr "销售价格"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:271
+msgid "Musicmo -  Checkout"
+msgstr "Musicmo - 签出"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:370
+msgid "We’ll send you an order receipt and recurring shipping updates via text message. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Msg &amp; data rates may apply. View our "
+msgstr "我们将通过文本信息向您发送订单收据和定期送货更新。请回复取消订阅。 回复 HELP 获取帮助。消息频率变化。Msg &amp; 数据率可能适用。查看我们的 "
+
+#: .\content\templates\shop_templates\checkout\checkout.html:372
+msgid "Privacy Policy and "
+msgstr "隐私政策和 "
+
+#: .\content\templates\shop_templates\checkout\checkout.html:374
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:385
+msgid "Shipping address"
+msgstr "送货地址"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:539
+msgid "Country/region"
+msgstr "国家/地区"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:547
+#: .\content\templates\shop_templates\checkout\checkout.html:593
+msgid "China"
+msgstr "中国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:549
+msgid "Afghanistan"
+msgstr "阿富汗"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:551
+msgid "Albania"
+msgstr "阿尔巴尼亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:552
+msgid "Algeria"
+msgstr "Algeria"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:553
+msgid "Andorra"
+msgstr "Andorra"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:554
+msgid "Angola"
+msgstr "安哥拉"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:555
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:556
+msgid "Antigua &amp;Barbuda"
+msgstr "安提瓜和巴布达 &amp;"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:557
+msgid "Argentina"
+msgstr "阿根廷"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:558
+msgid "Armenia"
+msgstr "亚美尼亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:559
+msgid "Aruba"
+msgstr "Aruba"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:560
+msgid "Ascension Island"
+msgstr "阿森松岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:561
+msgid "Australia"
+msgstr "澳大利亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:562
+msgid "Austria"
+msgstr "奥地利"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:563
+msgid "Azerbaijan"
+msgstr "阿塞拜疆"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:564
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:565
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:566
+msgid "Bangladesh"
+msgstr "孟加拉国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:567
+msgid "Barbados"
+msgstr "巴巴多斯"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:568
+msgid "Belarus"
+msgstr "白俄罗斯"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:569
+msgid "Belgium"
+msgstr "比利时"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:570
+msgid "Belize"
+msgstr "伯利兹"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:571
+msgid "Benin"
+msgstr "Benin"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:572
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:573
+msgid "Bhutan"
+msgstr "不丹"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:574
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:575
+msgid "Bosnia &amp; Herzegovina"
+msgstr "Bosnia &amp; Herzegovina"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:576
+msgid "Botswana"
+msgstr "Botswana"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:577
+msgid "Brazil"
+msgstr "巴西"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:578
+msgid "British Indian Ocean Territory"
+msgstr "英属印度洋领土"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:579
+msgid "British Virgin Islands"
+msgstr "四. 英属维尔京群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:580
+msgid "Brunei"
+msgstr "Brunei"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:581
+msgid "Bulgaria"
+msgstr "保加利亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:582
+msgid "Burkina Faso"
+msgstr "布基纳法索"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:583
+msgid "Burundi"
+msgstr "Burundi"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:584
+msgid "Cambodia"
+msgstr "柬埔寨"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:585
+msgid "Cameroon"
+msgstr "喀麦隆"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:586
+msgid "Canada"
+msgstr "加拿大"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:587
+msgid "Cape Verde"
+msgstr "佛得角"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:588
+msgid "Caribbean Netherlands"
+msgstr "加勒比荷兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:589
+msgid "Cayman Islands"
+msgstr "五. 开曼群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:590
+msgid "Central African Republic"
+msgstr "中非共和国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:591
+msgid "Chad"
+msgstr "乍得"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:592
+msgid "Chile"
+msgstr "智利"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:594
+msgid "Christmas Island"
+msgstr "圣诞岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:595
+msgid "Cocos (Keeling) Islands"
+msgstr "可可(基林)群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:596
+msgid "Colombia"
+msgstr "哥伦比亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:597
+msgid "Comoros"
+msgstr "科摩罗"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:598
+msgid "Congo - Brazzaville"
+msgstr "Congo - Brazzaville"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:599
+msgid "Congo - Kinshasa"
+msgstr "Congo - Kinshasa"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:600
+msgid "Cook Islands"
+msgstr "库克群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:601
+msgid "Costa Rica"
+msgstr "哥斯达黎加"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:602
+msgid "Croatia"
+msgstr "克罗地亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:603
+msgid "Curaçao"
+msgstr "库拉索岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:604
+msgid "Cyprus"
+msgstr "塞浦路斯"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:605
+msgid "Czechia"
+msgstr "捷克语"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:606
+msgid "Côte d’Ivoire"
+msgstr "Côte d’Ivoire"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:607
+msgid "Denmark"
+msgstr "丹麦"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:608
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:609
+msgid "Dominica"
+msgstr "Dominica"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:610
+msgid "Dominican Republic"
+msgstr "多米尼加共和国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:611
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:612
+msgid "Egypt"
+msgstr "埃及"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:613
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:614
+msgid "Equatorial Guinea"
+msgstr "Equatorial Guinea"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:615
+msgid "Eritrea"
+msgstr "厄立特里亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:616
+msgid "Estonia"
+msgstr "爱沙尼亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:617
+msgid "Eswatini"
+msgstr "埃斯瓦蒂尼文"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:618
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:619
+msgid "Falkland Islands"
+msgstr "福克兰群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:620
+msgid "Faroe Islands"
+msgstr "法罗群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:621
+msgid "Fiji"
+msgstr "Fiji"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:622
+msgid "Finland"
+msgstr "芬兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:623
+msgid "France"
+msgstr "法国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:624
+msgid "French Guiana"
+msgstr "法属圭亚那a"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:625
+msgid "French Polynesia"
+msgstr "法属波利尼西亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:626
+msgid "French Southern Territories"
+msgstr "法属南方领土"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:627
+msgid "Gabon"
+msgstr "Gabon"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:628
+msgid "Gambia"
+msgstr "Gambia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:629
+msgid "Georgia"
+msgstr "格鲁吉亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:630
+msgid "Germany"
+msgstr "德国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:631
+msgid "Ghana"
+msgstr "加纳"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:632
+msgid "Gibraltar"
+msgstr "直布罗陀问题"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:633
+msgid "Greece"
+msgstr "希腊"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:634
+msgid "Greenland"
+msgstr "格陵兰岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:635
+msgid "Grenada"
+msgstr "格林纳达"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:636
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:637
+msgid "Guatemala"
+msgstr "危地马拉"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:638
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:639
+msgid "Guinea"
+msgstr "Guinea"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:640
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:641
+msgid "Guyana"
+msgstr "Guyana"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:642
+msgid "Haiti"
+msgstr "Haiti"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:643
+msgid "Honduras"
+msgstr "Honduras"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:644
+msgid "Hong Kong SAR"
+msgstr "香港特别行政区(中国)"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:645
+msgid "Hungary"
+msgstr "匈牙利"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:646
+msgid "Iceland"
+msgstr "冰岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:647
+msgid "India"
+msgstr "印度"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:648
+msgid "Indonesia"
+msgstr "印度尼西亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:649
+msgid "Iraq"
+msgstr "伊拉克"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:650
+msgid "Ireland"
+msgstr "爱尔兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:651
+msgid "Isle of Man"
+msgstr "马恩岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:652
+msgid "Israel"
+msgstr "Israel"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:653
+msgid "Italy"
+msgstr "意大利"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:654
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:655
+msgid "Japan"
+msgstr "日本"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:656
+msgid "Jersey"
+msgstr "泽西岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:657
+msgid "Jordan"
+msgstr "约旦"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:658
+msgid "Kazakhstan"
+msgstr "哈萨克斯坦"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:659
+msgid "Kenya"
+msgstr "肯尼亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:660
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:661
+msgid "Kosovo"
+msgstr "Kosovo"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:662
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:663
+msgid "Kyrgyzstan"
+msgstr "Kyrgyzstan"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:664
+msgid "Laos"
+msgstr "老挝语"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:665
+msgid "Latvia"
+msgstr "拉脱维亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:666
+msgid "Lebanon"
+msgstr "Lebanon"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:667
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:668
+msgid "Liberia"
+msgstr "利比里亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:669
+msgid "Libya"
+msgstr "Libya"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:670
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:671
+msgid "Lithuania"
+msgstr "立陶宛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:672
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:673
+msgid "Macao SAR"
+msgstr "Macao SAR"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:674
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:675
+msgid "Malawi"
+msgstr "Malawi"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:676
+msgid "Malaysia"
+msgstr "马来西亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:677
+msgid "Maldives"
+msgstr "马尔代夫"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:678
+msgid "Mali"
+msgstr "Mali"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:679
+msgid "Malta"
+msgstr "Malta"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:680
+msgid "Martinique"
+msgstr "马提尼克岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:681
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:682
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:683
+msgid "Mayotte"
+msgstr "马约特"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:684
+msgid "Mexico"
+msgstr "墨西哥"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:685
+msgid "Moldova"
+msgstr "Moldova"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:686
+msgid "Monaco"
+msgstr "摩纳哥"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:687
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:688
+msgid "Montenegro"
+msgstr "黑山"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:689
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:690
+msgid "Morocco"
+msgstr "摩洛哥"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:691
+msgid "Mozambique"
+msgstr "莫桑比克"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:692
+msgid "Myanmar (Burma)"
+msgstr "Myanmar (Burma)"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:693
+msgid "Namibia"
+msgstr "Namibia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:694
+msgid "Nauru"
+msgstr "Nauru"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:695
+msgid "Nepal"
+msgstr "尼泊尔"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:696
+msgid "Netherlands"
+msgstr "荷兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:697
+msgid "New Caledonia"
+msgstr "B. 新喀里多尼亚问题"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:698
+msgid "New Zealand"
+msgstr "新西兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:699
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:700
+msgid "Niger"
+msgstr "Niger"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:701
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:702
+msgid "Niue"
+msgstr "Niue"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:703
+msgid "Norfolk Island"
+msgstr "诺福尔克岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:704
+msgid "North Macedonia"
+msgstr "前南斯拉夫的马其顿共和国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:705
+msgid "Norway"
+msgstr "挪威"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:706
+msgid "Oman"
+msgstr "Oman"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:707
+msgid "Pakistan"
+msgstr "巴基斯坦"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:708
+msgid "Palestinian Territories"
+msgstr "巴勒斯坦领土"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:709
+msgid "Panama"
+msgstr "Panama"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:710
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:711
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:712
+msgid "Peru"
+msgstr "秘鲁"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:713
+msgid "Philippines"
+msgstr "菲律宾"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:714
+msgid "Pitcairn Islands"
+msgstr "皮特凯恩群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:715
+msgid "Poland"
+msgstr "波兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:716
+msgid "Portugal"
+msgstr "葡萄牙"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:717
+msgid "Qatar"
+msgstr "Qatar"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:718
+msgid "Réunion"
+msgstr "留尼旺岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:719
+msgid "Romania"
+msgstr "罗马尼亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:720
+msgid "Russia"
+msgstr "Russian"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:721
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:722
+msgid "Samoa"
+msgstr "Samoa"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:723
+msgid "San Marino"
+msgstr "San Marino"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:724
+msgid "São Tomé &amp; Príncipe"
+msgstr "Saao Tomeix &amp; Principe"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:725
+msgid "Saudi Arabia"
+msgstr "沙特阿拉伯"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:726
+msgid "Senegal"
+msgstr "Senegal"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:727
+msgid "Serbia"
+msgstr "塞尔维亚"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:728
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:729
+msgid "Sierra Leone"
+msgstr "塞拉利昂"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:730
+msgid "Singapore"
+msgstr "新加坡"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:731
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:732
+msgid "Slovakia"
+msgstr "斯洛伐克"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:733
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:734
+msgid "Solomon Islands"
+msgstr "所罗门群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:735
+msgid "Somalia"
+msgstr "Somalia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:736
+msgid "South Africa"
+msgstr "南非"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:737
+msgid "South Georgia &amp; South Sandwich Islands"
+msgstr "南乔治亚岛 &amp; 南桑威奇群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:738
+msgid "South Korea"
+msgstr "南大韩民国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:739
+msgid "South Sudan"
+msgstr "南苏丹"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:740
+msgid "Spain"
+msgstr "西班牙"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:741
+msgid "Sri Lanka"
+msgstr "斯里兰卡"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:742
+msgid "St. Barthélemy"
+msgstr "圣巴瑟米（圣巴瑟米）"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:743
+msgid "St. Helena"
+msgstr "St. Helena"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:744
+msgid "St. Kitts &amp; Nevis"
+msgstr "St. Kitts &amp; Nevis"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:745
+msgid "St. Lucia"
+msgstr "St. Lucia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:746
+msgid "St. Martin"
+msgstr "St. Martin"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:747
+msgid "St. Pierre &amp; Miquelon"
+msgstr "圣皮埃尔 &amp; 密克隆岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:748
+msgid "St. Vincent &amp;Grenadines"
+msgstr "圣文森特和格林纳丁斯"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:749
+msgid "Sudan"
+msgstr "Sudan"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:750
+msgid "Suriname"
+msgstr "Suriname"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:751
+msgid "Svalbard &amp; Jan Mayen"
+msgstr "斯瓦尔巴德 &amp; Jan Mayen"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:752
+msgid "Sweden"
+msgstr "瑞典"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:753
+msgid "Switzerland"
+msgstr "瑞士"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:754
+msgid "Taiwan"
+msgstr "台湾省"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:755
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:756
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:757
+msgid "Thailand"
+msgstr "Thailand"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:758
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:759
+msgid "Togo"
+msgstr "多哥"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:760
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:761
+msgid "Tonga"
+msgstr "Tonga"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:762
+msgid "Trinidad &amp; Tobago"
+msgstr "Trinidad &amp; Tobago"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:763
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:764
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:765
+msgid "Turkey"
+msgstr "土耳其"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:766
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:767
+msgid "Turks &amp; Caicos Islands"
+msgstr "特克斯 &amp; 凯科斯群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:768
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:769
+msgid "U.S. Outlying Islands"
+msgstr "美国外围群岛"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:770
+msgid "Uganda"
+msgstr "Uganda"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:771
+msgid "Ukraine"
+msgstr "乌克兰"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:772
+msgid "United Arab Emirates"
+msgstr "阿拉伯联合酋长国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:773
+msgid "United Kingdom"
+msgstr "联合王国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:774
+msgid "United States"
+msgstr "美国"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:775
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:776
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:777
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:778
+msgid "Vatican City"
+msgstr "梵蒂冈城"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:779
+msgid "Venezuela"
+msgstr "委内瑞拉"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:780
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:781
+msgid "Wallis &amp;Futuna"
+msgstr "瓦利斯 &amp;富图纳"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:782
+msgid "Western Sahara"
+msgstr "西撒哈拉"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:783
+msgid "Yemen"
+msgstr "也门"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:784
+msgid "Zambia"
+msgstr "Zambia"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:785
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:802
+#: .\content\templates\shop_templates\checkout\checkout.html:809
+msgid "State"
+msgstr "状态"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1034
+msgid "Continue to shipping"
+msgstr "继续发货"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1046
+msgid "Return to cart"
+msgstr "返回购物车"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1059
+msgid "Opens external website in a new window."
+msgstr "在新窗口中打开外部网站。"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1061
+msgid "Opens in a new window."
+msgstr "在新窗口中打开"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1063
+msgid "Opens external website."
+msgstr "打开外部网站。"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1065
+msgid "Customer information - Musicmo -  Musical Instruments Shop Shopify Theme - Checkout"
+msgstr "客户信息 - Musicmo-音乐乐器店铺主题-结账"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1071
+msgid "All rights reserved Musicmo - Musical Instruments Shop Shopify Theme"
+msgstr "版权所有 Musicmo - 音乐乐器店铺主题"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1088
+msgid "Order summary"
+msgstr "订单摘要"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1094
+msgid "Shopping cart"
+msgstr "购物车"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1097
+msgid "Product image"
+msgstr "产品图片"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1122
+msgid "Add: {{ item.created_at }}"
+msgstr "添加: {{ item.created_at }}"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1141
+msgid "Scroll for more items"
+msgstr "滚动以获取更多项目"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1152
+msgid "Cost summary"
+msgstr "成本摘要"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1176
+msgid "Calculated at next step"
+msgstr "在下一步中计算"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1182
+msgid "Taxes (estimated)"
+msgstr "税(估计数)"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1194
+#: .\content\templates\shop_templates\product-detail-2.html:296
+msgid "Total"
+msgstr "总计"
+
+#: .\content\templates\shop_templates\checkout\checkout.html:1213
+msgid "Updated total price:"
+msgstr "更新总价格："
+
+#: .\content\templates\shop_templates\checkout\success.html:29
 #: .\content\templates\shop_templates\confirm.html:29
 msgid "Order completed!"
 msgstr "订单已完成！"
 
+#: .\content\templates\shop_templates\checkout\success.html:30
 #: .\content\templates\shop_templates\confirm.html:30
 msgid "You will receive a confirmation email soon!"
 msgstr "您将很快收到一封确认邮件！"
 
-#: .\content\templates\shop_templates\homepage.html:70
+#: .\content\templates\shop_templates\chinese.html:14
+msgid "Holiday Planners - Travel & Tour HTML5 Template"
+msgstr "假期计划者 - 旅行和旅行 HTML5 模板"
+
+#: .\content\templates\shop_templates\chinese.html:258
+msgid "Enjoy The"
+msgstr "享受喜欢的"
+
+#: .\content\templates\shop_templates\chinese.html:258
+#: .\content\templates\shop_templates\chinese.html:422
+#: .\content\templates\shop_templates\chinese.html:513
+#: .\content\templates\shop_templates\company-profile.html:124
+#: .\content\templates\shop_templates\homepage.html:135
+#: .\content\templates\shop_templates\product-search.html:86
+msgid "Chinese Instruments"
+msgstr "中国乐器"
+
+#: .\content\templates\shop_templates\chinese.html:259
+msgid "Serve as a communication bridge between Chinese instruments and Western instruments"
+msgstr "充当中国文书与西方文书之间的沟通桥梁。"
+
+#: .\content\templates\shop_templates\chinese.html:275
+msgid "Music and Instruments are"
+msgstr "音乐和乐器是"
+
+#: .\content\templates\shop_templates\chinese.html:275
+msgid "Universal."
+msgstr "1. 普遍性。"
+
+#: .\content\templates\shop_templates\chinese.html:276
+msgid "A Convivial Journey of Chinese Instruments"
+msgstr "中国文书的儒瓦内旅程"
+
+#: .\content\templates\shop_templates\chinese.html:292
+msgid "Let us Shop"
+msgstr "让我们购物"
+
+#: .\content\templates\shop_templates\chinese.html:292
+msgid "Chinese Instruments."
+msgstr "中文仪器。"
+
+#: .\content\templates\shop_templates\chinese.html:293
+msgid "Melodious Instruments offer you a break from routine life."
+msgstr "美化乐器为你提供了脱离日常生活的机会。"
+
+#: .\content\templates\shop_templates\chinese.html:394
+#: .\content\templates\shop_templates\company-profile.html:317
+msgid "Chinese"
+msgstr "中文"
+
+#: .\content\templates\shop_templates\chinese.html:394
+msgid "Instruments Shop"
+msgstr "乐器商店"
+
+#: .\content\templates\shop_templates\chinese.html:394
+msgid "Now"
+msgstr "现在开始"
+
+#: .\content\templates\shop_templates\chinese.html:397
+msgid "The project displays Chinese and Western musical instruments in the separate zone to attract potential customers from different cultural backgrounds. The following figures shows the shopping zone specially designed to promote Chinese instruments."
+msgstr "该项目在不同区域展示中文和西文乐器，以吸引来自不同文化背景的潜在顾客。 下面的图表显示了为推广中文仪器而专门设计的购物区。"
+
+#: .\content\templates\shop_templates\chinese.html:398
+msgid "Music is a language, and the more “words” you learn the more you will be able to say. You will soon find yourself wanting to apply the information you’ve learned to create music of your own and express your own voice. Music is not just about knowing how to play specific songs, it is about expressing emotion through sound. Whether it is just playing your own version of a song, or creating an entirely new one, learning how to play an instrument enables you to use your creativity to say something original."
+msgstr "音乐是一种语言，您学习的语言越是“单词”，您就能说得越多。 您很快就会发现自己想应用您所学到的信息来创建自己的音乐并表达自己的声音。 音乐不仅仅是要知道如何播放特定歌曲，而是要通过声音表达激动。 它正在播放您自己的歌曲版本，还是创建一个全新的歌曲。 学习如何玩乐器使你能够利用你的创造力来说一些原始东西。"
+
+#: .\content\templates\shop_templates\chinese.html:402
+#: .\content\templates\shop_templates\chinese.html:513
+#: .\content\templates\shop_templates\index.html:201
+#: .\content\templates\shop_templates\index.html:668
+msgid "Shop Now"
+msgstr "立即购买"
+
+#: .\content\templates\shop_templates\chinese.html:420
+msgid "Amazing Instruments"
+msgstr "惊人的乐器"
+
+#: .\content\templates\shop_templates\chinese.html:422
+msgid "Choose The"
+msgstr "选择内容"
+
+#: .\content\templates\shop_templates\chinese.html:422
+msgid "Just Extend Your"
+msgstr "只是扩展您的"
+
+#: .\content\templates\shop_templates\chinese.html:423
+msgid "Music Style"
+msgstr "音乐样式"
+
+#: .\content\templates\shop_templates\chinese.html:437
+msgid "Pipa"
+msgstr "皮帕文"
+
+#: .\content\templates\shop_templates\chinese.html:452
+msgid "Fengling"
+msgstr "Fengling"
+
+#: .\content\templates\shop_templates\chinese.html:467
+msgid "Drum"
+msgstr "鼓座"
+
+#: .\content\templates\shop_templates\chinese.html:484
+msgid "Lusheng"
+msgstr "卢申文"
+
+#: .\content\templates\shop_templates\chinese.html:494
+msgid "View All"
+msgstr "查看全部"
+
+#: .\content\templates\shop_templates\chinese.html:511
+msgid "Amazing Offers"
+msgstr "惊人的报价"
+
+#: .\content\templates\shop_templates\chinese.html:513
+msgid "View of"
+msgstr "视图"
+
+#: .\content\templates\shop_templates\chinese.html:513
+msgid "and"
+msgstr "和"
+
+#: .\content\templates\shop_templates\chinese.html:529
+#, python-format
+msgid "22%% off"
+msgstr "22%% 关闭"
+
+#: .\content\templates\shop_templates\chinese.html:533
+msgid "Cinque Terre, Italy"
+msgstr "Cinque Terre, Italy"
+
+#: .\content\templates\shop_templates\chinese.html:534
+msgid "$1200"
+msgstr "$1200"
+
+#: .\content\templates\shop_templates\chinese.html:545
+#: .\content\templates\shop_templates\chinese.html:593
+#: .\content\templates\shop_templates\chinese.html:739
+#, python-format
+msgid "15%% off"
+msgstr "15%% 关闭"
+
+#: .\content\templates\shop_templates\chinese.html:549
+msgid "Parthenon, Greece"
+msgstr "Parthenon, 希腊"
+
+#: .\content\templates\shop_templates\chinese.html:561
+#: .\content\templates\shop_templates\chinese.html:794
+#, python-format
+msgid "38%% off"
+msgstr "38%% 关闭"
+
+#: .\content\templates\shop_templates\chinese.html:565
+msgid "Jaisalmer Fort, Jaisalmer"
+msgstr "Jaisalmer Fort, Jaisalmer"
+
+#: .\content\templates\shop_templates\chinese.html:577
+#, python-format
+msgid "32%% off"
+msgstr "32%% 关闭"
+
+#: .\content\templates\shop_templates\chinese.html:581
+msgid "JungGrenzgipfel, Thailand"
+msgstr "JungGrenzgipfel, Thailand"
+
+#: .\content\templates\shop_templates\chinese.html:597
+msgid "Jungfrau Mountain, Switzerland"
+msgstr "Jungfrau Mountain, Switzerland"
+
+#: .\content\templates\shop_templates\chinese.html:635
+msgid "700+ Instruments"
+msgstr "700+ 乐器"
+
+#: .\content\templates\shop_templates\chinese.html:636
+#: .\content\templates\shop_templates\chinese.html:935
+#: .\content\templates\shop_templates\chinese.html:952
+#: .\content\templates\shop_templates\chinese.html:969
+msgid "The Chinese philosopher Confucius said long ago that \"Music produces a kind of pleasure which human nature cannot do without.\" Playing a musical instrument has many benefits and can bring joy to you and to everyone around you."
+msgstr "中国哲学家康富西乌斯早就说过，“音乐带来了人类大自然所不能带来的一种快乐。 播放乐器有许多好处，可以给你和你周围的每个人带来快乐。"
+
+#: .\content\templates\shop_templates\chinese.html:647
+msgid "BEST PRICE GUARANTEE"
+msgstr "最佳价格"
+
+#: .\content\templates\shop_templates\chinese.html:648
+msgid "You don’t have to become a virtuoso to reap the benefits of music. You will develop a taste for the different composers, styles, and genres of music. Not only does this cause you to be more well-versed in music, but it also leads to a higher appreciation of the skill."
+msgstr "您不必变成虚拟机才能获得音乐的好处。 您将为不同的作曲家、风格和音乐流派开发一种品牌。 这不仅促使您更精通音乐，而且还导致对技能的更高评价。"
+
+#: .\content\templates\shop_templates\chinese.html:659
+msgid "TOP NOTCH SUPPORT"
+msgstr "顶部无支持"
+
+#: .\content\templates\shop_templates\chinese.html:660
+msgid "Once you learn how to effectively play an instrument, not only do you have the ability to share your gift with family and friends, you can bless those at nursing homes, church, banquets and more. You might even get paid for your work!"
+msgstr "一旦你学会如何有效地玩乐器，不仅能够与家人和朋友分享你的礼物， 你可以祝福那些在疗养院、教堂、香蕉和更多的人。 您甚至可能会为您的工作获得报酬！"
+
+#: .\content\templates\shop_templates\chinese.html:674
+msgid "Chinese instrument in International"
+msgstr "中国国际文书"
+
+#: .\content\templates\shop_templates\chinese.html:676
+msgid "Trending, <span>Best Selling Instruments</span> And Amazing Musics"
+msgstr "趋势, <span>最畅销的乐器</span> 和惊人的Musics"
+
+#: .\content\templates\shop_templates\chinese.html:688
+msgid "Matouqin"
+msgstr "Matouqin"
+
+#: .\content\templates\shop_templates\chinese.html:692
+msgid "(Mongolian) A two-string stringed musical instrument."
+msgstr "(蒙古语) 一个双字符串的乐器。"
+
+#: .\content\templates\shop_templates\chinese.html:695
+msgid "It has a trapezoidal body and a horse-head-shaped handle "
+msgstr "它有一个陷阱尸体和一把马头形手柄。 "
+
+#: .\content\templates\shop_templates\chinese.html:743
+msgid "Rebagu"
+msgstr "Rebagu"
+
+#: .\content\templates\shop_templates\chinese.html:747
+msgid "(Tibetan) A percussion instrument in dancing"
+msgstr "染色仪器（Tibetan）"
+
+#: .\content\templates\shop_templates\chinese.html:750
+msgid "Women hold a drum in her right hand and a handle in her left hand, changing movements by spinning and tapping "
+msgstr "妇女在她的右手里拿着一只鼓，左手手里也有一把手柄，通过旋转和窃取来改变动作。 "
+
+#: .\content\templates\shop_templates\chinese.html:798
+msgid "Lishidagu"
+msgstr "Lishidagu"
+
+#: .\content\templates\shop_templates\chinese.html:802
+msgid "(Han)Holiday celebration drum, used to strengthen the military momentum"
+msgstr "休假日庆祝鼓，用来加强军事实力"
+
+#: .\content\templates\shop_templates\chinese.html:805
+msgid "The tympanic membrane is about 1000m in diameter and is struck by one or two people each holding a double stick"
+msgstr "惊慌膜直径约为1000米，被一两个人撞击，每个人都有双棒。"
+
+#: .\content\templates\shop_templates\chinese.html:852
+msgid "Yueqin"
+msgstr "Yueqin"
+
+#: .\content\templates\shop_templates\chinese.html:856
+msgid "(Han) A plucked stringed instruments from Han Dynasty"
+msgstr "(Han) Han Dynasty的硬盘乐器"
+
+#: .\content\templates\shop_templates\chinese.html:859
+msgid "The neck of the piano is short, and the sound of the piano is leisurely "
+msgstr "钢琴的颈部很短，钢琴的声音是闲置的 "
+
+#: .\content\templates\shop_templates\chinese.html:914
+msgid "Testimonials"
+msgstr "感言"
+
+#: .\content\templates\shop_templates\chinese.html:916
+msgid "Customer <span>Reviews"
+msgstr "客户 <span>评论"
+
+#: .\content\templates\shop_templates\chinese.html:938
+msgid "John Doe"
+msgstr "John Doe"
+
+#: .\content\templates\shop_templates\chinese.html:939
+msgid "Rated by instruments player on facebook"
+msgstr "在Facebook上由乐器玩家评分"
+
+#: .\content\templates\shop_templates\chinese.html:955
+msgid "Minh Chau"
+msgstr "Minh Chau"
+
+#: .\content\templates\shop_templates\chinese.html:956
+msgid "Rated by instruments player on instagram"
+msgstr "由 instagram 上的乐器玩家评分"
+
+#: .\content\templates\shop_templates\chinese.html:972
+msgid "Mathew A. Stephenson"
+msgstr "Mathew A. Stephenson"
+
+#: .\content\templates\shop_templates\chinese.html:973
+msgid "Rated by instruments player on twitter"
+msgstr "由 twitter 上的乐器玩家评分"
+
+#: .\content\templates\shop_templates\chinese.html:991
+#: .\content\templates\shop_templates\index.html:717
+msgid "Latest News"
+msgstr "最新新闻"
+
+#: .\content\templates\shop_templates\chinese.html:993
+msgid "Learn More <span>About Instruments"
+msgstr "了解更多 <span>关于乐器的信息"
+
+#: .\content\templates\shop_templates\chinese.html:998
+msgid "Go to Blog"
+msgstr "转到博客"
+
+#: .\content\templates\shop_templates\chinese.html:1025
+msgid "Learn More"
+msgstr "了解更多"
+
+#: .\content\templates\shop_templates\chinese.html:1046
+msgid "Instrumentsplayer"
+msgstr "乐器播放器"
+
+#: .\content\templates\shop_templates\company-profile.html:91
+msgid "Melodious Instruments Shop ."
+msgstr "美化仪器店"
+
+#: .\content\templates\shop_templates\company-profile.html:92
+msgid "We are team of talented instruments sellers"
+msgstr "我们是有才能的仪器销售者"
+
+#: .\content\templates\shop_templates\company-profile.html:100
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "3D"
+msgstr "3D"
+
+#: .\content\templates\shop_templates\company-profile.html:100
+msgid "Preview"
+msgstr "预览"
+
+#: .\content\templates\shop_templates\company-profile.html:106
+msgid "3D Customization"
+msgstr "3D 自定义"
+
+#: .\content\templates\shop_templates\company-profile.html:112
+msgid "Smart Recommendation"
+msgstr "智能建议"
+
+#: .\content\templates\shop_templates\company-profile.html:118
+msgid "Instruments Games"
+msgstr "乐器游戏"
+
+#: .\content\templates\shop_templates\company-profile.html:145
+msgid "Shift from brick-and-mortar retail to e-commerce"
+msgstr "从砖头和迫击炮零售向电子商务转移"
+
+#: .\content\templates\shop_templates\company-profile.html:146
+msgid "This is a Melodious Instruments Shop that was "
+msgstr "这是一家美化的乐器商店， "
+
+#: .\content\templates\shop_templates\company-profile.html:146
+msgid "run in physical business by a family previously"
+msgstr "先前由一家人实际运行"
+
+#: .\content\templates\shop_templates\company-profile.html:149
+msgid "Firstly, our store has essential functions for online shopping"
+msgstr "首先，我们的商店具有在线购物的基本功能"
+
+#: .\content\templates\shop_templates\company-profile.html:150
+msgid "To give customers immersive shopping experience, our project employs the usage of 3D instruments preview and instruments playing games in our website."
+msgstr "为了让客户有沉浸式购物体验，我们的项目使用3D工具预览和在我们的网站上玩游戏的工具。"
+
+#: .\content\templates\shop_templates\company-profile.html:151
+msgid "Our shop is original in allowing customers to interact with 3D models to customise their preferred instruments, which have not gained much prevalence in current e-commerce."
+msgstr "我们的商店具有原创性，允许客户与3D模型进行互动以自定义他们喜欢的乐器。 在目前电子商务中并未占上风的国家。"
+
+#: .\content\templates\shop_templates\company-profile.html:153
+msgid "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating"
+msgstr "在这一大流行病的背景下，当地商店的家庭所有器械被迫关闭其有形生意，现在正在预料。"
+
+#: .\content\templates\shop_templates\company-profile.html:153
+#: .\content\templates\shop_templates\company-profile.html:297
+msgid "e-commerce as a auxiliary or alternative sales channel."
+msgstr "电子商务是一种辅助或替代销售渠道。"
+
+#: .\content\templates\shop_templates\company-profile.html:199
+msgid "Est labore ad"
+msgstr "Est labore ad"
+
+#: .\content\templates\shop_templates\company-profile.html:200
+msgid "Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip"
+msgstr "Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip"
+
+#: .\content\templates\shop_templates\company-profile.html:204
+msgid "Harum esse qui"
+msgstr "Harum esse qui"
+
+#: .\content\templates\shop_templates\company-profile.html:205
+msgid "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt"
+msgstr "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt"
+
+#: .\content\templates\shop_templates\company-profile.html:209
+msgid "Aut occaecati"
+msgstr "Aut occaecati"
+
+#: .\content\templates\shop_templates\company-profile.html:210
+msgid "Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere"
+msgstr "Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere"
+
+#: .\content\templates\shop_templates\company-profile.html:214
+msgid "Beatae veritatis"
+msgstr "Beatae veritatis"
+
+#: .\content\templates\shop_templates\company-profile.html:215
+msgid "Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta"
+msgstr "Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta"
+
+#: .\content\templates\shop_templates\company-profile.html:229
+msgid "Check our Services"
+msgstr "检查我们的服务"
+
+#: .\content\templates\shop_templates\company-profile.html:236
+msgid "Preview 3D Instruments"
+msgstr "预览 3D 乐器"
+
+#: .\content\templates\shop_templates\company-profile.html:237
+msgid "You can view instruments in 3D forms,"
+msgstr "您可以查看3D形式的乐器。"
+
+#: .\content\templates\shop_templates\company-profile.html:237
+msgid "giving you a more comprehensive about the instruments."
+msgstr "给你更全面的工具。"
+
+#: .\content\templates\shop_templates\company-profile.html:245
+msgid "Customize 3D Instruments"
+msgstr "自定义 3D 乐器"
+
+#: .\content\templates\shop_templates\company-profile.html:246
+msgid "You can customize your preferred 3D instruments, better catering to your preferences."
+msgstr "您可以自定义您首选的3D工具，更好地适应您的首选项。"
+
+#: .\content\templates\shop_templates\company-profile.html:254
+msgid "Smart Instruments Recommendations"
+msgstr "智能乐器建议"
+
+#: .\content\templates\shop_templates\company-profile.html:255
+msgid "Our store can better identify your preferred instruments "
+msgstr "我们的商店可以更好地识别您喜欢的乐器 "
+
+#: .\content\templates\shop_templates\company-profile.html:255
+msgid "by using advanced technologies."
+msgstr "通过使用先进技术。"
+
+#: .\content\templates\shop_templates\company-profile.html:263
+msgid "Playing Instruments Games"
+msgstr "播放乐器游戏"
+
+#: .\content\templates\shop_templates\company-profile.html:264
+msgid "You can have immersive shopping experience by playing instruments online."
+msgstr "您可以通过在线玩乐器获得沉浸式购物体验。"
+
+#: .\content\templates\shop_templates\company-profile.html:272
+msgid "Ordering and Delivery"
+msgstr "排序和交付"
+
+#: .\content\templates\shop_templates\company-profile.html:273
+msgid "You can order your desired instruments. We will deliver it to you as soon as possible."
+msgstr "您可以订购您所需的仪器。我们将尽快送达您。"
+
+#: .\content\templates\shop_templates\company-profile.html:281
+msgid "Cultural Communication"
+msgstr "文化通信"
+
+#: .\content\templates\shop_templates\company-profile.html:282
+msgid "Our store specially designed Chinese instruments zone and Western instruments zone, "
+msgstr "我们的商店，专门设计的中国仪器区和西方仪器区 "
+
+#: .\content\templates\shop_templates\company-profile.html:282
+msgid "facilitating the communication between different cultures."
+msgstr "促进不同文化之间的交流。"
+
+#: .\content\templates\shop_templates\company-profile.html:296
+#: .\content\templates\shop_templates\company-profile.html:298
+msgid "Shop Online Now"
+msgstr "立即在线购物"
+
+#: .\content\templates\shop_templates\company-profile.html:297
+msgid "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating "
+msgstr "在这一大流行病的背景下，当地商店的家庭所有器械被迫关闭其有形生意，现在正在预料。 "
+
+#: .\content\templates\shop_templates\company-profile.html:301
+msgid "features"
+msgstr "功能"
+
+#: .\content\templates\shop_templates\company-profile.html:309
+msgid "Portfolio"
+msgstr "投资组合"
+
+#: .\content\templates\shop_templates\company-profile.html:310
+msgid "Check our Portfolio"
+msgstr "检查我们的组合"
+
+#: .\content\templates\shop_templates\company-profile.html:316
+#: .\content\templates\shop_templates\index.html:321
+msgid "All"
+msgstr "全部"
+
+#: .\content\templates\shop_templates\company-profile.html:318
+msgid "Western"
+msgstr "西区"
+
+#: .\content\templates\shop_templates\company-profile.html:331
+msgid "App 1"
+msgstr "应用1"
+
+#: .\content\templates\shop_templates\company-profile.html:332
+#: .\content\templates\shop_templates\company-profile.html:366
+#: .\content\templates\shop_templates\company-profile.html:417
+msgid "App"
+msgstr "应用"
+
+#: .\content\templates\shop_templates\company-profile.html:348
+#: .\content\templates\shop_templates\company-profile.html:467
+msgid "Web 3"
+msgstr "Web 3"
+
+#: .\content\templates\shop_templates\company-profile.html:349
+#: .\content\templates\shop_templates\company-profile.html:400
+#: .\content\templates\shop_templates\company-profile.html:468
+msgid "Web"
+msgstr "Web"
+
+#: .\content\templates\shop_templates\company-profile.html:365
+msgid "App 2"
+msgstr "App 2"
+
+#: .\content\templates\shop_templates\company-profile.html:382
+msgid "Card 2"
+msgstr "卡 2"
+
+#: .\content\templates\shop_templates\company-profile.html:383
+#: .\content\templates\shop_templates\company-profile.html:434
+#: .\content\templates\shop_templates\company-profile.html:451
+msgid "Card"
+msgstr "卡"
+
+#: .\content\templates\shop_templates\company-profile.html:399
+msgid "Web 2"
+msgstr "Web 2"
+
+#: .\content\templates\shop_templates\company-profile.html:416
+msgid "App 3"
+msgstr "App 3"
+
+#: .\content\templates\shop_templates\company-profile.html:433
+msgid "Card 1"
+msgstr "卡1"
+
+#: .\content\templates\shop_templates\company-profile.html:450
+msgid "Card 3"
+msgstr "卡 3"
+
+#: .\content\templates\shop_templates\company-profile.html:494
+msgid "Adroit Design, Technical, Operation Team"
+msgstr "Adroit Design, Technical, Operation 团队"
+
+#: .\content\templates\shop_templates\company-profile.html:495
+msgid "Our team members are equipped with abilities to provide your a satisfied shopping experience."
+msgstr "我们的团队成员拥有提供您满意的购物体验的能力。"
+
+#: .\content\templates\shop_templates\company-profile.html:502
+msgid "Happy Clients"
+msgstr "快乐客户端"
+
+#: .\content\templates\shop_templates\company-profile.html:502
+msgid "many consumers give positive feedback to our store"
+msgstr "许多消费者向我们的商店提供积极的反馈"
+
+#: .\content\templates\shop_templates\company-profile.html:511
+msgid "Modernization"
+msgstr "现代化"
+
+#: .\content\templates\shop_templates\company-profile.html:511
+msgid "adapt the physical business to e-commerce"
+msgstr "B. 使有形企业适应电子商务的情况"
+
+#: .\content\templates\shop_templates\company-profile.html:520
+msgid "Years of experience"
+msgstr "经验年"
+
+#: .\content\templates\shop_templates\company-profile.html:520
+msgid "our family-owned instruments store has been run for several years"
+msgstr "我们家族拥有的仪器商店已经运行了若干年。"
+
+#: .\content\templates\shop_templates\company-profile.html:529
+msgid "Originality"
+msgstr "起始时间"
+
+#: .\content\templates\shop_templates\company-profile.html:529
+msgid "to better cater to users' needs, our store employ new features that are unprecedented in physical store and e-commerce to make it more appealing to customers."
+msgstr "更好地满足用户的需要， 我们的商店使用了实物商店和电子商务前所未有的新功能，使其对客户更具吸引力。"
+
+#: .\content\templates\shop_templates\company-profile.html:551
+msgid "Wang Yuyang"
+msgstr "Wang Yuyang"
+
+#: .\content\templates\shop_templates\company-profile.html:552
+msgid "Ceo &amp; Founder"
+msgstr "Ceo &amp; 创始人"
+
+#: .\content\templates\shop_templates\company-profile.html:554
+msgid "I inherited this instruments from my grandparents. It suffers a lot during the pandemic. But now we are moving it online to make it accessible to our potential customers."
+msgstr "我从祖父母手中继承了这种工具，在这种流行病期间患病人数很多。 但现在我们正在联机移动它，以便使我们的潜在客户能够使用它。"
+
+#: .\content\templates\shop_templates\company-profile.html:563
+msgid "Yang Liuxin"
+msgstr "Yang Liuxin"
+
+#: .\content\templates\shop_templates\company-profile.html:564
+msgid "Designer"
+msgstr "设计师"
+
+#: .\content\templates\shop_templates\company-profile.html:566
+msgid "I am responsible for the online operations of our instruments selling store. I hope such a illustrious retail could survive the pandemic and even attract more customers."
+msgstr "我负责销售商店的仪器的在线业务。 我希望这种杰出的零售能够渡过这种流行病，甚至吸引更多的顾客。"
+
+#: .\content\templates\shop_templates\company-profile.html:575
+msgid "Zhan Yi"
+msgstr "张义词"
+
+#: .\content\templates\shop_templates\company-profile.html:576
+msgid "Store Owner"
+msgstr "店主"
+
+#: .\content\templates\shop_templates\company-profile.html:578
+msgid "I am the manager of the online instruments store. I shoulder the responsibility of deciding the long-term strategies."
+msgstr "我是网上仪器商店的经理，我肩负着决定长期战略的责任。"
+
+#: .\content\templates\shop_templates\company-profile.html:587
+msgid "Weng Han"
+msgstr "Weng Han"
+
+#: .\content\templates\shop_templates\company-profile.html:588
+msgid "Freelancer"
+msgstr "自由职业者"
+
+#: .\content\templates\shop_templates\company-profile.html:590
+msgid "I am a recruiter of the instruments store. The highly respected store hires me to incorporate the 3D elements into our e-commerce to make it more attractive."
+msgstr "我是票据商店的招募者。 受到高度尊重的商店迫使我将3D要素纳入我们的电子商务，使其更具吸引力。"
+
+#: .\content\templates\shop_templates\company-profile.html:599
+msgid "Ma Zixiao"
+msgstr "Ma Zixiao"
+
+#: .\content\templates\shop_templates\company-profile.html:600
+#: .\content\templates\shop_templates\company-profile.html:612
+msgid "Entrepreneur"
+msgstr "企业家"
+
+#: .\content\templates\shop_templates\company-profile.html:602
+msgid "I am the receptionist of the website. I will recommend instruments to you based on your preferences. If you have any questions or requests, please contact me freely."
+msgstr "我是网站的接受者。我将根据您的喜好向您推荐工具。 如果你有任何问题或要求，请与我自由联系。"
+
+#: .\content\templates\shop_templates\company-profile.html:611
+msgid "Chen Zheyu"
+msgstr "Chen Zheyu"
+
+#: .\content\templates\shop_templates\company-profile.html:630
+msgid "Team"
+msgstr "团队"
+
+#: .\content\templates\shop_templates\company-profile.html:631
+msgid "Check our Team"
+msgstr "检查我们的团队"
+
+#: .\content\templates\shop_templates\company-profile.html:649
+msgid "Walter White"
+msgstr "Walter White"
+
+#: .\content\templates\shop_templates\company-profile.html:650
+msgid "Chief Executive Officer"
+msgstr "首席执行干事"
+
+#: .\content\templates\shop_templates\company-profile.html:668
+msgid "Sarah Jhonson"
+msgstr "Sarah Jhonson"
+
+#: .\content\templates\shop_templates\company-profile.html:669
+msgid "Product Manager"
+msgstr "产品管理器"
+
+#: .\content\templates\shop_templates\company-profile.html:687
+msgid "William Anderson"
+msgstr "William Anderson"
+
+#: .\content\templates\shop_templates\company-profile.html:688
+msgid "CTO"
+msgstr "CTO"
+
+#: .\content\templates\shop_templates\company-profile.html:706
+msgid "Amanda Jepson"
+msgstr "Amanda Jepson"
+
+#: .\content\templates\shop_templates\company-profile.html:707
+msgid "Accountant"
+msgstr "会计师："
+
+#: .\content\templates\shop_templates\company-profile.html:736
+msgid "Location:"
+msgstr "位置："
+
+#: .\content\templates\shop_templates\company-profile.html:737
+msgid "Beijing University of Technology, Pingleyuan 100, Beijing"
+msgstr "Beijing University of Technology, Pingleyuan 100, Beijing"
+
+#: .\content\templates\shop_templates\company-profile.html:742
+#: .\content\templates\shop_templates\personal_profile.html:195
+msgid "Email:"
+msgstr "Email:"
+
+#: .\content\templates\shop_templates\company-profile.html:743
+msgid "yuyang.wang@ucdconnect.ie"
+msgstr "yuyang.wang@ucdconnect.ie"
+
+#: .\content\templates\shop_templates\company-profile.html:748
+msgid "Call:"
+msgstr "呼叫："
+
+#: .\content\templates\shop_templates\company-profile.html:749
+msgid "18225658312"
+msgstr "18225658312"
+
+#: .\content\templates\shop_templates\company-profile.html:778
+msgid "Loading"
+msgstr "正在加载"
+
+#: .\content\templates\shop_templates\company-profile.html:780
+msgid "Your message has been sent. Thank you!"
+msgstr "您的消息已发送。谢谢！"
+
+#: .\content\templates\shop_templates\company-profile.html:783
+msgid "Send Message"
+msgstr "发送消息"
+
+#: .\content\templates\shop_templates\game_guitar.html:61
+#: .\content\templates\shop_templates\game_piano.html:17
+msgid "Sample"
+msgstr "示例"
+
+#: .\content\templates\shop_templates\game_guitar.html:62
+#: .\content\templates\shop_templates\game_piano.html:18
+msgid "Sample2"
+msgstr "示例2"
+
+#: .\content\templates\shop_templates\game_guitar.html:63
+#: .\content\templates\shop_templates\game_piano.html:19
+msgid "Start play"
+msgstr "开始播放"
+
+#: .\content\templates\shop_templates\game_guitar.html:65
+#: .\content\templates\shop_templates\game_piano.html:21
+msgid "Stop play"
+msgstr "停止播放"
+
+#: .\content\templates\shop_templates\get_pictures.html:7
+msgid "Forbidden"
+msgstr "禁止使用"
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "You are "
+msgstr "你是 "
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Not Allowed to view this project"
+msgstr "不允许查看此项目"
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "This is the project built by COMP3030J Group8-IllegalGroupNameException."
+msgstr "这是COMP3030J Group8-IllegalGroup名称异常公司建造的项目。"
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Please contact "
+msgstr "请联系 "
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Group8"
+msgstr "组8"
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid " to view this project."
+msgstr " 查看此项目。"
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Your request has been intercept by our "
+msgstr "您的请求已被我们截取 "
+
+#: .\content\templates\shop_templates\get_pictures.html:14
+msgid "Auth Middleware."
+msgstr "认证中程。"
+
+#: .\content\templates\shop_templates\get_pictures.html:15
+msgid "This incident has been reported."
+msgstr "据报发生了这一事件。"
+
+#: .\content\templates\shop_templates\get_pictures.html:16
+msgid "a"
+msgstr "a"
+
+#: .\content\templates\shop_templates\homepage.html:67
+msgid "STYLE DESTINATION"
+msgstr "STYLE 消灭器"
+
+#: .\content\templates\shop_templates\homepage.html:71
+msgid "Starter Drum Kit"
+msgstr "起始鼓套装"
+
+#: .\content\templates\shop_templates\homepage.html:79
 msgid "SHOP NOW"
 msgstr "立即购买"
 
-#: .\content\templates\shop_templates\homepage.html:156
-msgid "~ Western ~"
-msgstr "~西洋乐器~"
+#: .\content\templates\shop_templates\homepage.html:117
+msgid "Western Instruments"
+msgstr "西方文书"
 
-#: .\content\templates\shop_templates\homepage.html:156
-#: .\content\templates\shop_templates\homepage.html:183
+#: .\content\templates\shop_templates\homepage.html:170
+msgid " Western "
+msgstr " 西区 "
+
+#: .\content\templates\shop_templates\homepage.html:170
+#: .\content\templates\shop_templates\homepage.html:197
 msgid "Musical Instruments"
 msgstr "乐器"
 
-#: .\content\templates\shop_templates\homepage.html:183
-msgid "~ CHINESE ~"
-msgstr "~中国传统乐器~"
+#: .\content\templates\shop_templates\homepage.html:197
+msgid " CHINESE "
+msgstr " 爱好 "
 
-#: .\content\templates\shop_templates\homepage.html:211
-msgid "latest news"
-msgstr "最新资讯"
+#: .\content\templates\shop_templates\homepage.html:231
+msgid "Your"
+msgstr "您的"
 
-#: .\content\templates\shop_templates\homepage.html:247
+#: .\content\templates\shop_templates\homepage.html:232
+msgid "Own style"
+msgstr "自己的样式"
+
+#: .\content\templates\shop_templates\homepage.html:233
+msgid "Design Instrument"
+msgstr "设计工具"
+
+#: .\content\templates\shop_templates\homepage.html:240
+msgid "Try 3D Model"
+msgstr "尝试3D 模型"
+
+#: .\content\templates\shop_templates\homepage.html:241
+msgid "Customize various"
+msgstr "自定义各种选项"
+
+#: .\content\templates\shop_templates\homepage.html:242
+msgid "Piano and Guitar"
+msgstr "钢琴和吉他尔"
+
+#: .\content\templates\shop_templates\homepage.html:263
 msgid "Musical Instrument"
 msgstr "乐器"
 
-#: .\content\templates\shop_templates\homepage.html:247
-msgid "~Color Design~"
-msgstr "~色彩设计~"
+#: .\content\templates\shop_templates\homepage.html:263
+msgid "Color Design"
+msgstr "颜色设计"
 
-#: .\content\templates\shop_templates\homepage.html:261
-msgid "idea Design"
-msgstr "理念设计"
-
-#: .\content\templates\shop_templates\homepage.html:264
-msgid "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
-msgstr "Proin dignissim commodo velit a venenatis. Pellentesque mollis faucibus posuere Casy yoleacene anritv antacus."
-
-#: .\content\templates\shop_templates\homepage.html:269
-#: .\content\templates\shop_templates\homepage.html:277
-msgid "Confection"
-msgstr "密文"
-
-#: .\content\templates\shop_templates\homepage.html:272
-msgid "Aliquam erat voltpatis aturp nteger rutrum kerdele rtanuty mu myatrsas detyuasirtase. Santac us uisque nuaderas"
-msgstr "这是一种有效的治疗方法。圣诞老人是努阿代拉"
-
-#: .\content\templates\shop_templates\homepage.html:280
-msgid "Fatis acaturp liquam eravoltp nteger rutrum kerua delertas nuty myatrsas detyuas. Santacus isque nulladeras."
-msgstr "这是一种利口酒，它能使你的身体健康。Santacus isque nulladeras。"
-
-#: .\content\templates\shop_templates\homepage.html:304
+#: .\content\templates\shop_templates\homepage.html:292
+#: .\content\templates\shop_templates\model-design.html:776
+#: .\content\templates\shop_templates\model-design.html:793
+#: .\content\templates\shop_templates\model-design.html:819
+#: .\content\templates\shop_templates\model-design.html:835
+#: .\content\templates\shop_templates\model-design.html:852
+#: .\content\templates\shop_templates\model-design.html:869
 msgid "Start Design"
 msgstr "开始设计"
 
-#: .\content\templates\shop_templates\homepage.html:306
-#: .\content\templates\shop_templates\product-detail.html:523
-msgid "New"
-msgstr "新增"
+#: .\content\templates\shop_templates\homepage.html:294
+msgid "3D Model"
+msgstr "3D 模型"
 
-#: .\content\templates\shop_templates\homepage.html:329
+#: .\content\templates\shop_templates\homepage.html:312
+msgid "DESIGNERS:"
+msgstr "设计："
+
+#: .\content\templates\shop_templates\homepage.html:319
 msgid "David Cilezege"
 msgstr "David Cilezege"
 
-#: .\content\templates\shop_templates\homepage.html:336
-#: .\content\templates\shop_templates\homepage.html:343
-#: .\content\templates\shop_templates\homepage.html:350
+#: .\content\templates\shop_templates\homepage.html:326
+#: .\content\templates\shop_templates\homepage.html:333
+#: .\content\templates\shop_templates\homepage.html:340
 msgid "Ana Hovurt"
 msgstr "Ana Hovurt"
 
+#: .\content\templates\shop_templates\homepage.html:354
+msgid "Craftsman spirit"
+msgstr "工匠精神。"
+
+#: .\content\templates\shop_templates\homepage.html:357
+msgid "Professional ethics, ability, ang quality of the embodiment, is a professional value orientation and behavior of practitioners. "
+msgstr "职业道德、品质、品质和品质是从业人员的职业价值导向和行为。 "
+
+#: .\content\templates\shop_templates\homepage.html:362
+msgid "Manufacturer"
+msgstr "制造商"
+
+#: .\content\templates\shop_templates\homepage.html:365
+msgid "The basic connotation of \"craftsmanship\" includes dedication, leaning, concentration, innovation and other aspects."
+msgstr "“手工艺品”的基本含义包括专注、提炼、集中、创新和其他方面。"
+
 #: .\content\templates\shop_templates\homepage.html:370
-msgid "Women’s"
-msgstr "女性："
+msgid "Iluminous Designer"
+msgstr "非法设计师"
 
-#: .\content\templates\shop_templates\homepage.html:371
-msgid "Live style"
-msgstr "实时风格"
+#: .\content\templates\shop_templates\homepage.html:373
+msgid "Innovation and understanding of what users want make our online shop distinguished from others."
+msgstr "对用户想要什么的创新和了解使我们的网上商店与其他商店有所区别。"
 
-#: .\content\templates\shop_templates\homepage.html:372
-msgid "Danlien Polosa"
-msgstr "Danlien Polosa"
+#: .\content\templates\shop_templates\homepage.html:384
+msgid "latest news"
+msgstr "最新资讯"
 
-#: .\content\templates\shop_templates\homepage.html:387
-msgid "Jewerly"
-msgstr "Jewerly"
+#: .\content\templates\shop_templates\homepage.html:421
+msgid "SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE NEWS, <br>UPDATES, AND ANOTHER STUFF BY EMAIL."
+msgstr "由电子邮件发送给我们的网络以便接收最新信息， <br>更新信息以及其他信息。"
 
-#: .\content\templates\shop_templates\homepage.html:388
-msgid "For Girl"
-msgstr "适合女童"
-
-#: .\content\templates\shop_templates\homepage.html:511
+#: .\content\templates\shop_templates\homepage.html:469
 msgid "Color :"
 msgstr "颜色： "
 
-#: .\content\templates\shop_templates\homepage.html:558
+#: .\content\templates\shop_templates\homepage.html:516
 #: .\content\templates\shop_templates\index.html:375
-#: .\content\templates\shop_templates\product-detail.html:549
+#: .\content\templates\shop_templates\product-detail-2.html:696
+#: .\content\templates\shop_templates\product-detail-2.html:730
+#: .\content\templates\shop_templates\product-detail-2.html:764
+#: .\content\templates\shop_templates\product-detail-2.html:799
+#: .\content\templates\shop_templates\product-detail-2.html:834
+#: .\content\templates\shop_templates\product-detail.html:564
+#: .\content\templates\shop_templates\searched-product-list.html:31
+#: .\content\templates\shop_templates\wishlist.html:62
 msgid "Add to cart"
 msgstr "添加到购物车"
 
-#: .\content\templates\shop_templates\homepage.html:561
+#: .\content\templates\shop_templates\homepage.html:519
 msgid "Share with : "
 msgstr "分享到"
 
@@ -1121,32 +3587,34 @@ msgstr "最大 720 小时低"
 msgid "Limited items available at this price"
 msgstr "以此价格提供的有限物品"
 
-#: .\content\templates\shop_templates\index.html:201
-msgid "Shop Now"
-msgstr "立即购买"
-
 #: .\content\templates\shop_templates\index.html:222
+#: .\content\templates\shop_templates\product-detail-2.html:853
 msgid "Free Shipping"
 msgstr "免运费"
 
 #: .\content\templates\shop_templates\index.html:223
+#: .\content\templates\shop_templates\product-detail-2.html:854
 msgid "For all oders over $99"
 msgstr "超过99美元的所有奇数"
 
 #: .\content\templates\shop_templates\index.html:231
+#: .\content\templates\shop_templates\product-detail-2.html:862
 msgid "Secure Payment"
 msgstr "安全支付"
 
 #: .\content\templates\shop_templates\index.html:232
+#: .\content\templates\shop_templates\product-detail-2.html:863
 #, python-format
 msgid "100%% secure payment"
 msgstr "100%% 安全支付"
 
 #: .\content\templates\shop_templates\index.html:240
+#: .\content\templates\shop_templates\product-detail-2.html:871
 msgid "24/7 Support"
 msgstr "全天候支持"
 
 #: .\content\templates\shop_templates\index.html:241
+#: .\content\templates\shop_templates\product-detail-2.html:872
 msgid "Online top support"
 msgstr "在线客服"
 
@@ -1155,33 +3623,45 @@ msgid "New Arrival"
 msgstr "新品上架"
 
 #: .\content\templates\shop_templates\index.html:316
-#: .\content\templates\shop_templates\product-detail.html:517
+#: .\content\templates\shop_templates\product-detail-2.html:665
+#: .\content\templates\shop_templates\product-detail.html:532
+#: .\content\templates\shop_templates\product-search.html:81
 msgid "Products"
 msgstr "商品"
 
 #: .\content\templates\shop_templates\index.html:317
+#: .\content\templates\shop_templates\product-detail-2.html:666
 msgid "Cum doctus civibus efficiantur in imperdiet deterruisset."
 msgstr "Cum doctus civibus efficiantur in imperdiet deterruisset."
-
-#: .\content\templates\shop_templates\index.html:321
-msgid "All"
-msgstr "全部"
 
 #: .\content\templates\shop_templates\index.html:322
 msgid "Popular"
 msgstr "热销"
 
 #: .\content\templates\shop_templates\index.html:323
+#: .\content\templates\shop_templates\product-detail-2.html:238
 msgid "Sale"
 msgstr "特卖"
 
 #: .\content\templates\shop_templates\index.html:361
-#: .\content\templates\shop_templates\product-detail.html:542
+#: .\content\templates\shop_templates\product-detail-2.html:691
+#: .\content\templates\shop_templates\product-detail-2.html:725
+#: .\content\templates\shop_templates\product-detail-2.html:759
+#: .\content\templates\shop_templates\product-detail-2.html:794
+#: .\content\templates\shop_templates\product-detail-2.html:829
+#: .\content\templates\shop_templates\product-detail.html:557
+#: .\content\templates\shop_templates\searched-product-list.html:34
 msgid "Add to favorites"
 msgstr "添加至收藏夹"
 
 #: .\content\templates\shop_templates\index.html:368
-#: .\content\templates\shop_templates\product-detail.html:545
+#: .\content\templates\shop_templates\product-detail-2.html:694
+#: .\content\templates\shop_templates\product-detail-2.html:728
+#: .\content\templates\shop_templates\product-detail-2.html:762
+#: .\content\templates\shop_templates\product-detail-2.html:797
+#: .\content\templates\shop_templates\product-detail-2.html:832
+#: .\content\templates\shop_templates\product-detail.html:560
+#: .\content\templates\shop_templates\searched-product-list.html:38
 msgid "Add to compare"
 msgstr "加入比较"
 
@@ -1190,110 +3670,1731 @@ msgid "Armor"
 msgstr "护甲"
 
 #: .\content\templates\shop_templates\index.html:661
+#: .\content\templates\shop_templates\product-detail-2.html:751
 msgid "Air Color 720"
 msgstr "空气颜色 720"
 
-#: .\content\templates\shop_templates\product-detail.html:84
+#: .\content\templates\shop_templates\index.html:662
+msgid "Lightweight cushioning and durable support with a Phylon midsole"
+msgstr "轻量减缓和耐久支持，配有Phylon中型版"
+
+#: .\content\templates\shop_templates\index.html:719
+msgid "Cum doctus civibus efficiantur in imperdiet deterruisset"
+msgstr "Cum doctus civibus efficiantur in imperdiet deterruisset"
+
+#: .\content\templates\shop_templates\index.html:728
+#: .\content\templates\shop_templates\index.html:745
+#: .\content\templates\shop_templates\index.html:762
+#: .\content\templates\shop_templates\index.html:779
+msgid "28"
+msgstr "28"
+
+#: .\content\templates\shop_templates\index.html:728
+#: .\content\templates\shop_templates\index.html:745
+#: .\content\templates\shop_templates\index.html:762
+#: .\content\templates\shop_templates\index.html:779
+msgid "Dec"
+msgstr "十二月"
+
+#: .\content\templates\shop_templates\index.html:731
+msgid "by Mark Twain"
+msgstr "作者Mark Twain"
+
+#: .\content\templates\shop_templates\index.html:732
+#: .\content\templates\shop_templates\index.html:749
+#: .\content\templates\shop_templates\index.html:766
+#: .\content\templates\shop_templates\index.html:783
+msgid "20.11.2017"
+msgstr "20.11.2017"
+
+#: .\content\templates\shop_templates\index.html:734
+msgid "Pri oportere scribentur eu"
+msgstr "Pri oportere scribentur eu"
+
+#: .\content\templates\shop_templates\index.html:735
+#: .\content\templates\shop_templates\index.html:752
+#: .\content\templates\shop_templates\index.html:769
+#: .\content\templates\shop_templates\index.html:786
+msgid "Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse...."
+msgstr "Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse...."
+
+#: .\content\templates\shop_templates\index.html:748
+msgid "By Jhon Doe"
+msgstr "由 Jhon Doe"
+
+#: .\content\templates\shop_templates\index.html:751
+msgid "Duo eius postea suscipit ad"
+msgstr "Duo eius postea suscipit ad"
+
+#: .\content\templates\shop_templates\index.html:765
+msgid "By Luca Robinson"
+msgstr "卢卡·鲁滨逊先生"
+
+#: .\content\templates\shop_templates\index.html:768
+msgid "Elitr mandamus cu has"
+msgstr "Elitr mandamus cu"
+
+#: .\content\templates\shop_templates\index.html:782
+msgid "By Paula Rodrigez"
+msgstr "Paula Rodrigez"
+
+#: .\content\templates\shop_templates\index.html:785
+msgid "Id est adhuc ignota delenit"
+msgstr "Id est adhuc ignota delenit"
+
+#: .\content\templates\shop_templates\leave-review.html:54
+msgid "Write a review for"
+msgstr "撰写评论"
+
+#: .\content\templates\shop_templates\leave-review.html:57
+msgid "Overall rating"
+msgstr "总体评分"
+
+#: .\content\templates\shop_templates\model-design.html:57
+msgid "Model Design"
+msgstr "模型设计"
+
+#: .\content\templates\shop_templates\model-design.html:303
+#: .\content\templates\shop_templates\product-detail-2.html:204
+msgid "Men"
+msgstr "男生人数"
+
+#: .\content\templates\shop_templates\model-design.html:304
+msgid "Bouble Fabric Blazer"
+msgstr "双纤维烈焰人"
+
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "Model"
+msgstr "模型"
+
+#: .\content\templates\shop_templates\model-design.html:311
+msgid "Design"
+msgstr "设计"
+
+#: .\content\templates\shop_templates\model-design.html:312
+msgid "please just wait for a short time ..."
+msgstr "请稍候..."
+
+#: .\content\templates\shop_templates\model-design.html:503
+msgid "You can design your own musical instruments. Now we provide 6 models (3 pianos & 3 guitars)"
+msgstr "您可以设计您自己的乐器。现在我们提供6个模型(3个钢琴和3个吉他)"
+
+#: .\content\templates\shop_templates\model-design.html:512
+msgid "All Faces Select"
+msgstr "选择所有面"
+
+#: .\content\templates\shop_templates\model-design.html:522
+msgid "Model Explode"
+msgstr "模型爆炸数"
+
+#: .\content\templates\shop_templates\model-design.html:533
+msgid "Model Zoom Out"
+msgstr "模型缩放"
+
+#: .\content\templates\shop_templates\model-design.html:544
+msgid "Model Zoom In"
+msgstr "模型缩放"
+
+#: .\content\templates\shop_templates\model-design.html:555
+msgid "Model Rotate"
+msgstr "模型旋转"
+
+#: .\content\templates\shop_templates\model-design.html:578
+msgid "Return Design"
+msgstr "退货设计"
+
+#: .\content\templates\shop_templates\model-design.html:579
+msgid "Check Out"
+msgstr "签出"
+
+#: .\content\templates\shop_templates\model-design.html:583
+msgid "MODEL DESIGN "
+msgstr "MODEL 设计 "
+
+#: .\content\templates\shop_templates\model-design.html:597
+msgid "The Musicmo Custom Shop is known for creating instruments that look as incredible, with a dazzling collections of harmless pigments coming out of its Corona, Calif., headquarters."
+msgstr "Musicmo自定义商店已知创建了看起来难以置信的乐器， 与来自其科罗纳卡利夫的一系列惊人的无害猪收藏。 总部："
+
+#: .\content\templates\shop_templates\model-design.html:607
+msgid "Now Model"
+msgstr "现在模型"
+
+#: .\content\templates\shop_templates\model-design.html:644
+msgid "Part Colors"
+msgstr "部件颜色"
+
+#: .\content\templates\shop_templates\model-design.html:690
+msgid "Sizes*"
+msgstr "大小*"
+
+#: .\content\templates\shop_templates\model-design.html:694
+msgid "- Please select -"
+msgstr "- 请选择 -"
+
+#: .\content\templates\shop_templates\model-design.html:695
+#: .\content\templates\shop_templates\product-detail-2.html:456
+msgid "Small (S)"
+msgstr "小(S)"
+
+#: .\content\templates\shop_templates\model-design.html:705
+msgid "Number*"
+msgstr "编号*"
+
+#: .\content\templates\shop_templates\model-design.html:721
+msgid "Start to Save"
+msgstr "开始保存"
+
+#: .\content\templates\shop_templates\model-design.html:741
+msgid "Sounds and effects The Yamaha reface YC has a vintage look and feel with 5 classic organ sounds. This 37 key portable combo organ has built in effects such as distortion and reverb, these effects can be combined with any preset sound. Classic look and feel The reface YC is based on classic organs with a stripped back interface that includes rotary control and drawbars. Carefully selected vintage effects increase the authenticity of the sounds even further making the reface YC an extremely versatile organ. Lightweight and portable Unlike the majority of vintage style organs, the reface is compact and lightweight with built in speakers and optional battery power. The keyboard can be connected to external speakers or PA systems so is ideal for live performance. Expand your sound with Soundmondo Yamaha has given you the ability to expand your soundset with a range of premium-quality sounds, with the Soundmondo community. To discover, create and share sounds simply visit Soundmondo site, connect your Yamaha Reface and browse the ever expanding list of high-quality soundbanks. Features Combo Organ Sound Engine with five vintage organ Waves Retro Distortion, Reverb and Rotary Speaker effects HQ mini keyboard allows fast, natural performance with premium feel and response Expression pedal input for foot volume control (organ expression) 2W 3cm stereo speaker system lets you play any place, any time Battery powered - uses six \"AA\" batteries with five hours of life USB \"TO HOST\" allows MIDI connectivity to your USB-equipped computer or iOS device A 3.5mm aux line input lets you connect and hear mobile devices, tablets and more through the instrument Dual 1/4\" unbalanced line outputs provide connection to mixers, audio interfaces, DI boxes and more Includes MIDI breakout cable, Owner\"s Manual, and PA130 power supply Specifications"
+msgstr "声音和效果 Yamaha reface YC 有一种成形的外观，感觉到5个经典的器官声音。 这37个关键的便携式打击器官产生了扭曲和回归等效果，这些效果可以与任何预设声音结合起来。 经典的外观和感觉。reface YC 是基于经典的器官，其后面包含旋转控制和绘画栏。 精心挑选的葡萄酒效果会增加声音的真实性，使reface YC 变成一种极为多用途的器官。 轻型和便携式与大多数维纳式器官不同的是，后面是紧凑和轻型的，使用扬声器和可选择的电池电力。 键盘可以连接到外部扬声器或PA系统，因此对实时性能来说是理想的。 使用Soundmondo Yamaha扩展你的声音，使你能够通过一系列优质声音与Soundmondo社区一起扩展你的声音集。 要发现、创建和分享声音，只需访问 Soundmondo站点，请连接您的 Yamaha Reface 并浏览不断扩大的高质量声音库列表。 功能组合器官声音引擎和五个Vinagage organ Waves Revtro Distortion、Reverb 和 Rotary 扬声器效果HQ mini 键盘允许快速运行。 带有高级感受的自然性能，响应表达式用于脚音量控制(器官表达式) 2W 3cm 立体声系统让您玩任何地方。 任何时间电池供电-使用6个“AA”电池，使用寿命5小时的 USB “TO HOST” 允许MIDI 连接您的 USB 设备或 iOS 设备 A 3。 mm aux line 输入可以让您连接并听到移动设备。 平板电脑和更多的仪器使用 Dual 1/4” 不平衡的线路输出提供了与混合物的连接。 音频接口、DI箱和更多包括MIDI断路线、所有者手册和PA130供电规格。"
+
+#: .\content\templates\shop_templates\model-design.html:754
+msgid "upsell products"
+msgstr "上售产品"
+
+#: .\content\templates\shop_templates\model-design.html:764
+#: .\content\templates\shop_templates\model-design.html:781
+#: .\content\templates\shop_templates\model-design.html:797
+#: .\content\templates\shop_templates\product-search.html:604
+msgid "Guitar"
+msgstr "吉他尔"
+
+#: .\content\templates\shop_templates\model-design.html:773
+#: .\content\templates\shop_templates\model-design.html:790
+#: .\content\templates\shop_templates\model-design.html:806
+#: .\content\templates\shop_templates\model-design.html:832
+#: .\content\templates\shop_templates\model-design.html:849
+#: .\content\templates\shop_templates\model-design.html:866
+msgid "Smart TV Ultra HD 40 inch - 40JU6600"
+msgstr "智能电视超高清40 英寸-40JU600"
+
+#: .\content\templates\shop_templates\model-design.html:774
+#: .\content\templates\shop_templates\model-design.html:791
+#: .\content\templates\shop_templates\model-design.html:807
+#: .\content\templates\shop_templates\model-design.html:833
+#: .\content\templates\shop_templates\model-design.html:850
+#: .\content\templates\shop_templates\model-design.html:867
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+msgstr "Lorem Ipsum纯粹是印刷和排版行业的虚假文本。Lorem Ipsum自1500年代以来一直是行业标准的虚假文本。"
+
+#: .\content\templates\shop_templates\model-design.html:823
+#: .\content\templates\shop_templates\model-design.html:840
+#: .\content\templates\shop_templates\model-design.html:857
+#: .\content\templates\shop_templates\product-search.html:610
+msgid "Piano"
+msgstr "钢琴座"
+
+#: .\content\templates\shop_templates\model-design.html:886
+msgid "Dale Wilson"
+msgstr "Dale Wilson"
+
+#: .\content\templates\shop_templates\model-design.html:887
+msgid "Paul Waller"
+msgstr "Paul Waller"
+
+#: .\content\templates\shop_templates\model-design.html:888
+msgid "Jason Smith"
+msgstr "Jason Smith"
+
+#: .\content\templates\shop_templates\model-design.html:889
+msgid "Yuriy Shishkov"
+msgstr "Yuriy Shishkov"
+
+#: .\content\templates\shop_templates\model-design.html:890
+msgid "Todd Krause"
+msgstr "Todd Krause"
+
+#: .\content\templates\shop_templates\model-design.html:905
+#: .\content\templates\shop_templates\model-design.html:937
+#: .\content\templates\shop_templates\model-design.html:968
+#: .\content\templates\shop_templates\model-design.html:1000
+msgid "Master Signature: &nbsp;"
+msgstr "主签名： &nbsp;"
+
+#: .\content\templates\shop_templates\model-design.html:905
+#: .\content\templates\shop_templates\model-design.html:937
+#: .\content\templates\shop_templates\model-design.html:968
+#: .\content\templates\shop_templates\model-design.html:1000
+msgid " Dale Wilson"
+msgstr " Dale Wilson"
+
+#: .\content\templates\shop_templates\model-design.html:906
+#: .\content\templates\shop_templates\model-design.html:938
+#: .\content\templates\shop_templates\model-design.html:969
+#: .\content\templates\shop_templates\model-design.html:1001
+#: .\content\templates\shop_templates\model-design.html:1032
+msgid "Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and became Master Builder in 2011. A Native of California, he had a passion for making guitars from an early age. 'For as long as I can remember, I've loved guitars,' he says. 'Strangely enough, I didn't want to be a rock star. Iwanted to make a super guitar. The Wilson family is proficient in carpentry, and exquisite craftsmanship has always been the passion and pursuit of Fender custom shop, which has long been integrated into dell's blood. Back in the late 1980s, he was working in guitar repair and tooling at a studio near his middle school."
+msgstr "Dale Wilson于2003年加入创始人，于2005年加入自定义商店，在2011年成为主建筑师。 他是加利福尼亚的土著人，从幼年起就热衷于做吉他的饭。 '只要我记得我很喜欢吉塔，'他说。'太奇怪了，我不想成为一颗摇滚星。 我想做一个超级吉他. 威尔逊家庭精通木工，精美的手工艺品一直热衷于和追求精英风俗商店， 它早就融入了无人驾驶飞机的血液。 1980年代后期，他在他的中学附近的一个工作室做吉他的修理和配刀。"
+
+#: .\content\templates\shop_templates\model-design.html:907
+#: .\content\templates\shop_templates\model-design.html:939
+#: .\content\templates\shop_templates\model-design.html:970
+#: .\content\templates\shop_templates\model-design.html:1002
+#: .\content\templates\shop_templates\model-design.html:1033
+msgid "He then went to work for Dobro and Rickenbacker for a while before entering Fender; He also worked for guitar brands such as Guild, Gretsch and Benedetto before becoming an apprentice to a master luthier in a custom shop. As a craftsman, he relished being able to draw on his extensive experience in producing high-quality guitars, such as the Resophonic Thinline Telecaster. In 2011, while still an apprentice, he made five premium custom guitars for the NAMM Show in January of that year and was asked to sign the back, earning him the honor of Master Builder."
+msgstr "然后他去为多布罗和里肯后备者工作一段时间，然后才进入Fender； 他还为吉他的吉他品牌工作，如吉尔、格雷兹和贝内代托等品牌，然后在海关店中成为主奢侈师的学徒。 作为一名手工艺者，他能够借鉴他在生产高品质吉他的丰富经验，例如翻新线电信公司方面的经验。 2011年，仍然是学徒。 他于同年1月为NAMM展做了五个高级别的海关吉他，并被要求背面签字。 为他赚钱给大师建筑师带来荣誉。"
+
+#: .\content\templates\shop_templates\model-design.html:1005
+#: .\content\templates\shop_templates\model-design.html:1011
+msgid "Quick Reply"
+msgstr "快速回复"
+
+#: .\content\templates\shop_templates\model-design.html:1006
+#: .\content\templates\shop_templates\model-design.html:1012
+msgid "Best Performances"
+msgstr "最佳业绩"
+
+#: .\content\templates\shop_templates\model-design.html:1031
+msgid "Master Signature: &nbsp;</span> Dale Wilson"
+msgstr "主签名： &nbsp;</span> Dale Wilson"
+
+#: .\content\templates\shop_templates\model-design2.html:7
+msgid "Zay Shop eCommerce HTML CSS Template"
+msgstr "Zay Shop eCommerce HTML CSS 模板"
+
+#: .\content\templates\shop_templates\model-design2.html:227
+msgid "Welcome to Model Design!"
+msgstr "欢迎使用模型设计！"
+
+#: .\content\templates\shop_templates\model-design2.html:228
+msgid "Now raw model: Guitar - 1"
+msgstr "现在原始模型：吉他-1。"
+
+#: .\content\templates\shop_templates\model-design2.html:229
+msgid "In here, you can design your own musical instrument."
+msgstr "在这里，你可以设计自己的乐器。"
+
+#: .\content\templates\shop_templates\model-design2.html:231
+msgid "Feature"
+msgstr "功能"
+
+#: .\content\templates\shop_templates\model-design2.html:242
+msgid "Recommend Colour"
+msgstr "推荐颜色"
+
+#: .\content\templates\shop_templates\model-design2.html:256
+msgid "Long list of colors"
+msgstr "色彩长列表"
+
+#: .\content\templates\shop_templates\orders.html:65
+msgid "Hello {{ user.username }}"
+msgstr "您好 {{ user.username }}"
+
+#: .\content\templates\shop_templates\orders.html:66
+msgid "Logged in as: {{ user.email }"
+msgstr "已登录为:·{ user.email }"
+
+#: .\content\templates\shop_templates\orders.html:68
+msgid "Hello Guest"
+msgstr "您好"
+
+#: .\content\templates\shop_templates\orders.html:69
+msgid "You are not logged i"
+msgstr "您还没有登录"
+
+#: .\content\templates\shop_templates\orders.html:76
+msgid "Orders place"
+msgstr "订单位置"
+
+#: .\content\templates\shop_templates\orders.html:83
+msgid "Items in Car"
+msgstr "汽车中的物品"
+
+#: .\content\templates\shop_templates\orders.html:90
+msgid "Wishlis"
+msgstr "心愿单"
+
+#: .\content\templates\shop_templates\orders.html:95
+msgid "My recent order"
+msgstr "我最近的订单"
+
+#: .\content\templates\shop_templates\orders.html:106
+msgid "Quantity:"
+msgstr "数量："
+
+#: .\content\templates\shop_templates\orders.html:112
+msgid "Rating:"
+msgstr "评分："
+
+#: .\content\templates\shop_templates\orders.html:120
+msgid "Status:"
+msgstr "状态："
+
+#: .\content\templates\shop_templates\orders.html:121
+msgid "Delivered"
+msgstr "已发送"
+
+#: .\content\templates\shop_templates\orders.html:123
+msgid "Shopper Confirmed"
+msgstr "店铺已确认"
+
+#: .\content\templates\shop_templates\orders.html:125
+msgid "Packed"
+msgstr "打包"
+
+#: .\content\templates\shop_templates\orders.html:127
+msgid "Accepted"
+msgstr "已接受"
+
+#: .\content\templates\shop_templates\orders.html:129
+msgid "Placed"
+msgstr "已放置的"
+
+#: .\content\templates\shop_templates\orders.html:132
+#: .\content\templates\shop_templates\personal_profile.html:273
+msgid "order info"
+msgstr "订单信息"
+
+#: .\content\templates\shop_templates\personal_profile.html:88
+msgid "https://bootdey.com"
+msgstr "https://bootdey.com"
+
+#: .\content\templates\shop_templates\personal_profile.html:100
+#: .\content\templates\shop_templates\personal_profile.html:126
+#: .\content\templates\shop_templates\personal_profile.html:138
+msgid "bootdey"
+msgstr "靴子"
+
+#: .\content\templates\shop_templates\personal_profile.html:154
+msgid "Username:"
+msgstr "用户名："
+
+#: .\content\templates\shop_templates\personal_profile.html:167
+msgid "First Name:"
+msgstr "名字："
+
+#: .\content\templates\shop_templates\personal_profile.html:181
+msgid "Last Name:"
+msgstr "姓氏："
+
+#: .\content\templates\shop_templates\personal_profile.html:208
+msgid "Join Date:"
+msgstr "加入日期："
+
+#: .\content\templates\shop_templates\personal_profile.html:221
+msgid "Phone:"
+msgstr "电话："
+
+#: .\content\templates\shop_templates\personal_profile.html:237
+msgid "Recent Orders"
+msgstr "最近订单"
+
+#: .\content\templates\shop_templates\personal_profile.html:246
+msgid "paid"
+msgstr "已支付"
+
+#: .\content\templates\shop_templates\personal_profile.html:248
+msgid "Quantity: "
+msgstr "数量： "
+
+#: .\content\templates\shop_templates\personal_profile.html:253
+msgid "Rating:</span> "
+msgstr "评分：</span> "
+
+#: .\content\templates\shop_templates\personal_profile.html:428
+msgid "Change Avatar"
+msgstr "更改头像"
+
+#: .\content\templates\shop_templates\product-detail-2.html:69
+msgid "Slider"
+msgstr "滑块"
+
+#: .\content\templates\shop_templates\product-detail-2.html:70
+msgid "Video Background"
+msgstr "视频背景"
+
+#: .\content\templates\shop_templates\product-detail-2.html:71
+msgid "Vertical Slider"
+msgstr "垂直滑块"
+
+#: .\content\templates\shop_templates\product-detail-2.html:72
+msgid "GDPR Cookie Bar"
+msgstr "GDPR Cookie 栏"
+
+#: .\content\templates\shop_templates\product-detail-2.html:76
+msgid "Pages"
+msgstr "页 次"
+
+#: .\content\templates\shop_templates\product-detail-2.html:80
+msgid "Listing grid"
+msgstr "网格列表"
+
+#: .\content\templates\shop_templates\product-detail-2.html:82
+msgid "Grid Full Width"
+msgstr "网格全宽"
+
+#: .\content\templates\shop_templates\product-detail-2.html:83
+msgid "Grid Full Width 2"
+msgstr "网格全宽度 2"
+
+#: .\content\templates\shop_templates\product-detail-2.html:85
+msgid "Grid Boxed"
+msgstr "网格框"
+
+#: .\content\templates\shop_templates\product-detail-2.html:97
+msgid "Listing row &amp; Product"
+msgstr "列出行 &amp; 产品"
+
+#: .\content\templates\shop_templates\product-detail-2.html:107
+msgid "Product Large Image"
+msgstr "产品大图像"
+
+#: .\content\templates\shop_templates\product-detail-2.html:108
+msgid "Product Carousel"
+msgstr "产品旋转图"
+
+#: .\content\templates\shop_templates\product-detail-2.html:109
+msgid "Product Sticky Info"
+msgstr "产品置顶信息"
+
+#: .\content\templates\shop_templates\product-detail-2.html:113
+msgid "Other pages"
+msgstr "其它页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:115
+msgid "Cart Page"
+msgstr "购物车页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:116
+msgid "Check Out Page"
+msgstr "签出页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:117
+msgid "Confirm Purchase Page"
+msgstr "确认购买页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:118
+msgid "Create Account Page"
+msgstr "创建帐户页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:119
+msgid "Track Order"
+msgstr "曲目顺序"
+
+#: .\content\templates\shop_templates\product-detail-2.html:120
+msgid "Help Page"
+msgstr "帮助页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:121
+msgid "Help Page 2"
+msgstr "帮助页 2"
+
+#: .\content\templates\shop_templates\product-detail-2.html:122
+msgid "Leave a Review"
+msgstr "留下评论"
+
+#: .\content\templates\shop_templates\product-detail-2.html:141
+msgid "Extra Pages"
+msgstr "额外页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:143
+msgid "Header Style 2"
+msgstr "头部样式 2"
+
+#: .\content\templates\shop_templates\product-detail-2.html:144
+msgid "Header Style 3"
+msgstr "标题样式 3"
+
+#: .\content\templates\shop_templates\product-detail-2.html:145
+msgid "Header Style 4"
+msgstr "标题样式 4"
+
+#: .\content\templates\shop_templates\product-detail-2.html:146
+msgid "Header Style 5"
+msgstr "头部样式 5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:147
+msgid "404 Page"
+msgstr "404 页面"
+
+#: .\content\templates\shop_templates\product-detail-2.html:148
+msgid "Sign In Modal"
+msgstr "登录模式"
+
+#: .\content\templates\shop_templates\product-detail-2.html:150
+msgid "About 1"
+msgstr "约1"
+
+#: .\content\templates\shop_templates\product-detail-2.html:151
+msgid "About 2"
+msgstr "约2"
+
+#: .\content\templates\shop_templates\product-detail-2.html:152
+msgid "Modal Advertise"
+msgstr "模式广告"
+
+#: .\content\templates\shop_templates\product-detail-2.html:153
+msgid "Modal Newsletter"
+msgstr "Modal Newsletter"
+
+#: .\content\templates\shop_templates\product-detail-2.html:160
+msgid "Buy Template"
+msgstr "购买模板"
+
+#: .\content\templates\shop_templates\product-detail-2.html:167
+msgid "Need Help?"
+msgstr "需要帮助吗？"
+
+#: .\content\templates\shop_templates\product-detail-2.html:194
+msgid "Collections"
+msgstr "A. 收款情况"
+
+#: .\content\templates\shop_templates\product-detail-2.html:196
+msgid "Trending"
+msgstr "热门主题"
+
+#: .\content\templates\shop_templates\product-detail-2.html:197
+msgid "Life style"
+msgstr "生活样式"
+
+#: .\content\templates\shop_templates\product-detail-2.html:198
+msgid "Running"
+msgstr "正在运行"
+
+#: .\content\templates\shop_templates\product-detail-2.html:199
+msgid "Training"
+msgstr "培训"
+
+#: .\content\templates\shop_templates\product-detail-2.html:206
+msgid "Offers"
+msgstr "报价"
+
+#: .\content\templates\shop_templates\product-detail-2.html:207
+#: .\content\templates\shop_templates\product-detail-2.html:220
+#: .\content\templates\shop_templates\product-detail-2.html:908
+msgid "Shoes"
+msgstr "鞋子"
+
+#: .\content\templates\shop_templates\product-detail-2.html:208
+#: .\content\templates\shop_templates\product-detail-2.html:218
+#: .\content\templates\shop_templates\product-detail-2.html:227
+#: .\content\templates\shop_templates\product-detail-2.html:237
+msgid "Clothing"
+msgstr "衣服"
+
+#: .\content\templates\shop_templates\product-detail-2.html:211
+msgid "Equipment"
+msgstr "设备"
+
+#: .\content\templates\shop_templates\product-detail-2.html:215
+msgid "Women"
+msgstr "妇女"
+
+#: .\content\templates\shop_templates\product-detail-2.html:217
+#: .\content\templates\shop_templates\product-detail-2.html:239
+msgid "Best Sellers"
+msgstr "畅销课程"
+
+#: .\content\templates\shop_templates\product-detail-2.html:223
+msgid "Boys"
+msgstr "男孩："
+
+#: .\content\templates\shop_templates\product-detail-2.html:225
+msgid "Easy On Shoes"
+msgstr "轻松的鞋子"
+
+#: .\content\templates\shop_templates\product-detail-2.html:229
+msgid "Must Have"
+msgstr "必须有"
+
+#: .\content\templates\shop_templates\product-detail-2.html:230
+msgid "All Boys"
+msgstr "所有男孩的"
+
+#: .\content\templates\shop_templates\product-detail-2.html:234
+msgid "Girls"
+msgstr "Girls"
+
+#: .\content\templates\shop_templates\product-detail-2.html:236
+msgid "New Releases"
+msgstr "新版本"
+
+#: .\content\templates\shop_templates\product-detail-2.html:243
+msgid "Customize"
+msgstr "自定义"
+
+#: .\content\templates\shop_templates\product-detail-2.html:245
+msgid "For Men"
+msgstr "男性代表"
+
+#: .\content\templates\shop_templates\product-detail-2.html:246
+msgid "For Women"
+msgstr "仅限妇女"
+
+#: .\content\templates\shop_templates\product-detail-2.html:248
+msgid "For Boys"
+msgstr "适合男孩的"
+
+#: .\content\templates\shop_templates\product-detail-2.html:250
+msgid "For Girls"
+msgstr "给女童"
+
+#: .\content\templates\shop_templates\product-detail-2.html:279
+msgid "1x Armor Air x Fear"
+msgstr "1x 装甲[恐慌]"
+
+#: .\content\templates\shop_templates\product-detail-2.html:279
+msgid "$90.00"
+msgstr "$90.00"
+
+#: .\content\templates\shop_templates\product-detail-2.html:290
+msgid "1x Armor Okwahn II"
+msgstr "1x Armor Okwahn II"
+
+#: .\content\templates\shop_templates\product-detail-2.html:290
+msgid "$110.00"
+msgstr "$110.00"
+
+#: .\content\templates\shop_templates\product-detail-2.html:296
+msgid "$200.00"
+msgstr "$200.00"
+
+#: .\content\templates\shop_templates\product-detail-2.html:297
+msgid "View Cart"
+msgstr "查看购物车"
+
+#: .\content\templates\shop_templates\product-detail-2.html:309
+msgid "Account"
+msgstr "账户"
+
+#: .\content\templates\shop_templates\product-detail-2.html:311
+msgid "Sign In or Sign Up"
+msgstr "登录或注册"
+
+#: .\content\templates\shop_templates\product-detail-2.html:314
+msgid "Track your Order"
+msgstr "跟踪您的订单"
+
+#: .\content\templates\shop_templates\product-detail-2.html:317
+msgid "My Orders"
+msgstr "我的订单"
+
+#: .\content\templates\shop_templates\product-detail-2.html:320
+msgid "My Profile"
+msgstr "我的个人资料"
+
+#: .\content\templates\shop_templates\product-detail-2.html:323
+msgid "Help and Faq"
+msgstr "帮助与Faq"
+
+#: .\content\templates\shop_templates\product-detail-2.html:331
+msgid "Search"
+msgstr "搜索"
+
+#: .\content\templates\shop_templates\product-detail-2.html:412
+msgid "Donner DDP-300 Digital Piano"
+msgstr "Donner DDP-300 Digital Piano"
+
+#: .\content\templates\shop_templates\product-detail-2.html:414
+msgid "4 reviews"
+msgstr "4 次审查"
+
+#: .\content\templates\shop_templates\product-detail-2.html:439
+#: .\content\templates\shop_templates\product-detail-2.html:551
+#: .\content\templates\shop_templates\product-detail.html:281
+#: .\content\templates\shop_templates\product-detail.html:282
+#: .\content\templates\shop_templates\product-search.html:633
+msgid "Color"
+msgstr "颜色"
+
+#: .\content\templates\shop_templates\product-detail-2.html:450
+#: .\content\templates\shop_templates\product-detail-2.html:555
+msgid "Size"
+msgstr "大小"
+
+#: .\content\templates\shop_templates\product-detail-2.html:480
+#: .\content\templates\shop_templates\product-detail.html:343
+msgid "Add to Cart"
+msgstr "添加至购物车"
+
+#: .\content\templates\shop_templates\product-detail-2.html:488
+msgid "Add to Wishlist"
+msgstr "添加到心愿单"
+
+#: .\content\templates\shop_templates\product-detail-2.html:491
+msgid "Add to Compare"
+msgstr "添加到比较"
+
+#: .\content\templates\shop_templates\product-detail-2.html:509
+msgid "Reviews"
+msgstr "评论"
+
+#: .\content\templates\shop_templates\product-detail-2.html:531
+msgid "Details"
+msgstr "详细信息"
+
+#: .\content\templates\shop_templates\product-detail-2.html:532
+msgid "Lorem ipsum dolor sit amet, in eleifend "
+msgstr "Lorem ipsum dolor sit amet, in eleifend "
+
+#: .\content\templates\shop_templates\product-detail-2.html:546
+msgid "Specifications"
+msgstr "技术说明"
+
+#: .\content\templates\shop_templates\product-detail-2.html:552
+msgid "Blue, Purple"
+msgstr "蓝，紫色"
+
+#: .\content\templates\shop_templates\product-detail-2.html:556
+msgid "150x100x100"
+msgstr "150x100x100"
+
+#: .\content\templates\shop_templates\product-detail-2.html:559
+msgid "Weight"
+msgstr "权重"
+
+#: .\content\templates\shop_templates\product-detail-2.html:560
+msgid "0.6kg"
+msgstr "0.6kg"
+
+#: .\content\templates\shop_templates\product-detail-2.html:563
+#: .\content\templates\shop_templates\product-detail-2.html:564
+msgid "Manifacturer"
+msgstr "Manifacturer"
+
+#: .\content\templates\shop_templates\product-detail-2.html:593
+#: .\content\templates\shop_templates\product-detail-2.html:642
+msgid "5.0/5.0"
+msgstr "5.0/5.0"
+
+#: .\content\templates\shop_templates\product-detail-2.html:594
+msgid "Published 54 minutes ago"
+msgstr "54分钟前发布"
+
+#: .\content\templates\shop_templates\product-detail-2.html:609
+msgid "4.0/5.0"
+msgstr "4.0/5.0"
+
+#: .\content\templates\shop_templates\product-detail-2.html:610
+msgid "Published 1 day ago"
+msgstr "1 天前发布"
+
+#: .\content\templates\shop_templates\product-detail-2.html:626
+msgid "4.5/5.0"
+msgstr "4.5/5.0"
+
+#: .\content\templates\shop_templates\product-detail-2.html:627
+msgid "Published 3 days ago"
+msgstr "3天前发布"
+
+#: .\content\templates\shop_templates\product-detail-2.html:643
+msgid "Published 4 days ago"
+msgstr "4天前发布"
+
+#: .\content\templates\shop_templates\product-detail-2.html:652
+#: .\content\templates\shop_templates\product-detail.html:520
+msgid "Leave a review"
+msgstr "留下评论"
+
+#: .\content\templates\shop_templates\product-detail-2.html:664
+#: .\content\templates\shop_templates\product-detail.html:531
+msgid "Related"
+msgstr "相关的"
+
+#: .\content\templates\shop_templates\product-detail-2.html:671
+#: .\content\templates\shop_templates\product-detail-2.html:705
+#: .\content\templates\shop_templates\product-detail.html:538
+msgid "New"
+msgstr "新增"
+
+#: .\content\templates\shop_templates\product-detail-2.html:683
+msgid "ACG React Terra"
+msgstr "ACG React Terra"
+
+#: .\content\templates\shop_templates\product-detail-2.html:717
+msgid "Air Zoom Alpha"
+msgstr "空气缩放 Alpha"
+
+#: .\content\templates\shop_templates\product-detail-2.html:739
+msgid "Hot"
+msgstr "热点"
+
+#: .\content\templates\shop_templates\product-detail-2.html:785
+msgid "Okwahn II"
+msgstr "Okwahn II"
+
+#: .\content\templates\shop_templates\product-detail-2.html:820
+msgid "Air Wildwood ACG"
+msgstr "Air Wildwood ACG"
+
+#: .\content\templates\shop_templates\product-detail-2.html:917
+msgid "97845 Baker st. 567"
+msgstr "97845 Baker st. 567"
+
+#: .\content\templates\shop_templates\product-detail-2.html:917
+msgid "Los Angeles - US"
+msgstr "洛杉矶-美国"
+
+#: .\content\templates\shop_templates\product-detail-2.html:919
+msgid "info@allaia.com"
+msgstr "info@allaia.com"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1006
+#: .\content\templates\shop_templates\product-detail.html:702
+msgid "1 product added to cart"
+msgstr "1 件商品已添加到购物车"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1018
+msgid "1x Armor Air X Fear"
+msgstr "1x 装甲[X恐惧]"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1024
+#: .\content\templates\shop_templates\product-detail.html:725
+msgid "View cart"
+msgstr "浏览购物车"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1031
+#: .\content\templates\shop_templates\product-detail.html:733
+msgid "Who bought this product also bought"
+msgstr "购买此商品的买家还买了："
+
+#: .\content\templates\shop_templates\product-detail-2.html:1042
+#: .\content\templates\shop_templates\product-detail.html:745
+#: .\content\templates\shop_templates\product-detail.html:746
+msgid "Armor Okwahn II"
+msgstr "Armor Okwahn II"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1056
+#: .\content\templates\shop_templates\product-detail.html:761
+#: .\content\templates\shop_templates\product-detail.html:762
+msgid "Armor Air Wildwood ACG"
+msgstr "装甲气体Wildwood ACG"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1071
+#: .\content\templates\shop_templates\product-detail.html:778
+#: .\content\templates\shop_templates\product-detail.html:779
+msgid "Armor ACG React Terra"
+msgstr "装甲ACG React Terra"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1087
+#: .\content\templates\shop_templates\product-detail.html:795
+#: .\content\templates\shop_templates\product-detail.html:796
+msgid "Size guide"
+msgstr "尺寸指南"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1098
+#: .\content\templates\shop_templates\product-detail.html:807
+#: .\content\templates\shop_templates\product-detail.html:808
+msgid "US Sizes"
+msgstr "美国大小"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1100
+#: .\content\templates\shop_templates\product-detail-2.html:1127
+#: .\content\templates\shop_templates\product-detail.html:810
+#: .\content\templates\shop_templates\product-detail.html:811
+#: .\content\templates\shop_templates\product-detail.html:849
+#: .\content\templates\shop_templates\product-detail.html:850
+msgid "6,5"
+msgstr "6,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1102
+#: .\content\templates\shop_templates\product-detail-2.html:1129
+#: .\content\templates\shop_templates\product-detail.html:813
+#: .\content\templates\shop_templates\product-detail.html:814
+#: .\content\templates\shop_templates\product-detail.html:852
+#: .\content\templates\shop_templates\product-detail.html:853
+msgid "7,5"
+msgstr "7,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1104
+#: .\content\templates\shop_templates\product-detail-2.html:1131
+#: .\content\templates\shop_templates\product-detail.html:816
+#: .\content\templates\shop_templates\product-detail.html:817
+#: .\content\templates\shop_templates\product-detail.html:855
+#: .\content\templates\shop_templates\product-detail.html:856
+msgid "8,5"
+msgstr "8,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1106
+#: .\content\templates\shop_templates\product-detail-2.html:1133
+#: .\content\templates\shop_templates\product-detail.html:819
+#: .\content\templates\shop_templates\product-detail.html:820
+#: .\content\templates\shop_templates\product-detail.html:858
+#: .\content\templates\shop_templates\product-detail.html:859
+msgid "9,5"
+msgstr "9,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1108
+#: .\content\templates\shop_templates\product-detail.html:822
+#: .\content\templates\shop_templates\product-detail.html:823
+msgid "10,5"
+msgstr "10,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1111
+#: .\content\templates\shop_templates\product-detail.html:826
+#: .\content\templates\shop_templates\product-detail.html:827
+msgid "Euro Sizes"
+msgstr "欧元大小"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1115
+#: .\content\templates\shop_templates\product-detail.html:831
+#: .\content\templates\shop_templates\product-detail.html:832
+msgid "40-41"
+msgstr "40-41"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1117
+#: .\content\templates\shop_templates\product-detail.html:834
+#: .\content\templates\shop_templates\product-detail.html:835
+msgid "41-42"
+msgstr "41-42"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1119
+#: .\content\templates\shop_templates\product-detail.html:837
+#: .\content\templates\shop_templates\product-detail.html:838
+msgid "42-43"
+msgstr "42-43"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1121
+#: .\content\templates\shop_templates\product-detail.html:840
+#: .\content\templates\shop_templates\product-detail.html:841
+msgid "43-44"
+msgstr "43-44"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1124
+#: .\content\templates\shop_templates\product-detail.html:844
+#: .\content\templates\shop_templates\product-detail.html:845
+msgid "UK Sizes"
+msgstr "UK 大小"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1125
+#: .\content\templates\shop_templates\product-detail.html:846
+#: .\content\templates\shop_templates\product-detail.html:847
+msgid "5,5"
+msgstr "5,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1137
+#: .\content\templates\shop_templates\product-detail.html:863
+#: .\content\templates\shop_templates\product-detail.html:864
+msgid "Inches"
+msgstr "英寸"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1138
+msgid "9.25\""
+msgstr "9.25\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1139
+msgid "9.5\""
+msgstr "9.5\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1140
+msgid "9.625\""
+msgstr "9.625\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1141
+msgid "9.75\""
+msgstr "9.75\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1142
+msgid "9.9375\""
+msgstr "9.9375\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1143
+msgid "10.125\""
+msgstr "10.125\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1144
+msgid "10.25\""
+msgstr "10.25\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1145
+msgid "10.5\""
+msgstr "10.5\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1146
+msgid "10.625\""
+msgstr "10.625\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1147
+msgid "10.75\""
+msgstr "10.75\""
+
+#: .\content\templates\shop_templates\product-detail-2.html:1151
+#: .\content\templates\shop_templates\product-detail.html:888
+#: .\content\templates\shop_templates\product-detail.html:889
+msgid "23,5"
+msgstr "23,5"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1152
+#: .\content\templates\shop_templates\product-detail.html:890
+#: .\content\templates\shop_templates\product-detail.html:891
+msgid "24,1"
+msgstr "24,1"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1153
+#: .\content\templates\shop_templates\product-detail.html:892
+#: .\content\templates\shop_templates\product-detail.html:893
+msgid "24,4"
+msgstr "24,4"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1154
+#: .\content\templates\shop_templates\product-detail.html:894
+#: .\content\templates\shop_templates\product-detail.html:895
+msgid "24,8"
+msgstr "24,8"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1155
+#: .\content\templates\shop_templates\product-detail.html:896
+#: .\content\templates\shop_templates\product-detail.html:897
+msgid "25,4"
+msgstr "25,4"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1156
+#: .\content\templates\shop_templates\product-detail.html:898
+#: .\content\templates\shop_templates\product-detail.html:899
+msgid "25,7"
+msgstr "25,7"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1158
+#: .\content\templates\shop_templates\product-detail.html:901
+#: .\content\templates\shop_templates\product-detail.html:902
+msgid "26,7"
+msgstr "26,7"
+
+#: .\content\templates\shop_templates\product-detail-2.html:1160
+#: .\content\templates\shop_templates\product-detail.html:904
+#: .\content\templates\shop_templates\product-detail.html:905
+msgid "27,3"
+msgstr "27,3"
+
+#: .\content\templates\shop_templates\product-detail-model2.html:48
+msgid "Zoom Out"
+msgstr "缩放"
+
+#: .\content\templates\shop_templates\product-detail-model2.html:49
+msgid "Zoom In"
+msgstr "放大区域"
+
+#: .\content\templates\shop_templates\product-detail.html:90
 msgid "hot deal"
 msgstr "热门交易"
 
-#: .\content\templates\shop_templates\product-detail.html:86
+#: .\content\templates\shop_templates\product-detail.html:92
 msgid "YC Combo Organ"
 msgstr "YC Combo organ"
 
 #: .\content\templates\shop_templates\product-detail.html:100
+#: .\content\templates\shop_templates\product-detail.html:101
+msgid "Prev"
+msgstr "上一个"
+
+#: .\content\templates\shop_templates\product-detail.html:108
 msgid "Mapex 30th Anniversary"
 msgstr "Mapex 30周年纪念日"
 
-#: .\content\templates\shop_templates\product-detail.html:115
+#: .\content\templates\shop_templates\product-detail.html:123
 msgid "Keyboard with USB MIDI"
 msgstr "带USB MIDI的键盘"
 
-#: .\content\templates\shop_templates\product-detail.html:260
+#: .\content\templates\shop_templates\product-detail.html:270
 msgid "No reviews"
 msgstr "没有评论"
 
-#: .\content\templates\shop_templates\product-detail.html:265
-msgid "instrument.details"
-msgstr "详细信息"
-
-#: .\content\templates\shop_templates\product-detail.html:273
+#: .\content\templates\shop_templates\product-detail.html:284
+#: .\content\templates\shop_templates\product-search.html:369
 msgid "Maroon"
 msgstr "深红"
 
-#: .\content\templates\shop_templates\product-detail.html:274
+#: .\content\templates\shop_templates\product-detail.html:285
+#: .\content\templates\shop_templates\product-search.html:377
 msgid "White"
 msgstr "白色"
 
-#: .\content\templates\shop_templates\product-detail.html:279
+#: .\content\templates\shop_templates\product-detail.html:290
 msgid "Maroon - $223.00 USD"
 msgstr "Maroon - $223.00 USD"
 
-#: .\content\templates\shop_templates\product-detail.html:281
+#: .\content\templates\shop_templates\product-detail.html:292
 msgid "White - $223.00 USD"
 msgstr "白色-223.00美元"
 
-#: .\content\templates\shop_templates\product-detail.html:331
-msgid "Add to Cart"
-msgstr "添加至购物车"
-
-#: .\content\templates\shop_templates\product-detail.html:341
+#: .\content\templates\shop_templates\product-detail.html:353
 msgid "Buy it now"
 msgstr "立即购买"
 
 #: .\content\templates\shop_templates\product-detail.html:364
+#: .\content\templates\shop_templates\product-detail.html:365
+#: .\content\templates\shop_templates\product-search.html:438
+#: .\content\templates\shop_templates\product-search.html:458
+msgid "image/svg+xml"
+msgstr "图像/svg+xml"
+
+#: .\content\templates\shop_templates\product-detail.html:376
+#: .\content\templates\shop_templates\product-detail.html:377
+msgid "Categories :"
+msgstr "类别："
+
+#: .\content\templates\shop_templates\product-detail.html:378
 msgid "Home page,"
 msgstr "主页"
 
-#: .\content\templates\shop_templates\product-detail.html:365
+#: .\content\templates\shop_templates\product-detail.html:379
 msgid "hot rate"
 msgstr "热速率"
 
-#: .\content\templates\shop_templates\product-detail.html:388
+#: .\content\templates\shop_templates\product-detail.html:403
 msgid "Returns"
 msgstr "返回"
 
-#: .\content\templates\shop_templates\product-detail.html:389
+#: .\content\templates\shop_templates\product-detail.html:404
 msgid "Return this product within 100 days if you change your mind. Get a refund/replacement &amp; free return shipping if it arrives damaged or not as described"
 msgstr "如果您改变主意，在100天内返回此商品。 如果在邮寄过程中受损或不符合描述，则获得退款/替换，并且免费退货。"
 
-#: .\content\templates\shop_templates\product-detail.html:398
+#: .\content\templates\shop_templates\product-detail.html:413
 msgid "Free if stated near price. $9.95 Australia wide (up to 10 items). $18.95 for Express Post (generally 1 business day)."
 msgstr "价格接近时免费，澳大利亚范围9.95美元(最多10件物品)，特快专递$18.95(一般为1个工作日)。"
 
-#: .\content\templates\shop_templates\product-detail.html:420
+#: .\content\templates\shop_templates\product-detail.html:435
 msgid "Additional Information"
 msgstr "附加信息"
 
-#: .\content\templates\shop_templates\product-detail.html:423
+#: .\content\templates\shop_templates\product-detail.html:438
 msgid "Review"
 msgstr "评论"
 
-#: .\content\templates\shop_templates\product-detail.html:440
+#: .\content\templates\shop_templates\product-detail.html:455
 msgid "More Infomation To You"
 msgstr "向您提供更多信息"
 
-#: .\content\templates\shop_templates\product-detail.html:441
+#: .\content\templates\shop_templates\product-detail.html:456
 msgid "Things you need to know"
 msgstr "您需要知道的事项"
 
-#: .\content\templates\shop_templates\product-detail.html:505
-msgid "Leave a review"
-msgstr "留下评论"
+#: .\content\templates\shop_templates\product-detail.html:865
+#: .\content\templates\shop_templates\product-detail.html:866
+msgid "9.25"
+msgstr "9.25"
 
-#: .\content\templates\shop_templates\product-detail.html:516
-msgid "Related"
-msgstr "相关的"
+#: .\content\templates\shop_templates\product-detail.html:867
+#: .\content\templates\shop_templates\product-detail.html:868
+msgid "9.5"
+msgstr "9.5"
 
-#: .\content\templates\shop_templates\product-detail.html:685
-msgid "1 product added to cart"
-msgstr "1 件商品已添加到购物车"
+#: .\content\templates\shop_templates\product-detail.html:869
+#: .\content\templates\shop_templates\product-detail.html:870
+msgid "9.625"
+msgstr "9.625"
 
-#: .\content\templates\shop_templates\product-detail.html:707
-msgid "View cart"
-msgstr "浏览购物车"
+#: .\content\templates\shop_templates\product-detail.html:871
+#: .\content\templates\shop_templates\product-detail.html:872
+msgid "9.75"
+msgstr "9.75"
 
-#: .\content\templates\shop_templates\product-detail.html:715
-msgid "Who bought this product also bought"
-msgstr "购买此商品的买家还买了："
+#: .\content\templates\shop_templates\product-detail.html:873
+#: .\content\templates\shop_templates\product-detail.html:874
+msgid "9.9375"
+msgstr "9.9375"
+
+#: .\content\templates\shop_templates\product-detail.html:875
+#: .\content\templates\shop_templates\product-detail.html:876
+msgid "10.125"
+msgstr "10.125"
+
+#: .\content\templates\shop_templates\product-detail.html:877
+#: .\content\templates\shop_templates\product-detail.html:878
+msgid "10.25"
+msgstr "10.25"
+
+#: .\content\templates\shop_templates\product-detail.html:879
+#: .\content\templates\shop_templates\product-detail.html:880
+msgid "10.5"
+msgstr "10.5"
+
+#: .\content\templates\shop_templates\product-detail.html:881
+#: .\content\templates\shop_templates\product-detail.html:882
+msgid "10.625"
+msgstr "10.625"
+
+#: .\content\templates\shop_templates\product-detail.html:883
+#: .\content\templates\shop_templates\product-detail.html:884
+msgid "10.75"
+msgstr "10.75"
+
+#: .\content\templates\shop_templates\product-search.html:104
+#: .\content\templates\shop_templates\product-search.html:113
+msgid "filter"
+msgstr "筛选器"
+
+#: .\content\templates\shop_templates\product-search.html:153
+#: .\content\templates\shop_templates\product-search.html:156
+msgid "Featured"
+msgstr "精选"
+
+#: .\content\templates\shop_templates\product-search.html:157
+msgid "Best Selling"
+msgstr "最畅销课程"
+
+#: .\content\templates\shop_templates\product-search.html:158
+msgid "Alphabetically, A-Z"
+msgstr "字母顺序，A-Z"
+
+#: .\content\templates\shop_templates\product-search.html:159
+msgid "Price, high to low"
+msgstr "价格，高到低"
+
+#: .\content\templates\shop_templates\product-search.html:160
+msgid "Price, low to high"
+msgstr "价格，从低到高"
+
+#: .\content\templates\shop_templates\product-search.html:161
+msgid "Date, old to new"
+msgstr "日期, 旧至"
+
+#: .\content\templates\shop_templates\product-search.html:162
+msgid "Date, new to old"
+msgstr "日期, 新旧的"
+
+#: .\content\templates\shop_templates\product-search.html:213
+msgid "Color Option"
+msgstr "颜色选项"
+
+#: .\content\templates\shop_templates\product-search.html:262
+msgid "Price Filter"
+msgstr "价格过滤器"
+
+#: .\content\templates\shop_templates\product-search.html:298
+msgid "Tags"
+msgstr "标签"
+
+#: .\content\templates\shop_templates\product-search.html:337
+msgid "Black"
+msgstr "黑色"
+
+#: .\content\templates\shop_templates\product-search.html:345
+msgid "Brown"
+msgstr "棕色"
+
+#: .\content\templates\shop_templates\product-search.html:353
+msgid "BurlyWood"
+msgstr "暴木头"
+
+#: .\content\templates\shop_templates\product-search.html:361
+msgid "Gold"
+msgstr "金币"
+
+#: .\content\templates\shop_templates\product-search.html:505
+msgid "1</span> "
+msgstr "1</span> "
+
+#: .\content\templates\shop_templates\product-search.html:506
+msgid "2</a></span> "
+msgstr "2</a></span> "
+
+#: .\content\templates\shop_templates\product-search.html:527
+msgid "Sort by popularity"
+msgstr "按受欢迎程度排序"
+
+#: .\content\templates\shop_templates\product-search.html:528
+msgid "Sort by average rating"
+msgstr "按平均评分排序"
+
+#: .\content\templates\shop_templates\product-search.html:529
+msgid "Sort by newness"
+msgstr "按新程度排序"
+
+#: .\content\templates\shop_templates\product-search.html:530
+msgid "Sort by price: low to high"
+msgstr "按价格排序：从低到高"
+
+#: .\content\templates\shop_templates\product-search.html:541
+msgid "Filters"
+msgstr "筛选器"
+
+#: .\content\templates\shop_templates\product-search.html:551
+msgid "Wide Categories"
+msgstr "广泛分类"
+
+#: .\content\templates\shop_templates\product-search.html:579
+msgid "Percussion Instruments"
+msgstr "撞击乐器"
+
+#: .\content\templates\shop_templates\product-search.html:579
+#: .\content\templates\shop_templates\product-search.html:616
+msgid "23"
+msgstr "23"
+
+#: .\content\templates\shop_templates\product-search.html:585
+msgid "Keyboard Instruments"
+msgstr "键盘乐器"
+
+#: .\content\templates\shop_templates\product-search.html:585
+#: .\content\templates\shop_templates\product-search.html:622
+#: .\content\templates\shop_templates\product-search.html:669
+msgid "11"
+msgstr "11"
+
+#: .\content\templates\shop_templates\product-search.html:599
+msgid "Specific Categories"
+msgstr "特定类别"
+
+#: .\content\templates\shop_templates\product-search.html:616
+msgid "Violin"
+msgstr "暴力的"
+
+#: .\content\templates\shop_templates\product-search.html:622
+msgid "Bass"
+msgstr "低音"
+
+#: .\content\templates\shop_templates\product-search.html:637
+msgid "Blue "
+msgstr "蓝色 "
+
+#: .\content\templates\shop_templates\product-search.html:637
+msgid "06"
+msgstr "06"
+
+#: .\content\templates\shop_templates\product-search.html:643
+msgid "Red "
+msgstr "红色的 "
+
+#: .\content\templates\shop_templates\product-search.html:649
+msgid "Orange "
+msgstr "橙色 "
+
+#: .\content\templates\shop_templates\product-search.html:649
+msgid "17"
+msgstr "17"
+
+#: .\content\templates\shop_templates\product-search.html:655
+msgid "Black "
+msgstr "黑色 "
+
+#: .\content\templates\shop_templates\product-search.html:655
+msgid "43"
+msgstr "43"
+
+#: .\content\templates\shop_templates\product-search.html:665
+msgid "Brands"
+msgstr "品牌："
+
+#: .\content\templates\shop_templates\product-search.html:669
+msgid "Adidas "
+msgstr "阿迪达斯 "
+
+#: .\content\templates\shop_templates\product-search.html:675
+msgid "Nike "
+msgstr "尼克省 "
+
+#: .\content\templates\shop_templates\product-search.html:675
+msgid "08"
+msgstr "08"
+
+#: .\content\templates\shop_templates\product-search.html:681
+msgid "Vans "
+msgstr "沃斯 "
+
+#: .\content\templates\shop_templates\product-search.html:681
+msgid "05"
+msgstr "05"
+
+#: .\content\templates\shop_templates\product-search.html:687
+msgid "Puma "
+msgstr "普马文 "
+
+#: .\content\templates\shop_templates\product-search.html:687
+msgid "18"
+msgstr "18"
+
+#: .\content\templates\shop_templates\product-search.html:729
+msgid "Filter"
+msgstr "筛选器"
+
+#: .\content\templates\shop_templates\product-search.html:729
+msgid "Reset"
+msgstr "Reset"
+
+#: .\content\templates\shop_templates\test_profile.html:8
+msgid "media profile - Bootdey.com"
+msgstr "媒体资料 - Bootdey.com"
+
+#: .\content\templates\shop_templates\test_profile.html:26
+msgid "Michael Halls"
+msgstr "Michael Halls"
+
+#: .\content\templates\shop_templates\test_profile.html:26
+msgid " - Profile"
+msgstr " - 个人资料"
+
+#: .\content\templates\shop_templates\test_profile.html:28
+msgid "Lorem ipsum dolor sit amet ctetur adicing elit, sed do eiusmod tempor incididunt"
+msgstr "Lorem ipsum dolor sit amet ctetur adicing elit, sed do eiusmod tempor incididunt"
+
+#: .\content\templates\shop_templates\test_profile.html:94
+msgid "User Popularity"
+msgstr "用户热门度"
+
+#: .\content\templates\shop_templates\test_profile.html:101
+msgid "First Name"
+msgstr "名字"
+
+#: .\content\templates\shop_templates\test_profile.html:102
+msgid "Revenue"
+msgstr "收入"
+
+#: .\content\templates\shop_templates\test_profile.html:110
+msgid "Television"
+msgstr "电视机"
+
+#: .\content\templates\shop_templates\test_profile.html:119
+msgid "Radio"
+msgstr "收音机"
+
+#: .\content\templates\shop_templates\test_profile.html:128
+msgid "Newspaper"
+msgstr "报社"
+
+#: .\content\templates\shop_templates\test_profile.html:145
+msgid "Default"
+msgstr "默认设置"
+
+#: .\content\templates\shop_templates\test_profile.html:146
+#: .\content\templates\shop_templates\test_profile.html:153
+msgid "Primary"
+msgstr "主要的"
+
+#: .\content\templates\shop_templates\test_profile.html:147
+#: .\content\templates\shop_templates\test_profile.html:151
+msgid "Success"
+msgstr "成功"
+
+#: .\content\templates\shop_templates\test_profile.html:148
+msgid "Info"
+msgstr "信息"
+
+#: .\content\templates\shop_templates\test_profile.html:149
+msgid "Warning"
+msgstr "警告"
+
+#: .\content\templates\shop_templates\test_profile.html:150
+msgid "Danger"
+msgstr "危险"
+
+#: .\content\templates\shop_templates\test_profile.html:152
+msgid "Ui Design"
+msgstr "界面设计"
+
+#: .\content\templates\shop_templates\test_profile.html:162
+msgid "About Me"
+msgstr "关于我"
+
+#: .\content\templates\shop_templates\test_profile.html:166
+msgid "Experience"
+msgstr "经历"
+
+#: .\content\templates\shop_templates\test_profile.html:168
+msgid "Facebook Internship"
+msgstr "Facebook 实习课程"
+
+#: .\content\templates\shop_templates\test_profile.html:169
+#: .\content\templates\shop_templates\test_profile.html:176
+#: .\content\templates\shop_templates\test_profile.html:183
+msgid "University of Missouri, Columbia"
+msgstr "University of Missouri, Columbia"
+
+#: .\content\templates\shop_templates\test_profile.html:169
+msgid "Student Health Center, June 2010 - 2012"
+msgstr "学生健康中心，2010年6月-2012"
+
+#: .\content\templates\shop_templates\test_profile.html:173
+msgid "Education"
+msgstr "教育"
+
+#: .\content\templates\shop_templates\test_profile.html:175
+msgid "Bachelor of Science, PhD"
+msgstr "理科学士，博士"
+
+#: .\content\templates\shop_templates\test_profile.html:176
+#: .\content\templates\shop_templates\test_profile.html:183
+msgid "Student Health Center, June 2010 through Aug 2011"
+msgstr "学生健康中心，2010年6月至2011年"
+
+#: .\content\templates\shop_templates\test_profile.html:180
+msgid "Accomplishments"
+msgstr "1. 成就"
+
+#: .\content\templates\shop_templates\test_profile.html:182
+msgid "Successful Business"
+msgstr "成功的业务"
+
+#: .\content\templates\shop_templates\test_profile.html:193
+#: .\content\templates\shop_templates\user_profile.html:130
+msgid "Activity"
+msgstr "活动"
+
+#: .\content\templates\shop_templates\test_profile.html:196
+msgid "Social"
+msgstr "社交活动"
+
+#: .\content\templates\shop_templates\test_profile.html:199
+msgid "Media"
+msgstr "媒体"
+
+#: .\content\templates\shop_templates\test_profile.html:209
+#: .\content\templates\shop_templates\test_profile.html:231
+msgid "Simon Rivers Posted"
+msgstr "Simon Rivers 被发布"
+
+#: .\content\templates\shop_templates\test_profile.html:209
+#: .\content\templates\shop_templates\test_profile.html:231
+#: .\content\templates\shop_templates\test_profile.html:239
+#: .\content\templates\shop_templates\test_profile.html:249
+msgid " - 3 hours ago"
+msgstr " - 3小时前"
+
+#: .\content\templates\shop_templates\test_profile.html:216
+msgid "Like "
+msgstr "赞 "
+
+#: .\content\templates\shop_templates\test_profile.html:218
+msgid "Share "
+msgstr "分享 "
+
+#: .\content\templates\shop_templates\test_profile.html:220
+msgid "Save "
+msgstr "保存 "
+
+#: .\content\templates\shop_templates\test_profile.html:222
+msgid "Comment "
+msgstr "评论 "
+
+#: .\content\templates\shop_templates\test_profile.html:239
+#: .\content\templates\shop_templates\test_profile.html:249
+msgid "Jessica Wong"
+msgstr "Jessica Wong"
+
+#: .\content\templates\shop_templates\test_profile.html:241
+#: .\content\templates\shop_templates\test_profile.html:251
+msgid "Omgosh I'm in love"
+msgstr "我喜欢的Omgosh"
+
+#: .\content\templates\shop_templates\user_profile.html:26
+#: .\content\templates\shop_templates\user_profile.html:120
+#: .\content\templates\shop_templates\user_profile.html:121
+#: .\content\templates\shop_templates\user_profile.html:252
+msgid "John Doe "
+msgstr "John Doe "
+
+#: .\content\templates\shop_templates\user_profile.html:33
+#: .\content\templates\shop_templates\user_profile.html:258
+msgid "Admin"
+msgstr "管理员"
+
+#: .\content\templates\shop_templates\user_profile.html:42
+msgid "Super User"
+msgstr "超级用户"
+
+#: .\content\templates\shop_templates\user_profile.html:51
+msgid "Orders: "
+msgstr "订单： "
+
+#: .\content\templates\shop_templates\user_profile.html:51
+msgid "456"
+msgstr "456"
+
+#: .\content\templates\shop_templates\user_profile.html:52
+msgid "Posts: "
+msgstr "帖子： "
+
+#: .\content\templates\shop_templates\user_profile.html:52
+msgid "828"
+msgstr "828"
+
+#: .\content\templates\shop_templates\user_profile.html:53
+msgid "Tasks done: "
+msgstr "任务完成： "
+
+#: .\content\templates\shop_templates\user_profile.html:53
+msgid "1024"
+msgstr "1024"
+
+#: .\content\templates\shop_templates\user_profile.html:68
+msgid "User info"
+msgstr "用户信息"
+
+#: .\content\templates\shop_templates\user_profile.html:122
+msgid "Black_widow"
+msgstr "Black_widow"
+
+#: .\content\templates\shop_templates\user_profile.html:123
+msgid "Avenger_Scarlett"
+msgstr "Avenger_Scarlett"
+
+#: .\content\templates\shop_templates\user_profile.html:131
+msgid "Friends"
+msgstr "朋友"
+
+#: .\content\templates\shop_templates\user_profile.html:132
+msgid "Chat"
+msgstr "聊天"
+
+#: .\content\templates\shop_templates\user_profile.html:146
+#: .\content\templates\shop_templates\user_profile.html:182
+#: .\content\templates\shop_templates\user_profile.html:230
+msgid "Avengers Initiative"
+msgstr "Avengers Initiative"
+
+#: .\content\templates\shop_templates\user_profile.html:158
+#: .\content\templates\shop_templates\user_profile.html:218
+#: .\content\templates\shop_templates\user_profile.html:275
+#: .\content\templates\shop_templates\user_profile.html:348
+msgid "Pending"
+msgstr "待定"
+
+#: .\content\templates\shop_templates\user_profile.html:159
+#: .\content\templates\shop_templates\user_profile.html:219
+msgid "Completed"
+msgstr "已完成"
+
+#: .\content\templates\shop_templates\user_profile.html:194
+msgid "On Hold"
+msgstr "按住时"
+
+#: .\content\templates\shop_templates\user_profile.html:195
+msgid "Disabled"
+msgstr "已禁用"
+
+#: .\content\templates\shop_templates\user_profile.html:269
+#: .\content\templates\shop_templates\user_profile.html:342
+msgid "Mila Kunis"
+msgstr "Mila Kunis"
+
+#: .\content\templates\shop_templates\user_profile.html:286
+#: .\content\templates\shop_templates\user_profile.html:359
+msgid "Ryan Gossling"
+msgstr "Ryan Gossling"
+
+#: .\content\templates\shop_templates\user_profile.html:300
+msgid "Robert Downey Jr."
+msgstr "Robert Downey Jr."
+
+#: .\content\templates\shop_templates\user_profile.html:314
+msgid "Emma Watson"
+msgstr "Emma Watson"
+
+#: .\content\templates\shop_templates\user_profile.html:328
+msgid "George Clooney"
+msgstr "George Clooney"
+
+#: .\content\templates\shop_templates\user_profile.html:368
+msgid "View all users"
+msgstr "查看所有用户"
+
+#: .\content\templates\shop_templates\wishlist.html:40
+msgid "Your Wishlist"
+msgstr "您的心愿单"
+
+#: .\content\templates\shop_templates\wishlist.html:51
+msgid "Your wishlist"
+msgstr "您的愿望清单"
+
+#: .\content\templates\shop_templates\wishlist.html:61
+msgid "Availability"
+msgstr "可用性"
+
+#: .\content\templates\shop_templates\wishlist.html:88
+msgid "in stock"
+msgstr "库存中"
+
+#: .\image_search\forms.py:14
+msgid "Image"
+msgstr "图片"
 
