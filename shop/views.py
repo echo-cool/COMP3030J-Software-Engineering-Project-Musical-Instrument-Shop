@@ -5,6 +5,7 @@ import time
 
 from asgiref.sync import sync_to_async
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -589,12 +590,33 @@ def product_search(request):
     else:
         carts = {}
 
+    paginator = Paginator(instruments, 12, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+
+    part_num = 3
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
-        'carts': carts
+        'carts': carts,
+        "part_pages": part_pages
     })
 
 
@@ -621,10 +643,31 @@ def image_search(request, result_key):
     else:
         carts = {}
 
+    paginator = Paginator(instruments, 12, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+
+    part_num = 3
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
     return render(request, 'shop_templates/product-search.html', {
         "instruments": instruments,
         'categories': categories,
-        'carts': carts
+        'carts': carts,
+        'part_pages': part_pages
     })
 
 
