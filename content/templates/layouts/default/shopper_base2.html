@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/language.css" %}" media="all"/>
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
 
 
     {% if home == 1 %}
@@ -121,7 +122,7 @@
                     <i class="fa fa-camera-retro" aria-hidden="true"></i>
                 </button>
 
-                <input type="file" style="display: none;" id="image_file_upload" accept="image/*">
+                <input type="file" style="display: none;" id="image_file_upload" accept="image/jpeg">
             </form>
             <div class="drawer_back">
                 <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg" id="close-search">
@@ -2192,7 +2193,6 @@
     <!-- End Footer -->
     {#    <script type="text/javascript"#}
     {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>

@@ -5,6 +5,7 @@ import time
 
 from asgiref.sync import sync_to_async
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -589,12 +590,33 @@ def product_search(request):
     else:
         carts = {}
 
+    paginator = Paginator(instruments, 12, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+
+    part_num = 3
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': categories,
-        'carts': carts
+        'carts': carts,
+        "part_pages": part_pages
     })
 
 
@@ -605,7 +627,7 @@ def image_search(request, result_key):
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
-        instruments = all_instruments.filter(category__in=search_category)
+        instruments = [instrument for instrument in all_instruments if instrument.category_id in search_category]
     else:
         instruments = all_instruments
 
@@ -614,20 +636,39 @@ def image_search(request, result_key):
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
     for category in category_list:
-        categories[category] = instruments.filter(category=category).count()
+        categories[category] = len([instrument for instrument in instruments if instrument.category == category])
 
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)
     else:
         carts = {}
 
+    paginator = Paginator(instruments, 12, 0)
+    page = request.GET.get("page")
+    try:
+        instruments = paginator.page(page)
+    except PageNotAnInteger:
+        instruments = paginator.page(1)
+    except EmptyPage:
+        instruments = paginator.page(paginator.num_pages)
+
+    part_num = 3
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
     return render(request, 'shop_templates/product-search.html', {
         "instruments": instruments,
         'categories': categories,
-        'carts': carts
+        'carts': carts,
+        'part_pages': part_pages
     })
-
-
 
 
 # search instruments by keyword
