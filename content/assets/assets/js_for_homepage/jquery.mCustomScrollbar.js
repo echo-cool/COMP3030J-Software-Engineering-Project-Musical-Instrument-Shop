@@ -1146,4 +1146,4 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
             $.error("Method " + method + " does not exist");
         }
     };
-})($);
+})(jQuery);
