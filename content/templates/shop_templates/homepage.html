@@ -54,10 +54,46 @@
 
 
     </style>
+
+    <style>
+        #loading-page {
+            z-index: 9999;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+    <iframe src="/new_header" width="100%" height="100%" name="loading-page" id="loading-page"
+            style="">
+    </iframe>
+    <script>
+        function looklookLoading() {
+            document.getElementById("loading-page").style = "display:block";
+            document.getElementById("wrap").style = "display:none";
+            if (document.getElementById("iAtlasChatDiv")) {
+                document.getElementById("iAtlasChatDiv").style = "display:none";
+            }
+
+            function overLoading() {
+                console.log("over loading");
+                document.getElementById("loading-page").style = "display:none";
+                document.getElementById("wrap").style = "display:block";
+                {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
+                {#document.getElementsByTagName("loading-page").style = "display:none";#}
+            }
+
+            setTimeout(() => overLoading(), 5000);
+        }
+
+        {#looklookLoading()#}
+
+        {#setTimeout(, 100);#}
+    </script>
 {% endblock %}
-
 {% block content %}
-
+    <script>
+        looklookLoading()
+    </script>
     <div id="content">
         <div class="content-top">
             <div class="container">
