@@ -61,6 +61,7 @@
             height: 100%;
             width: 100%;
             position: fixed;
+            transition: 1s;
         }
     </style>
     <iframe src="/new_header" width="100%" height="100%" name="loading-page" id="loading-page"
@@ -76,7 +77,10 @@
 
             function overLoading() {
                 console.log("over loading");
-                document.getElementById("loading-page").style = "display:none";
+                document.getElementById("loading-page").style.opacity = 0;
+                setTimeout(function () {
+                    document.getElementById("loading-page").style.display = "none";
+                }, 1000);
                 document.getElementById("wrap").style = "display:block";
                 {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
                 {#document.getElementsByTagName("loading-page").style = "display:none";#}
@@ -110,7 +114,8 @@
                         <h3 class="title-small mb-0"
                             style="color:#ffffff;">{% trans 'Stunning appearance, both inside and out' %}</h3>
                     </div>
-                    <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="{% url 'shop:product_search' %}"
+                    <a class="button-main2 button-shop-1606671744b1519c3f-1  animated"
+                       href="{% url 'shop:product_search' %}"
                        style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
                         {% trans 'SHOP NOW' %}
                     </a>
@@ -756,7 +761,7 @@
         }
 
         $(".item-service-link").on("click", function () {
-           scrollModels();
+            scrollModels();
         });
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
