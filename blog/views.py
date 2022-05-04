@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from blog.forms import PostForm
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Category
 
 
 def index(request):
@@ -38,9 +38,15 @@ def index(request):
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
 
+    categories = Category.objects.all()
+    category_number = {}
+    for category in categories:
+        category_number[category] = all_posts.filter(category=category).count()
+
     return render(request, 'blog_templates/blogs.html', {
         'posts': posts,
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'category_number': category_number
         # 'latest3Posts': latest3Posts,
     })
 
