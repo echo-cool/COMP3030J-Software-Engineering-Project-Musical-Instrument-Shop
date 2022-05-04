@@ -247,7 +247,7 @@
         </div>
         <!-- End Banner Grid Adv -->
 
-        <div class="custom-services">
+        <div class="custom-services" id="custom-services">
             <div class="container">
                 <div class="title-box-default">
                     <h2><span
@@ -343,7 +343,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Craftsman spirit' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
                             <p>{% trans 'Professional ethics, ability, ang quality of the embodiment, is a professional value orientation and behavior of practitioners. ' %}</p>
                         </div>
@@ -351,7 +351,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Manufacturer' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
                             <p>{% trans 'The basic connotation of "craftsmanship" includes dedication, leaning, concentration, innovation and other aspects.' %}</p>
                         </div>
@@ -359,7 +359,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Iluminous Designer' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link" onclick="scrollModels()"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
                             <p>{% trans 'Innovation and understanding of what users want make our online shop distinguished from others.' %} </p>
                         </div>
@@ -710,6 +710,17 @@
                 }
 
             })
+        });
+
+        function scrollModels() {
+            let scrollOffset = $('#custom-services').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+
+        $(".item-service-link").on("click", function () {
+           scrollModels();
         });
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
