@@ -25,7 +25,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 	/*plugin script*/
 	var methods={
 		init:function(options){
-			var defaults={ 
+			var defaults={
 				set_width:false, /*optional element width: boolean, pixels, percentage*/
 				set_height:false, /*optional element height: boolean, pixels, percentage*/
 				horizontalScroll:false, /*scroll horizontally: boolean*/
@@ -459,7 +459,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 							mouseWheelPixels=100+Math.round($this.data("scrollAmount")/2);
 						}
 						if($this.data("horizontalScroll")){
-							draggerPos=mCSB_dragger.position().left; 
+							draggerPos=mCSB_dragger.position().left;
 							limit=mCSB_draggerContainer.width()-mCSB_dragger.width();
 							absPos=Math.abs(mCSB_container.position().left);
 						}
@@ -536,7 +536,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 								$this.data({"mCSB_buttonScrollLeft":setInterval(function(){
 									$this.mCustomScrollbar("scrollTo",Math.abs(mCSB_container.position().left)-scrollButtonsSpeed,{trigger:"internal",scrollEasing:"easeOutCirc"});
 								},17)});
-							});	
+							});
 							var mCSB_buttonLeft_stop=function(e){
 								e.preventDefault(); clearInterval($this.data("mCSB_buttonScrollLeft"));
 							}
@@ -566,7 +566,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 								$this.data({"mCSB_buttonScrollUp":setInterval(function(){
 									$this.mCustomScrollbar("scrollTo",Math.abs(mCSB_container.position().top)-scrollButtonsSpeed,{trigger:"internal",scrollEasing:"easeOutCirc"});
 								},17)});
-							});	
+							});
 							var mCSB_buttonUp_stop=function(e){
 								e.preventDefault(); clearInterval($this.data("mCSB_buttonScrollUp"));
 							}
@@ -965,4 +965,4 @@ along with this program.  If not, see http://www.gnu.org/licenses/lgpl.html.
 			$.error("Method "+method+" does not exist");
 		}
 	};
-})(jQuery);
+})($);
