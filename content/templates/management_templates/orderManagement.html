@@ -90,7 +90,9 @@
                         {{ order_item.user.username|truncatewords:5 }}
                     </a>
                 </td>
-                <td> <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a> </td>
+                <td>
+                    <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a>
+                </td>
                 <td class="hidden-480">${{ order_item.total_price }}</td>
                 <td>{{ order_item.created_at }}</td>
 
@@ -111,7 +113,7 @@
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
                         <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}"
-                        onclick="window.location.href='{% url 'management:order_state' order_item.id %}'">
+                                onclick="window.location.href='{% url 'management:order_state' order_item.id %}'">
                             <i class="ace-icon fa fa-check bigger-120"></i>
                         </button>
 
@@ -126,33 +128,99 @@
                         </button>
                         <script>
                             $("#delete_button-{{ order_item.id }}").on("click", function (res) {
-                                $.ajax({
-                                    url: "/api/order/{{ order_item.id }}/",
-                                    method: "DELETE",
-                                    headers: {
-                                        'X-CSRFTOKEN': '{{ csrf_token }}'
-                                    },
-                                    success: function (res) {
-                                        $.ajax({
-                                            url: "#",
-                                            method: "GET",
-                                            success: function (res) {
-                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                table_events()
+                                $("#dialog-delete").removeClass('hide').dialog({
+                                    resizable: false,
+                                    width: '300',
+                                    modal: true,
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the operation?</h4></div>",
+                                    title_html: true,
+                                    buttons: [
+                                        {
+                                            html: "<i class='ace-icon fa fa-trash-o bigger-120'></i>  Delete the Item",
+                                            "class": "btn btn-danger btn-minier",
+                                            click: function () {
+                                                $.ajax({
+                                                    url: "/api/order/{{ order_item.id }}/",
+                                                    method: "DELETE",
+                                                    headers: {
+                                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                                    },
+                                                    success: function (res) {
+                                                        $.ajax({
+                                                            url: "#",
+                                                            method: "GET",
+                                                            success: function (res) {
+                                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                                table_events()
+
+                                                            }
+                                                        });
+                                                        alert("Success!");
+                                                        console.log(res);
+                                                    }
+                                                })
+                                                $(this).dialog("close");
 
                                             }
-                                        });
-                                        alert("Success!");
-                                        console.log(res);
-                                    }
-                                })
+                                        }
+                                        ,
+                                        {
+                                            html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
+                                            "class": "btn btn-minier",
+                                            click: function () {
+                                                $(this).dialog("close");
+                                            }
+                                        }
+                                    ]
+                                });
+
                             });
 
                         </script>
 
-                        <button class="btn btn-xs btn-warning">
+                        <button class="btn btn-xs {% if order_item.priority == 0 %}btn-warning {% endif %} "
+                                id="priority_button-{{ order_item.id }}">
                             <i class="ace-icon fa fa-flag bigger-120"></i>
                         </button>
+
+                        <script>
+                            $("#priority_button-{{ order_item.id }}").on("click", function (res) {
+                                $.ajax({
+                                    url: "/api/max_order_priority/",
+                                    method: "GET",
+                                    headers: {
+                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                    },
+                                    success: function (data) {
+                                        let maxPriority = data['priority']["priority__max"];
+                                        $.ajax({
+                                            url: "/api/order/{{ order_item.id }}/",
+                                            method: "PATCH",
+                                            headers: {
+                                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                                            },
+                                            data: {
+                                                "priority": {% if order_item.priority == 0 %}(maxPriority + 1)
+                                                    {% else %}0{% endif %}
+                                            },
+                                            success: function (res) {
+                                                $.ajax({
+                                                    url: "#",
+                                                    method: "GET",
+                                                    success: function (res) {
+                                                        $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                        table_events()
+
+                                                    }
+                                                });
+                                                console.log(res);
+                                            }
+                                        });
+                                    }
+                                })
+                            });
+                        </script>
+
                     </div>
 
                     <div class="hidden-md hidden-lg">
@@ -320,9 +388,9 @@
         </tbody>
     </table>
 
-    <div id="dialog-confirm" class="hide">
+    <div id="dialog-delete" class="hide">
         <div class="alert alert-info bigger-110">
-            The order will be confirmed and waiting for the buyer to confirm.
+            The order will be deleted and the operation can not be revoked
         </div>
 
         <div class="space-6"></div>

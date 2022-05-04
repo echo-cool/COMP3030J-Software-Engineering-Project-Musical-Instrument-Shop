@@ -4,7 +4,7 @@ from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSe
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet, \
     OrderItemViewSet
 from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month, analyze_image, \
-    EditorUploadImage
+    EditorUploadImage, max_order_priority
 
 app_name = 'api'
 
@@ -35,5 +35,6 @@ urlpatterns = router.urls + [
     path('all_read/', all_read, name='all_read'),
     path('revenue_month/', revenue_month, name='revenue_month'),
     path('analyze_image/', analyze_image, name='analyze_image'),
-    path('editor_upload_img/', EditorUploadImage.as_view(), name="editor_upload_img")
+    path('editor_upload_img/', EditorUploadImage.as_view(), name="editor_upload_img"),
+    path('max_order_priority/', max_order_priority, name="max_order_priority")
 ]
