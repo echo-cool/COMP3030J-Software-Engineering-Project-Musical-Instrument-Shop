@@ -125,7 +125,7 @@ def index(request):
 
 @login_required
 def order_management_all(request):
-    orders = Order.objects.all().order_by('-created_at')
+    orders = Order.objects.all().order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -187,7 +187,7 @@ def order_management_all_new(request):
 
 @login_required
 def order_management_placed(request):
-    orders = Order.objects.filter(accepted=False).order_by('-created_at')
+    orders = Order.objects.filter(accepted=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -216,7 +216,7 @@ def order_management_placed(request):
 
 @login_required
 def order_management_accepted(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -244,7 +244,8 @@ def order_management_accepted(request):
 
 @login_required
 def order_management_packed(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-created_at')
+    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-priority',
+                                                                                                    '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -273,7 +274,7 @@ def order_management_packed(request):
 @login_required
 def order_management_shipped(request):
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
-        delivered=False).order_by('-created_at')
+        delivered=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -302,7 +303,7 @@ def order_management_shipped(request):
 @login_required
 def order_management_delivered(request):
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
-        delivered=True).order_by('-created_at')
+        delivered=True).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()

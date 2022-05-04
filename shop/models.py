@@ -184,6 +184,8 @@ class Order(models.Model):
     shipped = models.BooleanField(default=False)
     delivered = models.BooleanField(default=False)
 
+    priority = models.IntegerField(default=0)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
