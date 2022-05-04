@@ -10,7 +10,7 @@ from datetime import datetime, timezone, date
 from django.contrib import auth
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models import Q, Max, Count
+from django.db.models import Q, Max, Count, Manager
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
@@ -75,7 +75,7 @@ def rank_user_list(request):
         messages = MessageModel.objects.filter(Q(recipient=request.user) |
                                                Q(user=request.user))
         users = User.objects
-        profiles = Profile.objects
+        profiles: Manager = Profile.objects
         data = []
         to = request.POST.get("to")
         sender_rank = messages.values("user").annotate(
@@ -345,3 +345,8 @@ class EditorUploadImage(LoginRequiredMixin, View):
             data.append(img_dict)
         context = {"errno": 0, "data": data}
         return JsonResponse(context)
+
+
+def max_order_priority(request):
+    max_priority = Order.objects.all().aggregate(Max("priority"))
+    return JsonResponse({"priority": max_priority}, safe=False, json_dumps_params={'ensure_ascii': False})
