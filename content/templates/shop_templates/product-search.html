@@ -9,7 +9,7 @@
     <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
 
-    <script src="assets/js/bootstrap.min.js"></script>
+    {#    <script src="assets/js/bootstrap.min.js"></script>#}
     <!-- YOUR CUSTOM CSS -->
     {#    <link href="/static/assets/css_for_shop/listing.css" rel="stylesheet">#}
 
@@ -17,6 +17,8 @@
 
     <link href="{% static 'assets/css_for_shop/cart2.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+    <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
+
 
     <style>
 
@@ -54,8 +56,53 @@
 {% endblock %}
 
 {% block content %}
-    <main class="content-page">
+    <script>
+        /*
+        * changeURLStatic 修改地址栏URL参数 不跳转
+        *   @param name 参数名  @param value 参数值
+        * */
+        function changeURLStatic(cate) {
+            let category = "category=";
+            let search_key = getQueryString('search');
+            for (let i = 0; i < cate.length; i++) {
+                if (i === 0) {
+                    category += cate[i];
+                } else {
+                    category += "|" + cate[i];
+                }
+            }
+            history.replaceState(null, null, "?search=" + search_key + "&" + category);
 
+            $.ajax({
+                url: "/product_search/?search=" + search_key + "&" + category,
+                method: "GET",
+                success: function (res) {
+                    $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+                    console.log("search ajax refresh");
+                }
+            });
+
+        }
+
+        function changeURLPage(pa) {
+            let page = "page=" + pa;
+
+            let category = getQueryString('category');
+            let search_key = getQueryString('search');
+
+            history.replaceState(null, null, "?search=" + search_key + "&" + category + "&" + page);
+
+            $.ajax({
+                url: "/product_search/?search=" + search_key + "&" + category + "&" + page,
+                method: "GET",
+                success: function (res) {
+                    $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+                    console.log("search ajax refresh");
+                }
+            });
+        }
+    </script>
+    <main class="content-page">
         {% if game_style == 1 %}
             <div class="piano-wrapper ">
                 {% include "shop_templates/game_piano.html" %}
@@ -180,6 +227,7 @@
                                         }
                                     );
                             });
+
                         </script>
                     </div>
                 </div>
@@ -195,19 +243,45 @@
                                     <h2 class=" mb-0">{% trans "Categories" %}</h2>
                                 </div>
                                 <div class="widget-content">
+                                    <style>
+                                        .item-toggle-tab a::before {
+                                        {#position: absolute;#}{#left: 0;#}{#top: 50%;#}{#    #} content: "";
+                                        {#    transform: translateY(-50%);#} width: 20px;
+                                            height: 20px;
+                                            border: 1px solid #d8d8d8;
+                                            border-radius: 50%;
+                                            margin-right: 12px;
+                                        }
+
+                                        .item-toggle-tab .checked + a::after {
+                                            position: absolute;
+                                            /* font-family: "sans-serif"; */
+                                            font-size: 16px;
+                                            font-family: 'FontAwesome', sans-serif;
+                                            content: "\f00c";
+                                        {#opacity: 0;#}{#visibility: hidden;#}
+                                        }
+                                    </style>
                                     <ul class="list-category-toggle toggle-tab list-none">
                                         {% for category in categories %}
                                             <li class="item-toggle-tab">
                                                 <input type="checkbox" class="category-checkbox"
                                                        id="checkbox__{{ category.id }}"/>
                                                 <a href="javascript:void(0)" class="category-name"
-                                                   id="category__{{ category.id }}">
-                                                    {{ category.name }}
-                                                </a></li>
+                                                   id="category__{{ category.id }}"
+                                                   style="line-height: 0px;display: flex; align-items: center;">
+                                                    <span>{{ category.name }}</span>
+                                                    <span>(8)</span>
+                                                </a>
+                                            </li>
                                         {% endfor %}
                                     </ul>
                                 </div>
                             </div>
+                            {#                                    <div class="single-widget-category">#}
+                            {#                                        <input type="checkbox" id="cat-item-1" name="cat-item">#}
+                            {#                                        <label for="cat-item-1">Pipes <span>(8)</span></label>#}
+                            {#                                    </div>#}
                             <div class="filter-color widget widget-category widget_product_categories filter-tag">
                                 <div class="widget-title">
                                     <h2 class="mb-0">{% trans "Color Option" %}</h2>
@@ -502,35 +576,36 @@
                                 {% endfor %}
 
                             </div>
-{#                            <div class="pagi-nav text-right">#}
-                                {#                                {% if instruments.has_previous %}#}
-                                {#                                    <span class="next" id="prev_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-left"></i></a></span>#}
-                                {#                                {% endif %}#}
-                                <ul class="pagination">
-                                    {% for pg in part_pages %}
-                                        {% if instruments.number == pg %}
-                                            <li><a class="page-number current">{{ pg }}</a></li>
-                                        {% else %}
-                                            <li><a class="page-number">{{ pg }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-{#                                                                {% for pg in part_pages %}#}
-{#                                                                    {% if instruments.number == pg %}#}
-{#                                                                        <span class="page current">{{ pg }}</span>#}
-{#                                                                    {% else %}#}
-{#                                                                        <span class="page"><a class="page-number" href="javascript:void(0)">{{ pg }}</a></span>#}
-{#                                                                    {% endif %}#}
-{#                                                                {% endfor %}#}
-{#                                                                {% if instruments.has_next %}#}
-{#                                                                    <span class="next" id="next_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-right"></i></a></span>#}
-{#                                                                {% endif %}#}
+                            {#                            <div class="pagi-nav text-right">#}
+                            {#                                {% if instruments.has_previous %}#}
+                            {#                                    <span class="next" id="prev_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-left"></i></a></span>#}
+                            {#                                {% endif %}#}
+                            <ul class="pagination">
+                                {% for pg in part_pages %}
+                                    {% if instruments.number == pg %}
+                                        <li><a class="page-number current">{{ pg }}</a></li>
+                                    {% else %}
+                                        <li><a class="page-number">{{ pg }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {#                                                                {% for pg in part_pages %}#}
+                            {#                                                                    {% if instruments.number == pg %}#}
+                            {#                                                                        <span class="page current">{{ pg }}</span>#}
+                            {#                                                                    {% else %}#}
+                            {#                                                                        <span class="page"><a class="page-number" href="javascript:void(0)">{{ pg }}</a></span>#}
+                            {#                                                                    {% endif %}#}
+                            {#                                                                {% endfor %}#}
+                            {#                                                                {% if instruments.has_next %}#}
+                            {#                                                                    <span class="next" id="next_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-right"></i></a></span>#}
+                            {#                                                                {% endif %}#}
 
-{#                            </div>#}
+                            {#                            </div>#}
                             <script src="{% static 'assets/js/add_url.js' %}"></script>
                             <script>
                                 $(".page-number").on('click', function (res) {
-                                    window.location.href = addUrlPara(window.location.href, 'page', $(this).text())
+                                    {#window.location.href = addUrlPara(window.location.href, 'page', $(this).text())#}
+                                    changeURLPage($(this).text());
                                 })
 
                                 $("#prev_page").on('click', function (res) {

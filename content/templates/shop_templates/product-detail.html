@@ -96,32 +96,32 @@
                     <div class="col-sm-6 justify-content-end align-items-center d-sm-flex d-none prod_extended">
                         <div class="arrows-product">
                             <div class="prev_prod">
-                                <a href="/products/mapex-30th-anniversary">
-                                   {% trans "Prev" %}<i class="fa fa-angle-left"  aria-hidden="true"></i>
+                                <a href="/product_details/{{ prev_instrument.id }}">
+                                    {% trans "Prev" %}<i class="fa fa-angle-left" aria-hidden="true"></i>
                                 </a>
                                 <div class="position-absolute img-prev">
-                                    <a href="/products/mapex-30th-anniversary">
-                                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/10.1_80x80.jpg?v=1606587239"
+                                    <a href="/product_details/{{ prev_instrument.id }}">
+                                        <img src="{{ prev_instrument.image.url }}" style="width: 70px;"
                                              class="">
                                     </a>
                                     <div class="info-prod">
-                                        <a href="/products/mapex-30th-anniversary">{% trans 'Mapex 30th Anniversary' %}</a>
-                                        <p>$239.00</p>
+                                        <a href="/product_details/{{ prev_instrument.image.url }}">{% trans prev_instrument.name %}</a>
+                                        <p>${{ prev_instrument.price }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="next_prod">
-                                <a href="/products/keyboard-with-usb-midi">
+                                <a href="/product_details/{{ next_instrument.id }}">
                                     Next<i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
                                 <div class=" img-next">
-                                    <a href="/products/keyboard-with-usb-midi">
-                                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/products/7.1_80x80.jpg?v=1606586472"
+                                    <a href="/product_details/{{ next_instrument.id }}">
+                                        <img src="{{ next_instrument.image.url }}" style="width: 70px;"
                                              class="">
                                     </a>
                                     <div class="info-prod">
-                                        <a href="/products/keyboard-with-usb-midi">{% trans 'Keyboard with USB MIDI' %}</a>
-                                        <p>$79.00</p>
+                                        <a href="/product_details/{{ next_instrument.id }}">{% trans next_instrument.name %}</a>
+                                        <p>${{ next_instrument.price }}</p>
                                     </div>
                                 </div>
                             </div>
