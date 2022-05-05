@@ -23,12 +23,12 @@
             <div class="page_header">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li>Page active</li>
+                        <li><a href="#">{% trans "Home" %}</a></li>
+                        <li><a href="#">{% trans "Category" %}</a></li>
+                        <li>{% trans "Page active" %}</li>
                     </ul>
                 </div>
-                <h1>Allaia Blog &amp; News</h1>
+                <h1>{% trans "Allaia Blog &amp; News" %}</h1>
             </div>
             <!-- /page_header -->
             <div class="row">
@@ -46,7 +46,7 @@
                                 <article class="blog">
                                     <figure>
                                         <a href="{% url "blog:view" post_id=post.id %}"><img src="{{ post.main_image.url }}" alt="">
-                                            <div class="preview"><span>Read more</span></div>
+                                            <div class="preview"><span>{% trans "Read more" %}</span></div>
                                         </a>
                                     </figure>
                                     <div class="post_info">
@@ -105,7 +105,7 @@
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">
-                            <h4>Latest Post</h4>
+                            <h4>{% trans "Latest Post" %}</h4>
                         </div>
                         <ul class="comments-list">
                             {% for post_tmp in latest3Posts %}
@@ -122,28 +122,32 @@
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">
-                            <h4>Categories</h4>
+                            <h4>{% trans "Categories" %}</h4>
                         </div>
                         <ul class="cats">
-                            <li><a href="#">Food <span>(12)</span></a></li>
-                            <li><a href="#">Places to visit <span>(21)</span></a></li>
-                            <li><a href="#">New Places <span>(44)</span></a></li>
-                            <li><a href="#">Suggestions and guides <span>(31)</span></a></li>
+                            <li><a href="#">{% trans "Food " %}<span
+                            >(12)</span></a></li>
+                            <li><a href="#">{% trans "Places to visit " %}<span
+                            >(21)</span></a></li>
+                            <li><a href="#">{% trans "New Places " %}<span
+                            >(44)</span></a></li>
+                            <li><a href="#">{% trans "Suggestions and guides " %}<span
+                            >(31)</span></a></li>
                         </ul>
                     </div>
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">
-                            <h4>Popular Tags</h4>
+                            <h4>{% trans "Popular Tags" %}</h4>
                         </div>
                         <div class="tags">
-                            <a href="#">Food</a>
-                            <a href="#">Bars</a>
-                            <a href="#">Cooktails</a>
-                            <a href="#">Shops</a>
-                            <a href="#">Best Offers</a>
-                            <a href="#">Transports</a>
-                            <a href="#">Restaurants</a>
+                            <a href="#">{% trans "Food" %}</a>
+                            <a href="#">{% trans "Bars" %}</a>
+                            <a href="#">{% trans "Cooktails" %}</a>
+                            <a href="#">{% trans "Shops" %}</a>
+                            <a href="#">{% trans "Best Offers" %}</a>
+                            <a href="#">{% trans "Transports" %}</a>
+                            <a href="#">{% trans "Restaurants" %}</a>
                         </div>
                     </div>
                     <!-- /widget -->
