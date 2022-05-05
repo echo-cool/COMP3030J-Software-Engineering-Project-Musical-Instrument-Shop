@@ -3,6 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
+from django.views.static import serve
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
@@ -24,10 +25,9 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-
-
-
 urlpatterns = [
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS[0]}, name='static'),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
     # path('forbidden/', forbidden, name="forbidden"),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls'), name="blog"),
