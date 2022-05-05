@@ -331,8 +331,22 @@
                                             </div>
                                             <div class="post_content">
                                                 <div class="post_header">
-                                                    <div class="author"><a href="#"><i class="ion-android-create"></i>
-                                                        By {{ post.author }}</a></div>
+                                                    <div class="author" style="display: inline-block;">
+                                                        <a href="javascript:void(0)" class="login js-call-popup-login">
+                                                            <div class="dropdown dropdown-access">
+                                                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                                                <a href="#"><i class="ion-android-create"></i>By {{ post.author }}</a>
+
+                                                                <div class="dropdown-menu" id="account-menu" style="left: 3rem">
+                                                                    <a href="{% url "chat:index_new" to=post.author.id  %}"
+                                                                       class="btn btn-primary"
+                                                                       style="display: block;">Chat with him/her</a>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
                                                     <h2 class="post_title">
                                                         <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title }}</a>
                                                     </h2>
