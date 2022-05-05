@@ -27,6 +27,13 @@
 
     <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
 
+    <style>
+        .form-group {
+            margin-top: 20px;
+            margin-right: 175px;
+            margin-left: 175px;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -48,7 +55,9 @@
             {% csrf_token %}
             {% bootstrap_form form %}
 
-            <button class="btn btn-primary">{% trans 'Submit' %}</button>
+            <button class="btn btn-primary"
+                    style="left: 50%;position: relative;margin: 0 0px 50px 0;"
+            >{% trans 'Submit' %}</button>
 
         </form>
 
