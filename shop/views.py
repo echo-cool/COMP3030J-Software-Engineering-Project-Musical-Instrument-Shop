@@ -258,6 +258,11 @@ def product_details(request, product_id):
         # add price / old_price for hint
         instrument.percentage = round(instrument.price * 100 / instrument.old_price, 2)
 
+        # 下一条，大于本条的第一个即是下一条，如果判断为空则没有下一条:
+        next_instrument = Instrument.objects.filter(id=product_id + 1).all().order_by("id").first()
+        # 上一条，小于本条的降序第一个即是上一条:
+        prev_instrument = Instrument.objects.filter(id=product_id - 1).all().order_by("-id").first()
+
     related = []
     # Get 4 random reviews
     reviews = Review.objects.all()
@@ -280,6 +285,8 @@ def product_details(request, product_id):
     # print("=============" + model_url + "=========", model_url == "")
     if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
+            "next_instrument": next_instrument,
+            "prev_instrument": prev_instrument,
             "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
@@ -292,6 +299,8 @@ def product_details(request, product_id):
         })
     else:
         return render(request, 'shop_templates/product-detail.html', {
+            "next_instrument": next_instrument,
+            "prev_instrument": prev_instrument,
             "model_url": model_url,
             "instrument": instrument,
             "discount": instrument.price * 100 / instrument.old_price,
