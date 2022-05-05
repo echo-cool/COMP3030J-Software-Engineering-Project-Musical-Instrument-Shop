@@ -22,7 +22,7 @@
         <li></li>
     </ul>
     <div class="title">
-        <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Data Visualization System</span>
+        <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Data Visualization System" %}</span>
     </div>
     <ul class="right">
         <li></li>
@@ -39,7 +39,7 @@
         <div class="completion">
             <div class="completion-content">
                 <div class="rate">
-                    <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>User Activation</span></h5>
+                    <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "User Activation" %}</span></h5>
                     <p>{{ UserActivationRatio.activatedRatio | floatformat:2 }}%</p>
                 </div>
             </div>
@@ -83,23 +83,23 @@
         <div class="top3">
             <ul>
                 <li>
-                    <div class="title">NO.1</div>
+                    <div class="title">{% trans "NO.1" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.0.0 }}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="title">NO.2</div>
+                    <div class="title">{% trans "NO.2" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.1.0 }}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="title">NO.3</div>
+                    <div class="title">{% trans "NO.3" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.2.0 }}</span>
                     </div>
                 </li>
@@ -165,7 +165,7 @@
         <div class="animate"></div>
         <!-- 销售额 -->
         <div class="sale">
-            <p><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Turnover</span></p>
+            <p><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Turnover" %}</span></p>
             <p><span>{{ TotalTurnOver }}</span></p>
         </div>
     </div>
@@ -175,7 +175,7 @@
         <div class="compare">
             <div class="compare-content">
                 <div class="rate2">
-                    <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Order Delivered</span></h5>
+                    <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Order Delivered" %}</span></h5>
                     <p>{{ OrderDeliveredRatio.deliveredRatio | floatformat:2 }}%</p>
                 </div>
             </div>
@@ -219,23 +219,23 @@
         <div class="top6">
             <ul>
                 <li>
-                    <div class="title">NO.1</div>
+                    <div class="title">{% trans "NO.1" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.0.0 }}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="title">NO.2</div>
+                    <div class="title">{% trans "NO.2" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.1.0 }}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="title">NO.3</div>
+                    <div class="title">{% trans "NO.3" %}</div>
                     <div class="content">
-                        {#                            <p>80%</p>#}
+                        {#                            <p>{% trans "80%" %}</p>#}
                         <span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{{ TopThreeInstrument.2.0 }}</span>
                     </div>
                 </li>
@@ -244,23 +244,23 @@
         {#            <div class="top6">#}
         {#                <ul>#}
         {#                    <li>#}
-        {#                        <div class="title">NO.4</div>#}
+        {#                        <div class="title">{% trans "NO.4" %}</div>#}
         {#                        <div class="content">#}
-        {#                            <p>80%</p>#}
+        {#                            <p>{% trans "80%" %}</p>#}
         {#                            <span>门店4</span>#}
         {#                        </div>#}
         {#                    </li>#}
         {#                    <li>#}
-        {#                        <div class="title">NO.5</div>#}
+        {#                        <div class="title">{% trans "NO.5" %}</div>#}
         {#                        <div class="content">#}
-        {#                            <p>80%</p>#}
+        {#                            <p>{% trans "80%" %}</p>#}
         {#                            <span>门店5</span>#}
         {#                        </div>#}
         {#                    </li>#}
         {#                    <li>#}
-        {#                        <div class="title">NO.6</div>#}
+        {#                        <div class="title">{% trans "NO.6" %}</div>#}
         {#                        <div class="content">#}
-        {#                            <p>80%</p>#}
+        {#                            <p>{% trans "80%" %}</p>#}
         {#                            <span>门店6</span>#}
         {#                        </div>#}
         {#                    </li>#}
@@ -279,7 +279,7 @@
                         <p><span>{{ ThreeRecentOrder.subtotal }}</span></p>
                         <div class="li-box">
                             <div class="box1">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>User</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "User" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/wc.png" alt="">
 
@@ -287,32 +287,32 @@
                                 </div>
                             </div>
                             <div class="box2">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Count</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Count" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/zc.png" alt="">
                                     <span>{{ ThreeRecentOrder.quantity }}</span>
                                 </div>
                             </div>
                             <div class="box3">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Shopper</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Shopper" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/sq.png" alt="">
                                     {% if ThreeRecentOrder.shopper_confirmed %}
                                         <span>OK</span>
                                     {% else %}
-                                        <span>Pending</span>
+                                        <span>{% trans "Pending" %}</span>
                                     {% endif %}
 
                                 </div>
                             </div>
                             <div class="box4">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Delivery</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Delivery" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/tb.png" alt="">
                                     {% if ThreeRecentOrder.delivery_confirmed %}
                                         <span>OK</span>
                                     {% else %}
-                                        <span>Pending</span>
+                                        <span>{% trans "Pending" %}</span>
                                     {% endif %}
                                 </div>
                             </div>
@@ -329,7 +329,7 @@
                         <p><span>{{ ThreeRecentOrder.subtotal }}</span></p>
                         <div class="li-box">
                             <div class="box1">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>User</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "User" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/wc.png" alt="">
 
@@ -337,32 +337,32 @@
                                 </div>
                             </div>
                             <div class="box2">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Count</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Count" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/zc.png" alt="">
                                     <span>{{ ThreeRecentOrder.quantity }}</span>
                                 </div>
                             </div>
                             <div class="box3">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Shopper</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Shopper" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/sq.png" alt="">
                                     {% if ThreeRecentOrder.shopper_confirmed %}
                                         <span>OK</span>
                                     {% else %}
-                                        <span>Pending</span>
+                                        <span>{% trans "Pending" %}</span>
                                     {% endif %}
 
                                 </div>
                             </div>
                             <div class="box4">
-                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>Delivery</span></h5>
+                                <h5><span style='font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace'>{% trans "Delivery" %}</span></h5>
                                 <div class="pic">
                                     <img src="/static/assets/echarts_static/chart1/images/tb.png" alt="">
                                     {% if ThreeRecentOrder.delivery_confirmed %}
                                         <span>OK</span>
                                     {% else %}
-                                        <span>Pending</span>
+                                        <span>{% trans "Pending" %}</span>
                                     {% endif %}
                                 </div>
                             </div>
