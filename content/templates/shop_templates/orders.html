@@ -62,37 +62,37 @@
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
                         {% if user.is_authenticated %}
-                            <div class="h5">{% trans "Hello {{ user.username }}",%}</div>
-                            <div>{% trans "Logged in as: {{ user.email }"}%}</div>
+                            <div class="h5">{% trans "Hello"%} {{ user.username }}</div>
+                            <div>{% trans "Logged in as:"%} {{ user.email }}</div>
                         {% else %}
-                            <div class="h5">{% trans "Hello Guest",%}</div>
-                            <div>{% trans "You are not logged i"n%}</div>
+                            <div class="h5">{% trans "Hello Guest"%}</div>
+                            <div>{% trans "You are not logged i"%}</div>
                         {% endif %}
                     </div>
                     <div class="d-flex my-4 flex-wrap">
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Orders place"d%}</div>
+                                <div class="tag">{% trans "Orders place"%}</div>
                                 <div class="ms-auto number">{{ count.order }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Items in Car"t%}</div>
+                                <div class="tag">{% trans "Items in Car"%}</div>
                                 <div class="ms-auto number">{{ count.cart }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img src="{% static 'assets/images/icons/love-heart.png' %}"
                                                                  alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Wishlis"t%}</div>
+                                <div class="tag">{% trans "Wishlis"%}</div>
                                 <div class="ms-auto number">{{ count.wishlist }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-uppercase">{% trans "My recent order"s%}</div>
+                    <div class="text-uppercase">{% trans "My recent order"%}</div>
                     {% for order in orders %}
                         <div class="order my-3 bg-light">
                             <div class="row">
