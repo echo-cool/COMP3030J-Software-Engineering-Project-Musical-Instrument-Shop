@@ -7,10 +7,10 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Manage Carts</a>
+            <a href="#">{% trans "Manage Carts" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
@@ -34,9 +34,7 @@
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Cart Management
-        </h1>
+        <h1 class="col-md-10">{% trans "Cart Management" %}</h1>
         <button class="btn btn-xs btn-success pull-right"
                 onclick="window.location.href='{% url 'management:add_cart' %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -55,19 +53,15 @@
                     <span class="lbl"></span>
                 </label>
             </th>
-            <th class="detail-col">Details</th>
-            <th>Instrument</th>
-            <th>Quantity</th>
+            <th class="detail-col">{% trans "Details" %}</th>
+            <th>{% trans "Instrument" %}</th>
+            <th>{% trans "Quantity" %}</th>
             <th class="hidden-480">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                Customer
-            </th>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Customer" %}</th>
 
             <th>
-                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                Created At
-            </th>
-            <th class="hidden-480">Instrument Category</th>
+                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
+            <th class="hidden-480">{% trans "Instrument Category" %}</th>
 
             <th></th>
         </tr>
@@ -88,7 +82,7 @@
                     <div class="action-buttons">
                         <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
                             <i class="ace-icon fa fa-angle-double-down"></i>
-                            <span class="sr-only">Details</span>
+                            <span class="sr-only">{% trans "Details" %}</span>
                         </a>
                     </div>
                 </td>
@@ -244,7 +238,7 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Instrument</div>
+                                        <div class="profile-info-name">{% trans "Instrument" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ cart.instrument.name }}</span>
@@ -252,7 +246,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Customer</div>
+                                        <div class="profile-info-name">{% trans "Customer" %}</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
@@ -261,7 +255,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Instrument Category</div>
+                                        <div class="profile-info-name">{% trans "Instrument Category" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ cart.instrument.category }}</span>
@@ -269,7 +263,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Created at</div>
+                                        <div class="profile-info-name">{% trans "Created at" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ cart.created_at }}</span>
@@ -277,7 +271,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Quantity</div>
+                                        <div class="profile-info-name">{% trans "Quantity" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ cart.count }}</span>
@@ -285,7 +279,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Instrument Description</div>
+                                        <div class="profile-info-name">{% trans "Instrument Description" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ cart.instrument.details | truncatewords:30 }}</span>
@@ -331,12 +325,11 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >Page: {{ carts.number }} Total: {{ carts.paginator.num_pages }}</span>
+            >{% trans "Page: " %}{{ carts.number }}{% trans " Total: " %}{{ carts.paginator.num_pages }}
+            </span>
             {% if carts.has_previous %}
-                <button id="first_page" class="btn btn-round btn-success">First Page</button>
-                <button id="prev_page" class="btn btn-round btn-info">
-                    Previous Page
-                </button>
+                <button id="first_page" class="btn btn-round btn-success">{% trans "First Page" %}</button>
+                <button id="prev_page" class="btn btn-round btn-info">{% trans "Previous Page" %}</button>
             {% endif %}
 
 
@@ -350,13 +343,9 @@
 
 
             {% if carts.has_next %}
-                <button id="next_page" class="btn btn-round btn-info">
-                    Next Page
-                </button>
+                <button id="next_page" class="btn btn-round btn-info">{% trans "Next Page" %}</button>
 
-                <button id="last_page" class="btn btn-round btn-danger">
-                    Last Page
-                </button>
+                <button id="last_page" class="btn btn-round btn-danger">{% trans "Last Page" %}</button>
             {% endif %}
 
         </div>
@@ -395,16 +384,12 @@
     </table>
 
     <div id="dialog-delete" class="hide">
-        <div class="alert alert-info bigger-110">
-            The cart will be deleted and the operation can not be revoked
-        </div>
+        <div class="alert alert-info bigger-110">{% trans "The cart will be deleted and the operation can not be revoked" %}</div>
 
         <div class="space-6"></div>
 
         <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>{% trans "Are you sure?" %}</p>
     </div><!-- #dialog-confirm -->
 
 {% endblock %}

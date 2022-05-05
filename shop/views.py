@@ -148,7 +148,7 @@ def _home(request):
     chinese_instruments = []
     western_instruments = []
     for i in instruments:
-        print("==========", i.chinese, str(i.chinese) == "True")
+        # print("==========", i.chinese, str(i.chinese) == "True")
         if str(i.chinese) == "True":
             chinese_instruments.append(i)
         else:
@@ -282,7 +282,7 @@ def product_details(request, product_id):
         model_url = str(instrument.object_gltf)
     else:
         model_url = "none"
-    print("=============" + model_url + "=========", model_url == "")
+    # print("=============" + model_url + "=========", model_url == "")
     if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
             "next_instrument": next_instrument,
@@ -344,7 +344,7 @@ def leave_review(request, instrument_id):
 def personal_profile(request):
     if request.method == "POST":
         profile_item = Profile.objects.filter(user=request.user.id).first()
-        print(request.FILES)
+        # print(request.FILES)
         profile_item.image = request.FILES.get('photo')
         profile_item.save()
         return redirect(reverse('shop:personal_profile'))
@@ -362,7 +362,7 @@ def personal_profile(request):
 
 @login_required
 def leave_review2(request):
-    print(request)
+    # print(request)
     return render(request, 'shop_templates/leave-review-2.html')
 
 
@@ -450,7 +450,7 @@ def shipping_details(request, uncompletedOrder_id):
     shipping_price = 20.44
     subtotal = 0
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         time.sleep(1)  # 假装在处理提交的数据
         order = Order(
             user=user,
@@ -551,7 +551,7 @@ def product_search_by_category(request):
                 searched_instruments = instruments_by_search_bar.filter(category=i + 1)
                 for j in searched_instruments:
                     instruments.append(j)
-                print(len(instruments))
+                # print(len(instruments))
             i = i + 1
         response = render(request, 'shop_templates/searched-product-list.html', {
             "instruments_searched": instruments,
@@ -593,7 +593,7 @@ def product_search(request):
     elif "piano" in search_text:
         game_style = 1
 
-    print("==========", game_style, search_text)
+    # print("==========", game_style, search_text)
 
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)

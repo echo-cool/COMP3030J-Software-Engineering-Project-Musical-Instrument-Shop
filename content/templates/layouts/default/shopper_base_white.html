@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    {% block title %} <title>Index</title> {% endblock %}
+    {% block title %} <title>{% trans "Index" %}</title> {% endblock %}
     {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
     {#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -86,13 +86,13 @@
             </a>
         </div>
         <div class="menuright">
-            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                     rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata><defs
                     id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg></span>
             <a href="javascript:void(0)" title="" class="js-call-minicart">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2"
                      version="1.1" xmlns:svg="http://www.w3.org/2000/svg"
-                     xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                     xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                         rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                     <defs id="defs6"></defs>
                     <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2565.21,2412.71 H 450.992 V 0 H 2565.21 V 2412.71 Z M 2366.79,2214.29 V 198.43 H 649.418 V 2214.29 H 2366.79"></path><path
@@ -107,7 +107,7 @@
     <div class="search-full-destop">
         <div class="search-eveland js-box-search">
             <div class="drawer-search-top">
-                <h3 class="drawer-search-title">Start typing and hit Enter</h3>
+                <h3 class="drawer-search-title">{% trans "Start typing and hit Enter" %}</h3>
             </div>
             <form class="wg-search-form" id="search_form">
                 <input type="hidden" name="type" value="product">
@@ -142,7 +142,7 @@
 
           </svg>
                     </a>
-                    <h3 class="title">Shopping Cart</h3>
+                    <h3 class="title">{% trans "Shopping Cart" %}</h3>
                     <div class="mini-cart-counter"><span class="cart-counter enj-cartcount">4</span></div>
                 </div>
 
@@ -160,11 +160,10 @@
                                     </div>
                                     <div class="product-detail">
                                         <h3 class="product_name_mini">
-                                            <a href="/products/szpa-p12-portable-pa?variant=37685276573883">SZPA-P12
-                                                Portable PA - Black</a>
+                                            <a href="/products/szpa-p12-portable-pa?variant=37685276573883">{% trans "SZPA-P12 Portable PA - Black" %}</a>
                                         </h3>
                                         <div class="product_info">
-                                            <div class="product_quanity">QTY : 1</div>
+                                            <div class="product_quanity">{% trans "QTY : 1" %}</div>
                                             <div class="product_price">
                                                 <span class="price_sale">$57.00</span>
                                             </div>
@@ -186,11 +185,10 @@
                                     </div>
                                     <div class="product-detail">
                                         <h3 class="product_name_mini">
-                                            <a href="/products/recording-starter?variant=37685272936635">Recording
-                                                Starter - Black</a>
+                                            <a href="/products/recording-starter?variant=37685272936635">{% trans "Recording Starter - Black" %}</a>
                                         </h3>
                                         <div class="product_info">
-                                            <div class="product_quanity">QTY : 3</div>
+                                            <div class="product_quanity">{% trans "QTY : 3" %}</div>
                                             <div class="product_price">
                                                 <span class="price_sale">$55.00</span>
                                             </div>
@@ -207,17 +205,17 @@
                     </div>
                     <div class="sub-total">
 
-                        <span class="total-title float-left">Total:</span>
+                        <span class="total-title float-left">{% trans "Total:" %}</span>
                         <span class="total-price float-right">$222.00</span>
 
                     </div>
                     <div class="action-checkout">
 
                         <a href="/cart" class="button-viewcart">
-                            <span>View cart</span>
+                            <span>{% trans "View cart" %}</span>
                         </a>
                         <a href="/checkout" class="button-checkout">
-                            <span>Check out</span>
+                            <span>{% trans "Check out" %}</span>
                         </a>
 
                     </div>
@@ -241,7 +239,7 @@
 
                                     <li class="nav-item dropdown">
 
-                                        <a href="/" title="HOME" class="delay03 relative nav-link  menu_lv1 ">HOME</a>
+                                        <a href="/" title="HOME" class="delay03 relative nav-link  menu_lv1 ">{% trans "HOME" %}</a>
 
                                         <div class="dropdown-menu  list-woman shop show" style="width:900; left : ; ">
                                             <div class=" ">
@@ -264,8 +262,7 @@
 
                                                                 <a href="https://musicmo-store-demo.myshopify.com/?preview_theme_id=116219379899"
                                                                    title="HOME 1"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">HOME
-                                                                    1</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "HOME 1" %}</a>
 
 
                                                             </div>
@@ -282,8 +279,7 @@
 
                                                                 <a href="https://musicmo-store-demo.myshopify.com/?preview_theme_id=116428734651"
                                                                    title="HOME 2"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">HOME
-                                                                    2</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "HOME 2" %}</a>
 
 
                                                             </div>
@@ -300,8 +296,7 @@
 
                                                                 <a href="https://musicmo-store-demo.myshopify.com/?preview_theme_id=116428767419"
                                                                    title="HOME 3"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">HOME
-                                                                    3</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "HOME 3" %}</a>
 
 
                                                             </div>
@@ -318,8 +313,7 @@
 
                                                                 <a href="https://musicmo-store-demo.myshopify.com/?preview_theme_id=116428800187"
                                                                    title="HOME 4"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">HOME
-                                                                    4</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "HOME 4" %}</a>
 
 
                                                             </div>
@@ -336,8 +330,7 @@
 
                                                                 <a href="https://musicmo-store-demo.myshopify.com/?preview_theme_id=116428832955"
                                                                    title="HOME 5"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">HOME
-                                                                    5</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "HOME 5" %}</a>
 
 
                                                             </div>
@@ -354,9 +347,8 @@
 
                                     <li class="nav-item dropdown">
 
-                                        <a href="/" title="SHOP" class="delay03  relative nav-link menu_lv1 ">SHOP
-                                            <span class="absolute label_menu label_menu-shophot-e62e05-2"
-                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                        <a href="/" title="SHOP" class="delay03  relative nav-link menu_lv1 ">{% trans "SHOP" %}<span class="absolute label_menu label_menu-shophot-e62e05-2"
+                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
                                             <style>
                                                 .label_menu-shophot-e62e05-2:before {
                                                     border-top: 4px solid #e62e05;
@@ -376,8 +368,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="SHOP LAYOUTS"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">SHOP
-                                                                    LAYOUTS</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "SHOP LAYOUTS" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -386,7 +377,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116219379899"
                                                                            title="Pagination"
-                                                                           class="delay03 relative menu_lv3 ">Pagination</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Pagination" %}</a>
 
                                                                     </li>
 
@@ -394,10 +385,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428734651"
                                                                            title="Ajax Load More"
-                                                                           class="relative delay03  menu_lv3 ">Ajax Load
-                                                                            More
-                                                                            <span class="absolute label_menu label_menu-ajax-load-morehot-e62e05-2"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Ajax Load More" %}<span class="absolute label_menu label_menu-ajax-load-morehot-e62e05-2"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-ajax-load-morehot-e62e05-2:before {
@@ -412,8 +401,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428767419"
                                                                            title="List View"
-                                                                           class="delay03 relative menu_lv3 ">List
-                                                                            View</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "List View" %}</a>
 
                                                                     </li>
 
@@ -421,8 +409,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428800187"
                                                                            title="Background Mordern"
-                                                                           class="delay03 relative menu_lv3 ">Background
-                                                                            Mordern</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Background Mordern" %}</a>
 
                                                                     </li>
 
@@ -430,8 +417,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428832955"
                                                                            title="Fullwidth Layouts"
-                                                                           class="delay03 relative menu_lv3 ">Fullwidth
-                                                                            Layouts</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Fullwidth Layouts" %}</a>
 
                                                                     </li>
 
@@ -439,8 +425,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433486011"
                                                                            title="Sidebar Layouts"
-                                                                           class="delay03 relative menu_lv3 ">Sidebar
-                                                                            Layouts</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Sidebar Layouts" %}</a>
 
                                                                     </li>
 
@@ -452,8 +437,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="SHOP HEADING"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">SHOP
-                                                                    HEADING</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "SHOP HEADING" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -462,8 +446,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433518779"
                                                                            title="Small Heading"
-                                                                           class="delay03 relative menu_lv3 ">Small
-                                                                            Heading</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Small Heading" %}</a>
 
                                                                     </li>
 
@@ -471,10 +454,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433551547"
                                                                            title="Banner Heading"
-                                                                           class="relative delay03  menu_lv3 ">Banner
-                                                                            Heading
-                                                                            <span class="absolute label_menu label_menu-banner-headingnew-1ad441-2"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Banner Heading" %}<span class="absolute label_menu label_menu-banner-headingnew-1ad441-2"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-banner-headingnew-1ad441-2:before {
@@ -489,8 +470,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116219379899"
                                                                            title="Dark Heading"
-                                                                           class="delay03 relative menu_lv3 ">Dark
-                                                                            Heading</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Dark Heading" %}</a>
 
                                                                     </li>
 
@@ -498,8 +478,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428734651"
                                                                            title="Icon Category"
-                                                                           class="delay03 relative menu_lv3 ">Icon
-                                                                            Category</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Icon Category" %}</a>
 
                                                                     </li>
 
@@ -507,8 +486,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433584315"
                                                                            title="Mini Category"
-                                                                           class="delay03 relative menu_lv3 ">Mini
-                                                                            Category</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Mini Category" %}</a>
 
                                                                     </li>
 
@@ -516,7 +494,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428800187"
                                                                            title="Background"
-                                                                           class="delay03 relative menu_lv3 ">Background</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Background" %}</a>
 
                                                                     </li>
 
@@ -528,8 +506,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="FILTER LAYOUT"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">FILTER
-                                                                    LAYOUT</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "FILTER LAYOUT" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -538,10 +515,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428832955"
                                                                            title="Top Filter"
-                                                                           class="relative delay03  menu_lv3 ">Top
-                                                                            Filter
-                                                                            <span class="absolute label_menu label_menu-top-filternew-1ad441-1"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Top Filter" %}<span class="absolute label_menu label_menu-top-filternew-1ad441-1"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-top-filternew-1ad441-1:before {
@@ -556,8 +531,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116219379899"
                                                                            title="Drawer Filter"
-                                                                           class="delay03 relative menu_lv3 ">Drawer
-                                                                            Filter</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Drawer Filter" %}</a>
 
                                                                     </li>
 
@@ -565,8 +539,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428734651"
                                                                            title="Off Canvas Filter"
-                                                                           class="delay03 relative menu_lv3 ">Off Canvas
-                                                                            Filter</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Off Canvas Filter" %}</a>
 
                                                                     </li>
 
@@ -574,8 +547,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116428800187"
                                                                            title="Brand Filter"
-                                                                           class="delay03 relative menu_lv3 ">Brand
-                                                                            Filter</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Brand Filter" %}</a>
 
                                                                     </li>
 
@@ -583,8 +555,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433486011"
                                                                            title="Sticky Filter"
-                                                                           class="delay03 relative menu_lv3 ">Sticky
-                                                                            Filter</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Sticky Filter" %}</a>
 
                                                                     </li>
 
@@ -592,10 +563,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433551547"
                                                                            title="Acordition Filter"
-                                                                           class="relative delay03  menu_lv3 ">Acordition
-                                                                            Filter
-                                                                            <span class="absolute label_menu label_menu-acordition-filterhot-e62e05-6"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Acordition Filter" %}<span class="absolute label_menu label_menu-acordition-filterhot-e62e05-6"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-acordition-filterhot-e62e05-6:before {
@@ -614,8 +583,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="PRODUCT LAYOUTS"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRODUCT
-                                                                    LAYOUTS</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "PRODUCT LAYOUTS" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -624,8 +592,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116219379899"
                                                                            title="Vertical Thumbnail"
-                                                                           class="delay03 relative menu_lv3 ">Vertical
-                                                                            Thumbnail</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Vertical Thumbnail" %}</a>
 
                                                                     </li>
 
@@ -633,8 +600,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116428734651"
                                                                            title="Horizontal Thumbnail"
-                                                                           class="delay03 relative menu_lv3 ">Horizontal
-                                                                            Thumbnail</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Horizontal Thumbnail" %}</a>
 
                                                                     </li>
 
@@ -642,8 +608,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116428767419"
                                                                            title="Sticky Details"
-                                                                           class="delay03 relative menu_lv3 ">Sticky
-                                                                            Details</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Sticky Details" %}</a>
 
                                                                     </li>
 
@@ -651,8 +616,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116428800187"
                                                                            title="Sticky Center"
-                                                                           class="delay03 relative menu_lv3 ">Sticky
-                                                                            Center</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Sticky Center" %}</a>
 
                                                                     </li>
 
@@ -660,8 +624,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116428832955"
                                                                            title="With Background"
-                                                                           class="delay03 relative menu_lv3 ">With
-                                                                            Background</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "With Background" %}</a>
 
                                                                     </li>
 
@@ -669,8 +632,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433486011"
                                                                            title="Gallery Basic"
-                                                                           class="delay03 relative menu_lv3 ">Gallery
-                                                                            Basic</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Gallery Basic" %}</a>
 
                                                                     </li>
 
@@ -678,8 +640,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433518779"
                                                                            title="Slider Large"
-                                                                           class="delay03 relative menu_lv3 ">Slider
-                                                                            Large</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Slider Large" %}</a>
 
                                                                     </li>
 
@@ -687,8 +648,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433551547"
                                                                            title="Slide Center"
-                                                                           class="delay03 relative menu_lv3 ">Slide
-                                                                            Center</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Slide Center" %}</a>
 
                                                                     </li>
 
@@ -696,8 +656,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433617083"
                                                                            title="Extra Sidebar"
-                                                                           class="delay03 relative menu_lv3 ">Extra
-                                                                            Sidebar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Extra Sidebar" %}</a>
 
                                                                     </li>
 
@@ -705,8 +664,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433584315"
                                                                            title="Slide Gallery"
-                                                                           class="delay03 relative menu_lv3 ">Slide
-                                                                            Gallery</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Slide Gallery" %}</a>
 
                                                                     </li>
 
@@ -714,8 +672,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116433649851"
                                                                            title="Gallery Modern"
-                                                                           class="delay03 relative menu_lv3 ">Gallery
-                                                                            Modern</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Gallery Modern" %}</a>
 
                                                                     </li>
 
@@ -727,8 +684,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="PRODUCT TYPES"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRODUCT
-                                                                    TYPES</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "PRODUCT TYPES" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -739,7 +695,7 @@
                                                                            title="Simple"
                                                                            class="relative delay03  menu_lv3 ">Simple
                                                                             <span class="absolute label_menu label_menu-simplenew-1ad441-1"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-simplenew-1ad441-1:before {
@@ -757,7 +713,7 @@
                                                                            class="relative delay03  menu_lv3 ">Variable
                                                                             Color
                                                                             <span class="absolute label_menu label_menu-variable-colorhot-e62e05-2"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-variable-colorhot-e62e05-2:before {
@@ -772,8 +728,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/bdk-1-full-size-starter-drum/?preview_theme_id=116428832955"
                                                                            title="Variable Image"
-                                                                           class="delay03 relative menu_lv3 ">Variable
-                                                                            Image</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Variable Image" %}</a>
 
                                                                     </li>
 
@@ -781,8 +736,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/yc-combo-organ/?preview_theme_id=116219379899"
                                                                            title="Variable Select"
-                                                                           class="delay03 relative menu_lv3 ">Variable
-                                                                            Select</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Variable Select" %}</a>
 
                                                                     </li>
 
@@ -790,10 +744,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/electric-violin/?preview_theme_id=116219379899"
                                                                            title="External / Affiliate"
-                                                                           class="relative delay03  menu_lv3 ">External
-                                                                            / Affiliate
-                                                                            <span class="absolute label_menu label_menu-external-affiliatehot-e62e05-5"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "External / Affiliate" %}<span class="absolute label_menu label_menu-external-affiliatehot-e62e05-5"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-external-affiliatehot-e62e05-5:before {
@@ -808,8 +760,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/recording-starter/?preview_theme_id=116433486011"
                                                                            title="Boosted Sale"
-                                                                           class="delay03 relative menu_lv3 ">Boosted
-                                                                            Sale</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Boosted Sale" %}</a>
 
                                                                     </li>
 
@@ -821,8 +772,7 @@
 
                                                             <div class="col-md-2">
                                                                 <a href="/" title="PRODUCT EXTENDS"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRODUCT
-                                                                    EXTENDS</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "PRODUCT EXTENDS" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -831,8 +781,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/keyboard-with-usb-midi/?preview_theme_id=116428734651"
                                                                            title="Promo Text"
-                                                                           class="delay03 relative menu_lv3 ">Promo
-                                                                            Text</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Promo Text" %}</a>
 
                                                                     </li>
 
@@ -840,8 +789,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/mapex-30th-anniversary/?preview_theme_id=116428800187"
                                                                            title="Trust Sale"
-                                                                           class="delay03 relative menu_lv3 ">Trust
-                                                                            Sale</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Trust Sale" %}</a>
 
                                                                     </li>
 
@@ -849,7 +797,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/recording-and-monitoring-bundle/?preview_theme_id=116428767419"
                                                                            title="Countdown"
-                                                                           class="delay03 relative menu_lv3 ">Countdown</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Countdown" %}</a>
 
                                                                     </li>
 
@@ -857,8 +805,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/products/alto-saxophone/?preview_theme_id=116219379899"
                                                                            title="Featured Video"
-                                                                           class="delay03 relative menu_lv3 ">Featured
-                                                                            Video</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Featured Video" %}</a>
 
                                                                     </li>
 
@@ -879,7 +826,7 @@
 
                                     <li class="nav-item dropdown">
 
-                                        <a href="/" title="FEATURED" class="delay03 relative nav-link  menu_lv1 ">Customize</a>
+                                        <a href="/" title="FEATURED" class="delay03 relative nav-link  menu_lv1 ">{% trans "Customize" %}</a>
 
                                         <div class="dropdown-menu  list-woman shop show" style="width:700px;;">
                                             <div class=" ">
@@ -893,8 +840,7 @@
 
                                                             <div class="col-md-4">
                                                                 <a href="/" title="ANIMATE DEMOS"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">ANIMATE
-                                                                    DEMOS</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "ANIMATE DEMOS" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -902,9 +848,8 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Quickview-Popup"
-                                                                           class="relative delay03  menu_lv3 ">Quickview-Popup
-                                                                            <span class="absolute label_menu label_menu-quickview-popuptrend-1e73be-1"
-                                                                                  style="background-color: #1e73be;"><span>TREND</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Quickview-Popup" %}<span class="absolute label_menu label_menu-quickview-popuptrend-1e73be-1"
+                                                                                  style="background-color: #1e73be;"><span>{% trans "TREND" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-quickview-popuptrend-1e73be-1:before {
@@ -918,18 +863,15 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Minicart Draws"
-                                                                           class="delay03 relative menu_lv3 ">Minicart
-                                                                            Draws</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Minicart Draws" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Quick Add to cart"
-                                                                           class="relative delay03  menu_lv3 ">Quick Add
-                                                                            to cart
-                                                                            <span class="absolute label_menu label_menu-quick-add-to-cartnew-1ad441-3"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Quick Add to cart" %}<span class="absolute label_menu label_menu-quick-add-to-cartnew-1ad441-3"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-quick-add-to-cartnew-1ad441-3:before {
@@ -951,7 +893,7 @@
                                                                    class="relative delay03 d-inline-block mb-2  menu_lv2 ">9
                                                                     PRODUCT HOVER
                                                                     <span class="absolute label_menu label_menu-9-product-hoverhot-e62e05-2"
-                                                                          style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                          style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                     <style>
                                                                         .label_menu-9-product-hoverhot-e62e05-2:before {
@@ -967,8 +909,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433518779"
                                                                            title="Product Hover Style 1"
-                                                                           class="delay03 relative menu_lv3 ">Product
-                                                                            Hover Style 1</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Product Hover Style 1" %}</a>
 
                                                                     </li>
 
@@ -976,8 +917,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433551547"
                                                                            title="Product Hover Style 2"
-                                                                           class="delay03 relative menu_lv3 ">Product
-                                                                            Hover Style 2</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Product Hover Style 2" %}</a>
 
                                                                     </li>
 
@@ -985,8 +925,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433584315"
                                                                            title="Product Hover Style 3"
-                                                                           class="delay03 relative menu_lv3 ">Product
-                                                                            Hover Style 3</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Product Hover Style 3" %}</a>
 
                                                                     </li>
 
@@ -994,8 +933,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/collections/all/?preview_theme_id=116433617083"
                                                                            title="Product Hover Style 4"
-                                                                           class="delay03 relative menu_lv3 ">Product
-                                                                            Hover Style 4</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Product Hover Style 4" %}</a>
 
                                                                     </li>
 
@@ -1005,7 +943,7 @@
                                                                            title="All Style "
                                                                            class="relative delay03  menu_lv3 ">All Style
                                                                             <span class="absolute label_menu label_menu-all-style-hot-e62e05-5"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-all-style-hot-e62e05-5:before {
@@ -1024,8 +962,7 @@
 
                                                             <div class="col-md-4">
                                                                 <a href="/" title="THEME ELEMENT"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">THEME
-                                                                    ELEMENT</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "THEME ELEMENT" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1033,18 +970,15 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Ajax Search"
-                                                                           class="delay03 relative menu_lv3 ">Ajax
-                                                                            Search</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Ajax Search" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Ajax Minicart"
-                                                                           class="relative delay03  menu_lv3 ">Ajax
-                                                                            Minicart
-                                                                            <span class="absolute label_menu label_menu-ajax-minicartnew-1ad441-2"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Ajax Minicart" %}<span class="absolute label_menu label_menu-ajax-minicartnew-1ad441-2"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-ajax-minicartnew-1ad441-2:before {
@@ -1058,16 +992,14 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Recently Products"
-                                                                           class="delay03 relative menu_lv3 ">Recently
-                                                                            Products</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Recently Products" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Social Share"
-                                                                           class="delay03 relative menu_lv3 ">Social
-                                                                            Share</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Social Share" %}</a>
 
                                                                     </li>
 
@@ -1102,7 +1034,7 @@
 
                                     <li class="nav-item dropdown">
 
-                                        <a href="/" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">PAGES</a>
+                                        <a href="/" title="PAGES" class="delay03 relative nav-link  menu_lv1 ">{% trans "PAGES" %}</a>
 
                                         <div class="dropdown-menu  list-woman shop show" style="width:650px; left : ;">
                                             <div class=" ">
@@ -1116,8 +1048,7 @@
 
                                                             <div class="col-md-4">
                                                                 <a href="/" title="DEMO LAYOUTS"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">DEMO
-                                                                    LAYOUTS</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "DEMO LAYOUTS" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1125,10 +1056,8 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Full Screen"
-                                                                           class="relative delay03  menu_lv3 ">Full
-                                                                            Screen
-                                                                            <span class="absolute label_menu label_menu-full-screennew-1ad441-1"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Full Screen" %}<span class="absolute label_menu label_menu-full-screennew-1ad441-1"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-full-screennew-1ad441-1:before {
@@ -1142,15 +1071,14 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Heading Background"
-                                                                           class="delay03 relative menu_lv3 ">Heading
-                                                                            Background</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Heading Background" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Simple"
-                                                                           class="delay03 relative menu_lv3 ">Simple</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Simple" %}</a>
 
                                                                     </li>
 
@@ -1162,8 +1090,7 @@
 
                                                             <div class="col-md-4">
                                                                 <a href="/" title="PRE-BUILD PAGES"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">PRE-BUILD
-                                                                    PAGES</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "PRE-BUILD PAGES" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1171,10 +1098,8 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/pages/about-us" title="About Us #1"
-                                                                           class="relative delay03  menu_lv3 ">About Us
-                                                                            #1
-                                                                            <span class="absolute label_menu label_menu-about-us-1hot-e62e05-1"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "About Us #1" %}<span class="absolute label_menu label_menu-about-us-1hot-e62e05-1"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-about-us-1hot-e62e05-1:before {
@@ -1188,8 +1113,7 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/pages/about-us-2" title="About Us #2"
-                                                                           class="delay03 relative menu_lv3 ">About Us
-                                                                            #2</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "About Us #2" %}</a>
 
                                                                     </li>
 
@@ -1197,8 +1121,7 @@
 
                                                                         <a href="/pages/contact-us"
                                                                            title="Contact Us #1"
-                                                                           class="delay03 relative menu_lv3 ">Contact Us
-                                                                            #1</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Contact Us #1" %}</a>
 
                                                                     </li>
 
@@ -1206,23 +1129,21 @@
 
                                                                         <a href="/pages/contact-us-2"
                                                                            title="Contact us #2"
-                                                                           class="delay03 relative menu_lv3 ">Contact us
-                                                                            #2</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Contact us #2" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/pages/faqs" title="FAQS"
-                                                                           class="delay03 relative menu_lv3 ">FAQS</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "FAQS" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/404" title="404 Page"
-                                                                           class="delay03 relative menu_lv3 ">404
-                                                                            Page</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "404 Page" %}</a>
 
                                                                     </li>
 
@@ -1230,9 +1151,8 @@
 
                                                                         <a href="/account/register"
                                                                            title="Login/Register"
-                                                                           class="relative delay03  menu_lv3 ">Login/Register
-                                                                            <span class="absolute label_menu label_menu-login-registernew-1ad441-7"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Login/Register" %}<span class="absolute label_menu label_menu-login-registernew-1ad441-7"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-login-registernew-1ad441-7:before {
@@ -1251,7 +1171,7 @@
 
                                                             <div class="col-md-4">
                                                                 <a href="/" title="ECOMERCE"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">ECOMERCE</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "ECOMERCE" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1261,7 +1181,7 @@
                                                                         <a href="/cart" title="Cart"
                                                                            class="relative delay03  menu_lv3 ">Cart
                                                                             <span class="absolute label_menu label_menu-carthot-e62e05-1"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-carthot-e62e05-1:before {
@@ -1275,22 +1195,21 @@
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Shop"
-                                                                           class="delay03 relative menu_lv3 ">Shop</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Shop" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/" title="Checkout"
-                                                                           class="delay03 relative menu_lv3 ">Checkout</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Checkout" %}</a>
 
                                                                     </li>
 
                                                                     <li class="list-unstyled px-0 py-1">
 
                                                                         <a href="/account/register" title="My Account"
-                                                                           class="delay03 relative menu_lv3 ">My
-                                                                            Account</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "My Account" %}</a>
 
                                                                     </li>
 
@@ -1311,7 +1230,7 @@
 
                                     <li class="nav-item dropdown">
 
-                                        <a href="/" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">BLOGS</a>
+                                        <a href="/" title="BLOGS" class="delay03 relative nav-link  menu_lv1 ">{% trans "BLOGS" %}</a>
 
                                         <div class="dropdown-menu  list-woman shop show" style="width:600px; left : ;">
                                             <div class=" ">
@@ -1325,8 +1244,7 @@
 
                                                             <div class="col-md-6">
                                                                 <a href="/" title="SINGLE POST"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">SINGLE
-                                                                    POST</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "SINGLE POST" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1335,10 +1253,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"
                                                                            title="No Sidebar"
-                                                                           class="relative delay03  menu_lv3 ">No
-                                                                            Sidebar
-                                                                            <span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "No Sidebar" %}<span class="absolute label_menu label_menu-no-sidebarnew-1ad441-1"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-no-sidebarnew-1ad441-1:before {
@@ -1353,8 +1269,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428734651"
                                                                            title="Left Sidebar"
-                                                                           class="delay03 relative menu_lv3 ">Left
-                                                                            Sidebar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Left Sidebar" %}</a>
 
                                                                     </li>
 
@@ -1362,8 +1277,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116428767419"
                                                                            title="Right Sidebar"
-                                                                           class="delay03 relative menu_lv3 ">Right
-                                                                            Sidebar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Right Sidebar" %}</a>
 
                                                                     </li>
 
@@ -1371,7 +1285,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/cover-artists-who-you-must-look-out-for/?preview_theme_id=116219379899"
                                                                            title="Standard"
-                                                                           class="delay03 relative menu_lv3 ">Standard</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Standard" %}</a>
 
                                                                     </li>
 
@@ -1379,7 +1293,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/4-skills-and-hobbies-worth-your-time-to-learn/?preview_theme_id=116219379899"
                                                                            title="Audio"
-                                                                           class="delay03 relative menu_lv3 ">Audio</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Audio" %}</a>
 
                                                                     </li>
 
@@ -1387,9 +1301,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/a-word-of-caution-to-novice-guitarists/?preview_theme_id=116219379899"
                                                                            title="Video"
-                                                                           class="relative delay03  menu_lv3 ">Video
-                                                                            <span class="absolute label_menu label_menu-videohot-e62e05-6"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Video" %}<span class="absolute label_menu label_menu-videohot-e62e05-6"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-videohot-e62e05-6:before {
@@ -1408,7 +1321,7 @@
 
                                                             <div class="col-md-6">
                                                                 <a href="/" title="LAYOUT"
-                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">LAYOUT</a>
+                                                                   class="delay03 d-inline-block mb-2 relative menu_lv2 ">{% trans "LAYOUT" %}</a>
 
 
                                                                 <ul class="px-0">
@@ -1417,8 +1330,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116219379899"
                                                                            title="No Sidebar"
-                                                                           class="delay03 relative menu_lv3 ">No
-                                                                            Sidebar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "No Sidebar" %}</a>
 
                                                                     </li>
 
@@ -1426,10 +1338,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428734651"
                                                                            title="Left Sidebar"
-                                                                           class="relative delay03  menu_lv3 ">Left
-                                                                            Sidebar
-                                                                            <span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"
-                                                                                  style="background-color: #1ad441;"><span>NEW</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Left Sidebar" %}<span class="absolute label_menu label_menu-left-sidebarnew-1ad441-2"
+                                                                                  style="background-color: #1ad441;"><span>{% trans "NEW" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-left-sidebarnew-1ad441-2:before {
@@ -1444,8 +1354,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428767419"
                                                                            title="Right Sidebar"
-                                                                           class="delay03 relative menu_lv3 ">Right
-                                                                            Sidebar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Right Sidebar" %}</a>
 
                                                                     </li>
 
@@ -1453,7 +1362,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428800187"
                                                                            title="Standar"
-                                                                           class="delay03 relative menu_lv3 ">Standar</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Standar" %}</a>
 
                                                                     </li>
 
@@ -1461,7 +1370,7 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116428832955"
                                                                            title="Classic"
-                                                                           class="delay03 relative menu_lv3 ">Classic</a>
+                                                                           class="delay03 relative menu_lv3 ">{% trans "Classic" %}</a>
 
                                                                     </li>
 
@@ -1469,9 +1378,8 @@
 
                                                                         <a href="https://musicmo-store-demo.myshopify.com/blogs/news/?preview_theme_id=116433486011"
                                                                            title="Grid"
-                                                                           class="relative delay03  menu_lv3 ">Grid
-                                                                            <span class="absolute label_menu label_menu-gridhot-e62e05-6"
-                                                                                  style="background-color: #e62e05;"><span>HOT</span></span>
+                                                                           class="relative delay03  menu_lv3 ">{% trans "Grid" %}<span class="absolute label_menu label_menu-gridhot-e62e05-6"
+                                                                                  style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
 
                                                                             <style>
                                                                                 .label_menu-gridhot-e62e05-6:before {
@@ -1490,9 +1398,7 @@
                                                     <div class="order-md-3 mb-3 col-md-6">
                                                         <div class="mega-col-inner ">
                                                             <div class="products_menu">
-                                                                <div class="menu-title">
-                                                                    NEW PRODUCTS
-                                                                </div>
+                                                                <div class="menu-title">{% trans "NEW PRODUCTS" %}</div>
                                                                 <div class="product-block ">
                                                                     <ul class="prod_sidebar_menu js_prod_menu slick-initialized slick-slider slick-vertical">
                                                                         <button type="button"
@@ -1520,8 +1426,7 @@
                                                                                         href="/products/mapex-30th-anniversary"
                                                                                         tabindex="0">
                                                                                 </a><a href="/products/mapex-30th-anniversary"
-                                                                                       tabindex="0">Mapex 30th
-                                                                                    Anniversary</a>
+                                                                                       tabindex="0">{% trans "Mapex 30th Anniversary" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1550,7 +1455,7 @@
                                                                                         href="/products/yc-combo-organ"
                                                                                         tabindex="0">
                                                                                 </a><a href="/products/yc-combo-organ"
-                                                                                       tabindex="0">YC Combo Organ</a>
+                                                                                       tabindex="0">{% trans "YC Combo Organ" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1579,8 +1484,7 @@
                                                                                         href="/products/keyboard-with-usb-midi"
                                                                                         tabindex="0">
                                                                                 </a><a href="/products/keyboard-with-usb-midi"
-                                                                                       tabindex="0">Keyboard with USB
-                                                                                    MIDI</a>
+                                                                                       tabindex="0">{% trans "Keyboard with USB MIDI" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1609,7 +1513,7 @@
                                                                                         href="/products/electric-violin"
                                                                                         tabindex="-1">
                                                                                 </a><a href="/products/electric-violin"
-                                                                                       tabindex="-1">Electric Violin</a>
+                                                                                       tabindex="-1">{% trans "Electric Violin" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1638,8 +1542,7 @@
                                                                                         href="/products/recording-and-monitoring-bundle"
                                                                                         tabindex="-1">
                                                                                 </a><a href="/products/recording-and-monitoring-bundle"
-                                                                                       tabindex="-1">Recording and
-                                                                                    Monitoring Bundle</a>
+                                                                                       tabindex="-1">{% trans "Recording and Monitoring Bundle" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1668,8 +1571,7 @@
                                                                                         href="/products/la-electric-guitar-amp-pack-sunburst"
                                                                                         tabindex="-1">
                                                                                 </a><a href="/products/la-electric-guitar-amp-pack-sunburst"
-                                                                                       tabindex="-1">LA Electric Guitar
-                                                                                    + Amp Pack, Sunburst</a>
+                                                                                       tabindex="-1">{% trans "LA Electric Guitar + Amp Pack, Sunburst" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1698,8 +1600,7 @@
                                                                                         href="/products/bdk-1-full-size-starter-drum"
                                                                                         tabindex="-1">
                                                                                 </a><a href="/products/bdk-1-full-size-starter-drum"
-                                                                                       tabindex="-1">BDK-1 Full Size
-                                                                                    Starter Drum</a>
+                                                                                       tabindex="-1">{% trans "BDK-1 Full Size Starter Drum" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1728,8 +1629,7 @@
                                                                                         href="/products/single-cutaway-electro-acoustic-guitar"
                                                                                         tabindex="-1">
                                                                                 </a><a href="/products/single-cutaway-electro-acoustic-guitar"
-                                                                                       tabindex="-1">Single Cutaway
-                                                                                    Electro Acoustic Guitar</a>
+                                                                                       tabindex="-1">{% trans "Single Cutaway Electro Acoustic Guitar" %}</a>
                                                                                 </h4>
 
                                                                                     <span>
@@ -1790,7 +1690,7 @@
                                          width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
                                          xmlns:cc="http://creativecommons.org/ns#"
                                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg>
@@ -1805,7 +1705,7 @@
                                          width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
                                          xmlns:cc="http://creativecommons.org/ns#"
                                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1506.87,2587.11 c -225.04,0 -408.14,-183.08 -408.14,-408.11 0,-225.06 183.1,-408.13 408.14,-408.13 225.02,0 408.13,183.07 408.13,408.13 0,225.03 -183.11,408.11 -408.13,408.11 z m 0,-1038.56 c -347.64,0 -630.432,282.79 -630.432,630.45 0,347.63 282.792,630.43 630.432,630.43 347.63,0 630.42,-282.8 630.42,-630.43 0,-347.66 -282.79,-630.45 -630.42,-630.45 v 0"></path><path
@@ -1823,7 +1723,7 @@
                                          width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
                                          xmlns:cc="http://creativecommons.org/ns#"
                                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
@@ -1839,7 +1739,7 @@
                                          xmlns:dc="http://purl.org/dc/elements/1.1/"
                                          xmlns:cc="http://creativecommons.org/ns#"
                                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
+                                         xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
                                             rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
                                         <defs id="defs6"></defs>
                                         <g transform="matrix(1.3333333,0,0,-1.3333333,0,398.66667)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2233.36,2432.71 H 0 V 0 h 2233.36 v 2432.71 z m -220,-220 V 220 H 220.004 V 2212.71 H 2013.36"></path><path
@@ -1875,19 +1775,19 @@
                     <div class="col-lg-2 col-sm-6">
                         <div class="info_footer">
                             <div class="title_footer">
-                                <h4 class="mb-0 title_border">Shop</h4>
+                                <h4 class="mb-0 title_border">{% trans "Shop" %}</h4>
                             </div>
                             <ul class="list-unstyled mb-0">
 
-                                <li><a href="/" title="About Us">About Us</a></li>
+                                <li><a href="/" title="About Us">{% trans "About Us" %}</a></li>
 
-                                <li><a href="/" title="Privacy Policy">Privacy Policy</a></li>
+                                <li><a href="/" title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
 
-                                <li><a href="/" title="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+                                <li><a href="/" title="Terms &amp; Conditions">{% trans "Terms &amp; Conditions" %}</a></li>
 
-                                <li><a href="/" title="Products Return">Products Return</a></li>
+                                <li><a href="/" title="Products Return">{% trans "Products Return" %}</a></li>
 
-                                <li><a href="/" title="Wholesale Policy">Wholesale Policy</a></li>
+                                <li><a href="/" title="Wholesale Policy">{% trans "Wholesale Policy" %}</a></li>
 
                             </ul>
                         </div>
@@ -1895,19 +1795,19 @@
                     <div class="col-lg-2 col-sm-6">
                         <div class="info_footer">
                             <div class="title_footer">
-                                <h4 class="mb-0 title_border">Infomation</h4>
+                                <h4 class="mb-0 title_border">{% trans "Infomation" %}</h4>
                             </div>
                             <ul class="list-unstyled mb-0">
 
-                                <li><a href="/" title="Pagination">Pagination</a></li>
+                                <li><a href="/" title="Pagination">{% trans "Pagination" %}</a></li>
 
-                                <li><a href="/" title="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+                                <li><a href="/" title="Terms &amp; Conditions">{% trans "Terms &amp; Conditions" %}</a></li>
 
-                                <li><a href="/" title="Contact">Contact</a></li>
+                                <li><a href="/" title="Contact">{% trans "Contact" %}</a></li>
 
-                                <li><a href="/" title="Accessories">Accessories</a></li>
+                                <li><a href="/" title="Accessories">{% trans "Accessories" %}</a></li>
 
-                                <li><a href="/" title="Term of use">Term of use</a></li>
+                                <li><a href="/" title="Term of use">{% trans "Term of use" %}</a></li>
 
                             </ul>
                         </div>
@@ -1915,19 +1815,19 @@
                     <div class="col-lg-2 col-sm-6">
                         <div class="info_footer info_contact">
                             <div class="title_footer ">
-                                <h4 class="mb-0 title_border">About</h4>
+                                <h4 class="mb-0 title_border">{% trans "About" %}</h4>
                             </div>
                             <ul class="list-unstyled mb-0">
 
-                                <li><a href="/" title="Help Center">Help Center</a></li>
+                                <li><a href="/" title="Help Center">{% trans "Help Center" %}</a></li>
 
-                                <li><a href="/" title="Address Store">Address Store</a></li>
+                                <li><a href="/" title="Address Store">{% trans "Address Store" %}</a></li>
 
-                                <li><a href="/" title="Privacy Policy">Privacy Policy</a></li>
+                                <li><a href="/" title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
 
-                                <li><a href="/" title="Receivers &amp; Amplifiers">Receivers &amp; Amplifiers</a></li>
+                                <li><a href="/" title="Receivers &amp; Amplifiers">{% trans "Receivers &amp; Amplifiers" %}</a></li>
 
-                                <li><a href="/" title="Musicmo">Musicmo</a></li>
+                                <li><a href="/" title="Musicmo">{% trans "Musicmo" %}</a></li>
 
                             </ul>
                         </div>
@@ -1935,7 +1835,7 @@
                     <div class="col-lg-2 col-sm-6">
                         <div class="info_footer info_contact">
                             <div class="title_footer ">
-                                <h4 class="mb-0 title_border">Follow Us</h4>
+                                <h4 class="mb-0 title_border">{% trans "Follow Us" %}</h4>
                             </div>
 
                             <ul class="list-unstyled mb-0">
@@ -1947,10 +1847,10 @@
                                         class="mr-2 fa fa-fax "></i>(646) 968-0608</a></li>
 
                                 <li><a href="mailto:help@shopilaunch.com" title="Mail : help@shopilaunch.com"><i
-                                        class=" mr-2 fa fa-envelope "></i>help@shopilaunch.com</a></li>
+                                        class=" mr-2 fa fa-envelope "></i>{% trans "help@shopilaunch.com" %}</a></li>
 
                                 <li><a href="/" title="Address : 1201 Broadway Suite 600 New York"><i
-                                        class="mr-2 fa fa-location-arrow"></i>1201 Broadway Suite 600</a></li>
+                                        class="mr-2 fa fa-location-arrow"></i>{% trans "1201 Broadway Suite 600" %}</a></li>
 
                             </ul>
 
@@ -1988,10 +1888,10 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="info_footer end">
                             <div class="title_footer ">
-                                <h4 class="mb-0 title_border">Newsletters</h4>
+                                <h4 class="mb-0 title_border">{% trans "Newsletters" %}</h4>
                             </div>
 
-                            <p class="mb-0 content_footer">Be the first who learns about our<br>great promotions!</p>
+                            <p class="mb-0 content_footer">{% trans "Be the first who learns about our" %}<br>{% trans "great promotions!" %}</p>
 
 
                             <form class="needs-validation fv4-form " action="#" method="post">
@@ -1999,7 +1899,7 @@
                                     <input type="email" name="EMAIL" class="text-input"
                                            placeholder="Enter your email...">
                                 </div>
-                                <button class="btn" type="submit">SUBSCRIBE</button>
+                                <button class="btn" type="submit">{% trans "SUBSCRIBE" %}</button>
                             </form>
                         </div>
                     </div>
@@ -2030,9 +1930,9 @@
                                                                                   rel="nofollow" target="_blank"
                                                                                   class="underline_hover bold">
                             MusicmoStore </a> By <a href="http://shopilaunch.com/" rel="nofollow" target="_blank"
-                                                    class="underline_hover link"> ShopiLaunch.</a><a
+                                                    class="underline_hover link">{% trans "ShopiLaunch." %}</a><a
                                 href="https://www.shopify.com/?ref=shopifycenter" rel="nofollow" target="_blank"
-                                class=""> Powered by Shopify.</a></p>
+                                class="">{% trans "Powered by Shopify." %}</a></p>
                         </div>
                     </div>
                 </div>

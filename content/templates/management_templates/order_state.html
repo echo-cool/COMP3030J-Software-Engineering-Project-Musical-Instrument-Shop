@@ -8,19 +8,17 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Order State Management</a>
+            <a href="#">{% trans "Order State Management" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
 {% endblock %}
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Order State Management
-        </h1>
+        <h1 class="col-md-10">{% trans "Order State Management" %}</h1>
     </div>
 {% endblock %}
 
@@ -28,12 +26,12 @@
 
     <div class="widget-box">
         <div class="widget-header widget-header-blue widget-header-flat">
-            <h4 class="widget-title lighter">Manage Order State</h4>
+            <h4 class="widget-title lighter">{% trans "Manage Order State" %}</h4>
 
             {#            <div class="widget-toolbar">#}
             {#                <label>#}
             {#                    <small class="green">#}
-            {#                        <b>Validation</b>#}
+            {#                        <b>{% trans "Validation" %}</b>#}
             {#                    </small>#}
             {##}
             {#                    <input id="skip-validation" type="checkbox" class="ace ace-switch ace-switch-4"/>#}
@@ -49,42 +47,42 @@
                         <ul class="steps">
                             <li data-step="1" class="active">
                                 <span class="step">1</span>
-                                <span class="title">Placed</span>
+                                <span class="title">{% trans "Placed" %}</span>
                                 <span class="title">{{ date }}</span>
                                 <span class="title">{{ time }}</span>
                             </li>
 
                             <li data-step="2">
                                 <span class="step">2</span>
-                                <span class="title">Accepted</span>
+                                <span class="title">{% trans "Accepted" %}</span>
                                 <span class="title">{{ date }}</span>
                                 <span class="title">{{ time }}</span>
                             </li>
 
                             <li data-step="3">
                                 <span class="step">3</span>
-                                <span class="title">Packed</span>
+                                <span class="title">{% trans "Packed" %}</span>
                                 <span class="title">{{ date }}</span>
                                 <span class="title">{{ time }}</span>
                             </li>
 
                             <li data-step="4">
                                 <span class="step">4</span>
-                                <span class="title">Shipped</span>
+                                <span class="title">{% trans "Shipped" %}</span>
                                 <span class="title">{{ date }}</span>
                                 <span class="title">{{ time }}</span>
                             </li>
 
                             <li data-step="5">
                                 <span class="step">5</span>
-                                <span class="title">Delivered</span>
+                                <span class="title">{% trans "Delivered" %}</span>
                                 <span class="title">{{ date }}</span>
                                 <span class="title">{{ time }}</span>
                             </li>
 
                             {#                            <li data-step="4">#}
                             {#                                <span class="step">4</span>#}
-                            {#                                <span class="title">Other Info</span>#}
+                            {#                                <span class="title">{% trans "Other Info" %}</span>#}
                             {#                            </li>#}
                         </ul>
                     </div>
@@ -97,18 +95,17 @@
                                 <button type="button" class="close" data-dismiss="alert">
                                     <i class="ace-icon fa fa-times"></i>
                                 </button>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
-                                to set the order in this state.
-                                <br/>
+                                <i class="fa fa-star" aria-hidden="true"></i>{% trans "Click " %}<strong
+                            >{% trans "Next" %}</strong
+                            >{% trans "to save the message go to the next state. Click " %}<strong
+                            >{% trans "Confirm" %}</strong
+                            >{% trans "to set the order in this state." %}<br/>
                             </div>
-                            <h3 class="lighter block green">Leave a message for accepted state</h3>
+                            <h3 class="lighter block green">{% trans "Leave a message for accepted state" %}</h3>
 
                             <form class="form-horizontal" id="sample-form">
                                 <div class="form-group has-error">
-                                    <label for="inputWarning" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                        Input your comment for the order</label>
+                                    <label for="inputWarning" class="col-xs-12 col-sm-3 control-label no-padding-right">{% trans "Input your comment for the order" %}</label>
 
                                     <div class="col-xs-12 col-sm-5">
                                         <span class="block input-icon input-icon-right">
@@ -122,7 +119,7 @@
 
                             <form class="form-horizontal hide" id="validation-form" method="get">
                                 {#                                <div class="form-group">#}
-                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">User:</label>#}
+                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">{% trans "User:" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <select id="user" name="user" class="select2"#}
@@ -142,7 +139,7 @@
                                 {#                                <div class="space-2"></div>#}
                                 {##}
                                 {#                                <div class="form-group">#}
-                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="password">Password:</label>#}
+                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="password">{% trans "Password:" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <div class="clearfix">#}
@@ -235,7 +232,7 @@
                                 {#                                <div class="space-2"></div>#}
                                 {##}
                                 {#                                <div class="form-group">#}
-                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right">Gender</label>#}
+                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right">{% trans "Gender" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <div>#}
@@ -258,62 +255,62 @@
                                 {##}
                                 {#                                <div class="form-group">#}
                                 {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right"#}
-                                {#                                           for="state">State</label>#}
+                                {#                                           for="state">{% trans "State" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <select id="state" name="state" class="select2"#}
                                 {#                                                data-placeholder="Click to Choose...">#}
                                 {#                                            <option value="">&nbsp;</option>#}
-                                {#                                            <option value="AL">Alabama</option>#}
-                                {#                                            <option value="AK">Alaska</option>#}
-                                {#                                            <option value="AZ">Arizona</option>#}
-                                {#                                            <option value="AR">Arkansas</option>#}
-                                {#                                            <option value="CA">California</option>#}
-                                {#                                            <option value="CO">Colorado</option>#}
-                                {#                                            <option value="CT">Connecticut</option>#}
-                                {#                                            <option value="DE">Delaware</option>#}
-                                {#                                            <option value="FL">Florida</option>#}
-                                {#                                            <option value="GA">Georgia</option>#}
-                                {#                                            <option value="HI">Hawaii</option>#}
-                                {#                                            <option value="ID">Idaho</option>#}
-                                {#                                            <option value="IL">Illinois</option>#}
-                                {#                                            <option value="IN">Indiana</option>#}
-                                {#                                            <option value="IA">Iowa</option>#}
-                                {#                                            <option value="KS">Kansas</option>#}
-                                {#                                            <option value="KY">Kentucky</option>#}
-                                {#                                            <option value="LA">Louisiana</option>#}
-                                {#                                            <option value="ME">Maine</option>#}
-                                {#                                            <option value="MD">Maryland</option>#}
-                                {#                                            <option value="MA">Massachusetts</option>#}
-                                {#                                            <option value="MI">Michigan</option>#}
-                                {#                                            <option value="MN">Minnesota</option>#}
-                                {#                                            <option value="MS">Mississippi</option>#}
-                                {#                                            <option value="MO">Missouri</option>#}
-                                {#                                            <option value="MT">Montana</option>#}
-                                {#                                            <option value="NE">Nebraska</option>#}
-                                {#                                            <option value="NV">Nevada</option>#}
-                                {#                                            <option value="NH">New Hampshire</option>#}
-                                {#                                            <option value="NJ">New Jersey</option>#}
-                                {#                                            <option value="NM">New Mexico</option>#}
-                                {#                                            <option value="NY">New York</option>#}
-                                {#                                            <option value="NC">North Carolina</option>#}
-                                {#                                            <option value="ND">North Dakota</option>#}
-                                {#                                            <option value="OH">Ohio</option>#}
-                                {#                                            <option value="OK">Oklahoma</option>#}
-                                {#                                            <option value="OR">Oregon</option>#}
-                                {#                                            <option value="PA">Pennsylvania</option>#}
-                                {#                                            <option value="RI">Rhode Island</option>#}
-                                {#                                            <option value="SC">South Carolina</option>#}
-                                {#                                            <option value="SD">South Dakota</option>#}
-                                {#                                            <option value="TN">Tennessee</option>#}
-                                {#                                            <option value="TX">Texas</option>#}
-                                {#                                            <option value="UT">Utah</option>#}
-                                {#                                            <option value="VT">Vermont</option>#}
-                                {#                                            <option value="VA">Virginia</option>#}
-                                {#                                            <option value="WA">Washington</option>#}
-                                {#                                            <option value="WV">West Virginia</option>#}
-                                {#                                            <option value="WI">Wisconsin</option>#}
-                                {#                                            <option value="WY">Wyoming</option>#}
+                                {#                                            <option value="AL">{% trans "Alabama" %}</option>#}
+                                {#                                            <option value="AK">{% trans "Alaska" %}</option>#}
+                                {#                                            <option value="AZ">{% trans "Arizona" %}</option>#}
+                                {#                                            <option value="AR">{% trans "Arkansas" %}</option>#}
+                                {#                                            <option value="CA">{% trans "California" %}</option>#}
+                                {#                                            <option value="CO">{% trans "Colorado" %}</option>#}
+                                {#                                            <option value="CT">{% trans "Connecticut" %}</option>#}
+                                {#                                            <option value="DE">{% trans "Delaware" %}</option>#}
+                                {#                                            <option value="FL">{% trans "Florida" %}</option>#}
+                                {#                                            <option value="GA">{% trans "Georgia" %}</option>#}
+                                {#                                            <option value="HI">{% trans "Hawaii" %}</option>#}
+                                {#                                            <option value="ID">{% trans "Idaho" %}</option>#}
+                                {#                                            <option value="IL">{% trans "Illinois" %}</option>#}
+                                {#                                            <option value="IN">{% trans "Indiana" %}</option>#}
+                                {#                                            <option value="IA">{% trans "Iowa" %}</option>#}
+                                {#                                            <option value="KS">{% trans "Kansas" %}</option>#}
+                                {#                                            <option value="KY">{% trans "Kentucky" %}</option>#}
+                                {#                                            <option value="LA">{% trans "Louisiana" %}</option>#}
+                                {#                                            <option value="ME">{% trans "Maine" %}</option>#}
+                                {#                                            <option value="MD">{% trans "Maryland" %}</option>#}
+                                {#                                            <option value="MA">{% trans "Massachusetts" %}</option>#}
+                                {#                                            <option value="MI">{% trans "Michigan" %}</option>#}
+                                {#                                            <option value="MN">{% trans "Minnesota" %}</option>#}
+                                {#                                            <option value="MS">{% trans "Mississippi" %}</option>#}
+                                {#                                            <option value="MO">{% trans "Missouri" %}</option>#}
+                                {#                                            <option value="MT">{% trans "Montana" %}</option>#}
+                                {#                                            <option value="NE">{% trans "Nebraska" %}</option>#}
+                                {#                                            <option value="NV">{% trans "Nevada" %}</option>#}
+                                {#                                            <option value="NH">{% trans "New Hampshire" %}</option>#}
+                                {#                                            <option value="NJ">{% trans "New Jersey" %}</option>#}
+                                {#                                            <option value="NM">{% trans "New Mexico" %}</option>#}
+                                {#                                            <option value="NY">{% trans "New York" %}</option>#}
+                                {#                                            <option value="NC">{% trans "North Carolina" %}</option>#}
+                                {#                                            <option value="ND">{% trans "North Dakota" %}</option>#}
+                                {#                                            <option value="OH">{% trans "Ohio" %}</option>#}
+                                {#                                            <option value="OK">{% trans "Oklahoma" %}</option>#}
+                                {#                                            <option value="OR">{% trans "Oregon" %}</option>#}
+                                {#                                            <option value="PA">{% trans "Pennsylvania" %}</option>#}
+                                {#                                            <option value="RI">{% trans "Rhode Island" %}</option>#}
+                                {#                                            <option value="SC">{% trans "South Carolina" %}</option>#}
+                                {#                                            <option value="SD">{% trans "South Dakota" %}</option>#}
+                                {#                                            <option value="TN">{% trans "Tennessee" %}</option>#}
+                                {#                                            <option value="TX">{% trans "Texas" %}</option>#}
+                                {#                                            <option value="UT">{% trans "Utah" %}</option>#}
+                                {#                                            <option value="VT">{% trans "Vermont" %}</option>#}
+                                {#                                            <option value="VA">{% trans "Virginia" %}</option>#}
+                                {#                                            <option value="WA">{% trans "Washington" %}</option>#}
+                                {#                                            <option value="WV">{% trans "West Virginia" %}</option>#}
+                                {#                                            <option value="WI">{% trans "Wisconsin" %}</option>#}
+                                {#                                            <option value="WY">{% trans "Wyoming" %}</option>#}
                                 {#                                        </select>#}
                                 {#                                    </div>#}
                                 {#                                </div>#}
@@ -321,17 +318,17 @@
                                 {#                                <div class="space-2"></div>#}
                                 {##}
                                 {#                                <div class="form-group">#}
-                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="platform">Platform</label>#}
+                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="platform">{% trans "Platform" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <div class="clearfix">#}
                                 {#                                            <select class="input-medium" id="platform" name="platform">#}
                                 {#                                                <option value="">------------------</option>#}
-                                {#                                                <option value="linux">Linux</option>#}
-                                {#                                                <option value="windows">Windows</option>#}
-                                {#                                                <option value="mac">Mac OS</option>#}
-                                {#                                                <option value="ios">iOS</option>#}
-                                {#                                                <option value="android">Android</option>#}
+                                {#                                                <option value="linux">{% trans "Linux" %}</option>#}
+                                {#                                                <option value="windows">{% trans "Windows" %}</option>#}
+                                {#                                                <option value="mac">{% trans "Mac OS" %}</option>#}
+                                {#                                                <option value="ios">{% trans "iOS" %}</option>#}
+                                {#                                                <option value="android">{% trans "Android" %}</option>#}
                                 {#                                            </select>#}
                                 {#                                        </div>#}
                                 {#                                    </div>#}
@@ -340,7 +337,7 @@
                                 {#                                <div class="space-2"></div>#}
                                 {##}
                                 {#                                <div class="form-group">#}
-                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="comment">Comment</label>#}
+                                {#                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="comment">{% trans "Comment" %}</label>#}
                                 {##}
                                 {#                                    <div class="col-xs-12 col-sm-9">#}
                                 {#                                        <div class="clearfix">#}
@@ -371,18 +368,17 @@
                                         <i class="ace-icon fa fa-times"></i>
                                     </button>
 
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                    Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
-                                    to set the order in this state.
-                                    <br/>
+                                    <i class="fa fa-star" aria-hidden="true"></i>{% trans "Click " %}<strong
+                                >{% trans "Next" %}</strong
+                                >{% trans "to save the message go to the next state. Click " %}<strong
+                                >{% trans "Confirm" %}</strong
+                                >{% trans "to set the order in this state." %}<br/>
                                 </div>
-                                <h3 class="lighter block green">Manage the message the buyer left for packed state</h3>
+                                <h3 class="lighter block green">{% trans "Manage the message the buyer left for packed state" %}</h3>
                                 <form class="form-horizontal" id="sample-form">
                                     <div class="form-group has-warning">
                                         <label for="inputWarning"
-                                               class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                            Here's buyer's message left for this order</label>
+                                               class="col-xs-12 col-sm-3 control-label no-padding-right">{% trans "Here's buyer's message left for this order" %}</label>
 
                                         <div class="col-xs-12 col-sm-5">
                                         <span class="block input-icon input-icon-right">
@@ -406,16 +402,16 @@
 
                                     <i class="fa fa-star" aria-hidden="true"></i>
 
-                                    Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
-                                    to set the order in this state.
-                                    <br/>
+                                    Click <strong>{% trans "Next" %}</strong
+                                >{% trans "to save the message go to the next state. Click " %}<strong
+                                >{% trans "Confirm" %}</strong
+                                >{% trans "to set the order in this state." %}<br/>
                                 </div>
-                                <h3 class="lighter block green">Manage the message the buyer left for shipped state</h3>
+                                <h3 class="lighter block green">{% trans "Manage the message the buyer left for shipped state" %}</h3>
                                 <form class="form-horizontal" id="sample-form">
                                     <div class="form-group has-info">
                                         <label for="inputWarning"
-                                               class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                            Here's buyer's message left for this order</label>
+                                               class="col-xs-12 col-sm-3 control-label no-padding-right">{% trans "Here's buyer's message left for this order" %}</label>
 
                                         <div class="col-xs-12 col-sm-5">
                                         <span class="block input-icon input-icon-right">
@@ -437,19 +433,17 @@
                                         <i class="ace-icon fa fa-times"></i>
                                     </button>
 
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                    Click <strong>Next</strong> to save the message go to the next state. Click <strong>Confirm</strong>
-                                    to set the order in this state.
-                                    <br/>
+                                    <i class="fa fa-star" aria-hidden="true"></i>{% trans "Click " %}<strong
+                                >{% trans "Next" %}</strong
+                                >{% trans "to save the message go to the next state. Click " %}<strong
+                                >{% trans "Confirm" %}</strong
+                                >{% trans "to set the order in this state." %}<br/>
                                 </div>
-                                <h3 class="lighter block green">Manage the message the buyer left for delivered
-                                    state</h3>
+                                <h3 class="lighter block green">{% trans "Manage the message the buyer left for delivered state" %}</h3>
                                 <form class="form-horizontal" id="sample-form">
                                     <div class="form-group has-success">
                                         <label for="inputWarning"
-                                               class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                            Here's buyer's message left for this order</label>
+                                               class="col-xs-12 col-sm-3 control-label no-padding-right">{% trans "Here's buyer's message left for this order" %}</label>
 
                                         <div class="col-xs-12 col-sm-5">
                                         <span class="block input-icon input-icon-right">
@@ -466,9 +460,8 @@
 
                         <div class="step-pane" data-step="5">
                             <div class="center">
-                                <h3 class="green">Here the order have come to the delivery confirmed state.<br/>Click
-                                    Confirm to save
-                                    the state or click Prev to go back to the previous state</h3>
+                                <h3 class="green">{% trans "Here the order have come to the delivery confirmed state." %}<br
+                                    />{% trans "Click Confirm to save the state or click Prev to go back to the previous state" %}</h3>
                             </div>
                         </div>
                     </div>
@@ -477,19 +470,11 @@
                 <hr/>
                 <div class="wizard-actions">
                     <button class="btn btn-prev">
-                        <i class="ace-icon fa fa-arrow-left"></i>
-                        Prev
-                    </button>
+                        <i class="ace-icon fa fa-arrow-left"></i>{% trans "Prev" %}</button>
 
-                    <button class="btn btn-success btn-next" data-last="Finish">
-                        Next
-                        <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                    </button>
+                    <button class="btn btn-success btn-next" data-last="Finish">{% trans "Next" %}<i class="ace-icon fa fa-arrow-right icon-on-right"></i></button>
 
-                    <button class="btn btn-info" id="confirm_state">
-                        Confirm
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </button>
+                    <button class="btn btn-info" id="confirm_state">{% trans "Confirm" %}<i class="fa fa-check-circle" aria-hidden="true"></i></button>
                 </div>
             </div><!-- /.widget-main -->
         </div><!-- /.widget-body -->

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Data Visualization System</title>
+    <title>{% trans "Data Visualization System" %}</title>
 
     <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.js"></script>
     <link rel="stylesheet" href="/static/assets/echarts_static/chart2/css/comon0.css">
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/static/assets/echarts_static/chart2/js/jquery.waypoints.min.js"></script>
     <script src="/static/assets/echarts_static/chart2/js/countDown.js"></script>
     <style>
-        .new-font{
+        .new-font {
             font-family: "Sofia", Courier, monospace;
             font-weight: bold;
         }
@@ -21,22 +21,22 @@
 </head>
 <body>
 <div class="loading">
-    <div class="loadbox"><img src="images/loading.gif">Loading...</div>
-</div>
+    <div class="loadbox"><img src="images/loading.gif">{% trans "Loading..." %}</div>
+ </div>
 <div class="head">
-    <h1><a class="new-font">Data Visualization System</a></h1>
-</div>
+    <h1><a class="new-font">{% trans "Data Visualization System" %}</a></h1>
+ </div>
 <div class="mainbox">
     <ul class="clearfix">
         <li>
             <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
-                <div class="tit04 new-font">Users</div>
+                <div class="tit04 new-font">{% trans "Users" %}</div>
                 <div class="boxnav nav04">
 
                     <div class="listhead listhead2">
-                        <span class="new-font">Username</span>
-                        <span class="new-font">Active</span>
-                        <span class="new-font">Date Joined</span>
+                        <span class="new-font">{% trans "Username" %}</span>
+                        <span class="new-font">{% trans "Active" %}</span>
+                        <span class="new-font">{% trans "Date Joined" %}</span>
 
                     </div>
 
@@ -62,29 +62,31 @@
         <li>
 
             <div class="boxall" style="height:calc(33.33333% - .25rem)">
-                <div class="tit02 new-font">Order</div>
+                <div class="tit02 new-font">{% trans "Order" %}</div>
                 <div class="boxnav nav02">
                     <div>
-                        <p class="p1 new-font">All Order Count</p>
+                        <p class="p1 new-font">{% trans "All Order Count" %}</p>
                         <p class="p2 new-font"><span class="counter">{{ order_count }}</span></p>
                         <p class="p3 new-font">
-                            <span class="new-font"><i class="dot dot1 new-font"></i>Pending：{{ OrderDeliveredRatio.notDelivered }}</span>
-                            <span class="new-font"><i class="dot dot2 new-font"></i>Delivered：{{ OrderDeliveredRatio.delivered }}</span>
+                            <span class="new-font"><i
+                                    class="dot dot1 new-font"></i>{% trans "Pending：" %}{{ OrderDeliveredRatio.notDelivered }}</span>
+                            <span class="new-font"><i
+                                    class="dot dot2 new-font"></i>{% trans "Delivered：" %}{{ OrderDeliveredRatio.delivered }}</span>
                         </p></div>
                 </div>
                 <div class="boxfoot"></div>
             </div>
             <div class="boxall" style="height:calc(66.666666% - .25rem)">
-                <div class="tit03 new-font">Orders</div>
+                <div class="tit03 new-font">{% trans "Orders" %}</div>
                 <div class="boxnav nav03">
 
                     <div class="listhead listhead1">
-                        <span class="new-font">Order Date</span>
+                        <span class="new-font">{% trans "Order Date" %}</span>
                         <span class="new-font">By</span>
-                        <span class="new-font">City</span>
-                        <span class="new-font">Phone</span>
-                        <span class="new-font">Address</span>
-                        <span class="new-font">Status</span>
+                        <span class="new-font">{% trans "City" %}</span>
+                        <span class="new-font">{% trans "Phone" %}</span>
+                        <span class="new-font">{% trans "Address" %}</span>
+                        <span class="new-font">{% trans "Status" %}</span>
                     </div>
                     <div class="listnav listnav1 scrollDiv">
                         <ul>
@@ -93,15 +95,15 @@
                                     <span>{{ order.created_at | date:"Y/m/d" }}</span>
                                     <span>{{ order.user.username }}</span>
                                     <span>{{ order.city }}</span>
-{#                                    <span>{{ order.telephone }}</span>#}
+                                    {#                                    <span>{{ order.telephone }}</span>#}
                                     <span>{{ order.full_address | truncatechars:20 }}</span>
                                     {% if order.delivery_confirmed %}
-                                        <span class="text-green">Delivered</span>
+                                        <span class="text-green">{% trans "Delivered" %}</span>
                                     {% else %}
                                         {% if order.shopper_confirmed %}
-                                            <span class="text-green">Shipping</span>
+                                            <span class="text-green">{% trans "Shipping" %}</span>
                                         {% else %}
-                                            <span class="text-red">Pending</span>
+                                            <span class="text-red">{% trans "Pending" %}</span>
                                         {% endif %}
                                     {% endif %}
                                 </li>
@@ -117,13 +119,13 @@
         </li>
         <li>
             <div class="boxall" style="height:calc(100% - .25rem); padding: 0;">
-                <div class="tit04 new-font" >Instruments</div>
+                <div class="tit04 new-font">{% trans "Instruments" %}</div>
                 <div class="boxnav nav04">
 
                     <div class="listhead listhead2">
-                        <span class="new-font">Name</span>
-                        <span class="new-font">Price</span>
-                        <span class="new-font">Created At</span>
+                        <span class="new-font">{% trans "Name" %}</span>
+                        <span class="new-font">{% trans "Price" %}</span>
+                        <span class="new-font">{% trans "Created At" %}</span>
 
                     </div>
 
