@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description"
           content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
-    <title>Dashboard Analytics</title>
+    <title>{% trans "Dashboard Analytics" %}</title>
     <link rel="apple-touch-icon" href="{% static "assets_backend/images/ico/apple-icon-120.png" %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static "assets_backend/images/ico/favicon.ico" %}">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700"
@@ -84,25 +84,23 @@
                     <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
                             class="ficon ft-maximize"></i></a></li>
                     <li class="dropdown nav-item mega-dropdown d-none d-md-block"><a class="dropdown-toggle nav-link"
-                                                                                     href="#" data-toggle="dropdown">Mega</a>
+                                                                                     href="#" data-toggle="dropdown">{% trans "Mega" %}</a>
                         <ul class="mega-dropdown-menu dropdown-menu row">
                             <li class="col-md-2">
-                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-link"></i> Quick Links
-                                </h6>
+                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-link"></i>{% trans "Quick Links" %}</h6>
                                 <ul>
-                                    <li><a class="my-1" href="chat-application.html"><i class="ft-home"></i> Chat</a>
+                                    <li><a class="my-1" href="chat-application.html"><i class="ft-home"></i>{% trans "Chat" %}</a>
                                     </li>
-                                    <li><a class="my-1" href="table-bootstrap.html"><i class="ft-grid"></i> Tables</a>
+                                    <li><a class="my-1" href="table-bootstrap.html"><i class="ft-grid"></i>{% trans "Tables" %}</a>
                                     </li>
-                                    <li><a class="my-1" href="chartist-charts.html"><i class="ft-bar-chart"></i> Charts</a>
+                                    <li><a class="my-1" href="chartist-charts.html"><i class="ft-bar-chart"></i>{% trans "Charts" %}</a>
                                     </li>
-                                    <li><a class="my-1" href="gallery-grid.html"><i class="ft-sidebar"></i> Gallery</a>
+                                    <li><a class="my-1" href="gallery-grid.html"><i class="ft-sidebar"></i>{% trans "Gallery" %}</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="col-md-3">
-                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-star"></i> My
-                                    Bookmarks</h6>
+                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-star"></i>{% trans "My Bookmarks" %}</h6>
                                 <ul class="ml-2">
                                     <li class="list-style-circle"><a class="my-1" href="card-bootstrap.html">
                                         Cards</a></li>
@@ -115,8 +113,7 @@
                                 </ul>
                             </li>
                             <li class="col-md-3">
-                                <h6 class="dropdown-menu-header text-uppercase"><i class="ft-layers"></i> Recent
-                                    Products</h6>
+                                <h6 class="dropdown-menu-header text-uppercase"><i class="ft-layers"></i>{% trans "Recent Products" %}</h6>
                                 <div class="carousel slide pt-1" id="carousel-example" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active"><img class="d-block w-100"
@@ -131,22 +128,21 @@
                                     </div>
                                     <a class="carousel-control-prev" href="#carousel-example" role="button"
                                        data-slide="prev"><span class="la la-angle-left" aria-hidden="true"></span><span
-                                            class="sr-only">Previous</span></a><a class="carousel-control-next"
+                                            class="sr-only">{% trans "Previous" %}</span></a><a class="carousel-control-next"
                                                                                   href="#carousel-example" role="button"
                                                                                   data-slide="next"><span
                                         class="la la-angle-right icon-next" aria-hidden="true"></span><span
-                                        class="sr-only">Next</span></a>
-                                    <h5 class="pt-1">Special title treatment</h5>
-                                    <p>Jelly beans sugar plum.</p>
+                                        class="sr-only">{% trans "Next" %}</span></a>
+                                    <h5 class="pt-1">{% trans "Special title treatment" %}</h5>
+                                    <p>{% trans "Jelly beans sugar plum." %}</p>
                                 </div>
                             </li>
                             <li class="col-md-4">
-                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-thumbs-up"></i> Get in
-                                    touch</h6>
+                                <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-thumbs-up"></i>{% trans "Get in touch" %}</h6>
                                 <form class="form form-horizontal pt-1">
                                     <div class="form-body">
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label" for="inputName1">Name</label>
+                                            <label class="col-sm-3 form-control-label" for="inputName1">{% trans "Name" %}</label>
                                             <div class="col-sm-9">
                                                 <div class="position-relative has-icon-left">
                                                     <input class="form-control" id="inputName1" type="text"
@@ -158,7 +154,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 form-control-label"
-                                                   for="inputContact1">Contact</label>
+                                                   for="inputContact1">{% trans "Contact" %}</label>
                                             <div class="col-sm-9">
                                                 <div class="position-relative has-icon-left">
                                                     <input class="form-control" id="inputContact1" type="text"
@@ -169,7 +165,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label" for="inputEmail1">Email</label>
+                                            <label class="col-sm-3 form-control-label" for="inputEmail1">{% trans "Email" %}</label>
                                             <div class="col-sm-9">
                                                 <div class="position-relative has-icon-left">
                                                     <input class="form-control" id="inputEmail1" type="email"
@@ -181,7 +177,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 form-control-label"
-                                                   for="inputMessage1">Message</label>
+                                                   for="inputMessage1">{% trans "Message" %}</label>
                                             <div class="col-sm-9">
                                                 <div class="position-relative has-icon-left">
                                                     <textarea class="form-control" id="inputMessage1" rows="2"
@@ -194,8 +190,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 mb-1">
                                                 <button class="btn btn-danger float-right" type="button"><i
-                                                        class="ft-arrow-right"></i> Submit
-                                                </button>
+                                                        class="ft-arrow-right"></i>{% trans "Submit" %}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -211,9 +206,9 @@
                             <div class="arrow_box"><a class="dropdown-item" href="email-application.html"><i
                                     class="ft-user"></i> Email</a><a class="dropdown-item" href="chat-application.html"><i
                                     class="ft-mail"></i> Chat</a><a class="dropdown-item" href="project-summary.html"><i
-                                    class="ft-briefcase"></i> Project Summary </a><a class="dropdown-item"
+                                    class="ft-briefcase"></i>{% trans "Project Summary " %}</a><a class="dropdown-item"
                                                                                      href="full-calender.html"><i
-                                    class="ft-calendar"></i> Calendar </a></div>
+                                    class="ft-calendar"></i>{% trans "Calendar " %}</a></div>
                         </div>
                     </li>
                     <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
@@ -257,7 +252,7 @@
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <div class="arrow_box_right">
                                 <li class="dropdown-menu-header">
-                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span>
+                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">{% trans "Notifications" %}</span>
                                     </h6>
                                 </li>
                                 <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
@@ -265,12 +260,9 @@
                                         <div class="media-left align-self-center"><i
                                                 class="ft-share info font-medium-4 mt-2"></i></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading info">New Order Received</h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem
-                                                ipsum dolor sit amet!</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                3:30 PM
-                                            </time>
+                                            <h6 class="media-heading info">{% trans "New Order Received" %}</h6>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Lorem ipsum dolor sit amet!" %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "3:30 PM" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -279,12 +271,9 @@
                                         <div class="media-left align-self-center"><i
                                                 class="ft-save font-medium-4 mt-2 warning"></i></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading warning">New User Registered</h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">Aliquam
-                                                tincidunt mauris eu risus.</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                10:05 AM
-                                            </time>
+                                            <h6 class="media-heading warning">{% trans "New User Registered" %}</h6>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Aliquam tincidunt mauris eu risus." %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "10:05 AM" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -293,12 +282,9 @@
                                         <div class="media-left align-self-center"><i
                                                 class="ft-repeat font-medium-4 mt-2 danger"></i></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading danger">New Purchase</h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem
-                                                ipsum dolor sit ametest?</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                Yesterday
-                                            </time>
+                                            <h6 class="media-heading danger">{% trans "New Purchase" %}</h6>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Lorem ipsum dolor sit ametest?" %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "Yesterday" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -307,10 +293,8 @@
                                         <div class="media-left align-self-center"><i
                                                 class="ft-shopping-cart font-medium-4 mt-2 primary"></i></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading primary">New Item In Your Cart</h6><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                Last week
-                                            </time>
+                                            <h6 class="media-heading primary">{% trans "New Item In Your Cart" %}</h6><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "Last week" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -319,16 +303,14 @@
                                         <div class="media-left align-self-center"><i
                                                 class="ft-heart font-medium-4 mt-2 info"></i></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading info">New Sale</h6><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                Last month
-                                            </time>
+                                            <h6 class="media-heading info">{% trans "New Sale" %}</h6><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "Last month" %}</time>
                                         </small>
                                         </div>
                                     </div>
                                 </a></li>
                                 <li class="dropdown-menu-footer">
-                                    <a class="dropdown-item info text-right pr-1" href="javascript:void(0)">Read all</a>
+                                    <a class="dropdown-item info text-right pr-1" href="javascript:void(0)">{% trans "Read all" %}</a>
                                 </li>
                             </div>
                         </ul>
@@ -339,7 +321,7 @@
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <div class="arrow_box_right">
                                 <li class="dropdown-menu-header">
-                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Messages</span></h6>
+                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">{% trans "Messages" %}</span></h6>
                                 </li>
                                 <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
                                     <div class="media">
@@ -347,13 +329,10 @@
                                                 src="{% static "assets_backend/images/portrait/small/avatar-s-6.png" %}"
                                                 alt="avatar"></span></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading text-bold-700">Sarah Montery<i
+                                            <h6 class="media-heading text-bold-700">{% trans "Sarah Montery" %}<i
                                                     class="ft-circle font-small-2 success float-right"></i></h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">
-                                                Everything looks good. I will provide...</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                3:55 PM
-                                            </time>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Everything looks good. I will provide..." %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "3:55 PM" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -363,13 +342,10 @@
                                                 class="media-object rounded-circle text-circle bg-warning">E</span></span>
                                         </div>
                                         <div class="media-body">
-                                            <h6 class="media-heading text-bold-700">Eliza Elliot<i
+                                            <h6 class="media-heading text-bold-700">{% trans "Eliza Elliot" %}<i
                                                     class="ft-circle font-small-2 danger float-right"></i></h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">Okay.
-                                                here is some more details...</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                2:10 AM
-                                            </time>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Okay. here is some more details..." %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "2:10 AM" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -379,13 +355,10 @@
                                                 src="{% static "assets_backend/images/portrait/small/avatar-s-3.png" %}"
                                                 alt="avatar"></span></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading text-bold-700">Kelly Reyes<i
+                                            <h6 class="media-heading text-bold-700">{% trans "Kelly Reyes" %}<i
                                                     class="ft-circle font-small-2 warning float-right"></i></h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">Check
-                                                once and let me know if you...</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                Yesterday
-                                            </time>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "Check once and let me know if you..." %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "Yesterday" %}</time>
                                         </small>
                                         </div>
                                     </div>
@@ -395,43 +368,40 @@
                                                 src="{% static "assets_backend/images/portrait/small/avatar-s-19.png" %}"
                                                 alt="avatar"></span></div>
                                         <div class="media-body">
-                                            <h6 class="media-heading text-bold-700">Tonny Deep<i
+                                            <h6 class="media-heading text-bold-700">{% trans "Tonny Deep" %}<i
                                                     class="ft-circle font-small-2 danger float-right"></i></h6>
-                                            <p class="notification-text font-small-3 text-muted text-bold-600">We will
-                                                start new project development...</p><small>
-                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">
-                                                Friday
-                                            </time>
+                                            <p class="notification-text font-small-3 text-muted text-bold-600">{% trans "We will start new project development..." %}</p><small>
+                                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">{% trans "Friday" %}</time>
                                         </small>
                                         </div>
                                     </div>
                                 </a></li>
                                 <li class="dropdown-menu-footer"><a class="dropdown-item text-right info pr-1"
-                                                                    href="javascript:void(0)">Read all</a></li>
+                                                                    href="javascript:void(0)">{% trans "Read all" %}</a></li>
                             </div>
                         </ul>
                     </li>
-                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
-                                                                   href="#" data-toggle="dropdown"> <span
-                            class="avatar avatar-online"><img
-                            src="{% static "assets_backend/images/portrait/small/avatar-s-19.png"
-                                                              alt=" avatar"></span></a>
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                            <span class="avatar avatar-online">
+                                <img src="{% static "assets_backend/images/portrait/small/avatar-s-19.png"%}" alt="avatar">
+                            </span>
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="arrow_box_right"><a class="dropdown-item" href="#"><span
                                     class="avatar avatar-online"><img
                                     src="{% static "assets_backend/images/portrait/small/avatar-s-19.png" %}"
                                     alt="avatar"><span
-                                    class="user-name text-bold-700 ml-1">John Doe</span></span></a>
+                                    class="user-name text-bold-700 ml-1">{% trans "John Doe" %}</span></span></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit
-                                    Profile</a><a class="dropdown-item" href="email-application.html"><i
-                                        class="ft-mail"></i> My Inbox</a><a class="dropdown-item"
+                                <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i>{% trans "Edit Profile" %}</a><a class="dropdown-item" href="email-application.html"><i
+                                        class="ft-mail"></i>{% trans "My Inbox" %}</a><a class="dropdown-item"
                                                                             href="project-summary.html"><i
-                                        class="ft-check-square"></i> Task</a><a class="dropdown-item"
+                                        class="ft-check-square"></i>{% trans "Task" %}</a><a class="dropdown-item"
                                                                                 href="chat-application.html"><i
-                                        class="ft-message-square"></i> Chats</a>
+                                        class="ft-message-square"></i>{% trans "Chats" %}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html"><i class="ft-power"></i> Logout</a>
+                                <a class="dropdown-item" href="login.html"><i class="ft-power"></i>{% trans "Logout" %}</a>
                             </div>
                         </div>
                     </li>
@@ -451,7 +421,7 @@
             <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
                 <img class="brand-logo" alt="Chameleon admin logo"
                      src="{% static "assets_backend/images/logo/logo.png" %}"/>
-                <h3 class="brand-text">Chameleon</h3>
+                <h3 class="brand-text">{% trans "Chameleon" %}</h3>
             </a></li>
             <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
@@ -462,106 +432,99 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item open">
                     <a href="/management/new"><i class="ft-home"></i>
-                        <span class="menu-title" data-i18n="">Dashboard</span>
+                        <span class="menu-title" data-i18n="">{% trans "Dashboard" %}</span>
                     </a>
                 </li>
                 <li class=" nav-item">
                     <a href="/management/instrument_management/new">
                         <i class="ft-box"></i>
-                        <span class="menu-title" data-i18n="">Instrument</span>
+                        <span class="menu-title" data-i18n="">{% trans "Instrument" %}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="index.html">
                         <i class="ft-grid"></i>
-                        <span class="menu-title" data-i18n="">Order</span>
+                        <span class="menu-title" data-i18n="">{% trans "Order" %}</span>
                         <span class="badge badge badge-info badge-pill float-right mr-2">3</span>
                     </a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="/management/order_management/all/new">All Orders</a>
+                        <li><a class="menu-item" href="/management/order_management/all/new">{% trans "All Orders" %}</a>
                         </li>
-                        <li><a class="menu-item" href="/management/order_management/unconfirmed/new">Unconfirmed
-                            Orders</a>
+                        <li><a class="menu-item" href="/management/order_management/unconfirmed/new">{% trans "Unconfirmed Orders" %}</a>
                         </li>
-                        <li><a class="menu-item" href="/management/order_management/confirmed/new">Confirmed Orders</a>
+                        <li><a class="menu-item" href="/management/order_management/confirmed/new">{% trans "Confirmed Orders" %}</a>
                         </li>
-                        <li><a class="menu-item" href="/management/order_management/delivered/new">Delivered Orders</a>
+                        <li><a class="menu-item" href="/management/order_management/delivered/new">{% trans "Delivered Orders" %}</a>
                         </li>
                     </ul>
                 </li>
                 <li class=" nav-item">
                     <a href="#"><i class="ft-layout"></i>
-                        <span class="menu-title" data-i18n="">Layouts</span>
+                        <span class="menu-title" data-i18n="">{% trans "Layouts" %}</span>
                         <span class="badge badge badge-pill badge-danger float-right mr-2">5</span>
                     </a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="#">Content Sidebar</a>
+                        <li><a class="menu-item" href="#">{% trans "Content Sidebar" %}</a>
                             <ul class="menu-content">
-                                <li><a class="menu-item" href="layout-content-detached-left-sidebar.html">Left
-                                    sidebar</a>
+                                <li><a class="menu-item" href="layout-content-detached-left-sidebar.html">{% trans "Left sidebar" %}</a>
                                 </li>
-                                <li><a class="menu-item" href="layout-content-detached-left-sticky-sidebar.html">Sticky
-                                    left
-                                    sidebar</a>
+                                <li><a class="menu-item" href="layout-content-detached-left-sticky-sidebar.html">{% trans "Sticky left sidebar" %}</a>
                                 </li>
-                                <li><a class="menu-item" href="layout-content-detached-right-sidebar.html">Right
-                                    sidebar</a>
+                                <li><a class="menu-item" href="layout-content-detached-right-sidebar.html">{% trans "Right sidebar" %}</a>
                                 </li>
-                                <li><a class="menu-item" href="layout-content-detached-right-sticky-sidebar.html">Sticky
-                                    right sidebar</a>
+                                <li><a class="menu-item" href="layout-content-detached-right-sticky-sidebar.html">{% trans "Sticky right sidebar" %}</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="navigation-divider"></li>
-                        <li><a class="menu-item" href="navbar-hide-on-scroll-top.html">Hide on Scroll Top</a>
+                        <li><a class="menu-item" href="navbar-hide-on-scroll-top.html">{% trans "Hide on Scroll Top" %}</a>
                         </li>
-                        <li><a class="menu-item" href="vertical-nav-compact-menu.html">Compact navigation</a>
+                        <li><a class="menu-item" href="vertical-nav-compact-menu.html">{% trans "Compact navigation" %}</a>
                         </li>
-                        <li><a class="menu-item" href="layout-fixed-navbar.html">Fixed navbar</a>
+                        <li><a class="menu-item" href="layout-fixed-navbar.html">{% trans "Fixed navbar" %}</a>
                         </li>
-                        <li><a class="menu-item" href="layout-fixed-navigation.html">Fixed navigation</a>
+                        <li><a class="menu-item" href="layout-fixed-navigation.html">{% trans "Fixed navigation" %}</a>
                         </li>
-                        <li><a class="menu-item" href="layout-fixed-navbar-navigation.html">Fixed navbar &amp;
-                            navigation</a>
+                        <li><a class="menu-item" href="layout-fixed-navbar-navigation.html">{% trans "Fixed navbar &amp;navigation" %}</a>
                         </li>
-                        <li><a class="menu-item" href="layout-fixed-navbar-footer.html">Fixed navbar &amp; footer</a>
-                        </li>
-                        <li class="navigation-divider"></li>
-                        <li><a class="menu-item" href="layout-fixed.html">Fixed layout</a>
-                        </li>
-                        <li><a class="menu-item" href="layout-boxed.html">Boxed layout</a>
-                        </li>
-                        <li><a class="menu-item" href="layout-static.html">Static layout</a>
+                        <li><a class="menu-item" href="layout-fixed-navbar-footer.html">{% trans "Fixed navbar &amp; footer" %}</a>
                         </li>
                         <li class="navigation-divider"></li>
-                        <li><a class="menu-item" href="layout-light.html">Navigation light</a>
+                        <li><a class="menu-item" href="layout-fixed.html">{% trans "Fixed layout" %}</a>
                         </li>
-                        <li><a class="menu-item" href="layout-dark.html">Navigation Dark</a>
+                        <li><a class="menu-item" href="layout-boxed.html">{% trans "Boxed layout" %}</a>
                         </li>
-                        <li><a class="menu-item" href="vertical-nav-flipped.html">Flipped Navigation</a>
+                        <li><a class="menu-item" href="layout-static.html">{% trans "Static layout" %}</a>
+                        </li>
+                        <li class="navigation-divider"></li>
+                        <li><a class="menu-item" href="layout-light.html">{% trans "Navigation light" %}</a>
+                        </li>
+                        <li><a class="menu-item" href="layout-dark.html">{% trans "Navigation Dark" %}</a>
+                        </li>
+                        <li><a class="menu-item" href="vertical-nav-flipped.html">{% trans "Flipped Navigation" %}</a>
                         </li>
                     </ul>
                 </li>
                 <li class=" nav-item">
                     <a href="changelog.html"><i class="ft-file"></i><span class="menu-title"
-                                                                          data-i18n="">Changelog</span><span
-                            class="badge badge badge-pill badge-warning float-right">1.2</span></a>
+                                                                          data-i18n="">{% trans "Changelog" %}</span><span
+                            class="badge badge badge-pill badge-warning float-right">{% trans "1.2" %}</span></a>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="ft-server"></i><span class="menu-title"
-                                                                                 data-i18n="">Menu levels</span></a>
+                                                                                 data-i18n="">{% trans "Menu levels" %}</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="#">Second level</a>
+                        <li><a class="menu-item" href="#">{% trans "Second level" %}</a>
                         </li>
-                        <li><a class="menu-item" href="#">Second level child</a>
+                        <li><a class="menu-item" href="#">{% trans "Second level child" %}</a>
                             <ul class="menu-content">
-                                <li><a class="menu-item" href="#">Third level</a>
+                                <li><a class="menu-item" href="#">{% trans "Third level" %}</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li class=" nav-item"><a href="https://themeselection.com/support"><i class="ft-life-buoy"></i><span
-                        class="menu-title" data-i18n="">Raise Support</span></a>
+                        class="menu-title" data-i18n="">{% trans "Raise Support" %}</span></a>
                 </li>
             </ul>
         {% endblock %}
@@ -576,21 +539,15 @@
 
 <!-- BEGIN: Footer-->
 <a class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white"
-   href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">
-    Try Layout Builder
-</a>
-<footer class="footer footer-static footer-light navbar-border navbar-shadow">
+   href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">{% trans "Try Layout Builder" %}</a>
+ <footer class="footer footer-static footer-light navbar-border navbar-shadow">
     <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-        <span class="float-md-left d-block d-md-inline-block">2019 &copy; Copyright
-            <a class="text-bold-800 grey darken-2" href="https://themeselection.com"
-               target="_blank">ThemeSelection</a>
+        <span class="float-md-left d-block d-md-inline-block">{% trans "2019 &copy; Copyright" %}<a class="text-bold-800 grey darken-2" href="https://themeselection.com"
+               target="_blank">{% trans "ThemeSelection" %}</a>
         </span>
         <ul class="list-inline float-md-right d-block d-md-inline-blockd-none d-lg-block mb-0">
-            <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/" target="_blank"> More
-                themes</a>
-            </li>
-            <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/support" target="_blank">
-                Support</a>
+            <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/" target="_blank">{% trans "More themes" %}</a></li>
+            <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/support" target="_blank">{% trans "Support" %}</a>
             </li>
         </ul>
     </div>
