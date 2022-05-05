@@ -6,7 +6,7 @@
 
 
     <meta charset="utf-8">
-    <title>AtlasRTX Webchat</title>
+    <title>{% trans "AtlasRTX Webchat" %}</title>
     <link href="{% static 'assets/css_for_homepage/chat_ai.css' %}" rel="stylesheet">
 
     <style>a:hover, .chat_primary {
@@ -102,7 +102,7 @@
                                      alt="Header Icon" draggable="false">
                             </div>
                             <div class="chat_header_text" style="">
-                                <span id="spanHeaderText">Music More</span>
+                                <span id="spanHeaderText">{% trans "Music More" %}</span>
                             </div>
                         </div>
 
@@ -130,8 +130,8 @@
                         <img id="img_header_logo" src="" alt="Header Logo" draggable="false">
                     </div>
                     <div class="login_container_text">
-                        <div class="login_header_salutation_big">Chat with Us!</div>
-                        <div class="login_header_salutation_small">Please enter your info to start chatting</div>
+                        <div class="login_header_salutation_big">{% trans "Chat with Us!" %}</div>
+                        <div class="login_header_salutation_small">{% trans "Please enter your info to start chatting" %}</div>
                     </div>
                     <input id="tbFirstNameIn" type="text" placeholder="First Name*" class="login_text_box">
                     <input id="tbLastNameIn" type="text" placeholder="Last Name*" class="login_text_box">
@@ -140,11 +140,12 @@
                     <div class="chat_error_text">
                         <div id="lblLogInfo" class="chatform-label"></div>
                     </div>
-                    <span id="termsText2" class="terms_and_conditions_text2">By submitting you <a
-                            href="https://www.atlasrtx.com/messaging-terms-conditions" target="_blank">agree</a> to receive text messages at the number provided. Message/data rates apply.</span>
+                    <span id="termsText2" class="terms_and_conditions_text2">{% trans "By submitting you " %}<a
+                            href="https://www.atlasrtx.com/messaging-terms-conditions" target="_blank">{% trans "agree" %}</a
+                    >{% trans "to receive text messages at the number provided. Message/data rates apply." %}</span>
                     <div class="chat_login" style="display: none;">
                         <button id="btnSendLogin" class="chat_primary_bg" onclick="this.disabled = true;" disabled="">
-                            <div class="login_text">Start Chatting!!</div>
+                            <div class="login_text">{% trans "Start Chatting!!" %}</div>
                         </button>
                     </div>
                     <div class="flex-spacer"></div>
@@ -152,9 +153,9 @@
                         <div class="footer_container">
                             <a class="footer_link" target="_blank" href="" style="display: none;"></a>
                             <span class="footer_divider" style="display: none;">|</span>
-                            <span class="footer_text">Powered by <a
+                            <span class="footer_text">{% trans "Powered by " %}<a
                                     href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
-                                    target="_blank">AtlasRTX </a></span>
+                                    target="_blank">{% trans "AtlasRTX " %}</a></span>
                         </div>
                     </div>
                 </div>
@@ -194,22 +195,20 @@
                     <div class="chat_message_wrapper">
                         <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                              style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
-                        <div class="chat_user_name"><span>PlayerOne | 16:04</span></div>
+                        <div class="chat_user_name"><span>{% trans "PlayerOne | 16:04" %}</span></div>
                         <div class="chat_message_bubble"><span id="element1"
-                                                               style="display:inline;">How can I help you?</span>
+                                                               style="display:inline;">{% trans "How can I help you?" %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
                     <div class="chat_message_wrapper">
-                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">
-                            I am the customer service of the Musimo. I am ready to help you if you have any questions.
-                        </span>
+                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">{% trans "I am the customer service of the Musimo. I am ready to help you if you have any questions." %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
 
                     <div class="chat_message_wrapper">
-                        <div class="chat_message_bubble"><span id="element3" style="display:inline;">Where do you want to start?</span>
+                        <div class="chat_message_bubble"><span id="element3" style="display:inline;">{% trans "Where do you want to start?" %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -221,11 +220,11 @@
                                   data-atlas-value="Learn about guitars">Hi</span>
                             <span
                                     data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
-                                    class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">Recent orders</span>
+                                    class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">{% trans "Recent orders" %}</span>
                             <span
                                     data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
                                     class="chat_button_suggested_response chat_primary"
-                                    data-atlas-value="Learn to play">Give me some recommendations</span>
+                                    data-atlas-value="Learn to play">{% trans "Give me some recommendations" %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -237,9 +236,9 @@
                     <div class="footer_container">
                         <a class="footer_link" target="_blank" href="" style="display: none;"></a>
                         <span class="footer_divider" style="display: none;">|</span>
-                        <span class="footer_text">Group 8 <a
+                        <span class="footer_text">{% trans "Group 8 " %}<a
                                 href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
-                                target="_blank">Not finished</a></span>
+                                target="_blank">{% trans "Not finished" %}</a></span>
                     </div>
                 </div>
                 <div id="chat_message_rating_context">
@@ -247,11 +246,12 @@
                         <svg id="sentiment_close" class="icon icon_close">
                             <use xlink:href="/images/webchat/icons.svg?v=2#times"></use>
                         </svg>
-                        <p>Thank you for your feedback.<br>How can I improve?</p>
+                        <p>{% trans "Thank you for your feedback." %}<br
+                        >{% trans "How can I improve?" %}</p>
                     </div>
                     <div class="chat_input_area chat_bottom">
                         <div class="content-maxwidth">
-                            <div id="chat_message_rating_count">250</div>
+                            <div id="chat_message_rating_count">{% trans "250" %}</div>
                             <textarea id="tbRatingMessage" class="chat_input_text" placeholder="Comments" rows="1"
                                       maxlength="250" style="height: auto;"></textarea>
                             <div class="chat_input_icon_group_satisfaction">
@@ -275,12 +275,13 @@
                                             xlink:href="/images/webchat/icons.svg?v=2#frown"></use></svg>
                                 </span>
                             <div class="chat_message_rating_thanks" style="display:none">
-                                <span class="undo"><a href="javascript:void(0);" class="chat_link">Undo</a>&nbsp;&mdash;&nbsp;</span>
+                                <span class="undo"><a href="javascript:void(0);" class="chat_link">{% trans "Undo" %}</a
+                                >&nbsp;&mdash;&nbsp;</span>
                                 <span class="chat_message_rating_thanks_positive">
                                         Thank you.<svg class="icon"><use
                                         xlink:href="/images/webchat/icons.svg?v=2#smile"></use></svg>
                                     </span>
-                                <span class="chat_message_rating_thanks_negative" style="display:none">Thank you for your feedback.</span>
+                                <span class="chat_message_rating_thanks_negative" style="display:none">{% trans "Thank you for your feedback." %}</span>
                             </div>
                         </div>
                     </script>
@@ -290,14 +291,12 @@
             <div class="chat_establish_connection" style="display: none">
                 <div class="chat_connection_loader panel_shadow">
                     <div class="chat_establish_bubble">
-                        <div class="content-maxwidth">
-                            Establishing secure connection...
-                        </div>
+                        <div class="content-maxwidth">{% trans "Establishing secure connection..." %}</div>
                     </div>
                 </div>
             </div>
             <div class="chat_error" style="display: none;">
-                <span id="chatErrorMessage" class="chat_error_message">Error</span>
+                <span id="chatErrorMessage" class="chat_error_message">{% trans "Error" %}</span>
                 <div class="chat_error_dismiss">
                     <svg class="chat_footer_close_img" viewBox="0 0 16 16" height="16" width="16" alt="Dismiss error">
                         <use xlink:href="/images/webchat/icons.svg?v=2#times"></use>
@@ -319,7 +318,7 @@
                             </svg>
                             <input id="fileupload" type="file" name="files[]" multiple="" style="display: none;">
                         </div>
-                        <label class="sr-only" for="tbMessage">Message Text</label>
+                        <label class="sr-only" for="tbMessage">{% trans "Message Text" %}</label>
                         <!-- maxlength set to 1500 because backend data limit for user messages is 1547 -->
                         <form onsubmit="return false;">
                             <input id="tbMessage" class="chat_input_text"
@@ -476,7 +475,7 @@
                     $(`<div class="chat_message_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
-            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+            <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[0]['text']}
                             <img src="${response[0]['image']}" style="width:100%">
@@ -488,7 +487,7 @@
                     $(`<div class="chat_message_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
-            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+            <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
                         <div class="chat_message_bubble">
                         <span id="element2" style="display:inline;">
                             <img src="${response[0]['image']}" style="width:100%">
@@ -498,7 +497,7 @@
                     $(`<div class="chat_message_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
-            <div class="chat_user_name"><span>Customer Service | ${new Date().toLocaleTimeString("en-US")}</span></div>
+            <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[0]['text']}
                         </span>
