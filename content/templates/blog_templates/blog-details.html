@@ -38,7 +38,7 @@
         <div class="page-header">
             <div class="page-header-content">
                 <div class="container">
-                    <h2 class="heading">Blog</h2>
+                    <h2 class="heading">{% trans "Blog" %}</h2>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                                 <div class="post_content">
                                     <div class="post_header">
                                         <h2 class="post_title">
-                                            <a href="#">Live with no excuses and travel with no regrets</a>
+                                            <a href="#">{% trans "Live with no excuses and travel with no regrets" %}</a>
                                         </h2>
                                     </div>
                                     <div class="post_fulltext">
@@ -70,7 +70,7 @@
                                     <div class="post_footer">
                                         <div class="post_share" data-aos="fade-up" data-aos-duration="700">
                                             <ul class="share_list">
-                                                <li>Share:</li>
+                                                <li>{% trans "Share:" %}</li>
                                                 <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
                                                         class="ion-social-facebook"></i></a></li>
                                                 <li data-aos="fade-up" data-aos-duration="700"><a href="#"><i
@@ -99,10 +99,8 @@
                                          class="avatar">
                                 </div>
                                 <div class="author-block">
-                                    <h5 class="author_name">Patricia Doe</h5>
-                                    <p class="author_intro">Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima
-                                        veniam, quis nostrum<br/>
-                                        exercitatonem mosequatu autem vel eum ivenia.</p>
+                                    <h5 class="author_name">{% trans "Patricia Doe" %}</h5>
+                                    <p class="author_intro">{% trans "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum" %}<br/>{% trans "exercitatonem mosequatu autem vel eum ivenia." %}</p>
                                     <div class="social_media">
                                         <ul class="social_list">
                                             <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
@@ -120,7 +118,7 @@
 
                             <div class="related_posts" data-aos="fade-up" data-aos-duration="900">
                                 <div class="sec_title">
-                                    <h1>Similar Posts</h1>
+                                    <h1>{% trans "Similar Posts" %}</h1>
                                 </div>
                                 <div class="more_posts">
                                     <div class="row">
@@ -134,8 +132,7 @@
                                                 <div class="post_content">
                                                     <div class="post_header">
                                                         <h2 class="post_title">
-                                                            <a href="#">To me Life is either a daring adventure or
-                                                                nothing</a>
+                                                            <a href="#">{% trans "To me Life is either a daring adventure or nothing" %}</a>
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -152,7 +149,7 @@
                                                 <div class="post_content">
                                                     <div class="post_header">
                                                         <h2 class="post_title">
-                                                            <a href="#">Life begins at the end of your comfort zone</a>
+                                                            <a href="#">{% trans "Life begins at the end of your comfort zone" %}</a>
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -166,7 +163,7 @@
                                 <div class="col-lg-10">
                                     <div class="comment_sec" data-aos="fade-up" data-aos-duration="700">
                                         <div class="contact_title">
-                                            <h3>Comments</h3>
+                                            <h3>{% trans "Comments" %}</h3>
                                             <div class="title_line"></div>
                                         </div>
                                         <ul class="comment_area">
@@ -207,7 +204,7 @@
 
                                     <div class="contact" data-aos="fade-up" data-aos-duration="900">
                                         <div class="contact_title">
-                                            <h3>Make A Comment</h3>
+                                            <h3>{% trans "Make A Comment" %}</h3>
                                             <div class="title_line"></div>
                                         </div>
                                         <form class="contact_form" method="post">
@@ -238,33 +235,33 @@
                         <div class="col-lg-4 col-md-5">
                             <div class="sidebar" data-aos="fade-up">
                                 <div id="custom_1" class="widget widget_custom">
-                                    <h4 class="widget_title">About Author</h4>
+                                    <h4 class="widget_title">{% trans "About Author" %}</h4>
                                     <div class="sidebar_author">
                                         <img src="{{ post.author.profile.image.url }}" alt="img">
-                                        <p class="intro"><a href="{% url 'chat:index_new' to=post.author.id %}"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Communicate With Him/Her</a></p>
+                                        <p class="intro"><a href="{% url 'chat:index_new' to=post.author.id %}"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>{% trans "Communicate With Him/Her" %}</a></p>
 
                                         <div class="social_profile">
                                             <div class="social_media">
                                                 <a href="#">
                                                     <i class="ion-social-facebook"></i>
-                                                    <div class="name">Facebook</div>
-                                                    <div class="off_text">45k Likes</div>
+                                                    <div class="name">{% trans "Facebook" %}</div>
+                                                    <div class="off_text">{% trans "45k Likes" %}</div>
                                                 </a>
                                             </div>
 
                                             <div class="social_media">
                                                 <a href="#">
                                                     <i class="ion-social-twitter"></i>
-                                                    <div class="name">Twitter</div>
-                                                    <div class="off_text">21k Follower</div>
+                                                    <div class="name">{% trans "Twitter" %}</div>
+                                                    <div class="off_text">{% trans "21k Follower" %}</div>
                                                 </a>
                                             </div>
 
                                             <div class="social_media">
                                                 <a href="#">
                                                     <i class="ion-social-instagram"></i>
-                                                    <div class="name">Instagram</div>
-                                                    <div class="off_text">23k Follower</div>
+                                                    <div class="name">{% trans "Instagram" %}</div>
+                                                    <div class="off_text">{% trans "23k Follower" %}</div>
                                                 </a>
                                             </div>
                                         </div>
@@ -272,12 +269,12 @@
                                 </div>
 
                                 <div id="recent-posts-1" class="widget widget_recent_posts">
-                                    <h4 class="widget_title">Recent Posts</h4>
+                                    <h4 class="widget_title">{% trans "Recent Posts" %}</h4>
                                     <div class="sidebar_recent_posts">
                                         <ul>
-                                            <li><a href="#">Let’s escape in the cityscape</a></li>
-                                            <li><a href="#">Failure doesn’t define anything</a></li>
-                                            <li><a href="#">Bohemian mountain towards Us</a></li>
+                                            <li><a href="#">{% trans "Let’s escape in the cityscape" %}</a></li>
+                                            <li><a href="#">{% trans "Failure doesn’t define anything" %}</a></li>
+                                            <li><a href="#">{% trans "Bohemian mountain towards Us" %}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -289,28 +286,27 @@
                                 </div>
 
                                 <div id="categories-1" class="widget widget_categories">
-                                    <h4 class="widget_title">Categories</h4>
+                                    <h4 class="widget_title">{% trans "Categories" %}</h4>
                                     <div class="sidebar_categories">
                                         <ul class="category_list">
-                                            <li><a href="#">Travel Hacks</a> (5)</li>
-                                            <li><a href="#">South Asia</a> (7)</li>
-                                            <li><a href="#">Travel Photography</a> (4)</li>
-                                            <li><a href="#">Wildlife Adventure</a> (2)</li>
-                                            <li><a href="#">Road Trips</a> (4)</li>
+                                            <li><a href="#">{% trans "Travel Hacks (5)" %}</a></li>
+                                            <li><a href="#">{% trans "South Asia (7)" %}</a></li>
+                                            <li><a href="#">{% trans "Travel Photography (4)" %}</a></li>
+                                            <li><a href="#">{% trans "Wildlife Adventure (2)" %}</a></li>
+                                            <li><a href="#">{% trans "Road Trips (4)" %}</a></li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div id="popular-1" class="widget widget_popular_posts">
-                                    <h4 class="widget_title">Most Read Blogs</h4>
+                                    <h4 class="widget_title">{% trans "Most Read Blogs" %}</h4>
                                     <div class="sidebar_popular_posts">
                                         <div class="popular_post_item">
                                             <div class="popular_post_item_wrapper">
                                                 <img src="../../assets/assets/img_for_shop/images/popular/1.jpg"
                                                      alt="img">
                                                 <div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">Beautiful afternoon
-                                                        boating in Morine Lake</a></h4>
+                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "Beautiful afternoon boating in Morine Lake" %}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,8 +315,7 @@
                                                 <img src="../../assets/assets/img_for_shop/images/popular/2.jpg"
                                                      alt="img">
                                                 <div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">Sudden trip to grand
-                                                        Canyons</a></h4>
+                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "Sudden trip to grand Canyons" %}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,8 +324,7 @@
                                                 <img src="../../assets/assets/img_for_shop/images/popular/3.jpg"
                                                      alt="img">
                                                 <div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">First Snow
-                                                        Experience of my life</a></h4>
+                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "First Snow Experience of my life" %}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -338,15 +332,15 @@
                                 </div>
 
                                 <div id="tags-1" class="widget widget_tag_cloud">
-                                    <h4 class="widget_title">Tag Cloud</h4>
+                                    <h4 class="widget_title">{% trans "Tag Cloud" %}</h4>
                                     <div class="tagcloud">
-                                        <a href="#">Travel</a>
-                                        <a href="#">PHOTOGRAPHY</a>
-                                        <a href="#">FASHION</a>
-                                        <a href="#">Travel</a>
-                                        <a href="#">HOBBY</a>
-                                        <a href="#">PHOTOGRAPHY</a>
-                                        <a href="#">NATURE</a>
+                                        <a href="#">{% trans "Travel" %}</a>
+                                        <a href="#">{% trans "PHOTOGRAPHY" %}</a>
+                                        <a href="#">{% trans "FASHION" %}</a>
+                                        <a href="#">{% trans "Travel" %}</a>
+                                        <a href="#">{% trans "HOBBY" %}</a>
+                                        <a href="#">{% trans "PHOTOGRAPHY" %}</a>
+                                        <a href="#">{% trans "NATURE" %}</a>
                                     </div>
                                 </div>
 
