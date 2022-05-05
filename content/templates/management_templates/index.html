@@ -7,16 +7,14 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
 {% endblock %}
 
 {% block page_header %}
     <div class="page-header">
-        <h1>
-            Home
-            <small>
+        <h1>{% trans "Home" %}<small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
 
             </small>
@@ -33,14 +31,10 @@
 										<i class="ace-icon fa fa-times"></i>
 									</button>
 
-									<i class="ace-icon fa fa-check green"></i>
-
-									Welcome to
-									<strong class="green">
-										Ace
-										<small>(v1.4)</small>
-									</strong>,
-	лёгкий, многофункциональный и простой в использовании шаблон для админки на bootstrap 3.3.6. Загрузить исходники с <a href="https://github.com/bopoda/ace">github</a> (with minified ace js/css files).
+									<i class="ace-icon fa fa-check green"></i>{% trans "Welcome to" %}<strong class="green"
+                                >{% trans "Ace" %}<small>(v1.4)
+                                </small>
+									</strong>, лёгкий, многофункциональный и простой в использовании шаблон для админки на bootstrap 3.3.6. Загрузить исходники с <a href="https://github.com/bopoda/ace">{% trans "github" %}</a> (with minified ace js/css files).
 								</div>
 
 								<div class="row">
@@ -54,7 +48,7 @@
 
 											<div class="infobox-data">
 												<span class="infobox-data-number">{{ counts.user }}</span>
-												<div class="infobox-content">Users</div>
+												<div class="infobox-content">{% trans "Users" %}</div>
 											</div>
 
 											<div class="stat stat-success">8%</div>
@@ -67,12 +61,10 @@
 
 											<div class="infobox-data">
 												<span class="infobox-data-number">{{ counts.instrument }}</span>
-												<div class="infobox-content">Instruments</div>
+												<div class="infobox-content">{% trans "Instruments" %}</div>
 											</div>
 
-											<div class="badge badge-success">
-												+32%
-												<i class="ace-icon fa fa-arrow-up"></i>
+											<div class="badge badge-success">+32%<i class="ace-icon fa fa-arrow-up"></i>
 											</div>
 										</div>
 
@@ -83,7 +75,7 @@
 
 											<div class="infobox-data">
 												<span class="infobox-data-number">{{ counts.order }}</span>
-												<div class="infobox-content">Orders</div>
+												<div class="infobox-content">{% trans "Orders" %}</div>
 											</div>
 											<div class="stat stat-important">4%</div>
 										</div>
@@ -95,7 +87,7 @@
 
 											<div class="infobox-data">
 												<span class="infobox-data-number">{{ counts.category }}</span>
-												<div class="infobox-content">Categories</div>
+												<div class="infobox-content">{% trans "Categories" %}</div>
 											</div>
 										</div>
 
@@ -106,12 +98,10 @@
 
 											<div class="infobox-data">
 												<span class="infobox-data-number">{{ counts.review }}</span>
-												<div class="infobox-content">Reviews</div>
+												<div class="infobox-content">{% trans "Reviews" %}</div>
 											</div>
 
-											<div class="badge badge-success">
-												7.2%
-												<i class="ace-icon fa fa-arrow-up"></i>
+											<div class="badge badge-success">{% trans "7.2%" %}<i class="ace-icon fa fa-arrow-up"></i>
 											</div>
 										</div>
 
@@ -123,12 +113,10 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-text">traffic used</span>
+												<span class="infobox-text">{% trans "traffic used" %}</span>
 
 												<div class="infobox-content">
-													<span class="bigger-110">~</span>
-													58GB remaining
-												</div>
+													<span class="bigger-110">~</span>{% trans "58GB remaining" %}</div>
 											</div>
 										</div>
 
@@ -142,8 +130,8 @@
 											</div>
 
 											<div class="infobox-data">
-												<div class="infobox-content">Task</div>
-												<div class="infobox-content">Completion</div>
+												<div class="infobox-content">{% trans "Task" %}</div>
+												<div class="infobox-content">{% trans "Completion" %}</div>
 											</div>
 										</div>
 
@@ -153,7 +141,7 @@
 											</div>
 
 											<div class="infobox-data">
-												<div class="infobox-content">Earnings</div>
+												<div class="infobox-content">{% trans "Earnings" %}</div>
 												<div class="infobox-content">$32,000</div>
 											</div>
 										</div>
@@ -164,8 +152,8 @@
 											</div>
 
 											<div class="infobox-data">
-												<div class="infobox-content">Downloads</div>
-												<div class="infobox-content">1,205</div>
+												<div class="infobox-content">{% trans "Downloads" %}</div>
+												<div class="infobox-content">{% trans "1,205" %}</div>
 											</div>
 										</div>
 									</div>
@@ -176,44 +164,32 @@
 										<div class="widget-box">
 											<div class="widget-header widget-header-flat widget-header-small">
 												<h5 class="widget-title">
-													<i class="ace-icon fa fa-signal"></i>
-													Traffic Sources
-												</h5>
+													<i class="ace-icon fa fa-signal"></i>{% trans "Traffic Sources" %}</h5>
 
 												<div class="widget-toolbar no-border">
 													<div class="inline dropdown-hover">
-														<button class="btn btn-minier btn-primary">
-															This Week
-															<i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+														<button class="btn btn-minier btn-primary">{% trans "This Week" %}<i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
 														</button>
 
 														<ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
 															<li class="active">
 																<a href="#" class="blue">
-																	<i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
-																	This Week
-																</a>
+																	<i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>{% trans "This Week" %}</a>
 															</li>
 
 															<li>
 																<a href="#">
-																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-																	Last Week
-																</a>
+																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>{% trans "Last Week" %}</a>
 															</li>
 
 															<li>
 																<a href="#">
-																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-																	This Month
-																</a>
+																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>{% trans "This Month" %}</a>
 															</li>
 
 															<li>
 																<a href="#">
-																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-																	Last Month
-																</a>
+																	<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>{% trans "Last Month" %}</a>
 															</li>
 														</ul>
 													</div>
@@ -229,26 +205,20 @@
 													<div class="clearfix">
 														<div class="grid3">
 															<span class="grey">
-																<i class="ace-icon fa fa-facebook-square fa-2x blue"></i>
-																&nbsp; likes
-															</span>
-															<h4 class="bigger pull-right">1,255</h4>
+																<i class="ace-icon fa fa-facebook-square fa-2x blue"></i>{% trans "likes" %}</span>
+															<h4 class="bigger pull-right">{% trans "1,255" %}</h4>
 														</div>
 
 														<div class="grid3">
 															<span class="grey">
-																<i class="ace-icon fa fa-twitter-square fa-2x purple"></i>
-																&nbsp; tweets
-															</span>
-															<h4 class="bigger pull-right">941</h4>
+																<i class="ace-icon fa fa-twitter-square fa-2x purple"></i>{% trans "tweets" %}</span>
+															<h4 class="bigger pull-right">{% trans "941" %}</h4>
 														</div>
 
 														<div class="grid3">
 															<span class="grey">
-																<i class="ace-icon fa fa-pinterest-square fa-2x red"></i>
-																&nbsp; pins
-															</span>
-															<h4 class="bigger pull-right">1,050</h4>
+																<i class="ace-icon fa fa-pinterest-square fa-2x red"></i>{% trans "pins" %}</span>
+															<h4 class="bigger pull-right">{% trans "1,050" %}</h4>
 														</div>
 													</div>
 												</div><!-- /.widget-main -->
@@ -264,9 +234,7 @@
 										<div class="widget-box transparent">
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
-													<i class="ace-icon fa fa-star orange"></i>
-													Popular Instruments
-												</h4>
+													<i class="ace-icon fa fa-star orange"></i>{% trans "Popular Instruments" %}</h4>
 
 												<div class="widget-toolbar">
 													<a href="#" data-action="collapse">
@@ -281,16 +249,13 @@
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>name
-																</th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>{% trans "name" %}</th>
 
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>price
-																</th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>{% trans "price" %}</th>
 
 																<th class="hidden-480">
-																	<i class="ace-icon fa fa-caret-right blue"></i>status
-																</th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>{% trans "status" %}</th>
 															</tr>
 														</thead>
 
@@ -313,31 +278,31 @@
                                                             {% endfor %}
 
 {#															<tr>#}
-{#																<td>online.com</td>#}
+{#																<td>{% trans "online.com" %}</td>#}
 {##}
 {#																<td>#}
 {#																	<b class="blue">$16.45</b>#}
 {#																</td>#}
 {##}
 {#																<td class="hidden-480">#}
-{#																	<span class="label label-success arrowed-in arrowed-in-right">approved</span>#}
+{#																	<span class="label label-success arrowed-in arrowed-in-right">{% trans "approved" %}</span>#}
 {#																</td>#}
 {#															</tr>#}
 {##}
 {#															<tr>#}
-{#																<td>newnet.com</td>#}
+{#																<td>{% trans "newnet.com" %}</td>#}
 {##}
 {#																<td>#}
 {#																	<b class="blue">$15.00</b>#}
 {#																</td>#}
 {##}
 {#																<td class="hidden-480">#}
-{#																	<span class="label label-danger arrowed">pending</span>#}
+{#																	<span class="label label-danger arrowed">{% trans "pending" %}</span>#}
 {#																</td>#}
 {#															</tr>#}
 {##}
 {#															<tr>#}
-{#																<td>web.com</td>#}
+{#																<td>{% trans "web.com" %}</td>#}
 {##}
 {#																<td>#}
 {#																	<small>#}
@@ -348,20 +313,20 @@
 {##}
 {#																<td class="hidden-480">#}
 {#																	<span class="label arrowed">#}
-{#																		<s>out of stock</s>#}
+{#																		<s>{% trans "out of stock" %}</s>#}
 {#																	</span>#}
 {#																</td>#}
 {#															</tr>#}
 {##}
 {#															<tr>#}
-{#																<td>domain.com</td>#}
+{#																<td>{% trans "domain.com" %}</td>#}
 {##}
 {#																<td>#}
 {#																	<b class="blue">$12.00</b>#}
 {#																</td>#}
 {##}
 {#																<td class="hidden-480">#}
-{#																	<span class="label label-warning arrowed arrowed-right">SOLD</span>#}
+{#																	<span class="label label-warning arrowed arrowed-right">{% trans "SOLD" %}</span>#}
 {#																</td>#}
 {#															</tr>#}
 														</tbody>
@@ -402,21 +367,20 @@
 										<div class="widget-box transparent" id="recent-box">
 											<div class="widget-header">
 												<h4 class="widget-title lighter smaller">
-													<i class="ace-icon fa fa-rss orange"></i>RECENT
-												</h4>
+													<i class="ace-icon fa fa-rss orange"></i>{% trans "RECENT" %}</h4>
 
 												<div class="widget-toolbar no-border">
 													<ul class="nav nav-tabs" id="recent-tab">
 														<li class="active">
-															<a data-toggle="tab" href="#task-tab">Tasks</a>
+															<a data-toggle="tab" href="#task-tab">{% trans "Tasks" %}</a>
 														</li>
 
 														<li>
-															<a data-toggle="tab" href="#member-tab">Members</a>
+															<a data-toggle="tab" href="#member-tab">{% trans "Members" %}</a>
 														</li>
 
 														<li>
-															<a data-toggle="tab" href="#comment-tab">Comments</a>
+															<a data-toggle="tab" href="#comment-tab">{% trans "Comments" %}</a>
 														</li>
 													</ul>
 												</div>
@@ -427,15 +391,13 @@
 													<div class="tab-content padding-8">
 														<div id="task-tab" class="tab-pane active">
 															<h4 class="smaller lighter green">
-																<i class="ace-icon fa fa-list"></i>
-																Sortable Lists
-															</h4>
+																<i class="ace-icon fa fa-list"></i>{% trans "Sortable Lists" %}</h4>
 
 															<ul id="tasks" class="item-list">
 																<li class="item-orange clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Answering customer questions</span>
+																		<span class="lbl">{% trans "Answering customer questions" %}</span>
 																	</label>
 
 																	<div class="pull-right easy-pie-chart percentage" data-size="30" data-color="#ECCB71" data-percent="42">
@@ -446,7 +408,7 @@
 																<li class="item-red clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Fixing bugs</span>
+																		<span class="lbl">{% trans "Fixing bugs" %}</span>
 																	</label>
 
 																	<div class="pull-right action-buttons">
@@ -471,7 +433,7 @@
 																<li class="item-default clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Adding new features</span>
+																		<span class="lbl">{% trans "Adding new features" %}</span>
 																	</label>
 
 																	<div class="pull-right pos-rel dropdown-hover">
@@ -502,28 +464,28 @@
 																<li class="item-blue clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Upgrading scripts used in template</span>
+																		<span class="lbl">{% trans "Upgrading scripts used in template" %}</span>
 																	</label>
 																</li>
 
 																<li class="item-grey clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Adding new skins</span>
+																		<span class="lbl">{% trans "Adding new skins" %}</span>
 																	</label>
 																</li>
 
 																<li class="item-green clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Updating server software up</span>
+																		<span class="lbl">{% trans "Updating server software up" %}</span>
 																	</label>
 																</li>
 
 																<li class="item-pink clearfix">
 																	<label class="inline">
 																		<input type="checkbox" class="ace" />
-																		<span class="lbl"> Cleaning up</span>
+																		<span class="lbl">{% trans "Cleaning up" %}</span>
 																	</label>
 																</li>
 															</ul>
@@ -538,16 +500,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Bob Doe</a>
+																			<a href="#">{% trans "Bob Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">20 min</span>
+																			<span class="green">{% trans "20 min" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-warning label-sm">pending</span>
+																			<span class="label label-warning label-sm">{% trans "pending" %}</span>
 
 																			<div class="inline position-relative">
 																				<button class="btn btn-minier btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown" data-position="auto">
@@ -591,16 +553,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Joe Doe</a>
+																			<a href="#">{% trans "Joe Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">1 hour</span>
+																			<span class="green">{% trans "1 hour" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-warning label-sm">pending</span>
+																			<span class="label label-warning label-sm">{% trans "pending" %}</span>
 
 																			<div class="inline position-relative">
 																				<button class="btn btn-minier btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown" data-position="auto">
@@ -644,16 +606,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Jim Doe</a>
+																			<a href="#">{% trans "Jim Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">2 hour</span>
+																			<span class="green">{% trans "2 hour" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-warning label-sm">pending</span>
+																			<span class="label label-warning label-sm">{% trans "pending" %}</span>
 
 																			<div class="inline position-relative">
 																				<button class="btn btn-minier btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown" data-position="auto">
@@ -697,16 +659,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Alex Doe</a>
+																			<a href="#">{% trans "Alex Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">3 hour</span>
+																			<span class="green">{% trans "3 hour" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-danger label-sm">blocked</span>
+																			<span class="label label-danger label-sm">{% trans "blocked" %}</span>
 																		</div>
 																	</div>
 																</div>
@@ -718,16 +680,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Bob Doe</a>
+																			<a href="#">{% trans "Bob Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">6 hour</span>
+																			<span class="green">{% trans "6 hour" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-success label-sm arrowed-in">approved</span>
+																			<span class="label label-success label-sm arrowed-in">{% trans "approved" %}</span>
 																		</div>
 																	</div>
 																</div>
@@ -739,16 +701,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Susan</a>
+																			<a href="#">{% trans "Susan" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">yesterday</span>
+																			<span class="green">{% trans "yesterday" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-success label-sm arrowed-in">approved</span>
+																			<span class="label label-success label-sm arrowed-in">{% trans "approved" %}</span>
 																		</div>
 																	</div>
 																</div>
@@ -760,16 +722,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Phil Doe</a>
+																			<a href="#">{% trans "Phil Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">2 days ago</span>
+																			<span class="green">{% trans "2 days ago" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-info label-sm arrowed-in arrowed-in-right">online</span>
+																			<span class="label label-info label-sm arrowed-in arrowed-in-right">{% trans "online" %}</span>
 																		</div>
 																	</div>
 																</div>
@@ -781,16 +743,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Alexa Doe</a>
+																			<a href="#">{% trans "Alexa Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">3 days ago</span>
+																			<span class="green">{% trans "3 days ago" %}</span>
 																		</div>
 
 																		<div>
-																			<span class="label label-success label-sm arrowed-in">approved</span>
+																			<span class="label label-success label-sm arrowed-in">{% trans "approved" %}</span>
 																		</div>
 																	</div>
 																</div>
@@ -802,9 +764,7 @@
 																<i class="ace-icon fa fa-users fa-2x green middle"></i>
 
 																&nbsp;
-																<a href="#" class="btn btn-sm btn-white btn-info">
-																	See all members &nbsp;
-																	<i class="ace-icon fa fa-arrow-right"></i>
+																<a href="#" class="btn btn-sm btn-white btn-info">{% trans "See all members &nbsp;" %}<i class="ace-icon fa fa-arrow-right"></i>
 																</a>
 															</div>
 
@@ -820,18 +780,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Bob Doe</a>
+																			<a href="#">{% trans "Bob Doe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="green">6 min</span>
+																			<span class="green">{% trans "6 min" %}</span>
 																		</div>
 
 																		<div class="text">
-																			<i class="ace-icon fa fa-quote-left"></i>
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-																		</div>
+																			<i class="ace-icon fa fa-quote-left"></i>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;" %}</div>
 																	</div>
 
 																	<div class="tools">
@@ -876,18 +834,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Jennifer</a>
+																			<a href="#">{% trans "Jennifer" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="blue">15 min</span>
+																			<span class="blue">{% trans "15 min" %}</span>
 																		</div>
 
 																		<div class="text">
-																			<i class="ace-icon fa fa-quote-left"></i>
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-																		</div>
+																			<i class="ace-icon fa fa-quote-left"></i>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;" %}</div>
 																	</div>
 
 																	<div class="tools">
@@ -910,18 +866,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Joe</a>
+																			<a href="#">{% trans "Joe" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="orange">22 min</span>
+																			<span class="orange">{% trans "22 min" %}</span>
 																		</div>
 
 																		<div class="text">
-																			<i class="ace-icon fa fa-quote-left"></i>
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-																		</div>
+																			<i class="ace-icon fa fa-quote-left"></i>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;" %}</div>
 																	</div>
 
 																	<div class="tools">
@@ -944,18 +898,16 @@
 
 																	<div class="body">
 																		<div class="name">
-																			<a href="#">Rita</a>
+																			<a href="#">{% trans "Rita" %}</a>
 																		</div>
 
 																		<div class="time">
 																			<i class="ace-icon fa fa-clock-o"></i>
-																			<span class="red">50 min</span>
+																			<span class="red">{% trans "50 min" %}</span>
 																		</div>
 
 																		<div class="text">
-																			<i class="ace-icon fa fa-quote-left"></i>
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-																		</div>
+																			<i class="ace-icon fa fa-quote-left"></i>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;" %}</div>
 																	</div>
 
 																	<div class="tools">
@@ -978,9 +930,7 @@
 																<i class="ace-icon fa fa-comments-o fa-2x green middle"></i>
 
 																&nbsp;
-																<a href="#" class="btn btn-sm btn-white btn-info">
-																	See all comments &nbsp;
-																	<i class="ace-icon fa fa-arrow-right"></i>
+																<a href="#" class="btn btn-sm btn-white btn-info">{% trans "See all comments &nbsp;" %}<i class="ace-icon fa fa-arrow-right"></i>
 																</a>
 															</div>
 
@@ -996,9 +946,7 @@
 										<div class="widget-box">
 											<div class="widget-header">
 												<h4 class="widget-title lighter smaller">
-													<i class="ace-icon fa fa-comment blue"></i>
-													Conversation
-												</h4>
+													<i class="ace-icon fa fa-comment blue"></i>{% trans "Conversation" %}</h4>
 											</div>
 
 											<div class="widget-body">
@@ -1012,13 +960,13 @@
 															<div class="body">
 																<div class="time">
 																	<i class="ace-icon fa fa-clock-o"></i>
-																	<span class="green">4 sec</span>
+																	<span class="green">{% trans "4 sec" %}</span>
 																</div>
 
 																<div class="name">
-																	<a href="#">Alexa</a>
+																	<a href="#">{% trans "Alexa" %}</a>
 																</div>
-																<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.</div>
+																<div class="text">{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis." %}</div>
 
 																<div class="tools">
 																	<a href="#" class="btn btn-minier btn-info">
@@ -1036,13 +984,13 @@
 															<div class="body">
 																<div class="time">
 																	<i class="ace-icon fa fa-clock-o"></i>
-																	<span class="blue">38 sec</span>
+																	<span class="blue">{% trans "38 sec" %}</span>
 																</div>
 
 																<div class="name">
-																	<a href="#">John</a>
+																	<a href="#">{% trans "John" %}</a>
 																</div>
-																<div class="text">Raw denim you probably haven&#39;t heard of them jean shorts Austin.</div>
+																<div class="text">{% trans "Raw denim you probably haven&#39;t heard of them jean shorts Austin." %}</div>
 
 																<div class="tools">
 																	<a href="#" class="btn btn-minier btn-info">
@@ -1060,14 +1008,14 @@
 															<div class="body">
 																<div class="time">
 																	<i class="ace-icon fa fa-clock-o"></i>
-																	<span class="orange">2 min</span>
+																	<span class="orange">{% trans "2 min" %}</span>
 																</div>
 
 																<div class="name">
-																	<a href="#">Bob</a>
-																	<span class="label label-info arrowed arrowed-in-right">admin</span>
+																	<a href="#">{% trans "Bob" %}</a>
+																	<span class="label label-info arrowed arrowed-in-right">{% trans "admin" %}</span>
 																</div>
-																<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.</div>
+																<div class="text">{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis." %}</div>
 
 																<div class="tools">
 																	<a href="#" class="btn btn-minier btn-info">
@@ -1085,13 +1033,13 @@
 															<div class="body">
 																<div class="time">
 																	<i class="ace-icon fa fa-clock-o"></i>
-																	<span class="grey">3 min</span>
+																	<span class="grey">{% trans "3 min" %}</span>
 																</div>
 
 																<div class="name">
-																	<a href="#">Jim</a>
+																	<a href="#">{% trans "Jim" %}</a>
 																</div>
-																<div class="text">Raw denim you probably haven&#39;t heard of them jean shorts Austin.</div>
+																<div class="text">{% trans "Raw denim you probably haven&#39;t heard of them jean shorts Austin." %}</div>
 
 																<div class="tools">
 																	<a href="#" class="btn btn-minier btn-info">
@@ -1109,13 +1057,13 @@
 															<div class="body">
 																<div class="time">
 																	<i class="ace-icon fa fa-clock-o"></i>
-																	<span class="green">4 min</span>
+																	<span class="green">{% trans "4 min" %}</span>
 																</div>
 
 																<div class="name">
-																	<a href="#">Alexa</a>
+																	<a href="#">{% trans "Alexa" %}</a>
 																</div>
-																<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+																<div class="text">{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</div>
 
 																<div class="tools">
 																	<a href="#" class="btn btn-minier btn-info">
