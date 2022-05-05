@@ -241,9 +241,7 @@
                                     <h4 class="widget_title">About Author</h4>
                                     <div class="sidebar_author">
                                         <img src="{{ post.author.profile.image.url }}" alt="img">
-                                        <p class="intro">Lorem ipsum dolor sit amet consec adipiscing elit, sed do
-                                            eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum
-                                            suspendise</p>
+                                        <p class="intro"><a href="{% url 'chat:index_new' to=post.author.id %}"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Communicate With Him/Her</a></p>
 
                                         <div class="social_profile">
                                             <div class="social_media">
