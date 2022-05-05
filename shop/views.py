@@ -39,8 +39,9 @@ def forbidden(request):
     return HttpResponse("You are not allowed to view this project!")
 
 
+@xframe_options_exempt
 def new_header(request):
-    return render(request, 'layouts/default/shopper_base2.html', {
+    return render(request, 'layouts/default/loading.html', {
         "back": 0
     })
 

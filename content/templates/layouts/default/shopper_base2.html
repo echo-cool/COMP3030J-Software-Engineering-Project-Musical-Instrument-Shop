@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/language.css" %}" media="all"/>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
+    {#    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>#}
 
 
     {% if home == 1 %}
@@ -66,10 +66,10 @@
     {% endblock %}
     {% block head_link %}
     {% endblock %}
-
 </head>
-<body class="home-page">
-<div class="wrap">
+<body class="home-page" id="home-page">
+
+<div class="wrap" id="wrap">
     <div class="menu_moblie d-flex d-xl-none jsmenumobile align-items-center">
         <a href="javascript:void(0)" title="" class="menuleft">
     <span class="iconmenu">
@@ -1418,18 +1418,18 @@
 
                                         <ul>
                                             <li>
-                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your
+                                                <a href="{% url "shop:orders" %}"><i class="ti-truck" style="color: black"></i>Track your
                                                     Order</a>
                                             </li>
                                             {#                                            <li>#}
                                             {#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
                                             {#                                            </li>#}
                                             <li>
-                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My
+                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user" style="color: black"></i>My
                                                     Profile</a>
                                             </li>
                                             <li>
-                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>Help and Faq</a>
+                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt" style="color: black"></i>Help and Faq</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -2199,7 +2199,10 @@
         <button class="btn btn-success">{% trans 'Change' %}</button>
     </form>
     <!-- popup-quickview -->
+    <!-- Jquery JS Link -->
+{#        <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
 
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
     <!-- End Footer -->
     {#    <script type="text/javascript"#}
     {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
