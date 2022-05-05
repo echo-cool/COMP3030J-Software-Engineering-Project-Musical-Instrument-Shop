@@ -6,10 +6,18 @@
                  src="{{ instrument.image.url }}"
                  alt=""
                  class="product-thumb-front"/>
-            <img style="width: 100%;height:100%"
-                 src="{{ instrument.image.url }}"
-                 alt=""
-                 class="product-thumb-behind"/>
+            {% if instrument.image2 %}
+                <img style="width: 100%;height:100%"
+                     src="{{ instrument.image2.url }}"
+                     alt=""
+                     class="product-thumb-behind"/>
+            {% else %}
+                <img style="width: 100%;height:100%"
+                     src="{{ instrument.image.url }}"
+                     alt=""
+                     class="product-thumb-behind"/>
+            {% endif %}
+
             <div class="info-product-cart">
                 <div class="inner-info-product-cart">
                     <ul>

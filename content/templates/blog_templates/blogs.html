@@ -80,9 +80,9 @@
 
             <div class="top-social-1 social_links">
                 <ul class="top-social">
-                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="{% url 'blog:post' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                    <li id="scroll_category" onclick="scrollCategory()"><a><i class="ion-social-instagram"></i></a></li>
+                    <li onclick="scrollBlogs()"><a><i class="fa fa-th" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
 
@@ -203,50 +203,26 @@
             </div>
         </div>
 
-        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700">
+        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700" id="blog_categories">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
-                            <img src="images/category/1.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Piano</a></h6>
-                                <p class="featured_category_number"><span>06</span> Posts</p>
+                    {% for category, count in category_number.items %}
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
+                                <img src="{{ category.image.url }}" alt="img">
+                                <div class="featured_category_info">
+                                    <h6 class="featured_category_heading"><a href="#">{{ category.category }}</a></h6>
+                                    <p class="featured_category_number"><span>{{ count }}</span> Posts</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="800">
-                            <img src="images/category/2.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Guitar</a></h6>
-                                <p class="featured_category_number"><span>12</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1000">
-                            <img src="images/category/3.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Violin</a></h6>
-                                <p class="featured_category_number"><span>09</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1200">
-                            <img src="images/category/4.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Chinese Instruments</a></h6>
-                                <p class="featured_category_number"><span>16</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
 
-        <div class="main-wrapper">
+        <div class="main-wrapper" id="main_blogs">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
@@ -355,8 +331,22 @@
                                             </div>
                                             <div class="post_content">
                                                 <div class="post_header">
-                                                    <div class="author"><a href="#"><i class="ion-android-create"></i>
-                                                        By {{ post.author }}</a></div>
+                                                    <div class="author" style="display: inline-block;">
+                                                        <a href="javascript:void(0)" class="login js-call-popup-login">
+                                                            <div class="dropdown dropdown-access">
+                                                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                                                <a href="#"><i class="ion-android-create"></i>By {{ post.author }}</a>
+
+                                                                <div class="dropdown-menu" id="account-menu" style="left: 3rem">
+                                                                    <a href="{% url "chat:index_new" to=post.author.id  %}"
+                                                                       class="btn btn-primary"
+                                                                       style="display: block;">Chat with him/her</a>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
                                                     <h2 class="post_title">
                                                         <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title }}</a>
                                                     </h2>
@@ -404,5 +394,20 @@
     <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
     <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
     <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+    <script>
+        function scrollCategory() {
+            let scrollOffset = $('#blog_categories').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+
+        function scrollBlogs() {
+            let scrollOffset = $('#main_blogs').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+    </script>
 
 {% endblock %}

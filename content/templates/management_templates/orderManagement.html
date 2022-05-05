@@ -90,60 +90,60 @@
                         {{ order_item.user.username|truncatewords:5 }}
                     </a>
                 </td>
-                <td> <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a> </td>
+                <td>
+                    <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a>
+                </td>
                 <td class="hidden-480">${{ order_item.total_price }}</td>
                 <td>{{ order_item.created_at }}</td>
 
                 <td class="hidden-480">
                     {% if order_item.delivered %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-success arrowed-right arrowed-in">Delivered</span>
-                        </a>
+                        <span class="label label-sm label-success arrowed-right arrowed-in">Delivered</span>
                     {% elif order_item.shipped %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-info arrowed-right">Shipped</span>
-                        </a>
+                        <span class="label label-sm label-info arrowed-right">Shipped</span>
                     {% elif order_item.packed %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-purple">Packed</span>
-                        </a>
+                        <span class="label label-sm label-purple">Packed</span>
                     {% elif order_item.accepted %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-warning arrowed-in-right">Accepted</span>
-                        </a>
+                        <span class="label label-sm label-warning arrowed-in-right">Accepted</span>
                     {% else %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-inverse arrowed-in-right arrowed">Placed</span>
-                        </a>
+                        <span class="label label-sm label-inverse arrowed-in-right arrowed">Placed</span>
                     {% endif %}
                 </td>
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}">
+                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}"
+                                onclick="window.location.href='{% url 'management:order_state' order_item.id %}'">
                             <i class="ace-icon fa fa-check bigger-120"></i>
                         </button>
+
+                        <button class="btn btn-xs btn-info"
+                                onclick="window.location.href='{% url 'management:update_order' order_item.id %}'">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button>
+
+
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
                         <script>
-                            $("#confirm_button-{{ order_item.id }}").on("click", function (res) {
-                                $("#dialog-confirm").removeClass('hide').dialog({
+                            $("#delete_button-{{ order_item.id }}").on("click", function (res) {
+                                $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
-                                    width: '320',
+                                    width: '300',
                                     modal: true,
-                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the operation?</h4></div>",
                                     title_html: true,
                                     buttons: [
                                         {
-                                            html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
+                                            html: "<i class='ace-icon fa fa-trash-o bigger-120'></i>  Delete the Item",
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
                                                     url: "/api/order/{{ order_item.id }}/",
-                                                    method: "PATCH",
+                                                    method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
-                                                    },
-                                                    data: {
-                                                        "shopper_confirmed": true
                                                     },
                                                     success: function (res) {
                                                         $.ajax({
@@ -152,9 +152,10 @@
                                                             success: function (res) {
                                                                 $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
                                                                 table_events()
+
                                                             }
                                                         });
-                                                        {#alert("Success!");#}
+                                                        alert("Success!");
                                                         console.log(res);
                                                     }
                                                 })
@@ -177,44 +178,49 @@
 
                         </script>
 
-                        <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_order' order_item.id %}'">
-                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        <button class="btn btn-xs {% if order_item.priority == 0 %}btn-warning {% endif %} "
+                                id="priority_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
                         </button>
 
-
-                        <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.id }}">
-                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                        </button>
                         <script>
-                            $("#delete_button-{{ order_item.id }}").on("click", function (res) {
+                            $("#priority_button-{{ order_item.id }}").on("click", function (res) {
                                 $.ajax({
-                                    url: "/api/order/{{ order_item.id }}/",
-                                    method: "DELETE",
+                                    url: "/api/max_order_priority/",
+                                    method: "GET",
                                     headers: {
                                         'X-CSRFTOKEN': '{{ csrf_token }}'
                                     },
-                                    success: function (res) {
+                                    success: function (data) {
+                                        let maxPriority = data['priority']["priority__max"];
                                         $.ajax({
-                                            url: "#",
-                                            method: "GET",
+                                            url: "/api/order/{{ order_item.id }}/",
+                                            method: "PATCH",
+                                            headers: {
+                                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                                            },
+                                            data: {
+                                                "priority": {% if order_item.priority == 0 %}(maxPriority + 1)
+                                                    {% else %}0{% endif %}
+                                            },
                                             success: function (res) {
-                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                table_events()
+                                                $.ajax({
+                                                    url: "#",
+                                                    method: "GET",
+                                                    success: function (res) {
+                                                        $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                        table_events()
 
+                                                    }
+                                                });
+                                                console.log(res);
                                             }
                                         });
-                                        alert("Success!");
-                                        console.log(res);
                                     }
                                 })
                             });
-
                         </script>
 
-                        <button class="btn btn-xs btn-warning">
-                            <i class="ace-icon fa fa-flag bigger-120"></i>
-                        </button>
                     </div>
 
                     <div class="hidden-md hidden-lg">
@@ -382,9 +388,9 @@
         </tbody>
     </table>
 
-    <div id="dialog-confirm" class="hide">
+    <div id="dialog-delete" class="hide">
         <div class="alert alert-info bigger-110">
-            The order will be confirmed and waiting for the buyer to confirm.
+            The order will be deleted and the operation can not be revoked
         </div>
 
         <div class="space-6"></div>

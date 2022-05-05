@@ -1,6 +1,5 @@
 {% extends 'layouts/default/shopper_base2.html' %}
 {% load static %}
-
 {% load i18n %}
 {% load bootstrap4 %}
 
@@ -9,6 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <title>Cool Login</title>
+{#<script src="https://www.google.com/recaptcha/api.js?render=6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH"></script>#}
+{#     <script src="https://www.google.com/recaptcha/api.js"></script>#}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script src="{% static 'assets/assets_for_login/login.js' %}"></script>
     <link href="{% static 'assets/assets_for_login/login.css' %}" rel="stylesheet">
@@ -30,6 +32,11 @@
             color: #cfcfcf;
             text-transform: uppercase;
         }
+
+        .google-recaptcha-box {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 {% endblock %}
 
@@ -39,13 +46,86 @@
         <!-- User Login start -->
         <div class="form login-in">
 
-            <form action="/accounts/log-in/" method="post">
+            <form action="/accounts/log-in-post/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User LOGIN</h2>
-                {% bootstrap_form form %}
+                <!-- Input username start -->
 
+                {% bootstrap_form form %}
+                <style>
+                    #header {
+                        display: none !important;
+                    }
+
+                    #divChatLauncherContainer {
+                        display: none !important;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar {
+                        width: 16px;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar-track {
+                        background-color: #e4e4e4;
+                        border-radius: 100px;
+                    }
+
+                    .sign-up-form-wrapper::-webkit-scrollbar-thumb {
+                        background-color: #d4aa70;
+                        border-radius: 100px;
+                    }
+
+                    .invalid-feedback {
+                        text-align: center;
+                    }
+
+                    .text-muted {
+                        text-align: center;
+                    }
+
+                    #id_remember_me {
+                        appearance: auto;
+                        margin-top: 20px;
+                    }
+
+                    .form-control {
+                        width: 60%;
+                        margin: 0% 20%;
+                    }
+                </style>
+                <script>
+                    $("#id_remember_me").css("appearance", "auto").css("margin-top", "20px");
+                </script>
+                {#                <label for="username">USERNAME</label>#}
+                {#                <label2><input class="username_l" id="username_l" name="email_or_username" required="" type="text"#}
+                {#                               value=""></label2>#}
+                {##}
+                {##}
+                {#                <!-- Input username end -->#}
+                {##}
+                {#                <!-- Input password start -->#}
+                {#                <label for="password">PASSWORD</label>#}
+                {#                <label2><input class="password_l" id="password_l" name="password" required="" type="password"#}
+                {#                               value=""></label2>#}
+                {##}
+                {#                <label>#}
+                {#                    Keep Login State (one month)#}
+                {#                    <input id="remember_me" name="remember_me" type="checkbox" style="appearance: auto;"#}
+                {#                           value="y">#}
+                {#                </label>#}
+                {#                <!-- Input password end -->#}
+
+                <div class="google-recaptcha-box">
+                    <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW" data-callback="verify_result"></div>
+                </div>
                 <p> <!-- User Sign in button start -->
-                    <button type="submit" id="submit_l" class="submit">Sign In</button>
+
+                        <button id="submit_l" class="submit google-verify-button-sign-in" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                                data-callback='onSubmit'
+                                data-action='submit'
+                                >Sign In
+                        </button>
+{#                    <button type="submit" id="submit_l" class="submit">Sign In</button>#}
                 </p>   <!-- User Sign in button end -->
 
                 <!-- User Sign in button end -->
@@ -64,14 +144,37 @@
         <!-- User Loin end -->
 
         <div class="form sign-up">
-            <form action="/accounts/sign-up/" method="post">
+            <form  action="/accounts/sign-up-post/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">User REGISTER</h2>
-
-                {% bootstrap_form form1 %}
-                <!-- Input password end -->
+                <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
+                    {% bootstrap_form form2 %}
+                </div>
+                {#                <!-- Input username start -->#}
+                {#                <label for=" username">USERNAME</label>#}
+                {#                <label2><input class="username_r" id="username_r" name="username" required="" type="text"#}
+                {#                               value=""></label2>#}
+                {#                <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <p id="hint" class="limitation_for_username"> 6-16 characters</p>#}
+                {#                <!-- Input username end -->#}
+                {#                <!-- Input password start -->#}
+                {#                <label for="password">PASSWORD</label>#}
+                {#                <label2><input class="password_r" id="password_r" name="password" required="" type="password"#}
+                {#                               value=""></label2>#}
+                {#                <img id="icon-password" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <p id="hint" class="limitation_for_password"> 6-12 characters</p>#}
+                {#                <label>#}
+                {#                    <span>PASSWORD AGAIN</span>#}
+                {#                    <input class="password" id="password_r2" type="password" required="">#}
+                {#                </label>#}
+                {#                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">#}
+                {#                <!-- Input password end -->#}
                 <p> <!-- User Sign in button start -->
-                    <button type="submit" id="submit_r" class="submit">Sign In</button>
+                    <button type="submit" id="submit_r" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                                data-callback='onSubmit'
+                                data-action='submit'>Sign Up
+                        </button>
+{#                    <button type="submit" id="submit_r" class="submit">Sign In</button>#}
                 </p><!-- User Sign in button end -->
 
                 <p>
@@ -107,7 +210,7 @@
 
             <!-- Administrator login start -->
             <div class="form login-in-second">
-                <form action="login2" method="post">
+                <form id="login-form" action="login2" method="post">
                     {% csrf_token %}
                     <h2 style="font-family: fantasy;font-style: italic">ADMINISTRATOR LOGIN</h2>
                     <!-- Administrator username start -->
@@ -128,7 +231,16 @@
 
                     <!-- Administrator sign in button start -->
                     <p>
-                        <button type="submit" id="submit_l2" class="submit">Sign In</button>
+{#                        <button class="g-recaptcha"#}
+{#                                data-sitekey="reCAPTCHA_site_key"#}
+{#                                data-callback='onSubmit'#}
+{#                                data-action='submit'>Submit#}
+{#                        </button>#}
+
+                        <button type="submit" id="submit_l2" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                                data-callback='onSubmit'
+                                data-action='submit'>Sign In
+                        </button>
                     </p>
                     <!-- Administrator sign in button end -->
                     <p class="college">MusicoMo Musical Instrument Online Store</p>
@@ -138,4 +250,38 @@
         </div>
         <!-- Sub Content end -->
     </div>
+{% endblock %}
+{% block scripts %}
+
+    <script>
+        function onSubmit(token) {
+            console.log("onSubmit google recaptcha");
+            {#document.getElementById("login-form").submit();#}
+            return false;
+        }
+
+
+    </script>
+       <script>
+       $(document).ready(function () {
+            $('.submit').css('background', '#5e5e5e');
+        });
+       function verify_result(token){
+           console.log("verify_result google recaptcha");
+           console.log(token);
+           $('.submit').css('background', '#e5bb60');
+       }
+      {#function ButtonClick(e) {#}
+      {#    console.log("ButtonClick");#}
+      {#  e.preventDefault();#}
+      {#  grecaptcha.ready(function() {#}
+      {#    grecaptcha.execute('6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH', {action: 'submit'}).then(function(token) {#}
+      {#        // Add your logic to submit to your backend server here.#}
+      {#        console.log(token);#}
+      {#    });#}
+      {#  });#}
+      {#$(".submit").on("click", ButtonClick);#}
+  </script>
+
+
 {% endblock %}

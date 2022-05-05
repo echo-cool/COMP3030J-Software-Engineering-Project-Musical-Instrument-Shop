@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_base.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/language.css" %}" media="all"/>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
+    {#    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>#}
 
 
     {% if home == 1 %}
@@ -66,10 +66,10 @@
     {% endblock %}
     {% block head_link %}
     {% endblock %}
-
 </head>
-<body class="home-page">
-<div class="wrap">
+<body class="home-page" id="home-page">
+
+<div class="wrap" id="wrap">
     <div class="menu_moblie d-flex d-xl-none jsmenumobile align-items-center">
         <a href="javascript:void(0)" title="" class="menuleft">
     <span class="iconmenu">
@@ -85,9 +85,19 @@
             </a>
         </div>
         <div class="menuright">
-            <span class="pr-3 js-search-destop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1"  xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>image/svg+xml</format><type
-                    rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata><defs
-                    id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801"></path></g></g></svg></span>
+            <span class="pr-3 js-search-destop">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
+                     height="400" width="400" id="svg2"
+                     version="1.1" xmlns:svg="http://www.w3.org/2000/svg"
+                     xml:space="preserve"><metadata id="metadata8">
+                   </metadata><defs
+                        id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10">
+                    <g transform="scale(0.1)" id="g12">
+                        <path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                              d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801">
+                    </path></g></g>
+                </svg>
+            </span>
             <a href="javascript:void(0)" title="" class="js-call-minicart">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2"
                      version="1.1" xmlns:svg="http://www.w3.org/2000/svg"
@@ -1408,18 +1418,18 @@
 
                                         <ul>
                                             <li>
-                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your
+                                                <a href="{% url "shop:orders" %}"><i class="ti-truck" style="color: black"></i>Track your
                                                     Order</a>
                                             </li>
                                             {#                                            <li>#}
                                             {#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
                                             {#                                            </li>#}
                                             <li>
-                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My
+                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user" style="color: black"></i>My
                                                     Profile</a>
                                             </li>
                                             <li>
-                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>Help and Faq</a>
+                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt" style="color: black"></i>Help and Faq</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -2189,7 +2199,10 @@
         <button class="btn btn-success">{% trans 'Change' %}</button>
     </form>
     <!-- popup-quickview -->
+    <!-- Jquery JS Link -->
+{#        <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
 
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
     <!-- End Footer -->
     {#    <script type="text/javascript"#}
     {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
