@@ -7,22 +7,18 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Update Orders</a>
+            <a href="#">{% trans "Update Orders" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
 {% endblock %}
 
 {% block page_header %}
     <div class="page-header">
-        <h1>
-            Order Management
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Update Order
-            </small>
+        <h1>{% trans "Order Management" %}<small>
+                <i class="ace-icon fa fa-angle-double-right"></i>{% trans "Update Order" %}</small>
         </h1>
     </div>
 {% endblock %}
