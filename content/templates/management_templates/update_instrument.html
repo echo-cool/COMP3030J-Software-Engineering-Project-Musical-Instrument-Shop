@@ -7,22 +7,18 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Update Instruments</a>
+            <a href="#">{% trans "Update Instruments" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
 {% endblock %}
 
 {% block page_header %}
     <div class="page-header">
-        <h1>
-            Instrument Management
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Update Instrument
-            </small>
+        <h1>{% trans "Instrument Management" %}<small>
+                <i class="ace-icon fa fa-angle-double-right"></i>{% trans "Update Instrument" %}</small>
         </h1>
     </div>
 {% endblock %}
@@ -95,28 +91,28 @@
     <form id="upload_form" method="post" enctype="multipart/form-data" onsubmit="return false">
         {% csrf_token %}
 
-        <label for="input-24">Musical Instrument Images:</label>
+        <label for="input-24">{% trans "Musical Instrument Images:" %}</label>
         <input id="input-24" name="input24[]" type="file" multiple>
 
         {% bootstrap_form form %}
 
 
         <div class="form-group">
-            <label for="object_3d">Object 3D</label>
+            <label for="object_3d">{% trans "Object 3D" %}</label>
             <div class="col-xs-12">
                 <input type="file" name="object_3d" class="file_upload" id="object_3d"/>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="object_mtl">Object MTL</label>
+            <label for="object_mtl">{% trans "Object MTL" %}</label>
             <div class="col-xs-12">
                 <input type="file" name="object_mtl" class="file_upload" id="object_mtl"/>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="object_gltf">Object GLTF</label>
+            <label for="object_gltf">{% trans "Object GLTF" %}</label>
             <div class="col-xs-12">
                 <input type="file" name="object_gltf" class="file_upload" id="object_gltf"/>
             </div>
