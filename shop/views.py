@@ -265,7 +265,7 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    reviews = Review.objects.all()
+    reviews = Review.objects.all().filter(instrument_id=product_id)
     review = []
     carts = Cart.objects.filter(user_id=request.user.id)
     for i in range(4):
