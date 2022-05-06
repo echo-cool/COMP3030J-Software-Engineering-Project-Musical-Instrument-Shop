@@ -56,9 +56,9 @@ class Instrument(models.Model):
         return f'{self.name}<{self.price}>'
 
 
-@admin.register(Instrument)
-class InstrumentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'image', 'object_3d', 'object_mtl', 'posted_by', 'category', 'created_at')
+# @admin.register(Instrument)
+# class InstrumentAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'price', 'image', 'object_3d', 'object_mtl', 'posted_by', 'category', 'created_at')
 
 
 class Cart(models.Model):
