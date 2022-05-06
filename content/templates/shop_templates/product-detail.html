@@ -554,15 +554,15 @@
                                 <span class="new_price">${{ item.price }}</span>
                             </div>
                             <ul>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                       title="Add to favorites"><i
+                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-wishlist" data-bs-toggle="tooltip" data-bs-placement="left"
+                                       title="Add to favorites" id="wishlist__{{ item.id }}"><i
                                         class="ti-heart"></i><span>{% trans 'Add to favorites' %}</span></a></li>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                       title="Add to compare"><i
-                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>
-                                </li>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                       title="Add to cart"><i
+{#                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"#}
+{#                                       title="Add to compare"><i#}
+{#                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>#}
+{#                                </li>#}
+                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-cart" data-bs-toggle="tooltip" data-bs-placement="left"
+                                       title="Add to cart" id="cart__{{ item.id }}"><i
                                         class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
                                 </li>
                             </ul>
@@ -1076,5 +1076,89 @@
 
             })
         });
+
+        $('.related-add-wishlist').on('click', function () {
+            $.ajax({
+                url: "/api/add_wishlist/",
+                method: 'POST',
+                data: {
+                    instrument_id: this.id.split("__")[1]
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your wishlist!", "warning");
+                        }, 300);
+                    } else if (res === 200) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    } else if (res === 300) {
+                        alert("Error!")
+                    } else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
+
+        $('.related-add-cart').on('click', function () {
+            $.ajax({
+                url: "/api/add_cart/",
+                method: 'POST',
+                data: {
+                    instrument_id: this.id.split("__")[1],
+                    count: $(this).prev().find('input').val(),
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    let res = data['code'];
+                    if (res === 100) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The instrument is already in your cart!", "warning");
+                        }, 300);
+                    } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("Add successfully!", "success");
+                        }, 300);
+                    } else if (res === 300) {
+                        alert("Error!")
+                    } else if (res === 400) {
+                        window.location.href = "{% url 'accounts:log_in' %}"
+                    }
+
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            })
+        });
+
     </script>
 {% endblock %}
