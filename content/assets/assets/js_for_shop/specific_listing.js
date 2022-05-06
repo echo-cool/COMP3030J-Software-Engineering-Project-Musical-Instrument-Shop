@@ -71,6 +71,55 @@ function getCookie(name) {
 
 let csrf_token = getCookie('csrftoken');
 
+function changeURLStatic(cate) {
+
+    let section = getQueryString('section');
+    let category = "category=";
+    let search_key = getQueryString('search');
+    search_key = search_key === null ? "" : search_key;
+
+    for (let i = 0; i < cate.length; i++) {
+        if (i === 0) {
+            category += cate[i];
+        } else {
+            category += "|" + cate[i];
+        }
+    }
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&" + category);
+
+    $.ajax({
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&" + category,
+        method: "GET",
+        success: function (res) {
+            $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+            console.log("search ajax refresh");
+        }
+    });
+
+}
+
+function changeURLPage(pa) {
+    let page = "page=" + pa;
+
+    let section = getQueryString('section');
+    let category = getQueryString('category');
+    console.log("category is:", category)
+    let search_key = getQueryString('search');
+    search_key = search_key === null ? "" : search_key;
+    category = category === null ? "" : category;
+
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&category=" + category + "&" + page);
+
+    $.ajax({
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&category=" + category + "&" + page,
+        method: "GET",
+        success: function (res) {
+            $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+            console.log("search ajax refresh");
+        }
+    });
+}
+
 function activateCategorySearch() {
     $(function () {
         console.log('activateCategorySearch');
