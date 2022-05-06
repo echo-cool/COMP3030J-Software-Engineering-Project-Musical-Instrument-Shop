@@ -374,7 +374,14 @@
         </div>
     </form>
 </aside>
-<script src='/static/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js'></script>
+{#<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="#}
+{#        crossorigin="anonymous"></script>#}
+<script type="text/javascript"
+        src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+{#<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>#}
+{#<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>#}
+{#<script src={% static "/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js" %}></script>#}
+{#<script src='/static/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js'></script>#}
 <script id="externalContactTemplate" type="text/template">
     <div class="contact">
         <a>

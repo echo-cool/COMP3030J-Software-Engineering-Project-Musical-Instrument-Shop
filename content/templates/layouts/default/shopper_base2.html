@@ -2213,12 +2213,17 @@
     </form>
     <!-- popup-quickview -->
     <!-- Jquery JS Link -->
-    {#        <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
 
-    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    {#    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>#}
+    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+
+    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
     <!-- End Footer -->
-    {#    <script type="text/javascript"#}
-    {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
+    <script type="text/javascript"
+            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+    {#    <script src="https://code.jquery.com/jquery-3.6.0.js"#}
+    {#            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>#}
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
@@ -2231,6 +2236,7 @@
     <script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js/add_url.js" %}"></script>
     <script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
     <script>
         function activateDeleteCart() {
             $(".delete-item").on("click", function () {
