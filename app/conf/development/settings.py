@@ -15,7 +15,7 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
 SECRET_KEY = 'NhfTvayqggTBPswCXXhWaN69HuglgZIkM'
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
@@ -66,8 +66,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'app.cors_middleware.CORSMiddleware',
     'app.auth_middleware.MyLoginRequiredMiddleware',
-    'app.ErrorPageHandel.ErrorPageHandelMiddleware'
+
 ]
+#     'app.ErrorPageHandel.ErrorPageHandelMiddleware'
 
 ROOT_URLCONF = 'app.urls'
 
