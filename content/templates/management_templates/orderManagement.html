@@ -7,10 +7,10 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Manage Orders</a>
+            <a href="#">{% trans "Manage Orders" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
@@ -26,9 +26,7 @@
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Order Management
-            <small>
+        <h1 class="col-md-10">{% trans "Order Management" %}<small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 {% trans 'All Orders' %}
             </small>
@@ -51,16 +49,14 @@
                     <span class="lbl"></span>
                 </label>
             </th>
-            <th class="detail-col">Details</th>
-            <th>Customer</th>
-            <th>Items Involved</th>
-            <th class="hidden-480">Total Price</th>
+            <th class="detail-col">{% trans "Details" %}</th>
+            <th>{% trans "Customer" %}</th>
+            <th>{% trans "Items Involved" %}</th>
+            <th class="hidden-480">{% trans "Total Price" %}</th>
 
             <th>
-                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                Created At
-            </th>
-            <th class="hidden-480">Status</th>
+                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
+            <th class="hidden-480">{% trans "Status" %}</th>
 
             <th></th>
         </tr>
@@ -80,7 +76,7 @@
                     <div class="action-buttons">
                         <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
                             <i class="ace-icon fa fa-angle-double-down"></i>
-                            <span class="sr-only">Details</span>
+                            <span class="sr-only">{% trans "Details" %}</span>
                         </a>
                     </div>
                 </td>
@@ -90,60 +86,60 @@
                         {{ order_item.user.username|truncatewords:5 }}
                     </a>
                 </td>
-                <td> <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a> </td>
+                <td>
+                    <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a>
+                </td>
                 <td class="hidden-480">${{ order_item.total_price }}</td>
                 <td>{{ order_item.created_at }}</td>
 
                 <td class="hidden-480">
                     {% if order_item.delivered %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-success arrowed-right arrowed-in">Delivered</span>
-                        </a>
+                        <span class="label label-sm label-success arrowed-right arrowed-in">{% trans "Delivered" %}</span>
                     {% elif order_item.shipped %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-info arrowed-right">Shipped</span>
-                        </a>
+                        <span class="label label-sm label-info arrowed-right">{% trans "Shipped" %}</span>
                     {% elif order_item.packed %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-purple">Packed</span>
-                        </a>
+                        <span class="label label-sm label-purple">{% trans "Packed" %}</span>
                     {% elif order_item.accepted %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-warning arrowed-in-right">Accepted</span>
-                        </a>
+                        <span class="label label-sm label-warning arrowed-in-right">{% trans "Accepted" %}</span>
                     {% else %}
-                        <a href="{% url 'management:order_state' order_item.id %}">
-                            <span class="label label-sm label-inverse arrowed-in-right arrowed">Placed</span>
-                        </a>
+                        <span class="label label-sm label-inverse arrowed-in-right arrowed">{% trans "Placed" %}</span>
                     {% endif %}
                 </td>
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}">
+                        <button class="btn btn-xs btn-success" id="confirm_button-{{ order_item.id }}"
+                                onclick="window.location.href='{% url 'management:order_state' order_item.id %}'">
                             <i class="ace-icon fa fa-check bigger-120"></i>
                         </button>
+
+                        <button class="btn btn-xs btn-info"
+                                onclick="window.location.href='{% url 'management:update_order' order_item.id %}'">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button>
+
+
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
                         <script>
-                            $("#confirm_button-{{ order_item.id }}").on("click", function (res) {
-                                $("#dialog-confirm").removeClass('hide').dialog({
+                            $("#delete_button-{{ order_item.id }}").on("click", function (res) {
+                                $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
-                                    width: '320',
+                                    width: '300',
                                     modal: true,
-                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the operation?</h4></div>",
                                     title_html: true,
                                     buttons: [
                                         {
-                                            html: "<i class='fa fa-check-circle-o' aria-hidden='true'></i>  Confirm the order",
+                                            html: "<i class='ace-icon fa fa-trash-o bigger-120'></i>  Delete the Item",
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
                                                     url: "/api/order/{{ order_item.id }}/",
-                                                    method: "PATCH",
+                                                    method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
-                                                    },
-                                                    data: {
-                                                        "shopper_confirmed": true
                                                     },
                                                     success: function (res) {
                                                         $.ajax({
@@ -152,9 +148,10 @@
                                                             success: function (res) {
                                                                 $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
                                                                 table_events()
+
                                                             }
                                                         });
-                                                        {#alert("Success!");#}
+                                                        alert("Success!");
                                                         console.log(res);
                                                     }
                                                 })
@@ -177,44 +174,49 @@
 
                         </script>
 
-                        <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_order' order_item.id %}'">
-                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        <button class="btn btn-xs {% if order_item.priority == 0 %}btn-warning {% endif %} "
+                                id="priority_button-{{ order_item.id }}">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
                         </button>
 
-
-                        <button class="btn btn-xs btn-danger" id="delete_button-{{ order_item.id }}">
-                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                        </button>
                         <script>
-                            $("#delete_button-{{ order_item.id }}").on("click", function (res) {
+                            $("#priority_button-{{ order_item.id }}").on("click", function (res) {
                                 $.ajax({
-                                    url: "/api/order/{{ order_item.id }}/",
-                                    method: "DELETE",
+                                    url: "/api/max_order_priority/",
+                                    method: "GET",
                                     headers: {
                                         'X-CSRFTOKEN': '{{ csrf_token }}'
                                     },
-                                    success: function (res) {
+                                    success: function (data) {
+                                        let maxPriority = data['priority']["priority__max"];
                                         $.ajax({
-                                            url: "#",
-                                            method: "GET",
+                                            url: "/api/order/{{ order_item.id }}/",
+                                            method: "PATCH",
+                                            headers: {
+                                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                                            },
+                                            data: {
+                                                "priority": {% if order_item.priority == 0 %}(maxPriority + 1)
+                                                    {% else %}0{% endif %}
+                                            },
                                             success: function (res) {
-                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
-                                                table_events()
+                                                $.ajax({
+                                                    url: "#",
+                                                    method: "GET",
+                                                    success: function (res) {
+                                                        $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                        table_events()
 
+                                                    }
+                                                });
+                                                console.log(res);
                                             }
                                         });
-                                        alert("Success!");
-                                        console.log(res);
                                     }
                                 })
                             });
-
                         </script>
 
-                        <button class="btn btn-xs btn-warning">
-                            <i class="ace-icon fa fa-flag bigger-120"></i>
-                        </button>
                     </div>
 
                     <div class="hidden-md hidden-lg">
@@ -285,7 +287,7 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Buyer</div>
+                                        <div class="profile-info-name">{% trans "Buyer" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.user.username }}</span>
@@ -293,7 +295,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Destination</div>
+                                        <div class="profile-info-name">{% trans "Destination" %}</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
@@ -302,7 +304,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> First Name</div>
+                                        <div class="profile-info-name">{% trans "First Name" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.first_name }}</span>
@@ -310,7 +312,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Last Name</div>
+                                        <div class="profile-info-name">{% trans "Last Name" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.last_name }}</span>
@@ -318,7 +320,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Created At</div>
+                                        <div class="profile-info-name">{% trans "Created At" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.created_at }}</span>
@@ -326,7 +328,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Zip Code</div>
+                                        <div class="profile-info-name">{% trans "Zip Code" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.zip_Code }}</span>
@@ -334,7 +336,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Newsletter</div>
+                                        <div class="profile-info-name">{% trans "Newsletter" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.newsletter }}</span>
@@ -345,8 +347,7 @@
 
                             <div class="col-xs-12 col-sm-3">
                                 <div class="space visible-xs"></div>
-                                <h4 class="header blue lighter less-margin">Send a message
-                                    to {{ order_item.user.username }}</h4>
+                                <h4 class="header blue lighter less-margin">{% trans "Send a message to" %} {{ order_item.user.username }}</h4>
 
                                 <div class="space-6"></div>
 
@@ -365,9 +366,7 @@
                                         </label>
 
                                         <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                type="button">
-                                            Submit
-                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                type="button">{% trans "Submit" %}<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -382,17 +381,13 @@
         </tbody>
     </table>
 
-    <div id="dialog-confirm" class="hide">
-        <div class="alert alert-info bigger-110">
-            The order will be confirmed and waiting for the buyer to confirm.
-        </div>
+    <div id="dialog-delete" class="hide">
+        <div class="alert alert-info bigger-110">{% trans "The order will be deleted and the operation can not be revoked" %}</div>
 
         <div class="space-6"></div>
 
         <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>{% trans "Are you sure?" %}</p>
     </div><!-- #dialog-confirm -->
 
 

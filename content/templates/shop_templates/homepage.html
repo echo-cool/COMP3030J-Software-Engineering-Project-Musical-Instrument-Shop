@@ -54,10 +54,50 @@
 
 
     </style>
+
+    <style>
+        #loading-page {
+            z-index: 9999;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            transition: 1s;
+        }
+    </style>
+    <iframe src="/new_header" width="100%" height="100%" name="loading-page" id="loading-page"
+            style="">
+    </iframe>
+    <script>
+        function looklookLoading() {
+            document.getElementById("loading-page").style = "display:block";
+            document.getElementById("wrap").style = "display:none";
+            if (document.getElementById("iAtlasChatDiv")) {
+                document.getElementById("iAtlasChatDiv").style = "display:none";
+            }
+
+            function overLoading() {
+                console.log("over loading");
+                document.getElementById("loading-page").style.opacity = 0;
+                setTimeout(function () {
+                    document.getElementById("loading-page").style.display = "none";
+                }, 1000);
+                document.getElementById("wrap").style = "display:block";
+                {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
+                {#document.getElementsByTagName("loading-page").style = "display:none";#}
+            }
+
+            setTimeout(() => overLoading(), 5000);
+        }
+
+        {#looklookLoading()#}
+
+        {#setTimeout(, 100);#}
+    </script>
 {% endblock %}
-
 {% block content %}
-
+    <script>
+        looklookLoading()
+    </script>
     <div id="content">
         <div class="content-top">
             <div class="container">
@@ -71,10 +111,11 @@
                             style="color:#ffffff; line-height: 1;margin-top: 0; margin-bottom: 0;">{% trans "Starter Drum Kit" %}</h3>
                     </div>
                     <div class="box-title2 animated">
-                        <h3 class="title-small mb-0" style="color:#ffffff;">Stunning appearance, both inside and
-                            out</h3>
+                        <h3 class="title-small mb-0"
+                            style="color:#ffffff;">{% trans 'Stunning appearance, both inside and out' %}</h3>
                     </div>
-                    <a class="button-main2 button-shop-1606671744b1519c3f-1  animated" href="/collections/all"
+                    <a class="button-main2 button-shop-1606671744b1519c3f-1  animated"
+                       href="{% url 'shop:product_search' %}"
                        style="color:#ffffff; border-color : #ffffff; margin-top: 4%;" tabindex="0">
                         {% trans 'SHOP NOW' %}
                     </a>
@@ -84,8 +125,7 @@
                 <div class="container container-model" style="max-width:1452px;">
                     <div class="banner-box-adv" style="margin-top: 33%;">
                         <button id="trigger-video-button" style="position:absolute;z-index:2; display: none"
-                                onclick="active3DShowing()"> 3D
-                            Preview
+                                onclick="active3DShowing()"> 3D{% trans "Preview" %}
                         </button>
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -143,16 +183,8 @@
                                                 alt=""/>
                                     </a>
                                     <a href="/chinese" type="button" class="btn-toogle-info"
-                                       id="btn-right"><<< GO To CHINESE Section >>></a>
-
-                                    {#                                    <a href="/chinese">#}
-                                    {#                                        <img#}
-                                    {#                                                src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"#}
-                                    {#                                                alt=""/>#}
-                                    {#                                    </a>#}
-                                    {#                                    #}
-                                    {#                                    <a href="/chinese" type="button" class="btn-toogle-info"#}
-                                    {#                                       id="btn-right">When To CHINESE Section >>></a>#}
+                                       id="btn-right"><<< {% trans "GO To CHINESE Section" %} >>>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +288,7 @@
         </div>
         <!-- End Banner Grid Adv -->
 
-        <div class="custom-services">
+        <div class="custom-services" id="custom-services">
             <div class="container">
                 <div class="title-box-default">
                     <h2><span
@@ -352,7 +384,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Craftsman spirit' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_pen.png' %}" alt=""/></a>
                             <p>{% trans 'Professional ethics, ability, ang quality of the embodiment, is a professional value orientation and behavior of practitioners. ' %}</p>
                         </div>
@@ -360,7 +392,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Manufacturer' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link"><img
                                     src="{% static 'assets/images/home_1/icon_keo.png' %}" alt=""/></a>
                             <p>{% trans 'The basic connotation of "craftsmanship" includes dedication, leaning, concentration, innovation and other aspects.' %}</p>
                         </div>
@@ -368,7 +400,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-box">
                             <h3>{% trans 'Iluminous Designer' %}</h3>
-                            <a href="#" class="item-service-link"><img
+                            <a href="javascript:void(0)" class="item-service-link" onclick="scrollModels()"><img
                                     src="{% static 'assets/images/home_1/icon_camera.png' %}" alt=""/></a>
                             <p>{% trans 'Innovation and understanding of what users want make our online shop distinguished from others.' %} </p>
                         </div>
@@ -719,6 +751,17 @@
                 }
 
             })
+        });
+
+        function scrollModels() {
+            let scrollOffset = $('#custom-services').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+
+        $(".item-service-link").on("click", function () {
+            scrollModels();
         });
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>

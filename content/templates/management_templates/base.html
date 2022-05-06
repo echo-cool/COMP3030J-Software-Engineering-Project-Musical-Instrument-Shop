@@ -16,7 +16,7 @@
 
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
-    <title>Backend</title>
+    <title>{% trans "Backend" %}</title>
     {#    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css"/>#}
 
     {% block dashboard %}
@@ -43,6 +43,12 @@
     <link rel="stylesheet" href="{% static 'assets/css/ace-skins.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/ace-rtl.min.css' %}"/>
 
+    <style>
+        .ui-dialog-buttonset {
+            text-align: center;
+        }
+    </style>
+
     <script src="{% static 'assets/js/ace-extra.min.js' %}"></script>
 
     <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
@@ -53,7 +59,7 @@
 <div id="navbar" class="navbar navbar-default          ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-            <span class="sr-only">Toggle sidebar</span>
+            <span class="sr-only">{% trans "Toggle sidebar" %}</span>
 
             <span class="icon-bar"></span>
 
@@ -64,10 +70,7 @@
 
         <div class="navbar-header pull-left">
             <a href="/" class="navbar-brand">
-                <small>
-                    <i class="fa fa-leaf"></i>
-                    Admin
-                </small>
+                <small><i class="fa fa-leaf"></i>{% trans "Admin" %}</small>
             </a>
         </div>
 
@@ -80,18 +83,15 @@
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header">
-                            <i class="ace-icon fa fa-check"></i>
-                            4 Tasks to complete
-                        </li>
+                        <li class="dropdown-header"><i class="ace-icon fa fa-check"></i>{% trans "4 Tasks to complete" %}</li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Software Update</span>
-                                            <span class="pull-right">65%</span>
+                                            <span class="pull-left">{% trans "Software Update" %}</span>
+                                            <span class="pull-right">{% trans "65%" %}</span>
                                         </div>
 
                                         <div class="progress progress-mini">
@@ -103,8 +103,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Hardware Upgrade</span>
-                                            <span class="pull-right">35%</span>
+                                            <span class="pull-left">{% trans "Hardware Upgrade" %}</span>
+                                            <span class="pull-right">{% trans "35%" %}</span>
                                         </div>
 
                                         <div class="progress progress-mini">
@@ -116,8 +116,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Unit Testing</span>
-                                            <span class="pull-right">15%</span>
+                                            <span class="pull-left">{% trans "Unit Testing" %}</span>
+                                            <span class="pull-right">{% trans "15%" %}</span>
                                         </div>
 
                                         <div class="progress progress-mini">
@@ -129,8 +129,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Bug Fixes</span>
-                                            <span class="pull-right">90%</span>
+                                            <span class="pull-left">{% trans "Bug Fixes" %}</span>
+                                            <span class="pull-right">{% trans "90%" %}</span>
                                         </div>
 
                                         <div class="progress progress-mini progress-striped active">
@@ -142,10 +142,7 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="#">
-                                See tasks with details
-                                <i class="ace-icon fa fa-arrow-right"></i>
-                            </a>
+                            <a href="#">{% trans "See tasks with details" %}<i class="ace-icon fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
                 </li>
@@ -157,20 +154,14 @@
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header">
-                            <i class="ace-icon fa fa-exclamation-triangle"></i>
-                            8 Notifications
-                        </li>
+                        <li class="dropdown-header"><i class="ace-icon fa fa-exclamation-triangle"></i>{% trans "8 Notifications" %}</li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar navbar-pink">
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														New Comments
-													</span>
+													<span class="pull-left"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>{% trans "New Comments" %}</span>
                                             <span class="pull-right badge badge-info">+12</span>
                                         </div>
                                     </a>
@@ -178,19 +169,13 @@
 
                                 <li>
                                     <a href="#">
-                                        <i class="btn btn-xs btn-primary fa fa-user"></i>
-                                        Bob just signed up as an editor ...
-                                    </a>
+                                        <i class="btn btn-xs btn-primary fa fa-user"></i>{% trans "Bob just signed up as an editor ..." %}</a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														New Orders
-													</span>
-                                            <span class="pull-right badge badge-success">+8</span>
+                                            <span class="pull-left"><i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>{% trans "New Orders" %}</span><span class="pull-right badge badge-success">+8</span>
                                         </div>
                                     </a>
                                 </li>
@@ -198,10 +183,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														Followers
-													</span>
+                                            <span class="pull-left"><i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>{% trans "Followers" %}</span>
                                             <span class="pull-right badge badge-info">+11</span>
                                         </div>
                                     </a>
@@ -210,10 +192,7 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="#">
-                                See all notifications
-                                <i class="ace-icon fa fa-arrow-right"></i>
-                            </a>
+                            <a href="#">{% trans "See all notifications" %}<i class="ace-icon fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
                 </li>
@@ -227,12 +206,7 @@
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header">
-                            <i class="ace-icon fa fa-envelope-o"></i>
-                            {{ messages.count }} Messages
-                        </li>
-
-                        <li class="dropdown-content">
+                        <li class="dropdown-header"><i class="ace-icon fa fa-envelope-o"></i>{{ messages.count }} Messages</li><li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 {% for message in messages %}
                                     <li>
@@ -257,9 +231,7 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="{% url 'chat:index_new' to=1 %}">
-                                See all messages
-                                <i class="ace-icon fa fa-arrow-right"></i>
+                            <a href="{% url 'chat:index_new' to=1 %}">{% trans "See all messages" %}<i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -276,7 +248,7 @@
                         {% endif %}
 
                         <span class="user-info">
-									<small>Welcome,</small>
+									<small>{% trans "Welcome," %}</small>
 									<span class="user-name">{{ request.user.username }}</span>
 								</span>
 
@@ -285,26 +257,17 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-cog"></i>
-                                Settings
-                            </a>
+                            <a href="#"><i class="ace-icon fa fa-cog"></i>{% trans "Settings" %}</a>
                         </li>
 
                         <li>
-                            <a href="{% url 'management:profile' %}">
-                                <i class="ace-icon fa fa-user"></i>
-                                Profile
-                            </a>
+                            <a href="{% url 'management:profile' %}"><i class="ace-icon fa fa-user"></i>{% trans "Profile" %}</a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-power-off"></i>
-                                Logout
-                            </a>
+                            <a href="#"><i class="ace-icon fa fa-power-off"></i>{% trans "Logout" %}</a>
                         </li>
                     </ul>
                 </li>
@@ -364,7 +327,7 @@
             <li class="">
                 <a href="{% url 'management:index' %}">
                     <i class="menu-icon fa fa-tachometer"></i>
-                    <span class="menu-text"> Dashboard </span>
+                    <span class="menu-text">{% trans "Dashboard " %}</span>
                 </a>
 
                 <b class="arrow"></b>
@@ -373,7 +336,7 @@
             <li class="">
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-music"></i>
-                    <span class="menu-text"> Instruments </span>
+                    <span class="menu-text">{% trans "Instruments " %}</span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -383,18 +346,14 @@
                 <ul class="submenu">
                     <li class="">
                         <a href="{% url 'management:instrument_management' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Instruments
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Instruments" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="" id="c">
                         <a href="{% url 'management:instrument_category_management' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Instrument Categories
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Instrument Categories" %}</a>
 
                         <b class="arrow"></b>
                     </li>
@@ -405,7 +364,7 @@
             <li class="">
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text"> Orders </span>
+                    <span class="menu-text">{% trans "Orders " %}</span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -415,54 +374,42 @@
                 <ul class="submenu">
                     <li class="">
                         <a href="{% url 'management:order_management_all' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            All Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "All Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:order_management_placed' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Placed Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Placed Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:order_management_accepted' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Accepted Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Accepted Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:order_management_packed' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Packed Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Packed Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:order_management_shipped' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Shipped Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Shipped Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:order_management_delivered' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Delivered Orders
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Delivered Orders" %}</a>
 
                         <b class="arrow"></b>
                     </li>
@@ -472,7 +419,7 @@
             <li class="">
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-pencil-square-o"></i>
-                    <span class="menu-text"> Blogs </span>
+                    <span class="menu-text">{% trans "Blogs " %}</span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -482,18 +429,14 @@
                 <ul class="submenu">
                     <li class="">
                         <a href="{% url 'management:post_management' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Posts
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Posts" %}</a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
                         <a href="{% url 'management:blog_category_management' %}">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Blog Categories
-                        </a>
+                            <i class="menu-icon fa fa-caret-right"></i>{% trans "Blog Categories" %}</a>
 
                         <b class="arrow"></b>
                     </li>
@@ -504,7 +447,7 @@
             <li class="">
                 <a href="{% url 'management:review_management' %}">
                     <i class="menu-icon fa fa-list-alt"></i>
-                    <span class="menu-text"> Reviews </span>
+                    <span class="menu-text">{% trans "Reviews " %}</span>
                 </a>
 
                 <b class="arrow"></b>
@@ -513,11 +456,7 @@
             <li class="">
                 <a href="{% url 'management:cart_management' %}">
                     <i class="menu-icon fa fa-shopping-cart" aria-hidden="true"></i>
-
-                    <span class="menu-text">
-								Carts
-
-							</span>
+                    <span class="menu-text">{% trans "Carts" %}</span>
                 </a>
 
                 <b class="arrow"></b>
@@ -526,7 +465,7 @@
             <li class="">
                 <a href="{% url 'management:wishlist_management' %}">
                     <i class="menu-icon fa fa-heart" aria-hidden="true"></i>
-                    <span class="menu-text"> Wishlists </span>
+                    <span class="menu-text">{% trans "Wishlists " %}</span>
                 </a>
 
                 <b class="arrow"></b>
@@ -547,12 +486,12 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="#">Home</a>
+                            <a href="#">{% trans "Home" %}</a>
                         </li>
                         <li>
-                            <a href="#">Other Pages</a>
+                            <a href="#">{% trans "Other Pages" %}</a>
                         </li>
-                        <li class="active">Error 500 (Please Overwrite this in your page!!!)</li>
+                        <li class="active">{% trans "Error 500 (Please Overwrite this in your page!!!)" %}</li>
                     </ul><!-- /.breadcrumb -->
 
                     <div class="nav-search" id="nav-search">
@@ -572,10 +511,7 @@
                     <div class="page-header">
                         <h1>
                             Tables
-                            <small>
-                                <i class="ace-icon fa fa-angle-double-right"></i>
-                                Static &amp; Dynamic Tables
-                            </small>
+                            <small><i class="ace-icon fa fa-angle-double-right"></i>{% trans "Static &amp; Dynamic Tables" %}</small>
                         </h1>
                     </div>
                 {% endblock %}
@@ -595,39 +531,38 @@
                                         <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
                                     </select>
                                 </div>
-                                <span>&nbsp; Choose Skin</span>
+                                <span>{% trans "Choose Skin" %}</span>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
                                        id="ace-settings-navbar" autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                                <label class="lbl" for="ace-settings-navbar">{% trans "Fixed Navbar" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
                                        id="ace-settings-sidebar" autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                                <label class="lbl" for="ace-settings-sidebar">{% trans "Fixed Sidebar" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
                                        id="ace-settings-breadcrumbs" autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                                <label class="lbl" for="ace-settings-breadcrumbs">{% trans "Fixed Breadcrumbs" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"
                                        autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                                <label class="lbl" for="ace-settings-rtl">{% trans "Right To Left (rtl)" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
                                        id="ace-settings-add-container" autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-add-container">
-                                    Inside
-                                    <b>.container</b>
+                                <label class="lbl" for="ace-settings-add-container">{% trans "Inside" %}<b>
+                                    .container</b>
                                 </label>
                             </div>
                         </div><!-- /.pull-left -->
@@ -636,19 +571,19 @@
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover"
                                        autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                                <label class="lbl" for="ace-settings-hover">{% trans "Submenu on Hover" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"
                                        autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                                <label class="lbl" for="ace-settings-compact">{% trans "Compact Sidebar" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight"
                                        autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                                <label class="lbl" for="ace-settings-highlight">{% trans "Alt. Active Item" %}</label>
                             </div>
                         </div><!-- /.pull-left -->
                     </div><!-- /.ace-settings-box -->
@@ -658,7 +593,7 @@
                         <!-- PAGE CONTENT BEGINS -->
 
                         {% block content %}
-                            No content.
+                            {% trans "No content." %}
                         {% endblock %}
                     </div>
                 </div>
@@ -671,9 +606,8 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Group 8 </span>
-							Application &copy; 2022
-						</span>
+							<span class="blue bolder">{% trans "Group 8 " %}</span>
+                            Application &copy; 2022</span>
 
                 &nbsp; &nbsp;
                 <span class="action-buttons">
@@ -803,7 +737,6 @@
             //console.log($(this).data('ace_input_files'));
             //console.log($(this).data('ace_input_method'));
         });
-
 
 
     })

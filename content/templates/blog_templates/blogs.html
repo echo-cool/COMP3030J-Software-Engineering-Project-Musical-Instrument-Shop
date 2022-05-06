@@ -58,20 +58,20 @@
             {#							<div class="nav-inner">#}
             {#								<div id="mobile-toggle" class="mobile-btn"></div>#}
             {#								<ul class="main-menu">#}
-            {#									<li class="menu-item active"><a href="index.html">Home</a>#}
+            {#									<li class="menu-item active"><a href="index.html">{% trans "Home" %}</a>#}
             {#										<ul class="sub-menu">#}
-            {#											<li class="menu-item active"><a href="index-2.html">Home 2</a></li>#}
-            {#											<li class="menu-item"><a href="index-3.html">Home 3</a></li>#}
+            {#											<li class="menu-item active"><a href="index-2.html">{% trans "Home 2" %}</a></li>#}
+            {#											<li class="menu-item"><a href="index-3.html">{% trans "Home 3" %}</a></li>#}
             {#										</ul>#}
             {#									</li>#}
-            {#									<li class="menu-item"><a href="#">Posts</a>#}
+            {#									<li class="menu-item"><a href="#">{% trans "Posts" %}</a>#}
             {#										<ul class="sub-menu">#}
-            {#											<li class="menu-item"><a href="blog-details.html">Blog Details</a></li>#}
-            {#											<li class="menu-item"><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>#}
+            {#											<li class="menu-item"><a href="blog-details.html">{% trans "Blog Details" %}</a></li>#}
+            {#											<li class="menu-item"><a href="blog-details-fullwidth.html">{% trans "Blog Details Fullwidth" %}</a></li>#}
             {#										</ul>#}
             {#									</li>#}
-            {#									<li class="menu-item"><a href="about.html">About Author</a></li>#}
-            {#									<li class="menu-item"><a href="contact.html">Contact Us</a></li>#}
+            {#									<li class="menu-item"><a href="about.html">{% trans "About Author" %}</a></li>#}
+            {#									<li class="menu-item"><a href="contact.html">{% trans "Contact Us" %}</a></li>#}
             {#								</ul>#}
             {#							</div>#}
             {#						</nav>#}
@@ -80,9 +80,9 @@
 
             <div class="top-social-1 social_links">
                 <ul class="top-social">
-                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="{% url 'blog:post' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                    <li id="scroll_category" onclick="scrollCategory()"><a><i class="ion-social-instagram"></i></a></li>
+                    <li onclick="scrollBlogs()"><a><i class="fa fa-th" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
 
@@ -95,22 +95,22 @@
                                     <article class="blog_post">
                                         <div class="post_img">
                                             <div class="calendar">
-                                                <a href="#"><span class="date">30</span><br>May</a>
+                                                <a href="#"><span class="date">30</span><br
+                                                >{% trans "May" %}</a>
                                             </div>
                                         </div>
                                         <div class="post_content">
                                             <div class="post_header">
                                                 <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">Record the Beauty of Melodious Instruments</a>
+                                                    <a href="#">{% trans "Record the Beauty of Melodious Instruments" %}</a>
                                                 </h2>
                                             </div>
                                             <div class="post_intro">
-                                                <p>Record the fascination that impressed you and share the beauty with
-                                                    other instruments enthusiasts. </p>
+                                                <p>{% trans "Record the fascination that impressed you and share the beauty with other instruments enthusiasts. " %}</p>
                                             </div>
                                             <div class="post_footer">
                                                 <div class="read_more">
-                                                    <a href="blog-details.html">Continue Reading</a>
+                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,24 +121,22 @@
                                     <article class="blog_post">
                                         <div class="post_img">
                                             <div class="calendar">
-                                                <a href="#"><span class="date">27</span><br>May</a>
+                                                <a href="#"><span class="date">27</span
+                                                ><br>{% trans "May" %}</a>
                                             </div>
                                         </div>
                                         <div class="post_content">
                                             <div class="post_header">
                                                 <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">50 travel essentials you must have to collect</a>
+                                                    <a href="#">{% trans "50 travel essentials you must have to collect" %}</a>
                                                 </h2>
                                             </div>
                                             <div class="post_intro">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore
-                                                    et dolore magina aliqua. Quis ipsum suspendise ultrces gravida.
-                                                    Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>
+                                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
                                             </div>
                                             <div class="post_footer">
                                                 <div class="read_more">
-                                                    <a href="blog-details.html">Continue Reading</a>
+                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,24 +147,22 @@
                                     <article class="blog_post">
                                         <div class="post_img">
                                             <div class="calendar">
-                                                <a href="#"><span class="date">24</span><br>May</a>
+                                                <a href="#"><span class="date">24</span><br
+                                                >{% trans "May" %}</a>
                                             </div>
                                         </div>
                                         <div class="post_content">
                                             <div class="post_header">
                                                 <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">With age, comes wisdom, comes understanding</a>
+                                                    <a href="#">{% trans "With age, comes wisdom, comes understanding" %}</a>
                                                 </h2>
                                             </div>
                                             <div class="post_intro">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore
-                                                    et dolore magina aliqua. Quis ipsum suspendise ultrces gravida.
-                                                    Risus commodo viverra maecenas accumsan lacus vel facilisis... </p>
+                                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
                                             </div>
                                             <div class="post_footer">
                                                 <div class="read_more">
-                                                    <a href="blog-details.html">Continue Reading</a>
+                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,50 +199,26 @@
             </div>
         </div>
 
-        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700">
+        <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700" id="blog_categories">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
-                            <img src="images/category/1.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Piano</a></h6>
-                                <p class="featured_category_number"><span>06</span> Posts</p>
+                    {% for category, count in category_number.items %}
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
+                                <img src="{{ category.image.url }}" alt="img">
+                                <div class="featured_category_info">
+                                    <h6 class="featured_category_heading"><a href="#">{{ category.category }}</a></h6>
+                                    <p class="featured_category_number"><span>{{ count }}</span> Posts</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="800">
-                            <img src="images/category/2.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Guitar</a></h6>
-                                <p class="featured_category_number"><span>12</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1000">
-                            <img src="images/category/3.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Violin</a></h6>
-                                <p class="featured_category_number"><span>09</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1200">
-                            <img src="images/category/4.jpg" alt="img">
-                            <div class="featured_category_info">
-                                <h6 class="featured_category_heading"><a href="#">Chinese Instruments</a></h6>
-                                <p class="featured_category_number"><span>16</span> Posts</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
 
-        <div class="main-wrapper">
+        <div class="main-wrapper" id="main_blogs">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
@@ -255,14 +227,14 @@
                         {#									<div class="post_img" data-aos="overlay-left">#}
                         {#										<a href="#"><img src="images/blog/1.jpg" alt="blog"></a>#}
                         {#										<div class="calendar">#}
-                        {#											<a href="#"><span class="date">30</span><br>May</a>#}
+                        {#											<a href="#"><span class="date">{% trans "30</span><br>May" %}</a>#}
                         {#										</div>#}
                         {#									</div>#}
                         {#									<div class="post_content">#}
                         {#										<div class="post_header">#}
                         {#											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>#}
                         {#											<h2 class="post_title">#}
-                        {#												<a href="#">Live with no excuses & travel with no regrets</a>#}
+                        {#												<a href="#">{% trans "Live with no excuses & travel with no regrets" %}</a>#}
                         {#											</h2>#}
                         {#										</div>#}
                         {#										<div class="post_intro">#}
@@ -271,7 +243,7 @@
                         {#										</div>#}
                         {#										<div class="post_footer">#}
                         {#											<div class="read_more" data-aos="fade-up" data-aos-duration="700">#}
-                        {#												<a href="blog-details.html">Continue Reading</a>#}
+                        {#												<a href="blog-details.html">{% trans "Continue Reading" %}</a>#}
                         {#											</div>#}
                         {#											<div class="post_share">#}
                         {#												<ul class="share_list">#}
@@ -289,14 +261,14 @@
                         {#									<div class="post_img" data-aos="overlay-right">#}
                         {#										<a href="#"><img src="images/blog/2.jpg" alt="blog"></a>#}
                         {#										<div class="calendar">#}
-                        {#											<a href="#"><span class="date">27</span><br>May</a>#}
+                        {#											<a href="#"><span class="date">{% trans "27</span><br>May" %}</a>#}
                         {#										</div>#}
                         {#									</div>#}
                         {#									<div class="post_content">#}
                         {#										<div class="post_header">#}
                         {#											<div class="author"><a href="#"><i class="ion-android-create"></i> By Partricia Doe</a></div>#}
                         {#											<h2 class="post_title">#}
-                        {#												<a href="#">50 travel essentials you must have</a>#}
+                        {#												<a href="#">{% trans "50 travel essentials you must have" %}</a>#}
                         {#											</h2>#}
                         {#										</div>#}
                         {#										<div class="post_intro">#}
@@ -305,7 +277,7 @@
                         {#										</div>#}
                         {#										<div class="post_footer">#}
                         {#											<div class="read_more" data-aos="fade-up" data-aos-duration="700">#}
-                        {#												<a href="blog-details.html">Continue Reading</a>#}
+                        {#												<a href="blog-details.html">{% trans "Continue Reading" %}</a>#}
                         {#											</div>#}
                         {#											<div class="post_share">#}
                         {#												<ul class="share_list">#}
@@ -325,8 +297,8 @@
                         {#									<div class="col-lg-10 offset-lg-1">#}
                         {#										<form class="newsletter_form" method="post" action="subscription.php">#}
                         {#											<div class="newsletter_header">#}
-                        {#												<p><i class="ion-email"></i>Subscribe to newsletter</p>#}
-                        {#												<h3>Get each & every new blogs through your e-mail</h3>#}
+                        {#												<p><i class="ion-email"></i>{% trans "Subscribe to newsletter" %}</p>#}
+                        {#												<h3>{% trans "Get each & every new blogs through your e-mail" %}</h3>#}
                         {#											</div>#}
                         {#											<div class="form_group">#}
                         {#												<input class="form-control" type="email" placeholder="Your Email Address" name="ne" required="">#}
@@ -355,8 +327,22 @@
                                             </div>
                                             <div class="post_content">
                                                 <div class="post_header">
-                                                    <div class="author"><a href="#"><i class="ion-android-create"></i>
-                                                        By {{ post.author }}</a></div>
+                                                    <div class="author" style="display: inline-block;">
+                                                        <a href="javascript:void(0)" class="login js-call-popup-login">
+                                                            <div class="dropdown dropdown-access">
+                                                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                                                                <a href="#"><i class="ion-android-create"></i>{% trans "By" %} {{ post.author }}</a>
+
+                                                                <div class="dropdown-menu" id="account-menu" style="left: 3rem">
+                                                                    <a href="{% url "chat:index_new" to=post.author.id  %}"
+                                                                       class="btn btn-primary"
+                                                                       style="display: block;">{% trans "Chat with him/her" %}</a>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
                                                     <h2 class="post_title">
                                                         <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title }}</a>
                                                     </h2>
@@ -404,5 +390,20 @@
     <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
     <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
     <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+    <script>
+        function scrollCategory() {
+            let scrollOffset = $('#blog_categories').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+
+        function scrollBlogs() {
+            let scrollOffset = $('#main_blogs').offset();
+            $("body,html").animate({
+                scrollTop: scrollOffset.top
+            }, 0);
+        }
+    </script>
 
 {% endblock %}

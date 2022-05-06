@@ -26,6 +26,7 @@
     <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static "assets/assets_for_bees/css/style.css" %}" rel="stylesheet">
 
 
     <!-- SPECIFIC CSS -->
@@ -213,19 +214,6 @@
                                         </div>
 
                                     </li>
-                                    <li>
-
-                                        <div class="row">
-                                            <div class="col-md-5 col-5">
-                                                <i class="fas fa-mobile-alt text-purple"></i>
-                                                <strong class="margin-10px-left xs-margin-four-left text-purple">{% trans "Phone:" %}</strong>
-                                            </div>
-                                            <div class="col-md-7 col-7">
-                                                <p>(+44) 123 456 789</p>
-                                            </div>
-                                        </div>
-
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -250,7 +238,8 @@
                                                         <div class="fs-8">{{ order.created_at }}</div>
                                                         <div class="rating d-flex align-items-center pt-1"><img
                                                                 src="{% static 'assets/images/icons/hand-thumb.png' %}"
-                                                                alt=""><span class="px-2">{% trans "Rating:</span> " %}<span
+                                                                alt=""><span
+                                                                class="px-2">{% trans "Rating: " %}</span><span
                                                                 class="fas fa-star"></span> <span
                                                                 class="fas fa-star"></span> <span
                                                                 class="fas fa-star"></span> <span
@@ -270,7 +259,9 @@
                                                                 Placed
                                                             {% endif %}
                                                         </div>
-                                                        <div class="btn btn-primary text-uppercase">{% trans "order info" %}</div>
+                                                        <div class="btn btn-primary text-uppercase"
+                                                             data-bs-toggle="modal"
+                                                             data-bs-target="#popup-quickview-{{ order.id }}">{% trans "order info" %}</div>
                                                     </div>
                                                     <div class="progressbar-track">
                                                         <ul class="progressbar">
@@ -308,14 +299,136 @@
                                                                 <li id="step-5" class="text-muted"><span
                                                                         class="fas fa-box-open"></span></li>
                                                             {% endif %}
-
                                                         </ul>
                                                         <div id="tracker"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    {% endfor %}
+                                        <!-- popup-quickview  -->
+                                        <div id="popup-quickview-{{ order.id }}" class="modal fade" tabindex="-1">
+                                            <div class="modal-dialog quickview-dialog">
+                                                <div class="modal-content">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"><i
+                                                            class="fi flaticon-cancel"></i></button>
+                                                    <div class="modal-body d-flex">
+                                                        <div class="product-details" style="width: 100%;">
+                                                            <div class="row">
+                                                                <div class="col-lg-3">
+                                                                    <div class="order-details-item">
+                                                                        <h4>Order ID</h4>
+                                                                        <h2>{{ order.id }}</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9">
+                                                                    <ul class="list-style9 no-margin">
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-building text-orange"></i>
+                                                                                    <strong class="margin-10px-left text-orange">{% trans "City:" %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.city }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-globe text-red"></i>
+                                                                                    <strong class="margin-10px-left text-red">{% trans "Country: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.country }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-user-alt text-orange"></i>
+                                                                                    <strong class="margin-10px-left text-orange">{% trans "User_id: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.user_id }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-map text-green"></i>
+                                                                                    <strong class="margin-10px-left text-green">{% trans "Address: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.address }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-user-alt text-purple"></i>
+                                                                                    <strong class="margin-10px-left text-purple">{% trans "First_name: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.first_name }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-bars text-pink"></i>
+                                                                                    <strong class="margin-10px-left text-pink">{% trans "Zip_Code:" %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.zip_Code }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-building-o text-sky"></i>
+                                                                                    <strong class="margin-10px-left text-sky">{% trans "Apartment: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.apartment }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-md-5 col-5">
+                                                                                    <i class="fas fa-archive text-yellow"></i>
+                                                                                    <strong class="margin-10px-left text-yellow">{% trans "State: " %}</strong>
+                                                                                </div>
+                                                                                <div class="col-md-7 col-7">
+                                                                                    <span id="username">{{ order.state }}</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- popup-quickview -->
+                                    {% endfor %}s
                                     {#									<p>{% trans "Web Design" %}</p>#}
                                     {#									<div class="progress mb-3" style="height: 5px">#}
                                     {#										<div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>#}
@@ -344,6 +457,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 {% endblock %}
 
