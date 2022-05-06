@@ -57,50 +57,7 @@
 
 {% block content %}
     <script>
-        /*
-        * changeURLStatic 修改地址栏URL参数 不跳转
-        *   @param name 参数名  @param value 参数值
-        * */
-        function changeURLStatic(cate) {
-            let category = "category=";
-            let search_key = getQueryString('search');
-            for (let i = 0; i < cate.length; i++) {
-                if (i === 0) {
-                    category += cate[i];
-                } else {
-                    category += "|" + cate[i];
-                }
-            }
-            history.replaceState(null, null, "?search=" + search_key + "&" + category);
 
-            $.ajax({
-                url: "/product_search/?search=" + search_key + "&" + category,
-                method: "GET",
-                success: function (res) {
-                    $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
-                    console.log("search ajax refresh");
-                }
-            });
-
-        }
-
-        function changeURLPage(pa) {
-            let page = "page=" + pa;
-
-            let category = getQueryString('category');
-            let search_key = getQueryString('search');
-
-            history.replaceState(null, null, "?search=" + search_key + "&" + category + "&" + page);
-
-            $.ajax({
-                url: "/product_search/?search=" + search_key + "&" + category + "&" + page,
-                method: "GET",
-                success: function (res) {
-                    $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
-                    console.log("search ajax refresh");
-                }
-            });
-        }
     </script>
     <main class="content-page">
         {% if game_style == 1 %}
@@ -261,6 +218,11 @@
                                             content: "\f00c";
                                         {#opacity: 0;#}{#visibility: hidden;#}
                                         }
+
+                                        .category-name > span:last-child {
+                                            margin-left: 4%;
+                                            color: #fcc137;
+                                        }
                                     </style>
                                     <ul class="list-category-toggle toggle-tab list-none">
                                         {% for category in categories %}
@@ -271,7 +233,7 @@
                                                    id="category__{{ category.id }}"
                                                    style="line-height: 0px;display: flex; align-items: center;">
                                                     <span>{{ category.name }}</span>
-                                                    <span>(8)</span>
+                                                    <span>({{ category.count }})</span>
                                                 </a>
                                             </li>
                                         {% endfor %}
@@ -540,12 +502,12 @@
                                                         </div>
                                                     </div>
                                                     <!--     END ICON -->
-                                                    <nav class="engoj_select_color variant-product">
-                                                    <span class="">
-                                                      <a class="circle mr-0" href="javascript:void(0)"
-                                                         style="background-color: black;"></a>
-                                                    </span>
-                                                    </nav>
+                                                    {#                                                    <nav class="engoj_select_color variant-product">#}
+                                                    {#                                                    <span class="">#}
+                                                    {#                                                      <a class="circle mr-0" href="javascript:void(0)"#}
+                                                    {#                                                         style="background-color: black;"></a>#}
+                                                    {#                                                    </span>#}
+                                                    {#                                                    </nav>#}
                                                 </div>
                                                 <div class="absolute-wrapper">
                                                     <h4 class="des-font capital title-product mb-0">
@@ -666,7 +628,7 @@
                     </h4>
                     <div class="collapse show category_search" id="filter_1">
                         <ul>
-                            {% for category, count in categories.items %}
+                            {% for category in categories %}
                                 <li>
                                     <label class="container_check">{{ category.name }}<small>{{ count }}</small>
                                         <input type="checkbox" class="category-checkbox"
@@ -919,6 +881,16 @@
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
                     } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");

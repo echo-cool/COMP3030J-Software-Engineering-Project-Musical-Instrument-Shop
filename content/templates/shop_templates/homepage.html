@@ -153,7 +153,7 @@
                                              src="{% static 'assets/detail_model/homepage/model-meinv2.jpg' %}"
                                              alt=""/>
                                     </a>
-                                    <a href="/product_search/?search=western" type="button" class="btn-toogle-info"
+                                    <a href="/product_search/?section=western" type="button" class="btn-toogle-info"
                                        id="btn-left">{% trans "Western Instruments" %}</a>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                                     <video loop preload
                                            style="position: relative;width: 100%;cursor: pointer" class="model-video"
                                            src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
-                                    <a href="/product_search/?search=chinese" type="button" class="btn-toogle-info"
+                                    <a href="/product_search/?section=chinese" type="button" class="btn-toogle-info"
                                        id="btn-center">{% trans "Chinese Instruments" %}</a>
                                 </div>
                             </div>
@@ -698,6 +698,16 @@
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
                     } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");
@@ -735,6 +745,16 @@
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
                     } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");

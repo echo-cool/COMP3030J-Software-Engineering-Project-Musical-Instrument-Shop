@@ -265,7 +265,7 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    reviews = Review.objects.all()
+    reviews = Review.objects.all().filter(instrument_id=product_id)
     review = []
     carts = Cart.objects.filter(user_id=request.user.id)
     for i in range(4):
@@ -538,11 +538,18 @@ def model_design2(request, model_id):
 # search instruments by category
 def product_search_by_category(request):
     if request.method == "GET":
+        section_text = request.GET.get("section", None)
         category_li = request.GET.get("checked_category", None)
         search_text = request.GET.get("search", "")
         category_list = [ch for ch in category_li]
-
-        instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
+        if section_text == "western":
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).filter(
+                chinese=1).order_by("-object_gltf")
+        elif section_text == "chinese":
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).filter(
+                chinese=0).order_by("-object_gltf")
+        else:
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).order_by("-object_gltf")
         instruments = []
 
         i = 0
@@ -562,16 +569,22 @@ def product_search_by_category(request):
 # search instruments by keyword
 def product_search(request):
     search_text = request.GET.get("search", "")
+    section_text = request.GET.get("section", None)
     search_category_text = request.GET.get("category", None)
 
     header = ""
-    if "chinese" == search_text:
+    if section_text == "chinese":
         header = "chinese"
-        all_instruments = Instrument.objects.filter().filter(chinese=1)
-    elif "western" == search_text:
-        all_instruments = Instrument.objects.filter().filter(chinese=0)
+        all_instruments = Instrument.objects.filter(chinese=1).order_by("-object_gltf")
+    elif section_text == "western":
+        all_instruments = Instrument.objects.filter(chinese=0).order_by("-object_gltf")
     else:
-        all_instruments = Instrument.objects.filter(name__contains=search_text)
+        all_instruments = Instrument.objects.filter(name__contains=search_text).order_by("-object_gltf")
+        all_chinese = True
+        for ins in all_instruments:
+            if ins.chinese == 0:
+                all_chinese = False
+        header = "chinese" if all_chinese else ""
 
     if search_category_text:
         search_category_list = search_category_text.split("|")
@@ -583,9 +596,19 @@ def product_search(request):
     category_list = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
+    new_categories = []
     for category in category_list:
-        categories[category] = instruments.filter(category=category).count()
-
+        if section_text == "western":
+            if category.id == 1 or category.id == 2 or category.id == 3 or category.id == 4 or category.id == 9:
+                category.count = instruments.filter(category=category).filter(chinese=0).count()
+                new_categories.append(category)
+        elif section_text == "chinese":
+            if category.id != 1 and category.id != 2 and category.id != 3 and category.id != 4:
+                category.count = instruments.filter(category=category).filter(chinese=1).count()
+                new_categories.append(category)
+        else:
+            category.count = instruments.filter(category=category).count()
+            new_categories.append(category)
     # game option
     game_style = 0
     if "guitar" in search_text:
@@ -624,7 +647,7 @@ def product_search(request):
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
-        'categories': categories,
+        'categories': new_categories,
         'carts': carts,
         "part_pages": part_pages
     })
@@ -632,7 +655,7 @@ def product_search(request):
 
 def image_search(request, result_key):
     search_category_text = request.GET.get("category", None)
-    all_instruments = memory_cached_db.get(result_key)
+    all_instruments = memory_cached_db.get(result_key).order_by("-object_gltf")
 
     if search_category_text:
         search_category_list = search_category_text.split("|")
