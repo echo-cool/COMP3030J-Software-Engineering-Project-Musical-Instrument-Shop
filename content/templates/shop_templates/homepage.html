@@ -698,6 +698,16 @@
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
                     } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");
@@ -735,6 +745,16 @@
                             hulla.send("The instrument is already in your cart!", "warning");
                         }, 300);
                     } else if (res === 200) {
+                        $.ajax({
+                            url: "#",
+                            method: "GET",
+                            success: function (res) {
+                                $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                                activateMiniCart();
+                                activateDeleteCart();
+                                update_total_money();
+                            }
+                        });
                         setTimeout(function () {
                             let hulla = new hullabaloo();
                             hulla.send("Add successfully!", "success");
