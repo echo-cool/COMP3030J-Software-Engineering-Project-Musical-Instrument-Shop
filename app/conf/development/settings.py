@@ -32,8 +32,6 @@ INSTALLED_APPS = [
     # Faker
     'django_seed',
 
-    'modeltranslation',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
