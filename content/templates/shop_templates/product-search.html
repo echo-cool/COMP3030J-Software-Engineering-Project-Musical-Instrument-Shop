@@ -509,9 +509,9 @@
                                 <ul class="pagination">
                                     {% for pg in part_pages %}
                                         {% if instruments.number == pg %}
-                                            <li><a class="page-number current">{{ pg }}</a></li>
+                                            <li><a class="page-number current" href="javascript:void(0)">{{ pg }}</a></li>
                                         {% else %}
-                                            <li><a class="page-number">{{ pg }}</a></li>
+                                            <li><a class="page-number" href="javascript:void(0)">{{ pg }}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
@@ -533,18 +533,18 @@
                                     window.location.href = addUrlPara(window.location.href, 'page', $(this).text())
                                 })
 
-                                $("#prev_page").on('click', function (res) {
-                                    {% if instruments.has_previous %}
-                                        window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})
-                                    {% endif %}
+                                {#$("#prev_page").on('click', function (res) {#}
+                                {#    {% if instruments.has_previous %}#}
+                                {#        window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})#}
+                                {#    {% endif %}#}
+                                {##}
 
-                                })
-                                $("#next_page").on('click', function (res) {
-                                    {% if instruments.has_next %}
-                                        window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})
-                                    {% endif %}
+                                {#$("#next_page").on('click', function (res) {#}
+                                {#    {% if instruments.has_next %}#}
+                                {#        window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})#}
+                                {#    {% endif %}#}
+                                {##}
 
-                                })
                             </script>
                         </div>
                     </div>

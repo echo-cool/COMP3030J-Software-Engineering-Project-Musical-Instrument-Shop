@@ -260,7 +260,7 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    reviews = Review.objects.all()
+    reviews = Review.objects.all().filter(instrument_id=product_id)
     review = []
     carts = Cart.objects.filter(user_id=request.user.id)
     for i in range(4):
@@ -277,6 +277,7 @@ def product_details(request, product_id):
         model_url = str(instrument.object_gltf)
     else:
         model_url = "none"
+    print(review)
     print("=============" + model_url + "=========", model_url == "")
     if len(reviews) > 0:
         return render(request, 'shop_templates/product-detail.html', {
