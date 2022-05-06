@@ -263,7 +263,7 @@
                                         }
                                     </style>
                                     <ul class="list-category-toggle toggle-tab list-none">
-                                        {% for category in categories %}
+                                        {% for category, count in categories.items %}
                                             <li class="item-toggle-tab">
                                                 <input type="checkbox" class="category-checkbox"
                                                        id="checkbox__{{ category.id }}"/>
@@ -271,7 +271,7 @@
                                                    id="category__{{ category.id }}"
                                                    style="line-height: 0px;display: flex; align-items: center;">
                                                     <span>{{ category.name }}</span>
-                                                    <span>(8)</span>
+                                                    <span>({{ count }})</span>
                                                 </a>
                                             </li>
                                         {% endfor %}
