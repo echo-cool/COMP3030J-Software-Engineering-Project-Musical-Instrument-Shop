@@ -1,7 +1,7 @@
-from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
-from modeltranslation.translator import translator, TranslationOptions
-from .models import Instrument
+# from django.contrib import admin
+# from modeltranslation.admin import TranslationAdmin
+# from modeltranslation.translator import translator, TranslationOptions
+# from .models import Instrument
 
 
 # class InstrumentTranslationOptions(TranslationOptions):
