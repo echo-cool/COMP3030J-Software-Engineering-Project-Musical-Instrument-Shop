@@ -66,6 +66,43 @@
     {% endblock %}
     {% block head_link %}
     {% endblock %}
+    <style>
+        body::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;}
+
+        body::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;}
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border: 2px solid #555555;}
+
+
+        {#body::-webkit-scrollbar-track {#}
+        {#    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);#}
+        {#    background-color: #F5F5F5;#}
+        {#    border-radius: 10px;}#}
+        {##}
+        {#body::-webkit-scrollbar {#}
+        {#    width: 10px;#}
+        {#    background-color: #F5F5F5;}#}
+        {##}
+        {#body::-webkit-scrollbar-thumb {#}
+        {#    background-color: #AAA;#}
+        {#    border-radius: 10px;#}
+        {#    background-image: -webkit-linear-gradient(90deg,#}
+        {#    rgba(0, 0, 0, .2) 25%,#}
+        {#    transparent 25%,#}
+        {#    transparent 50%,#}
+        {#    rgba(0, 0, 0, .2) 50%,#}
+        {#    rgba(0, 0, 0, .2) 75%,#}
+        {#    transparent 75%,#}
+        {#    transparent)}#}
+
+
+    </style>
 </head>
 <body class="home-page" id="home-page">
 
@@ -2213,12 +2250,17 @@
     </form>
     <!-- popup-quickview -->
     <!-- Jquery JS Link -->
-    {#        <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
+    {#    <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
 
-    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    {#    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>#}
+    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+
+    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
     <!-- End Footer -->
-    {#    <script type="text/javascript"#}
-    {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
+    <script type="text/javascript"
+            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+    {#    <script src="https://code.jquery.com/jquery-3.6.0.js"#}
+    {#            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>#}
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
@@ -2231,6 +2273,7 @@
     <script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
     <script type="text/javascript" src="{% static "assets/js/add_url.js" %}"></script>
     <script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
     <script>
         function activateDeleteCart() {
             $(".delete-item").on("click", function () {

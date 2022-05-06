@@ -93,6 +93,7 @@
 
         {#setTimeout(, 100);#}
     </script>
+
 {% endblock %}
 {% block content %}
     <script>
@@ -455,8 +456,8 @@
                 <div class="newsletter-form">
                     <form method="post">
                         <input type="text" name="newsletter" value="Enter your email..."
-                               onfocus="if (this.value==this.defaultValue) this.value = ''"
-                               onblur="if (this.value=='') this.value = this.defaultValue">
+                               onfocus="if (this.value===this.defaultValue) this.value = ''"
+                               onblur="if (this.value==='') this.value = this.defaultValue">
                         <input type="submit" value="subscribe">
                     </form>
                 </div>
@@ -574,7 +575,6 @@
 {% endblock %}
 
 {% block scripts %}
-
     <script>
         $(".bottom-left").click(function () {
             console.log("active video");
