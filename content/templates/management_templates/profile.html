@@ -7,19 +7,17 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Profile</a>
+            <a href="#">{% trans "Profile" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
 {% endblock %}
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Profile
-        </h1>
+        <h1 class="col-md-10">{% trans "Profile" %}</h1>
     </div>
 {% endblock %}
 
@@ -47,13 +45,13 @@
                             </a>
 
                             <ul class="align-left dropdown-menu dropdown-caret dropdown-lighter">
-                                <li class="dropdown-header"> Change Status</li>
+                                <li class="dropdown-header">{% trans "Change Status" %}</li>
 
                                 <li>
                                     <a href="#">
                                         <i class="ace-icon fa fa-circle green"></i>
                                         &nbsp;
-                                        <span class="green">Available</span>
+                                        <span class="green">{% trans "Available" %}</span>
                                     </a>
                                 </li>
 
@@ -61,7 +59,7 @@
                                     <a href="#">
                                         <i class="ace-icon fa fa-circle red"></i>
                                         &nbsp;
-                                        <span class="red">Busy</span>
+                                        <span class="red">{% trans "Busy" %}</span>
                                     </a>
                                 </li>
 
@@ -69,7 +67,7 @@
                                     <a href="#">
                                         <i class="ace-icon fa fa-circle grey"></i>
                                         &nbsp;
-                                        <span class="grey">Invisible</span>
+                                        <span class="grey">{% trans "Invisible" %}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -82,18 +80,13 @@
                 <div class="profile-contact-info">
                     <div class="profile-contact-links align-left">
                         <a href="#" class="btn btn-link">
-                            <i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
-                            Add as a friend
-                        </a>
+                            <i class="ace-icon fa fa-plus-circle bigger-120 green"></i>{% trans "Add as a friend" %}</a>
 
                         <a href="#" class="btn btn-link">
-                            <i class="ace-icon fa fa-envelope bigger-120 pink"></i>
-                            Send a message
-                        </a>
+                            <i class="ace-icon fa fa-envelope bigger-120 pink"></i>{% trans "Send a message" %}</a>
 
                         <a href="#" class="btn btn-link">
-                            <i class="ace-icon fa fa-globe bigger-125 blue"></i>
-                            www.alexdoe.com
+                            <i class="ace-icon fa fa-globe bigger-125 blue"></i>www.alexdoe.com
                         </a>
                     </div>
 
@@ -120,16 +113,12 @@
                     <div class="grid2">
                         <span class="bigger-175 blue">25</span>
 
-                        <br/>
-                        Followers
-                    </div>
+                        <br/>{% trans "Followers" %}</div>
 
                     <div class="grid2">
                         <span class="bigger-175 blue">12</span>
 
-                        <br/>
-                        Following
-                    </div>
+                        <br/>{% trans "Following" %}</div>
                 </div>
 
                 <div class="hr hr16 dotted"></div>
@@ -184,7 +173,7 @@
 
                 <div class="profile-user-info profile-user-info-striped">
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Username</div>
+                        <div class="profile-info-name">{% trans "Username" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="username">{{ request.user.username }}</span>
@@ -192,7 +181,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> First Name</div>
+                        <div class="profile-info-name">{% trans "First Name" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="first_name">{{ request.user.first_name }}</span>
@@ -200,7 +189,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Last Name</div>
+                        <div class="profile-info-name">{% trans "Last Name" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="last_name">{{ request.user.last_name }}</span>
@@ -208,7 +197,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Joined</div>
+                        <div class="profile-info-name">{% trans "Joined" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="signup">{{ request.user.date_joined }}</span>
@@ -216,7 +205,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Last Online</div>
+                        <div class="profile-info-name">{% trans "Last Online" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="login">{{ request.user.last_login }}</span>
@@ -224,7 +213,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Email</div>
+                        <div class="profile-info-name">{% trans "Email" %}</div>
 
                         <div class="profile-info-value">
                             <span class="editable" id="email">{{ request.user.email }}</span>
@@ -237,9 +226,7 @@
                 <div class="widget-box transparent">
                     <div class="widget-header widget-header-small">
                         <h4 class="widget-title blue smaller">
-                            <i class="ace-icon fa fa-rss orange"></i>
-                            Recent Activities
-                        </h4>
+                            <i class="ace-icon fa fa-rss orange"></i>{% trans "Recent Activities" %}</h4>
 
                         <div class="widget-toolbar action-buttons">
                             <a href="#" data-action="reload">
@@ -259,14 +246,11 @@
                                     <div>
                                         <img class="pull-left" alt="Alex Doe's avatar"
                                              src="assets/images/avatars/avatar5.png"/>
-                                        <a class="user" href="#"> Alex Doe </a>
-                                        changed his profile photo.
-                                        <a href="#">Take a look</a>
+                                        <a class="user" href="#"> Alex Doe </a>{% trans "changed his profile photo." %}<a href="#"
+                                    >{% trans "Take a look" %}</a>
 
                                         <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            an hour ago
-                                        </div>
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "an hour ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -284,13 +268,9 @@
                                     <div>
                                         <img class="pull-left" alt="Susan Smith's avatar"
                                              src="assets/images/avatars/avatar1.png"/>
-                                        <a class="user" href="#"> Susan Smith </a>
-
-                                        is now friends with Alex Doe.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            2 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Susan Smith " %}</a
+                                        >{% trans "is now friends with Alex Doe." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "2 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -307,15 +287,11 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-                                        joined
-                                        <a href="#">Country Music</a>
-
-                                        group.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            5 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "joined" %}<a href="#"
+                                    >{% trans "Country Music" %}</a
+                                    >{% trans "group." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "5 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -332,14 +308,12 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-                                        uploaded a new photo.
-                                        <a href="#">Take a look</a>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "uploaded a new photo." %}<a href="#"
+                                    >{% trans "Take a look" %}</a>
 
                                         <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            5 hours ago
-                                        </div>
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "5 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -357,13 +331,9 @@
                                     <div>
                                         <img class="pull-left" alt="David Palms's avatar"
                                              src="assets/images/avatars/avatar4.png"/>
-                                        <a class="user" href="#"> David Palms </a>
-
-                                        left a comment on Alex's wall.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            8 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "David Palms " %}</a
+                                        >{% trans "left a comment on Alex's wall." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "8 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -380,14 +350,12 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-                                        published a new blog post.
-                                        <a href="#">Read now</a>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "published a new blog post." %}<a href="#"
+                                    >{% trans "Read now" %}</a>
 
                                         <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            11 hours ago
-                                        </div>
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "11 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -405,13 +373,9 @@
                                     <div>
                                         <img class="pull-left" alt="Alex Doe's avatar"
                                              src="assets/images/avatars/avatar5.png"/>
-                                        <a class="user" href="#"> Alex Doe </a>
-
-                                        upgraded his skills.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            12 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "upgraded his skills." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "12 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -428,13 +392,9 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-
-                                        logged in.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            12 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "logged in." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "12 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -451,13 +411,9 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-
-                                        logged out.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            16 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "logged out." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "16 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -474,13 +430,9 @@
                                 <div class="profile-activity clearfix">
                                     <div>
                                         <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                        <a class="user" href="#"> Alex Doe </a>
-
-                                        logged in.
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            16 hours ago
-                                        </div>
+                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
+                                        >{% trans "logged in." %}<div class="time">
+                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "16 hours ago" %}</div>
                                     </div>
 
                                     <div class="tools action-buttons">
@@ -505,7 +457,7 @@
                 <div class="center">
                     <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
                         <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
-                        <span class="bigger-110">View more activities</span>
+                        <span class="bigger-110">{% trans "View more activities" %}</span>
 
                         <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
                     </button>
@@ -827,7 +779,7 @@
 					   <div class="modal-content">\
 						<div class="modal-header">\
 							<button type="button" class="close" data-dismiss="modal">&times;</button>\
-							<h4 class="blue">Change Avatar</h4>\
+							<h4 class="blue">{% trans "Change Avatar" %}</h4>\
 						</div>\
 						\
 						<form action="/management/profile/" method="POST" enctype="multipart/form-data">\

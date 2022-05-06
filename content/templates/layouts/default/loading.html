@@ -1,6 +1,7 @@
+{% load i18n %}
 <!doctype html>
 <html lang="en" class="no-js">
-<head><title>Check it done</title>
+<head><title>{% trans "Check it done" %}</title>
     <meta property="og:title" content="Loading">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -68,8 +69,8 @@ if (isMobile) {
 {#        <path d="M29.4937 2.84375C28.4062 3.325 27.2437 3.65 26.0187 3.8C27.2687 3.05 28.2312 1.8625 28.6812 0.45C27.5125 1.14375 26.2187 1.65 24.8375 1.91875C23.7312 0.7375 22.1562 0 20.4187 0C17.075 0 14.3687 2.7125 14.3687 6.05625C14.3687 6.53125 14.4187 6.99375 14.525 7.4375C9.49375 7.1875 5.03125 4.775 2.05 1.10625C1.53125 2 1.23125 3.04375 1.23125 4.15C1.23125 6.25 2.3 8.10625 3.925 9.19375C2.93125 9.16875 1.99375 8.89375 1.18125 8.4375C1.18125 8.4625 1.18125 8.4875 1.18125 8.5125C1.18125 11.45 3.26875 13.8938 6.0375 14.45C5.53125 14.5875 4.99375 14.6625 4.44375 14.6625C4.05625 14.6625 3.675 14.625 3.30625 14.55C4.075 16.9562 6.3125 18.7063 8.9625 18.7563C6.89375 20.3813 4.28125 21.35 1.44375 21.35C0.95625 21.35 0.475 21.3188 0 21.2625C2.675 23 5.85625 24 9.26875 24C20.4062 24 26.4937 14.7688 26.4937 6.7625C26.4937 6.5 26.4875 6.2375 26.475 5.98125C27.6562 5.125 28.6812 4.05625 29.4937 2.84375Z"></path>#}
 {#    </svg>#}
 {#</a>#}
-<button class="button--legal" @click="showLegal">legal</button>
-<form class="form--cta">
+<button class="button--legal" @click="showLegal">{% trans "legal" %}</button>
+ <form class="form--cta">
     <div class="form__content"><input class="input--mail" required="" type="email" placeholder="Enter your email"
                                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" maxlength="48"
                                       aria-label="Enter your email">
@@ -78,13 +79,13 @@ if (isMobile) {
             <br>
             Please give us some time for presenting better experience
         </div>
-        <button class="button--send">Send</button>
+        <button class="button--send">{% trans "Send" %}</button>
     </div>
 </form>
 <div class="modal modal--legal">
     <div class="modal__content">
-        <h3 class="modal__title">Legal</h3>
-        <a href="https://nextco.de">MusicoMo Online Store</a>
+        <h3 class="modal__title">{% trans "Legal" %}</h3>
+        <a href="https://nextco.de">{% trans "MusicoMo Online Store" %}</a>
         <br>COMP3030J - Group8
         <br>
     </div>

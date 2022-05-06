@@ -7,10 +7,10 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Manage Blogs' Categories</a>
+            <a href="#">{% trans "Manage Blogs' Categories" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
@@ -34,9 +34,7 @@
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Category Management
-        </h1>
+        <h1 class="col-md-10">{% trans "Category Management" %}</h1>
         <button class="btn btn-xs btn-success pull-right"
                 onclick="window.location.href='{% url 'management:add_blog_category' %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -55,17 +53,13 @@
                     <span class="lbl"></span>
                 </label>
             </th>
-            <th class="detail-col">Details</th>
-            <th>Name</th>
+            <th class="detail-col">{% trans "Details" %}</th>
+            <th>{% trans "Name" %}</th>
             <th class="hidden-480">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                Blogs Involved
-            </th>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Blogs Involved" %}</th>
 
             <th>
-                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                Created At
-            </th>
+                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
 
             <th></th>
         </tr>
@@ -86,7 +80,7 @@
                     <div class="action-buttons">
                         <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
                             <i class="ace-icon fa fa-angle-double-down"></i>
-                            <span class="sr-only">Details</span>
+                            <span class="sr-only">{% trans "Details" %}</span>
                         </a>
                     </div>
                 </td>
@@ -237,7 +231,7 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Name</div>
+                                        <div class="profile-info-name">{% trans "Name" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ category.category }}</span>
@@ -245,7 +239,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Blogs Involved</div>
+                                        <div class="profile-info-name">{% trans "Blogs Involved" %}</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
@@ -254,7 +248,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Created At</div>
+                                        <div class="profile-info-name">{% trans "Created At" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ category.created_at }}</span>
@@ -301,12 +295,11 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >Page: {{ categories.number }} Total: {{ categories.paginator.num_pages }}</span>
+            >{% trans "Page: " %}{{ categories.number }}{% trans " Total:  " %}{{ categories.paginator.num_pages }}
+            </span>
             {% if categories.has_previous %}
-                <button id="first_page" class="btn btn-round btn-success">First Page</button>
-                <button id="prev_page" class="btn btn-round btn-info">
-                    Previous Page
-                </button>
+                <button id="first_page" class="btn btn-round btn-success">{% trans "First Page" %}</button>
+                <button id="prev_page" class="btn btn-round btn-info">{% trans "Previous Page" %}</button>
             {% endif %}
 
 
@@ -320,13 +313,9 @@
 
 
             {% if categories.has_next %}
-                <button id="next_page" class="btn btn-round btn-info">
-                    Next Page
-                </button>
+                <button id="next_page" class="btn btn-round btn-info">{% trans "Next Page" %}</button>
 
-                <button id="last_page" class="btn btn-round btn-danger">
-                    Last Page
-                </button>
+                <button id="last_page" class="btn btn-round btn-danger">{% trans "Last Page" %}</button>
             {% endif %}
 
         </div>
@@ -365,16 +354,12 @@
     </table>
 
     <div id="dialog-delete" class="hide">
-        <div class="alert alert-info bigger-110">
-            The instrument will be deleted and the operation can not be revoked
-        </div>
+        <div class="alert alert-info bigger-110">{% trans "The instrument will be deleted and the operation can not be revoked" %}</div>
 
         <div class="space-6"></div>
 
         <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>{% trans "Are you sure?" %}</p>
     </div><!-- #dialog-confirm -->
 
 {% endblock %}

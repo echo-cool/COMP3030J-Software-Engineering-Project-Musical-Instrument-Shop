@@ -7,10 +7,10 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">Manage Orders</a>
+            <a href="#">{% trans "Manage Orders" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
@@ -26,9 +26,7 @@
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">
-            Order Management
-            <small>
+        <h1 class="col-md-10">{% trans "Order Management" %}<small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 {% trans 'All Orders' %}
             </small>
@@ -51,16 +49,14 @@
                     <span class="lbl"></span>
                 </label>
             </th>
-            <th class="detail-col">Details</th>
-            <th>Instrument</th>
-            <th>Customer</th>
-            <th class="hidden-480">Quantity</th>
+            <th class="detail-col">{% trans "Details" %}</th>
+            <th>{% trans "Instrument" %}</th>
+            <th>{% trans "Customer" %}</th>
+            <th class="hidden-480">{% trans "Quantity" %}</th>
 
             <th>
-                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                Created At
-            </th>
-            <th class="hidden-480">Total Price</th>
+                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
+            <th class="hidden-480">{% trans "Total Price" %}</th>
 
             <th></th>
         </tr>
@@ -80,7 +76,7 @@
                     <div class="action-buttons">
                         <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
                             <i class="ace-icon fa fa-angle-double-down"></i>
-                            <span class="sr-only">Details</span>
+                            <span class="sr-only">{% trans "Details" %}</span>
                         </a>
                     </div>
                 </td>
@@ -209,7 +205,7 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Buyer</div>
+                                        <div class="profile-info-name">{% trans "Buyer" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.order.user.username }}</span>
@@ -217,7 +213,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Destination</div>
+                                        <div class="profile-info-name">{% trans "Destination" %}</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
@@ -226,7 +222,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Quantity</div>
+                                        <div class="profile-info-name">{% trans "Quantity" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.quantity }}</span>
@@ -234,7 +230,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Total Price</div>
+                                        <div class="profile-info-name">{% trans "Total Price" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{% widthratio order_item.instrument.price 1 order_item.quantity %}</span>
@@ -242,7 +238,7 @@
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name"> Created At</div>
+                                        <div class="profile-info-name">{% trans "Created At" %}</div>
 
                                         <div class="profile-info-value">
                                             <span>{{ order_item.created_at }}</span>
@@ -253,8 +249,7 @@
 
                             <div class="col-xs-12 col-sm-3">
                                 <div class="space visible-xs"></div>
-                                <h4 class="header blue lighter less-margin">Send a message
-                                    to {{ order_item.order.user.username }}</h4>
+                                <h4 class="header blue lighter less-margin">{% trans "Send a message to" %} {{ order_item.order.user.username }}</h4>
 
                                 <div class="space-6"></div>
 
@@ -269,13 +264,11 @@
                                     <div class="clearfix">
                                         <label class="pull-left">
                                             <input type="checkbox" class="ace">
-                                            <span class="lbl"> Email me a copy</span>
+                                            <span class="lbl">{% trans "Email me a copy" %}</span>
                                         </label>
 
                                         <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                type="button">
-                                            Submit
-                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                type="button">{% trans "Submit" %}<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -291,16 +284,11 @@
     </table>
 
     <div id="dialog-confirm" class="hide">
-        <div class="alert alert-info bigger-110">
-            The order will be confirmed and waiting for the buyer to confirm.
-        </div>
+        <div class="alert alert-info bigger-110">{% trans "The order will be confirmed and waiting for the buyer to confirm." %}</div>
 
         <div class="space-6"></div>
 
-        <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
+        <p class="bigger-110 bolder center grey"><i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>{% trans "Are you sure?" %}</p>
     </div><!-- #dialog-confirm -->
 
 

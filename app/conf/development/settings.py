@@ -66,7 +66,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'app.cors_middleware.CORSMiddleware',
     'app.auth_middleware.MyLoginRequiredMiddleware',
+
 ]
+#     'app.ErrorPageHandel.ErrorPageHandelMiddleware'
 
 ROOT_URLCONF = 'app.urls'
 
@@ -171,6 +173,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(CONTENT_DIR, 'static')
 STATIC_URL = '/static/'
+
 
 MEDIA_ROOT = os.path.join(CONTENT_DIR, 'media')
 MEDIA_URL = '/media/'

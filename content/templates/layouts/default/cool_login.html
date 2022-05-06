@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title>Cool Login</title>
+    <title>{% trans "Cool Login" %}</title>
 {#<script src="https://www.google.com/recaptcha/api.js?render=6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH"></script>#}
 {#     <script src="https://www.google.com/recaptcha/api.js"></script>#}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -48,7 +48,7 @@
 
             <form action="/accounts/log-in-post/" method="post">
                 {% csrf_token %}
-                <h2 style="font-family: fantasy;font-style: italic">User LOGIN</h2>
+                <h2 style="font-family: fantasy;font-style: italic">{% trans "User LOGIN" %}</h2>
                 <!-- Input username start -->
 
                 {% bootstrap_form form %}
@@ -96,7 +96,7 @@
                 <script>
                     $("#id_remember_me").css("appearance", "auto").css("margin-top", "20px");
                 </script>
-                {#                <label for="username">USERNAME</label>#}
+                {#                <label for="username">{% trans "USERNAME" %}</label>#}
                 {#                <label2><input class="username_l" id="username_l" name="email_or_username" required="" type="text"#}
                 {#                               value=""></label2>#}
                 {##}
@@ -104,7 +104,7 @@
                 {#                <!-- Input username end -->#}
                 {##}
                 {#                <!-- Input password start -->#}
-                {#                <label for="password">PASSWORD</label>#}
+                {#                <label for="password">{% trans "PASSWORD" %}</label>#}
                 {#                <label2><input class="password_l" id="password_l" name="password" required="" type="password"#}
                 {#                               value=""></label2>#}
                 {##}
@@ -125,19 +125,19 @@
                                 data-action='submit'
                                 >Sign In
                         </button>
-{#                    <button type="submit" id="submit_l" class="submit">Sign In</button>#}
+{#                    <button type="submit" id="submit_l" class="submit">{% trans "Sign In" %}</button>#}
                 </p>   <!-- User Sign in button end -->
 
                 <!-- User Sign in button end -->
-                <div class="switch-to-sign-up">Sign Up</div>
+                <div class="switch-to-sign-up">{% trans "Sign Up" %}</div>
                 <!-- Visitor Sign in button start -->
                 <button type="button" class="visitor_button">
                     <span> Visitors </span>
-                    <span>entrance</span>
+                    <span>{% trans "entrance" %}</span>
                 </button>
                 <!-- Visitor Sign in button end -->
                 <p></p>
-                <p class="college">MusicoMo Musical Instrument Online Store</p>
+                <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
             </form>
 
         </div>
@@ -146,25 +146,25 @@
         <div class="form sign-up">
             <form  action="/accounts/sign-up-post/" method="post">
                 {% csrf_token %}
-                <h2 style="font-family: fantasy;font-style: italic">User REGISTER</h2>
+                <h2 style="font-family: fantasy;font-style: italic">{% trans "User REGISTER" %}</h2>
                 <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
                     {% bootstrap_form form2 %}
                 </div>
                 {#                <!-- Input username start -->#}
-                {#                <label for=" username">USERNAME</label>#}
+                {#                <label for=" username">{% trans "USERNAME" %}</label>#}
                 {#                <label2><input class="username_r" id="username_r" name="username" required="" type="text"#}
                 {#                               value=""></label2>#}
                 {#                <img id="icon-username" src="/static/images/icon/icon-correct.png" alt="">#}
                 {#                <p id="hint" class="limitation_for_username"> 6-16 characters</p>#}
                 {#                <!-- Input username end -->#}
                 {#                <!-- Input password start -->#}
-                {#                <label for="password">PASSWORD</label>#}
+                {#                <label for="password">{% trans "PASSWORD" %}</label>#}
                 {#                <label2><input class="password_r" id="password_r" name="password" required="" type="password"#}
                 {#                               value=""></label2>#}
                 {#                <img id="icon-password" src="/static/images/icon/icon-correct.png" alt="">#}
                 {#                <p id="hint" class="limitation_for_password"> 6-12 characters</p>#}
                 {#                <label>#}
-                {#                    <span>PASSWORD AGAIN</span>#}
+                {#                    <span>{% trans "PASSWORD AGAIN" %}</span>#}
                 {#                    <input class="password" id="password_r2" type="password" required="">#}
                 {#                </label>#}
                 {#                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">#}
@@ -172,21 +172,20 @@
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_r" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
                                 data-callback='onSubmit'
-                                data-action='submit'>Sign Up
-                        </button>
-{#                    <button type="submit" id="submit_r" class="submit">Sign In</button>#}
+                                data-action='submit'>{% trans "Sign Up" %}</button>
+{#                    <button type="submit" id="submit_r" class="submit">{% trans "Sign In" %}</button>#}
                 </p><!-- User Sign in button end -->
 
                 <p>
                 </p>
                 <div class="information"></div>
                 <p></p>
-                <div class="switch-to-sign-in">Sign In</div>
+                <div class="switch-to-sign-in">{% trans "Sign In" %}</div>
                 <!-- Visitor Sign in button start -->
 
                 <!-- Visitor Sign in button end -->
 
-                <p class="college">MusicoMo Musical Instrument Online Store</p>
+                <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
             </form>
         </div>
 
@@ -195,16 +194,16 @@
             <!-- image on the right start -->
             <div class="right-img">
                 <div class="img__text m--up">
-                    <h2>Staff ?</h2>
-                    <p>Publish and manage your products through the Staff portal !</p>
+                    <h2>{% trans "Staff ?" %}</h2>
+                    <p>{% trans "Publish and manage your products through the Staff portal !" %}</p>
                 </div>
                 <div class="img__text m--in">
-                    <h2>Customer ?</h2>
-                    <p>If you just want to buy an item, please log in as a customer !</p>
+                    <h2>{% trans "Customer ?" %}</h2>
+                    <p>{% trans "If you just want to buy an item, please log in as a customer !" %}</p>
                 </div>
                 <div class="change-way-btn">
-                    <span class="m--up">Merchant Login</span>
-                    <span class="m--in">Customer Login</span>
+                    <span class="m--up">{% trans "Merchant Login" %}</span>
+                    <span class="m--in">{% trans "Customer Login" %}</span>
                 </div>
             </div>
 
@@ -212,10 +211,10 @@
             <div class="form login-in-second">
                 <form id="login-form" action="login2" method="post">
                     {% csrf_token %}
-                    <h2 style="font-family: fantasy;font-style: italic">ADMINISTRATOR LOGIN</h2>
+                    <h2 style="font-family: fantasy;font-style: italic">{% trans "ADMINISTRATOR LOGIN" %}</h2>
                     <!-- Administrator username start -->
                     <label>
-                        <span>USERNAME</span>
+                        <span>{% trans "USERNAME" %}</span>
                         <input class="username_l2" id="username_l2" name="username" required="" type="text" value="">
                         <p id="p1"></p>
                     </label>
@@ -223,7 +222,7 @@
 
                     <!-- Administrator password start -->
                     <label>
-                        <span>PASSWORD</span>
+                        <span>{% trans "PASSWORD" %}</span>
                         <input class="password_l2" id="password_l2" name="password" required="" type="password"
                                value="">
                     </label>
@@ -239,11 +238,10 @@
 
                         <button type="submit" id="submit_l2" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
                                 data-callback='onSubmit'
-                                data-action='submit'>Sign In
-                        </button>
+                                data-action='submit'>{% trans "Sign In" %}</button>
                     </p>
                     <!-- Administrator sign in button end -->
-                    <p class="college">MusicoMo Musical Instrument Online Store</p>
+                    <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
                 </form>
             </div>
             <!-- Administrator login end -->

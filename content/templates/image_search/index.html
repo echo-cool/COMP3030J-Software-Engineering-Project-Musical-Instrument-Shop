@@ -6,14 +6,14 @@
 
 
 
-    <h4>Search</h4>
+    <h4>{% trans "Search" %}</h4>
 
     <form action="" method="POST" enctype="multipart/form-data">
 
         {% csrf_token %}
         {% bootstrap_form form %}
 
-        <button class="btn btn-primary">Upload</button>
+        <button class="btn btn-primary">{% trans "Upload" %}</button>
 
     </form>
 

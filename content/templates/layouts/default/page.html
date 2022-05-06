@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Ansonika">
-    <title>Allaia | Bootstrap eCommerce Template - ThemeForest</title>
+    <title>{% trans "Allaia | Bootstrap eCommerce Template - ThemeForest" %}</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico %" %}" type="image/x-icon">
@@ -84,62 +84,58 @@
                             </div>
                             <ul>
                                 <li class="no-submenu">
-                                    <a href="{% url "shop:index" %}" class="show-submenu">Home</a>
+                                    <a href="{% url "shop:index" %}" class="show-submenu">{% trans "Home" %}</a>
                                     {#                                    <ul>#}
-                                    {#                                        <li><a href="{% url 'shop:index' %}">Slider</a></li>#}
-                                    {#                                        <li><a href="index-2.html">Video Background</a></li>#}
-                                    {#                                        <li><a href="index-3.html">Vertical Slider</a></li>#}
-                                    {#                                        <li><a href="index-4.html">GDPR Cookie Bar</a></li>#}
+                                    {#                                        <li><a href="{% url 'shop:index' %}">{% trans "Slider" %}</a></li>#}
+                                    {#                                        <li><a href="index-2.html">{% trans "Video Background" %}</a></li>#}
+                                    {#                                        <li><a href="index-3.html">{% trans "Vertical Slider" %}</a></li>#}
+                                    {#                                        <li><a href="index-4.html">{% trans "GDPR Cookie Bar" %}</a></li>#}
                                     {#                                    </ul>#}
                                 </li>
                                 <li class="megamenu submenu">
-                                    <a href="javascript:void(0);" class="show-submenu-mega">Pages</a>
+                                    <a href="javascript:void(0);" class="show-submenu-mega">{% trans "Pages" %}</a>
                                     <div class="menu-wrapper">
                                         <div class="row small-gutters">
                                             <div class="col-lg-3">
-                                                <h3>Listing grid</h3>
+                                                <h3>{% trans "Listing grid" %}</h3>
                                                 <ul>
-                                                    <li><a href="listing-grid-1-full.html">Grid Full Width</a></li>
-                                                    <li><a href="listing-grid-2-full.html">Grid Full Width 2</a></li>
-                                                    <li><a href="listing-grid-3.html">Grid Boxed</a></li>
-                                                    <li><a href="listing-grid-4-sidebar-left.html">Grid Sidebar Left</a>
+                                                    <li><a href="listing-grid-1-full.html">{% trans "Grid Full Width" %}</a></li>
+                                                    <li><a href="listing-grid-2-full.html">{% trans "Grid Full Width 2" %}</a></li>
+                                                    <li><a href="listing-grid-3.html">{% trans "Grid Boxed" %}</a></li>
+                                                    <li><a href="listing-grid-4-sidebar-left.html">{% trans "Grid Sidebar Left" %}</a>
                                                     </li>
-                                                    <li><a href="listing-grid-5-sidebar-right.html">Grid Sidebar
-                                                        Right</a></li>
-                                                    <li><a href="listing-grid-6-sidebar-left.html">Grid Sidebar Left
-                                                        2</a></li>
-                                                    <li><a href="listing-grid-7-sidebar-right.html">Grid Sidebar Right
-                                                        2</a></li>
+                                                    <li><a href="listing-grid-5-sidebar-right.html">{% trans "Grid Sidebar Right" %}</a></li>
+                                                    <li><a href="listing-grid-6-sidebar-left.html">{% trans "Grid Sidebar Left 2" %}</a></li>
+                                                    <li><a href="listing-grid-7-sidebar-right.html">{% trans "Grid Sidebar Right 2" %}</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3">
-                                                <h3>Listing row &amp; Product</h3>
+                                                <h3>{% trans "Listing row &amp; Product" %}</h3>
                                                 <ul>
-                                                    <li><a href="listing-row-1-sidebar-left.html">Row Sidebar Left</a>
+                                                    <li><a href="listing-row-1-sidebar-left.html">{% trans "Row Sidebar Left" %}</a>
                                                     </li>
-                                                    <li><a href="listing-row-2-sidebar-right.html">Row Sidebar Right</a>
+                                                    <li><a href="listing-row-2-sidebar-right.html">{% trans "Row Sidebar Right" %}</a>
                                                     </li>
-                                                    <li><a href="listing-row-3-sidebar-left.html">Row Sidebar Left 2</a>
+                                                    <li><a href="listing-row-3-sidebar-left.html">{% trans "Row Sidebar Left 2" %}</a>
                                                     </li>
-                                                    <li><a href="listing-row-4-sidebar-extended.html">Row Sidebar
-                                                        Extended</a></li>
-                                                    <li><a href="product-detail-1.html">Product Large Image</a></li>
-                                                    <li><a href="product-detail-2.html">Product Carousel</a></li>
-                                                    <li><a href="product-detail-3.html">Product Sticky Info</a></li>
+                                                    <li><a href="listing-row-4-sidebar-extended.html">{% trans "Row Sidebar Extended" %}</a></li>
+                                                    <li><a href="product-detail-1.html">{% trans "Product Large Image" %}</a></li>
+                                                    <li><a href="product-detail-2.html">{% trans "Product Carousel" %}</a></li>
+                                                    <li><a href="product-detail-3.html">{% trans "Product Sticky Info" %}</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3">
-                                                <h3>Other pages</h3>
+                                                <h3>{% trans "Other pages" %}</h3>
                                                 <ul>
-                                                    <li><a href="/cart">Cart Page</a></li>
-                                                    <li><a href="/checkout">Check Out Page</a></li>
-                                                    <li><a href="/confirm">Confirm Purchase Page</a></li>
-                                                    <li><a href="/wishlist">Wishlist Page</a></li>
-                                                    <li><a href="account.html">Create Account Page</a></li>
-                                                    <li><a href="{% url "shop:orders" %}">Track Order</a></li>
-                                                    <li><a href="help.html">Help Page</a></li>
-                                                    <li><a href="help-2.html">Help Page 2</a></li>
-                                                    <li><a href="leave-review.html">Leave a Review</a></li>
+                                                    <li><a href="/cart">{% trans "Cart Page" %}</a></li>
+                                                    <li><a href="/checkout">{% trans "Check Out Page" %}</a></li>
+                                                    <li><a href="/confirm">{% trans "Confirm Purchase Page" %}</a></li>
+                                                    <li><a href="/wishlist">{% trans "Wishlist Page" %}</a></li>
+                                                    <li><a href="account.html">{% trans "Create Account Page" %}</a></li>
+                                                    <li><a href="{% url "shop:orders" %}">{% trans "Track Order" %}</a></li>
+                                                    <li><a href="help.html">{% trans "Help Page" %}</a></li>
+                                                    <li><a href="help-2.html">{% trans "Help Page 2" %}</a></li>
+                                                    <li><a href="leave-review.html">{% trans "Leave a Review" %}</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
@@ -158,33 +154,33 @@
                                     <!-- /menu-wrapper -->
                                 </li>
                                 <li class="submenu">
-                                    <a href="javascript:void(0);" class="show-submenu">Extra Pages</a>
+                                    <a href="javascript:void(0);" class="show-submenu">{% trans "Extra Pages" %}</a>
                                     <ul>
-                                        <li><a href="header-2.html">Header Style 2</a></li>
-                                        <li><a href="header-3.html">Header Style 3</a></li>
-                                        <li><a href="header-4.html">Header Style 4</a></li>
-                                        <li><a href="header-5.html">Header Style 5</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                        <li><a href="sign-in-modal.html">Sign In Modal</a></li>
-                                        <li><a href="contacts.html">Contact Us</a></li>
-                                        <li><a href="about.html">About 1</a></li>
-                                        <li><a href="about-2.html">About 2</a></li>
-                                        <li><a href="modal-advertise.html">Modal Advertise</a></li>
-                                        <li><a href="modal-newsletter.html">Modal Newsletter</a></li>
+                                        <li><a href="header-2.html">{% trans "Header Style 2" %}</a></li>
+                                        <li><a href="header-3.html">{% trans "Header Style 3" %}</a></li>
+                                        <li><a href="header-4.html">{% trans "Header Style 4" %}</a></li>
+                                        <li><a href="header-5.html">{% trans "Header Style 5" %}</a></li>
+                                        <li><a href="404.html">{% trans "404 Page" %}</a></li>
+                                        <li><a href="sign-in-modal.html">{% trans "Sign In Modal" %}</a></li>
+                                        <li><a href="contacts.html">{% trans "Contact Us" %}</a></li>
+                                        <li><a href="about.html">{% trans "About 1" %}</a></li>
+                                        <li><a href="about-2.html">{% trans "About 2" %}</a></li>
+                                        <li><a href="modal-advertise.html">{% trans "Modal Advertise" %}</a></li>
+                                        <li><a href="modal-newsletter.html">{% trans "Modal Newsletter" %}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="{% url "blog:index" %}">Blog</a>
+                                    <a href="{% url "blog:index" %}">{% trans "Blog" %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url "shop:about" %}">About</a>
+                                    <a href="{% url "shop:about" %}">{% trans "About" %}</a>
                                 </li>
                             </ul>
                         </div>
                         <!--/main-menu -->
                     </nav>
                     <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-                        <a class="phone_top" href="{% url "shop:about" %}"><strong><span>Need Help?</span></strong></a>
+                        <a class="phone_top" href="{% url "shop:about" %}"><strong><span>{% trans "Need Help?" %}</span></strong></a>
                     </div>
                 </div>
                 <!-- /row -->
@@ -204,9 +200,7 @@
 												<span class="hamburger-box">
 													<span class="hamburger-inner"></span>
 												</span>
-											</span>
-											Categories
-										</a>
+											</span>{% trans "Categories" %}</a>
 									</span>
                                     <div id="menu">
                                         <ul>
@@ -237,7 +231,7 @@
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <ul class="top_tools">
                             <li>
-                                {#                                 <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>#}
+                                {#                                 <a href="/wishlist/" class="wishlist"><span>{% trans "Wishlist" %}</span></a>#}
                                 <a href="/cart/" class="cart_bt"><strong>n</strong></a>
                                 {#                                <div class="dropdown dropdown-cart">#}
                                 {#                                    <a href="/cart" class="cart_bt"><strong>n</strong></a>#}
@@ -249,9 +243,9 @@
                             </li>
                             <li>
                                 {% if user.is_authenticated %}
-                                    <a href="/wishlist/" class="wishlist"><span>Wishlist</span></a>
+                                    <a href="/wishlist/" class="wishlist"><span>{% trans "Wishlist" %}</span></a>
                                 {% else %}
-                                    <a href="{% url "accounts:log_in" %}" class="wishlist"><span>Wishlist</span></a>
+                                    <a href="{% url "accounts:log_in" %}" class="wishlist"><span>{% trans "Wishlist" %}</span></a>
                                 {% endif %}
 
                             </li>
@@ -265,31 +259,30 @@
                                                  alt="{{ request.user.username }}'s Photo"/></a>
                                     {% else %}
                                         <a href="{% url "accounts:log_in" %}"
-                                           class="access_link"><span>Account</span></a>
+                                           class="access_link"><span>{% trans "Account" %}</span></a>
                                     {% endif %}
 
-                                    {#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>Account</span></a>#}
+                                    {#                                    <a href="{% url "shop:personal_profile" %}" class="access_link"><span>{% trans "Account" %}</span></a>#}
                                     <div class="dropdown-menu">
                                         {% if user.is_authenticated %}
-                                            <a href="{% url "api:logout" %}" class="btn btn-primary">Logout</a>
+                                            <a href="{% url "api:logout" %}" class="btn btn-primary">{% trans "Logout" %}</a>
                                         {% else %}
-                                            <a href="#sign-in-dialog" id="sign-in" class="btn_1">Sign In or Sign Up</a>
+                                            <a href="#sign-in-dialog" id="sign-in" class="btn_1">{% trans "Sign In or Sign Up" %}</a>
                                         {% endif %}
 
                                         <ul>
                                             <li>
-                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>Track your
-                                                    Order</a>
+                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"></i>{% trans "Track your Order" %}</a>
                                             </li>
                                             {#                                            <li>#}
-                                            {#                                                <a href="account.html"><i class="ti-package"></i>My Orders</a>#}
+                                            {#                                                <a href="account.html"><i class="ti-package"></i>{% trans "My Orders" %}</a>#}
                                             {#                                            </li>#}
                                             <li>
                                                 <a href="{% url "shop:personal_profile" %}"><i class="ti-user"></i>My
                                                     Profile</a>
                                             </li>
                                             <li>
-                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>Help and Faq</a>
+                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"></i>{% trans "Help and Faq" %}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -297,7 +290,7 @@
                                 <!-- /dropdown-access-->
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
+                                <a href="javascript:void(0);" class="btn_search_mob"><span>{% trans "Search" %}</span></a>
                             </li>
                             <li>
                                 <a href="#menu" class="btn_cat_mob">
@@ -305,9 +298,7 @@
                                         <div class="hamburger-box">
                                             <div class="hamburger-inner"></div>
                                         </div>
-                                    </div>
-                                    Categories
-                                </a>
+                                    </div>{% trans "Categories" %}</a>
                             </li>
                         </ul>
                     </div>
@@ -332,45 +323,43 @@
     <!-- Sign In Modal -->
     <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
         <div class="modal_header">
-            <h3>Sign In</h3>
+            <h3>{% trans "Sign In" %}</h3>
         </div>
         <form action="/api/login/" method="post">
             {% csrf_token %}
             <div class="sign-in-wrapper">
-                <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                <a href="#0" class="social_bt google">Login with Google</a>
+                <a href="#0" class="social_bt facebook">{% trans "Login with Facebook" %}</a>
+                <a href="#0" class="social_bt google">{% trans "Login with Google" %}</a>
                 <div class="divider"><span>Or</span></div>
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>{% trans "Email" %}</label>
                     <input type="text" class="form-control" name="username" id="email">
                     <i class="ti-email"></i>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>{% trans "Password" %}</label>
                     <input type="password" class="form-control" name="password" id="password" value="">
                     <i class="ti-lock"></i>
                 </div>
                 <div class="clearfix add_bottom_15">
                     <div class="checkboxes float-start">
-                        <label class="container_check">Remember me
-                            <input type="checkbox">
+                        <label class="container_check">{% trans "Remember me" %}<input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                    <div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+                    <div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">{% trans "Forgot Password?" %}</a></div>
                 </div>
                 <div class="text-center">
-                    <input type="submit" value="Log In" class="btn_1 full-width">
-                    Don’t have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a>
+                    <input type="submit" value="Log In" class="btn_1 full-width">{% trans "Don’t have an account? " %}<a href="{% url 'accounts:sign_up' %}"
+                >{% trans "Sign up" %}</a>
                 </div>
                 <div id="forgot_pw">
                     <div class="form-group">
-                        <label>Please confirm login email below</label>
+                        <label>{% trans "Please confirm login email below" %}</label>
                         <input type="email" class="form-control" name="email_forgot" id="email_forgot">
                         <i class="ti-email"></i>
                     </div>
-                    <p>You will receive an email containing a link allowing you to reset your password to a new
-                        preferred one.</p>
+                    <p>{% trans "You will receive an email containing a link allowing you to reset your password to a new preferred one." %}</p>
                     <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
                 </div>
             </div>
@@ -384,43 +373,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_1">Quick Links</h3>
+                    <h3 data-bs-target="#collapse_1">{% trans "Quick Links" %}</h3>
                     <div class="collapse dont-collapse-sm links" id="collapse_1">
                         <ul>
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="help.html">Faq</a></li>
-                            <li><a href="help.html">Help</a></li>
-                            <li><a href="account.html">My account</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="about.html">{% trans "About us" %}</a></li>
+                            <li><a href="help.html">{% trans "Faq" %}</a></li>
+                            <li><a href="help.html">{% trans "Help" %}</a></li>
+                            <li><a href="account.html">{% trans "My account" %}</a></li>
+                            <li><a href="blog.html">{% trans "Blog" %}</a></li>
+                            <li><a href="contacts.html">{% trans "Contacts" %}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_2">Categories</h3>
+                    <h3 data-bs-target="#collapse_2">{% trans "Categories" %}</h3>
                     <div class="collapse dont-collapse-sm links" id="collapse_2">
                         <ul>
-                            <li><a href="listing-grid-1-full.html">Clothes</a></li>
-                            <li><a href="listing-grid-2-full.html">Electronics</a></li>
-                            <li><a href="listing-grid-1-full.html">Furniture</a></li>
-                            <li><a href="listing-grid-3.html">Glasses</a></li>
-                            <li><a href="listing-grid-1-full.html">Shoes</a></li>
-                            <li><a href="listing-grid-1-full.html">Watches</a></li>
+                            <li><a href="listing-grid-1-full.html">{% trans "Clothes" %}</a></li>
+                            <li><a href="listing-grid-2-full.html">{% trans "Electronics" %}</a></li>
+                            <li><a href="listing-grid-1-full.html">{% trans "Furniture" %}</a></li>
+                            <li><a href="listing-grid-3.html">{% trans "Glasses" %}</a></li>
+                            <li><a href="listing-grid-1-full.html">{% trans "Shoes" %}</a></li>
+                            <li><a href="listing-grid-1-full.html">{% trans "Watches" %}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_3">Contacts</h3>
+                    <h3 data-bs-target="#collapse_3">{% trans "Contacts" %}</h3>
                     <div class="collapse dont-collapse-sm contacts" id="collapse_3">
                         <ul>
-                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
+                            <li><i class="ti-home"></i>{% trans "97845 Baker st. 567" %}<br
+                            >{% trans "Los Angeles - US" %}</li>
                             <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
-                            <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+                            <li><i class="ti-email"></i><a href="#0">{% trans "info@allaia.com" %}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 data-bs-target="#collapse_4">Keep in touch</h3>
+                    <h3 data-bs-target="#collapse_4">{% trans "Keep in touch" %}</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_4">
                         <div id="newsletter">
                             <div class="form-group">
@@ -431,7 +421,7 @@
                             </div>
                         </div>
                         <div class="follow_us">
-                            <h5>Follow Us</h5>
+                            <h5>{% trans "Follow Us" %}</h5>
                             <ul>
                                 <li><a href="#0"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
@@ -462,18 +452,18 @@
                         <li>
                             <div class="styled-select lang-selector">
                                 <select>
-                                    <option value="English" selected>English</option>
-                                    <option value="French">French</option>
-                                    <option value="Spanish">Spanish</option>
-                                    <option value="Russian">Russian</option>
+                                    <option value="English" selected>{% trans "English" %}</option>
+                                    <option value="French">{% trans "French" %}</option>
+                                    <option value="Spanish">{% trans "Spanish" %}</option>
+                                    <option value="Russian">{% trans "Russian" %}</option>
                                 </select>
                             </div>
                         </li>
                         <li>
                             <div class="styled-select currency-selector">
                                 <select>
-                                    <option value="US Dollars" selected>US Dollars</option>
-                                    <option value="Euro">Euro</option>
+                                    <option value="US Dollars" selected>{% trans "US Dollars" %}</option>
+                                    <option value="Euro">{% trans "Euro" %}</option>
                                 </select>
                             </div>
                         </li>
@@ -485,8 +475,8 @@
                 </div>
                 <div class="col-lg-6">
                     <ul class="additional_links">
-                        <li><a href="#0">Terms and conditions</a></li>
-                        <li><a href="#0">Privacy</a></li>
+                        <li><a href="#0">{% trans "Terms and conditions" %}</a></li>
+                        <li><a href="#0">{% trans "Privacy" %}</a></li>
                         <li><span>© 2021 Allaia</span></li>
                     </ul>
                 </div>
@@ -504,16 +494,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="payments_method_title">Payments Methods</h5>
+                <h5 class="modal-title" id="payments_method_title">{% trans "Payments Methods" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, oratio possim ius cu. Labore prompta nominavi sea ei. Sea no animal
-                    saperet gloriatur, ius iusto ullamcorper ad. Qui ignota reformidans ei, vix in elit conceptam
-                    adipiscing, quaestio repudiandae delicatissimi vis ei. Fabulas accusamus no has.</p>
-                <p>Et nam vidit zril, pri elaboraret suscipiantur ut. Duo mucius gloriatur at, in vis integre labitur
-                    dolores, mei omnis utinam labitur id. An eum prodesset appellantur. Ut alia nemore mei, at velit
-                    veniam vix, nonumy propriae conclusionemque ea cum.</p>
+                <p>{% trans "Lorem ipsum dolor sit amet, oratio possim ius cu. Labore prompta nominavi sea ei. Sea no animal saperet gloriatur, ius iusto ullamcorper ad. Qui ignota reformidans ei, vix in elit conceptam adipiscing, quaestio repudiandae delicatissimi vis ei. Fabulas accusamus no has." %}</p>
+                <p>{% trans "Et nam vidit zril, pri elaboraret suscipiantur ut. Duo mucius gloriatur at, in vis integre labitur dolores, mei omnis utinam labitur id. An eum prodesset appellantur. Ut alia nemore mei, at velit veniam vix, nonumy propriae conclusionemque ea cum." %}</p>
             </div>
         </div>
     </div>

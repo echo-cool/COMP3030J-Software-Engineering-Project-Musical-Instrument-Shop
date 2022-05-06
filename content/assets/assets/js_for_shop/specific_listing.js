@@ -88,28 +88,61 @@ function activateCategorySearch() {
         //     window.location.href = addUrlPara(window.location.href, 'category', param);
         // })
 
+
         categories.on("click", function () {
+            let ind = $(this).attr("id").replace('category__', "");
+            console.log("click", ind);
+
+            if (getQueryString('category')) {
+                let checked_list = getQueryString('category').split('|');
+                console.log(checked_list, checked_list.indexOf(ind));
+                if (checked_list.indexOf(ind) !== -1) {
+                    let checked_list_new = [];
+                    for (let i = 0; i < checked_list.length; i++) {
+                        console.log()
+                        if (checked_list[i] !== ind) {
+                            checked_list_new.push(checked_list[i]);
+                        }
+                    }
+                    changeURLStatic(checked_list_new);
+                } else {
+                    checked_list.push(ind);
+                    changeURLStatic(checked_list);
+                }
+            } else {
+                changeURLStatic([ind]);
+            }
+
 
             var param = "";
-            // $(this).prev().attr("checked", !$(this).prev().is(':checked'));\
+
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active')
+            }
+
             if ($(this).prev().is(':checked')) {
+                $(this).prev().removeClass("checked");
                 $(this).prev().prop("checked", false);
             } else {
+                $(this).prev().addClass("checked");
                 $(this).prev().prop("checked", true);
             }
+
             let categories = $(".category-name");
             categories.each(function () {
                 var checkbox = $(this).prev();
-                console.log(checkbox.is(':checked'));
+                // console.log(checkbox.is(':checked'));
                 if (checkbox.is(':checked')) {
                     param += "|" + this.id.split('__')[1];
                 }
             });
             param = param.substring(1);
-            console.log(param)
-            console.log(categories)
+            // console.log(param)
+            // console.log(categories)
 
-            window.location.href = addUrlPara(window.location.href, 'category', param);
+            // window.location.href = addUrlPara(window.location.href, 'category', param);
         })
 
         if (getQueryString('category')) {

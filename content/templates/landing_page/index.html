@@ -47,41 +47,41 @@
     {#    <header id="header" class="fixed-top ">#}
     {#        <div class="container d-flex align-items-center justify-content-lg-between">#}
     {##}
-    {#            <h1 class="logo me-auto me-lg-0"><a href="index.html">Gp<span>.</span></a></h1>#}
+    {#            <h1 class="logo me-auto me-lg-0"><a href="index.html">{% trans "Gp<span>." %}</span></a></h1>#}
     {#            <!-- Uncomment below if you prefer to use an image logo -->#}
     {#            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->#}
     {##}
     {#            <nav id="navbar" class="navbar order-last order-lg-0">#}
     {#                <ul>#}
-    {#                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>#}
-    {#                    <li><a class="nav-link scrollto" href="#about">About</a></li>#}
-    {#                    <li><a class="nav-link scrollto" href="#services">Services</a></li>#}
-    {#                    <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>#}
-    {#                    <li><a class="nav-link scrollto" href="#team">Team</a></li>#}
-    {#                    <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>#}
+    {#                    <li><a class="nav-link scrollto active" href="#hero">{% trans "Home" %}</a></li>#}
+    {#                    <li><a class="nav-link scrollto" href="#about">{% trans "About" %}</a></li>#}
+    {#                    <li><a class="nav-link scrollto" href="#services">{% trans "Services" %}</a></li>#}
+    {#                    <li><a class="nav-link scrollto " href="#portfolio">{% trans "Portfolio" %}</a></li>#}
+    {#                    <li><a class="nav-link scrollto" href="#team">{% trans "Team" %}</a></li>#}
+    {#                    <li class="dropdown"><a href="#"><span>{% trans "Drop Down</span> " %}<i class="bi bi-chevron-down"></i></a>#}
     {#                        <ul>#}
-    {#                            <li><a href="#">Drop Down 1</a></li>#}
-    {#                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i#}
+    {#                            <li><a href="#">{% trans "Drop Down 1" %}</a></li>#}
+    {#                            <li class="dropdown"><a href="#"><span>{% trans "Deep Drop Down</span> " %}<i#}
     {#                                    class="bi bi-chevron-right"></i></a>#}
     {#                                <ul>#}
-    {#                                    <li><a href="#">Deep Drop Down 1</a></li>#}
-    {#                                    <li><a href="#">Deep Drop Down 2</a></li>#}
-    {#                                    <li><a href="#">Deep Drop Down 3</a></li>#}
-    {#                                    <li><a href="#">Deep Drop Down 4</a></li>#}
-    {#                                    <li><a href="#">Deep Drop Down 5</a></li>#}
+    {#                                    <li><a href="#">{% trans "Deep Drop Down 1" %}</a></li>#}
+    {#                                    <li><a href="#">{% trans "Deep Drop Down 2" %}</a></li>#}
+    {#                                    <li><a href="#">{% trans "Deep Drop Down 3" %}</a></li>#}
+    {#                                    <li><a href="#">{% trans "Deep Drop Down 4" %}</a></li>#}
+    {#                                    <li><a href="#">{% trans "Deep Drop Down 5" %}</a></li>#}
     {#                                </ul>#}
     {#                            </li>#}
-    {#                            <li><a href="#">Drop Down 2</a></li>#}
-    {#                            <li><a href="#">Drop Down 3</a></li>#}
-    {#                            <li><a href="#">Drop Down 4</a></li>#}
+    {#                            <li><a href="#">{% trans "Drop Down 2" %}</a></li>#}
+    {#                            <li><a href="#">{% trans "Drop Down 3" %}</a></li>#}
+    {#                            <li><a href="#">{% trans "Drop Down 4" %}</a></li>#}
     {#                        </ul>#}
     {#                    </li>#}
-    {#                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>#}
+    {#                    <li><a class="nav-link scrollto" href="#contact">{% trans "Contact" %}</a></li>#}
     {#                </ul>#}
     {#                <i class="bi bi-list mobile-nav-toggle"></i>#}
     {#            </nav><!-- .navbar -->#}
     {##}
-    {#            <a href="#about" class="get-started-btn scrollto">Get Started</a>#}
+    {#            <a href="#about" class="get-started-btn scrollto">{% trans "Get Started" %}</a>#}
     {##}
     {#        </div>#}
     {#    </header><!-- End Header -->#}
@@ -190,29 +190,17 @@
                     <div style="margin-top: 11%;" class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content"
                          data-aos="fade-right"
                          data-aos-delay="100">
-                        <h3>Real-time 3D Instrument Viewing and Customization</h3>
-                        <p class="fst-italic">
-                            This is a Melodious Instruments Shop that was <strong>run in physical business by a family
-                            previously</strong>.
+                        <h3>{% trans "Real-time 3D Instrument Viewing and Customization" %}</h3>
+                        <p class="fst-italic">{% trans "This is a Melodious Instruments Shop that was " %}<strong
+                        >{% trans "run in physical business by a family previously" %}</strong>.
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Firstly, our store has essential functions for
-                                online shopping
-                            </li>
-                            <li><i class="ri-check-double-line"></i> To give customers immersive shopping experience,
-                                our project employs the usage of 3D instruments preview and instruments playing games in
-                                our website.
-                            </li>
-                            <li><i class="ri-check-double-line"></i> Our shop is original in allowing customers to
-                                interact with 3D models to customise their preferred instruments, which have not gained
-                                much prevalence in current e-commerce.
-                            </li>
+                            <li><i class="ri-check-double-line"></i>{% trans "Firstly, our store has essential functions for online shopping" %}</li>
+                            <li><i class="ri-check-double-line"></i>{% trans "To give customers immersive shopping experience, our project employs the usage of 3D instruments preview and instruments playing games in our website." %}</li>
+                            <li><i class="ri-check-double-line"></i>{% trans "Our shop is original in allowing customers to interact with 3D models to customise their preferred instruments, which have not gained much prevalence in current e-commerce." %}</li>
                         </ul>
-                        <p>
-                            In the context of the pandemic, the family-owned instruments local shop was forced to close
-                            their physical business and is now anticipating <strong>e-commerce as a auxiliary or
-                            alternative sales channel</strong>.
-                        </p>
+                        <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating " %}<
+                            strong>{% trans "e-commerce as a auxiliary or alternative sales channel</strong>." %}</p>
                     </div>
                 </div>
             </div>
@@ -233,23 +221,23 @@
                     <div style="margin-top: 8%;" class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                         <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                             <i class="bx bx-receipt"></i>
-                            <h4>Est labore ad</h4>
-                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                            <h4>{% trans "Est labore ad" %}</h4>
+                            <p>{% trans "Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip" %}</p>
                         </div>
                         <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
                             <i class="bx bx-cube-alt"></i>
-                            <h4>Harum esse qui</h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                            <h4>{% trans "Harum esse qui" %}</h4>
+                            <p>{% trans "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt" %}</p>
                         </div>
                         <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
                             <i class="bx bx-images"></i>
-                            <h4>Aut occaecati</h4>
-                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                            <h4>{% trans "Aut occaecati" %}</h4>
+                            <p>{% trans "Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere" %}</p>
                         </div>
                         <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
                             <i class="bx bx-shield"></i>
-                            <h4>Beatae veritatis</h4>
-                            <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                            <h4>{% trans "Beatae veritatis" %}</h4>
+                            <p>{% trans "Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta" %}</p>
                         </div>
                     </div>
                 </div>
@@ -262,17 +250,17 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Services</h2>
-                    <p>Check our Services</p>
+                    <h2>{% trans "Services" %}</h2>
+                    <p>{% trans "Check our Services" %}</p>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Preview 3D Instruments</a></h4>
-                            <p>You can view instruments in 3D forms,<br> giving you a more comprehensive about the
-                                instruments.</p>
+                            <h4><a href="">{% trans "Preview 3D Instruments" %}</a></h4>
+                            <p>{% trans "You can view instruments in 3D forms, " %}<br
+                            >{% trans "giving you a more comprehensive about the instruments." %}</p>
                         </div>
                     </div>
 
@@ -280,8 +268,8 @@
                          data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Customize 3D Instruments</a></h4>
-                            <p>You can customize your preferred 3D instruments, better catering to your preferences.</p>
+                            <h4><a href="">{% trans "Customize 3D Instruments" %}</a></h4>
+                            <p>{% trans "You can customize your preferred 3D instruments, better catering to your preferences." %}</p>
                         </div>
                     </div>
 
@@ -289,9 +277,9 @@
                          data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Smart Instruments Recommendations</a></h4>
-                            <p>Our store can better identify your preferred instruments <br> by using advanced
-                                technologies.</p>
+                            <h4><a href="">{% trans "Smart Instruments Recommendations" %}</a></h4>
+                            <p>{% trans "Our store can better identify your preferred instruments " %}<br
+                            >{% trans "by using advanced technologies." %}</p>
                         </div>
                     </div>
 
@@ -299,8 +287,8 @@
                          data-aos-delay="100">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4><a href="">Playing Instruments Games</a></h4>
-                            <p>You can have immersive shopping experience by playing instruments online.</p>
+                            <h4><a href="">{% trans "Playing Instruments Games" %}</a></h4>
+                            <p>{% trans "You can have immersive shopping experience by playing instruments online." %}</p>
                         </div>
                     </div>
 
@@ -308,9 +296,8 @@
                          data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Ordering and Delivery</a></h4>
-                            <p>You can order your desired instruments. We will deliver it to you as soon as
-                                possible.</p>
+                            <h4><a href="">{% trans "Ordering and Delivery" %}</a></h4>
+                            <p>{% trans "You can order your desired instruments. We will deliver it to you as soon as possible." %}</p>
                         </div>
                     </div>
 
@@ -318,9 +305,9 @@
                          data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-arch"></i></div>
-                            <h4><a href="">Cultural Communication</a></h4>
-                            <p>Our store specially designed Chinese instruments zone and Western instruments zone, <br>
-                                facilitating the communication between different cultures.</p>
+                            <h4><a href="">{% trans "Cultural Communication" %}</a></h4>
+                            <p>{% trans "Our store specially designed Chinese instruments zone and Western instruments zone, " %}<br
+                            >{% trans "facilitating the communication between different cultures." %}</p>
                         </div>
                     </div>
 
@@ -334,33 +321,30 @@
             <div class="container" data-aos="zoom-in">
 
                 <div class="text-center">
-                    <h3>Shop Online Now</h3>
-                    <p> In the context of the pandemic, the family-owned instruments local shop was forced to close
-                        their physical business and is now anticipating <strong>e-commerce as a auxiliary or alternative
-                            sales channel</strong>.</p>
-                    <a class="cta-btn" href="/shopping">Shop Online Now</a>
+                    <h3>{% trans "Shop Online Now" %}</h3>
+                    <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating " %}<strong
+                    >{% trans "e-commerce as a auxiliary or alternative sales channel</strong>." %}</p>
+                    <a class="cta-btn" href="/shopping">{% trans "Shop Online Now" %}</a>
                 </div>
 
-            </div>
-            features
-        </section><!-- End Cta Section -->
+            </div>{% trans "features" %}</section><!-- End Cta Section -->
 
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Portfolio</h2>
-                    <p>Check our Portfolio</p>
+                    <h2>{% trans "Portfolio" %}</h2>
+                    <p>{% trans "Check our Portfolio" %}</p>
                 </div>
 
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">Chinese</li>
-                            <li data-filter=".filter-card">Western</li>
-                            {#                            <li data-filter=".filter-web">Piano</li>#}
+                            <li data-filter="*" class="filter-active">{% trans "All" %}</li>
+                            <li data-filter=".filter-app">{% trans "Chinese" %}</li>
+                            <li data-filter=".filter-card">{% trans "Western" %}</li>
+                            {#                            <li data-filter=".filter-web">{% trans "Piano" %}</li>#}
                         </ul>
                     </div>
                 </div>
@@ -372,8 +356,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/about1.webp" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>App</p>
+                                <h4>{% trans "App 1" %}</h4>
+                                <p>{% trans "App" %}</p>
                                 <div class="portfolio-links">
                                     <a href="assets/img_for_shop/img_for_company_profile/about1.webp"
                                        data-gallery="portfolioGallery"
@@ -389,8 +373,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port1.webp" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
+                                <h4>{% trans "Web 3" %}</h4>
+                                <p>{% trans "Web" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port1.webp" %}"
                                        data-gallery="portfolioGallery"
@@ -406,8 +390,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port2.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>App</p>
+                                <h4>{% trans "App 2" %}</h4>
+                                <p>{% trans "App" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port2.png" %}"
                                        data-gallery="portfolioGallery"
@@ -423,8 +407,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port4.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Card 2</h4>
-                                <p>Card</p>
+                                <h4>{% trans "Card 2" %}</h4>
+                                <p>{% trans "Card" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port4.png" %}"
                                        data-gallery="portfolioGallery"
@@ -440,8 +424,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port9.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Web 2</h4>
-                                <p>Web</p>
+                                <h4>{% trans "Web 2" %}</h4>
+                                <p>{% trans "Web" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port9.png" %}"
                                        data-gallery="portfolioGallery"
@@ -457,8 +441,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>App</p>
+                                <h4>{% trans "App 3" %}</h4>
+                                <p>{% trans "App" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port5.png" %}"
                                        data-gallery="portfolioGallery"
@@ -474,8 +458,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port6.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Card 1</h4>
-                                <p>Card</p>
+                                <h4>{% trans "Card 1" %}</h4>
+                                <p>{% trans "Card" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port6.png" %}"
                                        data-gallery="portfolioGallery"
@@ -491,8 +475,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port7.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Card 3</h4>
-                                <p>Card</p>
+                                <h4>{% trans "Card 3" %}</h4>
+                                <p>{% trans "Card" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port7.png" %}"
                                        data-gallery="portfolioGallery"
@@ -508,8 +492,8 @@
                             <img src="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port8.png" %}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
+                                <h4>{% trans "Web 3" %}</h4>
+                                <p>{% trans "Web" %}</p>
                                 <div class="portfolio-links">
                                     <a href="{% static "assets/img_for_shop/img_for_company_profile/portfolio/port8.png" %}"
                                        data-gallery="portfolioGallery"
@@ -531,8 +515,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Contact Us</p>
+                    <h2>{% trans "Contact" %}</h2>
+                    <p>{% trans "Contact Us" %}</p>
                 </div>
                 <!-- //TODO: GOOGLE MAP -->
                 {#                <div>#}
@@ -547,20 +531,20 @@
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>Beijing University of Technology, Pingleyuan 100, Beijing</p>
+                                <h4>{% trans "Location:" %}</h4>
+                                <p>{% trans "Beijing University of Technology, Pingleyuan 100, Beijing" %}</p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>yuyang.wang@ucdconnect.ie</p>
+                                <h4>{% trans "Email:" %}</h4>
+                                <p>{% trans "yuyang.wang@ucdconnect.ie" %}</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>18225658312</p>
+                                <h4>{% trans "Call:" %}</h4>
+                                <p>{% trans "18225658312" %}</p>
                             </div>
 
                         </div>
@@ -589,12 +573,12 @@
                                           required></textarea>
                             </div>
                             <div class="my-3">
-                                <div class="loading">Loading</div>
+                                <div class="loading">{% trans "Loading" %}</div>
                                 <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                                <div class="sent-message">{% trans "Your message has been sent. Thank you!" %}</div>
                             </div>
                             <div class="text-center">
-                                <button type="submit">Send Message</button>
+                                <button type="submit">{% trans "Send Message" %}</button>
                             </div>
                         </form>
 

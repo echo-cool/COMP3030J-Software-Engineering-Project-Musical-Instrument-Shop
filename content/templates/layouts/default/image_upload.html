@@ -1,10 +1,10 @@
 {% load  static %}
-
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% trans "Title" %}</title>
 
     <!-- bootstrap 5.x or 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
     {#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"#}
@@ -75,13 +75,13 @@
     </style>
 </head>
 <body>
-{#<button id="uploadImage" onclick="SycData()">zhenshige laoliu</button>#}
-<input id="input-id" name="input-id[]" type="file" class="file-loading"
+{#<button id="uploadImage" onclick="SycData()">{% trans "zhenshige laoliu" %}</button>#}
+ <input id="input-id" name="input-id[]" type="file" class="file-loading"
        multiple data-show-upload="false" data-show-caption="true"
        data-msg-placeholder="Select {files} for upload...">
 
-<label for="input-24">Planets and Satellites</label>
-<div class="file-loading">
+<label for="input-24">{% trans "Planets and Satellites" %}</label>
+ <div class="file-loading">
     <input id="input-24" name="input24[]" type="file" multiple>
 </div>
 {#<input id="input-fa" name="input-fa[]" type="file" multiple>#}
