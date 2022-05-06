@@ -16,11 +16,22 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 SECRET_KEY = 'NhfTvayqggTBPswCXXhWaN69HuglgZIkM'
 
 DEBUG = True
+USE_I18N = True
 ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
 INSTALLED_APPS = [
+    # API Framework
+    'drf_yasg',
+    'rest_framework',
+    'django_filters',
+
+    # Faker
+    'django_seed',
+
+    'modeltranslation',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,13 +55,7 @@ INSTALLED_APPS = [
     'landing_page',
     'image_search',
 
-    # API Framework
-    'drf_yasg',
-    'rest_framework',
-    'django_filters',
 
-    # Faker
-    'django_seed',
 
 
 ]
