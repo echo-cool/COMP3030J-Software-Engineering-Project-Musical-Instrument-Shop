@@ -466,7 +466,7 @@
         {#</div>#}
         {#<div style="clear:both"></div>`).appendTo('#discussion');#}
 
-        $(`<div class="chat_wrapper_user">
+        $(`<div class="chat_wrapper_user added_wrapper">
             <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url({{ request.user.profile.image.url }});"></div>
             <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -480,6 +480,10 @@
         updateScrollbar();
 
     });
+
+    $("#chat_clear").on("click", function () {
+        $(".added_wrapper").remove();
+    })
 
 
     $('#submit_service').click(function (e) {
@@ -496,7 +500,7 @@
         {#</div>#}
         {#<div style="clear:both"></div>`).appendTo('#discussion');#}
 
-        $(`<div class="chat_wrapper_user">
+        $(`<div class="chat_wrapper_user added_wrapper">
             <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url({{ request.user.profile.image.url }});"></div>
             <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -525,7 +529,7 @@
             success: function (response) {
                 console.log(response);
                 if (response[0].text && response[0].image) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -537,7 +541,7 @@
                     </div>
                     <div style="clear:both"></div>`).appendTo('#discussion');
                 } else if (response[0].image) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -547,7 +551,7 @@
                         </span>
                         </div>`).appendTo('#discussion');
                 } else if (response[0].text) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -562,7 +566,7 @@
                 if (response.length > 1) {
                     for (let i = 1; i < response.length; i++) {
                         if (response[i].text && response[i].image) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[i]['text']}
                             <img src="${response[i]['image']}" style="width:100%">
@@ -571,14 +575,14 @@
                     </div>
                     <div style="clear:both"></div>`).appendTo('#discussion');
                         } else if (response[i].image) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble">
                         <span id="element2" style="display:inline;">
                             <img src="${response[i]['image']}" style="width:100%">
                         </span>
                         </div>`).appendTo('#discussion');
                         } else if (response[i].text) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[i]['text']}
                         </span>
