@@ -130,11 +130,11 @@
                         <div class="card-body chat-fixed-search">
                             <fieldset class="form-group position-relative has-icon-left m-0  w-75 display-inline">
                                 <input type="text" class="form-control round" id="searchUser" placeholder="Search user">
-                                <div class="form-control-position">
+                                <div class="form-control-position" id="submit-user-search">
                                     <i class="ft-search"></i>
                                 </div>
                             </fieldset>
-                            <span class="float-right  primary font-large-1 cursor-pointer"> <i
+                            <span class="float-right  primary font-large-1 cursor-pointer" id="focus-user-search"> <i
                                     class="ft-edit"></i> </span>
                         </div>
                         <div id="users-list" class="list-group position-relative">
@@ -271,7 +271,7 @@
                     userList.children('.media').remove();
                     for (let i = 0; i < data.length; i++) {
                         let date = "";
-                        if (data[i]['time'] !== undefined && data[i]['time'] !== "" ){
+                        if (data[i]['time'] !== undefined && data[i]['time'] !== "") {
                             date = new Date(data[i]['time']);
                             date = date.toLocaleString();
                         }
@@ -522,6 +522,63 @@
                         getConversation(currentRecipient);
                     }
                 }, 500);
+
+                let userSearch = $("#searchUser");
+
+                function submitUserSearch() {
+                    $.ajax({
+                            url: "/api/search_user/",
+                            method: 'POST',
+                            data: {
+                                "search_text": userSearch.val(),
+                            },
+                            headers: {
+                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                            },
+                            success: function (data) {
+                                let code = data["code"];
+                                switch (code) {
+                                    case 100:
+                                        window.location.href = "/chat/new/" + data["id"];
+                                        break;
+                                    case 200:
+                                        setTimeout(function () {
+                                            let hulla = new hullabaloo();
+                                            hulla.send("The user you search is yourself!", "warning");
+                                        }, 300);
+                                        break;
+                                    case 300:
+                                        setTimeout(function () {
+                                            let hulla = new hullabaloo();
+                                            hulla.send("User not exist!", "warning");
+                                        }, 300);
+                                        break;
+                                }
+                            },
+                            error: function () {
+                                alert('Error! Check console!');
+                            }
+                        })
+                }
+
+                userSearch.keydown(function (event) {
+                    let search_text = userSearch.val();
+                    if (event.keyCode === 13 && search_text !== "") {
+                        submitUserSearch();
+                    }
+                });
+
+                $("#submit-user-search").on("click", function () {
+                    let search_text = userSearch.val();
+                    if (search_text !== "") {
+                        submitUserSearch();
+                    }
+                });
+
+                $("#focus-user-search").on("click", function () {
+                    userSearch.focus();
+                });
+
 
 
             }

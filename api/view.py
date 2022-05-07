@@ -350,3 +350,19 @@ class EditorUploadImage(LoginRequiredMixin, View):
 def max_order_priority(request):
     max_priority = Order.objects.all().aggregate(Max("priority"))
     return JsonResponse({"priority": max_priority}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def search_user(request):
+    if request.method == "POST":
+        user_information = request.POST.get("search_text")
+        if user_information.isdigit():
+            user = User.objects.filter(Q(id=user_information) | Q(username=user_information)).first()
+        else:
+            user = User.objects.filter(username=user_information).first()
+        if user:
+            if user != request.user:
+                return JsonResponse({"code": 100, "id": user.id}, safe=False, json_dumps_params={'ensure_ascii': False})
+            else:
+                return JsonResponse({"code": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+        else:
+            return JsonResponse({"code": 300}, safe=False, json_dumps_params={'ensure_ascii': False})
