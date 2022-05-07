@@ -718,7 +718,7 @@ def product_search(request):
 
 def image_search(request, result_key):
     search_category_text = request.GET.get("category", None)
-    all_instruments = memory_cached_db.get(result_key).order_by("-object_gltf")
+    all_instruments = memory_cached_db.get(result_key)
 
     if search_category_text:
         search_category_list = search_category_text.split("|")
