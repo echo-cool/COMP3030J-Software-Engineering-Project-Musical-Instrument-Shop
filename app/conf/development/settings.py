@@ -65,9 +65,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'app.cors_middleware.CORSMiddleware',
-    'app.auth_middleware.MyLoginRequiredMiddleware',
+
 
 ]
+#     'app.auth_middleware.MyLoginRequiredMiddleware',
 #     'app.ErrorPageHandel.ErrorPageHandelMiddleware'
 
 ROOT_URLCONF = 'app.urls'
