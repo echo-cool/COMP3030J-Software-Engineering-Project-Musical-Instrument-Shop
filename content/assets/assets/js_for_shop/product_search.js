@@ -24,14 +24,17 @@ function js_draw_filter() {
 }
 
 function activateCol() {
-    console.log("activate  COL");
-    let arrays = $(".prod_per>a");
+    let arrays = $(".prod_per > a");
+
+    console.log("activate  COL", arrays);
+
     arrays.click(function () {
-        for (let i of arrays) {
-            i.className = i.className.replace("active", "");
-        }
+        // for (let i of arrays) {
+        //     i.className = i.className.replace("active", "");
+        // }
+        $(this).siblings().removeClass("active");
         console.log(this.getAttribute("class"));
-        this.className = this.className + " active";
+        $(this).addClass("active");
         removeCol();
         if (this.className.includes("size_2")) {
             $(".js_size_prod").addClass('col-lg-6');

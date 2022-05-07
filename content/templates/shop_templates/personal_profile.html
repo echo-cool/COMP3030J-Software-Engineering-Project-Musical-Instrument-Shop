@@ -26,7 +26,7 @@
     <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static "assets/assets_for_bees/css/style.css" %}" rel="stylesheet">
+    {#    <link href="{% static "assets/assets_for_bees/css/style.css" %}" rel="stylesheet">#}
 
 
     <!-- SPECIFIC CSS -->
@@ -310,8 +310,8 @@
                                             <div class="modal-dialog quickview-dialog">
                                                 <div class="modal-content">
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"><i
-                                                            class="fi flaticon-cancel"></i></button>
+                                                            aria-label="Close"><i class="fi flaticon-cancel"></i>
+                                                    </button>
                                                     <div class="modal-body d-flex">
                                                         <div class="product-details" style="width: 100%;">
                                                             <div class="row">
@@ -428,7 +428,7 @@
                                             </div>
                                         </div>
                                         <!-- popup-quickview -->
-                                    {% endfor %}s
+                                    {% endfor %}
                                     {#									<p>{% trans "Web Design" %}</p>#}
                                     {#									<div class="progress mb-3" style="height: 5px">#}
                                     {#										<div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>#}
@@ -474,7 +474,6 @@
     <script src="/static/assets/js/ace-editable.min.js"></script>
     <script src="{% static 'assets/js/ace-elements.min.js' %}"></script>
     <script src="{% static 'assets/js/ace.min.js' %}"></script>
-
 
 
 
@@ -536,21 +535,21 @@
 
             $('#avatar').on('click', function () {
                 var modal =
-                    '<div class="modal fade">\
+                    '<div class="modal fade" id="modal-fade">\
 					  <div class="modal-dialog">\
 					   <div class="modal-content">\
-						<div class="modal-header" style="display: block; padding-top: 3rem">\
-							<button type="button" class="close" data-dismiss="modal">&times;</button>\
+						<div class="modal-header" style="display: block;">\
+							<button type="button" class="close" data-dismiss="modal" id="close_modal">&times;</button>\
 							<h4 class="blue">{% trans "Change Avatar" %}</h4>\
 						</div>\
 						\
 						<form action="/personal_profile/" method="POST" enctype="multipart/form-data">\
 						    {% csrf_token %}\
-                            <input name="photo" type="file" accept="image/*" >\
+                            <input name="photo" type="file" accept="image/*" required>\
 						\
 						 <div class="modal-footer center" style="display: block">\
 							<button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Submit</button>\
-							<button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
+							<button type="button" class="btn btn-sm" id="cancel_modal" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
 						 </div>\
 						</form>\
 					  </div>\
@@ -560,6 +559,14 @@
                 var modal = $(modal);
                 modal.modal("show").on("hidden", function () {
                     modal.remove();
+                });
+
+                modal.find("#cancel_modal").on("click", function () {
+                    modal.modal("hide");
+                });
+
+                modal.find("#close_modal").on("click", function () {
+                    modal.modal("hide");
                 });
 
                 var working = false;

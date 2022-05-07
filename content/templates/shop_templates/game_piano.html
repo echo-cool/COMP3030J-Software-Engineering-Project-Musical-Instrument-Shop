@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <div class="audio_player">
     <!-- js handle -->
@@ -16,7 +17,8 @@
         </ul>
         <button class="piano-button" onclick="load_sample1()">{% trans "Sample" %}</button>
         <button class="piano-button" onclick="load_sample2()">{% trans "Sample2" %}</button>
-        <button class="piano-button show-style-piano " onclick="start_play()">{% trans "Start play" %}<i class="fa fa-play"></i>
+        <button class="piano-button show-style-piano " onclick="start_play()">{% trans "Start play" %}<i
+                class="fa fa-play"></i>
         </button>
         <button class="piano-button show-style-piano wrapper-hidden" onclick="stop_play()">{% trans "Stop play" %}<i
                 class="fa fa-pause"></i></button>

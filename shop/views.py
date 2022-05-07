@@ -265,7 +265,7 @@ def product_details(request, product_id):
 
     related = []
     # Get 4 random reviews
-    reviews = Review.objects.all()
+    reviews = Review.objects.all().filter(instrument_id=product_id)
     review = []
     carts = Cart.objects.filter(user_id=request.user.id)
     for i in range(4):
@@ -535,24 +535,73 @@ def model_design2(request, model_id):
     })
 
 
+def check_price(input_price, price_list):
+    flag = False
+    # print("==============")
+    input_price = float(input_price)
+    for num in price_list:
+        i = str(num)
+        if i == "1":
+            if 20 < input_price <= 100:
+                flag = True
+                break
+        elif i == "2":
+            if 100 < input_price <= 500:
+                flag = True
+                break
+        elif i == "3":
+            if 500 < input_price <= 1000:
+                flag = True
+                break
+        elif i == "4":
+            if 1000 < input_price <= 2000:
+                flag = True
+                break
+        elif i == "5":
+            if 2000 < input_price <= 10000:
+                flag = True
+                break
+        elif i == "6":
+            if 10000 < input_price:
+                flag = True
+                break
+    return flag
+
+
 # search instruments by category
 def product_search_by_category(request):
     if request.method == "GET":
+        print("CATERGORY SEARCH")
+        section_text = request.GET.get("section", None)
         category_li = request.GET.get("checked_category", None)
+        category_pr = request.GET.get("checked_price", None)
         search_text = request.GET.get("search", "")
         category_list = [ch for ch in category_li]
+        price_list = [ch for ch in category_pr]
+        if section_text == "western":
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).filter(
+                chinese=1).order_by("-object_gltf")
+        elif section_text == "chinese":
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).filter(
+                chinese=0).order_by("-object_gltf")
+        else:
+            instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).order_by("-object_gltf")
 
-        instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text)
+        # i = 0
+        # while i < len(category_list):
+        #     if category_list[i] == str(1):
+        #         searched_instruments = instruments_by_search_bar.filter(category=i + 1)
+        #         for j in searched_instruments:
+        #             instruments.append(j)
+        #         # print(len(instruments))
+        #     i = i + 1
         instruments = []
-
-        i = 0
-        while i < len(category_list):
-            if category_list[i] == str(1):
-                searched_instruments = instruments_by_search_bar.filter(category=i + 1)
-                for j in searched_instruments:
-                    instruments.append(j)
-                # print(len(instruments))
-            i = i + 1
+        print(category_pr)
+        for search_ins in instruments_by_search_bar:
+            print(search_ins.price)
+            print(search_ins.category)
+            if search_ins.category in category_list and check_price(search_ins.price, price_list):
+                instruments.append(search_ins)
         response = render(request, 'shop_templates/searched-product-list.html', {
             "instruments_searched": instruments,
         })
@@ -561,30 +610,61 @@ def product_search_by_category(request):
 
 # search instruments by keyword
 def product_search(request):
+    print("DEfault SEARCH")
     search_text = request.GET.get("search", "")
+    section_text = request.GET.get("section", None)
     search_category_text = request.GET.get("category", None)
+    search_price_text = request.GET.get("price", None)
 
     header = ""
-    if "chinese" == search_text:
+    if section_text == "chinese":
         header = "chinese"
-        all_instruments = Instrument.objects.filter().filter(chinese=1)
-    elif "western" == search_text:
-        all_instruments = Instrument.objects.filter().filter(chinese=0)
+        all_instruments = Instrument.objects.filter(chinese=1).order_by("-object_gltf")
+    elif section_text == "western":
+        all_instruments = Instrument.objects.filter(chinese=0).order_by("-object_gltf")
     else:
-        all_instruments = Instrument.objects.filter(name__contains=search_text)
+        all_instruments = Instrument.objects.filter(name__contains=search_text).order_by("-object_gltf")
+        all_chinese = True
+        for ins in all_instruments:
+            if ins.chinese == 0:
+                all_chinese = False
+        header = "chinese" if all_chinese else ""
 
+    # category
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
         instruments = all_instruments.filter(category__in=search_category)
     else:
         instruments = all_instruments
+
     categories = {}
     category_list = Category.objects.all()
     for i in instruments:
         i.percentage = round(i.price * 100 / i.old_price, 2)
+    new_categories = []
     for category in category_list:
-        categories[category] = instruments.filter(category=category).count()
+        if section_text == "western":
+            if category.id == 1 or category.id == 2 or category.id == 3 or category.id == 4 or category.id == 9:
+                category.count = instruments.filter(category=category).filter(chinese=0).count()
+                new_categories.append(category)
+        elif section_text == "chinese":
+            if category.id != 1 and category.id != 2 and category.id != 3 and category.id != 4:
+                category.count = instruments.filter(category=category).filter(chinese=1).count()
+                new_categories.append(category)
+        else:
+            category.count = instruments.filter(category=category).count()
+            new_categories.append(category)
+
+    # price
+    if search_price_text:
+        priced_instruments = []
+        search_price_list = search_price_text.split("|")
+        search_price = [int(i) for i in search_price_list]
+        for search_ins in instruments:
+            if check_price(search_ins.price, search_price):
+                priced_instruments.append(search_ins)
+        instruments = priced_instruments
 
     # game option
     game_style = 0
@@ -600,6 +680,7 @@ def product_search(request):
     else:
         carts = {}
 
+    all_instrument_number = len(instruments)
     paginator = Paginator(instruments, 12, 0)
     page = request.GET.get("page")
     try:
@@ -620,19 +701,24 @@ def product_search(request):
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
 
+    show_number = True
+    if search_price_text or search_category_text:
+        show_number = False
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
-        'categories': categories,
+        'categories': new_categories,
         'carts': carts,
-        "part_pages": part_pages
+        "part_pages": part_pages,
+        'show_number': show_number,
+        'all_instrument_number': all_instrument_number
     })
 
 
 def image_search(request, result_key):
     search_category_text = request.GET.get("category", None)
-    all_instruments = memory_cached_db.get(result_key)
+    all_instruments = memory_cached_db.get(result_key).order_by("-object_gltf")
 
     if search_category_text:
         search_category_list = search_category_text.split("|")

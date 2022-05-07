@@ -899,7 +899,7 @@
 }
 
 .filter_sidebar_general {
-    margin-top: 25px;
+    margin-top: 0;
     padding: 0px 0px;
     padding-left: 6px;
     overflow: hidden;
@@ -936,12 +936,16 @@
     top: 50%;
 }
 
+.banner_sidebar {
+    margin-top: 50px;
+}
+
 .filter_sidebar_general .filter-category {
-    padding-top: 25px;
+    padding-top: 0;
 }
 
 .filter_sidebar_general .filter-category .widget-content {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
@@ -1082,7 +1086,7 @@
 }
 
 .filter_sidebar_general .filter-price {
-    padding-top: 5px;
+    padding-top: 15px;
 }
 
 .filter_sidebar_general .filter-price .list-price {
@@ -1104,7 +1108,7 @@
 }
 
 .filter_sidebar_general .filter-price .list-price li a:hover, .filter_sidebar_general .filter-price .list-price li a.active {
-    color: #d7ad5b;
+    color: #ff5a00 !important;
 }
 
 .filter_sidebar_general .widget-tags {
@@ -1667,16 +1671,16 @@
 .col-2dot4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 20%;
-    flex: 0 0 20%;
-    max-width: 20%;
+    flex: 0 0 auto;
+    width: 20%;
 }
 
 @media (min-width: 540px) {
     .col-sm-2dot4 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
+        flex: 0 0 auto;
+        width: 20%;
     }
 }
 
@@ -1684,8 +1688,8 @@
     .col-md-2dot4 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
+        flex: 0 0 auto;
+        width: 20%;
     }
 }
 
@@ -1693,8 +1697,8 @@
     .col-lg-2dot4 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
+        flex: 0 0 auto;
+        width: 20%;
     }
 }
 
@@ -1702,8 +1706,8 @@
     .col-xl-2dot4 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
+        flex: 0 0 auto;
+        width: 20%;
     }
 }
 
@@ -1769,6 +1773,7 @@ button {
 .list-category-toggle .active {
     color: #ff5a00 !important;
 }
+
 
 .pagination {
     margin-bottom: 0px;
