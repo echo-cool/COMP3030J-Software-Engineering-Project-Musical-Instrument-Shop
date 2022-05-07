@@ -203,7 +203,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600" id="category__0">
+                        <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600" id="category__0">
                             <img src="{% static 'assets/images/all_blogs.jpg' %}" alt="img">
                             <div class="featured_category_info">
                                 <h6 class="featured_category_heading"><a href="#">All</a></h6>
@@ -213,7 +213,7 @@
                     </div>
                     {% for category, count in category_number.items %}
                         <div class="col-lg-3 col-sm-6">
-                            <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600"
+                            <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600"
                                  id="category__{{ category.id }}">
                                 <img src="{{ category.image.url }}" alt="img">
                                 <div class="featured_category_info">
@@ -374,9 +374,9 @@
                             <ul class="pagination">
                                 {% for pg in part_pages %}
                                     {% if pg == posts.number %}
-                                        <li><a class="page-number current">{{ pg }}</a></li>
+                                        <li><a class="page-number current cursor-pointer">{{ pg }}</a></li>
                                     {% else %}
-                                        <li><a class="page-number">{{ pg }}</a></li>
+                                        <li><a class="page-number cursor-pointer">{{ pg }}</a></li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
