@@ -299,16 +299,20 @@
     <div class="main-content">
         <div class="container-fluid" style="padding-left: 5%;padding-right: 5%">
             <ul class="breadcrumb">
-                <li><a href="#">{% trans "Home" %}</a></li>
-                <li><a href="#">{% trans "Men" %}</a></li>
-                <li class="active">{% trans "Bouble Fabric Blazer" %}</li>
+                <li><a href="/">{% trans "Home" %}</a></li>
+                <li><a href="/">{% trans "Customization" %}</a></li>
+                {% if name == "guitar" %}
+                    <li class="active">{% trans "Guitar" %}</li>
+                {% else %}
+                    <li class="active">{% trans "Piano" %}</li>
+                {% endif %}
             </ul>
             <!-- Model Design Part Start -->
             <div class="product-details-content container-fluid">
                 <div class="col-md-8 col-sm-6">
                     <div class="progress-container progress-wrapper">
                         <header>
-                            <h1>{% trans "Model" %}<strong>{% trans "3D" %}</strong>{% trans "Design" %}</h1>
+                            <h1>{% trans "Model" %}<strong> 3D </strong>{% trans "Design" %}</h1>
                             <p id="pro">{% trans "please just wait for a short time ..." %}</p>
                         </header>
                         <section>
@@ -773,7 +777,8 @@
                             <p class="product-title">{% trans "Smart TV Ultra HD 40 inch - 40JU6600" %}</p>
                             <p class="description">{% trans "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." %}</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=1">{% trans "Start Design" %}</a>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=guitar&style=1">{% trans "Start Design" %}</a>
                         </div>
                     </div>
                     <div class="item item-inner">
@@ -790,7 +795,8 @@
                             <p class="product-title">{% trans "Smart TV Ultra HD 40 inch - 40JU6600" %}</p>
                             <p class="description">{% trans "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." %}</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=2">{% trans "Start Design" %}</a></div>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=guitar&style=2">{% trans "Start Design" %}</a></div>
                     </div>
                     <div class="item item-inner">
                         <div class="product sale">
@@ -816,7 +822,8 @@
                                 <span class="price">$ 650.99</span>
                                 <span class="price-old">$ 670.99</span>
                             </div>
-                            <a class="add-to-cart" href="/model_design/color?name=guitar&style=3">{% trans "Start Design" %}</a></div>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=guitar&style=3">{% trans "Start Design" %}</a></div>
                     </div>
                     <div class="item item-inner">
                         <div class="product">
@@ -832,7 +839,8 @@
                             <p class="product-title">{% trans "Smart TV Ultra HD 40 inch - 40JU6600" %}</p>
                             <p class="description">{% trans "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." %}</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="/model_design/color?name=piano&style=1">{% trans "Start Design" %}</a>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=piano&style=1">{% trans "Start Design" %}</a>
                         </div>
                     </div>
                     <div class="item item-inner">
@@ -849,7 +857,8 @@
                             <p class="product-title">{% trans "Smart TV Ultra HD 40 inch - 40JU6600" %}</p>
                             <p class="description">{% trans "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." %}</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="/model_design/color?name=piano&style=2">{% trans "Start Design" %}</a>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=piano&style=2">{% trans "Start Design" %}</a>
                         </div>
                     </div>
                     <div class="item item-inner">
@@ -866,7 +875,8 @@
                             <p class="product-title">{% trans "Smart TV Ultra HD 40 inch - 40JU6600" %}</p>
                             <p class="description">{% trans "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." %}</p>
                             <p class="product-price">$ 650.99</p>
-                            <a class="add-to-cart" href="/model_design/color?name=piano&style=3">{% trans "Start Design" %}</a>
+                            <a class="add-to-cart"
+                               href="/model_design/color?name=piano&style=3">{% trans "Start Design" %}</a>
                         </div>
                     </div>
                 </div>
@@ -902,7 +912,8 @@
                         <div class="col-lg-6">
                             <div class="help-item">
                                 <div class="help-right">
-                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}</h2>
+                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}
+                                    </h2>
                                     <p>{% trans "Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and became Master Builder in 2011. A Native of California, he had a passion for making guitars from an early age. 'For as long as I can remember, I've loved guitars,' he says. 'Strangely enough, I didn't want to be a rock star. Iwanted to make a super guitar. The Wilson family is proficient in carpentry, and exquisite craftsmanship has always been the passion and pursuit of Fender custom shop, which has long been integrated into dell's blood. Back in the late 1980s, he was working in guitar repair and tooling at a studio near his middle school." %}</p>
                                     <p>{% trans "He then went to work for Dobro and Rickenbacker for a while before entering Fender; He also worked for guitar brands such as Guild, Gretsch and Benedetto before becoming an apprentice to a master luthier in a custom shop. As a craftsman, he relished being able to draw on his extensive experience in producing high-quality guitars, such as the Resophonic Thinline Telecaster. In 2011, while still an apprentice, he made five premium custom guitars for the NAMM Show in January of that year and was asked to sign the back, earning him the honor of Master Builder." %}</p>
 
@@ -934,7 +945,8 @@
                         <div class="col-lg-6">
                             <div class="help-item">
                                 <div class="help-right">
-                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}</h2>
+                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}
+                                    </h2>
                                     <p>{% trans "Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and became Master Builder in 2011. A Native of California, he had a passion for making guitars from an early age. 'For as long as I can remember, I've loved guitars,' he says. 'Strangely enough, I didn't want to be a rock star. Iwanted to make a super guitar. The Wilson family is proficient in carpentry, and exquisite craftsmanship has always been the passion and pursuit of Fender custom shop, which has long been integrated into dell's blood. Back in the late 1980s, he was working in guitar repair and tooling at a studio near his middle school." %}</p>
                                     <p>{% trans "He then went to work for Dobro and Rickenbacker for a while before entering Fender; He also worked for guitar brands such as Guild, Gretsch and Benedetto before becoming an apprentice to a master luthier in a custom shop. As a craftsman, he relished being able to draw on his extensive experience in producing high-quality guitars, such as the Resophonic Thinline Telecaster. In 2011, while still an apprentice, he made five premium custom guitars for the NAMM Show in January of that year and was asked to sign the back, earning him the honor of Master Builder." %}</p>
                                     <div class="help-inner-left">
@@ -965,7 +977,8 @@
                         <div class="col-lg-6">
                             <div class="help-item">
                                 <div class="help-right">
-                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}</h2>
+                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}
+                                    </h2>
                                     <p>{% trans "Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and became Master Builder in 2011. A Native of California, he had a passion for making guitars from an early age. 'For as long as I can remember, I've loved guitars,' he says. 'Strangely enough, I didn't want to be a rock star. Iwanted to make a super guitar. The Wilson family is proficient in carpentry, and exquisite craftsmanship has always been the passion and pursuit of Fender custom shop, which has long been integrated into dell's blood. Back in the late 1980s, he was working in guitar repair and tooling at a studio near his middle school." %}</p>
                                     <p>{% trans "He then went to work for Dobro and Rickenbacker for a while before entering Fender; He also worked for guitar brands such as Guild, Gretsch and Benedetto before becoming an apprentice to a master luthier in a custom shop. As a craftsman, he relished being able to draw on his extensive experience in producing high-quality guitars, such as the Resophonic Thinline Telecaster. In 2011, while still an apprentice, he made five premium custom guitars for the NAMM Show in January of that year and was asked to sign the back, earning him the honor of Master Builder." %}</p>
 
@@ -997,7 +1010,8 @@
                         <div class="col-lg-6">
                             <div class="help-item">
                                 <div class="help-right">
-                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}</h2>
+                                    <h2><span>{% trans "Master Signature: &nbsp;" %}</span>{% trans " Dale Wilson" %}
+                                    </h2>
                                     <p>{% trans "Dale Wilson joined Fender in 2003, joined Fender Custom Stores in 2005, and became Master Builder in 2011. A Native of California, he had a passion for making guitars from an early age. 'For as long as I can remember, I've loved guitars,' he says. 'Strangely enough, I didn't want to be a rock star. Iwanted to make a super guitar. The Wilson family is proficient in carpentry, and exquisite craftsmanship has always been the passion and pursuit of Fender custom shop, which has long been integrated into dell's blood. Back in the late 1980s, he was working in guitar repair and tooling at a studio near his middle school." %}</p>
                                     <p>{% trans "He then went to work for Dobro and Rickenbacker for a while before entering Fender; He also worked for guitar brands such as Guild, Gretsch and Benedetto before becoming an apprentice to a master luthier in a custom shop. As a craftsman, he relished being able to draw on his extensive experience in producing high-quality guitars, such as the Resophonic Thinline Telecaster. In 2011, while still an apprentice, he made five premium custom guitars for the NAMM Show in January of that year and was asked to sign the back, earning him the honor of Master Builder." %}</p>
                                     <div class="help-inner-left">
@@ -1140,6 +1154,10 @@
             reloadList();
             let img_list_wrapper = $(".model-img-list-wrapper");
             img_list_wrapper.toggleClass("wrapper-hidden");
+        });
+        // 前往结账
+        $(".model-checkout").click(function () {
+            window。
         });
 
         // 添加图片
