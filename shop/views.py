@@ -105,10 +105,13 @@ index = sync_to_async(_index)
 
 
 @xframe_options_exempt
-def chat_ai(request):
+def _chat_ai(request):
     return render(request, 'layouts/default/chat_ai.html', {
         "home": 1,
     })
+
+
+chat_ai = sync_to_async(_chat_ai)
 
 
 @xframe_options_exempt

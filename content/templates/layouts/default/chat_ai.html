@@ -142,7 +142,7 @@
                                      alt="Header Icon" draggable="false">
                             </div>
                             <div class="chat_header_text" style="">
-                                <span id="spanHeaderText">{% trans "Music More" %}</span>
+                                <span id="spanHeaderText">{% trans "Music More AI bot" %}</span>
                             </div>
                         </div>
 
@@ -261,14 +261,23 @@
                                   data-atlas-messagetosend=""
                                   class="chat_button_suggested_response chat_primary"
                                   data-atlas-value="Learn about guitars">Hi</span>
+                            {% if request.user.is_authenticated %}
                             <span
                                     data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
                                     class="chat_button_suggested_response chat_primary"
-                                    data-atlas-value="Buy a guitar">{% trans "Recent orders" %}</span>
+                                    data-atlas-value="Buy a guitar">Recent orders</span>
+                            {% else %}
+                                <span
+                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                    class="chat_button_suggested_response chat_primary"
+                                    data-atlas-value="Buy a guitar">What is your name?</span>
+
+                            {% endif %}
+
                             <span
                                     data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
                                     class="chat_button_suggested_response chat_primary"
-                                    data-atlas-value="Learn to play">{% trans "Give me some recommendations" %}</span>
+                                    data-atlas-value="Learn to play">Give me some recommendations</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -280,9 +289,7 @@
                     <div class="footer_container">
                         <a class="footer_link" target="_blank" href="" style="display: none;"></a>
                         <span class="footer_divider" style="display: none;">|</span>
-                        <span class="footer_text">{% trans "Group 8 " %}<a
-                                href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
-                                target="_blank">{% trans "Not finished" %}</a></span>
+                        <span class="footer_text">{% trans "Group 8 " %}</span>
                     </div>
                 </div>
                 <div id="chat_message_rating_context">
