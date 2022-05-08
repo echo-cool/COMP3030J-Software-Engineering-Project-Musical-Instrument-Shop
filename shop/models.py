@@ -94,6 +94,8 @@ class CustomModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     screenshots = models.TextField(null=True)
     finish = models.BooleanField(default=False)
+    price = models.FloatField(max_length=200, default=0)
+    count = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
 

@@ -1160,14 +1160,14 @@
         // 前往结账
         $(".model-checkout").click(function () {
             let base64_list = [];
-            for (let i in model_img_list) {
+            for (let i of model_img_list) {
                 let a = i.replace("<a><img src=\"", "").replace("></a>", "");
                 base64_list.push(a);
             }
 
             console.log("Screenshots", base64_list.join("&&&&&"));
             $.ajax({
-                url: "/model_checkout",
+                url: "/model_post_checkout/",
                 method: "POST",
                 contentType: "application/json",
                 dataType: "json",
@@ -1181,10 +1181,10 @@
                 },
                 success: function (res) {
                     console.log("CHECKOUT QU EL");
-                    window.location.href = "{% url 'accounts:log_in' %}"
+                    window.location.href = "{% url 'shop:model_checkout' %}"
                 },
                 error: function (res) {
-                    console.log("Add wishlist failed:", id, res);
+                    console.log("Add wishlist failed:", res);
                 }
             });
         });
