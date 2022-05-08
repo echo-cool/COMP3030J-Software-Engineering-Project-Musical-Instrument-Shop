@@ -5,7 +5,8 @@ from .views import model_view, index, cart, product_details, model_design, leave
     product_details_test_model, wishlist, personal_profile, \
     checkout, model_design2, home, image_upload, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden, get_pictures, image_search
+    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden, get_pictures, \
+    image_search, model_checkout
 
 app_name = 'shop'
 urlpatterns = [
@@ -25,6 +26,8 @@ urlpatterns = [
     # path('confirm/', confirm, name='confirm'),
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
+    path('model_checkout/', model_checkout, name='model_checkout'),
+
     # path('cart2/', cart2, name='cart'),
     # path("cart/product_add_cart/<int:instrument_id>", product_add_cart, name='product_add_cart'),
     # path("cart/product_minus_cart/<int:instrument_id>", product_minus_cart, name='product_minus_cart'),

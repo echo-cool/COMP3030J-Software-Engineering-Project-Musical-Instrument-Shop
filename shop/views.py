@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem
+    OrderItem, CustomModel
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -440,6 +440,26 @@ def checkout(request):
             'profile': profile,
             'form': checkout_form
         })
+
+
+@login_required
+def model_checkout(request):
+    # get or post
+    if request.method == "POST":
+        country = request.POST['country']
+        state = request.POST['state']
+        user = request.user.id
+
+        request_dict = json.loads(request.body.decode('utf-8'))
+        screenshots = request_dict.get('screenshots')
+        custom = CustomModel(
+            user=user,
+            screenshots=screenshots
+        )
+        custom.save()
+        data = {'status': [1, 2, 3], 'info': 'login'}
+
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 def shipping_details(request, uncompletedOrder_id):
