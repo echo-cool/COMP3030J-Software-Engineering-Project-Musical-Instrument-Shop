@@ -44,8 +44,22 @@ class Instrument(models.Model):
     ad_info = models.TextField(max_length=3000, default="", null=True)
     chinese = models.BooleanField(default=False)
 
-    object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
-    object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
+    quantity = models.IntegerField(default=100, validators=[
+        MaxValueValidator(99999),
+        MinValueValidator(1)
+    ])
+    COLOR_CHOICES = (
+        (u'Red', u'Red'),
+        (u'Blue', u'Blue'),
+        (u'Brown', u'Brown'),
+        (u'White', u'White'),
+        (u'Black', u'Black'),
+        (u'Other', u'Other'),
+    )
+    color = models.CharField(max_length=5, choices=COLOR_CHOICES, default=u'Other')
+
+    # object_3d = models.FileField(upload_to='uploads/instrument/obj/', null=True, blank=True)
+    # object_mtl = models.FileField(upload_to='uploads/instrument/mtl/', null=True, blank=True)
     object_gltf = models.FileField(upload_to='uploads/instrument/gltf/', null=True, blank=True)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE)
@@ -74,6 +88,15 @@ class Cart(models.Model):
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = ('user', 'instrument', 'count', 'created_at')
+
+
+class CustomModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    screenshots = models.TextField(null=True)
+    finish = models.BooleanField(default=False)
+    price = models.FloatField(max_length=200, default=0)
+    count = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Wishlist(models.Model):

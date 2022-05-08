@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem
+    OrderItem, CustomModel
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -442,6 +442,69 @@ def checkout(request):
         })
 
 
+@login_required
+def model_checkout(request):
+    # get or post
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+
+            # TODO: Order for checkout
+
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    else:
+        checkout_form = CheckoutForm()
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+
+        model_item = CustomModel.objects.filter(user=request.user, finish=False).last()
+        subtotal = int(model_item.price) * int(model_item.count)
+        formula = "" + str(model_item.price) + " * " + str(model_item.count) + " = " + str(subtotal)
+        print(subtotal)
+        model_pics = model_item.screenshots.split("&&&&&")
+        return render(request, 'shop_templates/checkout/checkout_for_model.html', {
+            "cart_items": model_item,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form,
+            "model_pics": model_pics,
+            'formula': formula
+        })
+
+
+@login_required
+def model_post_checkout(request):
+    # get or post
+    if request.method == "POST":
+        user = request.user
+        request_dict = json.loads(request.body.decode('utf-8'))
+        screenshots = request_dict.get('screenshots')
+        price = request_dict.get('price')
+        count = request_dict.get('count')
+        custom = CustomModel(
+            user=user,
+            price=price,
+            count=count,
+            screenshots=screenshots
+        )
+        custom.save()
+        data = {'code': 200, 'status': "OK", }
+
+        return HttpResponse(json.dumps(data), content_type='application/json')
+
+
 def shipping_details(request, uncompletedOrder_id):
     carts = Cart.objects.filter(user=request.user)
     user = request.user
@@ -535,6 +598,43 @@ def model_design2(request, model_id):
     })
 
 
+def check_color(input_color, color_list):
+    flag = False
+    # print("==============")
+    input_price = str(input_color)
+    for num in color_list:
+        i = str(num)
+        if i == "1":
+            if input_price == "Other":
+                flag = True
+                break
+        elif i == "2":
+            if input_price == "Black":
+                flag = True
+                break
+        elif i == "3":
+            if input_price == "Red":
+                flag = True
+                break
+        elif i == "4":
+            if input_price == "Brown":
+                flag = True
+                break
+        elif i == "5":
+            if input_price == "Yellow":
+                flag = True
+                break
+        elif i == "6":
+            if input_price == "Grey":
+                flag = True
+                break
+        elif i == "7":
+            if input_price == "White":
+                flag = True
+                break
+    return flag
+
+
 def check_price(input_price, price_list):
     flag = False
     # print("==============")
@@ -615,6 +715,7 @@ def product_search(request):
     section_text = request.GET.get("section", None)
     search_category_text = request.GET.get("category", None)
     search_price_text = request.GET.get("price", None)
+    search_color_text = request.GET.get("color", None)
 
     header = ""
     if section_text == "chinese":
@@ -655,6 +756,16 @@ def product_search(request):
         else:
             category.count = instruments.filter(category=category).count()
             new_categories.append(category)
+
+    # color
+    if search_color_text:
+        color_instruments = []
+        search_color_list = search_color_text.split("|")
+        search_color = [int(i) for i in search_color_list]
+        for search_ins in instruments:
+            if check_color(search_ins.color, search_color):
+                color_instruments.append(search_ins)
+        instruments = color_instruments
 
     # price
     if search_price_text:

@@ -5,6 +5,8 @@
 {% load bootstrap4 %}
 
 {% block head_link %}
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <!-- BASE CSS -->
     <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
@@ -210,7 +212,15 @@
                                             margin-right: 12px;
                                         }
 
-                                        .item-toggle-tab .checked + a::after {
+                                        {#.item-toggle-tab .checked + a::after {#}
+                                        {#    position: absolute;#}
+                                        {#    /* font-family: "sans-serif"; */#}
+                                        {#    font-size: 16px;#}
+                                        {#    font-family: 'FontAwesome', sans-serif;#}
+                                        {#    content: "\f00c";}#}
+                                        {##}
+
+                                        .item-toggle-tab a.active::after {
                                             position: absolute;
                                             /* font-family: "sans-serif"; */
                                             font-size: 16px;
@@ -347,35 +357,84 @@
                                 </div>
                                 <ul class="list-none list_color">
                                     <li class="cat-item">
-                                        <input type="checkbox" value="black">
-                                        <a href="javascript:void(0)" title="Black" style="background: Black" class=" ">
+                                        <input type="checkbox" value="white" class="category-checkbox3"
+                                               id="checkbox3__1">
+                                        <a href="javascript:void(0)" title="White"
+                                           class="category-name3 special-color" id="category3__1">
+                                        </a>
+                                    </li>
+                                    <style>
+                                        {#background-image:linear-gradient(90deg, #fbb6b9 0%, #db69ad 50%, #b55adf 100%) !important;#}
+                                        .special-color {
+                                            background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
+                                            animation: glow-animation 2s infinite linear;
+                                        }
+
+                                        @keyframes glow-animation {
+                                            0% {
+                                                filter: hue-rotate(-360deg)
+                                            }
+                                            100% {
+                                                filter: hue-rotate(360deg)
+                                            }
+                                        }
+                                    </style>
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="maroon" class="category-checkbox3"
+                                               id="checkbox3__2">
+                                        <a href="javascript:void(0)" title="Maroon" style="background: #100f0f"
+                                           class="category-name3" id="category3__2">
+                                        </a>
+                                    </li>
+
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="brown">#}
+                                    {#                                        <a href="javascript:void(0)" title="Brown" style="background: #82ceec"#}
+                                    {#                                           class=" ">#}
+                                    {#                                        </a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="black">#}
+                                    {#                                        <a href="javascript:void(0)" title="Black" style="background: #fd9393;"#}
+                                    {#                                           class=" ">#}
+                                    {#                                        </a>#}
+                                    {#                                    </li>#}
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="black" class="category-checkbox3"
+                                               id="checkbox3__3">
+                                        <a href="javascript:void(0)" title="Black" style="background:  #a52a2a;"
+                                           class="category-name3" id="category3__3">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="burlywood" class="category-checkbox3"
+                                               id="checkbox3__4">
+                                        <a href="javascript:void(0)" title="BurlyWood" style="background: #deb887"
+                                           class="category-name3" id="category3__4">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="burlywood" class="category-checkbox3"
+                                               id="checkbox3__5">
+                                        <a href="javascript:void(0)" title="BurlyWood" style="background: #ffd700"
+                                           class="category-name3" id="category3__5">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="gold" class="category-checkbox3"
+                                               id="checkbox3__6">
+                                        <a href="javascript:void(0)" title="Gold" style="background: #a3a3a3"
+                                           class="category-name3" id="category3__6">
                                         </a>
                                     </li>
                                     <li class="cat-item">
-                                        <input type="checkbox" value="brown">
-                                        <a href="javascript:void(0)" title="Brown" style="background: Brown" class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="burlywood">
-                                        <a href="javascript:void(0)" title="BurlyWood" style="background: BurlyWood"
-                                           class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="gold">
-                                        <a href="javascript:void(0)" title="Gold" style="background: Gold" class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="maroon">
-                                        <a href="javascript:void(0)" title="Maroon" style="background: Maroon"
-                                           class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="white">
-                                        <a href="javascript:void(0)" title="White" style="background: White" class=" ">
+                                        <input type="checkbox" value="gold" class="category-checkbox3"
+                                               id="checkbox3__7">
+                                        <a href="javascript:void(0)" title="Gold" style="background: #f6f3f3"
+                                           class="category-name3" id="category3__7">
                                         </a>
                                     </li>
                                 </ul>

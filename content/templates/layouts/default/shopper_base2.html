@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     {% block title %} <title>{% trans "Index" %}</title> {% endblock %}
+
     {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
     {#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -69,15 +70,18 @@
     <style>
         body::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #F5F5F5;}
+            background-color: #F5F5F5;
+        }
 
         body::-webkit-scrollbar {
             width: 10px;
-            background-color: #F5F5F5;}
+            background-color: #F5F5F5;
+        }
 
         body::-webkit-scrollbar-thumb {
             background-color: #000000;
-            border: 2px solid #555555;}
+            border: 2px solid #555555;
+        }
 
 
         {#body::-webkit-scrollbar-track {#}
@@ -101,7 +105,9 @@
         {#    transparent 75%,#}
         {#    transparent)}#}
 
-
+        .info_footer {
+            text-align: -webkit-center;
+        }
     </style>
 </head>
 <body class="home-page" id="home-page">
@@ -1000,7 +1006,7 @@
                                 {% if request.user %}
                                     {% if request.user.is_staff %}
                                         <li class="nav-item dropdown">
-                                            <a href="{% url 'management:index' to=1 %}" title="PAGES"
+                                            <a href="{% url 'management:index' %}" title="PAGES"
                                                class="delay03 relative nav-link  menu_lv1 ">{% trans "MANAGEMENT" %}</a>
                                         </li>
                                     {% endif %}
@@ -1389,10 +1395,10 @@
                             {#TODO: ICON#}
                             {% if home == 1 %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% else %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% endif %}
                         </a>
                     </div>
@@ -1553,7 +1559,7 @@
                                 <a href="{% url 'shop:index' %}" class="logo">
 
                                     <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                         width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme"
+                                         width="150" alt="Musicmo -  Musical Instruments Shop "
                                          class="img-fluid">
 
                                 </a>
@@ -2264,10 +2270,10 @@
     {#    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>#}
     {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
 
-    {#    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
     <!-- End Footer -->
-    <script type="text/javascript"
-            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+    {#    <script type="text/javascript"#}
+    {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
     {#    <script src="https://code.jquery.com/jquery-3.6.0.js"#}
     {#            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>#}
     <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>

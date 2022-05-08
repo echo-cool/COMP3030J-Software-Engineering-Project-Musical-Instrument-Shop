@@ -40,6 +40,48 @@ class GuestOnlyView(View):
         return super().dispatch(request, *args, **kwargs)
 
 
+def LogInStaffPost(request):
+    if request.method == "POST":
+        sign_in_form = SignInViaUsernameForm(request.POST)
+        if settings.DISABLE_USERNAME or settings.LOGIN_VIA_EMAIL:
+            sign_in_form = SignInViaEmailForm(request.POST)
+
+        if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
+            sign_in_form = SignInViaEmailOrUsernameForm(request.POST)
+        form = sign_in_form
+        if form.is_valid():
+            print("DSADS")
+            # If the test cookie worked, go ahead and delete it since its no longer needed
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
+
+            # The default Django's "remember me" lifetime is 2 weeks and can be changed by modifying
+            # the SESSION_COOKIE_AGE settings' option.
+            if settings.USE_REMEMBER_ME:
+                if not form.cleaned_data['remember_me']:
+                    request.session.set_expiry(0)
+
+            login(request, form.user_cache)
+            messages.success(request, "Login successfully")
+
+            redirect_to = "management:index"
+            # url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(),
+            #                                               require_https=request.is_secure())
+
+            # if url_is_safe:
+            return redirect(redirect_to)
+
+            # return redirect(settings.LOGIN_REDIRECT_URL)
+        else:
+            print("DSADSAsadasd")
+            form2 = SignUpForm()
+            context = {
+                "form": form,
+                "form2": form2,
+            }
+            return render(request, 'layouts/default/cool_login.html', context)
+
+
 def LogInPost(request):
     if request.method == "POST":
         sign_in_form = SignInViaUsernameForm(request.POST)
