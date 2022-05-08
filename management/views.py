@@ -15,6 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 import blog
 import shop
+from app.utils import staff_required
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
@@ -52,6 +53,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 
 @login_required
+@staff_required
 def index_new(request):
     # tmp = {}
     # for instrument_item in Instrument.objects.all():
@@ -114,6 +116,7 @@ def index_new(request):
 
 
 @login_required
+@staff_required
 def index(request):
     counts = {
         'user': User.objects.count(),
@@ -142,6 +145,7 @@ def index(request):
 
 
 @login_required
+@staff_required
 def order_management_all(request):
     orders = Order.objects.all().order_by('-priority', '-created_at')
     for order in orders:
@@ -171,6 +175,7 @@ def order_management_all(request):
 
 
 @login_required
+@staff_required
 def order_management_all_new(request):
     data = []
     orders = Order.objects.all()
@@ -204,6 +209,7 @@ def order_management_all_new(request):
 
 
 @login_required
+@staff_required
 def order_management_placed(request):
     orders = Order.objects.filter(accepted=False).order_by('-priority', '-created_at')
     for order in orders:
@@ -233,6 +239,7 @@ def order_management_placed(request):
 
 
 @login_required
+@staff_required
 def order_management_accepted(request):
     orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-priority', '-created_at')
     for order in orders:
@@ -261,6 +268,7 @@ def order_management_accepted(request):
 
 
 @login_required
+@staff_required
 def order_management_packed(request):
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-priority',
                                                                                                     '-created_at')
@@ -290,6 +298,7 @@ def order_management_packed(request):
 
 
 @login_required
+@staff_required
 def order_management_shipped(request):
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
         delivered=False).order_by('-priority', '-created_at')
@@ -319,6 +328,7 @@ def order_management_shipped(request):
 
 
 @login_required
+@staff_required
 def order_management_delivered(request):
     orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
         delivered=True).order_by('-priority', '-created_at')
@@ -346,6 +356,7 @@ def order_management_delivered(request):
 
 
 @login_required
+@staff_required
 def order_item_management(request, order_id):
     order_items = OrderItem.objects.filter(order_id=order_id)
 
@@ -356,6 +367,7 @@ def order_item_management(request, order_id):
 
 
 @login_required
+@staff_required
 def update_order_item(request, order_item_id):
     if request.method == "POST":
         order_item = OrderItem.objects.get(id=order_item_id)
@@ -373,6 +385,7 @@ def update_order_item(request, order_item_id):
 
 
 @login_required
+@staff_required
 def update_order(request, order_id):
     if request.method == "POST":
         order = Order.objects.get(id=order_id)
@@ -390,6 +403,7 @@ def update_order(request, order_id):
 
 
 @login_required
+@staff_required
 def instrument_management_new(request):
     search = request.GET.get("search")
     if search is not None:
@@ -423,6 +437,7 @@ def instrument_management_new(request):
 
 
 @login_required
+@staff_required
 def instrument_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -456,6 +471,7 @@ def instrument_management(request):
 
 
 @login_required
+@staff_required
 def update_instrument(request, instrument_id):
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
@@ -471,7 +487,8 @@ def update_instrument(request, instrument_id):
             'form': f
         })
 
-
+@login_required
+@staff_required
 @method_decorator(csrf_exempt)
 def upload_ins(request):
     if request.method == "POST":
@@ -500,6 +517,7 @@ def upload_ins(request):
 
 
 @login_required
+@staff_required
 @method_decorator(csrf_exempt)
 def add_instrument(request):
     if request.method == "POST":
@@ -546,6 +564,7 @@ def add_instrument(request):
 
 
 @login_required
+@staff_required
 def instrument_category_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -583,6 +602,7 @@ def instrument_category_management(request):
 
 
 @login_required
+@staff_required
 def update_instrument_category(request, category_id):
     if request.method == "POST":
         category = shop.models.Category.objects.get(id=category_id)
@@ -600,6 +620,7 @@ def update_instrument_category(request, category_id):
 
 
 @login_required
+@staff_required
 def add_instrument_category(request):
     if request.method == "POST":
         f = InstrumentCategoryForm(request.POST, request.FILES)
@@ -618,6 +639,7 @@ def add_instrument_category(request):
 
 
 @login_required
+@staff_required
 def add_order(request):
     if request.method == "POST":
         f = OrderForm(request.POST, request.FILES)
@@ -637,6 +659,7 @@ def add_order(request):
 
 
 @login_required
+@staff_required
 def profile(request):
     if request.method == "POST":
         profile_item = Profile.objects.filter(user=request.user.id).first()
@@ -650,6 +673,7 @@ def profile(request):
 
 
 @login_required
+@staff_required
 def review_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -683,6 +707,7 @@ def review_management(request):
 
 
 @login_required
+@staff_required
 def update_review(request, review_id):
     if request.method == "POST":
         review = Review.objects.get(id=review_id)
@@ -700,6 +725,7 @@ def update_review(request, review_id):
 
 
 @login_required
+@staff_required
 def add_review(request):
     if request.method == "POST":
         f = ReviewForm(request.POST, request.FILES)
@@ -718,6 +744,7 @@ def add_review(request):
 
 
 @login_required
+@staff_required
 def order_state(request, order_id):
     order = Order.objects.filter(id=order_id).first()
     f = OrderForm(instance=order)
@@ -737,6 +764,7 @@ def order_state(request, order_id):
 
 
 @login_required
+@staff_required
 def post_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -770,6 +798,7 @@ def post_management(request):
 
 
 @login_required
+@staff_required
 def update_post(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
@@ -787,6 +816,7 @@ def update_post(request, post_id):
 
 
 @login_required
+@staff_required
 def add_post(request):
     if request.method == "POST":
         print(request.FILES)
@@ -806,6 +836,7 @@ def add_post(request):
 
 
 @login_required
+@staff_required
 def blog_category_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -843,6 +874,7 @@ def blog_category_management(request):
 
 
 @login_required
+@staff_required
 def update_blog_category(request, category_id):
     if request.method == "POST":
         category = blog.models.Category.objects.get(id=category_id)
@@ -860,6 +892,7 @@ def update_blog_category(request, category_id):
 
 
 @login_required
+@staff_required
 def add_blog_category(request):
     if request.method == "POST":
         f = BlogCategoryForm(request.POST, request.FILES)
@@ -878,6 +911,7 @@ def add_blog_category(request):
 
 
 @login_required
+@staff_required
 def cart_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -911,6 +945,7 @@ def cart_management(request):
 
 
 @login_required
+@staff_required
 def update_cart(request, cart_id):
     if request.method == "POST":
         cart = Cart.objects.get(id=cart_id)
@@ -928,6 +963,7 @@ def update_cart(request, cart_id):
 
 
 @login_required
+@staff_required
 def add_cart(request):
     if request.method == "POST":
         f = CartForm(request.POST, request.FILES)
@@ -946,6 +982,7 @@ def add_cart(request):
 
 
 @login_required
+@staff_required
 def wishlist_management(request):
     search = request.GET.get("search")
     if search is not None:
@@ -980,6 +1017,7 @@ def wishlist_management(request):
 
 
 @login_required
+@staff_required
 def update_wishlist(request, wishlist_id):
     if request.method == "POST":
         wishlist = Wishlist.objects.get(id=wishlist_id)
@@ -997,6 +1035,7 @@ def update_wishlist(request, wishlist_id):
 
 
 @login_required
+@staff_required
 def add_wishlist(request):
     if request.method == "POST":
         f = WishlistForm(request.POST, request.FILES)
@@ -1015,6 +1054,7 @@ def add_wishlist(request):
 
 
 @login_required
+@staff_required
 def view_log(request):
     # check if file exists
     if os.path.isfile("access_log/access_log.log"):
