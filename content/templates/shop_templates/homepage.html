@@ -3,7 +3,7 @@
 {% load static %}
 {% load i18n %}
 {% load bootstrap4 %}
-
+{% block title %} <title>{% trans "Homepage" %}</title> {% endblock %}
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.carousel.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/owl.theme.css" %}" media="all"/>
