@@ -348,7 +348,7 @@
                                             <button type="button"
                                                     class="btn btn-glow btn-round btn-bg-gradient-x-red-pink"
                                                     style="border-radius: 20% !important">
-                                                <a href="{% url 'echarts:chart1' %}"
+                                                <a href="{% url 'echarts:chart2' %}"
                                                    style="color: white ">{% trans "Revenue Data Digital Screen " %}</a>
                                             </button>
                                         </li>
@@ -963,6 +963,7 @@
                 }
             });
 
+            {# quantity for products #}
             let my_product_list = [[], []]
             for (let i = 0; i < 12; i++) {
                 my_product_list[0].push("P" + i);
