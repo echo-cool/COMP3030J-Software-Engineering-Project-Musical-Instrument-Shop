@@ -5,6 +5,7 @@
       class="js windows firefox desktop page--no-banner page--logo-main page--show page--show card-fields cors svg opacity placeholder no-touchevents displaytable display-table generatedcontent cssanimations flexbox no-flexboxtweener anyflexbox shopemoji floating-labels sdijsxy idc0_338"
       style="" lang="en-US">
 <head>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -221,7 +222,8 @@
 <header class="banner" data-header="" role="banner">
     <div class="wrap">
 
-        <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop Shopify Theme" %}</span></a>
+        <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
+                class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop " %}</span></a>
 
         <h1 class="visually-hidden">{% trans "Information" %}</h1>
 
@@ -367,7 +369,8 @@ window.additionalScripts = function () {
                                                 <label class="checkbox__label" for="checkout_buyer_accepts_marketing">
                                                     Email me with news and offers
                                                 </label></div>
-                                            <p style="display: none" class="checkout-sms-info">{% trans "We’ll send you an order receipt and recurring shipping updates via text message. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Msg &amp; data rates may apply. View our " %}<a
+                                            <p style="display: none"
+                                               class="checkout-sms-info">{% trans "We’ll send you an order receipt and recurring shipping updates via text message. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Msg &amp; data rates may apply. View our " %}<a
                                                     href="https://musicmo-store-demo.myshopify.com/policies/privacy-policy"
                                                     target="_blank">{% trans "Privacy Policy and " %}</a><a
                                                     href="https://musicmo-store-demo.myshopify.com/policies/terms-of-service"
@@ -382,7 +385,8 @@ window.additionalScripts = function () {
 
                             <div class="section section--shipping-address" data-shipping-address="">
                                 <div class="section__header">
-                                    <h2 class="section__title" id="section-delivery-title">{% trans "Shipping address" %}</h2>
+                                    <h2 class="section__title"
+                                        id="section-delivery-title">{% trans "Shipping address" %}</h2>
                                 </div>
 
 
@@ -430,30 +434,30 @@ window.additionalScripts = function () {
                                                    name="checkout[shipping_address][zip]">
 
 
-{#                                            <div class="field field--required field--show-floating-label">#}
-{##}
-{#                                                <div class="field__input-wrapper field__input-wrapper--select"><label#}
-{#                                                        class="field__label field__label--visible"#}
-{#                                                        for="checkout_shipping_address_id">{% trans "Saved addresses" %}</label>#}
-{#                                                    <select data-address-selector=""#}
-{#                                                            data-field-name-format="checkout[shipping_address][%s]"#}
-{#                                                            data-backup="contact_stored_addresses"#}
-{#                                                            class="field__input field__input--select"#}
-{#                                                            aria-required="true" name="checkout[shipping_address][id]"#}
-{#                                                            id="checkout_shipping_address_id">#}
-{#                                                        <option data-properties="{&quot;id&quot;:7092913504443,&quot;customer_id&quot;:5932663341243,&quot;first_name&quot;:null,&quot;last_name&quot;:null,&quot;company&quot;:null,&quot;address1&quot;:null,&quot;address2&quot;:null,&quot;city&quot;:null,&quot;province&quot;:null,&quot;country&quot;:&quot;United States&quot;,&quot;zip&quot;:null,&quot;phone&quot;:null,&quot;name&quot;:&quot;&quot;,&quot;province_code&quot;:null,&quot;country_code&quot;:&quot;US&quot;,&quot;country_name&quot;:&quot;United States&quot;,&quot;default&quot;:true}"#}
-{#                                                                selected="selected" value="7092913504443">United States#}
-{#                                                        </option>#}
-{#                                                        <option value="">{% trans "Use a new address" %}</option>#}
-{#                                                    </select>#}
-{#                                                    <div class="field__caret">#}
-{#                                                        <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg"#}
-{#                                                             role="presentation" aria-hidden="true" focusable="false">#}
-{#                                                            <use xlink:href="#caret-down"></use>#}
-{#                                                        </svg>#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                            </div>#}
+                                            {#                                            <div class="field field--required field--show-floating-label">#}
+                                            {##}
+                                            {#                                                <div class="field__input-wrapper field__input-wrapper--select"><label#}
+                                            {#                                                        class="field__label field__label--visible"#}
+                                            {#                                                        for="checkout_shipping_address_id">{% trans "Saved addresses" %}</label>#}
+                                            {#                                                    <select data-address-selector=""#}
+                                            {#                                                            data-field-name-format="checkout[shipping_address][%s]"#}
+                                            {#                                                            data-backup="contact_stored_addresses"#}
+                                            {#                                                            class="field__input field__input--select"#}
+                                            {#                                                            aria-required="true" name="checkout[shipping_address][id]"#}
+                                            {#                                                            id="checkout_shipping_address_id">#}
+                                            {#                                                        <option data-properties="{&quot;id&quot;:7092913504443,&quot;customer_id&quot;:5932663341243,&quot;first_name&quot;:null,&quot;last_name&quot;:null,&quot;company&quot;:null,&quot;address1&quot;:null,&quot;address2&quot;:null,&quot;city&quot;:null,&quot;province&quot;:null,&quot;country&quot;:&quot;United States&quot;,&quot;zip&quot;:null,&quot;phone&quot;:null,&quot;name&quot;:&quot;&quot;,&quot;province_code&quot;:null,&quot;country_code&quot;:&quot;US&quot;,&quot;country_name&quot;:&quot;United States&quot;,&quot;default&quot;:true}"#}
+                                            {#                                                                selected="selected" value="7092913504443">United States#}
+                                            {#                                                        </option>#}
+                                            {#                                                        <option value="">{% trans "Use a new address" %}</option>#}
+                                            {#                                                    </select>#}
+                                            {#                                                    <div class="field__caret">#}
+                                            {#                                                        <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg"#}
+                                            {#                                                             role="presentation" aria-hidden="true" focusable="false">#}
+                                            {#                                                            <use xlink:href="#caret-down"></use>#}
+                                            {#                                                        </svg>#}
+                                            {#                                                    </div>#}
+                                            {#                                                </div>#}
+                                            {#                                            </div>#}
 
 
                                             <div class="field field--optional field--half"
@@ -544,245 +548,475 @@ window.additionalScripts = function () {
                                                             name="country"
                                                             id="checkout_shipping_address_country"
                                                             placeholder="Country/region">
-                                                        <option data-code="CN" value="China">{% trans "China" %}</option>
+                                                        <option data-code="CN"
+                                                                value="China">{% trans "China" %}</option>
                                                         <option disabled="disabled" value="---">---</option>
-                                                        <option data-code="AF" value="Afghanistan">{% trans "Afghanistan" %}</option>
-                                                        <option data-code="AX" value="Aland Islands">Åland Islands</option>
-                                                        <option data-code="AL" value="Albania">{% trans "Albania" %}</option>
-                                                        <option data-code="DZ" value="Algeria">{% trans "Algeria" %}</option>
-                                                        <option data-code="AD" value="Andorra">{% trans "Andorra" %}</option>
-                                                        <option data-code="AO" value="Angola">{% trans "Angola" %}</option>
-                                                        <option data-code="AI" value="Anguilla">{% trans "Anguilla" %}</option>
-                                                        <option data-code="AG" value="Antigua And Barbuda">{% trans "Antigua &amp;Barbuda" %}</option>
-                                                        <option data-code="AR" value="Argentina">{% trans "Argentina" %}</option>
-                                                        <option data-code="AM" value="Armenia">{% trans "Armenia" %}</option>
-                                                        <option data-code="AW" value="Aruba">{% trans "Aruba" %}</option>
-                                                        <option data-code="AC" value="Ascension Island">{% trans "Ascension Island" %}</option>
-                                                        <option data-code="AU" value="Australia">{% trans "Australia" %}</option>
-                                                        <option data-code="AT" value="Austria">{% trans "Austria" %}</option>
-                                                        <option data-code="AZ" value="Azerbaijan">{% trans "Azerbaijan" %}</option>
-                                                        <option data-code="BS" value="Bahamas">{% trans "Bahamas" %}</option>
-                                                        <option data-code="BH" value="Bahrain">{% trans "Bahrain" %}</option>
-                                                        <option data-code="BD" value="Bangladesh">{% trans "Bangladesh" %}</option>
-                                                        <option data-code="BB" value="Barbados">{% trans "Barbados" %}</option>
-                                                        <option data-code="BY" value="Belarus">{% trans "Belarus" %}</option>
-                                                        <option data-code="BE" value="Belgium">{% trans "Belgium" %}</option>
-                                                        <option data-code="BZ" value="Belize">{% trans "Belize" %}</option>
-                                                        <option data-code="BJ" value="Benin">{% trans "Benin" %}</option>
-                                                        <option data-code="BM" value="Bermuda">{% trans "Bermuda" %}</option>
-                                                        <option data-code="BT" value="Bhutan">{% trans "Bhutan" %}</option>
-                                                        <option data-code="BO" value="Bolivia">{% trans "Bolivia" %}</option>
-                                                        <option data-code="BA" value="Bosnia And Herzegovina">{% trans "Bosnia &amp; Herzegovina" %}</option>
-                                                        <option data-code="BW" value="Botswana">{% trans "Botswana" %}</option>
-                                                        <option data-code="BR" value="Brazil">{% trans "Brazil" %}</option>
-                                                        <option data-code="IO" value="British Indian Ocean Territory">{% trans "British Indian Ocean Territory" %}</option>
-                                                        <option data-code="VG" value="Virgin Islands, British">{% trans "British Virgin Islands" %}</option>
-                                                        <option data-code="BN" value="Brunei">{% trans "Brunei" %}</option>
-                                                        <option data-code="BG" value="Bulgaria">{% trans "Bulgaria" %}</option>
-                                                        <option data-code="BF" value="Burkina Faso">{% trans "Burkina Faso" %}</option>
-                                                        <option data-code="BI" value="Burundi">{% trans "Burundi" %}</option>
-                                                        <option data-code="KH" value="Cambodia">{% trans "Cambodia" %}</option>
-                                                        <option data-code="CM" value="Republic of Cameroon">{% trans "Cameroon" %}</option>
-                                                        <option data-code="CA" value="Canada">{% trans "Canada" %}</option>
-                                                        <option data-code="CV" value="Cape Verde">{% trans "Cape Verde" %}</option>
-                                                        <option data-code="BQ" value="Caribbean Netherlands">{% trans "Caribbean Netherlands" %}</option>
-                                                        <option data-code="KY" value="Cayman Islands">{% trans "Cayman Islands" %}</option>
-                                                        <option data-code="CF" value="Central African Republic">{% trans "Central African Republic" %}</option>
+                                                        <option data-code="AF"
+                                                                value="Afghanistan">{% trans "Afghanistan" %}</option>
+                                                        <option data-code="AX" value="Aland Islands">Åland Islands
+                                                        </option>
+                                                        <option data-code="AL"
+                                                                value="Albania">{% trans "Albania" %}</option>
+                                                        <option data-code="DZ"
+                                                                value="Algeria">{% trans "Algeria" %}</option>
+                                                        <option data-code="AD"
+                                                                value="Andorra">{% trans "Andorra" %}</option>
+                                                        <option data-code="AO"
+                                                                value="Angola">{% trans "Angola" %}</option>
+                                                        <option data-code="AI"
+                                                                value="Anguilla">{% trans "Anguilla" %}</option>
+                                                        <option data-code="AG"
+                                                                value="Antigua And Barbuda">{% trans "Antigua &amp;Barbuda" %}</option>
+                                                        <option data-code="AR"
+                                                                value="Argentina">{% trans "Argentina" %}</option>
+                                                        <option data-code="AM"
+                                                                value="Armenia">{% trans "Armenia" %}</option>
+                                                        <option data-code="AW"
+                                                                value="Aruba">{% trans "Aruba" %}</option>
+                                                        <option data-code="AC"
+                                                                value="Ascension Island">{% trans "Ascension Island" %}</option>
+                                                        <option data-code="AU"
+                                                                value="Australia">{% trans "Australia" %}</option>
+                                                        <option data-code="AT"
+                                                                value="Austria">{% trans "Austria" %}</option>
+                                                        <option data-code="AZ"
+                                                                value="Azerbaijan">{% trans "Azerbaijan" %}</option>
+                                                        <option data-code="BS"
+                                                                value="Bahamas">{% trans "Bahamas" %}</option>
+                                                        <option data-code="BH"
+                                                                value="Bahrain">{% trans "Bahrain" %}</option>
+                                                        <option data-code="BD"
+                                                                value="Bangladesh">{% trans "Bangladesh" %}</option>
+                                                        <option data-code="BB"
+                                                                value="Barbados">{% trans "Barbados" %}</option>
+                                                        <option data-code="BY"
+                                                                value="Belarus">{% trans "Belarus" %}</option>
+                                                        <option data-code="BE"
+                                                                value="Belgium">{% trans "Belgium" %}</option>
+                                                        <option data-code="BZ"
+                                                                value="Belize">{% trans "Belize" %}</option>
+                                                        <option data-code="BJ"
+                                                                value="Benin">{% trans "Benin" %}</option>
+                                                        <option data-code="BM"
+                                                                value="Bermuda">{% trans "Bermuda" %}</option>
+                                                        <option data-code="BT"
+                                                                value="Bhutan">{% trans "Bhutan" %}</option>
+                                                        <option data-code="BO"
+                                                                value="Bolivia">{% trans "Bolivia" %}</option>
+                                                        <option data-code="BA"
+                                                                value="Bosnia And Herzegovina">{% trans "Bosnia &amp; Herzegovina" %}</option>
+                                                        <option data-code="BW"
+                                                                value="Botswana">{% trans "Botswana" %}</option>
+                                                        <option data-code="BR"
+                                                                value="Brazil">{% trans "Brazil" %}</option>
+                                                        <option data-code="IO"
+                                                                value="British Indian Ocean Territory">{% trans "British Indian Ocean Territory" %}</option>
+                                                        <option data-code="VG"
+                                                                value="Virgin Islands, British">{% trans "British Virgin Islands" %}</option>
+                                                        <option data-code="BN"
+                                                                value="Brunei">{% trans "Brunei" %}</option>
+                                                        <option data-code="BG"
+                                                                value="Bulgaria">{% trans "Bulgaria" %}</option>
+                                                        <option data-code="BF"
+                                                                value="Burkina Faso">{% trans "Burkina Faso" %}</option>
+                                                        <option data-code="BI"
+                                                                value="Burundi">{% trans "Burundi" %}</option>
+                                                        <option data-code="KH"
+                                                                value="Cambodia">{% trans "Cambodia" %}</option>
+                                                        <option data-code="CM"
+                                                                value="Republic of Cameroon">{% trans "Cameroon" %}</option>
+                                                        <option data-code="CA"
+                                                                value="Canada">{% trans "Canada" %}</option>
+                                                        <option data-code="CV"
+                                                                value="Cape Verde">{% trans "Cape Verde" %}</option>
+                                                        <option data-code="BQ"
+                                                                value="Caribbean Netherlands">{% trans "Caribbean Netherlands" %}</option>
+                                                        <option data-code="KY"
+                                                                value="Cayman Islands">{% trans "Cayman Islands" %}</option>
+                                                        <option data-code="CF"
+                                                                value="Central African Republic">{% trans "Central African Republic" %}</option>
                                                         <option data-code="TD" value="Chad">{% trans "Chad" %}</option>
-                                                        <option data-code="CL" value="Chile">{% trans "Chile" %}</option>
-                                                        <option data-code="CN" value="China">{% trans "China" %}</option>
-                                                        <option data-code="CX" value="Christmas Island">{% trans "Christmas Island" %}</option>
-                                                        <option data-code="CC" value="Cocos (Keeling) Islands">{% trans "Cocos (Keeling) Islands" %}</option>
-                                                        <option data-code="CO" value="Colombia">{% trans "Colombia" %}</option>
-                                                        <option data-code="KM" value="Comoros">{% trans "Comoros" %}</option>
-                                                        <option data-code="CG" value="Congo">{% trans "Congo - Brazzaville" %}</option>
-                                                        <option data-code="CD" value="Congo, The Democratic Republic Of The">{% trans "Congo - Kinshasa" %}</option>
-                                                        <option data-code="CK" value="Cook Islands">{% trans "Cook Islands" %}</option>
-                                                        <option data-code="CR" value="Costa Rica">{% trans "Costa Rica" %}</option>
-                                                        <option data-code="HR" value="Croatia">{% trans "Croatia" %}</option>
-                                                        <option data-code="CW" value="Curaçao">{% trans "Curaçao" %}</option>
-                                                        <option data-code="CY" value="Cyprus">{% trans "Cyprus" %}</option>
-                                                        <option data-code="CZ" value="Czech Republic">{% trans "Czechia" %}</option>
-                                                        <option data-code="CI" value="Côte d'Ivoire">{% trans "Côte d’Ivoire" %}</option>
-                                                        <option data-code="DK" value="Denmark">{% trans "Denmark" %}</option>
-                                                        <option data-code="DJ" value="Djibouti">{% trans "Djibouti" %}</option>
-                                                        <option data-code="DM" value="Dominica">{% trans "Dominica" %}</option>
-                                                        <option data-code="DO" value="Dominican Republic">{% trans "Dominican Republic" %}</option>
-                                                        <option data-code="EC" value="Ecuador">{% trans "Ecuador" %}</option>
-                                                        <option data-code="EG" value="Egypt">{% trans "Egypt" %}</option>
-                                                        <option data-code="SV" value="El Salvador">{% trans "El Salvador" %}</option>
-                                                        <option data-code="GQ" value="Equatorial Guinea">{% trans "Equatorial Guinea" %}</option>
-                                                        <option data-code="ER" value="Eritrea">{% trans "Eritrea" %}</option>
-                                                        <option data-code="EE" value="Estonia">{% trans "Estonia" %}</option>
-                                                        <option data-code="SZ" value="Eswatini">{% trans "Eswatini" %}</option>
-                                                        <option data-code="ET" value="Ethiopia">{% trans "Ethiopia" %}</option>
-                                                        <option data-code="FK" value="Falkland Islands (Malvinas)">{% trans "Falkland Islands" %}</option>
-                                                        <option data-code="FO" value="Faroe Islands">{% trans "Faroe Islands" %}</option>
+                                                        <option data-code="CL"
+                                                                value="Chile">{% trans "Chile" %}</option>
+                                                        <option data-code="CN"
+                                                                value="China">{% trans "China" %}</option>
+                                                        <option data-code="CX"
+                                                                value="Christmas Island">{% trans "Christmas Island" %}</option>
+                                                        <option data-code="CC"
+                                                                value="Cocos (Keeling) Islands">{% trans "Cocos (Keeling) Islands" %}</option>
+                                                        <option data-code="CO"
+                                                                value="Colombia">{% trans "Colombia" %}</option>
+                                                        <option data-code="KM"
+                                                                value="Comoros">{% trans "Comoros" %}</option>
+                                                        <option data-code="CG"
+                                                                value="Congo">{% trans "Congo - Brazzaville" %}</option>
+                                                        <option data-code="CD"
+                                                                value="Congo, The Democratic Republic Of The">{% trans "Congo - Kinshasa" %}</option>
+                                                        <option data-code="CK"
+                                                                value="Cook Islands">{% trans "Cook Islands" %}</option>
+                                                        <option data-code="CR"
+                                                                value="Costa Rica">{% trans "Costa Rica" %}</option>
+                                                        <option data-code="HR"
+                                                                value="Croatia">{% trans "Croatia" %}</option>
+                                                        <option data-code="CW"
+                                                                value="Curaçao">{% trans "Curaçao" %}</option>
+                                                        <option data-code="CY"
+                                                                value="Cyprus">{% trans "Cyprus" %}</option>
+                                                        <option data-code="CZ"
+                                                                value="Czech Republic">{% trans "Czechia" %}</option>
+                                                        <option data-code="CI"
+                                                                value="Côte d'Ivoire">{% trans "Côte d’Ivoire" %}</option>
+                                                        <option data-code="DK"
+                                                                value="Denmark">{% trans "Denmark" %}</option>
+                                                        <option data-code="DJ"
+                                                                value="Djibouti">{% trans "Djibouti" %}</option>
+                                                        <option data-code="DM"
+                                                                value="Dominica">{% trans "Dominica" %}</option>
+                                                        <option data-code="DO"
+                                                                value="Dominican Republic">{% trans "Dominican Republic" %}</option>
+                                                        <option data-code="EC"
+                                                                value="Ecuador">{% trans "Ecuador" %}</option>
+                                                        <option data-code="EG"
+                                                                value="Egypt">{% trans "Egypt" %}</option>
+                                                        <option data-code="SV"
+                                                                value="El Salvador">{% trans "El Salvador" %}</option>
+                                                        <option data-code="GQ"
+                                                                value="Equatorial Guinea">{% trans "Equatorial Guinea" %}</option>
+                                                        <option data-code="ER"
+                                                                value="Eritrea">{% trans "Eritrea" %}</option>
+                                                        <option data-code="EE"
+                                                                value="Estonia">{% trans "Estonia" %}</option>
+                                                        <option data-code="SZ"
+                                                                value="Eswatini">{% trans "Eswatini" %}</option>
+                                                        <option data-code="ET"
+                                                                value="Ethiopia">{% trans "Ethiopia" %}</option>
+                                                        <option data-code="FK"
+                                                                value="Falkland Islands (Malvinas)">{% trans "Falkland Islands" %}</option>
+                                                        <option data-code="FO"
+                                                                value="Faroe Islands">{% trans "Faroe Islands" %}</option>
                                                         <option data-code="FJ" value="Fiji">{% trans "Fiji" %}</option>
-                                                        <option data-code="FI" value="Finland">{% trans "Finland" %}</option>
-                                                        <option data-code="FR" value="France">{% trans "France" %}</option>
-                                                        <option data-code="GF" value="French Guiana">{% trans "French Guiana" %}</option>
-                                                        <option data-code="PF" value="French Polynesia">{% trans "French Polynesia" %}</option>
-                                                        <option data-code="TF" value="French Southern Territories">{% trans "French Southern Territories" %}</option>
-                                                        <option data-code="GA" value="Gabon">{% trans "Gabon" %}</option>
-                                                        <option data-code="GM" value="Gambia">{% trans "Gambia" %}</option>
-                                                        <option data-code="GE" value="Georgia">{% trans "Georgia" %}</option>
-                                                        <option data-code="DE" value="Germany">{% trans "Germany" %}</option>
-                                                        <option data-code="GH" value="Ghana">{% trans "Ghana" %}</option>
-                                                        <option data-code="GI" value="Gibraltar">{% trans "Gibraltar" %}</option>
-                                                        <option data-code="GR" value="Greece">{% trans "Greece" %}</option>
-                                                        <option data-code="GL" value="Greenland">{% trans "Greenland" %}</option>
-                                                        <option data-code="GD" value="Grenada">{% trans "Grenada" %}</option>
-                                                        <option data-code="GP" value="Guadeloupe">{% trans "Guadeloupe" %}</option>
-                                                        <option data-code="GT" value="Guatemala">{% trans "Guatemala" %}</option>
-                                                        <option data-code="GG" value="Guernsey">{% trans "Guernsey" %}</option>
-                                                        <option data-code="GN" value="Guinea">{% trans "Guinea" %}</option>
-                                                        <option data-code="GW" value="Guinea Bissau">{% trans "Guinea-Bissau" %}</option>
-                                                        <option data-code="GY" value="Guyana">{% trans "Guyana" %}</option>
-                                                        <option data-code="HT" value="Haiti">{% trans "Haiti" %}</option>
-                                                        <option data-code="HN" value="Honduras">{% trans "Honduras" %}</option>
-                                                        <option data-code="HK" value="Hong Kong">{% trans "Hong Kong SAR" %}</option>
-                                                        <option data-code="HU" value="Hungary">{% trans "Hungary" %}</option>
-                                                        <option data-code="IS" value="Iceland">{% trans "Iceland" %}</option>
-                                                        <option data-code="IN" value="India">{% trans "India" %}</option>
-                                                        <option data-code="ID" value="Indonesia">{% trans "Indonesia" %}</option>
+                                                        <option data-code="FI"
+                                                                value="Finland">{% trans "Finland" %}</option>
+                                                        <option data-code="FR"
+                                                                value="France">{% trans "France" %}</option>
+                                                        <option data-code="GF"
+                                                                value="French Guiana">{% trans "French Guiana" %}</option>
+                                                        <option data-code="PF"
+                                                                value="French Polynesia">{% trans "French Polynesia" %}</option>
+                                                        <option data-code="TF"
+                                                                value="French Southern Territories">{% trans "French Southern Territories" %}</option>
+                                                        <option data-code="GA"
+                                                                value="Gabon">{% trans "Gabon" %}</option>
+                                                        <option data-code="GM"
+                                                                value="Gambia">{% trans "Gambia" %}</option>
+                                                        <option data-code="GE"
+                                                                value="Georgia">{% trans "Georgia" %}</option>
+                                                        <option data-code="DE"
+                                                                value="Germany">{% trans "Germany" %}</option>
+                                                        <option data-code="GH"
+                                                                value="Ghana">{% trans "Ghana" %}</option>
+                                                        <option data-code="GI"
+                                                                value="Gibraltar">{% trans "Gibraltar" %}</option>
+                                                        <option data-code="GR"
+                                                                value="Greece">{% trans "Greece" %}</option>
+                                                        <option data-code="GL"
+                                                                value="Greenland">{% trans "Greenland" %}</option>
+                                                        <option data-code="GD"
+                                                                value="Grenada">{% trans "Grenada" %}</option>
+                                                        <option data-code="GP"
+                                                                value="Guadeloupe">{% trans "Guadeloupe" %}</option>
+                                                        <option data-code="GT"
+                                                                value="Guatemala">{% trans "Guatemala" %}</option>
+                                                        <option data-code="GG"
+                                                                value="Guernsey">{% trans "Guernsey" %}</option>
+                                                        <option data-code="GN"
+                                                                value="Guinea">{% trans "Guinea" %}</option>
+                                                        <option data-code="GW"
+                                                                value="Guinea Bissau">{% trans "Guinea-Bissau" %}</option>
+                                                        <option data-code="GY"
+                                                                value="Guyana">{% trans "Guyana" %}</option>
+                                                        <option data-code="HT"
+                                                                value="Haiti">{% trans "Haiti" %}</option>
+                                                        <option data-code="HN"
+                                                                value="Honduras">{% trans "Honduras" %}</option>
+                                                        <option data-code="HK"
+                                                                value="Hong Kong">{% trans "Hong Kong SAR" %}</option>
+                                                        <option data-code="HU"
+                                                                value="Hungary">{% trans "Hungary" %}</option>
+                                                        <option data-code="IS"
+                                                                value="Iceland">{% trans "Iceland" %}</option>
+                                                        <option data-code="IN"
+                                                                value="India">{% trans "India" %}</option>
+                                                        <option data-code="ID"
+                                                                value="Indonesia">{% trans "Indonesia" %}</option>
                                                         <option data-code="IQ" value="Iraq">{% trans "Iraq" %}</option>
-                                                        <option data-code="IE" value="Ireland">{% trans "Ireland" %}</option>
-                                                        <option data-code="IM" value="Isle Of Man">{% trans "Isle of Man" %}</option>
-                                                        <option data-code="IL" value="Israel">{% trans "Israel" %}</option>
-                                                        <option data-code="IT" value="Italy">{% trans "Italy" %}</option>
-                                                        <option data-code="JM" value="Jamaica">{% trans "Jamaica" %}</option>
-                                                        <option data-code="JP" value="Japan">{% trans "Japan" %}</option>
-                                                        <option data-code="JE" value="Jersey">{% trans "Jersey" %}</option>
-                                                        <option data-code="JO" value="Jordan">{% trans "Jordan" %}</option>
-                                                        <option data-code="KZ" value="Kazakhstan">{% trans "Kazakhstan" %}</option>
-                                                        <option data-code="KE" value="Kenya">{% trans "Kenya" %}</option>
-                                                        <option data-code="KI" value="Kiribati">{% trans "Kiribati" %}</option>
-                                                        <option data-code="XK" value="Kosovo">{% trans "Kosovo" %}</option>
-                                                        <option data-code="KW" value="Kuwait">{% trans "Kuwait" %}</option>
-                                                        <option data-code="KG" value="Kyrgyzstan">{% trans "Kyrgyzstan" %}</option>
-                                                        <option data-code="LA" value="Lao People's Democratic Republic">{% trans "Laos" %}</option>
-                                                        <option data-code="LV" value="Latvia">{% trans "Latvia" %}</option>
-                                                        <option data-code="LB" value="Lebanon">{% trans "Lebanon" %}</option>
-                                                        <option data-code="LS" value="Lesotho">{% trans "Lesotho" %}</option>
-                                                        <option data-code="LR" value="Liberia">{% trans "Liberia" %}</option>
-                                                        <option data-code="LY" value="Libyan Arab Jamahiriya">{% trans "Libya" %}</option>
-                                                        <option data-code="LI" value="Liechtenstein">{% trans "Liechtenstein" %}</option>
-                                                        <option data-code="LT" value="Lithuania">{% trans "Lithuania" %}</option>
-                                                        <option data-code="LU" value="Luxembourg">{% trans "Luxembourg" %}</option>
-                                                        <option data-code="MO" value="Macao">{% trans "Macao SAR" %}</option>
-                                                        <option data-code="MG" value="Madagascar">{% trans "Madagascar" %}</option>
-                                                        <option data-code="MW" value="Malawi">{% trans "Malawi" %}</option>
-                                                        <option data-code="MY" value="Malaysia">{% trans "Malaysia" %}</option>
-                                                        <option data-code="MV" value="Maldives">{% trans "Maldives" %}</option>
+                                                        <option data-code="IE"
+                                                                value="Ireland">{% trans "Ireland" %}</option>
+                                                        <option data-code="IM"
+                                                                value="Isle Of Man">{% trans "Isle of Man" %}</option>
+                                                        <option data-code="IL"
+                                                                value="Israel">{% trans "Israel" %}</option>
+                                                        <option data-code="IT"
+                                                                value="Italy">{% trans "Italy" %}</option>
+                                                        <option data-code="JM"
+                                                                value="Jamaica">{% trans "Jamaica" %}</option>
+                                                        <option data-code="JP"
+                                                                value="Japan">{% trans "Japan" %}</option>
+                                                        <option data-code="JE"
+                                                                value="Jersey">{% trans "Jersey" %}</option>
+                                                        <option data-code="JO"
+                                                                value="Jordan">{% trans "Jordan" %}</option>
+                                                        <option data-code="KZ"
+                                                                value="Kazakhstan">{% trans "Kazakhstan" %}</option>
+                                                        <option data-code="KE"
+                                                                value="Kenya">{% trans "Kenya" %}</option>
+                                                        <option data-code="KI"
+                                                                value="Kiribati">{% trans "Kiribati" %}</option>
+                                                        <option data-code="XK"
+                                                                value="Kosovo">{% trans "Kosovo" %}</option>
+                                                        <option data-code="KW"
+                                                                value="Kuwait">{% trans "Kuwait" %}</option>
+                                                        <option data-code="KG"
+                                                                value="Kyrgyzstan">{% trans "Kyrgyzstan" %}</option>
+                                                        <option data-code="LA"
+                                                                value="Lao People's Democratic Republic">{% trans "Laos" %}</option>
+                                                        <option data-code="LV"
+                                                                value="Latvia">{% trans "Latvia" %}</option>
+                                                        <option data-code="LB"
+                                                                value="Lebanon">{% trans "Lebanon" %}</option>
+                                                        <option data-code="LS"
+                                                                value="Lesotho">{% trans "Lesotho" %}</option>
+                                                        <option data-code="LR"
+                                                                value="Liberia">{% trans "Liberia" %}</option>
+                                                        <option data-code="LY"
+                                                                value="Libyan Arab Jamahiriya">{% trans "Libya" %}</option>
+                                                        <option data-code="LI"
+                                                                value="Liechtenstein">{% trans "Liechtenstein" %}</option>
+                                                        <option data-code="LT"
+                                                                value="Lithuania">{% trans "Lithuania" %}</option>
+                                                        <option data-code="LU"
+                                                                value="Luxembourg">{% trans "Luxembourg" %}</option>
+                                                        <option data-code="MO"
+                                                                value="Macao">{% trans "Macao SAR" %}</option>
+                                                        <option data-code="MG"
+                                                                value="Madagascar">{% trans "Madagascar" %}</option>
+                                                        <option data-code="MW"
+                                                                value="Malawi">{% trans "Malawi" %}</option>
+                                                        <option data-code="MY"
+                                                                value="Malaysia">{% trans "Malaysia" %}</option>
+                                                        <option data-code="MV"
+                                                                value="Maldives">{% trans "Maldives" %}</option>
                                                         <option data-code="ML" value="Mali">{% trans "Mali" %}</option>
-                                                        <option data-code="MT" value="Malta">{% trans "Malta" %}</option>
-                                                        <option data-code="MQ" value="Martinique">{% trans "Martinique" %}</option>
-                                                        <option data-code="MR" value="Mauritania">{% trans "Mauritania" %}</option>
-                                                        <option data-code="MU" value="Mauritius">{% trans "Mauritius" %}</option>
-                                                        <option data-code="YT" value="Mayotte">{% trans "Mayotte" %}</option>
-                                                        <option data-code="MX" value="Mexico">{% trans "Mexico" %}</option>
-                                                        <option data-code="MD" value="Moldova, Republic of">{% trans "Moldova" %}</option>
-                                                        <option data-code="MC" value="Monaco">{% trans "Monaco" %}</option>
-                                                        <option data-code="MN" value="Mongolia">{% trans "Mongolia" %}</option>
-                                                        <option data-code="ME" value="Montenegro">{% trans "Montenegro" %}</option>
-                                                        <option data-code="MS" value="Montserrat">{% trans "Montserrat" %}</option>
-                                                        <option data-code="MA" value="Morocco">{% trans "Morocco" %}</option>
-                                                        <option data-code="MZ" value="Mozambique">{% trans "Mozambique" %}</option>
-                                                        <option data-code="MM" value="Myanmar">{% trans "Myanmar (Burma)" %}</option>
-                                                        <option data-code="NA" value="Namibia">{% trans "Namibia" %}</option>
-                                                        <option data-code="NR" value="Nauru">{% trans "Nauru" %}</option>
-                                                        <option data-code="NP" value="Nepal">{% trans "Nepal" %}</option>
-                                                        <option data-code="NL" value="Netherlands">{% trans "Netherlands" %}</option>
-                                                        <option data-code="NC" value="New Caledonia">{% trans "New Caledonia" %}</option>
-                                                        <option data-code="NZ" value="New Zealand">{% trans "New Zealand" %}</option>
-                                                        <option data-code="NI" value="Nicaragua">{% trans "Nicaragua" %}</option>
-                                                        <option data-code="NE" value="Niger">{% trans "Niger" %}</option>
-                                                        <option data-code="NG" value="Nigeria">{% trans "Nigeria" %}</option>
+                                                        <option data-code="MT"
+                                                                value="Malta">{% trans "Malta" %}</option>
+                                                        <option data-code="MQ"
+                                                                value="Martinique">{% trans "Martinique" %}</option>
+                                                        <option data-code="MR"
+                                                                value="Mauritania">{% trans "Mauritania" %}</option>
+                                                        <option data-code="MU"
+                                                                value="Mauritius">{% trans "Mauritius" %}</option>
+                                                        <option data-code="YT"
+                                                                value="Mayotte">{% trans "Mayotte" %}</option>
+                                                        <option data-code="MX"
+                                                                value="Mexico">{% trans "Mexico" %}</option>
+                                                        <option data-code="MD"
+                                                                value="Moldova, Republic of">{% trans "Moldova" %}</option>
+                                                        <option data-code="MC"
+                                                                value="Monaco">{% trans "Monaco" %}</option>
+                                                        <option data-code="MN"
+                                                                value="Mongolia">{% trans "Mongolia" %}</option>
+                                                        <option data-code="ME"
+                                                                value="Montenegro">{% trans "Montenegro" %}</option>
+                                                        <option data-code="MS"
+                                                                value="Montserrat">{% trans "Montserrat" %}</option>
+                                                        <option data-code="MA"
+                                                                value="Morocco">{% trans "Morocco" %}</option>
+                                                        <option data-code="MZ"
+                                                                value="Mozambique">{% trans "Mozambique" %}</option>
+                                                        <option data-code="MM"
+                                                                value="Myanmar">{% trans "Myanmar (Burma)" %}</option>
+                                                        <option data-code="NA"
+                                                                value="Namibia">{% trans "Namibia" %}</option>
+                                                        <option data-code="NR"
+                                                                value="Nauru">{% trans "Nauru" %}</option>
+                                                        <option data-code="NP"
+                                                                value="Nepal">{% trans "Nepal" %}</option>
+                                                        <option data-code="NL"
+                                                                value="Netherlands">{% trans "Netherlands" %}</option>
+                                                        <option data-code="NC"
+                                                                value="New Caledonia">{% trans "New Caledonia" %}</option>
+                                                        <option data-code="NZ"
+                                                                value="New Zealand">{% trans "New Zealand" %}</option>
+                                                        <option data-code="NI"
+                                                                value="Nicaragua">{% trans "Nicaragua" %}</option>
+                                                        <option data-code="NE"
+                                                                value="Niger">{% trans "Niger" %}</option>
+                                                        <option data-code="NG"
+                                                                value="Nigeria">{% trans "Nigeria" %}</option>
                                                         <option data-code="NU" value="Niue">{% trans "Niue" %}</option>
-                                                        <option data-code="NF" value="Norfolk Island">{% trans "Norfolk Island" %}</option>
-                                                        <option data-code="MK" value="North Macedonia">{% trans "North Macedonia" %}</option>
-                                                        <option data-code="NO" value="Norway">{% trans "Norway" %}</option>
+                                                        <option data-code="NF"
+                                                                value="Norfolk Island">{% trans "Norfolk Island" %}</option>
+                                                        <option data-code="MK"
+                                                                value="North Macedonia">{% trans "North Macedonia" %}</option>
+                                                        <option data-code="NO"
+                                                                value="Norway">{% trans "Norway" %}</option>
                                                         <option data-code="OM" value="Oman">{% trans "Oman" %}</option>
-                                                        <option data-code="PK" value="Pakistan">{% trans "Pakistan" %}</option>
-                                                        <option data-code="PS" value="Palestinian Territory, Occupied">{% trans "Palestinian Territories" %}</option>
-                                                        <option data-code="PA" value="Panama">{% trans "Panama" %}</option>
-                                                        <option data-code="PG" value="Papua New Guinea">{% trans "Papua New Guinea" %}</option>
-                                                        <option data-code="PY" value="Paraguay">{% trans "Paraguay" %}</option>
+                                                        <option data-code="PK"
+                                                                value="Pakistan">{% trans "Pakistan" %}</option>
+                                                        <option data-code="PS"
+                                                                value="Palestinian Territory, Occupied">{% trans "Palestinian Territories" %}</option>
+                                                        <option data-code="PA"
+                                                                value="Panama">{% trans "Panama" %}</option>
+                                                        <option data-code="PG"
+                                                                value="Papua New Guinea">{% trans "Papua New Guinea" %}</option>
+                                                        <option data-code="PY"
+                                                                value="Paraguay">{% trans "Paraguay" %}</option>
                                                         <option data-code="PE" value="Peru">{% trans "Peru" %}</option>
-                                                        <option data-code="PH" value="Philippines">{% trans "Philippines" %}</option>
-                                                        <option data-code="PN" value="Pitcairn">{% trans "Pitcairn Islands" %}</option>
-                                                        <option data-code="PL" value="Poland">{% trans "Poland" %}</option>
-                                                        <option data-code="PT" value="Portugal">{% trans "Portugal" %}</option>
-                                                        <option data-code="QA" value="Qatar">{% trans "Qatar" %}</option>
-                                                        <option data-code="RE" value="Reunion">{% trans "Réunion" %}</option>
-                                                        <option data-code="RO" value="Romania">{% trans "Romania" %}</option>
-                                                        <option data-code="RU" value="Russia">{% trans "Russia" %}</option>
-                                                        <option data-code="RW" value="Rwanda">{% trans "Rwanda" %}</option>
-                                                        <option data-code="WS" value="Samoa">{% trans "Samoa" %}</option>
-                                                        <option data-code="SM" value="San Marino">{% trans "San Marino" %}</option>
-                                                        <option data-code="ST" value="Sao Tome And Principe">{% trans "São Tomé &amp; Príncipe" %}</option>
-                                                        <option data-code="SA" value="Saudi Arabia">{% trans "Saudi Arabia" %}</option>
-                                                        <option data-code="SN" value="Senegal">{% trans "Senegal" %}</option>
-                                                        <option data-code="RS" value="Serbia">{% trans "Serbia" %}</option>
-                                                        <option data-code="SC" value="Seychelles">{% trans "Seychelles" %}</option>
-                                                        <option data-code="SL" value="Sierra Leone">{% trans "Sierra Leone" %}</option>
-                                                        <option data-code="SG" value="Singapore">{% trans "Singapore" %}</option>
-                                                        <option data-code="SX" value="Sint Maarten">{% trans "Sint Maarten" %}</option>
-                                                        <option data-code="SK" value="Slovakia">{% trans "Slovakia" %}</option>
-                                                        <option data-code="SI" value="Slovenia">{% trans "Slovenia" %}</option>
-                                                        <option data-code="SB" value="Solomon Islands">{% trans "Solomon Islands" %}</option>
-                                                        <option data-code="SO" value="Somalia">{% trans "Somalia" %}</option>
-                                                        <option data-code="ZA" value="South Africa">{% trans "South Africa" %}</option>
-                                                        <option data-code="GS" value="South Georgia And The South Sandwich Islands">{% trans "South Georgia &amp; South Sandwich Islands" %}</option>
-                                                        <option data-code="KR" value="South Korea">{% trans "South Korea" %}</option>
-                                                        <option data-code="SS" value="South Sudan">{% trans "South Sudan" %}</option>
-                                                        <option data-code="ES" value="Spain">{% trans "Spain" %}</option>
-                                                        <option data-code="LK" value="Sri Lanka">{% trans "Sri Lanka" %}</option>
-                                                        <option data-code="BL" value="Saint Barthélemy">{% trans "St. Barthélemy" %}</option>
-                                                        <option data-code="SH" value="Saint Helena">{% trans "St. Helena" %}</option>
-                                                        <option data-code="KN" value="Saint Kitts And Nevis">{% trans "St. Kitts &amp; Nevis" %}</option>
-                                                        <option data-code="LC" value="Saint Lucia">{% trans "St. Lucia" %}</option>
-                                                        <option data-code="MF" value="Saint Martin">{% trans "St. Martin" %}</option>
-                                                        <option data-code="PM" value="Saint Pierre And Miquelon">{% trans "St. Pierre &amp; Miquelon" %}</option>
-                                                        <option data-code="VC" value="St. Vincent">{% trans "St. Vincent &amp;Grenadines" %}</option>
-                                                        <option data-code="SD" value="Sudan">{% trans "Sudan" %}</option>
-                                                        <option data-code="SR" value="Suriname">{% trans "Suriname" %}</option>
-                                                        <option data-code="SJ" value="Svalbard And Jan Mayen">{% trans "Svalbard &amp; Jan Mayen" %}</option>
-                                                        <option data-code="SE" value="Sweden">{% trans "Sweden" %}</option>
-                                                        <option data-code="CH" value="Switzerland">{% trans "Switzerland" %}</option>
-                                                        <option data-code="TW" value="Taiwan">{% trans "Taiwan" %}</option>
-                                                        <option data-code="TJ" value="Tajikistan">{% trans "Tajikistan" %}</option>
-                                                        <option data-code="TZ" value="Tanzania, United Republic Of">{% trans "Tanzania" %}</option>
-                                                        <option data-code="TH" value="Thailand">{% trans "Thailand" %}</option>
-                                                        <option data-code="TL" value="Timor Leste">{% trans "Timor-Leste" %}</option>
+                                                        <option data-code="PH"
+                                                                value="Philippines">{% trans "Philippines" %}</option>
+                                                        <option data-code="PN"
+                                                                value="Pitcairn">{% trans "Pitcairn Islands" %}</option>
+                                                        <option data-code="PL"
+                                                                value="Poland">{% trans "Poland" %}</option>
+                                                        <option data-code="PT"
+                                                                value="Portugal">{% trans "Portugal" %}</option>
+                                                        <option data-code="QA"
+                                                                value="Qatar">{% trans "Qatar" %}</option>
+                                                        <option data-code="RE"
+                                                                value="Reunion">{% trans "Réunion" %}</option>
+                                                        <option data-code="RO"
+                                                                value="Romania">{% trans "Romania" %}</option>
+                                                        <option data-code="RU"
+                                                                value="Russia">{% trans "Russia" %}</option>
+                                                        <option data-code="RW"
+                                                                value="Rwanda">{% trans "Rwanda" %}</option>
+                                                        <option data-code="WS"
+                                                                value="Samoa">{% trans "Samoa" %}</option>
+                                                        <option data-code="SM"
+                                                                value="San Marino">{% trans "San Marino" %}</option>
+                                                        <option data-code="ST"
+                                                                value="Sao Tome And Principe">{% trans "São Tomé &amp; Príncipe" %}</option>
+                                                        <option data-code="SA"
+                                                                value="Saudi Arabia">{% trans "Saudi Arabia" %}</option>
+                                                        <option data-code="SN"
+                                                                value="Senegal">{% trans "Senegal" %}</option>
+                                                        <option data-code="RS"
+                                                                value="Serbia">{% trans "Serbia" %}</option>
+                                                        <option data-code="SC"
+                                                                value="Seychelles">{% trans "Seychelles" %}</option>
+                                                        <option data-code="SL"
+                                                                value="Sierra Leone">{% trans "Sierra Leone" %}</option>
+                                                        <option data-code="SG"
+                                                                value="Singapore">{% trans "Singapore" %}</option>
+                                                        <option data-code="SX"
+                                                                value="Sint Maarten">{% trans "Sint Maarten" %}</option>
+                                                        <option data-code="SK"
+                                                                value="Slovakia">{% trans "Slovakia" %}</option>
+                                                        <option data-code="SI"
+                                                                value="Slovenia">{% trans "Slovenia" %}</option>
+                                                        <option data-code="SB"
+                                                                value="Solomon Islands">{% trans "Solomon Islands" %}</option>
+                                                        <option data-code="SO"
+                                                                value="Somalia">{% trans "Somalia" %}</option>
+                                                        <option data-code="ZA"
+                                                                value="South Africa">{% trans "South Africa" %}</option>
+                                                        <option data-code="GS"
+                                                                value="South Georgia And The South Sandwich Islands">{% trans "South Georgia &amp; South Sandwich Islands" %}</option>
+                                                        <option data-code="KR"
+                                                                value="South Korea">{% trans "South Korea" %}</option>
+                                                        <option data-code="SS"
+                                                                value="South Sudan">{% trans "South Sudan" %}</option>
+                                                        <option data-code="ES"
+                                                                value="Spain">{% trans "Spain" %}</option>
+                                                        <option data-code="LK"
+                                                                value="Sri Lanka">{% trans "Sri Lanka" %}</option>
+                                                        <option data-code="BL"
+                                                                value="Saint Barthélemy">{% trans "St. Barthélemy" %}</option>
+                                                        <option data-code="SH"
+                                                                value="Saint Helena">{% trans "St. Helena" %}</option>
+                                                        <option data-code="KN"
+                                                                value="Saint Kitts And Nevis">{% trans "St. Kitts &amp; Nevis" %}</option>
+                                                        <option data-code="LC"
+                                                                value="Saint Lucia">{% trans "St. Lucia" %}</option>
+                                                        <option data-code="MF"
+                                                                value="Saint Martin">{% trans "St. Martin" %}</option>
+                                                        <option data-code="PM"
+                                                                value="Saint Pierre And Miquelon">{% trans "St. Pierre &amp; Miquelon" %}</option>
+                                                        <option data-code="VC"
+                                                                value="St. Vincent">{% trans "St. Vincent &amp;Grenadines" %}</option>
+                                                        <option data-code="SD"
+                                                                value="Sudan">{% trans "Sudan" %}</option>
+                                                        <option data-code="SR"
+                                                                value="Suriname">{% trans "Suriname" %}</option>
+                                                        <option data-code="SJ"
+                                                                value="Svalbard And Jan Mayen">{% trans "Svalbard &amp; Jan Mayen" %}</option>
+                                                        <option data-code="SE"
+                                                                value="Sweden">{% trans "Sweden" %}</option>
+                                                        <option data-code="CH"
+                                                                value="Switzerland">{% trans "Switzerland" %}</option>
+                                                        <option data-code="TW"
+                                                                value="Taiwan">{% trans "Taiwan" %}</option>
+                                                        <option data-code="TJ"
+                                                                value="Tajikistan">{% trans "Tajikistan" %}</option>
+                                                        <option data-code="TZ"
+                                                                value="Tanzania, United Republic Of">{% trans "Tanzania" %}</option>
+                                                        <option data-code="TH"
+                                                                value="Thailand">{% trans "Thailand" %}</option>
+                                                        <option data-code="TL"
+                                                                value="Timor Leste">{% trans "Timor-Leste" %}</option>
                                                         <option data-code="TG" value="Togo">{% trans "Togo" %}</option>
-                                                        <option data-code="TK" value="Tokelau">{% trans "Tokelau" %}</option>
-                                                        <option data-code="TO" value="Tonga">{% trans "Tonga" %}</option>
-                                                        <option data-code="TT" value="Trinidad and Tobago">{% trans "Trinidad &amp; Tobago" %}</option>
-                                                        <option data-code="TA" value="Tristan da Cunha">{% trans "Tristan da Cunha" %}</option>
-                                                        <option data-code="TN" value="Tunisia">{% trans "Tunisia" %}</option>
-                                                        <option data-code="TR" value="Turkey">{% trans "Turkey" %}</option>
-                                                        <option data-code="TM" value="Turkmenistan">{% trans "Turkmenistan" %}</option>
-                                                        <option data-code="TC" value="Turks and Caicos Islands">{% trans "Turks &amp; Caicos Islands" %}</option>
-                                                        <option data-code="TV" value="Tuvalu">{% trans "Tuvalu" %}</option>
-                                                        <option data-code="UM" value="United States Minor Outlying Islands">{% trans "U.S. Outlying Islands" %}</option>
-                                                        <option data-code="UG" value="Uganda">{% trans "Uganda" %}</option>
-                                                        <option data-code="UA" value="Ukraine">{% trans "Ukraine" %}</option>
-                                                        <option data-code="AE" value="United Arab Emirates">{% trans "United Arab Emirates" %}</option>
-                                                        <option data-code="GB" value="United Kingdom">{% trans "United Kingdom" %}</option>
-                                                        <option data-code="US" selected="selected" value="United States">{% trans "United States" %}</option>
-                                                        <option data-code="UY" value="Uruguay">{% trans "Uruguay" %}</option>
-                                                        <option data-code="UZ" value="Uzbekistan">{% trans "Uzbekistan" %}</option>
-                                                        <option data-code="VU" value="Vanuatu">{% trans "Vanuatu" %}</option>
-                                                        <option data-code="VA" value="Holy See (Vatican City State)">{% trans "Vatican City" %}</option>
-                                                        <option data-code="VE" value="Venezuela">{% trans "Venezuela" %}</option>
-                                                        <option data-code="VN" value="Vietnam">{% trans "Vietnam" %}</option>
-                                                        <option data-code="WF" value="Wallis And Futuna">{% trans "Wallis &amp;Futuna" %}</option>
-                                                        <option data-code="EH" value="Western Sahara">{% trans "Western Sahara" %}</option>
-                                                        <option data-code="YE" value="Yemen">{% trans "Yemen" %}</option>
-                                                        <option data-code="ZM" value="Zambia">{% trans "Zambia" %}</option>
-                                                        <option data-code="ZW" value="Zimbabwe">{% trans "Zimbabwe" %}</option>
+                                                        <option data-code="TK"
+                                                                value="Tokelau">{% trans "Tokelau" %}</option>
+                                                        <option data-code="TO"
+                                                                value="Tonga">{% trans "Tonga" %}</option>
+                                                        <option data-code="TT"
+                                                                value="Trinidad and Tobago">{% trans "Trinidad &amp; Tobago" %}</option>
+                                                        <option data-code="TA"
+                                                                value="Tristan da Cunha">{% trans "Tristan da Cunha" %}</option>
+                                                        <option data-code="TN"
+                                                                value="Tunisia">{% trans "Tunisia" %}</option>
+                                                        <option data-code="TR"
+                                                                value="Turkey">{% trans "Turkey" %}</option>
+                                                        <option data-code="TM"
+                                                                value="Turkmenistan">{% trans "Turkmenistan" %}</option>
+                                                        <option data-code="TC"
+                                                                value="Turks and Caicos Islands">{% trans "Turks &amp; Caicos Islands" %}</option>
+                                                        <option data-code="TV"
+                                                                value="Tuvalu">{% trans "Tuvalu" %}</option>
+                                                        <option data-code="UM"
+                                                                value="United States Minor Outlying Islands">{% trans "U.S. Outlying Islands" %}</option>
+                                                        <option data-code="UG"
+                                                                value="Uganda">{% trans "Uganda" %}</option>
+                                                        <option data-code="UA"
+                                                                value="Ukraine">{% trans "Ukraine" %}</option>
+                                                        <option data-code="AE"
+                                                                value="United Arab Emirates">{% trans "United Arab Emirates" %}</option>
+                                                        <option data-code="GB"
+                                                                value="United Kingdom">{% trans "United Kingdom" %}</option>
+                                                        <option data-code="US" selected="selected"
+                                                                value="United States">{% trans "United States" %}</option>
+                                                        <option data-code="UY"
+                                                                value="Uruguay">{% trans "Uruguay" %}</option>
+                                                        <option data-code="UZ"
+                                                                value="Uzbekistan">{% trans "Uzbekistan" %}</option>
+                                                        <option data-code="VU"
+                                                                value="Vanuatu">{% trans "Vanuatu" %}</option>
+                                                        <option data-code="VA"
+                                                                value="Holy See (Vatican City State)">{% trans "Vatican City" %}</option>
+                                                        <option data-code="VE"
+                                                                value="Venezuela">{% trans "Venezuela" %}</option>
+                                                        <option data-code="VN"
+                                                                value="Vietnam">{% trans "Vietnam" %}</option>
+                                                        <option data-code="WF"
+                                                                value="Wallis And Futuna">{% trans "Wallis &amp;Futuna" %}</option>
+                                                        <option data-code="EH"
+                                                                value="Western Sahara">{% trans "Western Sahara" %}</option>
+                                                        <option data-code="YE"
+                                                                value="Yemen">{% trans "Yemen" %}</option>
+                                                        <option data-code="ZM"
+                                                                value="Zambia">{% trans "Zambia" %}</option>
+                                                        <option data-code="ZW"
+                                                                value="Zimbabwe">{% trans "Zimbabwe" %}</option>
                                                     </select>
                                                     <div class="field__caret">
                                                         <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg"
@@ -806,7 +1040,8 @@ window.additionalScripts = function () {
                                                             aria-required="true"
                                                             name="state"
                                                             id="checkout_shipping_address_province">
-                                                        <option disabled="disabled" selected="selected">{% trans "State" %}</option>
+                                                        <option disabled="disabled"
+                                                                selected="selected">{% trans "State" %}</option>
                                                         <option data-alternate-values="[&quot;Alabama&quot;]"
                                                                 value="AL">Alabama
                                                         </option>
@@ -1047,28 +1282,32 @@ window.additionalScripts = function () {
                         </div>
 
                         <input type="hidden" name="checkout[client_details][browser_width]" value="1676"><input
-                                type="hidden" name="checkout[client_details][browser_height]" value="898"><input
-                                type="hidden" name="checkout[client_details][javascript_enabled]" value="1"><input
-                                type="hidden" name="checkout[client_details][color_depth]" value="24"><input
-                                type="hidden" name="checkout[client_details][java_enabled]" value="false"><input
-                                type="hidden" name="checkout[client_details][browser_tz]" value="-480"></form>
+                            type="hidden" name="checkout[client_details][browser_height]" value="898"><input
+                            type="hidden" name="checkout[client_details][javascript_enabled]" value="1"><input
+                            type="hidden" name="checkout[client_details][color_depth]" value="24"><input
+                            type="hidden" name="checkout[client_details][java_enabled]" value="false"><input
+                            type="hidden" name="checkout[client_details][browser_tz]" value="-480"></form>
                 </div>
 
 
                 <div class="hidden">
-  <span class="visually-hidden" id="forwarding-external-new-window-message">{% trans "Opens external website in a new window." %}</span>
+                    <span class="visually-hidden"
+                          id="forwarding-external-new-window-message">{% trans "Opens external website in a new window." %}</span>
 
-                    <span class="visually-hidden" id="forwarding-new-window-message">{% trans "Opens in a new window." %}</span>
+                    <span class="visually-hidden"
+                          id="forwarding-new-window-message">{% trans "Opens in a new window." %}</span>
 
-                    <span class="visually-hidden" id="forwarding-external-message">{% trans "Opens external website." %}</span>
+                    <span class="visually-hidden"
+                          id="forwarding-external-message">{% trans "Opens external website." %}</span>
 
-                    <span class="visually-hidden" id="checkout-context-step-one">{% trans "Customer information - Musicmo -  Musical Instruments Shop Shopify Theme - Checkout" %}</span>
+                    <span class="visually-hidden"
+                          id="checkout-context-step-one">{% trans "Customer information - Musicmo -  Musical Instruments Shop  - Checkout" %}</span>
                 </div>
 
 
             </main>
             <footer class="main__footer" role="contentinfo">
-                <p class="copyright-text ">{% trans "All rights reserved Musicmo - Musical Instruments Shop Shopify Theme" %}</p>
+                <p class="copyright-text ">{% trans "All rights reserved Musicmo - Musical Instruments Shop " %}</p>
 
 
             </footer>
@@ -1077,7 +1316,7 @@ window.additionalScripts = function () {
             <div class="sidebar__header">
 
                 <a class="logo logo--left" href="https://musicmo-store-demo.myshopify.com/"><span
-                        class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop Shopify Theme" %}</span></a>
+                        class="logo__text heading-1">{% trans "Musicmo -  Musical Instruments Shop " %}</span></a>
 
                 <h1 class="visually-hidden">{% trans "Information" %}</h1>
 
@@ -1094,8 +1333,10 @@ window.additionalScripts = function () {
                                     <caption class="visually-hidden">{% trans "Shopping cart" %}</caption>
                                     <thead class="product-table__header">
                                     <tr>
-                                        <th scope="col"><span class="visually-hidden">{% trans "Product image" %}</span></th>
-                                        <th scope="col"><span class="visually-hidden">{% trans "Description" %}</span></th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Product image" %}</span>
+                                        </th>
+                                        <th scope="col"><span class="visually-hidden">{% trans "Description" %}</span>
+                                        </th>
                                         <th scope="col"><span class="visually-hidden">{% trans "Quantity" %}</span></th>
                                         <th scope="col"><span class="visually-hidden">{% trans "Price" %}</span></th>
                                     </tr>
@@ -1138,7 +1379,8 @@ window.additionalScripts = function () {
                                 </table>
 
                                 <div class="order-summary__scroll-indicator" aria-hidden="true" tabindex="-1"
-                                     id="order-summary__scroll-indicator">{% trans "Scroll for more items" %}<svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-12">
+                                     id="order-summary__scroll-indicator">{% trans "Scroll for more items" %}
+                                    <svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-12">
                                         <use xlink:href="#down-arrow"></use>
                                     </svg>
                                 </div>
@@ -1160,7 +1402,8 @@ window.additionalScripts = function () {
                                 <tr class="total-line total-line--subtotal">
                                     <th class="total-line__name" scope="row">{% trans "Subtotal" %}</th>
                                     <td class="total-line__price">
-    <span class="order-summary__emphasis skeleton-while-loading" data-checkout-subtotal-price-target="{{ subtotal | floatformat }}">
+    <span class="order-summary__emphasis skeleton-while-loading"
+          data-checkout-subtotal-price-target="{{ subtotal | floatformat }}">
       ${{ subtotal | floatformat }}
     </span>
                                     </td>
@@ -1169,11 +1412,12 @@ window.additionalScripts = function () {
 
                                 <tr class="total-line total-line--shipping">
                                     <th class="total-line__name" scope="row">
-      <span>{% trans "Shipping" %}</span>
+                                        <span>{% trans "Shipping" %}</span>
 
                                     </th>
                                     <td class="total-line__price">
-    <span class="skeleton-while-loading order-summary__small-text" data-checkout-total-shipping-target="0">{% trans "Calculated at next step" %}</span>
+                                        <span class="skeleton-while-loading order-summary__small-text"
+                                              data-checkout-total-shipping-target="0">{% trans "Calculated at next step" %}</span>
                                     </td>
                                 </tr>
 
@@ -1210,7 +1454,8 @@ window.additionalScripts = function () {
                 </div>
 
                 <div class="visually-hidden" data-order-summary-section="accessibility-live-region">
-                    <div aria-live="polite" aria-atomic="true" role="status">{% trans "Updated total price:" %}<span data-checkout-payment-due-target="19900">
+                    <div aria-live="polite" aria-atomic="true" role="status">{% trans "Updated total price:" %}<span
+                            data-checkout-payment-due-target="19900">
       $199.00
     </span>
                     </div>

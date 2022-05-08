@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     {% block title %} <title>{% trans "Index" %}</title> {% endblock %}
+
     {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
     {#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -69,15 +70,18 @@
     <style>
         body::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #F5F5F5;}
+            background-color: #F5F5F5;
+        }
 
         body::-webkit-scrollbar {
             width: 10px;
-            background-color: #F5F5F5;}
+            background-color: #F5F5F5;
+        }
 
         body::-webkit-scrollbar-thumb {
             background-color: #000000;
-            border: 2px solid #555555;}
+            border: 2px solid #555555;
+        }
 
 
         {#body::-webkit-scrollbar-track {#}
@@ -1380,10 +1384,10 @@
                             {#TODO: ICON#}
                             {% if home == 1 %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% else %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% endif %}
                         </a>
                     </div>
@@ -1544,7 +1548,7 @@
                                 <a href="{% url 'shop:index' %}" class="logo">
 
                                     <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                         width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme"
+                                         width="150" alt="Musicmo -  Musical Instruments Shop "
                                          class="img-fluid">
 
                                 </a>
