@@ -457,29 +457,9 @@ def model_checkout(request):
             apartment = checkout_form.cleaned_data['Apartment']
             city = checkout_form.cleaned_data['City']
             zip_Code = checkout_form.cleaned_data['Zip_Code']
-            uncompletedOrder = UncompletedOrder(
-                user=user,
-                country=country,
-                state=state,
-                first_name=first_name,
-                last_name=last_name,
-                address=address,
-                apartment=apartment,
-                city=city,
-                zip_Code=zip_Code
-            )
-            uncompletedOrder.save()
-            for item in Cart.objects.filter(user=request.user).all():
-                uncompletedOrderItem = UncompletedOrderItem(
-                    uncompleted_order=uncompletedOrder,
-                    instrument=item.instrument,
-                    quantity=item.count
-                )
-                uncompletedOrderItem.save()
-                item.delete()
-            return redirect(reverse('shop:shipping_details', kwargs={
-                'uncompletedOrder_id': uncompletedOrder.id
-            }))
+
+            # TODO: Order for checkout
+
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -487,9 +467,11 @@ def model_checkout(request):
         checkout_form = CheckoutForm()
         user: User = request.user
         profile: Profile = Profile.objects.filter(user=user).first()
-        subtotal = 0
-        model_item = CustomModel.objects.filter(user=request.user, finish=False).first()
 
+        model_item = CustomModel.objects.filter(user=request.user, finish=False).last()
+        subtotal = int(model_item.price) * int(model_item.count)
+        formula = "" + str(model_item.price) + " * " + str(model_item.count) + " = " + str(subtotal)
+        print(subtotal)
         model_pics = model_item.screenshots.split("&&&&&")
         return render(request, 'shop_templates/checkout/checkout_for_model.html', {
             "cart_items": model_item,
@@ -497,7 +479,8 @@ def model_checkout(request):
             'user': user,
             'profile': profile,
             'form': checkout_form,
-            "model_pics": model_pics
+            "model_pics": model_pics,
+            'formula': formula
         })
 
 
@@ -506,15 +489,18 @@ def model_post_checkout(request):
     # get or post
     if request.method == "POST":
         user = request.user
-        print("===============================================")
         request_dict = json.loads(request.body.decode('utf-8'))
         screenshots = request_dict.get('screenshots')
+        price = request_dict.get('price')
+        count = request_dict.get('count')
         custom = CustomModel(
             user=user,
+            price=price,
+            count=count,
             screenshots=screenshots
         )
         custom.save()
-        data = {'status': [1, 2, 3], 'info': 'login'}
+        data = {'code': 200, 'status': "OK", }
 
         return HttpResponse(json.dumps(data), content_type='application/json')
 
