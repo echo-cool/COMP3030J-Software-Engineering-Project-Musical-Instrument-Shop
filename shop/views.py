@@ -349,7 +349,7 @@ def personal_profile(request):
         profile_item.save()
         return redirect(reverse('shop:personal_profile'))
     # print(form)
-    orders = Order.objects.order_by('-created_at')[:5]
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')[:5]
     for order in orders:
         order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     carts = Cart.objects.filter(user_id=request.user.id)
