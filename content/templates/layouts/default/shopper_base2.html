@@ -1002,6 +1002,15 @@
                                     <a href="/blog" title="BLOGS"
                                        class="delay03 relative nav-link  menu_lv1 ">{% trans "BLOGS" %}</a>
                                 </li>
+
+                                {% if request.user %}
+                                    {% if request.user.is_staff %}
+                                        <li class="nav-item dropdown">
+                                            <a href="{% url 'management:index' %}" title="PAGES"
+                                               class="delay03 relative nav-link  menu_lv1 ">{% trans "MANAGEMENT" %}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
                                 {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                 {#                                         style="width:600px; left : -200px;">#}
                                 {#                                        <div class=" ">#}
