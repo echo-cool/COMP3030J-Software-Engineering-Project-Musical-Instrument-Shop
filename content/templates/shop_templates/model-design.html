@@ -616,7 +616,26 @@
                                     </a>
                                     <div class="" style="position: absolute;top: 29%;right: 6%;">
                                         <p class="price" style="font-size:24px;">
-                                            Price: <span style="color: #e3b757">$ 9999.99</span>
+                                            Price:
+                                            <span style="color: #e3b757" class="model-price">
+                                                  {% if name == "guitar" %}
+                                                      {% if style == 1 %}
+                                                          $ 9999
+                                                      {% elif style == 2 %}
+                                                          $ 8888
+                                                      {% else %}
+                                                          $ 7777
+                                                      {% endif %}
+                                                  {% else %}
+                                                      {% if style == 1 %}
+                                                          $ 39999
+                                                      {% elif style == 2 %}
+                                                          $ 59999
+                                                      {% else %}
+                                                          $ 29999
+                                                      {% endif %}
+                                                  {% endif %}
+                                            </span>
                                         </p>
                                     </div>
                                 </li>
@@ -1158,6 +1177,8 @@
             img_list_wrapper.toggleClass("wrapper-hidden");
         });
         // 前往结账
+        console.log("PRICE", Number(String($(".model-price").html()).replace(/[^\d.]/g, "")));
+
         $(".model-checkout").click(function () {
             let base64_list = [];
             for (let i of model_img_list) {
@@ -1165,15 +1186,15 @@
                 base64_list.push(a);
             }
 
-            console.log("Screenshots", base64_list.join("&&&&&"));
+            {#console.log("Screenshots", base64_list.join("&&&&&"));#}
             $.ajax({
                 url: "/model_post_checkout/",
                 method: "POST",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({
-                    "user": 1,
-                    "number": $(".input-text").val(),
+                    "price": Number(String($(".model-price").html()).replace(/[^\d.]/g, "")),
+                    "count": $(".input-text").val(),
                     "screenshots": model_img_list.join("&&&&&"),
                 }),
                 headers: {
