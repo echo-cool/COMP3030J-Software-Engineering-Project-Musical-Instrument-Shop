@@ -74,6 +74,21 @@ def index_new(request):
     uncompleted_orders = UncompletedOrder.objects.all()
     instruments = Instrument.objects.all()
 
+    quantities = []
+    print("=====================================================")
+    quantity_instruments = Instrument.objects.all().order_by('quantity')
+    print(len(quantity_instruments))
+    print(quantity_instruments[0].name)
+    while len(quantities) < 12:
+        if len(quantity_instruments) < len(quantities):
+            break
+        else:
+            quantities.append(
+                {"name": quantity_instruments[len(quantities)].name,
+                 "quantity": quantity_instruments[len(quantities)].quantity}
+            )
+    print(quantities)
+
     finished_orders = orders.filter(delivered=True)
 
     carts = Cart.objects.all()
@@ -91,7 +106,10 @@ def index_new(request):
         'wishlist': wishlist,
         'uncompleted_orders': uncompleted_orders,
         'users': users,
-        'messages': messages
+        'messages': messages,
+        "quantities": quantities,
+        # "quantities": {"quantities_name": quantities_name,
+        #                "quantities_quantity": quantities_quantity},
     })
 
 
