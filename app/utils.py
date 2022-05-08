@@ -5,6 +5,7 @@
 @File : utils.py
 @IDE  : PyCharm
 """
+from django.contrib import messages
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -15,6 +16,7 @@ def staff_required(fn):
             ret = fn(request, *args, *kwargs)
             return ret
         else:
+            messages.warning(request, "You are not authorized to access this page")
             return redirect(reverse('shop:index'))
 
     return inner
