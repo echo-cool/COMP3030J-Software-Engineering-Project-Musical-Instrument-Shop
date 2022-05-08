@@ -9,12 +9,12 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 
-# def login_required(fn):
-#     def inner(request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             ret = fn(request, *args, *kwargs)
-#             return ret
-#         else:
-#             return redirect(reverse('accounts:log_in'))
-#
-#     return inner
+def staff_required(fn):
+    def inner(request, *args, **kwargs):
+        if request.user.is_staff:
+            ret = fn(request, *args, *kwargs)
+            return ret
+        else:
+            return redirect(reverse('shop:index'))
+
+    return inner
