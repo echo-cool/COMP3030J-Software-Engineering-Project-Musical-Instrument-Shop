@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <title>{% trans "Cool Login" %}</title>
-{#<script src="https://www.google.com/recaptcha/api.js?render=6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH"></script>#}
-{#     <script src="https://www.google.com/recaptcha/api.js"></script>#}
+    {#<script src="https://www.google.com/recaptcha/api.js?render=6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH"></script>#}
+    {#     <script src="https://www.google.com/recaptcha/api.js"></script>#}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script src="{% static 'assets/assets_for_login/login.js' %}"></script>
@@ -116,16 +116,18 @@
                 {#                <!-- Input password end -->#}
 
                 <div class="google-recaptcha-box">
-                    <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW" data-callback="verify_result"></div>
+                    <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
+                         data-callback="verify_result"></div>
                 </div>
                 <p> <!-- User Sign in button start -->
 
-                        <button id="submit_l" class="submit google-verify-button-sign-in" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
-                                data-callback='onSubmit'
-                                data-action='submit'
-                                >Sign In
-                        </button>
-{#                    <button type="submit" id="submit_l" class="submit">{% trans "Sign In" %}</button>#}
+                    <button id="submit_l" class="submit google-verify-button-sign-in"
+                            data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                            data-callback='onSubmit'
+                            data-action='submit'
+                    >Sign In
+                    </button>
+                    {#                    <button type="submit" id="submit_l" class="submit">{% trans "Sign In" %}</button>#}
                 </p>   <!-- User Sign in button end -->
 
                 <!-- User Sign in button end -->
@@ -144,7 +146,7 @@
         <!-- User Loin end -->
 
         <div class="form sign-up">
-            <form  action="/accounts/sign-up-post/" method="post">
+            <form action="/accounts/sign-up-post/" method="post">
                 {% csrf_token %}
                 <h2 style="font-family: fantasy;font-style: italic">{% trans "User REGISTER" %}</h2>
                 <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
@@ -170,10 +172,11 @@
                 {#                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">#}
                 {#                <!-- Input password end -->#}
                 <p> <!-- User Sign in button start -->
-                    <button type="submit" id="submit_r" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
-                                data-callback='onSubmit'
-                                data-action='submit'>{% trans "Sign Up" %}</button>
-{#                    <button type="submit" id="submit_r" class="submit">{% trans "Sign In" %}</button>#}
+                    <button type="submit" id="submit_r" class="submit"
+                            data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                            data-callback='onSubmit'
+                            data-action='submit'>{% trans "Sign Up" %}</button>
+                    {#                    <button type="submit" id="submit_r" class="submit">{% trans "Sign In" %}</button>#}
                 </p><!-- User Sign in button end -->
 
                 <p>
@@ -209,34 +212,35 @@
 
             <!-- Administrator login start -->
             <div class="form login-in-second">
-                <form id="login-form" action="login2" method="post">
+                <form id="login-form" action="/accounts/log-in-staff-post/" method="post">
                     {% csrf_token %}
                     <h2 style="font-family: fantasy;font-style: italic">{% trans "ADMINISTRATOR LOGIN" %}</h2>
                     <!-- Administrator username start -->
-                    <label>
-                        <span>{% trans "USERNAME" %}</span>
-                        <input class="username_l2" id="username_l2" name="username" required="" type="text" value="">
-                        <p id="p1"></p>
-                    </label>
-                    <!-- Administrator username end -->
-
-                    <!-- Administrator password start -->
-                    <label>
-                        <span>{% trans "PASSWORD" %}</span>
-                        <input class="password_l2" id="password_l2" name="password" required="" type="password"
-                               value="">
-                    </label>
+                    {#                    <label>#}
+                    {#                        <span>{% trans "USERNAME" %}</span>#}
+                    {#                        <input class="username_l2" id="username_l2" name="username" required="" type="text" value="">#}
+                    {#                        <p id="p1"></p>#}
+                    {#                    </label>#}
+                    {#                    <!-- Administrator username end -->#}
+                    {##}
+                    {#                    <!-- Administrator password start -->#}
+                    {#                    <label>#}
+                    {#                        <span>{% trans "PASSWORD" %}</span>#}
+                    {#                        <input class="password_l2" id="password_l2" name="password" required="" type="password"#}
+                    {#                               value="">#}
+                    {#                    </label>#}
                     <!-- Administrator password end -->
-
+                    {% bootstrap_form form %}
                     <!-- Administrator sign in button start -->
                     <p>
-{#                        <button class="g-recaptcha"#}
-{#                                data-sitekey="reCAPTCHA_site_key"#}
-{#                                data-callback='onSubmit'#}
-{#                                data-action='submit'>Submit#}
-{#                        </button>#}
+                        {#                        <button class="g-recaptcha"#}
+                        {#                                data-sitekey="reCAPTCHA_site_key"#}
+                        {#                                data-callback='onSubmit'#}
+                        {#                                data-action='submit'>Submit#}
+                        {#                        </button>#}
 
-                        <button type="submit" id="submit_l2" class="submit" data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                        <button type="submit" id="submit_l2" class="submit"
+                                data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
                                 data-callback='onSubmit'
                                 data-action='submit'>{% trans "Sign In" %}</button>
                     </p>
@@ -260,26 +264,28 @@
 
 
     </script>
-       <script>
-       $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
             $('.submit').css('background', '#5e5e5e');
         });
-       function verify_result(token){
-           console.log("verify_result google recaptcha");
-           console.log(token);
-           $('.submit').css('background', '#e5bb60');
-       }
-      {#function ButtonClick(e) {#}
-      {#    console.log("ButtonClick");#}
-      {#  e.preventDefault();#}
-      {#  grecaptcha.ready(function() {#}
-      {#    grecaptcha.execute('6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH', {action: 'submit'}).then(function(token) {#}
-      {#        // Add your logic to submit to your backend server here.#}
-      {#        console.log(token);#}
-      {#    });#}
-      {#  });#}
-      {#$(".submit").on("click", ButtonClick);#}
-  </script>
+
+        function verify_result(token) {
+            console.log("verify_result google recaptcha");
+            console.log(token);
+            $('.submit').css('background', '#e5bb60');
+        }
+
+        {#function ButtonClick(e) {#}
+        {#    console.log("ButtonClick");#}
+        {#  e.preventDefault();#}
+        {#  grecaptcha.ready(function() {#}
+        {#    grecaptcha.execute('6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH', {action: 'submit'}).then(function(token) {#}
+        {#        // Add your logic to submit to your backend server here.#}
+        {#        console.log(token);#}
+        {#    });#}
+        {#  });#}
+        {#$(".submit").on("click", ButtonClick);#}
+    </script>
 
 
 {% endblock %}

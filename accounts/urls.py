@@ -4,7 +4,7 @@ from .views import (
     LogInView, ResendActivationCodeView, RemindUsernameView, SignUpView, ActivateView, LogOutView,
     ChangeEmailView, ChangeEmailActivateView, ChangeProfileView, ChangePasswordView,
     RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView, cool_login, LogSign3View, LogInPost,
-    SignUpPost
+    SignUpPost, LogInStaffPost
 )
 
 app_name = 'accounts'
@@ -13,6 +13,7 @@ urlpatterns = [
     path('cool_login/', cool_login, name='cool_login'),
     path('log-in/', LogSign3View.as_view(), name='log_in'),
     path('log-in-post/', LogInPost, name='log_in_post'),
+    path('log-in-staff-post/', LogInStaffPost, name='log_in_staff_post'),
     path('sign-up-post/', SignUpPost, name='sign_up_post'),
     path('log-out/', LogOutView.as_view(), name='log_out'),
 
