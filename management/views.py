@@ -710,13 +710,14 @@ def review_management(request):
 @staff_required
 def update_review(request, review_id):
     if request.method == "POST":
-        review = Review.objects.get(id=review_id)
+        review = Review.objects.filter(id=review_id).first()
         f = ReviewForm(request.POST, request.FILES, instance=review)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:review_management'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
+        print(review_id)
         review = Review.objects.get(id=review_id)
         f = ReviewForm(instance=review)
         return render(request, 'management_templates/update_review.html', {
@@ -975,7 +976,7 @@ def add_cart(request):
             })
         return redirect(reverse('management:cart_management'))
     else:
-        f = Review()
+        f = CartForm()
         return render(request, 'management_templates/update_cart.html', {
             'form': f
         })
