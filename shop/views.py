@@ -535,6 +535,43 @@ def model_design2(request, model_id):
     })
 
 
+def check_color(input_color, color_list):
+    flag = False
+    # print("==============")
+    input_price = str(input_color)
+    for num in color_list:
+        i = str(num)
+        if i == "1":
+            if input_price == "Other":
+                flag = True
+                break
+        elif i == "2":
+            if input_price == "Black":
+                flag = True
+                break
+        elif i == "3":
+            if input_price == "Red":
+                flag = True
+                break
+        elif i == "4":
+            if input_price == "Brown":
+                flag = True
+                break
+        elif i == "5":
+            if input_price == "Yellow":
+                flag = True
+                break
+        elif i == "6":
+            if input_price == "Grey":
+                flag = True
+                break
+        elif i == "7":
+            if input_price == "White":
+                flag = True
+                break
+    return flag
+
+
 def check_price(input_price, price_list):
     flag = False
     # print("==============")
@@ -615,6 +652,7 @@ def product_search(request):
     section_text = request.GET.get("section", None)
     search_category_text = request.GET.get("category", None)
     search_price_text = request.GET.get("price", None)
+    search_color_text = request.GET.get("color", None)
 
     header = ""
     if section_text == "chinese":
@@ -655,6 +693,16 @@ def product_search(request):
         else:
             category.count = instruments.filter(category=category).count()
             new_categories.append(category)
+
+    # color
+    if search_color_text:
+        color_instruments = []
+        search_color_list = search_color_text.split("|")
+        search_color = [int(i) for i in search_color_list]
+        for search_ins in instruments:
+            if check_color(search_ins.color, search_color):
+                color_instruments.append(search_ins)
+        instruments = color_instruments
 
     # price
     if search_price_text:

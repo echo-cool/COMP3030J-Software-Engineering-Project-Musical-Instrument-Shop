@@ -1036,15 +1036,27 @@
     opacity: 0;
 }
 
-.filter_sidebar_general .filter-color .list_color li a.active:before {
-    border: 1px solid #000;
-    opacity: 1;
-}
+/*.filter_sidebar_general .filter-color .list_color li a.active:before {*/
+/*    border: 1px solid #000;*/
+/*    opacity: 1;*/
+/*}*/
 
 .filter_sidebar_general .filter-color .list_color li a:hover:before {
     border: 1px solid #000;
     opacity: 1;
 }
+
+
+/*.filter_sidebar_general .filter-color .list_color li a:active:before {*/
+/*    border: 1px solid #ff5a00;*/
+/*    opacity: 1;*/
+/*}*/
+
+.filter_sidebar_general .filter-color .list_color li a.active:before {
+    border: 1px solid #ff5a00;
+    opacity: 1;
+}
+
 
 .filter_sidebar_general .filter-size {
     padding-top: 10px;
@@ -1107,7 +1119,11 @@
     line-height: 34px;
 }
 
-.filter_sidebar_general .filter-price .list-price li a:hover, .filter_sidebar_general .filter-price .list-price li a.active {
+.filter_sidebar_general .filter-price .list-price li a:hover {
+    color: #d7ad5b !important;
+}
+
+.filter_sidebar_general .filter-price .list-price li a.active {
     color: #ff5a00 !important;
 }
 
