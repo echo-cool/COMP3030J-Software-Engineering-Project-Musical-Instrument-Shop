@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem
+    OrderItem, CustomModel
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -440,6 +440,83 @@ def checkout(request):
             'profile': profile,
             'form': checkout_form
         })
+
+
+@login_required
+def model_checkout(request):
+    # get or post
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.count
+                )
+                uncompletedOrderItem.save()
+                item.delete()
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    else:
+        checkout_form = CheckoutForm()
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+        subtotal = 0
+        model_item = CustomModel.objects.filter(user=request.user, finish=False).first()
+
+        model_pics = model_item.screenshots.split("&&&&&")
+        return render(request, 'shop_templates/checkout/checkout_for_model.html', {
+            "cart_items": model_item,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form,
+            "model_pics": model_pics
+        })
+
+
+@login_required
+def model_post_checkout(request):
+    # get or post
+    if request.method == "POST":
+        user = request.user
+        print("===============================================")
+        request_dict = json.loads(request.body.decode('utf-8'))
+        screenshots = request_dict.get('screenshots')
+        custom = CustomModel(
+            user=user,
+            screenshots=screenshots
+        )
+        custom.save()
+        data = {'status': [1, 2, 3], 'info': 'login'}
+
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 def shipping_details(request, uncompletedOrder_id):

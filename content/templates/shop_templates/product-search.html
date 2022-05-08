@@ -5,6 +5,8 @@
 {% load bootstrap4 %}
 
 {% block head_link %}
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <!-- BASE CSS -->
     <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
@@ -367,6 +369,7 @@
                                             background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
                                             animation: glow-animation 2s infinite linear;
                                         }
+
                                         @keyframes glow-animation {
                                             0% {
                                                 filter: hue-rotate(-360deg)
