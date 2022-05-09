@@ -35,7 +35,15 @@
     </form>
 
     <script>
-        $(".form-group").find("a").n
+        $("label:contains(Image)").each(function (){
+            let that = $(this);
+            let url = that.parent().find("a")[0].href;
+            if (url !== "http://127.0.0.1:8000/media/default.jpg") {
+                let image =
+                that.parent().append("<img alt='' scr="+url+" />")
+            }
+            }
+        );
     </script>
 
 {% endblock %}
