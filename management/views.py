@@ -475,14 +475,14 @@ def instrument_management(request):
 def update_instrument(request, instrument_id):
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
-        f = InstrumentForm(request.POST, request.FILES, instance=instrument)
+        f = InstrumentWithIForm(request.POST, request.FILES, instance=instrument)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:instrument_management'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         instrument = Instrument.objects.get(id=instrument_id)
-        f = InstrumentForm(instance=instrument)
+        f = InstrumentWithIForm(instance=instrument)
         return render(request, 'management_templates/update_instrument.html', {
             'form': f
         })
@@ -558,7 +558,7 @@ def add_instrument(request):
         # return redirect(reverse('management:instrument_management'))
     else:
         f = InstrumentWithIForm()
-        return render(request, 'management_templates/update_instrument.html', {
+        return render(request, 'management_templates/add_instrument.html', {
             'form': f
         })
 
