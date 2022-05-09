@@ -1,0 +1,54 @@
+﻿{% extends 'layouts/default/shopper_base2.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %}  <title>{% trans "Blog" %}</title> {% endblock %}
+{% block style %}
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <style>
+        .footer_v1 {
+            display: none;
+        }
+
+        .home-page {
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {#    <div class="c" style="height: 100%;width: 100%;">#}
+
+    <iframe id="iframe"
+            name="iframe"
+            height="80%"
+            width="100%"
+            src="/chinese"
+            scrolling="auto"
+            frameborder="0"
+            onload="changeFrameHeight()">
+    </iframe>
+
+    {#    </div>#}
+    <script>
+        function changeFrameHeight() {
+            var iframe = document.getElementById("iframe");
+            iframe.height = document.documentElement.clientHeight * 0.8;
+        }
+
+        //onresize属性可以用来获取或设置当前窗口的resize事件的事件处理函数
+        //onresize事件会在窗口或框架被调整大小时发生
+        window.onresize = function () {
+            changeFrameHeight();
+        }
+    </script>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

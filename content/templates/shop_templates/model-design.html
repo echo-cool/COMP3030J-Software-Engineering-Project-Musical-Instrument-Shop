@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
+{% block title %} <title>{% trans "Model Deisign" %}</title> {% endblock %}
 {% block head_link %}
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
@@ -290,6 +291,10 @@
             color: #979797;
             padding: 4px 0;
         }
+
+        #header .menu ul .nav-item .nav-link:after {
+            bottom: -10px;
+        }
     </style>
 
 {% endblock %}
@@ -398,7 +403,7 @@
                                 {#                            explode#}
                             </div>
                         </div>
-                        <a id="image-view" class="model-show-wrapper" title="Product Image">
+                        <a id="image-view" class="model-show-wrapper">
                         </a>
                     </div>
                     <!-- End product-img-box -->
