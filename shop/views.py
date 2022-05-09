@@ -909,7 +909,7 @@ def image_search(request, result_key):
 #             "carts": carts,
 #         })
 #     else:
-#         return redirect('accounts:log_in')
+#         return redirect('accounts:goto_login')
 
 
 @login_required

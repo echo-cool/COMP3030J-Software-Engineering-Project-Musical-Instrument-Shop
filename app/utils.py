@@ -15,7 +15,7 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.shortcuts import resolve_url
 
 
-def user_passes_test(test_func, login_url=None, redirect_field_name=REDIRECT_FIELD_NAME):
+def My_user_passes_test(test_func, login_url=None, redirect_field_name=REDIRECT_FIELD_NAME):
     """
     Decorator for views that checks that the user passes the given test,
     redirecting to the log-in page if necessary. The test should be a callable
@@ -49,7 +49,7 @@ def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login
     Decorator for views that checks that the user is logged in, redirecting
     to the log-in page if necessary.
     """
-    actual_decorator = user_passes_test(
+    actual_decorator = My_user_passes_test(
         lambda u: u.is_staff,
         login_url="/",
         redirect_field_name=redirect_field_name

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 from django.urls import path
 
 from .views import (
@@ -8,6 +10,12 @@ from .views import (
 )
 
 app_name = 'accounts'
+
+
+@login_required
+def go_to_login(request):
+    return redirect('shop:index')
+
 
 urlpatterns = [
     path('cool_login/', cool_login, name='cool_login'),
@@ -31,6 +39,8 @@ urlpatterns = [
     path('change/profile/', ChangeProfileView.as_view(), name='change_profile'),
     path('change/password/', ChangePasswordView.as_view(), name='change_password'),
     path('change/email/', ChangeEmailView.as_view(), name='change_email'),
-    path('change/email/<code>/', ChangeEmailActivateView.as_view(), name='change_email_activation')
+    path('change/email/<code>/', ChangeEmailActivateView.as_view(), name='change_email_activation'),
+
+    # path('goto-login/', go_to_login, name='goto_login'),
 
 ]

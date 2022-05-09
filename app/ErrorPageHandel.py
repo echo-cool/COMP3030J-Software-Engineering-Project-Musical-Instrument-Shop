@@ -26,7 +26,7 @@ class ErrorPageHandelMiddleware:
 
     def __call__(self, request: WSGIRequest):
         response: HttpResponse = self.get_response(request)
-        if response.status_code in [200, 302]:
+        if response.status_code in [200, 201, 301, 302, 303, 304]:
             return response
         else:
             return redirect('shop:index')
