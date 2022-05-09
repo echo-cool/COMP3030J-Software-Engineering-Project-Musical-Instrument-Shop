@@ -86,6 +86,7 @@ class SignInViaEmailForm(SignIn):
 class SignInViaEmailOrUsernameForm(SignIn):
     email_or_username = forms.CharField(label=_('Email or Username'))
 
+
     @property
     def field_order(self):
         if settings.USE_REMEMBER_ME:
