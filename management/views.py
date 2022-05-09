@@ -476,6 +476,7 @@ def update_instrument(request, instrument_id):
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
         f = InstrumentWithIForm(request.POST, request.FILES, instance=instrument)
+        print(f.data)
         if f.is_valid():
             f.save()
         return redirect(reverse('management:instrument_management'))
