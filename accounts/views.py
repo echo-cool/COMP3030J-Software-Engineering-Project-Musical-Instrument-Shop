@@ -27,7 +27,7 @@ from .utils import (
 from .forms import (
     SignInViaUsernameForm, SignInViaEmailForm, SignInViaEmailOrUsernameForm, SignUpForm,
     RestorePasswordForm, RestorePasswordViaEmailOrUsernameForm, RemindUsernameForm,
-    ResendActivationCodeForm, ResendActivationCodeViaEmailForm, ChangeProfileForm, ChangeEmailForm,
+    ResendActivationCodeForm, ResendActivationCodeViaEmailForm, ChangeProfileForm, ChangeEmailForm, SignInByStaff,
 )
 
 
@@ -47,7 +47,7 @@ def LogInStaffPost(request):
             sign_in_form = SignInViaEmailForm(request.POST)
 
         if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
-            sign_in_form = SignInViaEmailOrUsernameForm(request.POST)
+            sign_in_form = SignInByStaff(request.POST)
         form = sign_in_form
         if form.is_valid():
             print("DSADS")

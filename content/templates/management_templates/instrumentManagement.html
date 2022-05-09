@@ -58,7 +58,7 @@
             <th>{% trans "Name" %}</th>
             <th>{% trans "Price" %}</th>
             <th class="hidden-480">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Posted by" %}</th>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Inventory" %}</th>
 
             <th>
                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
@@ -94,7 +94,7 @@
                     </a>
                 </td>
                 <td>${{ instrument.price }}</td>
-                <td class="hidden-480">{{ instrument.posted_by }}</td>
+                <td class="hidden-480">{{ instrument.quantity }}</td>
                 <td>{{ instrument.created_at }}</td>
 
                 <td class="hidden-480">
