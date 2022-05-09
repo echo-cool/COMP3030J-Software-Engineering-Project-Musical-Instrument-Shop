@@ -3404,42 +3404,26 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="info_footer">
                         <div class="title_footer">
-                            <h4 class="mb-0 title_border">{% trans "Help &amp; Infomation" %}</h4>
+                            <h4 class="mb-0 title_border">{% trans "Help" %}&amp;{% trans "Infomation" %}</h4>
                         </div>
                         <ul class="list-unstyled mb-0">
-
-                            <li><a href="/" title="Pagination">{% trans "Pagination" %}</a></li>
-
-                            <li><a href="/" title="Terms &amp; Conditions">{% trans "Terms &amp; Conditions" %}</a>
+                            <li><a href="/about" title="About us">{% trans "About us" %}</a></li>
+                            <li><a href="/about" title="Term of use">{% trans "Term of use" %}</a></li>
+                            <li><a href="/about"
+                                   title="Terms &amp; Conditions">{% trans "Terms" %}&amp;{% trans "Conditions" %}</a>
                             </li>
-
-                            <li><a href="/" title="Contact">{% trans "Contact" %}</a></li>
-
-                            <li><a href="/" title="Accessories">{% trans "Accessories" %}</a></li>
-
-                            <li><a href="/" title="Term of use">{% trans "Term of use" %}</a></li>
-
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="info_footer">
                         <div class="title_footer">
-                            <h4 class="mb-0 title_border">{% trans "About us" %}</h4>
+                            <h4 class="mb-0 title_border">{% trans "Right declaration" %}</h4>
                         </div>
                         <ul class="list-unstyled mb-0">
-
-                            <li><a href="/" title="Help Center">{% trans "Help Center" %}</a></li>
-
-                            <li><a href="/" title="Address Store">{% trans "Address Store" %}</a></li>
-
-                            <li><a href="/" title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
-
-                            <li><a href="/"
-                                   title="Receivers &amp; Amplifiers">{% trans "Receivers &amp; Amplifiers" %}</a>
-                            </li>
-
-                            <li><a href="/" title="Musicmo">{% trans "Musicmo" %}</a></li>
+                            <li><a href="#">{% trans "MusicoMo" %}</a></li>
+                            <li><a href="#">{% trans "Group 8" %}</a></li>
+                            <li><a href="#">{% trans "COMP3030J" %}</a></li>
 
                         </ul>
                     </div>
@@ -3450,18 +3434,19 @@
                             <h4 class="mb-0 title_border">{% trans "Categories" %}</h4>
                         </div>
                         <ul class="list-unstyled mb-0">
-
-                            <li><a href="/" title="Guitar Accessory ">{% trans "Guitar Accessory " %}</a></li>
-
-                            <li><a href="/" title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>
-
-                            <li><a href="/" title="Digital Upright Pianos">{% trans "Digital Upright Pianos" %}</a>
+                            <li><a href="/product_search/?search=piano"
+                                   title="Digital Upright Pianos">{% trans "Digital Upright Pianos" %}</a>
                             </li>
+                            <li><a href="/product_search/?search=guitar"
+                                   title="Guitar Accessory ">{% trans "Guitar Accessory " %}</a></li>
 
-                            <li><a href="/" title="Electric Double Basses">{% trans "Electric Double Basses" %}</a>
-                            </li>
-
-                            <li><a href="/" title="Guitar Amp Heads">{% trans "Guitar Amp Heads" %}</a></li>
+                            <li><a href="/product_search/?search=keyboard"
+                                   title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>
+                            {#                            <li><a href="/product_search/?search=drum"#}
+                            {#                                   title="Guitar Amp Heads">{% trans "Guitar Amp Heads" %}</a></li>#}
+                            {#                            <li><a href="/product_search/?search=flute"#}
+                            {#                                   title="Electric Double Basses">{% trans "Flute" %}</a>#}
+                            {#                            </li>#}
                         </ul>
                     </div>
                 </div>
