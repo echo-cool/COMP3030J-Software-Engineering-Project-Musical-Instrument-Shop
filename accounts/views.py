@@ -307,6 +307,8 @@ class ActivateView(View):
         act.delete()
 
         messages.success(request, _('You have successfully activated your account!'))
+        login(request, user)
+        messages.success(request, _('Login successfully.'))
 
         return redirect('shop:index')
 
