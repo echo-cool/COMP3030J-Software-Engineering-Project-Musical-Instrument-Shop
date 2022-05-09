@@ -544,7 +544,7 @@ def shipping_details(request, uncompletedOrder_id):
     for item in order_items:
         subtotal += item.instrument.price * item.quantity
     total = subtotal + shipping_price
-    return render(request, 'shop_templates/checkout/shipping.htm', {
+    return render(request, 'shop_templates/checkout/shipping.html', {
         "uncompletedOrder": uncompletedOrder,
         "order_items": order_items,
         "user": user,
