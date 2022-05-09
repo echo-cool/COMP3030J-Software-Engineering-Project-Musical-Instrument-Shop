@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem
+    OrderItem, CustomModel
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -105,10 +105,13 @@ index = sync_to_async(_index)
 
 
 @xframe_options_exempt
-def chat_ai(request):
+def _chat_ai(request):
     return render(request, 'layouts/default/chat_ai.html', {
         "home": 1,
     })
+
+
+chat_ai = sync_to_async(_chat_ai)
 
 
 @xframe_options_exempt
@@ -236,14 +239,17 @@ def category_view(request, category_id):
 def product_details(request, product_id):
     if request.method == "POST":
         if request.user.is_authenticated:
+            print(request.POST)
             quantity = int(request.POST.get('quantity', 0))
             instrument = Instrument.objects.filter(id=product_id).first()
-            exist_cart = Cart.objects.filter(instrument_id=product_id).first()
+            exist_cart = Cart.objects.filter(user=request.user, instrument_id=product_id).first()
             if exist_cart:
+                print(exist_cart)
                 exist_cart.count = exist_cart.count + quantity
                 exist_cart.save()
             else:
                 new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+                print(new_cart)
                 new_cart.save()
             messages.success(request, "Add Successfully")
             return redirect('shop:product_details', product_id=product_id)
@@ -347,9 +353,10 @@ def personal_profile(request):
         # print(request.FILES)
         profile_item.image = request.FILES.get('photo')
         profile_item.save()
+        messages.success(request, "Profile updated successfully")
         return redirect(reverse('shop:personal_profile'))
     # print(form)
-    orders = Order.objects.order_by('-created_at')[:5]
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')[:5]
     for order in orders:
         order.quantity = OrderItem.objects.filter(order_id=order.id).count()
     carts = Cart.objects.filter(user_id=request.user.id)
@@ -381,6 +388,75 @@ def wishlist(request):
         "wishlists": wishlists,
         "carts": carts
     })
+
+
+@login_required
+def checkout_single_instrument(request, instrument_id):
+    # get or post
+    checkout_form = CheckoutForm()
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.count
+                )
+                uncompletedOrderItem.save()
+                item.delete()
+            messages.success(request, "Order saved successfully")
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
+        else:
+            messages.error(request, "Please fill all the fields")
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect(reverse('shop:login'))
+    else:
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+        subtotal = 0
+
+        class CartItem:
+            def __init__(self, instrument, count):
+                self.instrument = instrument
+                self.count = count
+                self.created_at = time.strftime("%d/%m/%Y")
+
+        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), 1)]
+        for item in cart_items:
+            subtotal += item.instrument.price * item.count
+
+        return render(request, 'shop_templates/checkout/checkout.html', {
+            "cart_items": cart_items,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form
+        })
 
 
 @login_required
@@ -418,12 +494,13 @@ def checkout(request):
                 )
                 uncompletedOrderItem.save()
                 item.delete()
+            messages.success(request, "Order saved successfully")
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
     # check if user is not logged in
     if not request.user.is_authenticated:
-        return redirect('/login')
+        return redirect(reverse('shop:login'))
     else:
         checkout_form = CheckoutForm()
         user: User = request.user
@@ -440,6 +517,68 @@ def checkout(request):
             'profile': profile,
             'form': checkout_form
         })
+
+
+@login_required
+def model_checkout(request):
+    # get or post
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+
+            # TODO: Order for checkout
+
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    else:
+        checkout_form = CheckoutForm()
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+
+        model_item = CustomModel.objects.filter(user=request.user, finish=False).last()
+        subtotal = int(model_item.price) * int(model_item.count)
+        formula = "" + str(model_item.price) + " * " + str(model_item.count) + " = " + str(subtotal)
+        print(subtotal)
+        model_pics = model_item.screenshots.split("&&&&&")
+        return render(request, 'shop_templates/checkout/checkout_for_model.html', {
+            "cart_items": model_item,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form,
+            "model_pics": model_pics,
+            'formula': formula
+        })
+
+
+@login_required
+def model_post_checkout(request):
+    # get or post
+    if request.method == "POST":
+        user = request.user
+        request_dict = json.loads(request.body.decode('utf-8'))
+        screenshots = request_dict.get('screenshots')
+        price = request_dict.get('price')
+        count = request_dict.get('count')
+        custom = CustomModel(
+            user=user,
+            price=price,
+            count=count,
+            screenshots=screenshots
+        )
+        custom.save()
+        data = {'code': 200, 'status': "OK", }
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 def shipping_details(request, uncompletedOrder_id):
@@ -478,7 +617,7 @@ def shipping_details(request, uncompletedOrder_id):
     for item in order_items:
         subtotal += item.instrument.price * item.quantity
     total = subtotal + shipping_price
-    return render(request, 'shop_templates/checkout/shipping.htm', {
+    return render(request, 'shop_templates/checkout/shipping.html', {
         "uncompletedOrder": uncompletedOrder,
         "order_items": order_items,
         "user": user,
@@ -535,13 +674,86 @@ def model_design2(request, model_id):
     })
 
 
+def check_color(input_color, color_list):
+    flag = False
+    # print("==============")
+    input_price = str(input_color)
+    for num in color_list:
+        i = str(num)
+        if i == "1":
+            if input_price == "Other":
+                flag = True
+                break
+        elif i == "2":
+            if input_price == "Black":
+                flag = True
+                break
+        elif i == "3":
+            if input_price == "Red":
+                flag = True
+                break
+        elif i == "4":
+            if input_price == "Brown":
+                flag = True
+                break
+        elif i == "5":
+            if input_price == "Yellow":
+                flag = True
+                break
+        elif i == "6":
+            if input_price == "Grey":
+                flag = True
+                break
+        elif i == "7":
+            if input_price == "White":
+                flag = True
+                break
+    return flag
+
+
+def check_price(input_price, price_list):
+    flag = False
+    # print("==============")
+    input_price = float(input_price)
+    for num in price_list:
+        i = str(num)
+        if i == "1":
+            if 20 < input_price <= 100:
+                flag = True
+                break
+        elif i == "2":
+            if 100 < input_price <= 500:
+                flag = True
+                break
+        elif i == "3":
+            if 500 < input_price <= 1000:
+                flag = True
+                break
+        elif i == "4":
+            if 1000 < input_price <= 2000:
+                flag = True
+                break
+        elif i == "5":
+            if 2000 < input_price <= 10000:
+                flag = True
+                break
+        elif i == "6":
+            if 10000 < input_price:
+                flag = True
+                break
+    return flag
+
+
 # search instruments by category
 def product_search_by_category(request):
     if request.method == "GET":
+        print("CATERGORY SEARCH")
         section_text = request.GET.get("section", None)
         category_li = request.GET.get("checked_category", None)
+        category_pr = request.GET.get("checked_price", None)
         search_text = request.GET.get("search", "")
         category_list = [ch for ch in category_li]
+        price_list = [ch for ch in category_pr]
         if section_text == "western":
             instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).filter(
                 chinese=1).order_by("-object_gltf")
@@ -550,16 +762,22 @@ def product_search_by_category(request):
                 chinese=0).order_by("-object_gltf")
         else:
             instruments_by_search_bar = Instrument.objects.filter(name__contains=search_text).order_by("-object_gltf")
-        instruments = []
 
-        i = 0
-        while i < len(category_list):
-            if category_list[i] == str(1):
-                searched_instruments = instruments_by_search_bar.filter(category=i + 1)
-                for j in searched_instruments:
-                    instruments.append(j)
-                # print(len(instruments))
-            i = i + 1
+        # i = 0
+        # while i < len(category_list):
+        #     if category_list[i] == str(1):
+        #         searched_instruments = instruments_by_search_bar.filter(category=i + 1)
+        #         for j in searched_instruments:
+        #             instruments.append(j)
+        #         # print(len(instruments))
+        #     i = i + 1
+        instruments = []
+        print(category_pr)
+        for search_ins in instruments_by_search_bar:
+            print(search_ins.price)
+            print(search_ins.category)
+            if search_ins.category in category_list and check_price(search_ins.price, price_list):
+                instruments.append(search_ins)
         response = render(request, 'shop_templates/searched-product-list.html', {
             "instruments_searched": instruments,
         })
@@ -568,9 +786,12 @@ def product_search_by_category(request):
 
 # search instruments by keyword
 def product_search(request):
+    print("DEfault SEARCH")
     search_text = request.GET.get("search", "")
     section_text = request.GET.get("section", None)
     search_category_text = request.GET.get("category", None)
+    search_price_text = request.GET.get("price", None)
+    search_color_text = request.GET.get("color", None)
 
     header = ""
     if section_text == "chinese":
@@ -586,12 +807,14 @@ def product_search(request):
                 all_chinese = False
         header = "chinese" if all_chinese else ""
 
+    # category
     if search_category_text:
         search_category_list = search_category_text.split("|")
         search_category = [int(i) for i in search_category_list]
         instruments = all_instruments.filter(category__in=search_category)
     else:
         instruments = all_instruments
+
     categories = {}
     category_list = Category.objects.all()
     for i in instruments:
@@ -609,6 +832,27 @@ def product_search(request):
         else:
             category.count = instruments.filter(category=category).count()
             new_categories.append(category)
+
+    # color
+    if search_color_text:
+        color_instruments = []
+        search_color_list = search_color_text.split("|")
+        search_color = [int(i) for i in search_color_list]
+        for search_ins in instruments:
+            if check_color(search_ins.color, search_color):
+                color_instruments.append(search_ins)
+        instruments = color_instruments
+
+    # price
+    if search_price_text:
+        priced_instruments = []
+        search_price_list = search_price_text.split("|")
+        search_price = [int(i) for i in search_price_list]
+        for search_ins in instruments:
+            if check_price(search_ins.price, search_price):
+                priced_instruments.append(search_ins)
+        instruments = priced_instruments
+
     # game option
     game_style = 0
     if "guitar" in search_text:
@@ -623,6 +867,7 @@ def product_search(request):
     else:
         carts = {}
 
+    all_instrument_number = len(instruments)
     paginator = Paginator(instruments, 12, 0)
     page = request.GET.get("page")
     try:
@@ -643,19 +888,24 @@ def product_search(request):
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
 
+    show_number = True
+    if search_price_text or search_category_text:
+        show_number = False
     return render(request, 'shop_templates/product-search.html', {
         "header_style": header,
         "game_style": game_style,
         "instruments": instruments,
         'categories': new_categories,
         'carts': carts,
-        "part_pages": part_pages
+        "part_pages": part_pages,
+        'show_number': show_number,
+        'all_instrument_number': all_instrument_number
     })
 
 
 def image_search(request, result_key):
     search_category_text = request.GET.get("category", None)
-    all_instruments = memory_cached_db.get(result_key).order_by("-object_gltf")
+    all_instruments = memory_cached_db.get(result_key)
 
     if search_category_text:
         search_category_list = search_category_text.split("|")
@@ -732,7 +982,7 @@ def image_search(request, result_key):
 #             "carts": carts,
 #         })
 #     else:
-#         return redirect('accounts:log_in')
+#         return redirect('accounts:goto_login')
 
 
 @login_required

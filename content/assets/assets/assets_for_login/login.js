@@ -19,7 +19,7 @@ function activeVisitor() {
     let visitor_button = document.querySelector('.visitor_button');
     visitor_button.onclick = function () {
         // bring visitor to main courses page
-        window.location.href = "/";
+        document.querySelector('.sign-up').setAttribute("style", "display:inherit");
     }
 }
 

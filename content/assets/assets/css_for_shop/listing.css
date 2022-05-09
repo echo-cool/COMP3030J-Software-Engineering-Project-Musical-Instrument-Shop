@@ -899,7 +899,7 @@
 }
 
 .filter_sidebar_general {
-    margin-top: 25px;
+    margin-top: 0;
     padding: 0px 0px;
     padding-left: 6px;
     overflow: hidden;
@@ -936,12 +936,16 @@
     top: 50%;
 }
 
+.banner_sidebar {
+    margin-top: 50px;
+}
+
 .filter_sidebar_general .filter-category {
-    padding-top: 25px;
+    padding-top: 0;
 }
 
 .filter_sidebar_general .filter-category .widget-content {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
@@ -1032,15 +1036,27 @@
     opacity: 0;
 }
 
-.filter_sidebar_general .filter-color .list_color li a.active:before {
-    border: 1px solid #000;
-    opacity: 1;
-}
+/*.filter_sidebar_general .filter-color .list_color li a.active:before {*/
+/*    border: 1px solid #000;*/
+/*    opacity: 1;*/
+/*}*/
 
 .filter_sidebar_general .filter-color .list_color li a:hover:before {
     border: 1px solid #000;
     opacity: 1;
 }
+
+
+/*.filter_sidebar_general .filter-color .list_color li a:active:before {*/
+/*    border: 1px solid #ff5a00;*/
+/*    opacity: 1;*/
+/*}*/
+
+.filter_sidebar_general .filter-color .list_color li a.active:before {
+    border: 1px solid #ff5a00;
+    opacity: 1;
+}
+
 
 .filter_sidebar_general .filter-size {
     padding-top: 10px;
@@ -1082,7 +1098,7 @@
 }
 
 .filter_sidebar_general .filter-price {
-    padding-top: 5px;
+    padding-top: 15px;
 }
 
 .filter_sidebar_general .filter-price .list-price {
@@ -1103,8 +1119,12 @@
     line-height: 34px;
 }
 
-.filter_sidebar_general .filter-price .list-price li a:hover, .filter_sidebar_general .filter-price .list-price li a.active {
-    color: #d7ad5b;
+.filter_sidebar_general .filter-price .list-price li a:hover {
+    color: #d7ad5b !important;
+}
+
+.filter_sidebar_general .filter-price .list-price li a.active {
+    color: #ff5a00 !important;
 }
 
 .filter_sidebar_general .widget-tags {
@@ -1769,6 +1789,7 @@ button {
 .list-category-toggle .active {
     color: #ff5a00 !important;
 }
+
 
 .pagination {
     margin-bottom: 0px;

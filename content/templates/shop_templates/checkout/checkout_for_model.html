@@ -40,16 +40,9 @@
     <link rel="stylesheet"
           href="/static/assets/checkout/v2-ltr-edge-2602686fb8b88d94b8051bb6bb771e56-1155.css"
           media="all">
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
 
     <!--<![endif]-->
-    <style>
-        .errorlist {
-            color: red;
-            display: flex;
-            justify-content: flex-end;
-
-        }
-    </style>
 
 
     <script type="text/javascript" async=""
@@ -1048,8 +1041,9 @@ window.additionalScripts = function () {
                                                             aria-required="true"
                                                             name="state"
                                                             id="checkout_shipping_address_province">
-                                                        <option disabled="disabled">{% trans "State" %}</option>
-                                                        <option selected data-alternate-values="[&quot;Alabama&quot;]"
+                                                        <option disabled="disabled"
+                                                                selected="selected">{% trans "State" %}</option>
+                                                        <option data-alternate-values="[&quot;Alabama&quot;]"
                                                                 value="AL">Alabama
                                                         </option>
                                                         <option data-alternate-values="[&quot;Alaska&quot;]" value="AK">
@@ -1349,39 +1343,52 @@ window.additionalScripts = function () {
                                     </tr>
                                     </thead>
                                     <tbody data-order-summary-section="line-items">
-                                    {% for item in cart_items %}
-                                        <tr class="product" data-product-id="6112418562235"
-                                            data-variant-id="37684377813179"
-                                            data-product-type="" data-customer-ready-visible="">
-                                            <td class="product__image">
-                                                <div class="product-thumbnail ">
-                                                    <div class="product-thumbnail__wrapper">
-                                                        <img alt="{{ item.instrument.name }}"
-                                                             class="product-thumbnail__image"
-                                                             src="{{ item.instrument.image.url }}">
-                                                    </div>
-                                                    <span class="product-thumbnail__quantity"
-                                                          aria-hidden="true">{{ item.count }}</span>
-                                                </div>
-
-                                            </td>
-                                            <th class="product__description" scope="row">
-                                                <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>
-                                                <span class="product__description__variant order-summary__small-text">{% trans "Add:" %}{{ item.created_at }}</span>
-
-                                            </th>
-                                            <td class="product__quantity">
-                                            <span class="visually-hidden">
-                                              {{ item.count }}
-                                            </span>
-                                            </td>
-                                            <td class="product__price">
-                                                <span class="order-summary__emphasis skeleton-while-loading">${{ item.instrument.price }}</span>
-                                            </td>
-                                        </tr>
-
-                                    {% endfor %}
-
+                                    {#                                    {% for item in cart_items %}#}
+                                    {#                                        <tr class="product" data-product-id="6112418562235"#}
+                                    {#                                            data-variant-id="37684377813179"#}
+                                    {#                                            data-product-type="" data-customer-ready-visible="">#}
+                                    {#                                            <td class="product__image">#}
+                                    {#                                                <div class="product-thumbnail ">#}
+                                    {#                                                    <div class="product-thumbnail__wrapper">#}
+                                    {#                                                        <img alt="{{ item.instrument.name }}"#}
+                                    {#                                                             class="product-thumbnail__image"#}
+                                    {#                                                             src="{{ item.instrument.image.url }}">#}
+                                    {#                                                    </div>#}
+                                    {#                                                    <span class="product-thumbnail__quantity"#}
+                                    {#                                                          aria-hidden="true">{{ item.count }}</span>#}
+                                    {#                                                </div>#}
+                                    {##}
+                                    {#                                            </td>#}
+                                    {#                                            <th class="product__description" scope="row">#}
+                                    {#                                                <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>#}
+                                    {#                                                <span class="product__description__variant order-summary__small-text">{% trans "Add: {{ item.created_at }}" %}</span>#}
+                                    {##}
+                                    {#                                            </th>#}
+                                    {#                                            <td class="product__quantity">#}
+                                    {#                                            <span class="visually-hidden">#}
+                                    {#                                              {{ item.count }}#}
+                                    {#                                            </span>#}
+                                    {#                                            </td>#}
+                                    {#                                            <td class="product__price">#}
+                                    {#                                                <span class="order-summary__emphasis skeleton-while-loading">${{ item.instrument.price }}</span>#}
+                                    {#                                            </td>#}
+                                    {#                                        </tr>#}
+                                    {#                                    {% endfor %}#}
+                                    <div class="images_wrapper">
+                                    </div>
+                                    <script>
+                                        let image_html = "";
+                                        {% for pic in model_pics %}
+                                            image_html += String("{{ pic }}")
+                                                .replace(new RegExp("&quot;", "gm"), "\"")
+                                                .replace(new RegExp("\"", "gm"), "")
+                                                .replace(new RegExp("&lt;", "gm"), "<")
+                                                .replace(new RegExp("&gt;", "gm"), ">")
+                                            console.log(image_html)
+                                        {% endfor %}
+                                        console.log(image_html);
+                                        $(".images_wrapper").html(image_html);
+                                    </script>
                                     </tbody>
                                 </table>
 
@@ -1409,10 +1416,10 @@ window.additionalScripts = function () {
                                 <tr class="total-line total-line--subtotal">
                                     <th class="total-line__name" scope="row">{% trans "Subtotal" %}</th>
                                     <td class="total-line__price">
-    <span class="order-summary__emphasis skeleton-while-loading"
-          data-checkout-subtotal-price-target="{{ subtotal | floatformat }}">
-      ${{ subtotal | floatformat }}
-    </span>
+                                        <span class="order-summary__emphasis skeleton-while-loading"
+                                              data-checkout-subtotal-price-target="{{ subtotal | floatformat }}">
+                                        {{ formula }}$
+                                        </span>
                                     </td>
                                 </tr>
 

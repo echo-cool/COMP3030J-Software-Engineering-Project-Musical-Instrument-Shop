@@ -5,7 +5,8 @@ from .views import model_view, index, cart, product_details, model_design, leave
     product_details_test_model, wishlist, personal_profile, \
     checkout, model_design2, home, image_upload, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
-    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden, get_pictures, image_search
+    about, game, chinese, new_header, chat_ai, shipping_details, checkout_success, forbidden, get_pictures, \
+    image_search, model_checkout, model_post_checkout, checkout_single_instrument
 
 app_name = 'shop'
 urlpatterns = [
@@ -19,12 +20,15 @@ urlpatterns = [
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
+    path('checkout/single/<int:instrument_id>', checkout_single_instrument, name='checkout_single_instrument'),
     path('checkout/success/', checkout_success, name='checkout_success'),
 
     path('shipping_details/<int:uncompletedOrder_id>', shipping_details, name='shipping_details'),
     # path('confirm/', confirm, name='confirm'),
     path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
+    path('model_post_checkout/', model_post_checkout, name='model_post_checkout'),
+    path('model_checkout/', model_checkout, name='model_checkout'),
     # path('cart2/', cart2, name='cart'),
     # path("cart/product_add_cart/<int:instrument_id>", product_add_cart, name='product_add_cart'),
     # path("cart/product_minus_cart/<int:instrument_id>", product_minus_cart, name='product_minus_cart'),

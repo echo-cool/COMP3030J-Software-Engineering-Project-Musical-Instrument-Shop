@@ -1,5 +1,7 @@
 import os
 import warnings
+
+import django
 from django.utils.translation import gettext_lazy as _
 from os.path import dirname
 # DO NOT REMOVE THESE IMPORT !!!!!!!
@@ -16,11 +18,20 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 SECRET_KEY = 'NhfTvayqggTBPswCXXhWaN69HuglgZIkM'
 
 DEBUG = True
+USE_I18N = True
 ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
 INSTALLED_APPS = [
+    # API Framework
+    'drf_yasg',
+    'rest_framework',
+    'django_filters',
+
+    # Faker
+    'django_seed',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,13 +55,7 @@ INSTALLED_APPS = [
     'landing_page',
     'image_search',
 
-    # API Framework
-    'drf_yasg',
-    'rest_framework',
-    'django_filters',
 
-    # Faker
-    'django_seed',
 
 
 ]
@@ -65,9 +70,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'app.cors_middleware.CORSMiddleware',
-    'app.auth_middleware.MyLoginRequiredMiddleware',
+    'app.ErrorPageHandel.ErrorPageHandelMiddleware'
+
 
 ]
+#     'app.auth_middleware.MyLoginRequiredMiddleware',
 #     'app.ErrorPageHandel.ErrorPageHandelMiddleware'
 
 ROOT_URLCONF = 'app.urls'
@@ -143,7 +150,7 @@ LOGIN_VIA_EMAIL = False
 LOGIN_VIA_EMAIL_OR_USERNAME = True
 LOGIN_REDIRECT_URL = 'shop:index'
 LOGIN_URL = 'accounts:log_in'
-USE_REMEMBER_ME = True
+USE_REMEMBER_ME = False
 
 RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = False
 ENABLE_ACTIVATION_AFTER_EMAIL_CHANGE = True
@@ -157,15 +164,20 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 USE_I18N = True
 USE_L10N = True
 LANGUAGE_CODE = 'en'
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('en',)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
+# for i in django.conf.locale.LANG_INFO:
+#     print(i)
 LANGUAGES = [
     ('en', _('English')),
-    ('ru-RU', _('Russian')),
-    ('uk-UA', _('Ukrainian')),
-    ('zh-CN', _('Simplified Chinese')),
-    ('fr-FR', _('French')),
-    ('es-ES', _('Spanish')),
-    ('de-DE', _('Dutch')),
-    ('ja-JP', _('Japanese')),
+    ('ru-RU'.lower(), _('Russian')),
+    ('uk-UA'.lower(), _('Ukrainian')),
+    ('zh-CN'.lower(), _('Simplified Chinese')),
+    ('fr-FR'.lower(), _('French')),
+    ('es-ES'.lower(), _('Spanish')),
+    ('de-DE'.lower(), _('Dutch')),
+    ('ja-JP'.lower(), _('Japanese')),
 ]
 
 TIME_ZONE = 'UTC'

@@ -202,9 +202,19 @@
         <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700" id="blog_categories">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600" id="category__0">
+                            <img src="{% static 'assets/images/all_blogs.jpg' %}" alt="img">
+                            <div class="featured_category_info">
+                                <h6 class="featured_category_heading"><a href="#">All</a></h6>
+                                <p class="featured_category_number"><span>{{ posts.count }}</span> Posts</p>
+                            </div>
+                        </div>
+                    </div>
                     {% for category, count in category_number.items %}
                         <div class="col-lg-3 col-sm-6">
-                            <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
+                            <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600"
+                                 id="category__{{ category.id }}">
                                 <img src="{{ category.image.url }}" alt="img">
                                 <div class="featured_category_info">
                                     <h6 class="featured_category_heading"><a href="#">{{ category.category }}</a></h6>
@@ -331,10 +341,13 @@
                                                         <a href="javascript:void(0)" class="login js-call-popup-login">
                                                             <div class="dropdown dropdown-access">
                                                                 <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
-                                                                <a href="#"><i class="ion-android-create"></i>{% trans "By" %} {{ post.author }}</a>
+                                                                <a href="#"><i
+                                                                        class="ion-android-create"></i>{% trans "By" %} {{ post.author }}
+                                                                </a>
 
-                                                                <div class="dropdown-menu" id="account-menu" style="left: 3rem">
-                                                                    <a href="{% url "chat:index_new" to=post.author.id  %}"
+                                                                <div class="dropdown-menu" id="account-menu"
+                                                                     style="left: 3rem">
+                                                                    <a href="{% url "chat:index_new" to=post.author.id %}"
                                                                        class="btn btn-primary"
                                                                        style="display: block;">{% trans "Chat with him/her" %}</a>
                                                                 </div>
@@ -361,17 +374,28 @@
                             <ul class="pagination">
                                 {% for pg in part_pages %}
                                     {% if pg == posts.number %}
-                                        <li><a class="page-number current">{{ pg }}</a></li>
+                                        <li><a class="page-number current cursor-pointer">{{ pg }}</a></li>
                                     {% else %}
-                                        <li><a class="page-number">{{ pg }}</a></li>
+                                        <li><a class="page-number cursor-pointer">{{ pg }}</a></li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>
                         <script src="{% static 'assets/js/add_url.js' %}"></script>
+                        <script src="{% static '/assets/plugins/swiper/swiper.min.js' %} "></script>
+                        <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
+                        <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
                         <script>
                             $(".page-number").on('click', function (res) {
-                                window.location.href = addUrlPara(window.location.href, 'page', $(this).text())
+                                let newUrl = addUrlPara(window.location.href, "page", $(this).text());
+                                $.ajax({
+                                    url: newUrl,
+                                    method: "GET",
+                                    success: function (res) {
+                                        history.replaceState(null, null, newUrl);
+                                        $('#main_blogs').html($(res).find('#main_blogs')[0].innerHTML);
+                                    }
+                                });
                             })
                         </script>
                     </div>
@@ -386,10 +410,9 @@
 
 
     <script src="{% static '/assets/js_for_shop/js/bootstrap.min.js' %} "></script>
-    <script src="{% static '/assets/plugins/swiper/swiper.min.js' %} "></script>
     <script src="{% static '/assets/js_for_shop/js/menu.js' %} "></script>
-    <script src="{% static '/assets/plugins/aos/aos.js' %} "></script>
-    <script src="{% static '/assets/js_for_shop/js/custom.js' %} "></script>
+
+
     <script>
         function scrollCategory() {
             let scrollOffset = $('#blog_categories').offset();
@@ -404,6 +427,22 @@
                 scrollTop: scrollOffset.top
             }, 0);
         }
+
+        $(function () {
+            $(".featured_category_item").on("click", function () {
+                let categoryId = $(this).attr("id").split("__")[1];
+                {#window.location.href = addUrlPara(window.location.href, "category", categoryId);#}
+                let newUrl = addUrlPara(window.location.href, "category", categoryId);
+                $.ajax({
+                    url: newUrl,
+                    method: "GET",
+                    success: function (res) {
+                        history.replaceState(null, null, newUrl);
+                        $('#main_blogs').html($(res).find('#main_blogs')[0].innerHTML);
+                    }
+                });
+            });
+        })
     </script>
 
 {% endblock %}

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
     <meta charset="utf-8">
     <title>{% trans "AtlasRTX Webchat" %}</title>
     <link href="{% static 'assets/css_for_homepage/chat_ai.css' %}" rel="stylesheet">
@@ -65,6 +64,46 @@
     .chat_icon_group a {
         padding: 10px;
     }
+
+    {#.chat_panel.chat_discussion::-webkit-scrollbar {#}
+    {#    width: 10px;#}
+    {#    background-color: #F5F5F5;}#}
+    {##}
+    {#.chat_panel.chat_discussion::-webkit-scrollbar-thumb {#}
+    {#    background-color: #F90;#}
+    {#    background-image: -webkit-linear-gradient(45deg,#}
+    {#    rgba(255, 255, 255, .2) 25%,#}
+    {#    transparent 25%,#}
+    {#    transparent 50%,#}
+    {#    rgba(255, 255, 255, .2) 50%,#}
+    {#    rgba(255, 255, 255, .2) 75%,#}
+    {#    transparent 75%,#}
+    {#    transparent)}#}
+
+    .chat_panel.chat_discussion::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+        border-radius: 10px;
+    }
+
+    .chat_panel.chat_discussion::-webkit-scrollbar {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .chat_panel.chat_discussion::-webkit-scrollbar-thumb {
+        background-color: #AAA;
+        border-radius: 10px;
+        background-image: -webkit-linear-gradient(90deg,
+        rgba(0, 0, 0, .2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(0, 0, 0, .2) 50%,
+        rgba(0, 0, 0, .2) 75%,
+        transparent 75%,
+        transparent)
+    }
+
     </style>
 
 
@@ -93,17 +132,17 @@
                 <div class="chat_header_top">
                     <div class="content-maxwidth">
                         <div class="chat_header_name">
-                            {#                            <div class="chat_contact_toggle icon" style="display: none;">#}
-                            {#                                <svg>#}
-                            {#                                    <use id="chatToggle" xlink:href="/images/webchat/icons.svg?v=2#chevron-right"></use>#}
-                            {#                                </svg>#}
-                            {#                            </div>#}
+                            {# <div class="chat_contact_toggle icon" style="display: none;">#}
+                            {#     <svg>#}
+                            {#         <use id="chatToggle" xlink:href="/images/webchat/icons.svg?v=2#chevron-right"></use>#}
+                            {#     </svg>#}
+                            {# </div>#}
                             <div id="chatHeaderIcon" class="chat_primary_bg">
-                                <img src="https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png"
+                                <img src="{% static '/assets/img_for_shop/brands/Fender-Guitar-bot-launcher-icon.png' %}"
                                      alt="Header Icon" draggable="false">
                             </div>
                             <div class="chat_header_text" style="">
-                                <span id="spanHeaderText">{% trans "Music More" %}</span>
+                                <span id="spanHeaderText">{% trans "Music More AI bot" %}</span>
                             </div>
                         </div>
 
@@ -142,7 +181,8 @@
                         <div id="lblLogInfo" class="chatform-label"></div>
                     </div>
                     <span id="termsText2" class="terms_and_conditions_text2">{% trans "By submitting you " %}<a
-                            href="https://www.atlasrtx.com/messaging-terms-conditions" target="_blank">{% trans "agree" %}</a
+                            href="https://www.atlasrtx.com/messaging-terms-conditions"
+                            target="_blank">{% trans "agree" %}</a
                     >{% trans "to receive text messages at the number provided. Message/data rates apply." %}</span>
                     <div class="chat_login" style="display: none;">
                         <button id="btnSendLogin" class="chat_primary_bg" onclick="this.disabled = true;" disabled="">
@@ -203,13 +243,15 @@
                     </div>
                     <div style="clear:both"></div>
                     <div class="chat_message_wrapper">
-                        <div class="chat_message_bubble"><span id="element2" style="display:inline;">{% trans "I am the customer service of the Musimo. I am ready to help you if you have any questions." %}</span>
+                        <div class="chat_message_bubble"><span id="element2"
+                                                               style="display:inline;">{% trans "I am the customer service of the Musimo. I am ready to help you if you have any questions." %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
 
                     <div class="chat_message_wrapper">
-                        <div class="chat_message_bubble"><span id="element3" style="display:inline;">{% trans "Where do you want to start?" %}</span>
+                        <div class="chat_message_bubble"><span id="element3"
+                                                               style="display:inline;">{% trans "Where do you want to start?" %}</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -219,13 +261,23 @@
                                   data-atlas-messagetosend=""
                                   class="chat_button_suggested_response chat_primary"
                                   data-atlas-value="Learn about guitars">Hi</span>
-                            <span
-                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
-                                    class="chat_button_suggested_response chat_primary" data-atlas-value="Buy a guitar">{% trans "Recent orders" %}</span>
+                            {% if request.user.is_authenticated %}
                             <span
                                     data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
                                     class="chat_button_suggested_response chat_primary"
-                                    data-atlas-value="Learn to play">{% trans "Give me some recommendations" %}</span>
+                                    data-atlas-value="Buy a guitar">Recent orders</span>
+                            {% else %}
+                                <span
+                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                    class="chat_button_suggested_response chat_primary"
+                                    data-atlas-value="Buy a guitar">What is your name?</span>
+
+                            {% endif %}
+
+                            <span
+                                    data-atlas-action="chat" data-atlas-iscta="false" data-atlas-messagetosend=""
+                                    class="chat_button_suggested_response chat_primary"
+                                    data-atlas-value="Learn to play">Give me some recommendations</span>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -237,9 +289,7 @@
                     <div class="footer_container">
                         <a class="footer_link" target="_blank" href="" style="display: none;"></a>
                         <span class="footer_divider" style="display: none;">|</span>
-                        <span class="footer_text">{% trans "Group 8 " %}<a
-                                href="https://atlasrtx.com/welcome-to-atlasrtx-chatbots/"
-                                target="_blank">{% trans "Not finished" %}</a></span>
+                        <span class="footer_text">{% trans "Group 8 " %}</span>
                     </div>
                 </div>
                 <div id="chat_message_rating_context">
@@ -282,7 +332,8 @@
                                         Thank you.<svg class="icon"><use
                                         xlink:href="/images/webchat/icons.svg?v=2#smile"></use></svg>
                                     </span>
-                                <span class="chat_message_rating_thanks_negative" style="display:none">{% trans "Thank you for your feedback." %}</span>
+                                <span class="chat_message_rating_thanks_negative"
+                                      style="display:none">{% trans "Thank you for your feedback." %}</span>
                             </div>
                         </div>
                     </script>
@@ -369,7 +420,14 @@
         </div>
     </form>
 </aside>
-<script src='/static/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js'></script>
+{#<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="#}
+{#        crossorigin="anonymous"></script>#}
+<script type="text/javascript"
+        src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>
+{#<link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>#}
+{#<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>#}
+{#<script src={% static "/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js" %}></script>#}
+{#<script src='/static/assets/ai_chat_test/js/jquery.mCustomScrollbar.concat.min.js'></script>#}
 <script id="externalContactTemplate" type="text/template">
     <div class="contact">
         <a>
@@ -414,7 +472,7 @@
         {#</div>#}
         {#<div style="clear:both"></div>`).appendTo('#discussion');#}
 
-        $(`<div class="chat_wrapper_user">
+        $(`<div class="chat_wrapper_user added_wrapper">
             <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url({{ request.user.profile.image.url }});"></div>
             <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -428,6 +486,10 @@
         updateScrollbar();
 
     });
+
+    $("#chat_clear").on("click", function () {
+        $(".added_wrapper").remove();
+    })
 
 
     $('#submit_service').click(function (e) {
@@ -444,7 +506,7 @@
         {#</div>#}
         {#<div style="clear:both"></div>`).appendTo('#discussion');#}
 
-        $(`<div class="chat_wrapper_user">
+        $(`<div class="chat_wrapper_user added_wrapper">
             <div class="chat_avatar_user chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url({{ request.user.profile.image.url }});"></div>
             <div class="chat_user_name"><span>{{ request.user.username }} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -473,7 +535,7 @@
             success: function (response) {
                 console.log(response);
                 if (response[0].text && response[0].image) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -485,7 +547,7 @@
                     </div>
                     <div style="clear:both"></div>`).appendTo('#discussion');
                 } else if (response[0].image) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -495,7 +557,7 @@
                         </span>
                         </div>`).appendTo('#discussion');
                 } else if (response[0].text) {
-                    $(`<div class="chat_message_wrapper">
+                    $(`<div class="chat_message_wrapper added_wrapper">
             <div class="chat_avatar chat_primary_bg" aria-label="PlayerOne"
                  style="background-image: url(&quot;https://ci-cdn.atlasrtx.com/img/Fender/Fender-Guitar-bot-launcher-icon.png&quot;);"></div>
             <div class="chat_user_name"><span>{% trans "Customer Service" %} | ${new Date().toLocaleTimeString("en-US")}</span></div>
@@ -510,7 +572,7 @@
                 if (response.length > 1) {
                     for (let i = 1; i < response.length; i++) {
                         if (response[i].text && response[i].image) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[i]['text']}
                             <img src="${response[i]['image']}" style="width:100%">
@@ -519,14 +581,14 @@
                     </div>
                     <div style="clear:both"></div>`).appendTo('#discussion');
                         } else if (response[i].image) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble">
                         <span id="element2" style="display:inline;">
                             <img src="${response[i]['image']}" style="width:100%">
                         </span>
                         </div>`).appendTo('#discussion');
                         } else if (response[i].text) {
-                            $(`<div class="chat_message_wrapper">
+                            $(`<div class="chat_message_wrapper added_wrapper">
                         <div class="chat_message_bubble"><span id="element2" style="display:inline;">
                             ${response[i]['text']}
                         </span>

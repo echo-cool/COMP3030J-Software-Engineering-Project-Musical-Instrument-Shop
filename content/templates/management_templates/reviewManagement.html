@@ -327,7 +327,7 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >{% trans "Page: {{ reviews.number }} Total: {{ reviews.paginator.num_pages }}" %}</span>
+            >{% trans "Page: " %}{{ reviews.number }} {% trans "Total: " %}{{ reviews.paginator.num_pages }}</span>
             {% if reviews.has_previous %}
                 <button id="first_page" class="btn btn-round btn-success">{% trans "First Page" %}</button>
                 <button id="prev_page" class="btn btn-round btn-info">{% trans "Previous Page" %}</button>

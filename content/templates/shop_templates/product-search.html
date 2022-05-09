@@ -5,6 +5,8 @@
 {% load bootstrap4 %}
 
 {% block head_link %}
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <!-- BASE CSS -->
     <link href="/static/assets/css_for_shop/bootstrap.custom.min.css" rel="stylesheet">
     <link href="/static/assets/css_for_shop/style.css" rel="stylesheet">
@@ -154,7 +156,7 @@
                         <div class="collection-sorting form-horizontal form-group pull-right text-right">
                             <div class="dropdown">
                                 <button class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLink">
-                                    <span class="dropdown-label">{% trans "Featured" %}</span>
+                                    <span class="dropdown-label">{{ all_instrument_number }} {% trans "Instruments Shown" %}</span>
                                 </button>
                                 <ul class="dropdown-content dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li class="active"><a href="manual">{% trans "Featured" %}</a></li>
@@ -210,7 +212,15 @@
                                             margin-right: 12px;
                                         }
 
-                                        .item-toggle-tab .checked + a::after {
+                                        {#.item-toggle-tab .checked + a::after {#}
+                                        {#    position: absolute;#}
+                                        {#    /* font-family: "sans-serif"; */#}
+                                        {#    font-size: 16px;#}
+                                        {#    font-family: 'FontAwesome', sans-serif;#}
+                                        {#    content: "\f00c";}#}
+                                        {##}
+
+                                        .item-toggle-tab a.active::after {
                                             position: absolute;
                                             /* font-family: "sans-serif"; */
                                             font-size: 16px;
@@ -223,6 +233,10 @@
                                             margin-left: 4%;
                                             color: #fcc137;
                                         }
+
+                                        li.item-toggle-tab {
+                                            height: 24px;
+                                        }
                                     </style>
                                     <ul class="list-category-toggle toggle-tab list-none">
                                         {% for category in categories %}
@@ -233,65 +247,22 @@
                                                    id="category__{{ category.id }}"
                                                    style="line-height: 0px;display: flex; align-items: center;">
                                                     <span>{{ category.name }}</span>
-                                                    <span>({{ category.count }})</span>
+                                                    {% if show_number %}
+                                                        <span>({{ category.count }})</span>
+                                                    {% else %}
+                                                        <span></span>
+                                                    {% endif %}
+
                                                 </a>
                                             </li>
                                         {% endfor %}
                                     </ul>
                                 </div>
                             </div>
-                            {#                                    <div class="single-widget-category">#}
-                            {#                                        <input type="checkbox" id="cat-item-1" name="cat-item">#}
-                            {#                                        <label for="cat-item-1">Pipes <span>(8)</span></label>#}
-                            {#                                    </div>#}
-                            <div class="filter-color widget widget-category widget_product_categories filter-tag">
-                                <div class="widget-title">
-                                    <h2 class="mb-0">{% trans "Color Option" %}</h2>
-                                </div>
-                                <ul class="list-none list_color">
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="black">
-                                        <a href="javascript:void(0)" title="Black" style="background: Black" class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="brown">
-                                        <a href="javascript:void(0)" title="Brown" style="background: Brown" class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="burlywood">
-                                        <a href="javascript:void(0)" title="BurlyWood" style="background: BurlyWood"
-                                           class=" ">
-                                        </a>
-                                    </li>
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="gold">
-                                        <a href="javascript:void(0)" title="Gold" style="background: Gold" class=" ">
-                                        </a>
-                                    </li>
-
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="maroon">
-                                        <a href="javascript:void(0)" title="Maroon" style="background: Maroon"
-                                           class=" ">
-                                        </a>
-                                    </li>
-
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="white">
-                                        <a href="javascript:void(0)" title="White" style="background: White" class=" ">
-                                        </a>
-                                    </li>
-
-
-                                </ul>
-
-                                <!-- /.product-categories -->
-                            </div>
-
+                            {# <div class="single-widget-category">#}
+                            {#     <input type="checkbox" id="cat-item-1" name="cat-item">#}
+                            {#     <label for="cat-item-1">Pipes <span>(8)</span></label>#}
+                            {# </div>#}
 
                             <section class="filter-price filter-tag">
                                 <div class="widget-title">
@@ -299,34 +270,176 @@
                                 </div>
 
                                 <ul class="list-none list-price">
-
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="50-100">
-                                        <a href="javascript:void(0)" title="$50-$100" class=" ">$50-$100</a>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__1"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__1"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span>$20-$100</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
+                                    </li>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__2"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__2"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span>$100-$500</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
+                                    </li>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__3"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__3"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span>$500-$1000</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
+                                    </li>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__4"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__4"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span>$1000-$2000</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
+                                    </li>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__5"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__5"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span>$2000-$10000</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
+                                    </li>
+                                    <li class="item-toggle-tab">
+                                        <input type="checkbox" class="category-checkbox2"
+                                               id="checkbox2__6"/>
+                                        <a href="javascript:void(0)" class="category-name2"
+                                           id="category2__6"
+                                           style="line-height: 0px;display: flex; align-items: center;">
+                                            <span> > $10000</span>
+                                            {#                                            <span>({{ category.count }})</span>#}
+                                        </a>
                                     </li>
 
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="100-150">
-                                        <a href="javascript:void(0)" title="$100-$150" class=" ">$100-$150</a>
-                                    </li>
-
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="150-200">
-                                        <a href="javascript:void(0)" title="$150-$200" class=" ">$150-$200</a>
-                                    </li>
-
-
-                                    <li class="cat-item">
-                                        <input type="checkbox" value="200-250">
-                                        <a href="javascript:void(0)" title="$200-$250" class=" ">$200-$250</a>
-                                    </li>
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="50-100">#}
+                                    {#                                        <a href="javascript:void(0)" title="$50-$100" class=" "></a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="100-150">#}
+                                    {#                                        <a href="javascript:void(0)" title="$100-$150" class=" ">$100-$150</a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="150-200">#}
+                                    {#                                        <a href="javascript:void(0)" title="$150-$200" class=" ">$150-$200</a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="200-250">#}
+                                    {#                                        <a href="javascript:void(0)" title="$200-$250" class=" ">$200-$250</a>#}
+                                    {#                                    </li>#}
 
                                 </ul>
                                 <!-- /.product-categories -->
                             </section>
+                            <div class="filter-color widget widget-category widget_product_categories filter-tag">
+                                <div class="widget-title">
+                                    <h2 class="mb-0">{% trans "Color Option" %}</h2>
+                                </div>
+                                <ul class="list-none list_color">
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="white" class="category-checkbox3"
+                                               id="checkbox3__1">
+                                        <a href="javascript:void(0)" title="White"
+                                           class="category-name3 special-color" id="category3__1">
+                                        </a>
+                                    </li>
+                                    <style>
+                                        {#background-image:linear-gradient(90deg, #fbb6b9 0%, #db69ad 50%, #b55adf 100%) !important;#}
+                                        .special-color {
+                                            background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
+                                            animation: glow-animation 2s infinite linear;
+                                        }
+
+                                        @keyframes glow-animation {
+                                            0% {
+                                                filter: hue-rotate(-360deg)
+                                            }
+                                            100% {
+                                                filter: hue-rotate(360deg)
+                                            }
+                                        }
+                                    </style>
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="maroon" class="category-checkbox3"
+                                               id="checkbox3__2">
+                                        <a href="javascript:void(0)" title="Maroon" style="background: #100f0f"
+                                           class="category-name3" id="category3__2">
+                                        </a>
+                                    </li>
+
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="brown">#}
+                                    {#                                        <a href="javascript:void(0)" title="Brown" style="background: #82ceec"#}
+                                    {#                                           class=" ">#}
+                                    {#                                        </a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li class="cat-item">#}
+                                    {#                                        <input type="checkbox" value="black">#}
+                                    {#                                        <a href="javascript:void(0)" title="Black" style="background: #fd9393;"#}
+                                    {#                                           class=" ">#}
+                                    {#                                        </a>#}
+                                    {#                                    </li>#}
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="black" class="category-checkbox3"
+                                               id="checkbox3__3">
+                                        <a href="javascript:void(0)" title="Black" style="background:  #a52a2a;"
+                                           class="category-name3" id="category3__3">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="burlywood" class="category-checkbox3"
+                                               id="checkbox3__4">
+                                        <a href="javascript:void(0)" title="BurlyWood" style="background: #deb887"
+                                           class="category-name3" id="category3__4">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="burlywood" class="category-checkbox3"
+                                               id="checkbox3__5">
+                                        <a href="javascript:void(0)" title="BurlyWood" style="background: #ffd700"
+                                           class="category-name3" id="category3__5">
+                                        </a>
+                                    </li>
+
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="gold" class="category-checkbox3"
+                                               id="checkbox3__6">
+                                        <a href="javascript:void(0)" title="Gold" style="background: #a3a3a3"
+                                           class="category-name3" id="category3__6">
+                                        </a>
+                                    </li>
+                                    <li class="cat-item">
+                                        <input type="checkbox" value="gold" class="category-checkbox3"
+                                               id="checkbox3__7">
+                                        <a href="javascript:void(0)" title="Gold" style="background: #f6f3f3"
+                                           class="category-name3" id="category3__7">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.product-categories -->
+                            </div>
 
 
                             <div class="widget widget-tags filter-tag">
@@ -334,88 +447,47 @@
                                     <h2 class=" mb-0 ">{% trans "Tags" %}</h2>
                                 </div>
                                 <ul class="list-none wg-list-tags list-tag">
-
-
                                     <li>
                                         <input type="checkbox" value="100-150">
                                         <a href="javascript:void(0)" title="$100-$150" class=" ">$100-$150</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="150-200">
                                         <a href="javascript:void(0)" title="$150-$200" class=" ">$150-$200</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="200-250">
                                         <a href="javascript:void(0)" title="$200-$250" class=" ">$200-$250</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="50-100">
                                         <a href="javascript:void(0)" title="$50-$100" class=" ">$50-$100</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="black">
                                         <a href="javascript:void(0)" title="Black" class=" ">{% trans "Black" %}</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="brown">
                                         <a href="javascript:void(0)" title="Brown" class=" ">{% trans "Brown" %}</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="burlywood">
                                         <a href="javascript:void(0)" title="BurlyWood"
                                            class=" ">{% trans "BurlyWood" %}</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="gold">
                                         <a href="javascript:void(0)" title="Gold" class=" ">{% trans "Gold" %}</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="maroon">
                                         <a href="javascript:void(0)" title="Maroon" class=" ">{% trans "Maroon" %}</a>
-
-
                                     </li>
-
-
                                     <li>
                                         <input type="checkbox" value="white">
                                         <a href="javascript:void(0)" title="White" class=" ">{% trans "White" %}</a>
-
-
                                     </li>
-
                                 </ul>
                             </div>
 
@@ -502,12 +574,12 @@
                                                         </div>
                                                     </div>
                                                     <!--     END ICON -->
-                                                    {#                                                    <nav class="engoj_select_color variant-product">#}
-                                                    {#                                                    <span class="">#}
-                                                    {#                                                      <a class="circle mr-0" href="javascript:void(0)"#}
-                                                    {#                                                         style="background-color: black;"></a>#}
-                                                    {#                                                    </span>#}
-                                                    {#                                                    </nav>#}
+                                                    {#<nav class="engoj_select_color variant-product">#}
+                                                    {#<span class="">#}
+                                                    {#  <a class="circle mr-0" href="javascript:void(0)"#}
+                                                    {#     style="background-color: black;"></a>#}
+                                                    {#</span>#}
+                                                    {#</nav>#}
                                                 </div>
                                                 <div class="absolute-wrapper">
                                                     <h4 class="des-font capital title-product mb-0">
@@ -536,12 +608,7 @@
                                         </div>
                                     </div>
                                 {% endfor %}
-
                             </div>
-                            {#                            <div class="pagi-nav text-right">#}
-                            {#                                {% if instruments.has_previous %}#}
-                            {#                                    <span class="next" id="prev_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-left"></i></a></span>#}
-                            {#                                {% endif %}#}
                             <ul class="pagination">
                                 {% for pg in part_pages %}
                                     {% if instruments.number == pg %}
@@ -551,18 +618,6 @@
                                     {% endif %}
                                 {% endfor %}
                             </ul>
-                            {#                                                                {% for pg in part_pages %}#}
-                            {#                                                                    {% if instruments.number == pg %}#}
-                            {#                                                                        <span class="page current">{{ pg }}</span>#}
-                            {#                                                                    {% else %}#}
-                            {#                                                                        <span class="page"><a class="page-number" href="javascript:void(0)">{{ pg }}</a></span>#}
-                            {#                                                                    {% endif %}#}
-                            {#                                                                {% endfor %}#}
-                            {#                                                                {% if instruments.has_next %}#}
-                            {#                                                                    <span class="next" id="next_page"><a href="javascript:void(0)" title=""><i class="fa fa-angle-right"></i></a></span>#}
-                            {#                                                                {% endif %}#}
-
-                            {#                            </div>#}
                             <script src="{% static 'assets/js/add_url.js' %}"></script>
                             <script>
                                 $(".page-number").on('click', function (res) {
@@ -593,224 +648,6 @@
         <!-- /container -->
     </main>
     <!-- /main -->
-    <div style="display: none" class="备份在这里 ">
-        <div class="toolbox elemento_stick">
-            <div class="container">
-                <ul class="clearfix">
-                    <li>
-                        <div class="sort_select">
-                            <select name="sort" id="sort">
-                                <option value="popularity" selected="selected">{% trans "Sort by popularity" %}</option>
-                                <option value="rating">{% trans "Sort by average rating" %}</option>
-                                <option value="date">{% trans "Sort by newness" %}</option>
-                                <option value="price">{% trans "Sort by price: low to high" %}</option>
-                                <option value="price-desc">{% trans "Sort by price: high to" %}</select>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="ti-view-grid"></i></a>
-                        <a href="product-search.html"><i class="ti-view-list"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0" class="open_filters">
-                            <i class="ti-filter"></i><span>{% trans "Filters" %}</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <aside class="col-lg-3" id="sidebar_fixed">
-            <div class="filter_col">
-                <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
-                <div class="filter_type version_2">
-                    <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">{% trans "Wide Categories" %}</a>
-                    </h4>
-                    <div class="collapse show category_search" id="filter_1">
-                        <ul>
-                            {% for category in categories %}
-                                <li>
-                                    <label class="container_check">{{ category.name }}<small>{{ count }}</small>
-                                        <input type="checkbox" class="category-checkbox"
-                                               id="category__{{ category.id }}" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                            {% endfor %}
-                            <li>
-                                <label class="container_check">String
-                                    Instruments<small>12</small>
-                                    <input type="checkbox" name="category_1" id="category_1" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">Woodwind
-                                    Instruments<small>24</small>
-                                    <input type="checkbox" name="category_2" id="category_2" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Percussion Instruments" %}
-                                    <small>{% trans "23" %}</small>
-                                    <input type="checkbox" name="category_3" id="category_3" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Keyboard Instruments" %}
-                                    <small>{% trans "11" %}</small>
-                                    <input type="checkbox" name="category_4" id="category_4" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container_check"> Brass Instruments<small>11</small>
-                                    <input type="checkbox" name="category_5" id="category_5" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /filter_type -->
-                </div>
-                <div class="filter_type version_2">
-                    <h4><a href="#filter_2" data-bs-toggle="collapse"
-                           class="opened">{% trans "Specific Categories" %}</a>
-                    </h4>
-                    <div class="collapse show" id="filter_2">
-                        <ul>
-                            <li>
-                                <label class="container_check">{% trans "Guitar" %} <small>{% trans "12" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Piano" %} <small>{% trans "24" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Violin" %} <small>{% trans "23" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Bass" %}<small>{% trans "11" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /filter_type -->
-                </div>
-                <!-- /filter_type -->
-                <div class="filter_type version_2">
-                    <h4><a href="#filter_3" data-bs-toggle="collapse" class="opened">{% trans "Color" %}</a></h4>
-                    <div class="collapse show" id="filter_3">
-                        <ul>
-                            <li>
-                                <label class="container_check">{% trans "Blue " %}<small>{% trans "06" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Red " %}<small>{% trans "12" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Orange " %}<small>{% trans "17" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Black " %}<small>{% trans "43" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /filter_type -->
-                <div class="filter_type version_2">
-                    <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">{% trans "Brands" %}</a></h4>
-                    <div class="collapse" id="filter_4">
-                        <ul>
-                            <li>
-                                <label class="container_check">{% trans "Adidas " %}<small>{% trans "11" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Nike " %}<small>{% trans "08" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Vans " %}<small>{% trans "05" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">{% trans "Puma " %}<small>{% trans "18" %}</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /filter_type -->
-                <div class="filter_type version_2">
-                    <h4><a href="#filter_5" data-bs-toggle="collapse" class="closed">{% trans "Price" %}</a></h4>
-                    <div class="collapse" id="filter_5">
-                        <ul>
-                            <li>
-                                <label class="container_check">$0 — $50<small>11</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">$50 — $100<small>08</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">$100 — $150<small>05</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="container_check">$150 — $200<small>18</small>
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /filter_type -->
-                <div class="buttons">
-                    <a href="#0" class="btn_1">{% trans "Filter" %}</a> <a href="#0"
-                                                                           class="btn_1 gray">{% trans "Reset" %}</a>
-                </div>
-            </div>
-        </aside>
-        <!-- /col -->
-    </div>
 {% endblock %}
 
 {% block foot_link %}

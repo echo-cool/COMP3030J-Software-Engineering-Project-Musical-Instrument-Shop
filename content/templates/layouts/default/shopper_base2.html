@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     {% block title %} <title>{% trans "Index" %}</title> {% endblock %}
+
     {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
     {#	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>#}
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -66,6 +67,48 @@
     {% endblock %}
     {% block head_link %}
     {% endblock %}
+    <style>
+        body::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        body::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border: 2px solid #555555;
+        }
+
+
+        {#body::-webkit-scrollbar-track {#}
+        {#    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);#}
+        {#    background-color: #F5F5F5;#}
+        {#    border-radius: 10px;}#}
+        {##}
+        {#body::-webkit-scrollbar {#}
+        {#    width: 10px;#}
+        {#    background-color: #F5F5F5;}#}
+        {##}
+        {#body::-webkit-scrollbar-thumb {#}
+        {#    background-color: #AAA;#}
+        {#    border-radius: 10px;#}
+        {#    background-image: -webkit-linear-gradient(90deg,#}
+        {#    rgba(0, 0, 0, .2) 25%,#}
+        {#    transparent 25%,#}
+        {#    transparent 50%,#}
+        {#    rgba(0, 0, 0, .2) 50%,#}
+        {#    rgba(0, 0, 0, .2) 75%,#}
+        {#    transparent 75%,#}
+        {#    transparent)}#}
+
+        .info_footer {
+            text-align: -webkit-center;
+        }
+    </style>
 </head>
 <body class="home-page" id="home-page">
 
@@ -959,6 +1002,15 @@
                                     <a href="/blog" title="BLOGS"
                                        class="delay03 relative nav-link  menu_lv1 ">{% trans "BLOGS" %}</a>
                                 </li>
+
+                                {% if request.user %}
+                                    {% if request.user.is_staff %}
+                                        <li class="nav-item dropdown">
+                                            <a href="{% url 'management:index' %}" title="Back End"
+                                               class="delay03 relative nav-link  menu_lv1 ">{% trans "MANAGEMENT" %}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
                                 {#                                    <div class="dropdown-menu  list-woman shop show"#}
                                 {#                                         style="width:600px; left : -200px;">#}
                                 {#                                        <div class=" ">#}
@@ -1343,10 +1395,10 @@
                             {#TODO: ICON#}
                             {% if home == 1 %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% else %}
                                 <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599"
-                                     width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme">
+                                     width="150" alt="Musicmo -  Musical Instruments Shop ">
                             {% endif %}
                         </a>
                     </div>
@@ -1392,9 +1444,15 @@
                                     <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                                     {% if request.user.is_authenticated %}
                                         <a href="{% url "shop:personal_profile" %}" class="">
-                                            <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 30px;"
-                                                 src="/media/{{ request.user.profile.image }}"
-                                                 alt="{{ request.user.username }}'s Photo"/></a>
+                                            {% if request.user.profile.image %}
+                                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 30px;"
+                                                     src="/media/{{ request.user.profile.image }}"
+                                                     alt="{{ request.user.username }}'s Photo"/></a>
+                                            {% else %}
+                                                <img style="border-radius: 100%; border: 2px solid #FFF; max-width: 30px;"
+                                                     src="/media/default.jpg"
+                                                     alt="{{ request.user.username }}'s Photo"/></a>
+                                            {% endif %}
                                     {% else %}
                                         <a href="{% url "accounts:log_in" %}"
                                            class="access_link">
@@ -1409,273 +1467,273 @@
                                         </a>
                                     {% endif %}
 
-                                    <div class="dropdown-menu" id="account-menu">
-                                        {% if user.is_authenticated %}
-                                            <a href="{% url "api:logout" %}" class="btn btn-primary"
-                                               style="display: block;">{% trans "Logout" %}</a>
-                                        {% else %}
-                                            <a href="{% url 'accounts:log_in' %}" id="sign-in"
-                                               class="btn_1">{% trans "Sign In or Sign Up" %}</a>
-                                        {% endif %}
+                            <div class="dropdown-menu" id="account-menu">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url "api:logout" %}" class="btn btn-primary"
+                                       style="display: block;">{% trans "Logout" %}</a>
+                                {% else %}
+                                    <a href="{% url 'accounts:log_in' %}" id="sign-in"
+                                       class="btn_1">{% trans "Sign In or Sign Up" %}</a>
+                                {% endif %}
 
-                                        <ul>
-                                            <li>
-                                                <a href="{% url "shop:orders" %}"><i class="ti-truck"
-                                                                                     style="color: black"></i>{% trans "Track your Order" %}
-                                                </a>
-                                            </li>
-                                            {#                                            <li>#}
-                                            {#                                                <a href="account.html"><i class="ti-package"></i>{% trans "My Orders" %}</a>#}
-                                            {#                                            </li>#}
-                                            <li>
-                                                <a href="{% url "shop:personal_profile" %}"><i class="ti-user"
-                                                                                               style="color: black"></i>{% trans "My Profile" %}
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{% url "shop:about" %}"><i class="ti-help-alt"
-                                                                                    style="color: black"></i>{% trans "About Us" %}
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </a>
-                        </li>
-                        <li class="list-inline-item mr-0">
-                            <a href="{% url 'shop:wishlist' %}" class="wishlist">
-
-                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
-                                     width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                     xmlns:cc="http://creativecommons.org/ns#"
-                                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                     xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
-                                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
-                                    <defs id="defs6"></defs>
-                                    <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
-                            </a>
-                        </li>
-                        <li class="list-inline-item mr-0">
-                            <a href="javascript:void(0)" class="cart js-call-minicart">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.78668 398.66666"
-                                     height="398.66666" width="297.78668" id="svg2" version="1.1"
-                                     xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                     xmlns:cc="http://creativecommons.org/ns#"
-                                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                     xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
-                                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
-                                    <defs id="defs6"></defs>
-                                    <g transform="matrix(1.3333333,0,0,-1.3333333,0,398.66667)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2233.36,2432.71 H 0 V 0 h 2233.36 v 2432.71 z m -220,-220 V 220 H 220.004 V 2212.71 H 2013.36"></path><path
-                                            xmlns="http://www.w3.org/2000/svg" id="path16"
-                                            style="fill-opacity:1;fill-rule:nonzero;stroke:none"
-                                            d="m 1116.68,2990 v 0 C 755.461,2990 462.637,2697.18 462.637,2335.96 V 2216.92 H 1770.71 v 119.04 c 0,361.22 -292.82,654.04 -654.03,654.04 z m 0,-220 c 204.58,0 376.55,-142.29 422.19,-333.08 H 694.492 C 740.117,2627.71 912.102,2770 1116.68,2770"></path><path
-                                            xmlns="http://www.w3.org/2000/svg" id="path18"
-                                            style="fill-opacity:1;fill-rule:nonzero;stroke:none"
-                                            d="M 1554.82,1888.17 H 678.543 v 169.54 h 876.277 v -169.54"></path></g></g></svg>
-                                <span class="js-number-cart number-cart "></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-    </header>
-    <!-- End Header -->
-
-
-    {% block content %}
-
-    {% endblock %}
-
-    <!-- End Content -->
-
-    <footer class="footer_v1">
-        <div class="top-footer">
-            <div class="container container-v1">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12">
-                        <div class="info_footer end">
-                            <div class="logo-top">
-
-                                <a href="{% url 'shop:index' %}" class="logo">
-
-                                    <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
-                                         width="150" alt="Musicmo -  Musical Instruments Shop Shopify Theme"
-                                         class="img-fluid">
-
-                                </a>
-
-                            </div>
-
-                            <p class="mb-0 content_footer">{% trans "Sophisticated simplicity for the" %}<br>
-                                independent mind.</p>
-
-
-                            <div class="list-icon">
-                                <ul class="list-inline list-unstyled mb-0">
-
-                                    <li class="list-inline-item">
-                                        <a href="" title="" target="_blank" class="social-item"><i
-                                                class="fa fa-twitter"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url "shop:orders" %}"><i class="ti-truck"
+                                                                             style="color: black"></i>{% trans "Track your Order" %}
+                                        </a>
                                     </li>
-
-
-                                    <li class="list-inline-item">
-                                        <a href="" title="" target="_blank" class="social-item"><i
-                                                class="fa fa-dribbble"></i></a>
+                                    {#                                            <li>#}
+                                    {#                                                <a href="account.html"><i class="ti-package"></i>{% trans "My Orders" %}</a>#}
+                                    {#                                            </li>#}
+                                    <li>
+                                        <a href="{% url "shop:personal_profile" %}"><i class="ti-user"
+                                                                                       style="color: black"></i>{% trans "My Profile" %}
+                                        </a>
                                     </li>
-
-
-                                    <li class="list-inline-item">
-                                        <a href="" title="" target="_blank" class="social-item"><i
-                                                class="fa fa-behance"></i></a>
+                                    <li>
+                                        <a href="{% url "shop:about" %}"><i class="ti-help-alt"
+                                                                            style="color: black"></i>{% trans "About Us" %}
+                                        </a>
                                     </li>
-
-
-                                    <li class="list-inline-item">
-                                        <a href="" title="" target="_blank" class="social-item"><i
-                                                class="fa fa-instagram"></i></a>
-                                    </li>
-
                                 </ul>
                             </div>
+
+                </div>
+
+                </a>
+                </li>
+                <li class="list-inline-item mr-0">
+                    <a href="{% url 'shop:wishlist' %}" class="wishlist">
+
+                        <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400"
+                             width="400" id="svg2" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                             xmlns:cc="http://creativecommons.org/ns#"
+                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                             xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
+                                rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
+                            <defs id="defs6"></defs>
+                            <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 903,2424.4 c 157.9,0 306.4,-61.5 418.1,-173.1 l 134.8,-134.9 c 20.7,-20.6 48.1,-32 77.1,-32 29,0 56.4,11.4 77,32 l 133.7,133.7 c 111.7,111.6 259.9,173.1 417.5,173.1 156.91,0 305,-61.3 416.8,-172.5 111.2,-111.3 172.5,-259.5 172.5,-417.5 0.6,-157.3 -60.69,-305.5 -172.5,-417.4 L 1531.5,373.5 487.402,1417.6 c -111.601,111.7 -173.105,259.9 -173.105,417.5 0,158.1 61.199,306.1 172.5,416.8 111.308,111.2 259.101,172.5 416.203,172.5 z m 1829.7,-19.6 c 0,0 0,0 -0.1,0 -152.4,152.4 -355.1,236.3 -570.9,236.3 -215.7,0 -418.7,-84.1 -571.5,-236.9 l -56.9,-57 -58.2,58.2 c -153.1,153.1 -356.3,237.5 -572.1,237.5 -215.305,0 -417.902,-83.9 -570.305,-236.3 -153,-153 -236.8942,-356 -236.2966,-571.5 0,-215 84.4026,-417.8 237.4966,-571 L 1454.7,143.301 c 20.5,-20.403 48.41,-32.199 76.8,-32.199 28.7,0 56.7,11.5 76.7,31.597 L 2731.5,1261.8 c 152.7,152.7 236.8,355.7 236.8,571.4 0.7,216 -83,419 -235.6,571.6"></path></g></g></svg>
+                    </a>
+                </li>
+                <li class="list-inline-item mr-0">
+                    <a href="javascript:void(0)" class="cart js-call-minicart">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.78668 398.66666"
+                             height="398.66666" width="297.78668" id="svg2" version="1.1"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/"
+                             xmlns:cc="http://creativecommons.org/ns#"
+                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                             xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type
+                                rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>
+                            <defs id="defs6"></defs>
+                            <g transform="matrix(1.3333333,0,0,-1.3333333,0,398.66667)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2233.36,2432.71 H 0 V 0 h 2233.36 v 2432.71 z m -220,-220 V 220 H 220.004 V 2212.71 H 2013.36"></path><path
+                                    xmlns="http://www.w3.org/2000/svg" id="path16"
+                                    style="fill-opacity:1;fill-rule:nonzero;stroke:none"
+                                    d="m 1116.68,2990 v 0 C 755.461,2990 462.637,2697.18 462.637,2335.96 V 2216.92 H 1770.71 v 119.04 c 0,361.22 -292.82,654.04 -654.03,654.04 z m 0,-220 c 204.58,0 376.55,-142.29 422.19,-333.08 H 694.492 C 740.117,2627.71 912.102,2770 1116.68,2770"></path><path
+                                    xmlns="http://www.w3.org/2000/svg" id="path18"
+                                    style="fill-opacity:1;fill-rule:nonzero;stroke:none"
+                                    d="M 1554.82,1888.17 H 678.543 v 169.54 h 876.277 v -169.54"></path></g></g></svg>
+                        <span class="js-number-cart number-cart "></span>
+                    </a>
+                </li>
+                </ul>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</header>
+<!-- End Header -->
+
+
+{% block content %}
+
+{% endblock %}
+
+<!-- End Content -->
+
+<footer class="footer_v1">
+    <div class="top-footer">
+        <div class="container container-v1">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <div class="info_footer end">
+                        <div class="logo-top">
+
+                            <a href="{% url 'shop:index' %}" class="logo">
+
+                                <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo_w.png?v=1606706599"
+                                     width="150" alt="Musicmo -  Musical Instruments Shop "
+                                     class="img-fluid">
+
+                            </a>
+
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="info_footer">
-                            <div class="title_footer">
-                                <h4 class="mb-0 title_border">{% trans "Help &amp; Infomation" %}</h4>
-                            </div>
-                            <ul class="list-unstyled mb-0">
 
-                                <li><a href="/" title="Pagination">{% trans "Pagination" %}</a></li>
+                        <p class="mb-0 content_footer">{% trans "Sophisticated simplicity for the" %}<br>
+                            independent mind.</p>
 
-                                <li><a href="/" title="Terms &amp; Conditions">{% trans "Terms &amp; Conditions" %}</a>
+
+                        <div class="list-icon">
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a href="" title="" target="_blank" class="social-item"><i
+                                            class="fa fa-twitter"></i></a>
                                 </li>
 
-                                <li><a href="/" title="Contact">{% trans "Contact" %}</a></li>
 
-                                <li><a href="/" title="Accessories">{% trans "Accessories" %}</a></li>
-
-                                <li><a href="/" title="Term of use">{% trans "Term of use" %}</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="info_footer">
-                            <div class="title_footer">
-                                <h4 class="mb-0 title_border">{% trans "About us" %}</h4>
-                            </div>
-                            <ul class="list-unstyled mb-0">
-
-                                <li><a href="/" title="Help Center">{% trans "Help Center" %}</a></li>
-
-                                <li><a href="/" title="Address Store">{% trans "Address Store" %}</a></li>
-
-                                <li><a href="/" title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
-
-                                <li><a href="/"
-                                       title="Receivers &amp; Amplifiers">{% trans "Receivers &amp; Amplifiers" %}</a>
+                                <li class="list-inline-item">
+                                    <a href="" title="" target="_blank" class="social-item"><i
+                                            class="fa fa-dribbble"></i></a>
                                 </li>
 
-                                <li><a href="/" title="Musicmo">{% trans "Musicmo" %}</a></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="info_footer">
-                            <div class="title_footer">
-                                <h4 class="mb-0 title_border">{% trans "Categories" %}</h4>
-                            </div>
-                            <ul class="list-unstyled mb-0">
-
-                                <li><a href="/" title="Guitar Accessory ">{% trans "Guitar Accessory " %}</a></li>
-
-                                <li><a href="/" title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>
-
-                                <li><a href="/" title="Digital Upright Pianos">{% trans "Digital Upright Pianos" %}</a>
+                                <li class="list-inline-item">
+                                    <a href="" title="" target="_blank" class="social-item"><i
+                                            class="fa fa-behance"></i></a>
                                 </li>
 
-                                <li><a href="/" title="Electric Double Basses">{% trans "Electric Double Basses" %}</a>
+
+                                <li class="list-inline-item">
+                                    <a href="" title="" target="_blank" class="social-item"><i
+                                            class="fa fa-instagram"></i></a>
                                 </li>
 
-                                <li><a href="/" title="Guitar Amp Heads">{% trans "Guitar Amp Heads" %}</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="info_footer">
+                        <div class="title_footer">
+                            <h4 class="mb-0 title_border">{% trans "Help &amp; Infomation" %}</h4>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+
+                            <li><a href="/" title="Pagination">{% trans "Pagination" %}</a></li>
+
+                            <li><a href="/" title="Terms &amp; Conditions">{% trans "Terms &amp; Conditions" %}</a>
+                            </li>
+
+                            <li><a href="/" title="Contact">{% trans "Contact" %}</a></li>
+
+                            <li><a href="/" title="Accessories">{% trans "Accessories" %}</a></li>
+
+                            <li><a href="/" title="Term of use">{% trans "Term of use" %}</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="info_footer">
+                        <div class="title_footer">
+                            <h4 class="mb-0 title_border">{% trans "About us" %}</h4>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+
+                            <li><a href="/" title="Help Center">{% trans "Help Center" %}</a></li>
+
+                            <li><a href="/" title="Address Store">{% trans "Address Store" %}</a></li>
+
+                            <li><a href="/" title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
+
+                            <li><a href="/"
+                                   title="Receivers &amp; Amplifiers">{% trans "Receivers &amp; Amplifiers" %}</a>
+                            </li>
+
+                            <li><a href="/" title="Musicmo">{% trans "Musicmo" %}</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="info_footer">
+                        <div class="title_footer">
+                            <h4 class="mb-0 title_border">{% trans "Categories" %}</h4>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+
+                            <li><a href="/" title="Guitar Accessory ">{% trans "Guitar Accessory " %}</a></li>
+
+                            <li><a href="/" title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>
+
+                            <li><a href="/" title="Digital Upright Pianos">{% trans "Digital Upright Pianos" %}</a>
+                            </li>
+
+                            <li><a href="/" title="Electric Double Basses">{% trans "Electric Double Basses" %}</a>
+                            </li>
+
+                            <li><a href="/" title="Guitar Amp Heads">{% trans "Guitar Amp Heads" %}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-
-        {#        <div class="copyright">#}
-        {#            <div class="container container-v1">#}
-        {#                <div class="row align-items-center">#}
-        {#                    <div class="col-lg-6 col-md-6  text-lg-left text-md-left">#}
-        {##}
-        {#                        <p class="text-copyright mb-0"></p>#}
-        {#                        <div class="text-copyright mb-0">#}
-        {#                            © Copyright 2020 | <a href="http://shopilaunch.com/" rel="nofollow" target="_blank"#}
-        {#                                                  class="white  bold" style="color: #fff"> MusicmoStore </a> By <a#}
-        {#                                href="http://shopilaunch.com/" rel="nofollow" target="_blank"#}
-        {#                                class="underline_hover link"> ShopiLaunch.</a><a#}
-        {#                                href="https://www.shopify.com/?ref=shopifycenter" rel="nofollow" target="_blank"#}
-        {#                                class="white" style="color: #fff"> Powered by Shopify.</a>#}
-        {#                        </div>#}
-        {#                        <p></p>#}
-        {#                    </div>#}
-        {#                    <div class="col-lg-6 col-md-6 text-lg-right text-md-right ">#}
-        {#                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/pay_copyright.png?v=1606296952"#}
-        {#                             alt="">#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-    </footer>
-
-    {#inset: auto auto 0px 0;    #}
-    <div id="iAtlasChatDiv" class="iAtlasChatDiv"
-         style="position:fixed;inset: auto 0 45px auto;z-index: 21 !important; height: calc(17% - 0px); width: 8%; cursor: auto;"
-         draggable="false">
-        <div id="iAtlasChatHandle"
-             style="display: none; position: absolute; width: 20px; height: 20px; top: 0px; left: 0px; background: rgba(0, 0, 0, 0); overflow: hidden; vertical-align: middle; line-height: 5px; letter-spacing: 2px; color: rgb(204, 204, 204); text-shadow: black 1px 0px 1px; box-sizing: unset;">
-        </div>
-
-        <iframe src="/chat_ai" id="iAtlasChat"
-                style="top: auto; box-sizing: unset; margin: 0px !important; border: none !important; overflow: hidden !important; display: block !important; z-index: 2147483647 !important; height: 100%; width: 400px; bottom: 0px;">
-        </iframe>
-        {#        {% include "layouts/default/chat_ai.html" %}#}
     </div>
 
-    <!-- popup-quickview  -->
-    <div class="footer-social-countryselector">
-        <div class="footer-countryselector">
-            <div id="country-language-popup">
-                <div id="popup-quickview-999999999" class="modal" tabindex="-1">
-                    <div class="modal-dialog quickview-dialog">
-                        <div class="modal-content">
-                            {#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i#}
-                            {#                                    class="fi flaticon-cancel"></i></button>#}
-                            <button type="button" class="close" data-bs-dismiss="modal">×</button>
+    {#        <div class="copyright">#}
+    {#            <div class="container container-v1">#}
+    {#                <div class="row align-items-center">#}
+    {#                    <div class="col-lg-6 col-md-6  text-lg-left text-md-left">#}
+    {##}
+    {#                        <p class="text-copyright mb-0"></p>#}
+    {#                        <div class="text-copyright mb-0">#}
+    {#                            © Copyright 2020 | <a href="http://shopilaunch.com/" rel="nofollow" target="_blank"#}
+    {#                                                  class="white  bold" style="color: #fff"> MusicmoStore </a> By <a#}
+    {#                                href="http://shopilaunch.com/" rel="nofollow" target="_blank"#}
+    {#                                class="underline_hover link"> ShopiLaunch.</a><a#}
+    {#                                href="https://www.shopify.com/?ref=shopifycenter" rel="nofollow" target="_blank"#}
+    {#                                class="white" style="color: #fff"> Powered by Shopify.</a>#}
+    {#                        </div>#}
+    {#                        <p></p>#}
+    {#                    </div>#}
+    {#                    <div class="col-lg-6 col-md-6 text-lg-right text-md-right ">#}
+    {#                        <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/pay_copyright.png?v=1606296952"#}
+    {#                             alt="">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+</footer>
 
-                            <div class="modal-body">
-                                <h3 class="modal-title">{% trans "Choose your country" %}</h3>
-                                <!-- Asia Region -->
-                                <h3>{% trans "Asia Pacific" %}</h3>
+{#inset: auto auto 0px 0;    #}
+<div id="iAtlasChatDiv" class="iAtlasChatDiv"
+     style="position:fixed;inset: auto 0 45px auto;z-index: 21 !important; height: calc(17% - 0px); width: 8%; cursor: auto;"
+     draggable="false">
+    <div id="iAtlasChatHandle"
+         style="display: none; position: absolute; width: 20px; height: 20px; top: 0px; left: 0px; background: rgba(0, 0, 0, 0); overflow: hidden; vertical-align: middle; line-height: 5px; letter-spacing: 2px; color: rgb(204, 204, 204); text-shadow: black 1px 0px 1px; box-sizing: unset;">
+    </div>
 
-                                <div class="col-item">
-                                    <table cellpadding="0" cellspacing="0" class="locale-list">
-                                        <tbody>
-                                        <tr id="language-zh">
-                                            <td>
+    <iframe src="/chat_ai" id="iAtlasChat"
+            style="top: auto; box-sizing: unset; margin: 0px !important; border: none !important; overflow: hidden !important; display: block !important; z-index: 2147483647 !important; height: 100%; width: 400px; bottom: 0px;">
+    </iframe>
+    {#        {% include "layouts/default/chat_ai.html" %}#}
+</div>
+
+<!-- popup-quickview  -->
+<div class="footer-social-countryselector">
+    <div class="footer-countryselector">
+        <div id="country-language-popup">
+            <div id="popup-quickview-999999999" class="modal" tabindex="-1">
+                <div class="modal-dialog quickview-dialog">
+                    <div class="modal-content">
+                        {#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i#}
+                        {#                                    class="fi flaticon-cancel"></i></button>#}
+                        <button type="button" class="close" data-bs-dismiss="modal">×</button>
+
+                        <div class="modal-body">
+                            <h3 class="modal-title">{% trans "Choose your country" %}</h3>
+                            <!-- Asia Region -->
+                            <h3>{% trans "Asia Pacific" %}</h3>
+
+                            <div class="col-item">
+                                <table cellpadding="0" cellspacing="0" class="locale-list">
+                                    <tbody>
+                                    <tr id="language-zh">
+                                        <td>
                                                 <span class="flag flag-icon-en">
         <svg t="1651240073883" class="icon" viewBox="0 0 1024 1024"
              version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5478"
@@ -1690,17 +1748,17 @@
                                                             fill="#F6E202" p-id="5481"></path>
                                                 </svg>
                                                 </span>
-                                                {% trans "China" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('cn')"
-                                                   data-test="ftr-intl-en-AU">CN</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
+                                            {% trans "China" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('cn')"
+                                               data-test="ftr-intl-en-AU">CN</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
 
-                                        <tr id="language-aus">
-                                            <td>
+                                    <tr id="language-aus">
+                                        <td>
                                                 <span class="flag flag-icon-en">
         <svg t="1651240685359" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="6393" width="39" height="26"><path d="M64 288h896v448H64z" fill="#012775" opacity=".75"
@@ -1720,22 +1778,22 @@
                 fill="#ED293A" p-id="6401"></path></svg>
 
                                                 </span>
-                                                {% trans "Australia" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-AU">EN</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-item">
-                                    <table cellpadding="0" cellspacing="0" class="locale-list">
-                                        <tbody>
-                                        <tr id="language-ja">
-                                            <td>
+                                            {% trans "Australia" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-AU">EN</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-item">
+                                <table cellpadding="0" cellspacing="0" class="locale-list">
+                                    <tbody>
+                                    <tr id="language-ja">
+                                        <td>
                                                 <span class="flag flag-icon-en">
 <svg t="1651239558739" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4853"
      width="39" height="26"><path d="M64 213.33h896v597.33H64z" fill="#FFFFFF" opacity=".75" p-id="4854"></path><path
@@ -1746,25 +1804,25 @@
         d="M512 512m-179.17 0a179.17 179.17 0 1 0 358.34 0 179.17 179.17 0 1 0-358.34 0Z" fill="#BC012D"
         p-id="4857"></path></svg>
                                                 </span>
-                                                {% trans "Japan" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ja')"
-                                                   data-test="ftr-intl-en-AU">JA</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <br clear="all">
-                                <!-- Europe Region -->
-                                <h3>{% trans "Europe" %}</h3>
-                                <div class="col-item">
-                                    <table cellpadding="0" cellspacing="0" class="locale-list">
-                                        <tbody>
-                                        <tr id="language-en">
-                                            <td>
+                                            {% trans "Japan" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('ja')"
+                                               data-test="ftr-intl-en-AU">JA</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br clear="all">
+                            <!-- Europe Region -->
+                            <h3>{% trans "Europe" %}</h3>
+                            <div class="col-item">
+                                <table cellpadding="0" cellspacing="0" class="locale-list">
+                                    <tbody>
+                                    <tr id="language-en">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                     <svg t="1651239324277" class="icon" viewBox="0 0 1024 1024"
                                                          version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
@@ -1792,16 +1850,16 @@
                                                             d="M944 728l15.98 8h0.02v-33.88l-16-8.02z" fill="#CF152B"
                                                             p-id="4303"></path></svg>
                                                 </span>
-                                                {% trans "England" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-AU">EN</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-ru">
-                                            <td>
+                                            {% trans "England" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-AU">EN</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-ru">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                   <svg t="1651239921251" class="icon" viewBox="0 0 1024 1024"
                                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5058"
@@ -1830,16 +1888,16 @@
                                                           p-id="5069"></path></svg>
 
                                                 </span>
-                                                {% trans "Russia" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ru')"
-                                                   data-test="ftr-intl-en-AU">RU</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-uk">
-                                            <td>
+                                            {% trans "Russia" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('ru')"
+                                               data-test="ftr-intl-en-AU">RU</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-uk">
+                                        <td>
                                                 <span class="flag flag-icon-en">
 
                                                     <svg t="1651240162240" class="icon" viewBox="0 0 1024 1024"
@@ -1858,16 +1916,16 @@
                                                             p-id="6059"></path><path d="M64 512.12h16v298.55H64z"
                                                                                      fill="#FED502" p-id="6060"></path></svg>
                                                    </span>
-                                                {% trans "Ukraine" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('ua')"
-                                                   data-test="ftr-intl-en-AU">UA</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-ruishi">
-                                            <td>
+                                            {% trans "Ukraine" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('ua')"
+                                               data-test="ftr-intl-en-AU">UA</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-ruishi">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                     <svg t="1651309089169" class="icon" viewBox="0 0 1024 1024"
                                                          version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4292"
@@ -1899,17 +1957,17 @@
                                                             d="M631.91 459.39l4.08 12.55 0.9 2.76h16.1l-10.67 7.75-2.35 1.71 0.9 2.76 4.08 12.55-10.67-7.75-2.35-1.71-2.35 1.71-10.67 7.75 4.08-12.55 0.9-2.76-2.35-1.71-10.67-7.75h16.1l0.9-2.76 4.04-12.55m0-12.94l-7.88 24.25h-25.5l20.63 14.99-7.88 24.25 20.63-14.99 20.63 14.99-7.88-24.25 20.63-14.99h-25.5l-7.88-24.25z"
                                                             fill="#FFFFFF" p-id="4305"></path></svg>
                                                    </span>
-                                                {% trans "New Zealand" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-AU">EN</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
+                                            {% trans "New Zealand" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-AU">EN</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
 
-                                        <tr id="language-german">
-                                            <td>
+                                    <tr id="language-german">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                    <svg t="1651309217940" class="icon" viewBox="0 0 1024 1024"
                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4670"
@@ -1927,24 +1985,24 @@
                                                            p-id="4676"></path><path
                                                            d="M64 422.52h16v178.96H64zM944 422.52h16v178.96h-16z"
                                                            fill="#DD0200" p-id="4677"></path></svg>  </span>
-                                                {% trans "German" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
-                                                   data-test="ftr-intl-en-AU">FR</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
+                                            {% trans "German" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
+                                               data-test="ftr-intl-en-AU">FR</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
 
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-item">
-                                    <table cellpadding="0" cellspacing="0" class="locale-list">
-                                        <tbody>
-                                        <tr id="language-ireland">
-                                            <td>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-item">
+                                <table cellpadding="0" cellspacing="0" class="locale-list">
+                                    <tbody>
+                                    <tr id="language-ireland">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                     <svg t="1651309157630" class="icon" viewBox="0 0 1024 1024"
                                                          version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4458"
@@ -1970,16 +2028,16 @@
                                                                                           fill="#FF7900"
                                                                                           p-id="4469"></path></svg>
                                               </span>
-                                                {% trans "Ireland" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-AU">EN</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-fr">
-                                            <td>
+                                            {% trans "Ireland" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-AU">EN</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-fr">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                             <svg t="1651240101449" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                                  xmlns="http://www.w3.org/2000/svg" p-id="5843"
@@ -2001,16 +2059,16 @@
                                                     data-spm-anchor-id="a313x.7781069.0.i33"
                                                     class="selected"></path></svg>
                                                 </span>
-                                                {% trans "France" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
-                                                   data-test="ftr-intl-en-AU">FR</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-es">
-                                            <td>
+                                            {% trans "France" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('fr')"
+                                               data-test="ftr-intl-en-AU">FR</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-es">
+                                        <td>
                                                 <span class="flag flag-icon-en">
 <svg t="1651240048600" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5270"
      data-spm-anchor-id="a313x.7781069.0.i22" width="39" height="26"><path
@@ -2027,16 +2085,16 @@
         d="M944 463.74h16v96.64h-16zM64 463.74h16v96.64H64z" fill="#bfbfbf" p-id="5277"
         data-spm-anchor-id="a313x.7781069.0.i24" class="selected"></path></svg>
                                                  </span>
-                                                {% trans "Spain" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('es')"
-                                                   data-test="ftr-intl-en-AU">ES</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr id="language-de">
-                                            <td>
+                                            {% trans "Spain" %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('es')"
+                                               data-test="ftr-intl-en-AU">ES</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="language-de">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                <svg t="1651309383484" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                                     xmlns="http://www.w3.org/2000/svg" p-id="5153" width="39"
@@ -2056,26 +2114,26 @@
                                                        d="M944 411.74h16v200.07h-16z" fill="#EEEEEE" p-id="5164"></path></svg>
 
                                                 </span>
-                                                {% trans 'Netherlands' %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
-                                                   data-test="ftr-intl-en-AU">DE</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <br clear="all">
+                                            {% trans 'Netherlands' %}
+                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
+                                               data-test="ftr-intl-en-AU">DE</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br clear="all">
 
-                                <!-- North America Region -->
-                                <h3>{% trans "North America" %}</h3>
-                                <div class="col-item">
-                                    <table cellpadding="0" cellspacing="0" class="locale-list">
-                                        <tbody>
-                                        <tr id="language-am">
-                                            <td>
+                            <!-- North America Region -->
+                            <h3>{% trans "North America" %}</h3>
+                            <div class="col-item">
+                                <table cellpadding="0" cellspacing="0" class="locale-list">
+                                    <tbody>
+                                    <tr id="language-am">
+                                        <td>
                                                 <span class="flag flag-icon-en">
                                                    <svg t="1651240555551" class="icon" viewBox="0 0 1024 1024"
                                                         version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6213"
@@ -2130,237 +2188,243 @@
                                                            p-id="6239"></path><path
                                                            d="M94.13 287.8l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 287.8l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 287.8l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 287.8l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM384.09 314.45l8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29zM94.13 338.67l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 338.67l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 338.67l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 338.67l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 389.55l-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM153.86 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM213.58 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM273.3 389.55l-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29h-10.7zM333.03 389.55l-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.71zM392.75 389.55l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM94.13 440.42l-3.3 10.18H80.12l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM153.86 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM213.58 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM273.3 440.42L270 450.6h-10.71l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.3-10.18 8.65-6.3h-10.7zM333.03 440.42l-3.31 10.18h-10.7l8.65 6.3-3.3 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.71zM392.75 440.42l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM97.44 501.48l-3.31-10.18-3.3 10.18H80.12l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM157.16 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM216.89 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM276.61 501.48l-3.31-10.18-3.3 10.18h-10.71l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.3-10.18 8.65-6.29zM336.33 501.48l-3.3-10.18-3.31 10.18h-10.7l8.65 6.29-3.3 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM396.06 501.48l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM127.3 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM187.03 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM246.75 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM306.47 475.83l-3.3-10.18-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29zM366.2 475.83l-3.31-10.18-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29zM124 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 414.99l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 414.99l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM124 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3H127.3zM183.72 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM243.44 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM303.17 364.32l-3.31 10.18h-10.71l8.66 6.3-3.3 10.18 8.66-6.3 8.65 6.3-3.3-10.18 8.66-6.3h-10.71zM362.89 364.32l-3.31 10.18h-10.7l8.66 6.3-3.31 10.18 8.66-6.3 8.66 6.3-3.31-10.18 8.66-6.3h-10.7zM124 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29H127.3zM183.72 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM243.44 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7zM303.17 313.66l-3.31 10.18h-10.71l8.66 6.29-3.3 10.18 8.66-6.29 8.65 6.29-3.3-10.18 8.66-6.29h-10.71zM362.89 313.66l-3.31 10.18h-10.7l8.66 6.29-3.31 10.18 8.66-6.29 8.66 6.29-3.31-10.18 8.66-6.29h-10.7z"
                                                            fill="#FFFFFF" p-id="6240"></path></svg> </span>
-                                                {% trans "United States" %}
-                                            </td>
-                                            <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
-                                                   data-test="ftr-intl-en-AU">DE</a></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <br clear="all">
-                                <h3>{% trans "Choose your region" %}</h3>
-                                <p>{% trans "Don’t see your country listed above? Please choose your region below" %}</p>
-                                &nbsp;
-                                <table cellpadding="0" cellspacing="0" class="regions-list" width="100%">
-                                    <tbody>
-                                    <tr>
-                                        <td align="left" class="first">
-                                            <div class="zone-col"><img alt=""
-                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dwc638b783/africa.png"
-                                                                       title="">
-                                                <h3>{% trans "Africa" %}</h3>
-                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-ZA">En</a
-                                                > <a
-                                                        href="javascript:void(0)" onclick="changeLanguage('fr')"
-                                                        data-test="ftr-intl-fr-SN">Fr</a></div>
+                                            {% trans "United States" %}
                                         </td>
-                                        <td align="center">
-                                            <div class="zone-col"><img alt=""
-                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw8d4b15f2/americas.png"
-                                                                       title="">
-                                                <h3>{% trans 'Americas' %}</h3>
-                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-CA">En</a
-                                                > <a
-                                                        href="javascript:void(0)" onclick="changeLanguage('es')"
-                                                        data-test="ftr-intl-es-VE">Es</a></div>
-                                        </td>
-                                        <td align="center">
-                                            <div class="zone-col"><img alt=""
-                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/default/dw6d92ef41/asia-pacific.png"
-                                                                       title="">
-                                                <h3>{% trans "Asia Pacific" %}</h3>
-                                                <a href="javascript:void(0)" onclick="changeLanguage('es')"
-                                                   data-test="ftr-intl-en-NZ">En</a></div>
-                                        </td>
-                                        <td align="center">
-                                            <div class="zone-col"><img alt=""
-                                                                       src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw5d072552/europe.png"
-                                                                       title="">
-                                                <h3>{% trans "Europe" %}</h3>
-                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-RU">En</a></div>
-                                        </td>
-                                        <td align="right" class="last">
-                                            <div class="zone-col zone-col_last"><img alt=""
-                                                                                     src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw4f5cb6e7/middle-east.png"
-                                                                                     title="">
-                                                <h3>{% trans 'Middle East' %}</h3>
-                                                <a href="javascript:void(0)" onclick="changeLanguage('en')"
-                                                   data-test="ftr-intl-en-SA">En</a></div>
-                                        </td>
+                                        <td><a href="javascript:void(0)" onclick="changeLanguage('de')"
+                                               data-test="ftr-intl-en-AU">DE</a></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
+
+                            <br clear="all">
+                            <h3>{% trans "Choose your region" %}</h3>
+                            <p>{% trans "Don’t see your country listed above? Please choose your region below" %}</p>
+                            &nbsp;
+                            <table cellpadding="0" cellspacing="0" class="regions-list" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td align="left" class="first">
+                                        <div class="zone-col"><img alt=""
+                                                                   src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dwc638b783/africa.png"
+                                                                   title="">
+                                            <h3>{% trans "Africa" %}</h3>
+                                            <a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-ZA">En</a
+                                            > <a
+                                                    href="javascript:void(0)" onclick="changeLanguage('fr')"
+                                                    data-test="ftr-intl-fr-SN">Fr</a></div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="zone-col"><img alt=""
+                                                                   src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw8d4b15f2/americas.png"
+                                                                   title="">
+                                            <h3>{% trans 'Americas' %}</h3>
+                                            <a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-CA">En</a
+                                            > <a
+                                                    href="javascript:void(0)" onclick="changeLanguage('es')"
+                                                    data-test="ftr-intl-es-VE">Es</a></div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="zone-col"><img alt=""
+                                                                   src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/default/dw6d92ef41/asia-pacific.png"
+                                                                   title="">
+                                            <h3>{% trans "Asia Pacific" %}</h3>
+                                            <a href="javascript:void(0)" onclick="changeLanguage('es')"
+                                               data-test="ftr-intl-en-NZ">En</a></div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="zone-col"><img alt=""
+                                                                   src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw5d072552/europe.png"
+                                                                   title="">
+                                            <h3>{% trans "Europe" %}</h3>
+                                            <a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-RU">En</a></div>
+                                    </td>
+                                    <td align="right" class="last">
+                                        <div class="zone-col zone-col_last"><img alt=""
+                                                                                 src="https://www.fender.com/on/demandware.static/-/Library-Sites-Fender-Shared/en/dw4f5cb6e7/middle-east.png"
+                                                                                 title="">
+                                            <h3>{% trans 'Middle East' %}</h3>
+                                            <a href="javascript:void(0)" onclick="changeLanguage('en')"
+                                               data-test="ftr-intl-en-SA">En</a></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <form action="{% url 'set_language' %}" method="post" style="display: none">
-        {% csrf_token %}
-        <input name="next" type="hidden" value="{{ redirect_to }}"/>
-        <input name="language" type="hidden" value=""/>
-        <button class="btn btn-success">{% trans 'Change' %}</button>
-    </form>
-    <!-- popup-quickview -->
-    <!-- Jquery JS Link -->
-    {#        <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
+</div>
+<form action="{% url 'set_language' %}" method="post" style="display: none">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}"/>
+    <input name="language" type="hidden" value=""/>
+    <button class="btn btn-success">{% trans 'Change' %}</button>
+</form>
+<!-- popup-quickview -->
+<!-- Jquery JS Link -->
+{#    <script src="{% static 'assets_chinese/js/jquery-3.5.1.min.js' %}"></script>#}
 
-    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
-    <!-- End Footer -->
-    {#    <script type="text/javascript"#}
-    {#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/modernizr.custom.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
-    <script type="text/javascript" src="{% static "assets/js/add_url.js" %}"></script>
-    <script src="{% static "assets/js/hullabaloo.js" %}"></script>
-    <script>
-        function activateDeleteCart() {
-            $(".delete-item").on("click", function () {
-                // {# Use API to remove cart item #}
-                let that = this;
-                $.ajax({
-                    url: "/api/cart/" + $(this).attr("data-id"),
-                    type: "DELETE",
-                    headers: {
-                        'X-CSRFTOKEN': '{{ csrf_token }}'
-                    },
-                    success: function (data) {
-                        $("#cart-" + $(that).attr("data-count")).remove();
-                        update_total_money()
-                        let count = $("#cart-count").text()
-                        $("#cart-count").text(count - 1)
-                    }
-                });
+{#    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+
+<script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+<!-- End Footer -->
+{#    <script type="text/javascript"#}
+{#            src="{% static 'assets/vendor/jquery/jquery.js' %}"></script>#}
+{#    <script src="https://code.jquery.com/jquery-3.6.0.js"#}
+{#            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>#}
+<script type="text/javascript" src="{% static "assets/js_for_homepage/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.fancybox.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-ui.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/owl.carousel.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.mCustomScrollbar.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.hoverdir.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/modernizr.custom.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/jquery.jcarousellite.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js_for_homepage/theme.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/css_for_homepage/new_header.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js/add_url.js" %}"></script>
+<script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
+<script>
+    function activateDeleteCart() {
+        $(".delete-item").on("click", function () {
+            // {# Use API to remove cart item #}
+            let that = this;
+            $.ajax({
+                url: "/api/cart/" + $(this).attr("data-id"),
+                type: "DELETE",
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    $("#cart-" + $(that).attr("data-count")).remove();
+                    update_total_money()
+                    let count = $("#cart-count").text()
+                    $("#cart-count").text(count - 1)
+                }
             });
-        }
+        });
+    }
 
-        activateDeleteCart();
+    activateDeleteCart();
 
-        jQuery(function ($) {
-            $('#search_form').on('submit', function (e) {
-                window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
-                return false;
-            });
-
-            let image_upload = $("#image_file_upload");
-
-            $('#image_retrieval').on('click', function () {
-                image_upload.trigger('click')
-                return false;
-            }).mouseover(function () {
-                $(this).find("i").css("color", "#02d5fa");
-            }).mouseout(function () {
-                $(this).find("i").css("color", "black");
-            });
-
-            image_upload.bind('input propertychange', function () {
-                let search_title = $("#search_title");
-                search_title.text("Processing...");
-                let formData = new FormData()
-                formData.append("image_file_upload", image_upload[0].files[0]);
-                $.ajax({
-                    url: "/api/analyze_image/",
-                    method: 'POST',
-                    data: formData,
-                    async: true,
-                    contentType: false,
-                    processData: false,
-                    headers: {
-                        'X-CSRFTOKEN': '{{ csrf_token }}'
-                    },
-                    success: function (res) {
-                        window.location.href = ("/image_search/" + res['key']);
-                        image_upload.val(null);
-                        search_title.text("Start typing and hit Enter")
-                    },
-                    error: function () {
-                        alert('Error! Check console!');
-                    }
-                })
-            });
-
-        })
-
-        $('.dropdown-cart, .dropdown-access').hover(function () {
-            $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(300);
-        }, function () {
-            $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
+    jQuery(function ($) {
+        $('#search_form').on('submit', function (e) {
+            window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
+            return false;
         });
 
-        function changeLanguage(lan) {
-            console.log("change language", lan);
-            switch (lan) {
-                case "ru":
-                    lan = "ru-RU";
-                    break;
-                case "ja":
-                    lan = "ja-JP";
-                    break;
-                case "ua":
-                    lan = "uk-UA";
-                    break;
-                case "fr":
-                    lan = "fr-FR";
-                    break;
-                case "cn":
-                    lan = "zh-CN";
-                    break;
-                case "es":
-                    lan = "es-ES";
-                    break;
-                case "ds":
-                    lan = "ds-DS";
-                    break;
-                case "de":
-                    lan = "de-DE";
-                    break;
-                case "en":
-                    lan = "en";
-                    break;
-                {#default:#}
-                {#    lan = "en";#}
-                {#    break;#}
-            }
-            $("input[name='language']").val(lan);
-            console.log($("input[name='language']").val());
-            $(".btn-success").click();
+        let image_upload = $("#image_file_upload");
+
+        $('#image_retrieval').on('click', function () {
+            image_upload.trigger('click')
+            return false;
+        }).mouseover(function () {
+            $(this).find("i").css("color", "#02d5fa");
+        }).mouseout(function () {
+            $(this).find("i").css("color", "black");
+        });
+
+        image_upload.bind('input propertychange', function () {
+            let search_title = $("#search_title");
+            search_title.text("Processing...");
+            let formData = new FormData()
+            formData.append("image_file_upload", image_upload[0].files[0]);
+            $.ajax({
+                url: "/api/analyze_image/",
+                method: 'POST',
+                data: formData,
+                async: true,
+                contentType: false,
+                processData: false,
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (res) {
+                    window.location.href = ("/image_search/" + res['key']);
+                    image_upload.val(null);
+                    search_title.text("Start typing and hit Enter")
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+            })
+        });
+
+    })
+
+    $('.dropdown-cart, .dropdown-access').hover(function () {
+        $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(300);
+    }, function () {
+        $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
+    });
+
+    function changeLanguage(lan) {
+        console.log("change language", lan);
+        switch (lan) {
+            case "ru":
+                lan = "ru-RU";
+                break;
+            case "ja":
+                lan = "ja-JP";
+                break;
+            case "ua":
+                lan = "uk-UA";
+                break;
+            case "fr":
+                lan = "fr-FR";
+                break;
+            case "cn":
+                lan = "zh-CN";
+                break;
+            case "es":
+                lan = "es-ES";
+                break;
+            case "ds":
+                lan = "ds-DS";
+                break;
+            case "de":
+                lan = "de-DE";
+                break;
+            case "en":
+                lan = "en";
+                break;
+            {#default:#}
+            {#    lan = "en";#}
+            {#    break;#}
         }
+        $("input[name='language']").val(lan);
+        console.log($("input[name='language']").val());
+        $(".btn-success").click();
+    }
 
-        {% if messages %}
-        {% for message in messages %}
-        setTimeout(function () {
-            let hulla = new hullabaloo();
-            hulla.send("{{ message }}", "{{ message.tags }}");
-        }, 300);
-        {% endfor %}{% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    setTimeout(function () {
+        let hulla = new hullabaloo();
+        hulla.send("{{ message }}", "{{ message.tags }}");
+    }, 300);
+    {% endfor %}{% endif %}
 
-    </script>
-
-
-    {% block scripts %}
-    {% endblock %}
+</script>
 
 
-    {% block foot_link %}
-    {% endblock %}
+{% block scripts %}
+{% endblock %}
+
+
+{% block foot_link %}
+{% endblock %}
 </div>
 </body>
 </html>

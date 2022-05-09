@@ -15,6 +15,8 @@ function sticktothetop() {
 
 jQuery(function ($) {
     activateCategorySearch();
+    activatePriceSearch()
+    activateColorSearch();
     $(window).scroll(sticktothetop);
     sticktothetop();
 });
@@ -72,11 +74,17 @@ function getCookie(name) {
 let csrf_token = getCookie('csrftoken');
 
 function changeURLStatic(cate) {
-
-    let section = getQueryString('section');
     let category = "category=";
+
+    let color = getQueryString('color');
+    let price = getQueryString('price');
+    let section = getQueryString('section');
     let search_key = getQueryString('search');
+
     search_key = search_key === null ? "" : search_key;
+    section = section === null ? "" : section;
+    price = price === null ? "" : price;
+    color = color === null ? "" : color;
 
     for (let i = 0; i < cate.length; i++) {
         if (i === 0) {
@@ -85,36 +93,111 @@ function changeURLStatic(cate) {
             category += "|" + cate[i];
         }
     }
-    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&" + category);
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&" + category + "&price=" + price + "&color=" + color);
 
     $.ajax({
-        url: "/product_search/?section=" + section + "&search=" + search_key + "&" + category,
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&" + category + "&price=" + price + "&color=" + color,
         method: "GET",
         success: function (res) {
             $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
             console.log("search ajax refresh");
         }
     });
+}
 
+
+function changeURLStaticPrice(pri) {
+    let color = getQueryString('color');
+    let section = getQueryString('section');
+    let category = getQueryString('category');
+    let search_key = getQueryString('search');
+
+    let price = 'price=';
+    search_key = search_key === null ? "" : search_key;
+    category = category === null ? "" : category;
+    section = section === null ? "" : section;
+    color = color === null ? "" : color;
+
+    for (let i = 0; i < pri.length; i++) {
+        if (i === 0) {
+            price += pri[i];
+        } else {
+            price += "|" + pri[i];
+        }
+    }
+
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&category=" + category + "&" + price + "&color=" + color);
+
+    $.ajax({
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&category=" + category + "&" + price + "&color=" + color,
+        method: "GET",
+        success: function (res) {
+            $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+            $(".dropdown-label").html($(res).find('.dropdown-label')[0].innerHTML);
+            console.log("search ajax refresh");
+        }
+    });
 }
 
 function changeURLPage(pa) {
     let page = "page=" + pa;
 
+    let color = getQueryString('color');
+    let price = getQueryString('price');
     let section = getQueryString('section');
     let category = getQueryString('category');
-    console.log("category is:", category)
     let search_key = getQueryString('search');
+
     search_key = search_key === null ? "" : search_key;
     category = category === null ? "" : category;
+    section = section === null ? "" : section;
+    price = price === null ? "" : price;
+    color = color === null ? "" : color;
 
-    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&category=" + category + "&" + page);
+
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&category=" + category + "&price=" + price + "&color=" + color + "&" + page);
 
     $.ajax({
-        url: "/product_search/?section=" + section + "&search=" + search_key + "&category=" + category + "&" + page,
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&category=" + category + "&" + "&price=" + price + "&color=" + color + "&" + page,
         method: "GET",
         success: function (res) {
             $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+            $(".dropdown-label").html($(res).find('.dropdown-label')[0].innerHTML);
+
+            console.log("search ajax refresh");
+        }
+    });
+}
+
+
+function changeURLStaticColor(col) {
+    let section = getQueryString('section');
+    let category = getQueryString('category');
+    let search_key = getQueryString('search');
+    let price = getQueryString('price');
+
+    let color = 'color=';
+    search_key = search_key === null ? "" : search_key;
+    category = category === null ? "" : category;
+    section = section === null ? "" : section;
+    price = price === null ? "" : price;
+
+    for (let i = 0; i < col.length; i++) {
+        if (i === 0) {
+            color += col[i];
+        } else {
+            color += "|" + col[i];
+        }
+    }
+
+    history.replaceState(null, null, "?section=" + section + "&search=" + search_key + "&category=" + category + "&price=" + price + "&" + color);
+
+    $.ajax({
+        url: "/product_search/?section=" + section + "&search=" + search_key + "&category=" + category + "&price=" + price + "&" + color,
+        method: "GET",
+        success: function (res) {
+            $(".collection_prod").html($(res).find('.collection_prod')[0].innerHTML);
+            $(".dropdown-label").html($(res).find('.dropdown-label')[0].innerHTML);
             console.log("search ajax refresh");
         }
     });
@@ -123,11 +206,11 @@ function changeURLPage(pa) {
 function activateCategorySearch() {
     $(function () {
         console.log('activateCategorySearch');
-        var $checkboxes = $(".category-checkbox");
+        let $checkboxes = $(".category-checkbox");
         let categories = $(".category-name");
 
         // $checkboxes.on("change", function () {
-        //     var param = "";
+        //     let param = "";
         //     $checkboxes.each(function () {
         //         if (this.checked) {
         //             param += "|" + this.id.split('__')[1];
@@ -163,7 +246,7 @@ function activateCategorySearch() {
             }
 
 
-            var param = "";
+            let param = "";
 
             if (!$(this).hasClass('active')) {
                 $(this).addClass('active')
@@ -181,7 +264,7 @@ function activateCategorySearch() {
 
             let categories = $(".category-name");
             categories.each(function () {
-                var checkbox = $(this).prev();
+                let checkbox = $(this).prev();
                 // console.log(checkbox.is(':checked'));
                 if (checkbox.is(':checked')) {
                     param += "|" + this.id.split('__')[1];
@@ -213,7 +296,176 @@ function activateCategorySearch() {
                 });
             }
         }
-
-
     });
 }
+
+
+function activatePriceSearch() {
+    $(function () {
+        console.log('activatePriceSearch');
+        let $checkboxes = $(".category-checkbox2");
+        let categories = $(".category-name2");
+
+        categories.on("click", function () {
+            let ind = $(this).attr("id").replace('category2__', "");
+            console.log("click", ind);
+
+            if (getQueryString('price')) {
+                let checked_list = getQueryString('price').split('|');
+                console.log(checked_list, checked_list.indexOf(ind));
+                if (checked_list.indexOf(ind) !== -1) {
+                    let checked_list_new = [];
+                    for (let i = 0; i < checked_list.length; i++) {
+                        console.log()
+                        if (checked_list[i] !== ind) {
+                            checked_list_new.push(checked_list[i]);
+                        }
+                    }
+                    changeURLStaticPrice(checked_list_new);
+                } else {
+                    checked_list.push(ind);
+                    changeURLStaticPrice(checked_list);
+                }
+            } else {
+                changeURLStaticPrice([ind]);
+            }
+
+
+            let param = "";
+
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active')
+            }
+
+            if ($(this).prev().is(':checked')) {
+                $(this).prev().removeClass("checked");
+                $(this).prev().prop("checked", false);
+            } else {
+                $(this).prev().addClass("checked");
+                $(this).prev().prop("checked", true);
+            }
+
+            let categories = $(".category-name");
+            categories.each(function () {
+                let checkbox = $(this).prev();
+                // console.log(checkbox.is(':checked'));
+                if (checkbox.is(':checked')) {
+                    param += "|" + this.id.split('__')[1];
+                }
+            });
+            param = param.substring(1);
+            // console.log(param)
+            // console.log(categories)
+
+            // window.location.href = addUrlPara(window.location.href, 'category', param);
+        })
+
+        if (getQueryString('price')) {
+            const checked_list = getQueryString('price').split('|');
+            if (checked_list.length > 0) {
+                $checkboxes.each(function () {
+                    // this.checked = checked_list.includes(this.id.split('__')[1]);
+                    if (checked_list.includes(this.id.split('__')[1])) {
+                        $(this).attr("checked", true);
+                        if (!$(this).next().hasClass('active')) {
+                            $(this).next().addClass('active')
+                        }
+                    } else {
+                        $(this).attr("checked", false);
+                        if ($(this).next().hasClass('active')) {
+                            $(this).next().removeClass('active')
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
+
+
+function activateColorSearch() {
+    $(function () {
+        console.log('activatePriceSearch');
+        let $checkboxes = $(".category-checkbox3");
+        let categories = $(".category-name3");
+
+        categories.on("click", function () {
+            let ind = $(this).attr("id").replace('category3__', "");
+            console.log("click", ind);
+
+            if (getQueryString('color')) {
+                let checked_list = getQueryString('color').split('|');
+                console.log(checked_list, checked_list.indexOf(ind));
+                if (checked_list.indexOf(ind) !== -1) {
+                    let checked_list_new = [];
+                    for (let i = 0; i < checked_list.length; i++) {
+                        console.log()
+                        if (checked_list[i] !== ind) {
+                            checked_list_new.push(checked_list[i]);
+                        }
+                    }
+                    changeURLStaticColor(checked_list_new);
+                } else {
+                    checked_list.push(ind);
+                    changeURLStaticColor(checked_list);
+                }
+            } else {
+                changeURLStaticColor([ind]);
+            }
+
+
+            let param = "";
+
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active')
+            }
+
+            if ($(this).prev().is(':checked')) {
+                $(this).prev().removeClass("checked");
+                $(this).prev().prop("checked", false);
+            } else {
+                $(this).prev().addClass("checked");
+                $(this).prev().prop("checked", true);
+            }
+
+            let categories = $(".category-name");
+            categories.each(function () {
+                let checkbox = $(this).prev();
+                // console.log(checkbox.is(':checked'));
+                if (checkbox.is(':checked')) {
+                    param += "|" + this.id.split('__')[1];
+                }
+            });
+            param = param.substring(1);
+            // console.log(param)
+            // console.log(categories)
+
+            // window.location.href = addUrlPara(window.location.href, 'category', param);
+        })
+
+        if (getQueryString('color')) {
+            const checked_list = getQueryString('color').split('|');
+            if (checked_list.length > 0) {
+                $checkboxes.each(function () {
+                    // this.checked = checked_list.includes(this.id.split('__')[1]);
+                    if (checked_list.includes(this.id.split('__')[1])) {
+                        $(this).attr("checked", true);
+                        if (!$(this).next().hasClass('active')) {
+                            $(this).next().addClass('active')
+                        }
+                    } else {
+                        $(this).attr("checked", false);
+                        if ($(this).next().hasClass('active')) {
+                            $(this).next().removeClass('active')
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
+

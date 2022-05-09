@@ -11,6 +11,9 @@ from blog.models import Post, Comment, Category
 
 def index(request):
     all_posts = Post.objects.all()
+    category_id = request.GET.get("category", None)
+    if category_id and category_id != "0":
+        all_posts = all_posts.filter(category_id=category_id)
     # if len(posts) >= 3:
     #     latest3Posts = posts[:3]
     # elif len(posts) == 2:
