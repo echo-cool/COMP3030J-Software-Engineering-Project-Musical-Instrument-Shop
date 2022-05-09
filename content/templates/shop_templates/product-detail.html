@@ -354,7 +354,9 @@
                                      class="shopify-payment-button">
                                     <button type="button"
                                             class="shopify-payment-button__button"
-                                            data-testid="Checkout-button">{% trans 'Buy it now' %}
+                                            data-testid="Checkout-button"
+                                            onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
+                                    >{% trans 'Buy it now' %}
                                     </button>
                                 </div>
                         </form>

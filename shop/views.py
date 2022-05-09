@@ -353,6 +353,7 @@ def personal_profile(request):
         # print(request.FILES)
         profile_item.image = request.FILES.get('photo')
         profile_item.save()
+        messages.success(request, "Profile updated successfully")
         return redirect(reverse('shop:personal_profile'))
     # print(form)
     orders = Order.objects.filter(user=request.user).order_by('-created_at')[:5]
@@ -390,6 +391,75 @@ def wishlist(request):
 
 
 @login_required
+def checkout_single_instrument(request, instrument_id):
+    # get or post
+    checkout_form = CheckoutForm()
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            country = request.POST['country']
+            state = request.POST['state']
+            user = request.user
+            first_name = checkout_form.cleaned_data['First_Name']
+            last_name = checkout_form.cleaned_data['Last_Name']
+            address = checkout_form.cleaned_data['Address']
+            apartment = checkout_form.cleaned_data['Apartment']
+            city = checkout_form.cleaned_data['City']
+            zip_Code = checkout_form.cleaned_data['Zip_Code']
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            for item in Cart.objects.filter(user=request.user).all():
+                uncompletedOrderItem = UncompletedOrderItem(
+                    uncompleted_order=uncompletedOrder,
+                    instrument=item.instrument,
+                    quantity=item.count
+                )
+                uncompletedOrderItem.save()
+                item.delete()
+            messages.success(request, "Order saved successfully")
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
+        else:
+            messages.error(request, "Please fill all the fields")
+    # check if user is not logged in
+    if not request.user.is_authenticated:
+        return redirect(reverse('shop:login'))
+    else:
+        user: User = request.user
+        profile: Profile = Profile.objects.filter(user=user).first()
+        subtotal = 0
+
+        class CartItem:
+            def __init__(self, instrument, count):
+                self.instrument = instrument
+                self.count = count
+                self.created_at = time.strftime("%d/%m/%Y")
+
+        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), 1)]
+        for item in cart_items:
+            subtotal += item.instrument.price * item.count
+
+        return render(request, 'shop_templates/checkout/checkout.html', {
+            "cart_items": cart_items,
+            "subtotal": subtotal,
+            'user': user,
+            'profile': profile,
+            'form': checkout_form
+        })
+
+
+@login_required
 def checkout(request):
     # get or post
     if request.method == "POST":
@@ -424,12 +494,13 @@ def checkout(request):
                 )
                 uncompletedOrderItem.save()
                 item.delete()
+            messages.success(request, "Order saved successfully")
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
     # check if user is not logged in
     if not request.user.is_authenticated:
-        return redirect('/login')
+        return redirect(reverse('shop:login'))
     else:
         checkout_form = CheckoutForm()
         user: User = request.user
@@ -507,7 +578,6 @@ def model_post_checkout(request):
         )
         custom.save()
         data = {'code': 200, 'status': "OK", }
-
         return HttpResponse(json.dumps(data), content_type='application/json')
 
 
