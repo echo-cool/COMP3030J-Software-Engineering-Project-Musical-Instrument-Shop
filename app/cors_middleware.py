@@ -21,7 +21,7 @@ class CORSMiddleware(MiddlewareMixin):
 
         # 允许你的域名来获取我的数据
         response['Access-Control-Allow-Origin'] = "*"
-        response['X-Frame-Options'] = 'allow-from *'
+        # response['X-Frame-Options'] = 'allow-from *'
 
         # 允许你携带Content-Type请求头
         # response['Access-Control-Allow-Headers'] = "Content-Type"
