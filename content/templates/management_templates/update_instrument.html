@@ -35,7 +35,19 @@
     </form>
 
     <script>
-        $(".form-group").find("a").n
+        $("label:contains(Image)").each(function (){
+                let that = $(this);
+                let url = that.parent().find("a")[0].href;
+                if (url.indexOf("/media/default.jpg") === -1) {
+                    that.parent().append("<br />");
+                    that.parent().append("<img alt='' class='preview-image' width='300rem' src="+url+" />");
+                }
+                let input = that.parent().find(".form-control-file");
+                console.log(input)
+                input.change(function () {
+                    that.parent().find(".preview-image").attr("src",URL.createObjectURL(input[0].files[0]));
+                });
+            });
     </script>
 
 {% endblock %}
