@@ -107,8 +107,15 @@ def LogInPost(request):
             messages.success(request, "Login successfully")
 
             redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
+            if redirect_to is None:
+                redirect_to = request.session.get(REDIRECT_FIELD_NAME)
             url_is_safe = url_has_allowed_host_and_scheme(redirect_to, allowed_hosts=request.get_host(),
                                                           require_https=request.is_secure())
+            if redirect_to and url_is_safe:
+                request.session.delete(REDIRECT_FIELD_NAME)
+
+            print(redirect_to)
+            print(f"url_is_safe: {url_is_safe}")
 
             if url_is_safe:
                 return redirect(redirect_to)
@@ -116,6 +123,8 @@ def LogInPost(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
         else:
             print("DSADSAsadasd")
+            # redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
+            # print(redirect_to)
             form2 = SignUpForm()
             context = {
                 "form": form,
@@ -192,6 +201,9 @@ class LogSign3View(View):
             'form': sign_in_form,
             'form2': SignUpForm,
         }
+        redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
+        print(redirect_to)
+        request.session[REDIRECT_FIELD_NAME] = redirect_to
         return render(request, 'layouts/default/cool_login.html', context)
 
 
