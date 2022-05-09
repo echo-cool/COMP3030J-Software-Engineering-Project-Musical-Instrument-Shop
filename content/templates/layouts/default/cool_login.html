@@ -20,7 +20,12 @@
         }
 
         .switch-to-sign-up, .switch-to-sign-in {
-            line-height: 1.2;
+                line-height: 2;
+        font-size: 11pt;
+        width: fit-content;
+        height: fit-content;
+        padding: 5px;
+        font-family: s;
         }
 
         label2 {
@@ -131,11 +136,11 @@
                 </p>   <!-- User Sign in button end -->
 
                 <!-- User Sign in button end -->
-                <div class="switch-to-sign-up">{% trans "Sign Up" %}</div>
+                <div class="switch-to-sign-up" style="opacity: 0">{% trans "Sign Up" %}</div>
                 <!-- Visitor Sign in button start -->
                 <button type="button" class="visitor_button">
-                    <span> Visitors </span>
-                    <span>{% trans "entrance" %}</span>
+                    <span> {% trans "Sign Up" %} </span>
+{#                    <span>{% trans "entrance" %}</span>#}
                 </button>
                 <!-- Visitor Sign in button end -->
                 <p></p>
@@ -151,6 +156,10 @@
                 <h2 style="font-family: fantasy;font-style: italic">{% trans "User REGISTER" %}</h2>
                 <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
                     {% bootstrap_form form2 %}
+                                                    <div class="google-recaptcha-box">
+                    <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
+                         data-callback="verify_result"></div>
+                </div>
                 </div>
                 {#                <!-- Input username start -->#}
                 {#                <label for=" username">{% trans "USERNAME" %}</label>#}
@@ -171,6 +180,7 @@
                 {#                </label>#}
                 {#                <img id="icon-password2" src="/static/images/icon/icon-correct.png" alt="">#}
                 {#                <!-- Input password end -->#}
+
                 <p> <!-- User Sign in button start -->
                     <button type="submit" id="submit_r" class="submit"
                             data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
@@ -267,12 +277,20 @@
     <script>
         $(document).ready(function () {
             $('.submit').css('background', '#5e5e5e');
+            {#$('.submit').setAttribute('disabled', 'disabled');#}
+            $('.submit').css('cursor', 'not-allowed');
+            $('.submit').css('pointer-events', 'none');
+            $('.submit').attr('disabled', 'disabled');
+
         });
 
         function verify_result(token) {
             console.log("verify_result google recaptcha");
             console.log(token);
             $('.submit').css('background', '#e5bb60');
+            $('.submit').css('cursor', 'pointer');
+            $('.submit').css('pointer-events', 'auto');
+            $('.submit').removeAttr('disabled');
         }
 
         {#function ButtonClick(e) {#}

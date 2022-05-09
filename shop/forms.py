@@ -28,7 +28,7 @@ class CheckoutForm(forms.Form):
     First_Name = forms.CharField(max_length=50, required=True)
     Last_Name = forms.CharField(max_length=50, required=True)
     Address = forms.CharField(max_length=100, required=True)
-    Apartment = forms.CharField(max_length=100, required=False)
+    Apartment = forms.CharField(max_length=100, required=True)
     City = forms.CharField(max_length=100, required=True)
     # Country = forms.CharField(max_length=100, required=True)
     # State = forms.CharField(max_length=100, required=True)
