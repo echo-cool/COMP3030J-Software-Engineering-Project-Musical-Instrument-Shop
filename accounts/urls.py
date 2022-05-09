@@ -1,3 +1,4 @@
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.urls import path
@@ -17,13 +18,20 @@ def go_to_login(request):
     return redirect('shop:index')
 
 
+@login_required
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'Bye!')
+    return redirect('shop:index')
+
+
 urlpatterns = [
     path('cool_login/', cool_login, name='cool_login'),
     path('log-in/', LogSign3View.as_view(), name='log_in'),
     path('log-in-post/', LogInPost, name='log_in_post'),
     path('log-in-staff-post/', LogInStaffPost, name='log_in_staff_post'),
     path('sign-up-post/', SignUpPost, name='sign_up_post'),
-    path('log-out/', LogOutView.as_view(), name='log_out'),
+    path('log-out/', logout, name='log_out'),
 
     path('resend/activation-code/', ResendActivationCodeView.as_view(), name='resend_activation_code'),
 
