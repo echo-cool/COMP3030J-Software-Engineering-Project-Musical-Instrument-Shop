@@ -32,7 +32,7 @@
             </small>
         </h1>
         <button class="btn btn-xs btn-success pull-right"
-                onclick="window.location.href='{% url 'management:add_order' %}'">
+                onclick="window.location.href='{% url 'management:add_order_item' order_id=order_items.first.order_id %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
