@@ -212,6 +212,20 @@ def game(request):
     return render(request, 'shop_templates/game.html')
 
 
+def chinese_header(request):
+    blogs = Post.objects.order_by("created_on")
+    if blogs.count() > 8:
+        blogs = blogs[:3]
+
+    carts = Cart.objects.filter(user_id=request.user.id)
+    return render(request, 'shop_templates/chinese_header.html',
+                  {
+                      'blogs': blogs,
+                      'carts': carts
+                  })
+
+
+@xframe_options_exempt
 def chinese(request):
     blogs = Post.objects.order_by("created_on")
     if blogs.count() > 8:
