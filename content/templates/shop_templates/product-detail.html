@@ -87,8 +87,8 @@
                         <div class="bread-crumb">
                             <a href="/" title="Back to the frontpage">{% trans 'Home' %}<i class="fa fa-angle-right"
                                                                                            aria-hidden="true"></i></a>
-                            <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"
-                                                                                      aria-hidden="true"></i></a>
+{#                            <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"#}
+{#                                                                                      aria-hidden="true"></i></a>#}
                             <strong>{% trans 'YC Combo Organ' %}</strong>
 
                         </div>
@@ -378,9 +378,7 @@
                             <li>
                                 <div class="item-product-meta-info product-category-info">
                                     <label>{% trans "Categories :" %}</label>
-                                    <label>{% trans "Categories :" %}</label>
-                                    <a href="/collections/frontpage">{% trans 'Home page,' %} </a>
-                                    <a href="/collections/hot-rate">{% trans 'hot rate' %} </a>
+                                    <a href="/product_search/?category={{ instrument.category.id }}">{{ instrument.category.name }} </a>
                                 </div>
                             </li>
                         </ul>
