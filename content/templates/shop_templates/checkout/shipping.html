@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load static %}
+
 <!DOCTYPE html>
 <html dir="ltr"
       class="js windows firefox desktop page--no-banner page--logo-main page--show page--show card-fields cors svg opacity placeholder no-touchevents displaytable display-table generatedcontent cssanimations flexbox no-flexboxtweener anyflexbox shopemoji fwvflrsd idc0_338"
@@ -182,7 +184,7 @@
             crossorigin="anonymous"></script>
 
 
-    <script>{% trans "window.ShopifyPaypalV4VisibilityTracking = true;" %}</script>
+    <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
 
 
     <script type="text/javascript">
@@ -519,18 +521,18 @@ window.additionalScripts = function () {
                                                              src="{{ item.instrument.image.url }}">
                                                     </div>
                                                     <span class="product-thumbnail__quantity"
-                                                          aria-hidden="true">1</span>
+                                                          aria-hidden="true">{{ item.quantity }}</span>
                                                 </div>
 
                                             </td>
                                             <th class="product__description" scope="row">
                                                 <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>
-                                                <span class="product__description__variant order-summary__small-text">{% trans "Add: {{ item.created_at }}" %}</span>
+                                                <span class="product__description__variant order-summary__small-text">{% trans "Add: " %}{{ item.uncompleted_order.created_at }}</span>
 
                                             </th>
                                             <td class="product__quantity">
                                             <span class="visually-hidden">
-                                              {{ item.count }}
+                                              {{ item.quantity }}
                                             </span>
                                             </td>
                                             <td class="product__price">
