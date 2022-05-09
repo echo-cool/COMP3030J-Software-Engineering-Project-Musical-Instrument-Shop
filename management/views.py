@@ -366,12 +366,33 @@ def order_item_management(request, order_id):
     })
 
 
+def add_order_item(request, order_id):
+    if request.method == "POST":
+        f = OrderItemForm(request.POST, request.FILES)
+        if f.is_valid():
+            order_item = OrderItem(order_id=order_id,
+                                   instrument=f.cleaned_data["instrument"],
+                                   quantity=f.cleaned_data["quantity"])
+            order_item.save()
+        else:
+            return render(request, 'management_templates/update_order_item.html', {
+                'form': f
+            })
+        return redirect('management:order_item_management', order_id=order_id)
+    else:
+        f = OrderItemForm()
+        return render(request, 'management_templates/update_order_item.html', {
+            'form': f
+        })
+
+
 @login_required
 @staff_required
 def update_order_item(request, order_item_id):
     if request.method == "POST":
         order_item = OrderItem.objects.get(id=order_item_id)
         f = OrderItemForm(request.POST, request.FILES, instance=order_item)
+        print(f.data)
         if f.is_valid():
             f.save()
         return redirect('management:order_item_management', order_id=order_item.order.id)

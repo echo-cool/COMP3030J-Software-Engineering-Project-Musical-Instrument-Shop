@@ -82,9 +82,7 @@
                 </td>
 
                 <td>
-                    <a href="#">
-                        {{ order_item.user.username|truncatewords:5 }}
-                    </a>
+                    {{ order_item.user.username|truncatewords:5 }}
                 </td>
                 <td>
                     <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a>
