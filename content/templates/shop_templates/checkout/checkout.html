@@ -42,6 +42,14 @@
           media="all">
 
     <!--<![endif]-->
+    <style>
+        .errorlist {
+            color: red;
+            display: flex;
+            justify-content: flex-end;
+
+        }
+    </style>
 
 
     <script type="text/javascript" async=""
@@ -1040,9 +1048,8 @@ window.additionalScripts = function () {
                                                             aria-required="true"
                                                             name="state"
                                                             id="checkout_shipping_address_province">
-                                                        <option disabled="disabled"
-                                                                selected="selected">{% trans "State" %}</option>
-                                                        <option data-alternate-values="[&quot;Alabama&quot;]"
+                                                        <option disabled="disabled">{% trans "State" %}</option>
+                                                        <option selected data-alternate-values="[&quot;Alabama&quot;]"
                                                                 value="AL">Alabama
                                                         </option>
                                                         <option data-alternate-values="[&quot;Alaska&quot;]" value="AK">
@@ -1360,7 +1367,7 @@ window.additionalScripts = function () {
                                             </td>
                                             <th class="product__description" scope="row">
                                                 <span class="product__description__name order-summary__emphasis">{{ item.instrument.name }}</span>
-                                                <span class="product__description__variant order-summary__small-text">{% trans "Add: {{ item.created_at }}" %}</span>
+                                                <span class="product__description__variant order-summary__small-text">{% trans "Add:" %}{{ item.created_at }}</span>
 
                                             </th>
                                             <td class="product__quantity">
