@@ -4,9 +4,12 @@
 {% load i18n %}
 {% load bootstrap4 %}
 
+{% block title %} <title>{% trans "Product Detail" %}</title> {% endblock %}
 {% block head_link %}
     <!-- Favicons-->
-    <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    {#    <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">#}
     <link rel="apple-touch-icon" type="image/x-icon"
           href="{% static "assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
@@ -356,7 +359,7 @@
                                             class="shopify-payment-button__button"
                                             data-testid="Checkout-button"
                                             onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
-                                    >{% trans 'Buy it now' %}
+                                        >{% trans 'Buy it now' %}
                                     </button>
                                 </div>
                         </form>
@@ -554,14 +557,16 @@
                                 <span class="new_price">${{ item.price }}</span>
                             </div>
                             <ul>
-                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-wishlist" data-bs-toggle="tooltip" data-bs-placement="left"
+                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-wishlist"
+                                       data-bs-toggle="tooltip" data-bs-placement="left"
                                        title="Add to favorites" id="wishlist__{{ item.id }}"><i
                                         class="ti-heart"></i><span>{% trans 'Add to favorites' %}</span></a></li>
-{#                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"#}
-{#                                       title="Add to compare"><i#}
-{#                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>#}
-{#                                </li>#}
-                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-cart" data-bs-toggle="tooltip" data-bs-placement="left"
+                                {#                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"#}
+                                {#                                       title="Add to compare"><i#}
+                                {#                                        class="ti-control-shuffle"></i><span>{% trans 'Add to compare' %}</span></a>#}
+                                {#                                </li>#}
+                                <li><a href="javascript:void(0)" class="tooltip-1 related-add-cart"
+                                       data-bs-toggle="tooltip" data-bs-placement="left"
                                        title="Add to cart" id="cart__{{ item.id }}"><i
                                         class="ti-shopping-cart"></i><span>{% trans 'Add to cart' %}</span></a>
                                 </li>

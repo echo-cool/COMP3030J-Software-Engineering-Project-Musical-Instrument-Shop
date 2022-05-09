@@ -1,579 +1,638 @@
 ﻿{% load i18n %}
 <!DOCTYPE html>
 <html lang="zxx">
-    <head>
-        <!-- Meta Tags -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <meta name="description" content="Multipages HTML5 Template">
-        <meta name="author" content="">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="description" content="Multipages HTML5 Template">
+    <meta name="author" content="">
 
-        <!-- Page Title -->
-        <title>{% trans "Multipages HTML5 Template" %}</title>
+    <!-- Page Title -->
+    <title>{% trans "Blogs" %}</title>
 
-        <!-- Favicon and touch Icons -->
-        <link href="../../assets/assets/img_for_shop/images/favicon.png" rel="shortcut icon" type="image/png">
-        <link href="../../assets/assets/img_for_shop/images/apple-touch-icon.png" rel="apple-touch-icon">
-        <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-        <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-        <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
-        <!-- Lead Style -->
-        <link href="../../assets/assets/css_for_shop/css/style.css" rel="stylesheet" type="text/css">
-    </head>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!-- Favicon and touch Icons -->
+    {#        <link href="../../assets/assets/img_for_shop/images/favicon.png" rel="shortcut icon" type="image/png">#}
+    <link href="../../assets/assets/img_for_shop/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-72x72.png" rel="apple-touch-icon"
+          sizes="72x72">
+    <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-114x114.png" rel="apple-touch-icon"
+          sizes="114x114">
+    <link href="../../assets/assets/img_for_shop/images/apple-touch-icon-144x144.png" rel="apple-touch-icon"
+          sizes="144x144">
+    <!-- Lead Style -->
+    <link href="../../assets/assets/css_for_shop/css/style.css" rel="stylesheet" type="text/css">
+</head>
 
-    <body>
-		<div id="preloader" class="loader_show">
-			<div class="loader-wrap">
-			<div class="loader">
-				<div class="loader-inner"></div>
-			</div>
-			</div>
-		</div>
-		
-		<!-- pointer start -->
-		<div class="pointer bnz-pointer" id="bnz-pointer"></div>
-		
-		<div class="content">
-    		<div class="top_part">
-	        	<!-- Start Header -->
-				<header id="header" class="header_2 header">
-					<div class="container">
-						<div class="navigation">
-							<nav id="flexmenu">
-								<div class="logo">
-									<a href="index.html"><img src="../../assets/assets/img_for_shop/images/logo-white.png" alt="logo"></a>
-								</div>
-								<div class="nav-inner">
-									<div id="mobile-toggle" class="mobile-btn"></div>
-									<ul class="main-menu">
-										<li class="menu-item active"><a href="index.html">{% trans "Home" %}</a>
-											<ul class="sub-menu">
-												<li class="menu-item"><a href="index-2.html">{% trans "Home 2" %}</a></li>
-												<li class="menu-item active"><a href="blog-external.html">{% trans "Home 3" %}</a></li>
-											</ul>
-										</li>
-										<li class="menu-item"><a href="#">{% trans "Posts" %}</a>
-											<ul class="sub-menu">
-												<li class="menu-item"><a href="blog-details.html">{% trans "Blog Details" %}</a></li>
-												<li class="menu-item"><a href="blog-details-fullwidth.html">{% trans "Blog Details Fullwidth" %}</a></li>
-											</ul>
-										</li>
-										<li class="menu-item"><a href="about.html">{% trans "About Author" %}</a></li>
-										<li class="menu-item"><a href="contact.html">{% trans "Contact Us" %}</a></li>
-									</ul>
-								</div>
-							</nav>
-						</div>
-					</div>
-		        </header>
+<body>
+<div id="preloader" class="loader_show">
+    <div class="loader-wrap">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+</div>
 
-				<div class="theme_slider_2">
-		            <div class="slider_inner_content">
-						<div class="slider_text">
-							<div class="swiper-container slider_posts">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide" style="background-image: url('../../assets/assets/img_for_shop/images/slider/4.jpg');">
-										<div class="container">
-											<div class="row">
-												<div class="col-lg-9 col-md-12">
-													<article class="blog_post">
-														<div class="post_img">
-															<div class="calendar">
-																<a href="#"><span class="date">{% trans "30" %}</span><br>{% trans "May" %}</a>
-															</div>
-														</div>
-														<div class="post_content">
-															<div class="post_header">
-																<h2 class="post_title">
-																	<a href="#">{% trans "Live with no excuses & travel with no regrets" %}</a>
-																</h2>
-															</div>
-															<div class="post_intro">
-																<p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-															</div>
-															<div class="post_footer">
-																<div class="read_more">
-																	<a href="blog-details.html">{% trans "Continue Reading" %}</a>
-																</div>
-															</div>
-														</div>
-													</article>
-												</div>
-											</div>
-										</div>
-									</div>
+<!-- pointer start -->
+<div class="pointer bnz-pointer" id="bnz-pointer"></div>
 
-									<div class="swiper-slide" style="background-image: url('../../assets/assets/img_for_shop/images/slider/5.jpg');">
-										<div class="container">
-											<div class="row">
-												<div class="col-lg-9 col-md-12">
-													<article class="blog_post">
-														<div class="post_img">
-															<div class="calendar">
-																<a href="#"><span class="date">{% trans "26" %}</span><br>{% trans "May" %}</a>
-															</div>
-														</div>
-														<div class="post_content">
-															<div class="post_header">
-																<h2 class="post_title">
-																	<a href="#">{% trans "50 travel essentials you must have" %}</a>
-																</h2>
-															</div>
-															<div class="post_intro">
-																<p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-															</div>
-															<div class="post_footer">
-																<div class="read_more">
-																	<a href="blog-details.html">{% trans "Continue Reading" %}</a>
-																</div>
-															</div>
-														</div>
-													</article>
-												</div>
-											</div>
-										</div>
-									</div>
+<div class="content">
+    <div class="top_part">
+        <!-- Start Header -->
+        <header id="header" class="header_2 header">
+            <div class="container">
+                <div class="navigation">
+                    <nav id="flexmenu">
+                        <div class="logo">
+                            <a href="index.html"><img src="../../assets/assets/img_for_shop/images/logo-white.png"
+                                                      alt="logo"></a>
+                        </div>
+                        <div class="nav-inner">
+                            <div id="mobile-toggle" class="mobile-btn"></div>
+                            <ul class="main-menu">
+                                <li class="menu-item active"><a href="index.html">{% trans "Home" %}</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="index-2.html">{% trans "Home 2" %}</a></li>
+                                        <li class="menu-item active"><a
+                                                href="blog-external.html">{% trans "Home 3" %}</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="#">{% trans "Posts" %}</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="blog-details.html">{% trans "Blog Details" %}</a>
+                                        </li>
+                                        <li class="menu-item"><a
+                                                href="blog-details-fullwidth.html">{% trans "Blog Details Fullwidth" %}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="about.html">{% trans "About Author" %}</a></li>
+                                <li class="menu-item"><a href="contact.html">{% trans "Contact Us" %}</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-									<div class="swiper-slide" style="background-image: url('../../assets/assets/img_for_shop/images/slider/6.jpg');">
-										<div class="container">
-											<div class="row">
-												<div class="col-lg-9 col-md-12">
-													<article class="blog_post">
-														<div class="post_img">
-															<div class="calendar">
-																<a href="#"><span class="date">{% trans "22" %}</span><br>{% trans "May" %}</a>
-															</div>
-														</div>
-														<div class="post_content">
-															<div class="post_header">
-																<h2 class="post_title">
-																	<a href="#">{% trans "With age, comes wisdom. With travel, comes understanding" %}</a>
-																</h2>
-															</div>
-															<div class="post_intro">
-																<p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-															</div>
-															<div class="post_footer">
-																<div class="read_more">
-																	<a href="blog-details.html">{% trans "Continue Reading" %}</a>
-																</div>
-															</div>
-														</div>
-													</article>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-3 col-sm-6">
-							<div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
-								<img src="../../assets/assets/img_for_shop/images/category/1.jpg" alt="img">
-								<div class="featured_category_info">
-									<h6 class="featured_category_heading"><a href="#">{% trans "Travel & Advanture" %}</a></h6>
-									<p class="featured_category_number"><span>{% trans "06</span> Posts" %}</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="featured_category_item" data-aos="fade-up" data-aos-duration="800">
-								<img src="../../assets/assets/img_for_shop/images/category/2.jpg" alt="img">
-								<div class="featured_category_info">
-									<h6 class="featured_category_heading"><a href="#">{% trans "Road Trip" %}</a></h6>
-									<p class="featured_category_number"><span>{% trans "12" %}</span>{% trans " Posts" %}</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="featured_category_item" data-aos="fade-up" data-aos-duration="1000">
-								<img src="../../assets/assets/img_for_shop/images/category/3.jpg" alt="img">
-								<div class="featured_category_info">
-									<h6 class="featured_category_heading"><a href="#">{% trans "Camping Trip" %}</a></h6>
-									<p class="featured_category_number"><span>{% trans "09" %}</span>{% trans " Posts" %}</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="featured_category_item" data-aos="fade-up" data-aos-duration="1200">
-								<img src="../../assets/assets/img_for_shop/images/category/4.jpg" alt="img">
-								<div class="featured_category_info">
-									<h6 class="featured_category_heading"><a href="#">{% trans "Travel Photography" %}</a></h6>
-									<p class="featured_category_number"><span>{% trans "16" %}</span>{% trans " Posts" %}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="main-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-md-7">
-							<div class="blog_list" data-aos="fade-up" data-aos-duration="700">
-								<article class="blog_post">
-									<div class="post_img" data-aos="overlay-left">
-										<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/1.jpg" alt="blog"></a>
-										<div class="calendar">
-											<a href="#"><span class="date">{% trans "30" %}</span><br>{% trans "May" %}</a>
-										</div>
-									</div>
-									<div class="post_content">
-										<div class="post_header">
-											<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
-											<h2 class="post_title">
-												<a href="#">{% trans "Live with no excuses & travel with no regrets" %}</a>
-											</h2>
-										</div>
-										<div class="post_intro">
-											<p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-										</div>
-										<div class="post_footer">
-											<div class="read_more" data-aos="fade-up" data-aos-duration="700">
-												<a href="blog-details.html">{% trans "Continue Reading" %}</a>
-											</div>
-											<div class="post_share">
-												<ul class="share_list">
-													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</article>
-								
-								<article class="blog_post">
-									<div class="post_img" data-aos="overlay-right">
-										<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/2.jpg" alt="blog"></a>
-										<div class="calendar">
-											<a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}</a>
-										</div>
-									</div>
-									<div class="post_content">
-										<div class="post_header">
-											<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
-											<h2 class="post_title">
-												<a href="#">{% trans "50 travel essentials you must have" %}</a>
-											</h2>
-										</div>
-										<div class="post_intro">
-											<p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-										</div>
-										<div class="post_footer">
-											<div class="read_more" data-aos="fade-up" data-aos-duration="700">
-												<a href="blog-details.html">{% trans "Continue Reading" %}</a>
-											</div>
-											<div class="post_share">
-												<ul class="share_list">
-													<li data-aos="fade-up" data-aos-duration="500"><a href="#"><i class="ion-social-facebook"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="700"><a href="#"><i class="ion-social-twitter"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="900"><a href="#"><i class="ion-social-rss"></i></a></li>
-													<li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i class="ion-social-instagram"></i></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</article>
-							</div>
-
-							<div class="newsletter bg_image_2" data-aos="fade-up" data-aos-duration="700">
-								<div class="row">
-									<div class="col-lg-10 offset-lg-1">
-										<form class="newsletter_form" method="post" action="subscription.php">
-											<div class="newsletter_header">
-												<p><i class="ion-email"></i>{% trans "Subscribe to newsletter" %}</p>
-												<h3>{% trans "Get each & every new blogs through your e-mail" %}</h3>
-											</div>
-											<div class="form_group">
-												<input class="form-control" type="email" placeholder="Your Email Address" name="ne" required="">
-												<input type="submit" class="button" value="Subscribe">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-							
-							<div class="more_posts">
-								<div class="row">
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="700">
-											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm1.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "With age, comes wisdom. With travel, comes understanding" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm2.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "I am not the same having seen the moon shineon the sky" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-right">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm3.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "24" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "Travel and change of place impart new vigor to the mind" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-right">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm4.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "22" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "A journey is best measured in friends, rather than miles" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="700">
-											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm5.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "20" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "He who would travel happily must travel light" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-
-									<div class="col-lg-6 col-md-6">
-										<article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-											<div class="post_img" data-aos="overlay-left">
-												<a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm6.jpg" alt="blog"></a>
-												<div class="calendar">
-													<a href="#"><span class="date">{% trans "07" %}</span><br>{% trans "May" %}</a>
-												</div>
-											</div>
-											<div class="post_content">
-												<div class="post_header">
-													<div class="author"><a href="#"><i class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a></div>
-													<h2 class="post_title">
-														<a href="#">{% trans "You will see what a tiny place occupy in the world" %}</a>
-													</h2>
-												</div>
-											</div>
-										</article>
-									</div>
-								</div>
-							</div>
-
-							<div class="pagination-div">
-								<ul class="pagination">
-									<li><a class="page-number current" href="#">1</a></li>
-									<li><a class="page-number" href="#">2</a></li>
-									<li><a class="page-number" href="#">3</a></li>
-									<li><a href="#">{% trans "Older Post" %}</a></li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-5">
-							<div class="sidebar" data-aos="fade-up" data-aos-duration="900">
-								<div id="custom_1" class="widget widget_custom">
-									<h4 class="widget_title">{% trans "About Author" %}</h4>
-                                    <div class="sidebar_author">
-										<img src="../../assets/assets/img_for_shop/images/author.png" alt="img">
-										<p class="intro">{% trans "Lorem ipsum dolor sit amet consec adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum suspendise" %}</p>
-
-										<div class="social_profile">
-											<div class="social_media">
-												<a href="#">
-													<i class="ion-social-facebook"></i>
-													<div class="name">{% trans "Facebook" %}</div>
-													<div class="off_text">{% trans "45k Likes" %}</div>
-												</a>
-											</div>
-
-											<div class="social_media">
-												<a href="#">
-													<i class="ion-social-twitter"></i>
-													<div class="name">{% trans "Twitter" %}</div>
-													<div class="off_text">{% trans "21k Follower" %}</div>
-												</a>
-											</div>
-
-											<div class="social_media">
-												<a href="#">
-													<i class="ion-social-instagram"></i>
-													<div class="name">{% trans "Instagram" %}</div>
-													<div class="off_text">{% trans "23k Follower" %}</div>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div id="recent-posts-1" class="widget widget_recent_posts">
-									<h4 class="widget_title">{% trans "Recent Posts" %}</h4>
-									<div class="sidebar_recent_posts">
-										<ul>
-											<li><a href="#">{% trans "Let’s escape in the  cityscape" %}</a></li>
-											<li><a href="#">{% trans "Failure doesn’t define  anything" %}</a></li>
-											<li><a href="#">{% trans "Bohemian mountain towards Us" %}</a></li>
-										</ul>
-									</div>
-								</div>
-
-								<div id="custom_2" class="widget widget_custom">
-									<div class="sidebar_add">
-										<img src="../../assets/assets/img_for_shop/images/add.png" alt="add">
-									</div>
-								</div>
-
-								<div id="categories-1" class="widget widget_categories">
-                                    <h4 class="widget_title">{% trans "Categories" %}</h4>
-                                    <div class="sidebar_categories">
-                                        <ul class="category_list">
-                                            <li><a href="#">{% trans "Travel Hacks (5)" %}</a></li>
-                                            <li><a href="#">{% trans "South Asia (7)" %}</a></li>
-                                            <li><a href="#">{% trans "Travel Photography (4)" %}</a></li>
-                                            <li><a href="#">{% trans "Wildlife Adventure (2)" %}</a></li>
-                                            <li><a href="#">{% trans "Road Trips (4)" %}</a></li>
-                                        </ul>
-                                    </div>
-								</div>
-								
-								<div id="popular-1" class="widget widget_popular_posts">
-                                    <h4 class="widget_title">{% trans "Most Read Blogs" %}</h4>
-                                    <div class="sidebar_popular_posts">
-                                        <div class="popular_post_item">
-                                            <div class="popular_post_item_wrapper">
-												<img src="../../assets/assets/img_for_shop/images/popular/1.jpg" alt="img">
-												<div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "Beautiful afternoon boating in Morine Lake" %}</a></h4>
+        <div class="theme_slider_2">
+            <div class="slider_inner_content">
+                <div class="slider_text">
+                    <div class="swiper-container slider_posts">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"
+                                 style="background-image: url('../../assets/assets/img_for_shop/images/slider/4.jpg');">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12">
+                                            <article class="blog_post">
+                                                <div class="post_img">
+                                                    <div class="calendar">
+                                                        <a href="#"><span
+                                                                class="date">{% trans "30" %}</span><br>{% trans "May" %}
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-										</div>
-										<div class="popular_post_item">
-                                            <div class="popular_post_item_wrapper">
-												<img src="../../assets/assets/img_for_shop/images/popular/2.jpg" alt="img">
-												<div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "Sudden trip to grand Canyons" %}</a></h4>
+                                                <div class="post_content">
+                                                    <div class="post_header">
+                                                        <h2 class="post_title">
+                                                            <a href="#">{% trans "Live with no excuses & travel with no regrets" %}</a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="post_intro">
+                                                        <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
+                                                    </div>
+                                                    <div class="post_footer">
+                                                        <div class="read_more">
+                                                            <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-										</div>
-										<div class="popular_post_item">
-                                            <div class="popular_post_item_wrapper">
-												<img src="../../assets/assets/img_for_shop/images/popular/3.jpg" alt="img">
-												<div class="popular_post_item_content">
-                                                    <h4 class="popular_post_item_title"><a href="#">{% trans "First Snow Experience of my life" %}</a></h4>
-                                                </div>
-                                            </div>
+                                            </article>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-								<div id="tags-1" class="widget widget_tag_cloud">
-                                    <h4 class="widget_title">{% trans "Tag Cloud" %}</h4>
-                                    <div class="tagcloud">
-                                        <a href="#">{% trans "Travel" %}</a>
-										<a href="#">{% trans "PHOTOGRAPHY" %}</a>
-										<a href="#">{% trans "FASHION" %}</a>
-										<a href="#">{% trans "Travel" %}</a>
-										<a href="#">{% trans "HOBBY" %}</a>
-										<a href="#">{% trans "PHOTOGRAPHY" %}</a>
-										<a href="#">{% trans "NATURE" %}</a>
+                            <div class="swiper-slide"
+                                 style="background-image: url('../../assets/assets/img_for_shop/images/slider/5.jpg');">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12">
+                                            <article class="blog_post">
+                                                <div class="post_img">
+                                                    <div class="calendar">
+                                                        <a href="#"><span
+                                                                class="date">{% trans "26" %}</span><br>{% trans "May" %}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="post_content">
+                                                    <div class="post_header">
+                                                        <h2 class="post_title">
+                                                            <a href="#">{% trans "50 travel essentials you must have" %}</a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="post_intro">
+                                                        <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
+                                                    </div>
+                                                    <div class="post_footer">
+                                                        <div class="read_more">
+                                                            <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
                                     </div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-			<footer class="footer" data-aos="fade-up" data-aos-duration="700">
-				<div class="footer-above">
-					<div class="footer-logo">
-						<a href="#"><img src="../../assets/assets/img_for_shop/images/logo-white.png" alt="logo"></a>
-					</div>
-					<div class="footer-social">
-						<ul>
-							<li><a href="#"><i class="ion-social-facebook"></i></a></li>
-							<li><a href="#"><i class="ion-social-instagram"></i></a></li>
-							<li><a href="#"><i class="ion-social-twitter"></i></a></li>
-						</ul>
-					</div>
-				</div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide"
+                                 style="background-image: url('../../assets/assets/img_for_shop/images/slider/6.jpg');">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12">
+                                            <article class="blog_post">
+                                                <div class="post_img">
+                                                    <div class="calendar">
+                                                        <a href="#"><span
+                                                                class="date">{% trans "22" %}</span><br>{% trans "May" %}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="post_content">
+                                                    <div class="post_header">
+                                                        <h2 class="post_title">
+                                                            <a href="#">{% trans "With age, comes wisdom. With travel, comes understanding" %}</a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="post_intro">
+                                                        <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
+                                                    </div>
+                                                    <div class="post_footer">
+                                                        <div class="read_more">
+                                                            <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured_category bg_image_1" data-aos="fade-up" data-aos-duration="700">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="featured_category_item" data-aos="fade-up" data-aos-duration="600">
+                        <img src="../../assets/assets/img_for_shop/images/category/1.jpg" alt="img">
+                        <div class="featured_category_info">
+                            <h6 class="featured_category_heading"><a href="#">{% trans "Travel & Advanture" %}</a></h6>
+                            <p class="featured_category_number"><span>{% trans "06</span> Posts" %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="featured_category_item" data-aos="fade-up" data-aos-duration="800">
+                        <img src="../../assets/assets/img_for_shop/images/category/2.jpg" alt="img">
+                        <div class="featured_category_info">
+                            <h6 class="featured_category_heading"><a href="#">{% trans "Road Trip" %}</a></h6>
+                            <p class="featured_category_number"><span>{% trans "12" %}</span>{% trans " Posts" %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="../../assets/assets/img_for_shop/images/category/3.jpg" alt="img">
+                        <div class="featured_category_info">
+                            <h6 class="featured_category_heading"><a href="#">{% trans "Camping Trip" %}</a></h6>
+                            <p class="featured_category_number"><span>{% trans "09" %}</span>{% trans " Posts" %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="featured_category_item" data-aos="fade-up" data-aos-duration="1200">
+                        <img src="../../assets/assets/img_for_shop/images/category/4.jpg" alt="img">
+                        <div class="featured_category_info">
+                            <h6 class="featured_category_heading"><a href="#">{% trans "Travel Photography" %}</a></h6>
+                            <p class="featured_category_number"><span>{% trans "16" %}</span>{% trans " Posts" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="blog_list" data-aos="fade-up" data-aos-duration="700">
+                        <article class="blog_post">
+                            <div class="post_img" data-aos="overlay-left">
+                                <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/1.jpg"
+                                                 alt="blog"></a>
+                                <div class="calendar">
+                                    <a href="#"><span class="date">{% trans "30" %}</span><br>{% trans "May" %}</a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+                                <div class="post_header">
+                                    <div class="author"><a href="#"><i
+                                            class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
+                                    <h2 class="post_title">
+                                        <a href="#">{% trans "Live with no excuses & travel with no regrets" %}</a>
+                                    </h2>
+                                </div>
+                                <div class="post_intro">
+                                    <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
+                                </div>
+                                <div class="post_footer">
+                                    <div class="read_more" data-aos="fade-up" data-aos-duration="700">
+                                        <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                    </div>
+                                    <div class="post_share">
+                                        <ul class="share_list">
+                                            <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
+                                                    class="ion-social-facebook"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="700"><a href="#"><i
+                                                    class="ion-social-twitter"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="900"><a href="#"><i
+                                                    class="ion-social-rss"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i
+                                                    class="ion-social-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="blog_post">
+                            <div class="post_img" data-aos="overlay-right">
+                                <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/2.jpg"
+                                                 alt="blog"></a>
+                                <div class="calendar">
+                                    <a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}</a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+                                <div class="post_header">
+                                    <div class="author"><a href="#"><i
+                                            class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a></div>
+                                    <h2 class="post_title">
+                                        <a href="#">{% trans "50 travel essentials you must have" %}</a>
+                                    </h2>
+                                </div>
+                                <div class="post_intro">
+                                    <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
+                                </div>
+                                <div class="post_footer">
+                                    <div class="read_more" data-aos="fade-up" data-aos-duration="700">
+                                        <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                    </div>
+                                    <div class="post_share">
+                                        <ul class="share_list">
+                                            <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
+                                                    class="ion-social-facebook"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="700"><a href="#"><i
+                                                    class="ion-social-twitter"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="900"><a href="#"><i
+                                                    class="ion-social-rss"></i></a></li>
+                                            <li data-aos="fade-up" data-aos-duration="1100"><a href="#"><i
+                                                    class="ion-social-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="newsletter bg_image_2" data-aos="fade-up" data-aos-duration="700">
+                        <div class="row">
+                            <div class="col-lg-10 offset-lg-1">
+                                <form class="newsletter_form" method="post" action="subscription.php">
+                                    <div class="newsletter_header">
+                                        <p><i class="ion-email"></i>{% trans "Subscribe to newsletter" %}</p>
+                                        <h3>{% trans "Get each & every new blogs through your e-mail" %}</h3>
+                                    </div>
+                                    <div class="form_group">
+                                        <input class="form-control" type="email" placeholder="Your Email Address"
+                                               name="ne" required="">
+                                        <input type="submit" class="button" value="Subscribe">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="more_posts">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
+                                    <div class="post_img" data-aos="overlay-left">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm1.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "With age, comes wisdom. With travel, comes understanding" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
+                                    <div class="post_img" data-aos="overlay-left">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm2.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "27" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "I am not the same having seen the moon shineon the sky" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
+                                    <div class="post_img" data-aos="overlay-right">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm3.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "24" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "Travel and change of place impart new vigor to the mind" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
+                                    <div class="post_img" data-aos="overlay-right">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm4.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "22" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "A journey is best measured in friends, rather than miles" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
+                                    <div class="post_img" data-aos="overlay-left">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm5.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "20" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans " By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "He who would travel happily must travel light" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
+                                    <div class="post_img" data-aos="overlay-left">
+                                        <a href="#"><img src="../../assets/assets/img_for_shop/images/blog/sm6.jpg"
+                                                         alt="blog"></a>
+                                        <div class="calendar">
+                                            <a href="#"><span class="date">{% trans "07" %}</span><br>{% trans "May" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <div class="post_header">
+                                            <div class="author"><a href="#"><i
+                                                    class="ion-android-create"></i>{% trans "By Partricia Doe" %}</a>
+                                            </div>
+                                            <h2 class="post_title">
+                                                <a href="#">{% trans "You will see what a tiny place occupy in the world" %}</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination-div">
+                        <ul class="pagination">
+                            <li><a class="page-number current" href="#">1</a></li>
+                            <li><a class="page-number" href="#">2</a></li>
+                            <li><a class="page-number" href="#">3</a></li>
+                            <li><a href="#">{% trans "Older Post" %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-5">
+                    <div class="sidebar" data-aos="fade-up" data-aos-duration="900">
+                        <div id="custom_1" class="widget widget_custom">
+                            <h4 class="widget_title">{% trans "About Author" %}</h4>
+                            <div class="sidebar_author">
+                                <img src="../../assets/assets/img_for_shop/images/author.png" alt="img">
+                                <p class="intro">{% trans "Lorem ipsum dolor sit amet consec adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magina aliqua. Quis ipsum suspendise" %}</p>
+
+                                <div class="social_profile">
+                                    <div class="social_media">
+                                        <a href="#">
+                                            <i class="ion-social-facebook"></i>
+                                            <div class="name">{% trans "Facebook" %}</div>
+                                            <div class="off_text">{% trans "45k Likes" %}</div>
+                                        </a>
+                                    </div>
+
+                                    <div class="social_media">
+                                        <a href="#">
+                                            <i class="ion-social-twitter"></i>
+                                            <div class="name">{% trans "Twitter" %}</div>
+                                            <div class="off_text">{% trans "21k Follower" %}</div>
+                                        </a>
+                                    </div>
+
+                                    <div class="social_media">
+                                        <a href="#">
+                                            <i class="ion-social-instagram"></i>
+                                            <div class="name">{% trans "Instagram" %}</div>
+                                            <div class="off_text">{% trans "23k Follower" %}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="recent-posts-1" class="widget widget_recent_posts">
+                            <h4 class="widget_title">{% trans "Recent Posts" %}</h4>
+                            <div class="sidebar_recent_posts">
+                                <ul>
+                                    <li><a href="#">{% trans "Let’s escape in the  cityscape" %}</a></li>
+                                    <li><a href="#">{% trans "Failure doesn’t define  anything" %}</a></li>
+                                    <li><a href="#">{% trans "Bohemian mountain towards Us" %}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="custom_2" class="widget widget_custom">
+                            <div class="sidebar_add">
+                                <img src="../../assets/assets/img_for_shop/images/add.png" alt="add">
+                            </div>
+                        </div>
+
+                        <div id="categories-1" class="widget widget_categories">
+                            <h4 class="widget_title">{% trans "Categories" %}</h4>
+                            <div class="sidebar_categories">
+                                <ul class="category_list">
+                                    <li><a href="#">{% trans "Travel Hacks (5)" %}</a></li>
+                                    <li><a href="#">{% trans "South Asia (7)" %}</a></li>
+                                    <li><a href="#">{% trans "Travel Photography (4)" %}</a></li>
+                                    <li><a href="#">{% trans "Wildlife Adventure (2)" %}</a></li>
+                                    <li><a href="#">{% trans "Road Trips (4)" %}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="popular-1" class="widget widget_popular_posts">
+                            <h4 class="widget_title">{% trans "Most Read Blogs" %}</h4>
+                            <div class="sidebar_popular_posts">
+                                <div class="popular_post_item">
+                                    <div class="popular_post_item_wrapper">
+                                        <img src="../../assets/assets/img_for_shop/images/popular/1.jpg" alt="img">
+                                        <div class="popular_post_item_content">
+                                            <h4 class="popular_post_item_title"><a
+                                                    href="#">{% trans "Beautiful afternoon boating in Morine Lake" %}</a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popular_post_item">
+                                    <div class="popular_post_item_wrapper">
+                                        <img src="../../assets/assets/img_for_shop/images/popular/2.jpg" alt="img">
+                                        <div class="popular_post_item_content">
+                                            <h4 class="popular_post_item_title"><a
+                                                    href="#">{% trans "Sudden trip to grand Canyons" %}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popular_post_item">
+                                    <div class="popular_post_item_wrapper">
+                                        <img src="../../assets/assets/img_for_shop/images/popular/3.jpg" alt="img">
+                                        <div class="popular_post_item_content">
+                                            <h4 class="popular_post_item_title"><a
+                                                    href="#">{% trans "First Snow Experience of my life" %}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tags-1" class="widget widget_tag_cloud">
+                            <h4 class="widget_title">{% trans "Tag Cloud" %}</h4>
+                            <div class="tagcloud">
+                                <a href="#">{% trans "Travel" %}</a>
+                                <a href="#">{% trans "PHOTOGRAPHY" %}</a>
+                                <a href="#">{% trans "FASHION" %}</a>
+                                <a href="#">{% trans "Travel" %}</a>
+                                <a href="#">{% trans "HOBBY" %}</a>
+                                <a href="#">{% trans "PHOTOGRAPHY" %}</a>
+                                <a href="#">{% trans "NATURE" %}</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" data-aos="fade-up" data-aos-duration="700">
+        <div class="footer-above">
+            <div class="footer-logo">
+                <a href="#"><img src="../../assets/assets/img_for_shop/images/logo-white.png" alt="logo"></a>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
 
 
-			</footer>
-		</div>
+    </footer>
+</div>
 
-        <!-- All JavaScript Files
-        ================================================== -->
-		<script src="../../assets/assets/js_for_shop/js/jquery-3.2.1.min.js"></script>
-        <script src="../../assets/assets/js_for_shop/js/bootstrap.min.js"></script>
-        <script src="../../assets/assets/plugins/swiper/swiper.min.js"></script>
-		<script src="../../assets/assets/js_for_shop/js/menu.js"></script>
-        <script src="../../assets/assets/plugins/aos/aos.js"></script>
-        <script src="../../assets/assets/js_for_shop/js/custom.js"></script>
-	</body>
+<!-- All JavaScript Files
+================================================== -->
+<script src="../../assets/assets/js_for_shop/js/jquery-3.2.1.min.js"></script>
+<script src="../../assets/assets/js_for_shop/js/bootstrap.min.js"></script>
+<script src="../../assets/assets/plugins/swiper/swiper.min.js"></script>
+<script src="../../assets/assets/js_for_shop/js/menu.js"></script>
+<script src="../../assets/assets/plugins/aos/aos.js"></script>
+<script src="../../assets/assets/js_for_shop/js/custom.js"></script>
+</body>
 </html>

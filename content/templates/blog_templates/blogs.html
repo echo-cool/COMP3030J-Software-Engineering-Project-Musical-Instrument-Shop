@@ -4,11 +4,12 @@
 {% load i18n %}
 {% load bootstrap4 %}
 
+{% block title %}  <title>{% trans "Blog" %}</title> {% endblock %}
 {% block style %}
-
     <!-- Favicon and touch Icons -->
-    <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">
-    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    {#    <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">#}
+    {#    <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">#}
     <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon"
           sizes="72x72">
     <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon"
@@ -203,7 +204,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
-                        <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600" id="category__0">
+                        <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600"
+                             id="category__0">
                             <img src="{% static 'assets/images/all_blogs.jpg' %}" alt="img">
                             <div class="featured_category_info">
                                 <h6 class="featured_category_heading"><a href="#">All</a></h6>
@@ -213,7 +215,8 @@
                     </div>
                     {% for category, count in category_number.items %}
                         <div class="col-lg-3 col-sm-6">
-                            <div class="featured_category_item cursor-pointer" data-aos="fade-up" data-aos-duration="600"
+                            <div class="featured_category_item cursor-pointer" data-aos="fade-up"
+                                 data-aos-duration="600"
                                  id="category__{{ category.id }}">
                                 <img src="{{ category.image.url }}" alt="img">
                                 <div class="featured_category_info">
