@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, time
 import os
 
 from django.contrib.auth.models import User
@@ -76,6 +76,12 @@ def index_new(request):
     uncompleted_orders = UncompletedOrder.objects.all()
     instruments = Instrument.objects.all()
 
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = orders.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     quantities = []
     print("=====================================================")
     quantity_instruments = Instrument.objects.all().order_by('quantity')
@@ -110,6 +116,7 @@ def index_new(request):
         'users': users,
         'messages': messages,
         "quantities": quantities,
+        "new_orders": new_orders
         # "quantities": {"quantities_name": quantities_name,
         #                "quantities_quantity": quantities_quantity},
     })
