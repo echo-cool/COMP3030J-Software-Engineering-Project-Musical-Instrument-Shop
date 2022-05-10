@@ -1,11 +1,3 @@
-/*----------
-
-Theme Name: Holiday Planners - Travel & Tour HTML5 Template
-Theme Version: 1.0
-更多精品模板：http://www.bootstrapmb.com
-----------*/
-
-
 /*==========
 ----- JS INDEX -----
 1.Whole Script Strict Mode Syntax
@@ -29,12 +21,12 @@ Theme Version: 1.0
 ==========*/
 
 
-$(document).ready(function($) {
+$(document).ready(function ($) {
 
     // Whole Script Strict Mode Syntax
     "use strict";
 
-    $(window).ready(function() {
+    $(window).ready(function () {
         // Loader JS Start
         $('.loader-box').fadeOut();
         // Loader JS End
@@ -77,12 +69,12 @@ $(document).ready(function($) {
         prevArrow: '<button class="slide-arrow prev-arrow"><span>Prev</span></button>',
         nextArrow: '<button class="slide-arrow next-arrow"><span>Next</span></button>',
         responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 2,
-                }
-            },
+            breakpoint: 992,
+            settings: {
+                arrows: false,
+                slidesToShow: 2,
+            }
+        },
             {
                 breakpoint: 768,
                 settings: {
@@ -106,13 +98,13 @@ $(document).ready(function($) {
         prevArrow: '<button class="slide-arrow prev-arrow"><span>Prev</span></button>',
         nextArrow: '<button class="slide-arrow next-arrow"><span>Next</span></button>',
         responsive: [{
-                breakpoint: 992,
-                settings: {
-                    dots: true,
-                    arrows: false,
-                    slidesToShow: 2,
-                }
-            },
+            breakpoint: 992,
+            settings: {
+                dots: true,
+                arrows: false,
+                slidesToShow: 2,
+            }
+        },
             {
                 breakpoint: 768,
                 settings: {
@@ -154,13 +146,13 @@ $(document).ready(function($) {
         dots: false,
         arrows: false,
         responsive: [{
-                breakpoint: 992,
-                settings: {
-                    dots: false,
-                    arrows: false,
-                    slidesToShow: 3,
-                }
-            },
+            breakpoint: 992,
+            settings: {
+                dots: false,
+                arrows: false,
+                slidesToShow: 3,
+            }
+        },
             {
                 breakpoint: 768,
                 settings: {
@@ -191,13 +183,13 @@ $(document).ready(function($) {
         dots: false,
         arrows: false,
         responsive: [{
-                breakpoint: 992,
-                settings: {
-                    dots: false,
-                    arrows: false,
-                    slidesToShow: 3,
-                }
-            },
+            breakpoint: 992,
+            settings: {
+                dots: false,
+                arrows: false,
+                slidesToShow: 3,
+            }
+        },
             {
                 breakpoint: 768,
                 settings: {
@@ -229,12 +221,12 @@ $(document).ready(function($) {
         prevArrow: '<button class="slide-arrow prev-arrow"><span>Prev</span></button>',
         nextArrow: '<button class="slide-arrow next-arrow"><span>Next</span></button>',
         responsive: [{
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+            }
+        },
             {
                 breakpoint: 576,
                 settings: {
@@ -247,37 +239,37 @@ $(document).ready(function($) {
     // Tour Gallery Slider JS End
 
     // About Progress Bar Start 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(".about-progress-bar").length) {
             var oTop = $('.about-progress-bar').offset().top - window.innerHeight;
             if ($(window).scrollTop() > oTop) {
-                jQuery(".progress-bar1").animate({ width: '80%' }, 1000);
-                jQuery(".progress-bar2").animate({ width: '95%' }, 1200);
-                jQuery(".progress-bar3").animate({ width: '67%' }, 1400);
-                jQuery(".progress-bar4").animate({ width: '87%' }, 1600);
+                jQuery(".progress-bar1").animate({width: '80%'}, 1000);
+                jQuery(".progress-bar2").animate({width: '95%'}, 1200);
+                jQuery(".progress-bar3").animate({width: '67%'}, 1400);
+                jQuery(".progress-bar4").animate({width: '87%'}, 1600);
             }
         }
     });
     // About Progress Bar End
 
     // About Progress Bar Start 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(".rb-progress-bar").length) {
             var oTop = $('.rb-progress-bar').offset().top - window.innerHeight;
             if ($(window).scrollTop() > oTop) {
-                jQuery(".progress-bar1").animate({ width: '100%' }, 1000);
-                jQuery(".progress-bar2").animate({ width: '100%' }, 1200);
-                jQuery(".progress-bar3").animate({ width: '100%' }, 1400);
-                jQuery(".progress-bar4").animate({ width: '100%' }, 1600);
-                jQuery(".progress-bar5").animate({ width: '100%' }, 1600);
-                jQuery(".progress-bar6").animate({ width: '100%' }, 1600);
+                jQuery(".progress-bar1").animate({width: '100%'}, 1000);
+                jQuery(".progress-bar2").animate({width: '100%'}, 1200);
+                jQuery(".progress-bar3").animate({width: '100%'}, 1400);
+                jQuery(".progress-bar4").animate({width: '100%'}, 1600);
+                jQuery(".progress-bar5").animate({width: '100%'}, 1600);
+                jQuery(".progress-bar6").animate({width: '100%'}, 1600);
             }
         }
     });
     // About Progress Bar End 
 
     // Responsive Slider Start  
-    jQuery(window).on('load resize', function() {
+    jQuery(window).on('load resize', function () {
         var window_size = jQuery(window).width();
         if (window_size <= 991) {
             if (!jQuery('.blog-slider').hasClass('slick-initialized')) {
@@ -290,15 +282,15 @@ $(document).ready(function($) {
                     autoplay: true,
                     autoplaySpeed: 1500,
                     responsive: [{
-                            breakpoint: 992,
-                            settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 1,
-                                infinite: true,
-                                dots: false,
-                                arrows: false,
-                            }
-                        },
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: false,
+                            arrows: false,
+                        }
+                    },
                         {
                             breakpoint: 768,
                             settings: {
@@ -318,11 +310,11 @@ $(document).ready(function($) {
 
     // Counter JS Start
     var a = 0;
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(".main-counter").length) {
             var oTop = $('.main-counter').offset().top - window.innerHeight;
             if (a == 0 && $(window).scrollTop() > oTop) {
-                $('.count').each(function() {
+                $('.count').each(function () {
                     var $this = $(this),
                         countTo = $this.attr('data-count');
                     $({
@@ -332,10 +324,10 @@ $(document).ready(function($) {
                     }, {
                         duration: 2000,
                         easing: 'swing',
-                        step: function() {
+                        step: function () {
                             $this.text(Math.floor(this.countNum));
                         },
-                        complete: function() {
+                        complete: function () {
                             $this.text(this.countNum);
                         }
                     });
@@ -347,7 +339,7 @@ $(document).ready(function($) {
     // Counter JS End
 
     // Sticky Header JS Start
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         if ($(window).scrollTop() >= 200) {
             $('.site-header').addClass('sticky-header');
         } else {
@@ -357,7 +349,7 @@ $(document).ready(function($) {
     // Sticky Header JS End
 
     // Scroll To Top JS Start
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         if ($(window).scrollTop() > 300) {
             $("#scrollToTop").fadeIn('500');
             $("#scrollToTop").addClass('show');
@@ -366,23 +358,23 @@ $(document).ready(function($) {
             $("#scrollToTop").removeClass('show');
         }
     });
-    jQuery('#scrollToTop').on('click', function() {
-        jQuery("html, body").animate({ scrollTop: 0 }, 600);
+    jQuery('#scrollToTop').on('click', function () {
+        jQuery("html, body").animate({scrollTop: 0}, 600);
         return false;
     });
     // Scroll To Top JS End
 
     // Toogle Menu JS Start
-    $(".navigation-btn").on('click', function() {
+    $(".navigation-btn").on('click', function () {
         $(".main-navigation").toggleClass('toggle-menu');
     });
-    $(".main-navigation ul li a:not(.dropdown-items>a)").on('click', function() {
+    $(".main-navigation ul li a:not(.dropdown-items>a)").on('click', function () {
         $(".main-navigation").removeClass('toggle-menu');
     });
     // Toogle MenuJS End
 
     // DropDown Menu JS Start
-    jQuery(".dropdown-items").on('click', function() {
+    jQuery(".dropdown-items").on('click', function () {
         var cur = jQuery(this).closest(".dropdown-items");
         jQuery(".dropdown-items").not(cur).removeClass("dropdown-open");
         jQuery(this).closest(".dropdown-items").toggleClass("dropdown-open");
@@ -390,7 +382,7 @@ $(document).ready(function($) {
     // DropDown Menu JS End
 
     // Search Bar JS Start
-    $(".search-icon").on('click', function() {
+    $(".search-icon").on('click', function () {
         $(".search-icon").parent().toggleClass('search-box-open');
     });
     // Search Bar JS End

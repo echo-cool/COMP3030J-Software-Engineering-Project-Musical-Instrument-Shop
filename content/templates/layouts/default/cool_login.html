@@ -20,12 +20,12 @@
         }
 
         .switch-to-sign-up, .switch-to-sign-in {
-                line-height: 2;
-        font-size: 11pt;
-        width: fit-content;
-        height: fit-content;
-        padding: 5px;
-        font-family: s;
+            line-height: 2;
+            font-size: 11pt;
+            width: fit-content;
+            height: fit-content;
+            padding: 5px;
+            font-family: s;
         }
 
         label2 {
@@ -140,7 +140,7 @@
                 <!-- Visitor Sign in button start -->
                 <button type="button" class="visitor_button">
                     <span> {% trans "Sign Up" %} </span>
-{#                    <span>{% trans "entrance" %}</span>#}
+                    {#                    <span>{% trans "entrance" %}</span>#}
                 </button>
                 <!-- Visitor Sign in button end -->
                 <p></p>
@@ -156,10 +156,10 @@
                 <h2 style="font-family: fantasy;font-style: italic">{% trans "User REGISTER" %}</h2>
                 <div class="sign-up-form-wrapper" style="max-height: 266px;overflow: auto;">
                     {% bootstrap_form form2 %}
-                                                    <div class="google-recaptcha-box">
-                    <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
-                         data-callback="verify_result"></div>
-                </div>
+                    <div class="google-recaptcha-box">
+                        <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
+                             data-callback="verify_result"></div>
+                    </div>
                 </div>
                 {#                <!-- Input username start -->#}
                 {#                <label for=" username">{% trans "USERNAME" %}</label>#}
@@ -249,10 +249,15 @@
                         {#                                data-action='submit'>Submit#}
                         {#                        </button>#}
 
-                        <button type="submit" id="submit_l2" class="submit"
-                                data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
-                                data-callback='onSubmit'
-                                data-action='submit'>{% trans "Sign In" %}</button>
+                    <div class="google-recaptcha-box">
+                        <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
+                             data-callback="verify_result"></div>
+                    </div>
+
+                    <button type="submit" id="submit_l2" class="submit"
+                            data-sitekey="6Ld_CsMfAAAAAH1QfTeJCc0cBprTBIR6YF-ScviX"
+                            data-callback='onSubmit'
+                            data-action='submit'>{% trans "Sign In" %}</button>
                     </p>
                     <!-- Administrator sign in button end -->
                     <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>

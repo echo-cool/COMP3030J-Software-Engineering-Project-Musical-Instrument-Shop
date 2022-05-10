@@ -35,3 +35,10 @@
     </form>
 
 {% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+{% endblock %}

@@ -82,14 +82,12 @@
                 </td>
 
                 <td>
-                    <a href="#">
-                        {{ order_item.user.username|truncatewords:5 }}
-                    </a>
+                    {{ order_item.user.username|truncatewords:5 }}
                 </td>
                 <td>
                     <a href="{% url 'management:order_item_management' order_id=order_item.id %}"> {{ order_item.quantity }} </a>
                 </td>
-                <td class="hidden-480">${{ order_item.total_price }}</td>
+                <td class="hidden-480">${{ order_item.total_price | floatformat:2 }}</td>
                 <td>{{ order_item.created_at }}</td>
 
                 <td class="hidden-480">

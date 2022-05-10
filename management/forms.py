@@ -10,7 +10,18 @@ from shop.models import Order, Instrument, Review, Cart, Wishlist, OrderItem
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = "__all__"
+        fields = (
+            "user",
+            "first_name",
+            "last_name",
+            "address",
+            "apartment",
+            "city",
+            "state",
+            "country",
+            "zip_Code",
+            "newsletter"
+        )
 
 
 class OrderItemForm(forms.ModelForm):
