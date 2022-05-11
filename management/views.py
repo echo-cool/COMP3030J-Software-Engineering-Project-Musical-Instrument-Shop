@@ -173,11 +173,18 @@ def order_management_all(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = orders.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
-        'mode': 0
+        'mode': 0,
+        'new_orders': new_orders
     })
 
 
@@ -237,10 +244,17 @@ def order_management_placed(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'messages': messages,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'new_orders': new_orders,
         'mode': 1
     })
 
@@ -266,10 +280,18 @@ def order_management_accepted(request):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
+        'new_orders': new_orders,
         'mode': 2
     })
 
@@ -296,10 +318,18 @@ def order_management_packed(request):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
+        'new_orders': new_orders,
         'mode': 3
     })
 
@@ -326,10 +356,18 @@ def order_management_shipped(request):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
+        'new_orders': new_orders,
         'mode': 4
     })
 
@@ -355,9 +393,18 @@ def order_management_delivered(request):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'new_orders': new_orders,
+        'messages': messages,
         'mode': 5
     })
 
@@ -367,13 +414,47 @@ def order_management_delivered(request):
 def order_item_management(request, order_id):
     order_items = OrderItem.objects.filter(order_id=order_id)
 
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/orderItemManagement.html', {
         'order_items': order_items,
         'profile': Profile.objects.filter(user=request.user.id).first(),
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
 def add_order_item(request, order_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = OrderItemForm(request.POST, request.FILES)
         if f.is_valid():
@@ -383,19 +464,39 @@ def add_order_item(request, order_id):
             order_item.save()
         else:
             return render(request, 'management_templates/update_order_item.html', {
-                'form': f
+                'form': f,
+                'messages': messages,
+                'new_orders': new_orders
             })
         return redirect('management:order_item_management', order_id=order_id)
     else:
         f = OrderItemForm()
         return render(request, 'management_templates/update_order_item.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def update_order_item(request, order_item_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         order_item = OrderItem.objects.get(id=order_item_id)
         f = OrderItemForm(request.POST, request.FILES, instance=order_item)
@@ -408,13 +509,31 @@ def update_order_item(request, order_item_id):
         order = OrderItem.objects.get(id=order_item_id)
         f = OrderItemForm(instance=order)
         return render(request, 'management_templates/update_order_item.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def update_order(request, order_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         order = Order.objects.get(id=order_id)
         f = OrderForm(request.POST, request.FILES, instance=order)
@@ -426,7 +545,9 @@ def update_order(request, order_id):
         order = Order.objects.get(id=order_id)
         f = OrderForm(instance=order)
         return render(request, 'management_templates/update_order.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
@@ -457,10 +578,29 @@ def instrument_management_new(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
@@ -491,16 +631,51 @@ def instrument_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
 @login_required
 @staff_required
 def update_instrument(request, instrument_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
         f = InstrumentWithIForm(request.POST, request.FILES, instance=instrument)
@@ -513,7 +688,9 @@ def update_instrument(request, instrument_id):
         instrument = Instrument.objects.get(id=instrument_id)
         f = InstrumentWithIForm(instance=instrument)
         return render(request, 'management_templates/update_instrument.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 @login_required
@@ -549,6 +726,22 @@ def upload_ins(request):
 @staff_required
 @method_decorator(csrf_exempt)
 def add_instrument(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         print(request.FILES)
         print(request.POST)
@@ -588,7 +781,9 @@ def add_instrument(request):
     else:
         f = InstrumentWithIForm()
         return render(request, 'management_templates/add_instrument.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
@@ -623,16 +818,50 @@ def instrument_category_management(request):
     for category in categories:
         category.quantity = Instrument.objects.filter(category_id=category.id).count()
 
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/instrumentCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
 @login_required
 @staff_required
 def update_instrument_category(request, category_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         category = shop.models.Category.objects.get(id=category_id)
         f = InstrumentCategoryForm(request.POST, request.FILES, instance=category)
@@ -644,52 +873,110 @@ def update_instrument_category(request, category_id):
         category = shop.models.Category.objects.get(id=category_id)
         f = InstrumentCategoryForm(instance=category)
         return render(request, 'management_templates/update_instrument_category.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def add_instrument_category(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = InstrumentCategoryForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_instrument_category.html', {
-                'form': f
+                'form': f,
+                'messages': messages,
+                'new_orders': new_orders
             })
         return redirect(reverse('management:instrument_category_management'))
     else:
         f = InstrumentCategoryForm()
         return render(request, 'management_templates/update_instrument_category.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def add_order(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = OrderForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_order.html', {
-                'form': f
+                'form': f,
+                'messages': messages,
+                'new_orders': new_orders
             })
         return redirect(reverse('management:order_management_all'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         f = OrderForm()
         return render(request, 'management_templates/update_order.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def profile(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         profile_item = Profile.objects.filter(user=request.user.id).first()
         profile_item.image = request.FILES.get('photo')
@@ -698,6 +985,8 @@ def profile(request):
     else:
         return render(request, 'management_templates/profile.html', {
             'profile': Profile.objects.filter(user=request.user.id).first(),
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
@@ -728,16 +1017,51 @@ def review_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/reviewManagement.html', {
         'reviews': reviews,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'new_orders': new_orders,
+        'messages': messages
     })
 
 
 @login_required
 @staff_required
 def update_review(request, review_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         review = Review.objects.filter(id=review_id).first()
         f = ReviewForm(request.POST, request.FILES, instance=review)
@@ -750,26 +1074,48 @@ def update_review(request, review_id):
         review = Review.objects.get(id=review_id)
         f = ReviewForm(instance=review)
         return render(request, 'management_templates/update_review.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def add_review(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = ReviewForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_review.html', {
-                'form': f
+                'form': f,
+                'messages': messages,
+                'new_orders': new_orders
             })
         return redirect(reverse('management:review_management'))
     else:
         f = ReviewForm()
         return render(request, 'management_templates/update_review.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
@@ -780,7 +1126,23 @@ def order_state(request, order_id):
     f = OrderForm(instance=order)
 
     date = str(datetime.today().date())
-    time = str(datetime.today().time()).split(".")[0]
+    order_time = str(datetime.today().time()).split(".")[0]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
 
     return render(request, 'management_templates/order_state.html', {
         'order': order,
@@ -789,7 +1151,9 @@ def order_state(request, order_id):
         'users': User.objects.all(),
         # TIME INFORMATION
         'date': date,
-        'time': time,
+        'time': order_time,
+        'new_orders': new_orders,
+        'messages': messages
     })
 
 
@@ -820,16 +1184,51 @@ def post_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/postManagement.html', {
         'posts': posts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
 @login_required
 @staff_required
 def update_post(request, post_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
         f = PostForm(request.POST, request.FILES, instance=post)
@@ -841,13 +1240,31 @@ def update_post(request, post_id):
         post = Post.objects.get(id=post_id)
         f = PostForm(instance=post)
         return render(request, 'management_templates/update_post.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
 @login_required
 @staff_required
 def add_post(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         print(request.FILES)
         f = PostForm(request.POST, request.FILES)
@@ -855,13 +1272,17 @@ def add_post(request):
             f.save()
         else:
             return render(request, 'management_templates/update_post.html', {
-                'form': f
+                'form': f,
+                'new_orders': new_orders,
+                'messages': messages
             })
         return redirect(reverse('management:post_management'))
     else:
         f = PostForm()
         return render(request, 'management_templates/update_post.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
@@ -896,16 +1317,50 @@ def blog_category_management(request):
     for category in categories:
         category.quantity = Post.objects.filter(category_id=category.id).count()
 
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/blogCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'messages': messages,
+        'new_orders': new_orders
     })
 
 
 @login_required
 @staff_required
 def update_blog_category(request, category_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         category = blog.models.Category.objects.get(id=category_id)
         f = BlogCategoryForm(request.POST, request.FILES, instance=category)
@@ -917,26 +1372,48 @@ def update_blog_category(request, category_id):
         category = shop.models.Category.objects.get(id=category_id)
         f = BlogCategoryForm(instance=category)
         return render(request, 'management_templates/update_blog_category.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
 @login_required
 @staff_required
 def add_blog_category(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = BlogCategoryForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_blog_category.html', {
-                'form': f
+                'form': f,
+                'new_orders': new_orders,
+                'messages': messages
             })
         return redirect(reverse('management:blog_category_management'))
     else:
         f = BlogCategoryForm()
         return render(request, 'management_templates/update_blog_category.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
@@ -967,16 +1444,51 @@ def cart_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/cartManagement.html', {
         'carts': carts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'new_orders': new_orders,
+        'messages': messages
     })
 
 
 @login_required
 @staff_required
 def update_cart(request, cart_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         cart = Cart.objects.get(id=cart_id)
         f = CartForm(request.POST, request.FILES, instance=cart)
@@ -988,26 +1500,48 @@ def update_cart(request, cart_id):
         cart = Cart.objects.get(id=cart_id)
         f = CartForm(instance=cart)
         return render(request, 'management_templates/update_cart.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
 @login_required
 @staff_required
 def add_cart(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = CartForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_cart.html', {
-                'form': f
+                'form': f,
+                'messages': messages,
+                'new_orders': new_orders
             })
         return redirect(reverse('management:cart_management'))
     else:
         f = CartForm()
         return render(request, 'management_templates/update_cart.html', {
-            'form': f
+            'form': f,
+            'messages': messages,
+            'new_orders': new_orders
         })
 
 
@@ -1039,16 +1573,51 @@ def wishlist_management(request):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     return render(request, 'management_templates/wishlistManagement.html', {
         'wishlists': wishlists,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'new_orders': new_orders,
+        "messages": messages
     })
 
 
 @login_required
 @staff_required
 def update_wishlist(request, wishlist_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         wishlist = Wishlist.objects.get(id=wishlist_id)
         f = WishlistForm(request.POST, request.FILES, instance=wishlist)
@@ -1060,26 +1629,48 @@ def update_wishlist(request, wishlist_id):
         wishlist = Wishlist.objects.get(id=wishlist_id)
         f = WishlistForm(instance=wishlist)
         return render(request, 'management_templates/update_wishlist.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
 @login_required
 @staff_required
 def add_wishlist(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    today = datetime.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
+    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
     if request.method == "POST":
         f = WishlistForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
         else:
             return render(request, 'management_templates/update_wishlist.html', {
-                'form': f
+                'form': f,
+                'new_orders': new_orders,
+                'messages': messages
             })
         return redirect(reverse('management:wishlist_management'))
     else:
         f = WishlistForm()
         return render(request, 'management_templates/update_wishlist.html', {
-            'form': f
+            'form': f,
+            'new_orders': new_orders,
+            'messages': messages
         })
 
 
