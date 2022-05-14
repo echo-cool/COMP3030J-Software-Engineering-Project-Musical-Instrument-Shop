@@ -4,6 +4,52 @@ activateHeightWhat();
 
 update_total_money();
 
+menumobile();
+menutoolbar();
+
+function menumobile() {
+    $('.menuleft').on('click', function () {
+        $(this).toggleClass('active');
+        $('.box_contentmenu').toggleClass('active');
+        $('.box_contentmenu_background').toggleClass('active');
+        $('body').addClass('activemenu_mobile')
+    });
+    $('.box_contentmenu_background').on('click', function () {
+        $(this).removeClass('active');
+        $('.box_contentmenu').removeClass('active');
+        $('.menuleft').removeClass('active');
+        $('.box_contentmenu_background').removeClass('active');
+        $('body').removeClass('activemenu_mobile');
+    });
+    $('.js-eveland-close').on('click', function () {
+        $(this).removeClass('active');
+        $('.box_contentmenu').removeClass('active');
+        $('.menuleft').removeClass('active');
+        $('.box_contentmenu_background').removeClass('active');
+        $('body').removeClass('activemenu_mobile');
+    });
+}
+
+function menutoolbar() {
+    $('.btn_bar').on('click', function () {
+        $(this).toggleClass('active');
+        $('.box_contentmenu').toggleClass('active');
+        $('.box_contentmenu_background').toggleClass('active');
+    });
+    $('.box_contentmenu_background').on('click', function () {
+        $(this).removeClass('active');
+        $('.box_contentmenu').removeClass('active');
+        $('.menuleft').removeClass('active');
+        $('.box_contentmenu_background').removeClass('active');
+    });
+    $('.js-eveland-close').on('click', function () {
+        $(this).removeClass('active');
+        $('.box_contentmenu').removeClass('active');
+        $('.menuleft').removeClass('active');
+        $('.box_contentmenu_background').removeClass('active');
+    });
+};
+
 function activateSearch() {
     console.log(" activateSearch()");
     $(".js-search-destop").on("click", function () {
