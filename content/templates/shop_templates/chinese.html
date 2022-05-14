@@ -3253,12 +3253,25 @@
                         <i class=" fa fa-angle-right"></i>
                     </a>
                 </div>
-                <div class="menu-horizon-list">
-                    <a href="/chat" title="FEATURED" class="relative nammenu ">CHAT</a>
-                    <a href="/chat" class="toggle-menumobile  js_icon_horizon-menu">
-                        <i class=" fa fa-angle-right"></i>
-                    </a>
-                </div>
+                {% if request.user %}
+                    {% if not request.user.is_staff %}
+                        <div class="menu-horizon-list">
+                            <a href="{% url 'chat:index_new' to=1 %}" title="CHAT"
+                               class="relative nammenu ">CHAT</a>
+                            <a href="{% url 'chat:index_new' to=1 %}" class="toggle-menumobile  js_icon_horizon-menu">
+                                <i class=" fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="menu-horizon-list">
+                        <a href="{% url 'accounts:log_in' %}" title="CHAT"
+                           class="relative nammenu ">CHAT</a>
+                        <a href="{% url 'accounts:log_in' %}" class="toggle-menumobile js_icon_horizon-menu">
+                            <i class=" fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                {% endif %}
                 <div class="menu-horizon-list">
                     <a href="/blog" title="BLOGS" class="relative nammenu ">BLOGS</a>
                     <a href="/blog" class="toggle-menumobile  js_icon_horizon-menu">
