@@ -62,37 +62,37 @@
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
                         {% if user.is_authenticated %}
-                            <div class="h5">{% trans "Hello"%} {{ user.username }}</div>
-                            <div>{% trans "Logged in as:"%} {{ user.email }}</div>
+                            <div class="h5">{% trans "Hello" %} {{ user.username }}</div>
+                            <div>{% trans "Logged in as:" %} {{ user.email }}</div>
                         {% else %}
-                            <div class="h5">{% trans "Hello Guest"%}</div>
-                            <div>{% trans "You are not logged i"%}</div>
+                            <div class="h5">{% trans "Hello Guest" %}</div>
+                            <div>{% trans "You are not logged i" %}</div>
                         {% endif %}
                     </div>
                     <div class="d-flex my-4 flex-wrap">
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Orders place"%}</div>
+                                <div class="tag">{% trans "Orders place" %}</div>
                                 <div class="ms-auto number">{{ count.order }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img
                                 src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Items in Car"%}</div>
+                                <div class="tag">{% trans "Items in Car" %}</div>
                                 <div class="ms-auto number">{{ count.cart }}</div>
                             </div>
                         </div>
                         <div class="box me-4 my-1 bg-light"><img src="{% static 'assets/images/icons/love-heart.png' %}"
                                                                  alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Wishlis"%}</div>
+                                <div class="tag">{% trans "Wishlis" %}</div>
                                 <div class="ms-auto number">{{ count.wishlist }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-uppercase">{% trans "My recent order"%}</div>
+                    <div class="text-uppercase">{% trans "My recent order" %}</div>
                     {% for order in orders %}
                         <div class="order my-3 bg-light">
                             <div class="row">
@@ -109,7 +109,8 @@
                                         <div class="fs-8">{{ order.created_at }}</div>
                                         <div class="rating d-flex align-items-center pt-1"><img
                                                 src="{% static 'assets/images/icons/hand-thumb.png' %}" alt=""><span
-                                                class="px-2">{% trans "Rating:" %}</span> <span class="fas fa-star"></span><span
+                                                class="px-2">{% trans "Rating:" %}</span> <span
+                                                class="fas fa-star"></span><span
                                                 class="fas fa-star"></span> <span class="fas fa-star"></span> <span
                                                 class="fas fa-star"></span> <span class="far fa-star"></span></div>
                                     </div>
@@ -129,7 +130,9 @@
                                             {% trans "Placed" %}
                                         {% endif %}
                                         </div>
-                                        <div class="btn btn-primary text-uppercase">{% trans "order info" %}</div>
+                                        <div class="btn btn-primary text-uppercase"
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#popup-quickview-{{ order.id }}">{% trans "order info" %}</div>
                                     </div>
                                     <div class="progressbar-track">
                                         <ul class="progressbar">
@@ -199,4 +202,143 @@
             </div>
         </div>
     </div>
+
+
+    {% for order in orders %}
+        <div id="popup-quickview-{{ order.id }}" class="modal" tabindex="-1">
+            <div class="modal-dialog quickview-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i></button>
+                    <div class="modal-body d-flex">
+                        <div class="quick-container container">
+                            <article class="card">
+                                <header class="card-header"> My Orders / Tracking</header>
+                                <div class="card-body">
+                                    <h6>Order ID: {{ order.id }}</h6>
+                                    <article class="card">
+                                        <div class="card-body row">
+                                            <div class="col"><strong>Placed time:</strong> <br>{{ order.created_at }}
+                                            </div>
+                                            <div class="col"><strong>Shipping BY:</strong> <br> BLUEDART, | <i
+                                                    class="fa fa-phone"></i> +1598675986
+                                            </div>
+                                            <div class="col"><strong>Status:</strong> <br> Picked by the courier</div>
+                                            <div class="col"><strong>Tracking #:</strong> <br> BD045903594059</div>
+                                        </div>
+                                    </article>
+                                    <div class="track">
+                                        {% if order.delivered %}
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-gift"></i> </span>
+                                                <span class="text">Placed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-check"></i> </span>
+                                                <span class="text">Accepted</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-box"></i> </span> <span
+                                                    class="text">Packed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-truck"></i> </span> <span
+                                                    class="text">Shipped</span></div>
+                                            <div class="step active"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                                <span class="text">Delivered</span></div>
+                                        {% elif order.shipped %}
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-gift"></i> </span>
+                                                <span class="text">Placed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-check"></i> </span>
+                                                <span class="text">Accepted</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-box"></i> </span> <span
+                                                    class="text">Packed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-truck"></i> </span> <span
+                                                    class="text">Shipped</span></div>
+                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                                <span class="text">Delivered</span></div>
+                                            </li>
+                                        {% elif order.packed %}
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-gift"></i> </span>
+                                                <span class="text">Placed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-check"></i> </span>
+                                                <span class="text">Accepted</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-box"></i> </span> <span
+                                                    class="text">Packed</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-truck"></i> </span> <span
+                                                    class="text">Shipped</span></div>
+                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                                <span class="text">Delivered</span></div>
+                                        {% elif order.accepted %}
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-gift"></i> </span>
+                                                <span class="text">Placed</span></div>
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-check"></i> </span>
+                                                <span class="text">Accepted</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box"></i> </span> <span
+                                                    class="text">Packed</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-truck"></i> </span> <span
+                                                    class="text">Shipped</span></div>
+                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                                <span class="text">Delivered</span></div>
+                                        {% else %}
+                                            <div class="step active"><span class="icon"> <i
+                                                    class="fas fa-gift"></i> </span>
+                                                <span class="text">Placed</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-check"></i> </span>
+                                                <span class="text">Accepted</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box"></i> </span> <span
+                                                    class="text">Packed</span></div>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-truck"></i> </span> <span
+                                                    class="text">Shipped</span></div>
+                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                                <span class="text">Delivered</span></div>
+                                        {% endif %}
+                                    </div>
+                                    <hr>
+                                    <ul class="row">
+                                        {% for order_item in order.items.all %}
+                                        <li class="col-md-4">
+                                            <figure class="itemside mb-3">
+                                                <div class="aside"><img src="{{ order_item.instrument.image.url }}"
+                                                                        class="img-sm border"></div>
+                                                <figcaption class="info align-self-center">
+                                                    <p class="title"><a href="{% url 'shop:product_details' product_id=order_item.instrument.id %}">{{ order_item.instrument.name }}</a>
+                                                        <br>Quantity: {{ order_item.quantity }}</p>
+                                                    <span class="text-muted">${{ order_item.instrument.price }} </span>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <hr>
+                                    <a href="javascript:void(0)" class="btn btn-warning" data-bs-dismiss="modal"
+                                       aria-label="Close" data-abc="true"> <i class="fa fa-chevron-left"></i>
+                                        Back to orders</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static 'assets/assets_for_bees/js/bootstrap.bundle.min.js' %}"></script>
+
 {% endblock %}
