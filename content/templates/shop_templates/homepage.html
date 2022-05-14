@@ -69,6 +69,19 @@
             style="">
     </iframe>
     <script>
+        //按钮点击时
+        {#console.log("search to custom,", window.location.search);#}
+
+        function ScrollToCustom() {
+            if (window.location.search === "?target=customize") {
+                {#console.log("search to custom,", window.location.search);#}
+                window.scrollTo({
+                    top: heightToTop(window.document.getElementById('jump_customize')),
+                    behavior: 'smooth'
+                })
+            }
+        }
+
         function looklookLoading() {
             document.getElementById("loading-page").style = "display:block";
             document.getElementById("wrap").style = "display:none";
@@ -83,11 +96,13 @@
                     document.getElementById("loading-page").style.display = "none";
                 }, 1000);
                 document.getElementById("wrap").style = "display:block";
+                ScrollToCustom();
                 {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
                 {#document.getElementsByTagName("loading-page").style = "display:none";#}
             }
 
             setTimeout(() => overLoading(), 5000);
+
         }
 
         {#looklookLoading()#}
@@ -303,7 +318,7 @@
         </div>
         <!-- End Custom Services -->
 
-        <div class="new-arrival-product">
+        <div class="new-arrival-product" id="customize-area">
             <div class="container container-v2">
                 <!-- End Title Slider -->
                 <div class="content-product-slider">
@@ -784,6 +799,21 @@
         $(".item-service-link").on("click", function () {
             scrollModels();
         });
+
+        function heightToTop(ele) {
+            //ele为指定跳转到该位置的DOM节点
+            let bridge = ele;
+            let root = document.body;
+            let height = 0;
+            do {
+                height += bridge.offsetTop;
+                bridge = bridge.offsetParent;
+            } while (bridge !== root)
+
+            return height;
+        }
+
+
     </script>
     <script src="/static/assets/assets_for_bees/js/bootstrap.bundle.min.js"></script>
     <script src="/static/assets/assets_for_bees/js/jquery-ui.min.js"></script>
