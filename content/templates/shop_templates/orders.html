@@ -135,7 +135,7 @@
                                              data-bs-target="#popup-quickview-{{ order.id }}">{% trans "order info" %}</div>
                                     </div>
                                     <div class="progressbar-track">
-                                        <ul class="progressbar">
+                                        <ul class="progressbar" id="progressbar__{{ order.id }}">
                                             {% if order.delivered %}
                                                 <li id="step-1" class="text-muted green"><span
                                                         class="fas fa-gift"></span></li>
@@ -229,56 +229,59 @@
                                     </article>
                                     <div class="track">
                                         {% if order.delivered %}
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-placed"><span class="icon"> <i
                                                     class="fas fa-gift"></i> </span>
                                                 <span class="text">Placed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-accepted"><span class="icon"> <i
                                                     class="fas fa-check"></i> </span>
                                                 <span class="text">Accepted</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-packed"><span class="icon"> <i
                                                     class="fas fa-box"></i> </span> <span
                                                     class="text">Packed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-shipped"><span class="icon"> <i
                                                     class="fas fa-truck"></i> </span> <span
                                                     class="text">Shipped</span></div>
-                                            <div class="step active"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                            <div class="step active step-delivered"><span class="icon"> <i
+                                                    class="fas fa-box-open"></i> </span>
                                                 <span class="text">Delivered</span></div>
                                         {% elif order.shipped %}
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-placed"><span class="icon"> <i
                                                     class="fas fa-gift"></i> </span>
                                                 <span class="text">Placed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-accepted"><span class="icon"> <i
                                                     class="fas fa-check"></i> </span>
                                                 <span class="text">Accepted</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-packed"><span class="icon"> <i
                                                     class="fas fa-box"></i> </span> <span
                                                     class="text">Packed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-shipped"><span class="icon"> <i
                                                     class="fas fa-truck"></i> </span> <span
                                                     class="text">Shipped</span></div>
-                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box-open"></i> </span>
                                                 <span class="text">Delivered</span></div>
                                             </li>
                                         {% elif order.packed %}
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-placed"><span class="icon"> <i
                                                     class="fas fa-gift"></i> </span>
                                                 <span class="text">Placed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-accepted"><span class="icon"> <i
                                                     class="fas fa-check"></i> </span>
                                                 <span class="text">Accepted</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-packed"><span class="icon"> <i
                                                     class="fas fa-box"></i> </span> <span
                                                     class="text">Packed</span></div>
                                             <div class="step"><span class="icon"> <i
                                                     class="fas fa-truck"></i> </span> <span
                                                     class="text">Shipped</span></div>
-                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box-open"></i> </span>
                                                 <span class="text">Delivered</span></div>
                                         {% elif order.accepted %}
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-placed"><span class="icon"> <i
                                                     class="fas fa-gift"></i> </span>
                                                 <span class="text">Placed</span></div>
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-accepted"><span class="icon"> <i
                                                     class="fas fa-check"></i> </span>
                                                 <span class="text">Accepted</span></div>
                                             <div class="step"><span class="icon"> <i
@@ -287,10 +290,11 @@
                                             <div class="step"><span class="icon"> <i
                                                     class="fas fa-truck"></i> </span> <span
                                                     class="text">Shipped</span></div>
-                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box-open"></i> </span>
                                                 <span class="text">Delivered</span></div>
                                         {% else %}
-                                            <div class="step active"><span class="icon"> <i
+                                            <div class="step active step-placed"><span class="icon"> <i
                                                     class="fas fa-gift"></i> </span>
                                                 <span class="text">Placed</span></div>
                                             <div class="step"><span class="icon"> <i
@@ -302,30 +306,38 @@
                                             <div class="step"><span class="icon"> <i
                                                     class="fas fa-truck"></i> </span> <span
                                                     class="text">Shipped</span></div>
-                                            <div class="step"><span class="icon"> <i class="fas fa-box-open"></i> </span>
+                                            <div class="step"><span class="icon"> <i
+                                                    class="fas fa-box-open"></i> </span>
                                                 <span class="text">Delivered</span></div>
                                         {% endif %}
                                     </div>
                                     <hr>
                                     <ul class="row">
                                         {% for order_item in order.items.all %}
-                                        <li class="col-md-4">
-                                            <figure class="itemside mb-3">
-                                                <div class="aside"><img src="{{ order_item.instrument.image.url }}"
-                                                                        class="img-sm border"></div>
-                                                <figcaption class="info align-self-center">
-                                                    <p class="title"><a href="{% url 'shop:product_details' product_id=order_item.instrument.id %}">{{ order_item.instrument.name }}</a>
-                                                        <br>Quantity: {{ order_item.quantity }}</p>
-                                                    <span class="text-muted">${{ order_item.instrument.price }} </span>
-                                                </figcaption>
-                                            </figure>
-                                        </li>
+                                            <li class="col-md-4">
+                                                <figure class="itemside mb-3">
+                                                    <div class="aside"><img src="{{ order_item.instrument.image.url }}"
+                                                                            class="img-sm border"></div>
+                                                    <figcaption class="info align-self-center">
+                                                        <p class="title"><a
+                                                                href="{% url 'shop:product_details' product_id=order_item.instrument.id %}">{{ order_item.instrument.name }}</a>
+                                                            <br>Quantity: {{ order_item.quantity }}</p>
+                                                        <span class="text-muted">${{ order_item.instrument.price }} </span>
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
                                         {% endfor %}
                                     </ul>
                                     <hr>
-                                    <a href="javascript:void(0)" class="btn btn-warning" data-bs-dismiss="modal"
-                                       aria-label="Close" data-abc="true"> <i class="fa fa-chevron-left"></i>
-                                        Back to orders</a>
+                                    <div style="text-align: center">
+                                        <a href="javascript:void(0)" class="btn btn-warning" data-bs-dismiss="modal"
+                                           aria-label="Close" data-abc="true"> <i class="fa fa-chevron-left"></i>
+                                            Back to orders</a>
+                                        <a href="javascript:void(0)" class="btn btn-success confirm-delivery"
+                                           id="confirm-delivery__{{ order.id }}">
+                                            <i class="fas fa-check-circle"></i>
+                                            Confirm delivery</a>
+                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -340,5 +352,43 @@
 {% block scripts %}
 
     <script src="{% static 'assets/assets_for_bees/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script>
+
+        $(".confirm-delivery").on("click", function () {
+            let orderID = $(this).attr("id").split("__")[1];
+            $.ajax({
+                url: "/api/order/" + orderID + "/",
+                method: 'PATCH',
+                data: {
+                    "accepted": true,
+                    "packed": true,
+                    "shipped": true,
+                    "delivered": true
+                },
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    $.ajax({
+                        url: "#",
+                        method: "GET",
+                        success: function (res) {
+                            $('#popup-quickview-'+orderID).html($(res).find('#popup-quickview-'+orderID)[0].innerHTML);
+                            $('#progressbar__'+orderID).html($(res).find('#progressbar__'+orderID)[0].innerHTML);
+                        }
+                    });
+                    setTimeout(function () {
+                        let hulla = new hullabaloo();
+                        hulla.send("Confirm successfully!", "success");
+                    }, 300);
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+            });
+        });
+
+    </script>
 
 {% endblock %}
