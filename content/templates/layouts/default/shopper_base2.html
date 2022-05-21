@@ -244,9 +244,16 @@
                     <div class="action-checkout"><a href="{% url 'shop:cart' %}" class="button-viewcart">
                         <span>{% trans "View cart" %}</span>
                     </a>
-                        <a href="/checkout" class="button-checkout">
-                            <span>{% trans "Check out" %}</span>
-                        </a></div>
+                        {% if carts.count != 0 %}
+                            <a href="/checkout" class="button-checkout">
+                                <span>{% trans "Check out" %}</span>
+                            </a>
+                        {% else %}
+                            <a href="javascript: void(0)" class="button-checkout">
+                                <span>{% trans "Check out" %}</span>
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
