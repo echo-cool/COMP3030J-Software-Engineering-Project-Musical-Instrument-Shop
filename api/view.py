@@ -18,6 +18,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
+from accounts.utils import send_message_email
 from app import settings
 from chat.models import MessageModel
 from image_search.models import ImageSearchData
@@ -366,3 +367,13 @@ def search_user(request):
                 return JsonResponse({"code": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse({"code": 300}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def send_company_message(request):
+    if request.method == "POST":
+        try:
+            send_message_email(settings.DEFAULT_FROM_EMAIL, request.POST.get("name"), request.POST.get("email"),
+                               request.POST.get("subject"), request.POST.get("message"))
+            return JsonResponse({"code": 100}, safe=False, json_dumps_params={'ensure_ascii': False})
+        except:
+            return JsonResponse({"code": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
