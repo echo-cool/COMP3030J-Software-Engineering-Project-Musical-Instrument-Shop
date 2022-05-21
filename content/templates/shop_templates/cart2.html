@@ -59,7 +59,7 @@
                     <tbody>
                     {% if carts %}
                         {% for cart in carts %}
-                            <tr id="cart-{{ forloop.counter }}" class=" item_cart cart_item_single"
+                            <tr id="big-cart-{{ forloop.counter }}" class=" item_cart cart_item_single"
                                 data-id="{{ cart.id }}"
                                 data-price="{{ cart.instrument.price }}">
                                 <td class="product-photo">
@@ -217,6 +217,19 @@
             $("#all-total").html("<span class=\"text\">{% trans 'Cart Totals' %}</span><span class=\"number\">$ " + all_total_money.toFixed(1) + "</span>");
         }
 
+        function refreshCart() {
+            $.ajax({
+                url: "#",
+                method: "GET",
+                success: function (res) {
+                    $('#shopping-cart').html($(res).find('#shopping-cart')[0].innerHTML);
+                    activateMiniCart();
+                    activateDeleteCart();
+                    update_total_money();
+                }
+            });
+        }
+
         $(document).ready(function () {
             update_total_money();
             $(".button_inc").on("click", function () {
@@ -249,6 +262,7 @@
                     },
                     success: function (data) {
                         update_total_money();
+                        refreshCart();
                     }
                 });
 
@@ -268,6 +282,7 @@
                     },
                     success: function (data) {
                         update_total_money();
+                        refreshCart();
                     }
                 });
             });
@@ -282,9 +297,11 @@
                         'X-CSRFTOKEN': '{{ csrf_token }}'
                     },
                     success: function (data) {
-                        console.log($("#cart-" + $(that).attr("data-count")))
-                        $("#cart-" + $(that).attr("data-count")).remove();
+                        let target = "#big-cart-" + $(that).attr("data-count");
+                        console.log("remove:", $(target));
+                        $(target).remove();
                         update_total_money();
+                        refreshCart();
                     }
                 });
             });

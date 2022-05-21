@@ -160,10 +160,11 @@
                             </div>
                         </section>
                         <section class="chat-app-form">
+                            <input type="file" style="display: none;" id="chat_image_upload" accept="image/jpeg">
                             <form class="chat-app-input d-flex" onsubmit="return false">
                                 <fieldset class="col-10 m-0">
                                     <div class="input-group position-relative has-icon-left">
-                                        <div class="form-control-position">
+                                        <div id="image_send" class="form-control-position">
                                             <span id="basic-addon3"><i class="ft-image"></i></span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Send message"
@@ -527,38 +528,38 @@
 
                 function submitUserSearch() {
                     $.ajax({
-                            url: "/api/search_user/",
-                            method: 'POST',
-                            data: {
-                                "search_text": userSearch.val(),
-                            },
-                            headers: {
-                                'X-CSRFTOKEN': '{{ csrf_token }}'
-                            },
-                            success: function (data) {
-                                let code = data["code"];
-                                switch (code) {
-                                    case 100:
-                                        window.location.href = "/chat/new/" + data["id"];
-                                        break;
-                                    case 200:
-                                        setTimeout(function () {
-                                            let hulla = new hullabaloo();
-                                            hulla.send("The user you search is yourself!", "warning");
-                                        }, 300);
-                                        break;
-                                    case 300:
-                                        setTimeout(function () {
-                                            let hulla = new hullabaloo();
-                                            hulla.send("User not exist!", "warning");
-                                        }, 300);
-                                        break;
-                                }
-                            },
-                            error: function () {
-                                alert('Error! Check console!');
+                        url: "/api/search_user/",
+                        method: 'POST',
+                        data: {
+                            "search_text": userSearch.val(),
+                        },
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        success: function (data) {
+                            let code = data["code"];
+                            switch (code) {
+                                case 100:
+                                    window.location.href = "/chat/new/" + data["id"];
+                                    break;
+                                case 200:
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("The user you search is yourself!", "warning");
+                                    }, 300);
+                                    break;
+                                case 300:
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("User not exist!", "warning");
+                                    }, 300);
+                                    break;
                             }
-                        })
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    })
                 }
 
                 userSearch.keydown(function (event) {
@@ -579,6 +580,38 @@
                     userSearch.focus();
                 });
 
+                let chat_image_upload = $("#chat_image_upload");
+
+                $('#image_send').on('click', function () {
+                    chat_image_upload.trigger('click')
+                    return false;
+                }).mouseover(function () {
+                    $(this).find("i").css("color", "#02d5fa");
+                }).mouseout(function () {
+                    $(this).find("i").css("color", "black");
+                });
+
+                chat_image_upload.bind('input propertychange', function () {
+                    let formData = new FormData()
+                    formData.append("image_file_upload", chat_image_upload[0].files[0]);
+                    $.ajax({
+                        url: "/api/editor_upload_img/",
+                        method: 'POST',
+                        data: formData,
+                        async: true,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        success: function (res) {
+                            sendMessage(currentRecipient,"<img alt='' width='100rem' src="+res["data"][0]["url"]+" />" );
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    })
+                });
 
 
             }

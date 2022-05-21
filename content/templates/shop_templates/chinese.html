@@ -35,6 +35,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets_chinese/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_header.css" %}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_footer.css" %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/css_for_chinese_header.css" %}"
+          media="all"/>
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
     <style>
         .label_menu {
@@ -95,164 +98,23 @@
 </div>
 <!-- Preloader End -->
 
-{#<div class="menu_moblie d-flex d-xl-none jsmenumobile align-items-center">#}
-{#    <a href="javascript:void(0)" title="" class="menuleft">#}
-{#    <span class="iconmenu">#}
-{#      <span></span>#}
-{#      <span></span>#}
-{#      <span></span>#}
-{#    </span>#}
-{#    </a>#}
-{#    <div class="logo_menumoblie">#}
-{#        <a href="{% url 'shop:index' %}">#}
-{#            <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599" width="115"#}
-{#                 alt="logo">#}
-{#        </a>#}
-{#    </div>#}
-{#    <div class="menuright">#}
-{#            <span class="pr-3 js-search-destop">#}
-{#                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"#}
-{#                     height="400" width="400" id="svg2"#}
-{#                     version="1.1" xmlns:svg="http://www.w3.org/2000/svg"#}
-{#                     xml:space="preserve"><metadata id="metadata8">#}
-{#                   </metadata><defs#}
-{#                        id="defs6"></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10">#}
-{#                    <g transform="scale(0.1)" id="g12">#}
-{#                        <path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"#}
-{#                              d="m 1312.7,795.5 c -472.7,0 -857.204,384.3 -857.204,856.7 0,472.7 384.504,857.2 857.204,857.2 472.7,0 857.3,-384.5 857.3,-857.2 0,-472.4 -384.6,-856.7 -857.3,-856.7 z M 2783.9,352.699 2172.7,963.898 c 155.8,194.702 241.5,438.602 241.5,688.302 0,607.3 -494.1,1101.4 -1101.5,1101.4 -607.302,0 -1101.399,-494.1 -1101.399,-1101.4 0,-607.4 494.097,-1101.501 1101.399,-1101.501 249.8,0 493.5,85.5 687.7,241 L 2611.7,181 c 23,-23 53.6,-35.699 86.1,-35.699 32.4,0 63,12.699 86,35.699 23.1,22.801 35.8,53.301 35.8,85.898 0,32.602 -12.7,63 -35.7,85.801">#}
-{#                    </path></g></g>#}
-{#                </svg>#}
-{#            </span>#}
-{#        <a href="javascript:void(0)" title="" class="js-call-minicart">#}
-{#            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="400" width="400" id="svg2"#}
-{#                 version="1.1" xmlns:svg="http://www.w3.org/2000/svg"#}
-{#                 xml:space="preserve"><metadata id="metadata8"><rdf><work rdf:about=""><format>{% trans "image/svg+xml" %}</format><type#}
-{#                    rdf:resource="http://purl.org/dc/dcmitype/StillImage"></type></work></rdf></metadata>#}
-{#                <defs id="defs6"></defs>#}
-{#                <g transform="matrix(1.3333333,0,0,-1.3333333,0,400)" id="g10"><g transform="scale(0.1)" id="g12"><path id="path14" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 2565.21,2412.71 H 450.992 V 0 H 2565.21 V 2412.71 Z M 2366.79,2214.29 V 198.43 H 649.418 V 2214.29 H 2366.79"></path><path#}
-{#                        id="path16" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"#}
-{#                        d="m 1508.11,2990 h -0.01 c -361.22,0 -654.037,-292.82 -654.037,-654.04 V 2216.92 H 2162.14 v 119.04 c 0,361.22 -292.82,654.04 -654.03,654.04 z m 0,-198.43 c 224.16,0 411.02,-162.7 448.69,-376.23 h -897.39 c 37.66,213.53 224.53,376.23 448.7,376.23"></path><path#}
-{#                        id="path18" style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"#}
-{#                        d="m 1946.24,1868.17 h -876.27 v 169.54 h 876.27 v -169.54"></path></g></g></svg>#}
-{#            <span class="count_pr_incart enj-cartcount">{{ carts.count }}</span>#}
-{#        </a>#}
-{#    </div>#}
-{#</div>#}
-{#<div class="search-full-destop">#}
-{#    <div class="search-eveland js-box-search">#}
-{#        <div class="drawer-search-top">#}
-{#            <h3 class="drawer-search-title" id="search_title">{% trans "Start typing and hit Enter" %}</h3>#}
-{#        </div>#}
-{#        <form class="wg-search-form" id="search_form">#}
-{#            <input type="text" placeholder="Search anything" class="search-input js_engo_autocomplate"#}
-{#                   id="search_text"/>#}
-{#            <button type="submit" class="set-20-svg">#}
-{##}
-{#                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->#}
-{#                <i class="fa fa-search" aria-hidden="true"></i>#}
-{#            </button>#}
-{#            <button id="image_retrieval" style="color: #000;" title="Search by Image">#}
-{##}
-{#                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->#}
-{#                <i class="fa fa-camera-retro" aria-hidden="true"></i>#}
-{#            </button>#}
-{##}
-{#            <input type="file" style="display: none;" id="image_file_upload" accept="image/jpeg">#}
-{#        </form>#}
-{#        <div class="drawer_back">#}
-{#            <a href="javascript:void(0)" class="close-search js-drawer-close set-16-svg" id="close-search">#}
-{#                <i class="fa fa-times" aria-hidden="true"></i>#}
-{#            </a>#}
-{#        </div>#}
-{#    </div>#}
-{#    <div class="bg_search_box ">#}
-{#    </div>#}
-{#</div>#}
-{#<div class="js-minicart minicart" id="shopping-cart">#}
-{#    <div class="relative" style="height: 100%;">#}
-{#        <div class="mini-content ">#}
-{#            <div class="mini-cart-head">#}
-{#                <a href="javascript:void(0)" class="mini-cart-undo close-mini-cart">#}
-{#                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"#}
-{#                         id="Capa_1" x="0px" y="0px" viewBox="0 0 298.667 298.667"#}
-{#                         style="enable-background:new 0 0 298.667 298.667;" xml:space="preserve">#}
-{#            <g>#}
-{#              <g>#}
-{#                <polygon#}
-{#                        points="298.667,30.187 268.48,0 149.333,119.147 30.187,0 0,30.187 119.147,149.333 0,268.48 30.187,298.667     149.333,179.52 268.48,298.667 298.667,268.48 179.52,149.333   "></polygon>#}
-{#              </g>#}
-{#            </g>#}
-{##}
-{#          </svg>#}
-{#                </a>#}
-{#                <h3 class="title">{% trans "Shopping Cart" %}</h3>#}
-{#                <div class="mini-cart-counter"><span class="cart-counter enj-cartcount"#}
-{#                                                     id="cart-count">{{ carts.count }}</span></div>#}
-{#            </div>#}
-{##}
-{#            <div class="mini-cart-bottom enj-minicart-ajax">#}
-{##}
-{#                <div class="prod">#}
-{#                    <div class="product-cart">#}
-{##}
-{#                        {% for cart in carts %}#}
-{#                            <ol class="minicart_item list-unstyled mb-0 px-0" id="cart-{{ forloop.counter }}"#}
-{#                                data-price="{{ cart.instrument.price }}">#}
-{#                                <li class="d-flex">#}
-{#                                    <div class="thumb_img_cartmini">#}
-{#                                        <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}"#}
-{#                                           title=""#}
-{#                                           class=""><img alt="{{ cart.instrument.name }}"#}
-{#                                                         src="{{ cart.instrument.image.url }}"></a>#}
-{#                                    </div>#}
-{#                                    <div class="product-detail">#}
-{#                                        <h3 class="product_name_mini">#}
-{#                                            <a href="{% url 'shop:product_details' product_id=cart.instrument.id %}">{{ cart.instrument.name }}</a>#}
-{#                                        </h3>#}
-{#                                        <div class="product_info">#}
-{#                                            <div class="product_quanity">{% trans "QTY : " %}<span#}
-{#                                                    id="cart-count">{{ cart.count }}</span></div>#}
-{#                                            <div class="product_price">#}
-{#                                                <span class="price_sale">${{ cart.instrument.price }}</span>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                    <div class="produc_remove">#}
-{#                                        <a href="javascript:void(0)" class="remove-product" data-line="1">#}
-{#                                            <i id="remove-button" class="fa fa-trash-o delete-item"#}
-{#                                               data-id="{{ cart.id }}"#}
-{#                                               data-count="{{ forloop.counter }}"></i>#}
-{#                                        </a>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            </ol>#}
-{#                        {% endfor %}#}
-{##}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="sub-total">#}
-{##}
-{#                    <span class="total-title float-left">{% trans "Total:" %}</span>#}
-{#                    <span class="total-price float-right" id="total-price">$</span>#}
-{##}
-{#                </div>#}
-{#                <div class="action-checkout">#}
-{##}
-{#                    <a href="{% url 'shop:cart' %}" class="button-viewcart">#}
-{#                        <span>{% trans "View cart" %}</span>#}
-{#                    </a>#}
-{#                    <a href="/checkout" class="button-checkout">#}
-{#                        <span>{% trans "Check out" %}</span>#}
-{#                    </a>#}
-{##}
-{#                </div>#}
-{##}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-{#<div class="js-bg bg-minicart"></div>#}
+<div class="menu_moblie d-flex d-xl-none jsmenumobile align-items-center">
+    <a href="javascript:void(0)" title="" class="menuleft">
+    <span class="iconmenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    </a>
+    <div class="logo_menumoblie">
+        <a href="/">
+            <img src="//cdn.shopify.com/s/files/1/0518/3173/4459/files/logo.png?v=1606706599" width="115" alt="logo">
+        </a>
+    </div>
+    <div class="menuright">
+
+    </div>
+</div>
 <!-- Header Start -->
 <header id="header" class="header-v2-h2 js_height_hd jsheader_sticky d-none d-xl-block"
         style="background: rgba(255, 255, 255, 0.7);z-index: 999;">
@@ -352,12 +214,21 @@
                                         return height;
                                     }
 
+                                    function jumpToCustomize() {
+                                        console.log(window.location.pathname);
+                                        if (window.location.pathname !== "/") {
+                                            window.location.href = "/?target=customize";
+                                        } else {
+                                            window.scrollTo({
+                                                top: heightToTop(window.document.getElementById('jump_customize')),
+                                                behavior: 'smooth'
+                                            })
+                                        }
+                                    }
                                 </script>
                                 <li class="nav-item dropdown">
-                                    <a href="javascript:void(0)" onclick=" window.scrollTo({
-                                            top: heightToTop(window.document.getElementById('jump_customize')),
-                                            behavior: 'smooth'
-                                        })" title="3D Model Customize" class="delay03  relative nav-link menu_lv1 ">
+                                    <a href="javascript:void(0)" onclick=" jumpToCustomize()" title="3D Model Customize"
+                                       class="delay03  relative nav-link menu_lv1 ">
                                         CUSTOMIZE
                                         <span class="absolute label_menu label_menu-shophot-e62e05-2"
                                               style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
@@ -3342,12 +3213,82 @@
         </div>
     </div>
 </div>
-<form action="{% url 'set_language' %}" method="post" style="display: none">
-    {% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}"/>
-    <input name="language" type="hidden" value=""/>
-    <button class="btn btn-success">{% trans 'Change' %}</button>
-</form>
+<div class="box_contentmenu_background">
+</div>
+<div class="box_contentmenu ">
+    <div class="tab_content_menu_mobile ">
+        <ul class="nav nav-tabs toptab_box_content list-unstyled mb-0">
+            <li class="toptab_li">
+                <a class="tab_navar active" href="#tab_menu_mobile">
+                  <span class="tab-menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </span>
+                    <span class="ml-3">Menu</span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content2 active">
+            <div role="tabpanel" class="tab-pane show in active tab_children_menu" id="tab_menu_mobile">
+                <div class="menu-horizon-list">
+                    <a href="/" title="HOME" class="relative nammenu ">HOME</a>
+                    <a href="/" class="toggle-menumobile  js_icon_horizon-menu">
+                        <i class=" fa fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="menu-horizon-list">
+                    <a href="javascript:void(0)" onclick="jumpToCustomize()" title=">CUSTOMIZE"
+                       class="relative nammenu ">CUSTOMIZE
+
+                    </a>
+                    <a href="javascript:void(0)" onclick="jumpToCustomize()"
+                       class="toggle-menumobile  js_icon_horizon-menu">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="menu-horizon-list">
+                    <a href="/chinese" title="CHINESE" class="relative nammenu ">CHINESE</a>
+                    <a href="/chinese" class="toggle-menumobile  js_icon_horizon-menu">
+                        <i class=" fa fa-angle-right"></i>
+                    </a>
+                </div>
+                {% if request.user %}
+                    {% if not request.user.is_staff %}
+                        <div class="menu-horizon-list">
+                            <a href="{% url 'chat:index_new' to=1 %}" title="CHAT"
+                               class="relative nammenu ">CHAT</a>
+                            <a href="{% url 'chat:index_new' to=1 %}" class="toggle-menumobile  js_icon_horizon-menu">
+                                <i class=" fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="menu-horizon-list">
+                        <a href="{% url 'accounts:log_in' %}" title="CHAT"
+                           class="relative nammenu ">CHAT</a>
+                        <a href="{% url 'accounts:log_in' %}" class="toggle-menumobile js_icon_horizon-menu">
+                            <i class=" fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="menu-horizon-list">
+                    <a href="/blog" title="BLOGS" class="relative nammenu ">BLOGS</a>
+                    <a href="/blog" class="toggle-menumobile  js_icon_horizon-menu">
+                        <i class=" fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="close-menu-mobile text-center js-eveland-close">
+            <i class="ti-close mr-3"></i>Close
+        </div>
+    </div>
+</div>
 
 <footer class="footer_v1">
     <div class="top-footer">
@@ -3367,33 +3308,33 @@
 
                         </div>
 
-                        <p class="mb-0 content_footer">{% trans "Sophisticated simplicity for the" %}<br>
-                            independent mind.</p>
-
+                        <p class="mb-0 content_footer">{% trans "Sophisticated simplicity for the" %}
+                            <br>{% trans "independent mind." %}
+                        </p>
 
                         <div class="list-icon">
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a href="" title="" target="_blank" class="social-item"><i
+                                    <a href="/about" title="" target="_blank" class="social-item"><i
                                             class="fa fa-twitter"></i></a>
                                 </li>
 
 
                                 <li class="list-inline-item">
-                                    <a href="" title="" target="_blank" class="social-item"><i
+                                    <a href="/about" title="" target="_blank" class="social-item"><i
                                             class="fa fa-dribbble"></i></a>
                                 </li>
 
 
                                 <li class="list-inline-item">
-                                    <a href="" title="" target="_blank" class="social-item"><i
+                                    <a href="/about" title="" target="_blank" class="social-item"><i
                                             class="fa fa-behance"></i></a>
                                 </li>
 
 
                                 <li class="list-inline-item">
-                                    <a href="" title="" target="_blank" class="social-item"><i
+                                    <a href="/about" title="" target="_blank" class="social-item"><i
                                             class="fa fa-instagram"></i></a>
                                 </li>
 
@@ -3404,7 +3345,7 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="info_footer">
                         <div class="title_footer">
-                            <h4 class="mb-0 title_border">{% trans "Help" %}&amp;{% trans "Infomation" %}</h4>
+                            <h4 class="mb-0 title_border">{% trans "Help" %}&amp;{% trans "Information" %}</h4>
                         </div>
                         <ul class="list-unstyled mb-0">
                             <li><a href="/about" title="About us">{% trans "About us" %}</a></li>
@@ -3418,13 +3359,12 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="info_footer">
                         <div class="title_footer">
-                            <h4 class="mb-0 title_border">{% trans "Right declaration" %}</h4>
+                            <h4 class="mb-0 title_border">{% trans "Customization" %}</h4>
                         </div>
                         <ul class="list-unstyled mb-0">
-                            <li><a href="#">{% trans "MusicoMo" %}</a></li>
-                            <li><a href="#">{% trans "Group 8" %}</a></li>
-                            <li><a href="#">{% trans "COMP3030J" %}</a></li>
-
+                            <li><a href="/model_design/color?name=piano&style=3">{% trans "Piano: 29999" %}</a></li>
+                            <li><a href="/model_design/color?name=piano&style=1">{% trans "Piano: 39999" %}</a></li>
+                            <li><a href="/model_design/color?name=piano&style=2">{% trans "Piano: 59999" %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -3440,13 +3380,13 @@
                             <li><a href="/product_search/?search=guitar"
                                    title="Guitar Accessory ">{% trans "Guitar Accessory " %}</a></li>
 
-                            <li><a href="/product_search/?search=keyboard"
-                                   title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>
+                            {#                            <li><a href="/product_search/?search=keyboard"#}
+                            {#                                   title="Portable Keyboards">{% trans "Portable Keyboards" %}</a></li>#}
                             {#                            <li><a href="/product_search/?search=drum"#}
                             {#                                   title="Guitar Amp Heads">{% trans "Guitar Amp Heads" %}</a></li>#}
-                            {#                            <li><a href="/product_search/?search=flute"#}
-                            {#                                   title="Electric Double Basses">{% trans "Flute" %}</a>#}
-                            {#                            </li>#}
+                            <li><a href="/product_search/?search=flute"
+                                   title="Electric Double Basses">{% trans "Flute" %}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -3501,117 +3441,6 @@
 <script src="{% static 'assets_chinese/js/custom.js' %}"></script>
 
 <script>
-    function activateDeleteCart() {
-        $(".delete-item").on("click", function () {
-            // {# Use API to remove cart item #}
-            let that = this;
-            $.ajax({
-                url: "/api/cart/" + $(this).attr("data-id"),
-                type: "DELETE",
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                success: function (data) {
-                    $("#cart-" + $(that).attr("data-count")).remove();
-                    update_total_money()
-                    let count = $("#cart-count").text()
-                    $("#cart-count").text(count - 1)
-                }
-            });
-        });
-    }
-
-    activateDeleteCart();
-
-    jQuery(function ($) {
-        $('#search_form').on('submit', function (e) {
-            window.location.href = addUrlPara('{% url 'shop:product_search' %}', 'search', $('#search_text').val());
-            return false;
-        });
-
-        let image_upload = $("#image_file_upload");
-
-        $('#image_retrieval').on('click', function () {
-            image_upload.trigger('click')
-            return false;
-        }).mouseover(function () {
-            $(this).find("i").css("color", "#02d5fa");
-        }).mouseout(function () {
-            $(this).find("i").css("color", "black");
-        });
-
-        image_upload.bind('input propertychange', function () {
-            let search_title = $("#search_title");
-            search_title.text("Processing...");
-            let formData = new FormData()
-            formData.append("image_file_upload", image_upload[0].files[0]);
-            $.ajax({
-                url: "/api/analyze_image/",
-                method: 'POST',
-                data: formData,
-                async: true,
-                contentType: false,
-                processData: false,
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                success: function (res) {
-                    window.location.href = ("/image_search/" + res['key']);
-                    image_upload.val(null);
-                    search_title.text("Start typing and hit Enter")
-                },
-                error: function () {
-                    alert('Error! Check console!');
-                }
-            })
-        });
-
-    })
-
-    $('.dropdown-cart, .dropdown-access').hover(function () {
-        $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(300);
-    }, function () {
-        $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(300);
-    });
-
-    function changeLanguage(lan) {
-        console.log("change language", lan);
-        switch (lan) {
-            case "ru":
-                lan = "ru-RU";
-                break;
-            case "ja":
-                lan = "ja-JP";
-                break;
-            case "ua":
-                lan = "uk-UA";
-                break;
-            case "fr":
-                lan = "fr-FR";
-                break;
-            case "cn":
-                lan = "zh-CN";
-                break;
-            case "es":
-                lan = "es-ES";
-                break;
-            case "ds":
-                lan = "ds-DS";
-                break;
-            case "de":
-                lan = "de-DE";
-                break;
-            case "en":
-                lan = "en";
-                break;
-            {#default:#}
-            {#    lan = "en";#}
-            {#    break;#}
-        }
-        $("input[name='language']").val(lan);
-        console.log($("input[name='language']").val());
-        $(".btn-success").click();
-    }
 
     {% if messages %}
     {% for message in messages %}
