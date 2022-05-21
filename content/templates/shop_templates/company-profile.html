@@ -29,6 +29,9 @@
     <!-- Template Main CSS File -->
     <link href="{% static "assets/css_for_shop/css_for_company_profile/style.css" %}" rel="stylesheet">
 
+    <script type="text/javascript" src="{% static "assets/js_for_homepage/jquery-1.12.0.min.js" %}"></script>
+    <script src="{% static "assets/js/hullabaloo.js" %}"></script>
+
     <!-- =======================================================
     * Template Name: Gp - v4.7.0
     * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -146,11 +149,18 @@
                         <p class="fst-italic">{% trans "This is a Melodious Instruments Shop that was " %}<strong>{% trans "run in physical business by a family previously" %}</strong>.
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i>{% trans "Firstly, our store has essential functions for online shopping" %}</li>
-                            <li><i class="ri-check-double-line"></i>{% trans "To give customers immersive shopping experience, our project employs the usage of 3D instruments preview and instruments playing games in our website." %}</li>
-                            <li><i class="ri-check-double-line"></i>{% trans "Our shop is original in allowing customers to interact with 3D models to customise their preferred instruments, which have not gained much prevalence in current e-commerce." %}</li>
+                            <li>
+                                <i class="ri-check-double-line"></i>{% trans "Firstly, our store has essential functions for online shopping" %}
+                            </li>
+                            <li>
+                                <i class="ri-check-double-line"></i>{% trans "To give customers immersive shopping experience, our project employs the usage of 3D instruments preview and instruments playing games in our website." %}
+                            </li>
+                            <li>
+                                <i class="ri-check-double-line"></i>{% trans "Our shop is original in allowing customers to interact with 3D models to customise their preferred instruments, which have not gained much prevalence in current e-commerce." %}
+                            </li>
                         </ul>
-                        <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating" %} <strong>{% trans "e-commerce as a auxiliary or alternative sales channel." %}</strong></p>
+                        <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating" %}
+                            <strong>{% trans "e-commerce as a auxiliary or alternative sales channel." %}</strong></p>
                     </div>
                 </div>
             </div>
@@ -234,7 +244,8 @@
                         <div class="icon-box">
                             <div class="icon"><i class="bx bxl-dribbble"></i></div>
                             <h4><a href="">{% trans "Preview 3D Instruments" %}</a></h4>
-                            <p>{% trans "You can view instruments in 3D forms," %}<br>{% trans "giving you a more comprehensive about the instruments." %}</p>
+                            <p>{% trans "You can view instruments in 3D forms," %}<br>{% trans "giving you a more comprehensive about the instruments." %}
+                            </p>
                         </div>
                     </div>
 
@@ -252,7 +263,8 @@
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
                             <h4><a href="">{% trans "Smart Instruments Recommendations" %}</a></h4>
-                            <p>{% trans "Our store can better identify your preferred instruments " %}<br>{% trans "by using advanced technologies." %}</p>
+                            <p>{% trans "Our store can better identify your preferred instruments " %}<br>{% trans "by using advanced technologies." %}
+                            </p>
                         </div>
                     </div>
 
@@ -279,7 +291,8 @@
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-arch"></i></div>
                             <h4><a href="">{% trans "Cultural Communication" %}</a></h4>
-                            <p>{% trans "Our store specially designed Chinese instruments zone and Western instruments zone, " %}<br>{% trans "facilitating the communication between different cultures." %}</p>
+                            <p>{% trans "Our store specially designed Chinese instruments zone and Western instruments zone, " %}<br>{% trans "facilitating the communication between different cultures." %}
+                            </p>
                         </div>
                     </div>
 
@@ -294,11 +307,13 @@
 
                 <div class="text-center">
                     <h3>{% trans "Shop Online Now" %}</h3>
-                    <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating " %}<strong>{% trans "e-commerce as a auxiliary or alternative sales channel." %}</strong></p>
+                    <p>{% trans "In the context of the pandemic, the family-owned instruments local shop was forced to close their physical business and is now anticipating " %}<strong>{% trans "e-commerce as a auxiliary or alternative sales channel." %}</strong>
+                    </p>
                     <a class="cta-btn" href="#">{% trans "Shop Online Now" %}</a>
                 </div>
 
-            </div>{% trans "features" %}
+            </div>
+            {% trans "features" %}
         </section><!-- End Cta Section -->
 
         <!-- ======= Portfolio Section ======= -->
@@ -499,7 +514,9 @@
                                         <i class="bi bi-emoji-smile"></i>
                                         <span data-purecounter-start="0" data-purecounter-end="65"
                                               data-purecounter-duration="2" class="purecounter"></span>
-                                        <p><strong>{% trans "Happy Clients" %}</strong>{% trans "many consumers give positive feedback to our store" %}</p>
+                                        <p>
+                                            <strong>{% trans "Happy Clients" %}</strong>{% trans "many consumers give positive feedback to our store" %}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -508,7 +525,9 @@
                                         <i class="bi bi-journal-richtext"></i>
                                         <span data-purecounter-start="0" data-purecounter-end="85"
                                               data-purecounter-duration="2" class="purecounter"></span>
-                                        <p><strong>{% trans "Modernization" %}</strong>{% trans "adapt the physical business to e-commerce" %}</p>
+                                        <p>
+                                            <strong>{% trans "Modernization" %}</strong>{% trans "adapt the physical business to e-commerce" %}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -517,7 +536,9 @@
                                         <i class="bi bi-clock"></i>
                                         <span data-purecounter-start="0" data-purecounter-end="35"
                                               data-purecounter-duration="4" class="purecounter"></span>
-                                        <p><strong>{% trans "Years of experience" %}</strong>{% trans "our family-owned instruments store has been run for several years" %}</p>
+                                        <p>
+                                            <strong>{% trans "Years of experience" %}</strong>{% trans "our family-owned instruments store has been run for several years" %}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -526,7 +547,9 @@
                                         <i class="bi bi-award"></i>
                                         <span data-purecounter-start="0" data-purecounter-end="20"
                                               data-purecounter-duration="4" class="purecounter"></span>
-                                        <p><strong>{% trans "Originality" %}</strong>{% trans "to better cater to users' needs, our store employ new features that are unprecedented in physical store and e-commerce to make it more appealing to customers." %}</p>
+                                        <p>
+                                            <strong>{% trans "Originality" %}</strong>{% trans "to better cater to users' needs, our store employ new features that are unprecedented in physical store and e-commerce to make it more appealing to customers." %}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -551,7 +574,8 @@
                                 <h3>{% trans "Wang Yuyang" %}</h3>
                                 <h4>{% trans "Ceo &amp; Founder" %}</h4>
                                 <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I inherited this instruments from my grandparents. It suffers a lot during the pandemic. But now we are moving it online to make it accessible to our potential customers." %}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I inherited this instruments from my grandparents. It suffers a lot during the pandemic. But now we are moving it online to make it accessible to our potential customers." %}<i
+                                        class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
                         </div><!-- End testimonial item -->
@@ -563,7 +587,8 @@
                                 <h3>{% trans "Yang Liuxin" %}</h3>
                                 <h4>{% trans "Designer" %}</h4>
                                 <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am responsible for the online operations of our instruments selling store. I hope such a illustrious retail could survive the pandemic and even attract more customers." %}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am responsible for the online operations of our instruments selling store. I hope such a illustrious retail could survive the pandemic and even attract more customers." %}<i
+                                        class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
                         </div><!-- End testimonial item -->
@@ -575,7 +600,8 @@
                                 <h3>{% trans "Zhan Yi" %}</h3>
                                 <h4>{% trans "Store Owner" %}</h4>
                                 <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am the manager of the online instruments store. I shoulder the responsibility of deciding the long-term strategies." %}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am the manager of the online instruments store. I shoulder the responsibility of deciding the long-term strategies." %}<i
+                                        class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
                         </div><!-- End testimonial item -->
@@ -587,7 +613,8 @@
                                 <h3>{% trans "Weng Han" %}</h3>
                                 <h4>{% trans "Freelancer" %}</h4>
                                 <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am a recruiter of the instruments store. The highly respected store hires me to incorporate the 3D elements into our e-commerce to make it more attractive." %}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am a recruiter of the instruments store. The highly respected store hires me to incorporate the 3D elements into our e-commerce to make it more attractive." %}<i
+                                        class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
                         </div><!-- End testimonial item -->
@@ -599,7 +626,8 @@
                                 <h3>{% trans "Ma Zixiao" %}</h3>
                                 <h4>{% trans "Entrepreneur" %}</h4>
                                 <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am the receptionist of the website. I will recommend instruments to you based on your preferences. If you have any questions or requests, please contact me freely." %}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>{% trans "I am the receptionist of the website. I will recommend instruments to you based on your preferences. If you have any questions or requests, please contact me freely." %}<i
+                                        class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
                         </div><!-- End testimonial item -->
@@ -755,7 +783,8 @@
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
 
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form method="post" role="form" class="php-email-form"
+                              id="company_message_form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
@@ -780,9 +809,46 @@
                                 <div class="sent-message">{% trans "Your message has been sent. Thank you!" %}</div>
                             </div>
                             <div class="text-center">
-                                <button type="submit">{% trans "Send Message" %}</button>
+                                <button type="submit" id="send_button">{% trans "Send Message" %}</button>
                             </div>
                         </form>
+
+                        <script>
+                            $("#company_message_form").on("submit", function () {
+                                let formData = new FormData(document.getElementById("company_message_form"));
+
+                                $.ajax({
+                                    url: "/api/send_company_message/",
+                                    method: 'POST',
+                                    data: formData,
+                                    async: true,
+                                    contentType: false,
+                                    processData: false,
+                                    headers: {
+                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                    },
+                                    success: function (res) {
+                                        let code = res["code"];
+                                        if (code === 100) {
+                                            setTimeout(function () {
+                                                let hulla = new hullabaloo();
+                                                hulla.send("Send successfully!", "success");
+                                            }, 300);
+                                        } else if (code === 200) {
+                                            setTimeout(function () {
+                                                let hulla = new hullabaloo();
+                                                hulla.send("Error!", "warning");
+                                            }, 300);
+                                        }
+                                    },
+                                    error: function () {
+                                        alert('Error! Check console!');
+                                    }
+
+                                });
+                                return false;
+                            });
+                        </script>
 
                     </div>
 
@@ -828,7 +894,7 @@
     <script src="{% static "assets/vendor/vendor_for_company_profile/glightbox/js/glightbox.min.js" %}"></script>
     <script src="{% static "assets/vendor/vendor_for_company_profile/isotope-layout/isotope.pkgd.min.js" %}"></script>
     <script src="{% static "assets/vendor/vendor_for_company_profile/swiper/swiper-bundle.min.js" %}"></script>
-    <script src="{% static "assets/vendor/vendor_for_company_profile/php-email-form/validate.js" %}"></script>
+    {#    <script src="{% static "assets/vendor/vendor_for_company_profile/php-email-form/validate.js" %}"></script>#}
 
     <!-- Template Main JS File -->
     <script src="{% static "assets/js_for_shop/js_for_companu_profile/main.js" %}"></script>
