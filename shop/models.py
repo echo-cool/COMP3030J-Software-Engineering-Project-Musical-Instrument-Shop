@@ -147,6 +147,14 @@ class OrderItem(models.Model):
         return f'{self.instrument}<{self.quantity}>'
 
 
+class UncompletedOrderModelItem(models.Model):
+    customModel = models.ForeignKey('CustomModel', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    uncompleted_order = models.ForeignKey('UncompletedOrder', on_delete=models.CASCADE, related_name='model_items')
+
+    def __str__(self):
+        return f'{self.instrument}<{self.quantity}>'
+
 class UncompletedOrderItem(models.Model):
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
