@@ -180,9 +180,23 @@
                             <li id="all-total"><span class="text">{% trans 'Cart Totals' %}</span><span
                                     class="number">$ 2,040.00</span></li>
                         </ul>
-                        <button class="btn link-button" href="#"
-                                title="Proceed to checkout">{% trans 'Proceed to checkout' %}
-                        </button>
+                        {% if carts.count != 0 %}
+                            <button class="btn link-button" href="#"
+                                    title="Proceed to checkout">{% trans 'Proceed to checkout' %}
+                            </button>
+                        {% else %}
+                            <button class="btn link-button" href="#" disabled="disabled" id="hulala-show-tip"
+                                    title="Proceed to checkout">{% trans 'Proceed to checkout' %}
+                            </button>
+{#                            <script>#}
+{#                                var button = document.getElementById("hulala-show-tip");#}
+{#                                button.onclick = function () {#}
+{#                                    console.log("aaa");#}
+{#                                    let hulla = new hullabaloo();#}
+{#                                    hulla.send("Confirm successfully!", "success");#}
+{#                                }#}
+{#                            </script>#}
+                        {% endif %}
                     </div>
                     <!-- End col-md-4 -->
                 </div>
