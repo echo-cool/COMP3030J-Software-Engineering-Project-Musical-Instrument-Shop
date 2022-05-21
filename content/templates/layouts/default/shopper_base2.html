@@ -370,9 +370,7 @@
                                 </script>
                                 <li class="nav-item dropdown">
                                     <a href="javascript:void(0)" onclick=" jumpToCustomize()" title="3D Model Customize"
-                                       class="delay03  relative nav-link menu_lv1 ">
-                                        CUSTOMIZE
-                                        <span class="absolute label_menu label_menu-shophot-e62e05-2"
+                                       class="delay03  relative nav-link menu_lv1 ">{% trans "CUSTOMIZ" %}<span class="absolute label_menu label_menu-shophot-e62e05-2"
                                               style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
                                         <style>
                                             .label_menu-shophot-e62e05-2:before {
@@ -1536,23 +1534,22 @@
                     <span></span>
                     <span></span>
                   </span>
-                    <span class="ml-3">Menu</span>
+                    <span class="ml-3">{% trans "Menu" %}</span>
                 </a>
             </li>
         </ul>
         <div class="tab-content2 active">
             <div role="tabpanel" class="tab-pane show in active tab_children_menu" id="tab_menu_mobile">
                 <div class="menu-horizon-list">
-                    <a href="/" title="HOME" class="relative nammenu ">HOME</a>
+                    <a href="/" title="HOME" class="relative nammenu ">{% trans "HOME" %}</a>
                     <a href="/" class="toggle-menumobile  js_icon_horizon-menu">
                         <i class=" fa fa-angle-right"></i>
                     </a>
                 </div>
                 <div class="menu-horizon-list">
                     <a href="javascript:void(0)" onclick="jumpToCustomize()" title=">CUSTOMIZE"
-                       class="relative nammenu ">CUSTOMIZE
-                        <span class="absolute label_menu label_menu-shophot-e62e05-2"
-                              style="background-color: #e62e05;"><span>HOT</span></span>
+                       class="relative nammenu ">{% trans "CUSTOMIZE" %}<span class="absolute label_menu label_menu-shophot-e62e05-2"
+                              style="background-color: #e62e05;"><span>{% trans "HOT" %}</span></span>
                         <style>
                             .label_menu-shophot-e62e05-2:before {
                                 border-top: 4px solid #e62e05;
@@ -1565,7 +1562,7 @@
                     </a>
                 </div>
                 <div class="menu-horizon-list">
-                    <a href="/chinese" title="CHINESE" class="relative nammenu ">CHINESE</a>
+                    <a href="/chinese" title="CHINESE" class="relative nammenu ">{% trans "CHINESE" %}</a>
                     <a href="/chinese" class="toggle-menumobile  js_icon_horizon-menu">
                         <i class=" fa fa-angle-right"></i>
                     </a>
@@ -1574,7 +1571,7 @@
                     {% if not request.user.is_staff %}
                         <div class="menu-horizon-list">
                             <a href="{% url 'chat:index_new' to=1 %}" title="CHAT"
-                               class="relative nammenu ">CHAT</a>
+                               class="relative nammenu ">{% trans "CHAT" %}</a>
                             <a href="{% url 'chat:index_new' to=1 %}" class="toggle-menumobile  js_icon_horizon-menu">
                                 <i class=" fa fa-angle-right"></i>
                             </a>
@@ -1583,14 +1580,14 @@
                 {% else %}
                     <div class="menu-horizon-list">
                         <a href="{% url 'accounts:log_in' %}" title="CHAT"
-                           class="relative nammenu ">CHAT</a>
+                           class="relative nammenu ">{% trans "CHAT" %}</a>
                         <a href="{% url 'accounts:log_in' %}" class="toggle-menumobile js_icon_horizon-menu">
                             <i class=" fa fa-angle-right"></i>
                         </a>
                     </div>
                 {% endif %}
                 <div class="menu-horizon-list">
-                    <a href="/blog" title="BLOGS" class="relative nammenu ">BLOGS</a>
+                    <a href="/blog" title="BLOGS" class="relative nammenu ">{% trans "BLOGS" %}</a>
                     <a href="/blog" class="toggle-menumobile  js_icon_horizon-menu">
                         <i class=" fa fa-angle-right"></i>
                     </a>
@@ -1602,8 +1599,7 @@
 
         </div>
         <div class="close-menu-mobile text-center js-eveland-close">
-            <i class="ti-close mr-3"></i>Close
-        </div>
+            <i class="ti-close mr-3"></i>{% trans "Close" %}</div>
     </div>
 </div>
 <!-- End Content -->
