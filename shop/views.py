@@ -432,14 +432,14 @@ def checkout_single_instrument(request, instrument_id):
                 zip_Code=zip_Code
             )
             uncompletedOrder.save()
-            for item in Cart.objects.filter(user=request.user).all():
-                uncompletedOrderItem = UncompletedOrderItem(
-                    uncompleted_order=uncompletedOrder,
-                    instrument=item.instrument,
-                    quantity=item.count
-                )
-                uncompletedOrderItem.save()
-                item.delete()
+
+            uncompletedOrderItem = UncompletedOrderItem(
+                uncompleted_order=uncompletedOrder,
+                instrument=Instrument.objects.get(id=instrument_id),
+                quantity=1
+            )
+            uncompletedOrderItem.save()
+
             messages.success(request, "Order saved successfully")
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
