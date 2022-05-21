@@ -46,7 +46,7 @@ class Instrument(models.Model):
 
     quantity = models.IntegerField(default=100, validators=[
         MaxValueValidator(99999),
-        MinValueValidator(1)
+        MinValueValidator(0)
     ])
     COLOR_CHOICES = (
         (u'Red', u'Red'),
