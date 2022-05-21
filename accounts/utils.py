@@ -49,3 +49,14 @@ def send_forgotten_username_email(email, username):
     }
 
     send_mail(email, 'forgotten_username', context)
+
+
+def send_message_email(email, name, email_address, subject, message):
+    context = {
+        'subject': subject,
+        'name': name,
+        'email_address': email_address,
+        'message': message
+    }
+
+    send_mail(email, 'send_message', context)
