@@ -164,7 +164,7 @@
                             <form class="chat-app-input d-flex" onsubmit="return false">
                                 <fieldset class="col-10 m-0">
                                     <div class="input-group position-relative has-icon-left">
-                                        <div class="form-control-position">
+                                        <div id="image_send" class="form-control-position">
                                             <span id="basic-addon3"><i class="ft-image"></i></span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Send message"
@@ -582,7 +582,7 @@
 
                 let chat_image_upload = $("#chat_image_upload");
 
-                $('#basic-addon3').on('click', function () {
+                $('#image_send').on('click', function () {
                     chat_image_upload.trigger('click')
                     return false;
                 }).mouseover(function () {
