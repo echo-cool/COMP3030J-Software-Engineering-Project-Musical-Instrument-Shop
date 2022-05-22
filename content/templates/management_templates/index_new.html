@@ -238,6 +238,11 @@
             margin: 0 2px;
             border-radius: 50%;
         }
+
+        .total-card {
+            cursor: pointer;
+        }
+
     </style>
 {% endblock %}
 
@@ -606,7 +611,7 @@
                 <!-- Emails Products & Avg Deals -->
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:instrument_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -623,7 +628,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:review_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -640,7 +645,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:cart_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -657,7 +662,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_all" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -687,12 +692,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_delivered" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left align-self-bottom mt-3">
-                                            <span class="d-block mb-1 font-medium-1">{% trans "Conpleted Orders" %}</span>
+                                            <span class="d-block mb-1 font-medium-1">{% trans "Completed Orders" %}</span>
                                             <h1 class="danger mb-0">{{ orders.count }}</h1>
                                         </div>
                                         <div class="align-self-top">
@@ -704,7 +709,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:post_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -722,7 +727,7 @@
                     </div>
 
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_placed" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -739,7 +744,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
+                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:wishlist_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
