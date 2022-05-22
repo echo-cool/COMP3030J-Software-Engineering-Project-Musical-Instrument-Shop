@@ -85,36 +85,6 @@
             xhr16.open('get', "/static/assets/design_model/model_design_guitar1.bin");
             xhr16.send('');
         }
-
-        if ($(window).width() > 767) {
-            //Grid Text Box
-            $(window).on("load", function () {
-                if ($('.content-news-scroll').length > 0) {
-                    $(".content-news-scroll").mCustomScrollbar({
-                        scrollButtons: {
-                            enable: true
-                        }
-                    });
-                }
-                let height = $('.grid-image-box').height();
-                $('.grid-text-box').height(height);
-                $('.grid-text-box').hover(function () {
-                    $('.grid-text-box.active').removeClass('active');
-                }, function () {
-                    $('.grid-text-box').last().addClass('active');
-                });
-                let height2 = $('.model-video-left').height();
-                $(".video-load-1").height(height2);
-                $(".video-load-2").height(height2);
-
-                $(".video-load-1").attr('src', "{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}");
-                $(".video-load-2").attr('src', "{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}");
-                setTimeout(() => {
-                    // 预加载模型
-                    preLoadingModels();
-                }, 1000);
-            })
-        }
     </script>
     <style>
         .wrapper-hidden {
@@ -182,9 +152,45 @@
                     document.getElementById("loading-page").style.display = "none";
                 }, 1000);
                 document.getElementById("wrap").style = "display:block";
-                ScrollToCustom();
+
                 {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
                 {#document.getElementsByTagName("loading-page").style = "display:none";#}
+                console.log($(window).width());
+                // THE BLANK MUST NEED PAGE SHOWN
+                if ($(window).width() > 767) {
+                    //Grid Text Box
+                    if ($('.content-news-scroll').length > 0) {
+                        $(".content-news-scroll").mCustomScrollbar({
+                            scrollButtons: {
+                                enable: true
+                            }
+                        });
+                    }
+                    // HOMEPAGE BLANK FIX
+                    let height = $('.grid-image-box').height();
+                    {#console.log("HEIGHT", height, $('.img-height').get(0).offsetHeight);#}
+                    $('.grid-text-box').height(height - 1);
+                    $('.grid-text-box').hover(function () {
+                        $('.grid-text-box.active').removeClass('active');
+                    }, function () {
+                        $('.grid-text-box').last().addClass('active');
+                    });
+
+                    // HOMEPAGE VIDEO HEIGHT FIX
+                    let height2 = $('.model-video-left').height();
+                    $(".video-load-1").height(height2);
+                    $(".video-load-2").height(height2);
+
+                    $(".video-load-1").attr('src', "{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}");
+                    $(".video-load-2").attr('src', "{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}");
+                    setTimeout(() => {
+                        // 预加载模型
+                        preLoadingModels();
+                    }, 1000);
+                }
+                // DETECT whether need scroll to place
+                ScrollToCustom();
+
             }
 
             setTimeout(() => overLoading(), 6000);
