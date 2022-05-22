@@ -29,7 +29,31 @@
     <!-- tiny-slider (new Version for owl-slider) -->
     <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
     <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
+    <script>
 
+        if ($(window).width() > 767) {
+            //Grid Text Box
+            $(window).on("load", function () {
+                if ($('.content-news-scroll').length > 0) {
+                    $(".content-news-scroll").mCustomScrollbar({
+                        scrollButtons: {
+                            enable: true
+                        }
+                    });
+                }
+                let height = $('.grid-image-box').height();
+                $('.grid-text-box').height(height);
+                $('.grid-text-box').hover(function () {
+                    $('.grid-text-box.active').removeClass('active');
+                }, function () {
+                    $('.grid-text-box').last().addClass('active');
+                });
+            })
+
+        }
+    </script>
     <style>
         .wrapper-hidden {
             display: none;
@@ -273,7 +297,9 @@
                 <div class="banner-grid-left">
                     <div class="wrap-grid-adv-box clearfix">
                         <div class="grid-image-box">
-                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt=""></a>
+                            <a href="#">
+                                <img class="img-height" src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt="">
+                            </a>
                         </div>
                         <div class="grid-text-box gray-box" style="height: 329px;">
                             <div class="inner-grid-text-box">
