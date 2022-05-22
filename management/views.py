@@ -154,7 +154,11 @@ def index(request):
 @login_required
 @staff_required
 def order_management_all(request):
-    orders = Order.objects.all().order_by('-priority', '-created_at')
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(Q(user__username__contains=search)).order_by('-priority', '-created_at')
+    else:
+        orders = Order.objects.all().order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -692,6 +696,7 @@ def update_instrument(request, instrument_id):
             'messages': messages,
             'new_orders': new_orders
         })
+
 
 @login_required
 @staff_required
