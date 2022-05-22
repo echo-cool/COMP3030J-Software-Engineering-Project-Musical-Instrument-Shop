@@ -25,8 +25,7 @@
                 <div class="main-box clearfix">
                     <h2>{% trans "John Doe " %}</h2>
                     <div class="profile-status">
-                        <i class="fa fa-check-circle"></i> Online
-                    </div>
+                        <i class="fa fa-check-circle"></i>{% trans "Online" %}</div>
                     <img src="{{ profile.image.url }}" alt=""
                          class="rounded-circle p-1 bg-primary mx-auto d-block" width="170" style="">
                     <div class="profile-label">
@@ -56,8 +55,7 @@
 
                     <div class="profile-message-btn center-block text-center">
                         <a href="#" class="btn btn-success">
-                            <i class="fa fa-envelope"></i> Send message
-                        </a>
+                            <i class="fa fa-envelope"></i>{% trans "Send message" %}</a>
                     </div>
                 </div>
             </div>
@@ -67,48 +65,37 @@
                     <div class="profile-header">
                         <h3><span>{% trans "User info" %}</span></h3>
                         <a href="#" class="btn btn-primary edit-profile">
-                            <i class="fa fa-pencil-square fa-lg"></i> Edit profile
-                        </a>
+                            <i class="fa fa-pencil-square fa-lg"></i>{% trans "Edit profile" %}</a>
                     </div>
 
                     <div class="row profile-user-info">
                         <div class="col-sm-8">
                             <div class="profile-user-details clearfix">
-                                <div class="profile-user-details-label">
-                                    First Name
-                                </div>
+                                <div class="profile-user-details-label">{% trans "First Name" %}</div>
                                 <div class="profile-user-details-value">
                                     {{ request.user.first_name }}
                                 </div>
                             </div>
                             <div class="profile-user-details clearfix">
-                                <div class="profile-user-details-label">
-                                    Last Name
-                                </div>
+                                <div class="profile-user-details-label">{% trans "Last Name" %}</div>
                                 <div class="profile-user-details-value">
                                     {{ request.user.last_name }}
                                 </div>
                             </div>
                             <div class="profile-user-details clearfix">
-                                <div class="profile-user-details-label">
-                                    Username
-                                </div>
+                                <div class="profile-user-details-label">{% trans "Username" %}</div>
                                 <div class="profile-user-details-value">
                                     {{ request.user.username }}
                                 </div>
                             </div>
                             <div class="profile-user-details clearfix">
-                                <div class="profile-user-details-label">
-                                    Email
-                                </div>
+                                <div class="profile-user-details-label">{% trans "Email" %}</div>
                                 <div class="profile-user-details-value">
                                     {{ request.user.username }}
                                 </div>
                             </div>
                             <div class="profile-user-details clearfix">
-                                <div class="profile-user-details-label">
-                                    Phone number
-                                </div>
+                                <div class="profile-user-details-label">{% trans "Phone number" %}</div>
                                 <div class="profile-user-details-value">
                                     {{ request.user.last_login }}
                                 </div>

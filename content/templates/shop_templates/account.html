@@ -91,7 +91,8 @@
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
-					<h3 class="new_client">New Client</h3> <small class="float-right pt-2">{% trans '* Required Fields' %}</small>
+					<h3 class="new_client">{% trans "New Client" %}</h3>
+                    <small class="float-right pt-2">{% trans '* Required Fields' %}</small>
 					<div class="form_container">
 						<div class="form-group">
 							<input type="email" class="form-control" name="email" id="email_2" placeholder="{% trans 'Email*' %}">
@@ -217,7 +218,8 @@
 						<!-- /company -->
 						<hr>
 						<div class="form-group">
-							<label class="container_check">Accept <a href="#0">{% trans 'Terms and conditions' %}</a>
+							<label class="container_check">{% trans "Accept " %}<a href="#0">
+                                {% trans 'Terms and conditions' %}</a>
 								<input type="checkbox">
 								<span class="checkmark"></span>
 							</label>
@@ -268,9 +270,10 @@
 						<h3 data-bs-target="#collapse_3">{% trans 'Contacts' %}</h3>
 					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 						<ul>
-							<li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
+							<li><i class="ti-home"></i>{% trans "97845 Baker st. 567" %}<
+                                br>{% trans "Los Angeles - US" %}</li>
 							<li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
-							<li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+							<li><i class="ti-email"></i><a href="#0">{% trans "info@allaia.com" %}</a></li>
 						</ul>
 					</div>
 				</div>
