@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{{ name }}{% trans ' sends this message to you.' %}
+
+{% trans 'The email address of the sender is: ' %} {{ email_address }}
+
+{{ message }}

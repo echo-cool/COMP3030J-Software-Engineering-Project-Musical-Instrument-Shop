@@ -354,12 +354,21 @@
                                 <input type="hidden" name="utf8" value="✓">
                                 <div data-shopify="payment-button" data-has-selling-plan="false"
                                      class="shopify-payment-button">
+                                    {% if instrument.quantity > 0 %}
                                     <button type="button"
                                             class="shopify-payment-button__button"
                                             data-testid="Checkout-button"
                                             onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
-                                        >{% trans 'Buy it now' %}
+                                        {% trans 'Buy it now' %}
                                     </button>
+                                    {% else %}
+                                        <button type="button"
+                                            class="shopify-payment-button__button"
+                                            data-testid="Checkout-button"
+                                            disabled="disabled">
+                                        {% trans 'Empty Stock' %}
+                                    </button>
+                                    {% endif %}
                                 </div>
                         </form>
                         <div class="btn-addwhlist" id="wishlist__{{ instrument.id }}">

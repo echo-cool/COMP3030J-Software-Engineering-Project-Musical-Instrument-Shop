@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem, CustomModel
+    OrderItem, CustomModel, UncompletedOrderModelItem
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -432,14 +432,14 @@ def checkout_single_instrument(request, instrument_id):
                 zip_Code=zip_Code
             )
             uncompletedOrder.save()
-            for item in Cart.objects.filter(user=request.user).all():
-                uncompletedOrderItem = UncompletedOrderItem(
-                    uncompleted_order=uncompletedOrder,
-                    instrument=item.instrument,
-                    quantity=item.count
-                )
-                uncompletedOrderItem.save()
-                item.delete()
+
+            uncompletedOrderItem = UncompletedOrderItem(
+                uncompleted_order=uncompletedOrder,
+                instrument=Instrument.objects.get(id=instrument_id),
+                quantity=1
+            )
+            uncompletedOrderItem.save()
+
             messages.success(request, "Order saved successfully")
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
@@ -550,6 +550,31 @@ def model_checkout(request):
             zip_Code = checkout_form.cleaned_data['Zip_Code']
 
             # TODO: Order for checkout
+            uncompletedOrder = UncompletedOrder(
+                user=user,
+                country=country,
+                state=state,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                apartment=apartment,
+                city=city,
+                zip_Code=zip_Code
+            )
+            uncompletedOrder.save()
+            model_item = CustomModel.objects.filter(user=request.user, finish=False).last()
+            uncompletedOrderItem = UncompletedOrderModelItem(
+                uncompleted_order=uncompletedOrder,
+                customModel=model_item,
+                quantity=1
+            )
+            uncompletedOrderItem.save()
+
+            messages.success(request, "Order saved successfully")
+            return redirect(reverse('shop:shipping_details', kwargs={
+                'uncompletedOrder_id': uncompletedOrder.id
+            }))
+
 
     # check if user is not logged in
     if not request.user.is_authenticated:

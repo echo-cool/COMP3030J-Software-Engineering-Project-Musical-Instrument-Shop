@@ -46,7 +46,7 @@ class Instrument(models.Model):
 
     quantity = models.IntegerField(default=100, validators=[
         MaxValueValidator(99999),
-        MinValueValidator(1)
+        MinValueValidator(0)
     ])
     COLOR_CHOICES = (
         (u'Red', u'Red'),
@@ -146,6 +146,14 @@ class OrderItem(models.Model):
     def __str__(self):
         return f'{self.instrument}<{self.quantity}>'
 
+
+class UncompletedOrderModelItem(models.Model):
+    customModel = models.ForeignKey('CustomModel', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    uncompleted_order = models.ForeignKey('UncompletedOrder', on_delete=models.CASCADE, related_name='model_items')
+
+    def __str__(self):
+        return f'{self.instrument}<{self.quantity}>'
 
 class UncompletedOrderItem(models.Model):
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE)

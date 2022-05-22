@@ -226,7 +226,7 @@ nav ul li a .cart::after {
     padding: 5px 10px;
     border-radius: 50%;
     background-color: #dddddd;
-    z-index: 100;
+    z-index: 1;
     position: relative
 }
 
@@ -406,8 +406,24 @@ body {
     position: relative
 }
 
-.track .step.active:before {
-    background: #FF5722
+.track .step.step-placed:before {
+    background: #e17676;
+}
+
+.track .step.step-accepted:before {
+    background: #e05d5d;
+}
+
+.track .step.step-packed:before {
+    background: #de4040;
+}
+
+.track .step.step-shipped:before {
+    background: #d72323;
+}
+
+.track .step.step-delivered:before {
+    background: #de0505;
 }
 
 .track .step::before {
@@ -419,8 +435,27 @@ body {
     top: 18px
 }
 
+.track .step.step-placed .icon {
+    background: #e17676;
+}
+
+.track .step.step-accepted .icon {
+    background: #e05d5d;
+}
+
+.track .step.step-packed .icon {
+    background: #de4040;
+}
+
+.track .step.step-shipped .icon {
+    background: #d72323;
+}
+
+.track .step.step-delivered .icon {
+    background: #de0505;
+}
+
 .track .step.active .icon {
-    background: #ee5435;
     color: #fff
 }
 
@@ -483,6 +518,10 @@ ul.row, ul.row-sm {
 p {
     margin-top: 0;
     margin-bottom: 1rem
+}
+
+.btn-success {
+    border-radius: 1px
 }
 
 .btn-warning {
