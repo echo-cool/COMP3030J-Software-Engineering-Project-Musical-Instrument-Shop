@@ -4,7 +4,7 @@ from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSe
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet, \
     OrderItemViewSet, NotificationViewSet
 from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month, analyze_image, \
-    EditorUploadImage, max_order_priority, search_user, send_company_message
+    EditorUploadImage, max_order_priority, search_user, send_company_message, order_data
 
 app_name = 'api'
 
@@ -40,4 +40,5 @@ urlpatterns = router.urls + [
     path('max_order_priority/', max_order_priority, name="max_order_priority"),
     path('search_user/', search_user, name="search_user"),
     path('send_company_message/', send_company_message, name="search_user"),
+    path('order_data/', order_data, name="order_data")
 ]

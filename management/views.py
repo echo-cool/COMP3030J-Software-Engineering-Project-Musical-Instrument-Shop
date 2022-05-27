@@ -1515,8 +1515,6 @@ def add_wishlist(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    print(get_new_orders())
-
     if request.method == "POST":
         f = WishlistForm(request.POST, request.FILES)
         if f.is_valid():

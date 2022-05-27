@@ -138,7 +138,7 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="#">{% trans "See tasks with details" %}<i
+                            <a href="{% url 'management:order_management_delivered' %}">{% trans "See all confirmed order" %}<i
                                     class="ace-icon fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
@@ -148,7 +148,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-bell icon-animated-bell"></i>
                         {% if new_order_notifications.count != 0 %}
-                            <span class="badge badge-purple">{{ messages.count }}</span>
+                            <span class="badge badge-purple">{{ new_order_notifications.count }}</span>
                         {% endif %}
                     </a>
 
