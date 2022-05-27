@@ -11,10 +11,11 @@ import blog
 from app import settings
 from blog.models import Post
 from chat.models import MessageModel
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem, \
+    Notification
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer
+    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer, NotificationSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -112,6 +113,15 @@ class WishlistViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated
     ]
     serializer_class = WishlistSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+
+
+class NotificationViewSet(viewsets.ModelViewSet):
+    queryset = Notification.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = NotificationSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 

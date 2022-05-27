@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem, CustomModel, UncompletedOrderModelItem
+    OrderItem, CustomModel, UncompletedOrderModelItem, Notification
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -650,6 +650,8 @@ def shipping_details(request, uncompletedOrder_id):
             )
             orderItem.save()
             item.delete()
+        notification = Notification(order=order)
+        notification.save()
         messages.success(request, "Order successfully submitted!")
         return redirect(reverse('shop:checkout_success'))
 

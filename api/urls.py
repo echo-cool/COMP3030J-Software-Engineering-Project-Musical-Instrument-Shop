@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework import routers
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet, \
-    OrderItemViewSet
+    OrderItemViewSet, NotificationViewSet
 from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month, analyze_image, \
     EditorUploadImage, max_order_priority, search_user, send_company_message
 
@@ -25,6 +25,7 @@ router.register('wishlist', WishlistViewSet, 'wishlist')
 router.register('message', MessageModelViewSet, 'message')
 router.register('post', PostViewSet, 'post')
 router.register('blog_category', BlogCategoryViewSet, 'blog_category')
+router.register('notification', NotificationViewSet, 'notification')
 # print(router.urls)
 urlpatterns = router.urls + [
     path('login/', login, name='index'),
