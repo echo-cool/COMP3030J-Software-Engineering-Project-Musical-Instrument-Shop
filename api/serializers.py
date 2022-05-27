@@ -9,7 +9,8 @@ from rest_framework.serializers import ModelSerializer
 import blog.models
 from blog.models import Post
 from chat.models import MessageModel
-from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem
+from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem, \
+    Notification
 
 
 class InstrumentSerializer(serializers.ModelSerializer):
@@ -106,4 +107,10 @@ class PostModelSerializer(ModelSerializer):
 class BlogCategorySerializer(ModelSerializer):
     class Meta:
         model = blog.models.Category
+        fields = "__all__"
+
+
+class NotificationSerializer(ModelSerializer):
+    class Meta:
+        model = Notification
         fields = "__all__"

@@ -374,8 +374,26 @@
                         url: "#",
                         method: "GET",
                         success: function (res) {
-                            $('#popup-quickview-'+orderID).html($(res).find('#popup-quickview-'+orderID)[0].innerHTML);
-                            $('#progressbar__'+orderID).html($(res).find('#progressbar__'+orderID)[0].innerHTML);
+                            $('#popup-quickview-' + orderID).html($(res).find('#popup-quickview-' + orderID)[0].innerHTML);
+                            $('#progressbar__' + orderID).html($(res).find('#progressbar__' + orderID)[0].innerHTML);
+                            $.ajax({
+                                url: "/api/notification/",
+                                method: "POST",
+                                data: {
+                                    "is_confirm": true,
+                                    "order": orderID
+                                },
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                success: function (res) {
+
+                                },
+                                error: function () {
+                                    alert('Error! Check console!');
+                                }
+
+                            });
                         }
                     });
                     setTimeout(function () {

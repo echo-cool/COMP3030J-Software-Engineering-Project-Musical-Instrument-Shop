@@ -53,6 +53,25 @@
 
     <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
 
+    <script>
+        function deleteNotification(notificationID) {
+            $.ajax({
+                url: '/api/notification/' + notificationID + "/",
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function () {
+
+                },
+                error: function () {
+                    alert("Error!");
+                }
+
+            })
+        }
+    </script>
+
 </head>
 
 <body class="no-skin" id="management_body">
@@ -79,70 +98,48 @@
                 <li class="grey dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-tasks"></i>
-                        <span class="badge badge-grey">4</span>
+                        {% if confirm_order_notifications.count != 0 %}
+                            <span class="badge badge-grey">{{ confirm_order_notifications.count }}</span>
+                        {% endif %}
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="ace-icon fa fa-check"></i>{% trans "4 Tasks to complete" %}</li>
+                        <li class="dropdown-header"><i
+                                class="ace-icon fa fa-check"></i>{{ confirm_order_notifications.count }}{% trans " New Confirmed Orders" %}
+                        </li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
-                                <li>
-                                    <a href="#">
-                                        <div class="clearfix">
-                                            <span class="pull-left">{% trans "Software Update" %}</span>
-                                            <span class="pull-right">{% trans "65%" %}</span>
-                                        </div>
+                                {% if confirm_order_notifications.count != 0 %}
+                                    {% for notification in confirm_order_notifications %}
+                                        <li>
+                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}"
+                                               class="clearfix"
+                                               onclick="deleteNotification({{ notification.id }})">
+                                                <img src="{{ notification.order.user.profile.image.url }}"
+                                                     class="msg-photo"
+                                                     alt="{{ notification.order.username }}'s Avatar"/>
+                                                <span class="msg-body">
+                                                        <span class="msg-title">
+                                                            <span class="blue">{{ notification.order.user.username }}:</span>
+                                                            Confirm Order: #{{ notification.order.id }}({{ notification.order.items.all.count }} Items)
+                                                        </span>
 
-                                        <div class="progress progress-mini">
-                                            <div style="width:65%" class="progress-bar"></div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <div class="clearfix">
-                                            <span class="pull-left">{% trans "Hardware Upgrade" %}</span>
-                                            <span class="pull-right">{% trans "35%" %}</span>
-                                        </div>
-
-                                        <div class="progress progress-mini">
-                                            <div style="width:35%" class="progress-bar progress-bar-danger"></div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <div class="clearfix">
-                                            <span class="pull-left">{% trans "Unit Testing" %}</span>
-                                            <span class="pull-right">{% trans "15%" %}</span>
-                                        </div>
-
-                                        <div class="progress progress-mini">
-                                            <div style="width:15%" class="progress-bar progress-bar-warning"></div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <div class="clearfix">
-                                            <span class="pull-left">{% trans "Bug Fixes" %}</span>
-                                            <span class="pull-right">{% trans "90%" %}</span>
-                                        </div>
-
-                                        <div class="progress progress-mini progress-striped active">
-                                            <div style="width:90%" class="progress-bar progress-bar-success"></div>
-                                        </div>
-                                    </a>
-                                </li>
+                                                        <span class="msg-time">
+                                                            <i class="ace-icon fa fa-clock-o"></i>
+                                                            <span>{{ notification.created_at }}</span>
+                                                        </span>
+                                                    </span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="#">{% trans "See tasks with details" %}<i class="ace-icon fa fa-arrow-right"></i></a>
+                            <a href="{% url 'management:order_management_delivered' %}">{% trans "See all confirmed order" %}<i
+                                    class="ace-icon fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
                 </li>
@@ -150,52 +147,70 @@
                 <li class="purple dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                        {% if new_orders.count != 0 %}
-                            <span class="badge badge-important">{{ new_orders.count }}</span>
+                        {% if new_order_notifications.count != 0 %}
+                            <span class="badge badge-purple">{{ new_order_notifications.count }}</span>
                         {% endif %}
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="ace-icon fa fa-exclamation-triangle"></i>{{ new_orders.count }}{% trans " Notifications" %}</li>
+                        <li class="dropdown-header"><i
+                                class="ace-icon fa fa-exclamation-triangle"></i>{{ new_order_notifications.count }}{% trans " New Orders" %}
+                        </li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar navbar-pink">
-{#                                <li>#}
-{#                                    <a href="#">#}
-{#                                        <div class="clearfix">#}
-{#													<span class="pull-left"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>{% trans "New Comments" %}</span>#}
-{#                                            <span class="pull-right badge badge-info">+12</span>#}
-{#                                        </div>#}
-{#                                    </a>#}
-{#                                </li>#}
-{##}
-{#                                <li>#}
-{#                                    <a href="#">#}
-{#                                        <i class="btn btn-xs btn-primary fa fa-user"></i>{% trans "Bob just signed up as an editor ..." %}</a>#}
-{#                                </li>#}
-                                {% if new_orders.count != 0 %}
-                                <li>
-                                    <a href="{% url 'management:order_management_placed' %}">
-                                        <div class="clearfix">
-                                            <span class="pull-left"><i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>{% trans "New Orders" %}</span><span class="pull-right badge badge-success">+{{ new_orders.count }}</span>
-                                        </div>
-                                    </a>
-                                </li>
+                                {#                                <li>#}
+                                {#                                    <a href="#">#}
+                                {#                                        <div class="clearfix">#}
+                                {#													<span class="pull-left"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>{% trans "New Comments" %}</span>#}
+                                {#                                            <span class="pull-right badge badge-info">+12</span>#}
+                                {#                                        </div>#}
+                                {#                                    </a>#}
+                                {#                                </li>#}
+                                {##}
+                                {#                                <li>#}
+                                {#                                    <a href="#">#}
+                                {#                                        <i class="btn btn-xs btn-primary fa fa-user"></i>{% trans "Bob just signed up as an editor ..." %}</a>#}
+                                {#                                </li>#}
+                                {% if new_order_notifications.count != 0 %}
+                                    {% for notification in new_order_notifications %}
+                                        <li>
+                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}"
+                                               class="clearfix"
+                                               onclick="deleteNotification({{ notification.id }})">
+                                                <img src="{{ notification.order.user.profile.image.url }}"
+                                                     class="msg-photo"
+                                                     alt="{{ notification.order.username }}'s Avatar"/>
+                                                <span class="msg-body">
+                                                        <span class="msg-title">
+                                                            <span class="blue">{{ notification.order.user.username }}:</span>
+                                                            New Order: #{{ notification.order.id }}({{ notification.order.items.all.count }} Items)
+                                                        </span>
+
+                                                        <span class="msg-time">
+                                                            <i class="ace-icon fa fa-clock-o"></i>
+                                                            <span>{{ notification.created_at }}</span>
+                                                        </span>
+                                                    </span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 {% endif %}
 
-{#                                <li>#}
-{#                                    <a href="#">#}
-{#                                        <div class="clearfix">#}
-{#                                            <span class="pull-left"><i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>{% trans "Followers" %}</span>#}
-{#                                            <span class="pull-right badge badge-info">+11</span>#}
-{#                                        </div>#}
-{#                                    </a>#}
-{#                                </li>#}
+                                {#                                <li>#}
+                                {#                                    <a href="#">#}
+                                {#                                        <div class="clearfix">#}
+                                {#                                            <span class="pull-left"><i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>{% trans "Followers" %}</span>#}
+                                {#                                            <span class="pull-right badge badge-info">+11</span>#}
+                                {#                                        </div>#}
+                                {#                                    </a>#}
+                                {#                                </li>#}
                             </ul>
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="#">{% trans "See all notifications" %}<i class="ace-icon fa fa-arrow-right"></i></a>
+                            <a href="#">{% trans "See all notifications" %}<i
+                                    class="ace-icon fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
                 </li>
@@ -209,7 +224,10 @@
                     </a>
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="ace-icon fa fa-envelope-o"></i>{{ messages.count }} Messages</li><li class="dropdown-content">
+                        <li class="dropdown-header"><i class="ace-icon fa fa-envelope-o"></i>{{ messages.count }}
+                            Messages
+                        </li>
+                        <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 {% for message in messages %}
                                     <li>
@@ -234,7 +252,8 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="{% url 'chat:index_new' to=1 %}">{% trans "See all messages" %}<i class="ace-icon fa fa-arrow-right"></i>
+                            <a href="{% url 'chat:index_new' to=1 %}">{% trans "See all messages" %}<i
+                                    class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -264,7 +283,8 @@
                         </li>
 
                         <li>
-                            <a href="{% url 'management:profile' %}"><i class="ace-icon fa fa-user"></i>{% trans "Profile" %}</a>
+                            <a href="{% url 'management:profile' %}"><i
+                                    class="ace-icon fa fa-user"></i>{% trans "Profile" %}</a>
                         </li>
 
                         <li class="divider"></li>
@@ -514,7 +534,9 @@
                     <div class="page-header">
                         <h1>
                             Tables
-                            <small><i class="ace-icon fa fa-angle-double-right"></i>{% trans "Static &amp; Dynamic Tables" %}</small>
+                            <small><i
+                                    class="ace-icon fa fa-angle-double-right"></i>{% trans "Static &amp; Dynamic Tables" %}
+                            </small>
                         </h1>
                     </div>
                 {% endblock %}
@@ -552,7 +574,8 @@
                             <div class="ace-settings-item">
                                 <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
                                        id="ace-settings-breadcrumbs" autocomplete="off"/>
-                                <label class="lbl" for="ace-settings-breadcrumbs">{% trans "Fixed Breadcrumbs" %}</label>
+                                <label class="lbl"
+                                       for="ace-settings-breadcrumbs">{% trans "Fixed Breadcrumbs" %}</label>
                             </div>
 
                             <div class="ace-settings-item">
@@ -668,6 +691,7 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
+
         //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
         //so disable dragging when clicking on label
         var agent = navigator.userAgent.toLowerCase();
