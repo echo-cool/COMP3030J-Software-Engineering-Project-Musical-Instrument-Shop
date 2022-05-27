@@ -795,7 +795,7 @@
                     alert('Error! Check console!');
                 }
 
-            })
+            });
 
             console.log(revenue_data);
 
@@ -903,9 +903,25 @@
             });
 
             {#第一个Area图表#}
+            let product_WC;
+            $.ajax({
+                url: "/api/order_data/",
+                method: 'GET',
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                async: false,
+                success: function (data) {
+                    console.log(data);
+                    product_WC = data;
+                },
+                error: function () {
+                    alert('Error! Check console!');
+                }
+
+            });
             let product_W = [5, 10, 15, 20, 30, 20, 50, 60, 75, 120, 110, 200]
             let product_C = [20, 20, 25, 40, 30, 50, 55, 65, 80, 100, 110, 120]
-            let product_WC = [product_W, product_C]
             var projectStats = new Chartist.Line('#project-stats', {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 series:

@@ -220,7 +220,12 @@ def order_management_all_new(request):
 @login_required
 @staff_required
 def order_management_placed(request):
-    orders = Order.objects.filter(accepted=False).order_by('-priority', '-created_at')
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(Q(user__username__contains=search) & Q(accepted=False)).order_by('-priority',
+                                                                                                       '-created_at')
+    else:
+        orders = Order.objects.filter(accepted=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -252,7 +257,12 @@ def order_management_placed(request):
 @login_required
 @staff_required
 def order_management_accepted(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-priority', '-created_at')
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(accepted=True).filter(packed=False).filter(
+            Q(user__username__contains=search)).order_by('-priority', '-created_at')
+    else:
+        orders = Order.objects.filter(accepted=True).filter(packed=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -284,7 +294,12 @@ def order_management_accepted(request):
 @login_required
 @staff_required
 def order_management_packed(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-priority',
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).filter(
+            Q(user__username__contains=search)).order_by('-priority', '-created_at')
+    else:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=False).order_by('-priority',
                                                                                                     '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
@@ -317,8 +332,13 @@ def order_management_packed(request):
 @login_required
 @staff_required
 def order_management_shipped(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
-        delivered=False).order_by('-priority', '-created_at')
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+            delivered=False).filter(Q(user__username__contains=search)).order_by('-priority', '-created_at')
+    else:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+            delivered=False).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -350,8 +370,13 @@ def order_management_shipped(request):
 @login_required
 @staff_required
 def order_management_delivered(request):
-    orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
-        delivered=True).order_by('-priority', '-created_at')
+    search = request.GET.get("search")
+    if search is not None:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+            delivered=True).filter(Q(user__username__contains=search)).order_by('-priority', '-created_at')
+    else:
+        orders = Order.objects.filter(accepted=True).filter(packed=True).filter(shipped=True).filter(
+            delivered=True).order_by('-priority', '-created_at')
     for order in orders:
         items = OrderItem.objects.filter(order_id=order.id)
         order.quantity = items.count()
@@ -382,7 +407,11 @@ def order_management_delivered(request):
 @login_required
 @staff_required
 def order_item_management(request, order_id):
-    order_items = OrderItem.objects.filter(order_id=order_id)
+    search = request.GET.get("search")
+    if search is not None:
+        order_items = OrderItem.objects.filter(order_id=order_id).filter(instrument__name__contains=search)
+    else:
+        order_items = OrderItem.objects.filter(order_id=order_id)
 
     messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
         time=Max("timestamp")).exclude(user=request.user).order_by("time")
@@ -673,8 +702,6 @@ def add_instrument(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         print(request.FILES)
         print(request.POST)
@@ -762,8 +789,6 @@ def instrument_category_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/instrumentCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -786,8 +811,6 @@ def update_instrument_category(request, category_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         category = shop.models.Category.objects.get(id=category_id)
@@ -820,8 +843,6 @@ def add_instrument_category(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         f = InstrumentCategoryForm(request.POST, request.FILES)
         if f.is_valid():
@@ -831,7 +852,7 @@ def add_instrument_category(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             })
         return redirect(reverse('management:instrument_category_management'))
     else:
@@ -857,8 +878,6 @@ def add_order(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         f = OrderForm(request.POST, request.FILES)
         if f.is_valid():
@@ -868,7 +887,7 @@ def add_order(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
             })
         return redirect(reverse('management:order_management_all'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -947,8 +966,6 @@ def review_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/reviewManagement.html', {
         'reviews': reviews,
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -971,8 +988,6 @@ def update_review(request, review_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         review = Review.objects.filter(id=review_id).first()
@@ -1006,8 +1021,6 @@ def add_review(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         f = ReviewForm(request.POST, request.FILES)
         if f.is_valid():
@@ -1017,7 +1030,7 @@ def add_review(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             })
         return redirect(reverse('management:review_management'))
     else:
@@ -1049,8 +1062,6 @@ def order_state(request, order_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/order_state.html', {
         'order': order,
         'profile': Profile.objects.filter(user=request.user.id).first(),
@@ -1060,7 +1071,7 @@ def order_state(request, order_id):
         'date': date,
         'time': order_time,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
 
@@ -1103,15 +1114,13 @@ def post_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/postManagement.html', {
         'posts': posts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -1127,8 +1136,6 @@ def update_post(request, post_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
@@ -1161,8 +1168,6 @@ def add_post(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         print(request.FILES)
         f = PostForm(request.POST, request.FILES)
@@ -1172,7 +1177,7 @@ def add_post(request):
             return render(request, 'management_templates/update_post.html', {
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:post_management'))
@@ -1227,15 +1232,13 @@ def blog_category_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/blogCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -1251,8 +1254,6 @@ def update_blog_category(request, category_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         category = blog.models.Category.objects.get(id=category_id)
@@ -1285,8 +1286,6 @@ def add_blog_category(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         f = BlogCategoryForm(request.POST, request.FILES)
         if f.is_valid():
@@ -1295,7 +1294,7 @@ def add_blog_category(request):
             return render(request, 'management_templates/update_blog_category.html', {
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:blog_category_management'))
@@ -1347,14 +1346,12 @@ def cart_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/cartManagement.html', {
         'carts': carts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
 
@@ -1371,8 +1368,6 @@ def update_cart(request, cart_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         cart = Cart.objects.get(id=cart_id)
@@ -1405,8 +1400,6 @@ def add_cart(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     if request.method == "POST":
         f = CartForm(request.POST, request.FILES)
         if f.is_valid():
@@ -1416,7 +1409,7 @@ def add_cart(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
             })
         return redirect(reverse('management:cart_management'))
     else:
@@ -1468,14 +1461,12 @@ def wishlist_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
     return render(request, 'management_templates/wishlistManagement.html', {
         'wishlists': wishlists,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         "messages": messages
     })
 
@@ -1492,8 +1483,6 @@ def update_wishlist(request, wishlist_id):
         body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
         message['user'] = users.get(id=message['user'])
         message['body'] = body
-
-
 
     if request.method == "POST":
         wishlist = Wishlist.objects.get(id=wishlist_id)
@@ -1526,10 +1515,6 @@ def add_wishlist(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-
-
-    print(get_new_orders())
-
     if request.method == "POST":
         f = WishlistForm(request.POST, request.FILES)
         if f.is_valid():
@@ -1538,7 +1523,7 @@ def add_wishlist(request):
             return render(request, 'management_templates/update_wishlist.html', {
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:wishlist_management'))
@@ -1563,6 +1548,3 @@ def view_log(request):
         return HttpResponse(log, content_type="text/plain")
     return HttpResponse("LOG FILE NOT FOUND")
 
-
-def get_new_orders():
-    return Notification.objects.filter(is_confirm=False).values("order")
