@@ -53,6 +53,25 @@
 
     <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
 
+    <script>
+        function deleteNotification(notificationID) {
+            $.ajax({
+                url: '/api/notification/' + notificationID + "/",
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                success: function () {
+
+                },
+                error: function () {
+                    alert("Error!");
+                }
+
+            })
+        }
+    </script>
+
 </head>
 
 <body class="no-skin" id="management_body">
@@ -86,15 +105,19 @@
 
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header"><i
-                                class="ace-icon fa fa-check"></i>{{ confirm_order_notifications.count }}{% trans " Tasks to complete" %}</li>
+                                class="ace-icon fa fa-check"></i>{{ confirm_order_notifications.count }}{% trans " Tasks to complete" %}
+                        </li>
 
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 {% if confirm_order_notifications.count != 0 %}
                                     {% for notification in confirm_order_notifications %}
                                         <li>
-                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}" class="clearfix">
-                                                <img src="{{ notification.order.user.profile.image.url }}" class="msg-photo"
+                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}"
+                                               class="clearfix"
+                                               onclick="deleteNotification({{ notification.id }})">
+                                                <img src="{{ notification.order.user.profile.image.url }}"
+                                                     class="msg-photo"
                                                      alt="{{ notification.order.username }}'s Avatar"/>
                                                 <span class="msg-body">
                                                         <span class="msg-title">
@@ -152,8 +175,11 @@
                                 {% if new_order_notifications.count != 0 %}
                                     {% for notification in new_order_notifications %}
                                         <li>
-                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}" class="clearfix">
-                                                <img src="{{ notification.order.user.profile.image.url }}" class="msg-photo"
+                                            <a href="{% url 'management:order_item_management' order_id=notification.order.id %}"
+                                               class="clearfix"
+                                               onclick="deleteNotification({{ notification.id }})">
+                                                <img src="{{ notification.order.user.profile.image.url }}"
+                                                     class="msg-photo"
                                                      alt="{{ notification.order.username }}'s Avatar"/>
                                                 <span class="msg-body">
                                                         <span class="msg-title">
@@ -665,6 +691,7 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
+
         //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
         //so disable dragging when clicking on label
         var agent = navigator.userAgent.toLowerCase();
