@@ -20,7 +20,8 @@ from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
     InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm
-from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder
+from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder, \
+    Notification
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -76,12 +77,6 @@ def index_new(request):
     uncompleted_orders = UncompletedOrder.objects.all()
     instruments = Instrument.objects.all()
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = orders.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     quantities = []
     print("=====================================================")
     quantity_instruments = Instrument.objects.all().order_by('quantity')
@@ -116,7 +111,8 @@ def index_new(request):
         'users': users,
         'messages': messages,
         "quantities": quantities,
-        "new_orders": new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
         # "quantities": {"quantities_name": quantities_name,
         #                "quantities_quantity": quantities_quantity},
     })
@@ -177,18 +173,13 @@ def order_management_all(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = orders.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
         'mode': 0,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
     })
 
 
@@ -248,17 +239,12 @@ def order_management_placed(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'messages': messages,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'mode': 1
     })
 
@@ -285,17 +271,12 @@ def order_management_accepted(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'mode': 2
     })
 
@@ -323,17 +304,12 @@ def order_management_packed(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'mode': 3
     })
 
@@ -361,17 +337,12 @@ def order_management_shipped(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'mode': 4
     })
 
@@ -398,16 +369,11 @@ def order_management_delivered(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderManagement.html', {
         'orders': orders,
         'profile': Profile.objects.filter(user=request.user.id).first(),
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages,
         'mode': 5
     })
@@ -428,17 +394,12 @@ def order_item_management(request, order_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/orderItemManagement.html', {
         'order_items': order_items,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -453,12 +414,6 @@ def add_order_item(request, order_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     if request.method == "POST":
         f = OrderItemForm(request.POST, request.FILES)
         if f.is_valid():
@@ -470,7 +425,8 @@ def add_order_item(request, order_id):
             return render(request, 'management_templates/update_order_item.html', {
                 'form': f,
                 'messages': messages,
-                'new_orders': new_orders
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             })
         return redirect('management:order_item_management', order_id=order_id)
     else:
@@ -478,7 +434,8 @@ def add_order_item(request, order_id):
         return render(request, 'management_templates/update_order_item.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -495,12 +452,6 @@ def update_order_item(request, order_item_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     if request.method == "POST":
         order_item = OrderItem.objects.get(id=order_item_id)
         f = OrderItemForm(request.POST, request.FILES, instance=order_item)
@@ -515,7 +466,8 @@ def update_order_item(request, order_item_id):
         return render(request, 'management_templates/update_order_item.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -532,12 +484,6 @@ def update_order(request, order_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     if request.method == "POST":
         order = Order.objects.get(id=order_id)
         f = OrderForm(request.POST, request.FILES, instance=order)
@@ -551,7 +497,8 @@ def update_order(request, order_id):
         return render(request, 'management_templates/update_order.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -593,18 +540,13 @@ def instrument_management_new(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -646,18 +588,13 @@ def instrument_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     return render(request, 'management_templates/instrumentManagement.html', {
         'instruments': instruments,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -674,12 +611,6 @@ def update_instrument(request, instrument_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     if request.method == "POST":
         instrument = Instrument.objects.get(id=instrument_id)
         f = InstrumentWithIForm(request.POST, request.FILES, instance=instrument)
@@ -694,7 +625,8 @@ def update_instrument(request, instrument_id):
         return render(request, 'management_templates/update_instrument.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -741,11 +673,7 @@ def add_instrument(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         print(request.FILES)
@@ -788,7 +716,8 @@ def add_instrument(request):
         return render(request, 'management_templates/add_instrument.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -833,18 +762,15 @@ def instrument_category_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/instrumentCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -861,11 +787,7 @@ def update_instrument_category(request, category_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         category = shop.models.Category.objects.get(id=category_id)
@@ -880,7 +802,8 @@ def update_instrument_category(request, category_id):
         return render(request, 'management_templates/update_instrument_category.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -897,11 +820,7 @@ def add_instrument_category(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         f = InstrumentCategoryForm(request.POST, request.FILES)
@@ -911,7 +830,8 @@ def add_instrument_category(request):
             return render(request, 'management_templates/update_instrument_category.html', {
                 'form': f,
                 'messages': messages,
-                'new_orders': new_orders
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             })
         return redirect(reverse('management:instrument_category_management'))
     else:
@@ -919,7 +839,8 @@ def add_instrument_category(request):
         return render(request, 'management_templates/update_instrument_category.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -936,11 +857,7 @@ def add_order(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         f = OrderForm(request.POST, request.FILES)
@@ -950,7 +867,8 @@ def add_order(request):
             return render(request, 'management_templates/update_order.html', {
                 'form': f,
                 'messages': messages,
-                'new_orders': new_orders
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
             })
         return redirect(reverse('management:order_management_all'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -959,7 +877,8 @@ def add_order(request):
         return render(request, 'management_templates/update_order.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
         })
 
 
@@ -976,12 +895,6 @@ def profile(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
-
     if request.method == "POST":
         profile_item = Profile.objects.filter(user=request.user.id).first()
         profile_item.image = request.FILES.get('photo')
@@ -991,7 +904,8 @@ def profile(request):
         return render(request, 'management_templates/profile.html', {
             'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -1033,17 +947,14 @@ def review_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/reviewManagement.html', {
         'reviews': reviews,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
 
@@ -1061,11 +972,7 @@ def update_review(request, review_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         review = Review.objects.filter(id=review_id).first()
@@ -1081,7 +988,8 @@ def update_review(request, review_id):
         return render(request, 'management_templates/update_review.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -1098,11 +1006,7 @@ def add_review(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         f = ReviewForm(request.POST, request.FILES)
@@ -1112,7 +1016,8 @@ def add_review(request):
             return render(request, 'management_templates/update_review.html', {
                 'form': f,
                 'messages': messages,
-                'new_orders': new_orders
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             })
         return redirect(reverse('management:review_management'))
     else:
@@ -1120,7 +1025,8 @@ def add_review(request):
         return render(request, 'management_templates/update_review.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         })
 
 
@@ -1143,11 +1049,7 @@ def order_state(request, order_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/order_state.html', {
         'order': order,
@@ -1157,7 +1059,8 @@ def order_state(request, order_id):
         # TIME INFORMATION
         'date': date,
         'time': order_time,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
 
@@ -1200,18 +1103,15 @@ def post_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/postManagement.html', {
         'posts': posts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -1228,11 +1128,7 @@ def update_post(request, post_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
@@ -1246,7 +1142,8 @@ def update_post(request, post_id):
         f = PostForm(instance=post)
         return render(request, 'management_templates/update_post.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1264,11 +1161,7 @@ def add_post(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         print(request.FILES)
@@ -1278,7 +1171,8 @@ def add_post(request):
         else:
             return render(request, 'management_templates/update_post.html', {
                 'form': f,
-                'new_orders': new_orders,
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:post_management'))
@@ -1286,7 +1180,8 @@ def add_post(request):
         f = PostForm()
         return render(request, 'management_templates/update_post.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1332,18 +1227,15 @@ def blog_category_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/blogCategoryManagement.html', {
         'categories': categories,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
         'messages': messages,
-        'new_orders': new_orders
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -1360,11 +1252,7 @@ def update_blog_category(request, category_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         category = blog.models.Category.objects.get(id=category_id)
@@ -1378,7 +1266,8 @@ def update_blog_category(request, category_id):
         f = BlogCategoryForm(instance=category)
         return render(request, 'management_templates/update_blog_category.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1396,11 +1285,7 @@ def add_blog_category(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         f = BlogCategoryForm(request.POST, request.FILES)
@@ -1409,7 +1294,8 @@ def add_blog_category(request):
         else:
             return render(request, 'management_templates/update_blog_category.html', {
                 'form': f,
-                'new_orders': new_orders,
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:blog_category_management'))
@@ -1417,7 +1303,8 @@ def add_blog_category(request):
         f = BlogCategoryForm()
         return render(request, 'management_templates/update_blog_category.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1460,17 +1347,14 @@ def cart_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/cartManagement.html', {
         'carts': carts,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
 
@@ -1488,11 +1372,7 @@ def update_cart(request, cart_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         cart = Cart.objects.get(id=cart_id)
@@ -1507,7 +1387,8 @@ def update_cart(request, cart_id):
         return render(request, 'management_templates/update_cart.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
         })
 
 
@@ -1524,11 +1405,7 @@ def add_cart(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         f = CartForm(request.POST, request.FILES)
@@ -1538,7 +1415,8 @@ def add_cart(request):
             return render(request, 'management_templates/update_cart.html', {
                 'form': f,
                 'messages': messages,
-                'new_orders': new_orders
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
             })
         return redirect(reverse('management:cart_management'))
     else:
@@ -1546,7 +1424,8 @@ def add_cart(request):
         return render(request, 'management_templates/update_cart.html', {
             'form': f,
             'messages': messages,
-            'new_orders': new_orders
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
         })
 
 
@@ -1589,17 +1468,14 @@ def wishlist_management(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     return render(request, 'management_templates/wishlistManagement.html', {
         'wishlists': wishlists,
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'part_pages': part_pages,
-        'new_orders': new_orders,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         "messages": messages
     })
 
@@ -1617,11 +1493,7 @@ def update_wishlist(request, wishlist_id):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
 
     if request.method == "POST":
         wishlist = Wishlist.objects.get(id=wishlist_id)
@@ -1635,7 +1507,8 @@ def update_wishlist(request, wishlist_id):
         f = WishlistForm(instance=wishlist)
         return render(request, 'management_templates/update_wishlist.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1653,11 +1526,9 @@ def add_wishlist(request):
         message['user'] = users.get(id=message['user'])
         message['body'] = body
 
-    today = datetime.now().date()
-    tomorrow = today + timedelta(1)
-    today_start = datetime.combine(today, time())
-    today_end = datetime.combine(tomorrow, time())
-    new_orders = Order.objects.filter(created_at__lte=today_end, created_at__gte=today_start)
+
+
+    print(get_new_orders())
 
     if request.method == "POST":
         f = WishlistForm(request.POST, request.FILES)
@@ -1666,7 +1537,8 @@ def add_wishlist(request):
         else:
             return render(request, 'management_templates/update_wishlist.html', {
                 'form': f,
-                'new_orders': new_orders,
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
                 'messages': messages
             })
         return redirect(reverse('management:wishlist_management'))
@@ -1674,7 +1546,8 @@ def add_wishlist(request):
         f = WishlistForm()
         return render(request, 'management_templates/update_wishlist.html', {
             'form': f,
-            'new_orders': new_orders,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
             'messages': messages
         })
 
@@ -1689,3 +1562,7 @@ def view_log(request):
             log = f.read()
         return HttpResponse(log, content_type="text/plain")
     return HttpResponse("LOG FILE NOT FOUND")
+
+
+def get_new_orders():
+    return Notification.objects.filter(is_confirm=False).values("order")
