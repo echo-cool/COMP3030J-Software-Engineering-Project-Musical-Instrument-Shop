@@ -237,7 +237,7 @@ $("#iAtlasChatDiv").ready(function () {
             // setLauncherSize();
             console.log("DSD",);
             window.parent.document.getElementById("iAtlasChatDiv")
-                .setAttribute("style", "position:fixed;inset:auto 0 45px auto;z-index: 21 !important; height: calc(17% - 0px); width: 8%; cursor: auto;");
+                .setAttribute("style", "position:fixed;inset:auto 0 45px auto;z-index: 21 !important; height: calc(19% - 0px); width: 8%; cursor: auto;");
             // $("#iAtlasChatDiv").css("height", "calc(17% - 0px)");
             // $("#iAtlasChatDiv").css("width", "calc(8%)");
             $("#divChatLauncher").css("display", "block");

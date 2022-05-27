@@ -2055,9 +2055,12 @@ a, .text-link {
 
 .btn-toogle-info[id = "btn-left"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 230px;
-    left: 260px;
+    /*position: relative;*/
+    /*bottom: 230px;*/
+    /*left: 260px;*/
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
     font-size: 13px;
     font-weight: bold;
     background: white;
@@ -2067,9 +2070,12 @@ a, .text-link {
 
 .btn-toogle-info[id = "btn-center"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 712px;
-    left: 256px;
+    /*position: relative;*/
+    /*bottom: 712px;*/
+    /*left: 256px;*/
+    position: absolute;
+    top: 1%;
+    left: 1%;
     font-size: 13px;
     font-weight: bold;
     background: white;
@@ -2079,14 +2085,19 @@ a, .text-link {
 
 .btn-toogle-info[id = "btn-right"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 99px;
-    left: 56px;
+    /*position: relative;*/
+    /*bottom: 99px;*/
+    /*left: 56px;*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     font-size: 20px;
     font-weight: bold;
     background: white;
     min-width: 80%;
     text-align: center;
+    /*transform: translateY(-50%)*/
 }
 
 .btn-toogle-info {
