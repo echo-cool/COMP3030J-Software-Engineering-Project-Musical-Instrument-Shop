@@ -42,6 +42,7 @@
             max-width: 1420px;
         }
 
+
         .wrapper-hidden {
             display: none;
         }
@@ -90,8 +91,8 @@
                         <div class="bread-crumb">
                             <a href="/" title="Back to the frontpage">{% trans 'Home' %}<i class="fa fa-angle-right"
                                                                                            aria-hidden="true"></i></a>
-{#                            <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"#}
-{#                                                                                      aria-hidden="true"></i></a>#}
+                            {#                            <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"#}
+                            {#                                                                                      aria-hidden="true"></i></a>#}
                             <strong>{% trans 'YC Combo Organ' %}</strong>
 
                         </div>
@@ -114,7 +115,8 @@
                                 </div>
                             </div>
                             <div class="next_prod">
-                                <a href="/product_details/{{ next_instrument.id }}">{% trans "Next" %}<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <a href="/product_details/{{ next_instrument.id }}">{% trans "Next" %}<i
+                                        class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
                                 <div class=" img-next">
                                     <a href="/product_details/{{ next_instrument.id }}">
@@ -355,19 +357,19 @@
                                 <div data-shopify="payment-button" data-has-selling-plan="false"
                                      class="shopify-payment-button">
                                     {% if instrument.quantity > 0 %}
-                                    <button type="button"
-                                            class="shopify-payment-button__button"
-                                            data-testid="Checkout-button"
-                                            onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
-                                        {% trans 'Buy it now' %}
-                                    </button>
+                                        <button type="button"
+                                                class="shopify-payment-button__button"
+                                                data-testid="Checkout-button"
+                                                onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
+                                            {% trans 'Buy it now' %}
+                                        </button>
                                     {% else %}
                                         <button type="button"
-                                            class="shopify-payment-button__button"
-                                            data-testid="Checkout-button"
-                                            disabled="disabled">
-                                        {% trans 'Empty Stock' %}
-                                    </button>
+                                                class="shopify-payment-button__button"
+                                                data-testid="Checkout-button"
+                                                disabled="disabled">
+                                            {% trans 'Empty Stock' %}
+                                        </button>
                                     {% endif %}
                                 </div>
                         </form>
@@ -963,11 +965,11 @@
                 if (img.attr("src") === "{% static "assets/img_for_shop/3d-icon-close.jpg" %}") {
                     $(".show-controls").toggle("wrapper-hidden");
                     $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon.png" %}");
-                    $(".progress").attr("style", "display:none;position:absolute;width:95%;height: 100%;");
+                    $(".progress").attr("style", "display:none;position:absolute;width:96%;height: 100%;");
                 } else {
                     $(".show-controls").toggle("wrapper-hidden");
                     $("#3d-icon").attr('src', "{% static "assets/img_for_shop/3d-icon-close.jpg" %}");
-                    $(".progress").attr("style", "display:block;position:absolute;width:95%;height: 100%;");
+                    $(".progress").attr("style", "display:block;position:absolute;width:96%;height: 100%;");
                 }
             });
         </script>
