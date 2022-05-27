@@ -51,6 +51,7 @@
             let xhr14 = new XMLHttpRequest();
             let xhr15 = new XMLHttpRequest();
             let xhr16 = new XMLHttpRequest();
+
             xhr1.open('get', '/static/assets/detail_model/more_detail_model/model_detail_guzheng.glb');
             xhr1.send('');
             xhr2.open('get', '/static/assets/detail_model/more_detail_model/model_detail_pipa.glb');
@@ -106,10 +107,10 @@
         .title-box-default {
             padding-bottom: 25px;
         }
-    </style>
-    <style>
 
-
+        .background {
+            margin-top: 40%;
+        }
     </style>
 
     <style>
@@ -153,6 +154,17 @@
                 }, 1000);
                 document.getElementById("wrap").style = "display:block";
 
+
+                // HOMEPAGE VIDEO HEIGHT FIX
+                let height2 = $('#model-video-left').height();
+                $(".video-load-1").height(height2);
+                $(".video-load-2").height(height2);
+                console.log("video-height", height2);
+
+                $(".video-load-1").attr('src', "{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}");
+                $(".video-load-2").attr('src', "{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}");
+
+
                 {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
                 {#document.getElementsByTagName("loading-page").style = "display:none";#}
                 console.log($(window).width());
@@ -167,22 +179,28 @@
                         });
                     }
                     // HOMEPAGE BLANK FIX
-                    let height = $('.grid-image-box').height();
-                    {#console.log("HEIGHT", height, $('.img-height').get(0).offsetHeight);#}
-                    $('.grid-text-box').height(height - 1);
-                    $('.grid-text-box').hover(function () {
-                        $('.grid-text-box.active').removeClass('active');
-                    }, function () {
-                        $('.grid-text-box').last().addClass('active');
-                    });
+                    {#$(window).on("load", function () {#}
+                    let xhr_1 = new XMLHttpRequest();
+                    let xhr_2 = new XMLHttpRequest();
+                    xhr_1.open('get', '/static/assets/images/home_1/IMG_6511.JPG');
+                    xhr_1.send('');
+                    xhr_2.open('get', '/static/assets/images/home_1/IMG_6512.JPG');
+                    xhr_2.send('');
+                    xhr_1.onreadystatechange = function () {
+                        console.log(xhr_1.status);
+                        if (xhr_1.status === 200) {
+                            let height = $('.grid-image-box').height();
+                            {#console.log("HEIGHT", height, $('.img-height').get(0).offsetHeight);#}
+                            $('.grid-text-box').height(height - 1);
+                            $('.grid-text-box').hover(function () {
+                                $('.grid-text-box.active').removeClass('active');
+                            }, function () {
+                                $('.grid-text-box').last().addClass('active');
+                            });
+                        }
+                    }
 
-                    // HOMEPAGE VIDEO HEIGHT FIX
-                    let height2 = $('.model-video-left').height();
-                    $(".video-load-1").height(height2);
-                    $(".video-load-2").height(height2);
 
-                    $(".video-load-1").attr('src', "{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}");
-                    $(".video-load-2").attr('src', "{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}");
                     setTimeout(() => {
                         // 预加载模型
                         preLoadingModels();
@@ -205,6 +223,7 @@
 {% endblock %}
 {% block content %}
     <script>
+
         looklookLoading()
     </script>
     <div id="content">
