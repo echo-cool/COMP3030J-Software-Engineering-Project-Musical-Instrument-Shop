@@ -190,7 +190,7 @@
                         console.log(xhr_1.status);
                         if (xhr_1.status === 200) {
                             let height = $('.grid-image-box').height();
-                            {#console.log("HEIGHT", height, $('.img-height').get(0).offsetHeight);#}
+                            console.log("HEIGHT", $('.img-height').get(0).offsetHeight);
                             $('.grid-text-box').height(height - 1);
                             $('.grid-text-box').hover(function () {
                                 $('.grid-text-box.active').removeClass('active');
@@ -200,6 +200,30 @@
                         }
                     }
 
+                    function throttle(method, context) {
+                        clearTimeout(method.tId);
+                        method.tId = setTimeout(function () {
+                            method.call(context);
+                        }, 500);
+                    }
+
+                    window.onresize = function () {
+                        throttle(resizehandler, window);
+                    };
+
+                    function resizehandler() {
+                        console.log("resize", document.body.clientWidth)
+                        let height = $('.grid-image-box').height();
+                        $('.grid-text-box').height(height - 1);
+
+                        $(".video-load-1").height("auto");
+                        $(".video-load-2").height("auto");
+                        if (document.body.clientWidth <= 1146) {
+                            $("#btn-right").html("{% trans "GO To Chinese Section" %}")
+                        } else {
+                            $("#btn-right").html("{% trans "<<< GO To Chinese Section >>>" %}")
+                        }
+                    }
 
                     setTimeout(() => {
                         // 预加载模型
@@ -263,7 +287,8 @@
                                          src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="width:100% ;cursor: pointer" class="model-video video-load-1"
+                                           style="width:100% ;cursor: pointer; margin-bottom: 5px;"
+                                           class="model-video video-load-1"
                                            src=""></video>
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>{% trans "Men’s" %}</h2>#}
@@ -285,7 +310,7 @@
                                        id="btn-left">{% trans "Western Instruments" %}</a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 100%;">
                                 <div class="inner-box-banner-adv odd bottom-right">
                                     <a href="/product_search/?search=chinese">
                                         <img height="250px" style="  margin-bottom: 10px;"
@@ -297,20 +322,20 @@
                                          src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="position: relative;width: 100%;cursor: pointer"
+                                           style="position: relative;width: 100%;cursor: pointer;height:auto"
                                            class="model-video video-load-2"
                                            src=""></video>
                                     <a href="/product_search/?section=chinese" type="button" class="btn-toogle-info"
                                        id="btn-center">{% trans "Chinese Instruments" %}</a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box-banner-adv odd bottom-left">
-                                    <a href="/chinese">
-                                        <img
-                                                src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
-                                                alt=""/>
-                                    </a>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-left"
+                                     style="height: 99%;text-align: center;">
+                                    <div onclick="window.location.href='/chinese'" style="height: 100%;">
+                                        <img src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
+                                             style="height: 99%;" alt=""/>
+                                    </div>
                                     <a href="/chinese" type="button" class="btn-toogle-info"
                                        id="btn-right"><<< {% trans "GO To CHINESE Section" %} >>>
                                     </a>

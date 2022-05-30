@@ -274,6 +274,26 @@ def revenue_month(request):
     return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
+def order_data(request):
+    order_items = OrderItem.objects
+    # total_orders = []
+    chinese_orders = []
+    western_orders = []
+
+    for i in range(1, 13):
+        total_orders_month = order_items.filter(order__created_at__month=i)
+        chinese_orders_month = total_orders_month.filter(instrument__chinese=True).count()
+        western_orders_month = total_orders_month.filter(instrument__chinese=False).count()
+
+        # total_orders.append(total_orders_month)
+        chinese_orders.append(chinese_orders_month)
+        western_orders.append(western_orders_month)
+
+    result = [western_orders, chinese_orders]
+
+    return JsonResponse(result, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
 def analyze_image(request):
     key = 0
     if request.method == 'POST':
