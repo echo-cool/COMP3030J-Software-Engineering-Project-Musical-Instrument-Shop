@@ -387,11 +387,11 @@ def leave_review2(request):
     return render(request, 'shop_templates/leave-review-2.html')
 
 
-def model_view(request, product_id):
-    instrument = get_object_or_404(Instrument, pk=product_id)
-    return render(request, 'shop_templates/product-detail-model.html', {
-        "instrument": instrument,
-    })
+# def model_view(request, product_id):
+#     instrument = get_object_or_404(Instrument, pk=product_id)
+#     return render(request, 'shop_templates/back/product-detail-model.html', {
+#         "instrument": instrument,
+#     })
 
 
 @login_required
@@ -1069,7 +1069,7 @@ def product_details_test_model(request, product_id):
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
-    return render(request, 'shop_templates/product-detail-2.html', {
+    return render(request, 'shop_templates/back/product-detail-2.html', {
         "instrument": instrument,
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,
