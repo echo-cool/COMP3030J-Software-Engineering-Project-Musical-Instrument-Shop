@@ -232,16 +232,17 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="text-uppercase">Order
                                                                 #{{ order.id | truncatechars:8 }}</div>
-                                                            <div class="blue-label ms-auto text-uppercase">{% trans "paid" %}</div>
+                                                            {#                                    <div class="blue-label ms-auto text-uppercase">{% trans "pai"d%}</div>#}
                                                         </div>
-                                                        <div class="fs-8">{% trans "Quantity: " %}<b>{{ order.quantity }}</b>
-                                                        </div>
+                                                        <div class="fs-8">{% trans "Quantity:" %}<b>
+                                                            {{ order.quantity }}
+                                                        </b></div>
                                                         <div class="fs-8">{{ order.created_at }}</div>
                                                         <div class="rating d-flex align-items-center pt-1"><img
                                                                 src="{% static 'assets/images/icons/hand-thumb.png' %}"
                                                                 alt=""><span
-                                                                class="px-2">{% trans "Rating: " %}</span><span
-                                                                class="fas fa-star"></span> <span
+                                                                class="px-2">{% trans "Rating:" %}</span> <span
+                                                                class="fas fa-star"></span><span
                                                                 class="fas fa-star"></span> <span
                                                                 class="fas fa-star"></span> <span
                                                                 class="fas fa-star"></span> <span
@@ -251,22 +252,25 @@
                                                 <div class="col-lg-8">
                                                     <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
                                                         <div class="status">
-                                                            Status:
-                                                            {% if order.delivery_confirmed and order.shopper_confirmed %}
-                                                                {% trans "Delivered" %}
-                                                            {% elif order.shopper_confirmed %}
-                                                                {% trans "Shopper Confirmed" %}
-                                                            {% else %}
-                                                                {% trans "Placed" %}
-                                                            {% endif %}
+                                                            {% trans "Status:" %} {% if order.delivered %}
+                                                            {% trans "Delivered" %}
+                                                        {% elif order.shipped %}
+                                                            {% trans "Shopper Confirmed" %}
+                                                        {% elif order.packed %}
+                                                            {% trans "Packed" %}
+                                                        {% elif order.accepted %}
+                                                            {% trans "Accepted" %}
+                                                        {% else %}
+                                                            {% trans "Placed" %}
+                                                        {% endif %}
                                                         </div>
                                                         <div class="btn btn-primary text-uppercase"
                                                              data-bs-toggle="modal"
                                                              data-bs-target="#popup-quickview-{{ order.id }}">{% trans "order info" %}</div>
                                                     </div>
                                                     <div class="progressbar-track">
-                                                        <ul class="progressbar">
-                                                            {% if order.delivery_confirmed and order.shopper_confirmed %}
+                                                        <ul class="progressbar" id="progressbar__{{ order.id }}">
+                                                            {% if order.delivered %}
                                                                 <li id="step-1" class="text-muted green"><span
                                                                         class="fas fa-gift"></span></li>
                                                                 <li id="step-2" class="text-muted green"><span
@@ -277,7 +281,19 @@
                                                                         class="fas fa-truck"></span></li>
                                                                 <li id="step-5" class="text-muted green"><span
                                                                         class="fas fa-box-open"></span></li>
-                                                            {% elif order.shopper_confirmed %}
+                                                            {% elif order.shipped %}
+                                                                <li id="step-1" class="text-muted green"><span
+                                                                        class="fas fa-gift"></span></li>
+                                                                <li id="step-2" class="text-muted green"><span
+                                                                        class="fas fa-check"></span></li>
+                                                                <li id="step-3" class="text-muted green"><span
+                                                                        class="fas fa-box"></span></li>
+                                                                <li id="step-4" class="text-muted green"><span
+                                                                        class="fas fa-truck"></span></li>
+                                                                <li id="step-5" class="text-muted"><span
+                                                                        class="fas fa-box-open"></span>
+                                                                </li>
+                                                            {% elif order.packed %}
                                                                 <li id="step-1" class="text-muted green"><span
                                                                         class="fas fa-gift"></span></li>
                                                                 <li id="step-2" class="text-muted green"><span
@@ -285,150 +301,46 @@
                                                                 <li id="step-3" class="text-muted green"><span
                                                                         class="fas fa-box"></span></li>
                                                                 <li id="step-4" class="text-muted"><span
-                                                                        class="fas fa-truck"></span></li>
+                                                                        class="fas fa-truck"></span>
+                                                                </li>
                                                                 <li id="step-5" class="text-muted"><span
-                                                                        class="fas fa-box-open"></span></li>
-                                                            {% else %}
+                                                                        class="fas fa-box-open"></span>
+                                                                </li>
+                                                            {% elif order.accepted %}
                                                                 <li id="step-1" class="text-muted green"><span
                                                                         class="fas fa-gift"></span></li>
-                                                                <li id="step-2" class="text-muted"><span
+                                                                <li id="step-2" class="text-muted green"><span
                                                                         class="fas fa-check"></span></li>
                                                                 <li id="step-3" class="text-muted"><span
                                                                         class="fas fa-box"></span></li>
                                                                 <li id="step-4" class="text-muted"><span
-                                                                        class="fas fa-truck"></span></li>
+                                                                        class="fas fa-truck"></span>
+                                                                </li>
                                                                 <li id="step-5" class="text-muted"><span
-                                                                        class="fas fa-box-open"></span></li>
+                                                                        class="fas fa-box-open"></span>
+                                                                </li>
+                                                            {% else %}
+                                                                <li id="step-1" class="text-muted green"><span
+                                                                        class="fas fa-gift"></span></li>
+                                                                <li id="step-2" class="text-muted"><span
+                                                                        class="fas fa-check"></span>
+                                                                </li>
+                                                                <li id="step-3" class="text-muted"><span
+                                                                        class="fas fa-box"></span></li>
+                                                                <li id="step-4" class="text-muted"><span
+                                                                        class="fas fa-truck"></span>
+                                                                </li>
+                                                                <li id="step-5" class="text-muted"><span
+                                                                        class="fas fa-box-open"></span>
+                                                                </li>
                                                             {% endif %}
+
                                                         </ul>
                                                         <div id="tracker"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- popup-quickview  -->
-                                        {#                                        <div id="popup-quickview-{{ order.id }}" class="modal fade" tabindex="-1">#}
-                                        {#                                            <div class="modal-dialog quickview-dialog">#}
-                                        {#                                                <div class="modal-content">#}
-                                        {#                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"#}
-                                        {#                                                            aria-label="Close"><i class="fi flaticon-cancel"></i>#}
-                                        {#                                                    </button>#}
-                                        {#                                                    <div class="modal-body d-flex">#}
-                                        {#                                                        <div class="product-details" style="width: 100%;">#}
-                                        {#                                                            <div class="row">#}
-                                        {#                                                                <div class="col-lg-3">#}
-                                        {#                                                                    <div class="order-details-item">#}
-                                        {#                                                                        <h4>{% trans "Order ID" %}</h4>#}
-                                        {#                                                                        <h2>{{ order.id }}</h2>#}
-                                        {#                                                                    </div>#}
-                                        {#                                                                </div>#}
-                                        {#                                                                <div class="col-lg-9">#}
-                                        {#                                                                    <ul class="list-style9 no-margin">#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-building text-orange"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-orange">{% trans "City:" %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.city }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-globe text-red"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-red">{% trans "Country: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.country }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-user-alt text-orange"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-orange">{% trans "User_id: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.user_id }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-map text-green"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-green">{% trans "Address: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.address }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-user-alt text-purple"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-purple">{% trans "First_name: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.first_name }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-bars text-pink"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-pink">{% trans "Zip_Code:" %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.zip_Code }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-building-o text-sky"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-sky">{% trans "Apartment: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.apartment }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                        <li>#}
-                                        {#                                                                            <div class="row">#}
-                                        {#                                                                                <div class="col-md-5 col-5">#}
-                                        {#                                                                                    <i class="fas fa-archive text-yellow"></i>#}
-                                        {#                                                                                    <strong class="margin-10px-left text-yellow">{% trans "State: " %}</strong>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                                <div class="col-md-7 col-7">#}
-                                        {#                                                                                    <span id="username">{{ order.state }}</span>#}
-                                        {#                                                                                </div>#}
-                                        {#                                                                            </div>#}
-                                        {##}
-                                        {#                                                                        </li>#}
-                                        {#                                                                    </ul>#}
-                                        {#                                                                </div>#}
-                                        {#                                                            </div>#}
-                                        {#                                                        </div>#}
-                                        {#                                                    </div>#}
-                                        {#                                                </div>#}
-                                        {#                                            </div>#}
-                                        {#                                        </div>#}
-                                        <!-- popup-quickview -->
                                     {% endfor %}
                                     {#									<p>{% trans "Web Design" %}</p>#}
                                     {#									<div class="progress mb-3" style="height: 5px">#}
@@ -603,8 +515,6 @@
     {% endfor %}
 
 
-
-
 {% endblock %}
 
 {% block foot_link %}
@@ -732,8 +642,6 @@
                 });
             });
         })
-
-        background: rgba(255, 255, 255, 0.7);
 
         $(".confirm-delivery").on("click", function () {
             let orderID = $(this).attr("id").split("__")[1];
