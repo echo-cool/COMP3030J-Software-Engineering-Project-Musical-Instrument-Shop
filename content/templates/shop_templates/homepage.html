@@ -200,18 +200,13 @@
                         }
                     }
 
-                    function throttle(method, context) {
-                        clearTimeout(method.tId);
-                        method.tId = setTimeout(function () {
-                            method.call(context);
-                        }, 500);
-                    }
 
                     window.onresize = function () {
                         throttle(resizehandler, window);
+                        throttle(resizehandler2, window);
                     };
 
-                    function resizehandler() {
+                    function resizehandler2() {
                         console.log("resize", document.body.clientWidth)
                         let height = $('.grid-image-box').height();
                         $('.grid-text-box').height(height - 1);
@@ -234,9 +229,11 @@
                 ScrollToCustom();
 
             }
-
-            setTimeout(() => overLoading(), 6000);
-
+            {% if request.user %}
+                setTimeout(() => overLoading(), 1000);
+            {% else %}
+                setTimeout(() => overLoading(), 6000);
+            {% endif %}
         }
 
         {#looklookLoading()#}
