@@ -39,20 +39,12 @@
 {% endblock %}
 
 {% block content %}
-
-
-    <!-- /header -->
-
     <main>
-
-
         <div class="container margin_60_35">
-
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <form action="#" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-
                         <div class="write_review">
                             <h1>{% trans "Write a review for" %} {{ instrument.name }}</h1>
                             <div class="rating_submit">
@@ -73,58 +65,8 @@
                                 </div>
                             </div>
                             {% bootstrap_form form %}
-
-                            <script>
-                                $(document).ready(function () {
-                                    $('#id_rating').val(0);
-                                    $('#5_star').click(function () {
-                                        $('#id_rating').val(5);
-                                    });
-                                    $('#4_star').click(function () {
-                                        $('#id_rating').val(4);
-                                    });
-                                    $('#3_star').click(function () {
-                                        $('#id_rating').val(3);
-                                    });
-                                    $('#2_star').click(function () {
-                                        $('#id_rating').val(2);
-                                    });
-                                    $('#1_star').click(function () {
-                                        $('#id_rating').val(1);
-                                    });
-
-
-                                });
-                            </script>
                         </div>
-                        {#                            <!-- /rating_submit -->#}
-                        {#                            <div class="form-group">#}
-                        {#                                <label>Title of your review</label>#}
-                        {#                                <input class="form-control" type="text" name="title"#}
-                        {#                                       placeholder="If you could say it in one sentence, what would you say?">#}
-                        {#                            </div>#}
-                        {#                            <div class="form-group">#}
-                        {#                                <label>Your review</label>#}
-                        {#                                <textarea class="form-control" style="height: 180px;" name="review"#}
-                        {#                                          placeholder="Write your review to help others learn about this online business"></textarea>#}
-                        {#                            </div>#}
-                        {#                            <div class="form-group">#}
-                        {#                                <label>Add your photo (optional)</label>#}
-                        {#                                <div class="fileupload"><input type="file" name="fileupload" accept="image/*"></div>#}
-                        {#                            </div>#}
-                        {#                            <div class="form-group">#}
-                        {#                                <div class="checkboxes float-left add_bottom_15 add_top_15">#}
-                        {#                                    <label class="container_check">Eos tollit ancillae ea, lorem consulatu qui ne, eu#}
-                        {#                                        eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus#}
-                        {#                                        te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut.#}
-                        {#                                        Viderer petentium cu his.#}
-                        {#                                        <input type="checkbox" name="check" value="1">#}
-                        {#                                        <span class="checkmark"></span>#}
-                        {#                                    </label>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
                         <input type="submit" class="btn_1" value="Submit review">
-                        {#                        </div>#}
                     </form>
                 </div>
             </div>
@@ -133,20 +75,33 @@
         <!-- /container -->
     </main>
     <!--/main-->
-
-    <!--/main-->
-
-
     <!-- page -->
-
     <div id="toTop"></div><!-- Back to top button -->
-
 {% endblock %}
 
 {% block foot_link %}
-
     <!-- COMMON SCRIPTS -->
     <script src="{% static "assets/js_for_shop/common_scripts.min.js" %}"></script>
     <script src="{% static "assets/js_for_shop/main.js" %}"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('#id_rating').val(0);
+            $('#5_star').click(function () {
+                $('#id_rating').val(5);
+            });
+            $('#4_star').click(function () {
+                $('#id_rating').val(4);
+            });
+            $('#3_star').click(function () {
+                $('#id_rating').val(3);
+            });
+            $('#2_star').click(function () {
+                $('#id_rating').val(2);
+            });
+            $('#1_star').click(function () {
+                $('#id_rating').val(1);
+            });
+        });
+    </script>
 {% endblock %}
