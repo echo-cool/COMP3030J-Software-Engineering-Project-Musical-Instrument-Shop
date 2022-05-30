@@ -47,6 +47,7 @@ def index(request):
         category_number[category] = all_posts.filter(category=category).count()
 
     return render(request, 'blog_templates/blogs.html', {
+        'index_posts': posts[:3],
         'posts': posts,
         'part_pages': part_pages,
         'category_number': category_number
