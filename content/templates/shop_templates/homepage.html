@@ -200,8 +200,18 @@
                         }
                     }
 
+                    function throttle(method, context) {
+                        clearTimeout(method.tId);
+                        method.tId = setTimeout(function () {
+                            method.call(context);
+                        }, 500);
+                    }
+
                     window.onresize = function () {
-                        // #TODO: 加防抖
+                        throttle(resizehandler, window);
+                    };
+
+                    function resizehandler() {
                         console.log("resize", document.body.clientWidth)
                         let height = $('.grid-image-box').height();
                         $('.grid-text-box').height(height - 1);
