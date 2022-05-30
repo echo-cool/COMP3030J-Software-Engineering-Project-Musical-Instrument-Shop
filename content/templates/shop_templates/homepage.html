@@ -229,9 +229,11 @@
                 ScrollToCustom();
 
             }
-
-            setTimeout(() => overLoading(), 6000);
-
+            {% if request.user %}
+                setTimeout(() => overLoading(), 1000);
+            {% else %}
+                setTimeout(() => overLoading(), 6000);
+            {% endif %}
         }
 
         {#looklookLoading()#}
