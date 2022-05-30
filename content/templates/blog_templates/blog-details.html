@@ -85,8 +85,7 @@
                                         </div>
                                         <div class="post_tag" data-aos="fade-up" data-aos-duration="900">
                                             <ul class="tag_list">
-                                                <li><a href="#">#Photography</a></li>
-                                                <li><a href="#">#Travel</a></li>
+                                                <li><a href="/blog/?category={{ post.category_id }}">#{{ post.category.category }}</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -122,39 +121,24 @@
                                 </div>
                                 <div class="more_posts">
                                     <div class="row">
+                                        {% for post in similar_posts %}
                                         <div class="col-lg-6 col-md-6 col-sm-6">
                                             <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
                                                 <div class="post_img" data-aos="overlay-left">
-                                                    <a href="#"><img
-                                                            src="../../assets/assets/img_for_shop/images/blog/related1.jpg"
+                                                    <a href="{% url 'blog:view' post_id=post.id %}"><img
+                                                            src="{{ post.main_image.url }}"
                                                             alt="blog"></a>
                                                 </div>
                                                 <div class="post_content">
                                                     <div class="post_header">
                                                         <h2 class="post_title">
-                                                            <a href="#">{% trans "To me Life is either a daring adventure or nothing" %}</a>
+                                                            <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:53 }}</a>
                                                         </h2>
                                                     </div>
                                                 </div>
                                             </article>
                                         </div>
-
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <article class="blog_post" data-aos="fade-up" data-aos-duration="900">
-                                                <div class="post_img" data-aos="overlay-left">
-                                                    <a href="#"><img
-                                                            src="../../assets/assets/img_for_shop/images/blog/related2.jpg"
-                                                            alt="blog"></a>
-                                                </div>
-                                                <div class="post_content">
-                                                    <div class="post_header">
-                                                        <h2 class="post_title">
-                                                            <a href="#">{% trans "Life begins at the end of your comfort zone" %}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -272,16 +256,16 @@
                                     <h4 class="widget_title">{% trans "Recent Posts" %}</h4>
                                     <div class="sidebar_recent_posts">
                                         <ul>
-                                            <li><a href="#">{% trans "Let’s escape in the cityscape" %}</a></li>
-                                            <li><a href="#">{% trans "Failure doesn’t define anything" %}</a></li>
-                                            <li><a href="#">{% trans "Bohemian mountain towards Us" %}</a></li>
+                                            {% for post in recent_posts %}
+                                                <li><a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:37 }}</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div id="custom_2" class="widget widget_custom">
                                     <div class="sidebar_add">
-                                        <img src="../../assets/assets/img_for_shop/images/add.png" alt="add">
+                                        <img src="{% static 'assets/img_for_shop/images/add.png' %}" alt="add">
                                     </div>
                                 </div>
 
@@ -289,11 +273,9 @@
                                     <h4 class="widget_title">{% trans "Categories" %}</h4>
                                     <div class="sidebar_categories">
                                         <ul class="category_list">
-                                            <li><a href="#">{% trans "Travel Hacks (5)" %}</a></li>
-                                            <li><a href="#">{% trans "South Asia (7)" %}</a></li>
-                                            <li><a href="#">{% trans "Travel Photography (4)" %}</a></li>
-                                            <li><a href="#">{% trans "Wildlife Adventure (2)" %}</a></li>
-                                            <li><a href="#">{% trans "Road Trips (4)" %}</a></li>
+                                            {% for category in categories %}
+                                               <li><a href="/blog/category={{ category.id }}">{{ category.category }} ({{ category.posts.all.count }})</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
