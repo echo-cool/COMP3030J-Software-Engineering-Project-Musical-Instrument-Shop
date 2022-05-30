@@ -57,7 +57,6 @@ def index(request):
 
 def view(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    posts = Post.objects.all()
     all_comments = Comment.objects.filter(post=post)
     paginator = Paginator(all_comments, 12, 0)
     page = request.GET.get("page")
@@ -78,12 +77,6 @@ def view(request, post_id):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
-    if len(posts) >= 3:
-        latest3Posts = posts[:3]
-    elif len(posts) == 2:
-        latest3Posts = posts[:2]
-    else:
-        latest3Posts = posts[:1]
     if request.method == 'POST':
         comment_text = request.POST.get('comment')
         comment = Comment(body=comment_text, post=post, author=request.user)
@@ -91,9 +84,11 @@ def view(request, post_id):
         return redirect(reverse('blog:view', args=(post_id,)))
     return render(request, 'blog_templates/blog-details.html', {
         'post': post,
-        'latest3Posts': latest3Posts,
         'comments': comments,
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'categories': Category.objects.all(),
+        'recent_posts': Post.objects.all().order_by("-created_on")[:3],
+        'similar_posts': Post.objects.filter(category_id=post.category_id)[:2]
     })
 
 @login_required
