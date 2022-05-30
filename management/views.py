@@ -925,6 +925,7 @@ def profile(request):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            "notifications": Notification.objects.all()
         })
 
 
