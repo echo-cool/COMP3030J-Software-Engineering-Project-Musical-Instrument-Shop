@@ -98,6 +98,33 @@ def index_new(request):
     blogs = Post.objects.all()
     wishlist = Wishlist.objects.all()
 
+    # weekday order
+    orders = OrderItem.objects
+    weekday_order = []
+    for i in range(1, 8):
+        total_orders_month = orders.filter(order__created_at__week_day=i)
+        revenue = 0
+        for order in total_orders_month:
+            revenue += order.quantity
+        weekday_order.append(revenue)
+
+    # monthly order change
+    before_month = 0
+    this_month = 0
+    total_orders_month = orders.filter(order__created_at__month=5)
+
+    print(total_orders_month)
+    for order in total_orders_month:
+        before_month += order.quantity
+    total_orders_month_now = orders.filter(order__created_at__month=6)
+
+    print(total_orders_month_now)
+    for order in total_orders_month_now:
+        this_month += order.quantity
+    change = int(this_month) - int(before_month)
+    print("========================")
+    compare_monthly = [1 if change > 0 else 0, change]
+    print(compare_monthly)
     return render(request, 'management_templates/index_new.html', {
         'profile': Profile.objects.filter(user=request.user.id).first(),
         'orders': orders,
@@ -112,7 +139,9 @@ def index_new(request):
         'messages': messages,
         "quantities": quantities,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-        "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        "weekday_order": weekday_order,
+        "compare_monthly": compare_monthly,
         # "quantities": {"quantities_name": quantities_name,
         #                "quantities_quantity": quantities_quantity},
     })
