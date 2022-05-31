@@ -20,7 +20,8 @@ urlpatterns = [
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
-    path('checkout/single/<int:instrument_id>', checkout_single_instrument, name='checkout_single_instrument'),
+    path('checkout/single/<int:instrument_id>/<int:instrument_number>', checkout_single_instrument,
+         name='checkout_single_instrument'),
     path('checkout/success/', checkout_success, name='checkout_success'),
 
     path('shipping_details/<int:uncompletedOrder_id>', shipping_details, name='shipping_details'),
