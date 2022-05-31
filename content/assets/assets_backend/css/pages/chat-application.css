@@ -14,11 +14,23 @@
     height: calc(100% - 30px);
 }
 
+@media (min-width: 992px) {
+    .chat-application .chat-fixed-search {
+        width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .chat-application .chat-fixed-search {
+        width: 30%;
+    }
+}
+
+
 .chat-application .chat-fixed-search {
     position: fixed;
     z-index: 9;
     background: #FFFFFF;
-    width: 300px;
     border-bottom: 1px solid #E4E7ED;
 }
 
