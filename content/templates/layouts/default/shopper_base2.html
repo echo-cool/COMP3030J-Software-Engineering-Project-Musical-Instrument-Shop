@@ -2369,9 +2369,11 @@
                 success: function (res) {
                     window.location.href = ("/image_search/" + res['key']);
                     image_upload.val(null);
-                    search_title.text("Start typing and hit Enter")
+                    search_title.text("Start typing and hit Enter");
                 },
                 error: function () {
+                    image_upload.val(null);
+                    search_title.text("Start typing and hit Enter");
                     alert('Error! Check console!');
                 }
             })
