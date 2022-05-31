@@ -183,6 +183,18 @@
 
 #user-list {
     overflow: auto;
-    height: 45rem;
+    height: 85.7vh;
 }
 
+@media (max-width: 513px) {
+    #focus-user-search {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .chat-app-input .form-group {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
