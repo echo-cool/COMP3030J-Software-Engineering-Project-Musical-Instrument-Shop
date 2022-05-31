@@ -29,7 +29,64 @@
     <!-- tiny-slider (new Version for owl-slider) -->
     <link rel="stylesheet" href="{% static "assets/js_for_shop/tiny-slider.css" %}">
     <script src="{% static "assets/js_for_shop/tiny-slider.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/jquery.mCustomScrollbar.css" %}"/>
+    <script>
 
+        function preLoadingModels() {
+            let xhr1 = new XMLHttpRequest();
+            let xhr2 = new XMLHttpRequest();
+            let xhr3 = new XMLHttpRequest();
+            let xhr4 = new XMLHttpRequest();
+            let xhr5 = new XMLHttpRequest();
+            let xhr6 = new XMLHttpRequest();
+            let xhr7 = new XMLHttpRequest();
+            let xhr8 = new XMLHttpRequest();
+            let xhr9 = new XMLHttpRequest();
+
+            let xhr10 = new XMLHttpRequest();
+            let xhr11 = new XMLHttpRequest();
+            let xhr12 = new XMLHttpRequest();
+            let xhr13 = new XMLHttpRequest();
+            let xhr14 = new XMLHttpRequest();
+            let xhr15 = new XMLHttpRequest();
+            let xhr16 = new XMLHttpRequest();
+
+            xhr1.open('get', '/static/assets/detail_model/more_detail_model/model_detail_guzheng.glb');
+            xhr1.send('');
+            xhr2.open('get', '/static/assets/detail_model/more_detail_model/model_detail_pipa.glb');
+            xhr2.send('');
+            xhr3.open('get', '/static/assets/detail_model/more_detail_model/model_detail_piano2.glb');
+            xhr3.send('');
+            xhr4.open('get', '/static/assets/detail_model/more_detail_model/model_detail_drumset.glb');
+            xhr4.send('');
+            xhr5.open('get', '/static/assets/detail_model/more_detail_model/model_detail_guzheng.glb');
+            xhr5.send('');
+            xhr6.open('get', '/static/assets/detail_model/more_detail_model/model_detail_guitar_sound.glb');
+            xhr6.send('');
+            xhr7.open('get', "/static/assets/detail_model/more_detail_model/model_detail_guitar12.glb");
+            xhr7.send('');
+            xhr8.open('get', "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano3.glb");
+            xhr8.send('');
+            xhr9.open('get', "https://instrument-model.oss-cn-beijing.aliyuncs.com/model_detail_piano2.glb");
+            xhr9.send('');
+
+            xhr10.open('get', "/static/assets/design_model/model_design_guitar1.gltf");
+            xhr10.send('');
+            xhr11.open('get', "/static/assets/design_model/model_design_guitar2.gltf");
+            xhr11.send('');
+            xhr12.open('get', "/static/assets/design_model/model_design_guitar3.gltf");
+            xhr12.send('');
+            xhr13.open('get', "/static/assets/design_model/model_design_piano1.gltf");
+            xhr13.send('');
+            xhr14.open('get', "/static/assets/design_model/model_design_piano2.glb");
+            xhr14.send('');
+            xhr15.open('get', "/static/assets/design_model/model_design_piano3.gltf");
+            xhr15.send('');
+            xhr16.open('get', "/static/assets/design_model/model_design_guitar1.bin");
+            xhr16.send('');
+        }
+    </script>
     <style>
         .wrapper-hidden {
             display: none;
@@ -50,10 +107,10 @@
         .title-box-default {
             padding-bottom: 25px;
         }
-    </style>
-    <style>
 
-
+        .background {
+            margin-top: 40%;
+        }
     </style>
 
     <style>
@@ -96,13 +153,87 @@
                     document.getElementById("loading-page").style.display = "none";
                 }, 1000);
                 document.getElementById("wrap").style = "display:block";
-                ScrollToCustom();
+
+
+                // HOMEPAGE VIDEO HEIGHT FIX
+                let height2 = $('#model-video-left').height();
+                $(".video-load-1").height(height2);
+                $(".video-load-2").height(height2);
+                console.log("video-height", height2);
+
+                $(".video-load-1").attr('src', "{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}");
+                $(".video-load-2").attr('src', "{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}");
+
+
                 {#document.getElementById("iAtlasChatDiv").style = "display:block";#}
                 {#document.getElementsByTagName("loading-page").style = "display:none";#}
+                console.log($(window).width());
+                // THE BLANK MUST NEED PAGE SHOWN
+                if ($(window).width() > 767) {
+                    //Grid Text Box
+                    if ($('.content-news-scroll').length > 0) {
+                        $(".content-news-scroll").mCustomScrollbar({
+                            scrollButtons: {
+                                enable: true
+                            }
+                        });
+                    }
+                    // HOMEPAGE BLANK FIX
+                    {#$(window).on("load", function () {#}
+                    let xhr_1 = new XMLHttpRequest();
+                    let xhr_2 = new XMLHttpRequest();
+                    xhr_1.open('get', '/static/assets/images/home_1/IMG_6511.JPG');
+                    xhr_1.send('');
+                    xhr_2.open('get', '/static/assets/images/home_1/IMG_6512.JPG');
+                    xhr_2.send('');
+                    xhr_1.onreadystatechange = function () {
+                        console.log(xhr_1.status);
+                        if (xhr_1.status === 200) {
+                            let height = $('.grid-image-box').height();
+                            console.log("HEIGHT", $('.img-height').get(0).offsetHeight);
+                            $('.grid-text-box').height(height - 1);
+                            $('.grid-text-box').hover(function () {
+                                $('.grid-text-box.active').removeClass('active');
+                            }, function () {
+                                $('.grid-text-box').last().addClass('active');
+                            });
+                        }
+                    }
+
+
+                    window.onresize = function () {
+                        throttle(resizehandler, window);
+                        throttle(resizehandler2, window);
+                    };
+
+                    function resizehandler2() {
+                        console.log("resize", document.body.clientWidth)
+                        let height = $('.grid-image-box').height();
+                        $('.grid-text-box').height(height - 1);
+
+                        $(".video-load-1").height("auto");
+                        $(".video-load-2").height("auto");
+                        if (document.body.clientWidth <= 1146) {
+                            $("#btn-right").html("{% trans "GO To Chinese Section" %}")
+                        } else {
+                            $("#btn-right").html("{% trans "<<< GO To Chinese Section >>>" %}")
+                        }
+                    }
+
+                    setTimeout(() => {
+                        // 预加载模型
+                        preLoadingModels();
+                    }, 1000);
+                }
+                // DETECT whether need scroll to place
+                ScrollToCustom();
+
             }
-
-            setTimeout(() => overLoading(), 6000);
-
+            {% if request.user %}
+                setTimeout(() => overLoading(), 1000);
+            {% else %}
+                setTimeout(() => overLoading(), 6000);
+            {% endif %}
         }
 
         {#looklookLoading()#}
@@ -113,6 +244,7 @@
 {% endblock %}
 {% block content %}
     <script>
+
         looklookLoading()
     </script>
     <div id="content">
@@ -152,8 +284,9 @@
                                          src="{% static 'assets/detail_model/homepage/homepage_model_left.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="width:100% ;cursor: pointer" class="model-video"
-                                           src="{% static 'assets/detail_model/homepage/homepage_harp.mp4' %}"></video>
+                                           style="width:100% ;cursor: pointer; margin-bottom: 5px;"
+                                           class="model-video video-load-1"
+                                           src=""></video>
                                     {#                                <div class="text-adv-intro">#}
                                     {#                                    <h2>{% trans "Men’s" %}</h2>#}
                                     {#                                    <h3>{% trans "Collection" %}</h3>#}
@@ -174,7 +307,7 @@
                                        id="btn-left">{% trans "Western Instruments" %}</a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 600px;">
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="height: 100%;">
                                 <div class="inner-box-banner-adv odd bottom-right">
                                     <a href="/product_search/?search=chinese">
                                         <img height="250px" style="  margin-bottom: 10px;"
@@ -186,19 +319,20 @@
                                          src="{% static 'assets/detail_model/homepage/homepage_model_right.jpg' %}"
                                          alt=""/>
                                     <video loop preload
-                                           style="position: relative;width: 100%;cursor: pointer" class="model-video"
-                                           src="{% static 'assets/detail_model/homepage/homepage_pipa.mp4' %}"></video>
+                                           style="position: relative;width: 100%;cursor: pointer;height:auto"
+                                           class="model-video video-load-2"
+                                           src=""></video>
                                     <a href="/product_search/?section=chinese" type="button" class="btn-toogle-info"
                                        id="btn-center">{% trans "Chinese Instruments" %}</a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box-banner-adv odd bottom-left">
-                                    <a href="/chinese">
-                                        <img
-                                                src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
-                                                alt=""/>
-                                    </a>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner-box-banner-adv odd bottom-left"
+                                     style="height: 99%;text-align: center;">
+                                    <div onclick="window.location.href='/chinese'" style="height: 100%;">
+                                        <img src="{% static 'assets/detail_model/homepage/model-meinv3.jpg' %}"
+                                             style="height: 99%;" alt=""/>
+                                    </div>
                                     <a href="/chinese" type="button" class="btn-toogle-info"
                                        id="btn-right"><<< {% trans "GO To CHINESE Section" %} >>>
                                     </a>
@@ -273,7 +407,9 @@
                 <div class="banner-grid-left">
                     <div class="wrap-grid-adv-box clearfix">
                         <div class="grid-image-box">
-                            <a href="#"><img src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt=""></a>
+                            <a href="#">
+                                <img class="img-height" src="{% static 'assets/images/home_1/IMG_6512.JPG' %}" alt="">
+                            </a>
                         </div>
                         <div class="grid-text-box gray-box" style="height: 329px;">
                             <div class="inner-grid-text-box">

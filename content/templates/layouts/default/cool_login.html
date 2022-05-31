@@ -122,7 +122,7 @@
 
                 <div class="google-recaptcha-box">
                     <div class="g-recaptcha" data-sitekey="6LdQGcMfAAAAAMxN4glZ_yLLsiUtL-A-n6QDedAW"
-                         data-callback="verify_result"></div>
+                         data-callback="verify_result" data-id="verify"></div>
                 </div>
                 <p> <!-- User Sign in button start -->
 
@@ -143,7 +143,7 @@
                 </button>
                 <!-- Visitor Sign in button end -->
                 <p></p>
-                <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
+                <p class="college">{% trans "MusicMo Musical Instrument Online Store" %}</p>
             </form>
 
         </div>
@@ -197,7 +197,7 @@
 
                 <!-- Visitor Sign in button end -->
 
-                <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
+                <p class="college">{% trans "MusicMo Musical Instrument Online Store" %}</p>
             </form>
         </div>
 
@@ -259,7 +259,7 @@
                             data-action='submit'>{% trans "Sign In" %}</button>
                     </p>
                     <!-- Administrator sign in button end -->
-                    <p class="college">{% trans "MusicoMo Musical Instrument Online Store" %}</p>
+                    <p class="college">{% trans "MusicMo Musical Instrument Online Store" %}</p>
                 </form>
             </div>
             <!-- Administrator login end -->
@@ -297,16 +297,33 @@
             $('.submit').removeAttr('disabled');
         }
 
-        {#function ButtonClick(e) {#}
-        {#    console.log("ButtonClick");#}
-        {#  e.preventDefault();#}
-        {#  grecaptcha.ready(function() {#}
-        {#    grecaptcha.execute('6LdV8cIfAAAAAC7GSGHt1d0bchCsYCqqITTctGIH', {action: 'submit'}).then(function(token) {#}
-        {#        // Add your logic to submit to your backend server here.#}
-        {#        console.log(token);#}
-        {#    });#}
-        {#  });#}
-        {#$(".submit").on("click", ButtonClick);#}
+
+        function throttle(method, context) {
+            clearTimeout(method.tId);
+            method.tId = setTimeout(function () {
+                method.call(context);
+            }, 500);
+        }
+
+        window.onresize = function () {
+            throttle(resizehandler, window);
+        };
+
+        function resizehandler() {
+            let width = document.body.clientWidth;
+            if (width <= 925) {
+                let percentage = (width) / (925) * 100;
+                {#console.log(percentage, $("html", document.forms[0].document))#}
+                $('.content').css("zoom", percentage + "%");
+                // can't access the iframe
+                {#let frame = $("iframe[title=\"reCAPTCHA\"]").get(0);#}
+                {#let content = frame.contentWindow.document.getElementsByTagName("body");#}
+                {#console.log("FRAME", content)#}
+                {#$(frame).css("zoom", percentage + "%")#}
+            } else {
+                {#$('.content').css("zoom", "none");#}
+            }
+        }
     </script>
 
 

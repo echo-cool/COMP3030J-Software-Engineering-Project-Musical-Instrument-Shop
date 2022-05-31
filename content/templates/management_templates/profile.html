@@ -22,6 +22,18 @@
 {% endblock %}
 
 {% block content %}
+    <script>
+        function deleteActivity(notificationID) {
+            deleteNotification(notificationID);
+            $.ajax({
+                url: "#",
+                method: "GET",
+                success: function (res) {
+                    $('#recent_activity').html($(res).find('#recent_activity')[0].innerHTML);
+                },
+            })
+        }
+    </script>
     <div>
         <div id="user-profile-1" class="user-profile row">
             <div class="col-xs-12 col-sm-3 center">
@@ -223,7 +235,7 @@
 
                 <div class="space-20"></div>
 
-                <div class="widget-box transparent">
+                <div class="widget-box transparent" id="recent_activity">
                     <div class="widget-header widget-header-small">
                         <h4 class="widget-title blue smaller">
                             <i class="ace-icon fa fa-rss orange"></i>
@@ -245,137 +257,36 @@
                         <div class="widget-main padding-8">
                             <div id="profile-feed-1" class="profile-feed">
 
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "joined" %}<a href="#"
-                                    >{% trans "Country Music" %}</a
-                                    >{% trans "group." %}
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "5 hours ago" %}
+                                {% for notification in notifications %}
+
+                                    <div class="profile-activity clearfix">
+                                        <div>
+                                            {% if notification.is_confirm %}
+                                                <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
+                                            {% else %}
+                                                <i class="pull-left thumbicon fa fa-credit-card btn-pink no-hover"></i>
+                                            {% endif %}
+                                            <a class="user" href="{% url 'management:order_item_management' order_id=notification.order.id %}">{{ notification.order.user.username }}</a>
+                                            {% if notification.is_confirm %}
+                                                {% trans 'confirmed an order' %}
+                                            {% else %}
+                                                {% trans 'created a new order' %}
+                                            {% endif %}
+                                            <div class="time">
+                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>{{ notification.created_at }}
+                                            </div>
+                                        </div>
+
+                                        <div class="tools action-buttons">
+
+                                            <a href="javascript:void(0)" class="red" onclick="deleteActivity({{ notification.id }})">
+                                                <i class="ace-icon fa fa-times bigger-125"></i>
+                                            </a>
                                         </div>
                                     </div>
 
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
+                                {% endfor %}
 
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "uploaded a new photo." %}<a href="#"
-                                    >{% trans "Take a look" %}</a>
-
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "5 hours ago" %}
-                                        </div>
-                                    </div>
-
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
-
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "published a new blog post." %}<a href="#"
-                                    >{% trans "Read now" %}</a>
-
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "11 hours ago" %}
-                                        </div>
-                                    </div>
-
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
-
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "logged in." %}
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "12 hours ago" %}
-                                        </div>
-                                    </div>
-
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
-
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "logged out." %}
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "16 hours ago" %}
-                                        </div>
-                                    </div>
-
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
-
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                        <a class="user" href="#">{% trans "Alex Doe " %}</a
-                                        >{% trans "logged in." %}
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>{% trans "16 hours ago" %}
-                                        </div>
-                                    </div>
-
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
-
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -399,10 +310,6 @@
 {% endblock %}
 
 {% block scripts %}
-    <!--[if !IE]> -->
-    <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
-
-    <!-- <![endif]-->
 
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
@@ -425,9 +332,6 @@
     <script src="/static/assets/js/ace-editable.min.js"></script>
     <script src="/static/assets/js/jquery.maskedinput.min.js"></script>
 
-    <!-- ace scripts -->
-    <script src="/static/assets/js/ace-elements.min.js"></script>
-    <script src="/static/assets/js/ace.min.js"></script>
 
     <!-- inline scripts related to this page -->
     <script type="text/javascript">

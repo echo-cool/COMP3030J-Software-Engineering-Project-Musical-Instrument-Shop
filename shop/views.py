@@ -26,7 +26,7 @@ from app.MemoryCachedDB import MemoryCachedDB
 from management.forms import SearchForm
 from shop.forms import UpdateProfileForm, ReviewForm, CheckoutForm
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, Wishlist, UncompletedOrderItem, \
-    OrderItem, CustomModel, UncompletedOrderModelItem
+    OrderItem, CustomModel, UncompletedOrderModelItem, Notification
 from shop.models import Instrument, InstrumentDetail, Category, Order, Review, Cart, UncompletedOrder
 from blog.models import Post
 from management.forms import InstrumentForm, SearchForm
@@ -286,15 +286,41 @@ def product_details(request, product_id):
     related = []
     # Get 4 random reviews
     reviews = Review.objects.all().filter(instrument_id=product_id)
-    review = []
+
     carts = Cart.objects.filter(user_id=request.user.id)
-    for i in range(4):
-        if len(reviews) > 0:
-            num = random.randint(0, len(reviews) - 1)
+    # for i in range(4):
+    #     if len(reviews) > 0:
+    #         num = random.randint(0, len(reviews) - 1)
+    #         reviews[num].review_icon_iter = range(int(reviews[num].rating))
+    #         reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
+    #         review.append(reviews[num])
+    review_all = []
+    review_left = []
+    review_right = []
+
+    print("=================", len(reviews))
+    if len(reviews) > 0:
+        for num in range(len(reviews)):
             reviews[num].review_icon_iter = range(int(reviews[num].rating))
             reviews[num].review_icon_iter2 = range(5 - int(reviews[num].rating))
-            review.append(reviews[num])
 
+            if len(reviews) == 1:
+                review_left.append(reviews[0])
+            else:
+                if num % 2 == 0:
+                    review_left.append(reviews[num])
+                elif num % 2 == 1:
+                    review_right.append(reviews[num])
+
+            if len(review_left) == 1 and len(review_right) == 1:
+                review_all.append([review_left[0], review_right[0]])
+                review_left = []
+                review_right = []
+
+        if len(review_left) == 1:
+            review_all.append([review_left[0]])
+
+    print("=================", len(review_all))
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
@@ -313,8 +339,7 @@ def product_details(request, product_id):
             "instrument_details": instrument_details,
             "related": related,
             'categories': categories,
-            "review_left": [review[0], review[1]],
-            "review_right": [review[2], review[3]],
+            "review_all": review_all,
             "carts": carts
         })
     else:
@@ -387,11 +412,11 @@ def leave_review2(request):
     return render(request, 'shop_templates/leave-review-2.html')
 
 
-def model_view(request, product_id):
-    instrument = get_object_or_404(Instrument, pk=product_id)
-    return render(request, 'shop_templates/product-detail-model.html', {
-        "instrument": instrument,
-    })
+# def model_view(request, product_id):
+#     instrument = get_object_or_404(Instrument, pk=product_id)
+#     return render(request, 'shop_templates/back/product-detail-model.html', {
+#         "instrument": instrument,
+#     })
 
 
 @login_required
@@ -575,7 +600,6 @@ def model_checkout(request):
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
 
-
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -650,6 +674,8 @@ def shipping_details(request, uncompletedOrder_id):
             )
             orderItem.save()
             item.delete()
+        notification = Notification(order=order)
+        notification.save()
         messages.success(request, "Order successfully submitted!")
         return redirect(reverse('shop:checkout_success'))
 
@@ -1067,7 +1093,7 @@ def product_details_test_model(request, product_id):
     for i in range(5):
         num = random.randint(0, len(all_instruments) - 1)
         related.append(all_instruments[num])
-    return render(request, 'shop_templates/product-detail-2.html', {
+    return render(request, 'shop_templates/back/product-detail-2.html', {
         "instrument": instrument,
         "discount": instrument.price * 100 / instrument.old_price,
         "instrument_details": instrument_details,

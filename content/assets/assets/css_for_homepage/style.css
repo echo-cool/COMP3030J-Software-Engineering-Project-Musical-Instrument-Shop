@@ -259,7 +259,7 @@ a, .text-link {
 
 /*Section Banner Adv*/
 .inner-box-banner-adv {
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     overflow: hidden;
     position: relative;
 }
@@ -379,18 +379,18 @@ a, .text-link {
     width: 130px;
 }
 
-.bottom-left::after {
-    background: rgba(0, 0, 0, 0) url("../images/home_1/bg-rect.png") no-repeat scroll 0 0;
-    bottom: -10px;
-    content: "";
-    height: 130px;
-    left: 0;
-    position: absolute;
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    width: 130px;
-}
+/*.bottom-left::after {*/
+/*    background: rgba(0, 0, 0, 0) url("../images/home_1/bg-rect.png") no-repeat scroll 0 0;*/
+/*    bottom: -10px;*/
+/*    content: "";*/
+/*    height: 130px;*/
+/*    left: 0;*/
+/*    position: absolute;*/
+/*    transform: rotate(0deg);*/
+/*    -webkit-transform: rotate(0deg);*/
+/*    -moz-transform: rotate(0deg);*/
+/*    width: 130px;*/
+/*}*/
 
 .top-right::after {
     background: rgba(0, 0, 0, 0) url("../images/home_1/bg-rect.png") no-repeat scroll 0 0;
@@ -2055,32 +2055,49 @@ a, .text-link {
 
 .btn-toogle-info[id = "btn-left"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 230px;
-    left: 260px;
+    /*position: relative;*/
+    /*bottom: 230px;*/
+    /*left: 260px;*/
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
     font-size: 13px;
     font-weight: bold;
     background: white;
+    min-width: 40%;
+    text-align: center;
 }
 
 .btn-toogle-info[id = "btn-center"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 712px;
-    left: 256px;
+    /*position: relative;*/
+    /*bottom: 712px;*/
+    /*left: 256px;*/
+    position: absolute;
+    top: 1%;
+    left: 1%;
     font-size: 13px;
     font-weight: bold;
     background: white;
+    min-width: 40%;
+    text-align: center;
 }
 
 .btn-toogle-info[id = "btn-right"] {
     font-family: "Poppins", sans-serif;
-    position: relative;
-    bottom: 99px;
-    left: 56px;
+    /*position: relative;*/
+    /*bottom: 99px;*/
+    /*left: 56px;*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     font-size: 20px;
     font-weight: bold;
     background: white;
+    min-width: 80%;
+    text-align: center;
+    /*transform: translateY(-50%)*/
 }
 
 .btn-toogle-info {

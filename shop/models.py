@@ -261,3 +261,14 @@ class Review(models.Model):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('order', 'user', 'rating', 'title', 'content', 'created_at')
+
+
+class Notification(models.Model):
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    is_confirm = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('order', 'is_confirm', 'created_at')
