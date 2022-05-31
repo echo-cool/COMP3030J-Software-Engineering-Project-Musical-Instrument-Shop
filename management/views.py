@@ -80,8 +80,8 @@ def index_new(request):
     quantities = []
     print("=====================================================")
     quantity_instruments = Instrument.objects.all().order_by('quantity')
-    print(len(quantity_instruments))
-    print(quantity_instruments[0].name)
+    # print(len(quantity_instruments))
+    # print(quantity_instruments[0].name)
     while len(quantities) < 12:
         if len(quantity_instruments) < len(quantities):
             break
@@ -90,7 +90,7 @@ def index_new(request):
                 {"name": quantity_instruments[len(quantities)].name,
                  "quantity": quantity_instruments[len(quantities)].quantity}
             )
-    print(quantities)
+    # print(quantities)
 
     finished_orders = orders.filter(delivered=True)
 
