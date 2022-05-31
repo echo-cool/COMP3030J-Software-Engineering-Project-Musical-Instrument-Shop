@@ -178,7 +178,7 @@ def rank_user_list(request):
                              'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'],
                                                                         user=user).body})
         data = sorted(data, key=lambda x: x['time'], reverse=True)
-        if to != -1 and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
+        if to != -1 and to != request.user.id and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
             user = users.get(id=to)
             profile = profiles.filter(user=user).first()
             if profile:
