@@ -47,6 +47,7 @@ def index(request):
         category_number[category] = all_posts.filter(category=category).count()
 
     return render(request, 'blog_templates/blogs.html', {
+        'index_posts': posts[:3],
         'posts': posts,
         'part_pages': part_pages,
         'category_number': category_number
@@ -56,7 +57,6 @@ def index(request):
 
 def view(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    posts = Post.objects.all()
     all_comments = Comment.objects.filter(post=post)
     paginator = Paginator(all_comments, 12, 0)
     page = request.GET.get("page")
@@ -77,22 +77,21 @@ def view(request, post_id):
         part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
-    if len(posts) >= 3:
-        latest3Posts = posts[:3]
-    elif len(posts) == 2:
-        latest3Posts = posts[:2]
-    else:
-        latest3Posts = posts[:1]
     if request.method == 'POST':
-        comment_text = request.POST.get('comment')
-        comment = Comment(body=comment_text, post=post, author=request.user)
-        comment.save()
-        return redirect(reverse('blog:view', args=(post_id,)))
+        if request.user.is_authenticated:
+            comment_text = request.POST.get('comment')
+            comment = Comment(body=comment_text, post=post, author=request.user)
+            comment.save()
+            return redirect(reverse('blog:view', args=(post_id,)))
+        else:
+            return redirect(reverse('accounts:log_in'))
     return render(request, 'blog_templates/blog-details.html', {
         'post': post,
-        'latest3Posts': latest3Posts,
         'comments': comments,
-        'part_pages': part_pages
+        'part_pages': part_pages,
+        'categories': Category.objects.all(),
+        'recent_posts': Post.objects.all().order_by("-created_on")[:3],
+        'similar_posts': Post.objects.filter(category_id=post.category_id)[:2]
     })
 
 @login_required
@@ -108,6 +107,7 @@ def post(request):
                 author=request.user
             )
             new_post.save()
+            return redirect(reverse('blog:index'))
         else:
             return render(request, 'blog_templates/post-blogs.html', {
                 'form': f

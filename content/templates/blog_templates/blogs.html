@@ -99,83 +99,36 @@
                     <div class="slider_text">
                         <div class="swiper-container slider_posts">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="blog_post">
-                                        <div class="post_img">
-                                            <div class="calendar">
-                                                <a href="#"><span class="date">30</span><br
-                                                >{% trans "May" %}</a>
-                                            </div>
-                                        </div>
-                                        <div class="post_content">
-                                            <div class="post_header">
-                                                <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">{% trans "Record the Beauty of Melodious Instruments" %}</a>
-                                                </h2>
-                                            </div>
-                                            <div class="post_intro">
-                                                <p>{% trans "Record the fascination that impressed you and share the beauty with other instruments enthusiasts. " %}</p>
-                                            </div>
-                                            <div class="post_footer">
-                                                <div class="read_more">
-                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
+                                {% for post in index_posts %}
+                                    <div class="swiper-slide">
+                                        <article class="blog_post">
+                                            <div class="post_img">
+                                                <div class="calendar">
+                                                    <a href="{% url 'blog:view' post_id=post.id %}"><span class="date">{{ post.created_on.day }}</span><br
+                                                    >{{ post.created_on | date:"M" }}</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
+                                            <div class="post_content">
+                                                <div class="post_header">
+                                                    <h2 class="post_title" data-swiper="overlay-left">
+                                                        <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:46 }}</a>
+                                                    </h2>
+                                                </div>
+                                                <div class="post_intro">
+                                                    <p>
+                                                        {{ post.body | truncatechars:150 }}</p>
+                                                </div>
+                                                <div class="post_footer">
+                                                    <div class="read_more">
+                                                        <a href="{% url 'blog:view' post_id=post.id %}">{% trans "Continue Reading" %}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
 
-                                <div class="swiper-slide">
-                                    <article class="blog_post">
-                                        <div class="post_img">
-                                            <div class="calendar">
-                                                <a href="#"><span class="date">27</span
-                                                ><br>{% trans "May" %}</a>
-                                            </div>
-                                        </div>
-                                        <div class="post_content">
-                                            <div class="post_header">
-                                                <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">{% trans "50 travel essentials you must have to collect" %}</a>
-                                                </h2>
-                                            </div>
-                                            <div class="post_intro">
-                                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-                                            </div>
-                                            <div class="post_footer">
-                                                <div class="read_more">
-                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
+                                {% endfor %}
 
-                                <div class="swiper-slide">
-                                    <article class="blog_post">
-                                        <div class="post_img">
-                                            <div class="calendar">
-                                                <a href="#"><span class="date">24</span><br
-                                                >{% trans "May" %}</a>
-                                            </div>
-                                        </div>
-                                        <div class="post_content">
-                                            <div class="post_header">
-                                                <h2 class="post_title" data-swiper="overlay-left">
-                                                    <a href="#">{% trans "With age, comes wisdom, comes understanding" %}</a>
-                                                </h2>
-                                            </div>
-                                            <div class="post_intro">
-                                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magina aliqua. Quis ipsum suspendise ultrces gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis... " %}</p>
-                                            </div>
-                                            <div class="post_footer">
-                                                <div class="read_more">
-                                                    <a href="blog-details.html">{% trans "Continue Reading" %}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -185,21 +138,23 @@
                     <div class="slider_images">
                         <div class="swiper-container slider_posts">
                             <div class="swiper-wrapper">
+                                {% for post in index_posts %}
                                 <div class="swiper-slide">
                                     <div class="slide_img" data-swiper="overlay-left">
-                                        <img src="{% static 'assets/images/home_1/blog/blog12.jpg' %}" alt="img">
+                                        <img style="max-width: 42rem;" src="{{ post.main_image.url }}" alt="img">
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="slide_img" data-swiper="overlay-left">
-                                        <img src="{% static 'assets/images/home_1/blog/blog13.jpg' %}" alt="img">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide_img" data-swiper="overlay-left">
-                                        <img src="{% static 'assets/images/home_1/blog/blog14.jpg' %}" alt="img">
-                                    </div>
-                                </div>
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="slide_img" data-swiper="overlay-left">#}
+{#                                        <img src="{% static 'assets/images/home_1/blog/blog13.jpg' %}" alt="img">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="slide_img" data-swiper="overlay-left">#}
+{#                                        <img src="{% static 'assets/images/home_1/blog/blog14.jpg' %}" alt="img">#}
+{#                                    </div>#}
+{#                                </div>#}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

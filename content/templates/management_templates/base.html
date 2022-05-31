@@ -88,7 +88,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="/" class="navbar-brand">
+            <a href="{% url 'management:index' %}" class="navbar-brand">
                 <small><i class="fa fa-leaf"></i>{% trans "Admin" %}</small>
             </a>
         </div>
@@ -279,7 +279,8 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="#"><i class="ace-icon fa fa-cog"></i>{% trans "Settings" %}</a>
+                            <a href="{% url 'shop:index' %}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                                {% trans "Front End" %}</a>
                         </li>
 
                         <li>
@@ -290,7 +291,8 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#"><i class="ace-icon fa fa-power-off"></i>{% trans "Logout" %}</a>
+                            <a href="{% url "api:logout" %}"><i
+                                    class="ace-icon fa fa-power-off"></i>{% trans "Logout" %}</a>
                         </li>
                     </ul>
                 </li>

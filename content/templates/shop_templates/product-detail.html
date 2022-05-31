@@ -69,6 +69,10 @@
             margin-top: 2%;
         }
 
+        .icon-star-empty {
+            background-color: #cac9c7 !important;
+        }
+
         {% if model_url == "none" %}
             .show3D {
                 display: none !important;
@@ -360,7 +364,7 @@
                                         <button type="button"
                                                 class="shopify-payment-button__button"
                                                 data-testid="Checkout-button"
-                                                onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
+                                                onclick="directToCheck()">
                                             {% trans 'Buy it now' %}
                                         </button>
                                     {% else %}
@@ -484,13 +488,14 @@
                 </div>
                 <div class="tab-pane mt-4" id="review">
                     <div class="container" id="shopify-product-reviews">
-                        {#                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">#}
+                        {# <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B"> #}
                         <div class="card-body" style="text-align: start;">
-                            <div class="row justify-content-between">
-                                {% for review in review_left %}
-                                    <div class="col-lg-6">
-                                        <div class="review_content">
-                                            <div class="clearfix add_bottom_10">
+                            {% for review_row in review_all %}
+                                <div class="row justify-content-between">
+                                    {% for review in review_row %}
+                                        <div class="col-lg-6">
+                                            <div class="review_content">
+                                                <div class="clearfix add_bottom_10">
                                                 <span class="rating">
                                                     {% for iter in review.review_icon_iter %}
                                                         <i class="icon-star"></i>
@@ -499,40 +504,21 @@
                                                         <i class="icon-star-empty"></i>
                                                     {% endfor %}
                                                     <em>{{ review.rating }}/5.0</em></span>
-                                                <em>{{ review.created_at }}</em>
+                                                    <em>{{ review.created_at }}</em>
+                                                </div>
+                                                <h4>"{% trans review.title %}"</h4>
+                                                <p>{% trans review.content %}</p>
                                             </div>
-                                            <h4>"{% trans review.title %}"</h4>
-                                            <p>{% trans review.content %}</p>
                                         </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
                             <!-- /row -->
-                            <div class="row justify-content-between">
-                                {% for review in review_right %}
-                                    <div class="col-lg-6">
-                                        <div class="review_content">
-                                            <div class="clearfix add_bottom_10">
-                                                <span class="rating">
-                                                    {% for iter in review.review_icon_iter %}
-                                                        <i class="icon-star"></i>
-                                                    {% endfor %}
-                                                    {% for iter in review.review_icon_iter2 %}
-                                                        <i class="icon-star-empty"></i>
-                                                    {% endfor %}
-
-                                                    <em>{{ review.rating }}/5.0</em></span>
-                                                <em>{{ review.created_at }}</em>
-                                            </div>
-                                            <h4>{% trans review.title %}</h4>
-                                            <p>{% trans review.content %}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <!-- /row -->
-                            <p class="text-end"><a href="{% url 'shop:leave_review' instrument.id %}"
-                                                   class="btn_1">{% trans "Leave a review" %}</a></p>
+                            <p class="text-end">
+                                <a href="{% url 'shop:leave_review' instrument.id %}"
+                                   class="btn_1">{% trans "Leave a review" %}
+                                </a>
+                            </p>
                         </div>
                         <!-- /card-body -->
                         {#                        </div>#}
@@ -1029,11 +1015,13 @@
             // Add or subtract from the current quantity
             if ($el.hasClass('js-qty__adjust--plus')) {
                 qty += 1;
-                console.log(qty);
+                $(".js-qty__num").attr("value", qty);
+                {#console.log(qty);#}
                 {#updatePricingQty(qty);#}
             } else {
                 qty -= 1;
                 if (qty <= 1) qty = 1;
+                $(".js-qty__num").attr("value", qty);
                 {#updatePricingQty(qty);#}
             }
 
@@ -1175,5 +1163,14 @@
             })
         });
 
+        $(".js-qty__num").bind('input propertychange', function (e) {
+            $(".js-qty__num").attr("value", $(this).val());
+        })
+
+        function directToCheck() {
+            let quantity_number = $(".js-qty__num").attr("value");
+            window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
+            {#'{% url "shop:checkout_single_instrument" instrument_id=instrument.id instrument_number=8 %}';#}
+        }
     </script>
 {% endblock %}

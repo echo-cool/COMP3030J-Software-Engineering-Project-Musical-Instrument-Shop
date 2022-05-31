@@ -611,7 +611,8 @@
                 <!-- Emails Products & Avg Deals -->
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:instrument_management" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:instrument_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -628,7 +629,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:review_management" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:review_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -645,7 +647,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:cart_management" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:cart_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -662,7 +665,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_all" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:order_management_all" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -692,7 +696,8 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_delivered" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:order_management_delivered" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -709,7 +714,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:post_management" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:post_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -727,7 +733,8 @@
                     </div>
 
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:order_management_placed" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:order_management_placed" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -744,7 +751,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card total-card pull-up" onclick="window.location.href='{% url "management:wishlist_management" %}'">
+                        <div class="card total-card pull-up"
+                             onclick="window.location.href='{% url "management:wishlist_management" %}'">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
@@ -776,34 +784,78 @@
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
     <script>
-
         jQuery(function ($) {
 
-            let revenue_data;
-            $.ajax({
-                url: "/api/revenue_month/",
-                method: 'GET',
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                async: false,
-                success: function (data) {
-                    data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];
-                    revenue_data = data
-                },
-                error: function () {
-                    alert('Error! Check console!');
+            function ajaxFetchRevenue() {
+                let revenue_data;
+                $.ajax({
+                    url: "/api/revenue_month/",
+                    method: 'GET',
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    async: false,
+                    success: function (data) {
+                        {#data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];#}
+                        revenue_data = data[0]
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
+
+                });
+                return revenue_data
+            }
+
+            // We calculate the function for ARIMA Model, So we just use the formula with parameters
+            function ARIMA_PREDICT(input_list) {
+                //parameters
+                let a0 = 4.857e+04;
+                let a1 = -2.341e+04;
+                let b1 = -8.095e+04;
+                let a2 = -5.39e+04;
+                let b2 = 1.536e+04;
+                let w = 0.7852;
+
+                {#let a0 = 9.625e+04#}
+                {#let a1 = 2.471e+04#}
+                {#let b1 = -1.274e+05#}
+                {#let a2 = -9.78e+04#}
+                {#let b2 = -5.7e+04#}
+                {#let w = 0.8233#}
+
+                function calculate(x) {
+                    return a0 + a1 * Math.cos(x * w) + b1 * Math.sin(x * w) +
+                        a2 * Math.cos(2 * x * w) + b2 * Math.sin(2 * x * w)
                 }
 
-            });
+                let revenue_predict = []
+                for (let input of input_list) {
+                    if (input === 0) {
+                        revenue_predict.push(0);
+                    } else {
+                        if (calculate(input) < 0) {
+                            revenue_predict.push(0);
+                        } else {
+                            revenue_predict.push(calculate(input));
+                        }
+                    }
+                }
 
-            console.log(revenue_data);
+                return revenue_predict;
+            }
 
-            let all_product1 = [250, 20, 25, 30, 45, 50, 60, 70, 80, 120, 150, 200]
-            let all_product2 = [10, 5, 20, 30, 45, 55, 45, 60, 80, 100, 120, 150]
+            {#let fetch_revenue = [0, 0, 12500.0, 53940.0, 70855.98999999999, 273391.93, 0, 0, 0, 0, 0, 0]#}
+            let fetch_revenue = ajaxFetchRevenue();
+
+            console.log(ARIMA_PREDICT(fetch_revenue), fetch_revenue);
+            {#let all_product1 = [0, 0, 680, 1400, 1800, 3600, 8000, 16000, 18000, 20000, 24000, 28000]#}
+            {#let all_product2 = [0, 0, 680, 1400, 1800, 3600, 8000, 8000, 8000, 8000, 8000, 8000]#}
+            let all_product1 = ARIMA_PREDICT(fetch_revenue);
+            let all_product2 = fetch_revenue;
             let all_product3 = []
             for (let i = 0; i < 12; i++) {
-                all_product3[i] = all_product1[i] + all_product2[i]
+                all_product1[i] = all_product1[i] + 2000;
             }
             let all_product = [all_product1, all_product2, all_product3]
             var lineGradientChart1 = new Chartist.Line('#gradient-line-chart1', {
@@ -814,15 +866,8 @@
                         data: all_product2
                     }, {
                         name: 'series-2',
-                        data: all_product3
+                        data: all_product1
                     },]
-                {#revenue_data#}
-                {#revenue_data#}
-                {#[, all_product3]#}
-                {#[#}
-                {#    [125, 175, 125, 200, 175, 275, 125, 175, 125, 200, 175, 275,],#}
-                {#    [175, 225, 140, 230, 140, 225, 125, 175, 125, 200, 175, 275,]#}
-                {#]#}
             }, {
                 series: {
                     'series-1': {
@@ -1006,8 +1051,6 @@
                 {#    my_product_list[1].push(10);} else {#}
                 {#    my_product_list[1].push(20);}}#}
             }
-            let quantities = []
-
             {% for qu in quantities %}
                 my_product_title_list.push("{{ qu.name }}")
                 my_product_list[1].push({{ qu.quantity }})
@@ -1041,7 +1084,7 @@
                 if (data.type === 'bar') {
                     data.element.attr({
                         style: 'stroke-width: 10px',
-                        y1: 350,
+                        y1: 365,
                         x1: data.x1 + 0.001
                     });
                     data.group.append(new Chartist.Svg('circle', {
@@ -1288,11 +1331,8 @@
             });
 
         })
-        ;
 
         $('li:contains(Dashboard)').attr("class", "active");
-
-
     </script>
 
 {% endblock %}
@@ -1300,6 +1340,16 @@
 
 {% block dashboard_js %}
     <script src="{% static 'assets/js/jquery-ui.custom.min.js' %}"></script>
+    <script>
+        // fix index bottom black
+        var myIdElement = document.getElementById("main-container");
+        var beforeStyle = window.getComputedStyle(myIdElement, ":before").height;
+        {#console.log(Number(beforeStyle.replace("px", "")));#}
+        {#console.log($(".breadcrumbs").height())#}
+        let max_height = Number(beforeStyle.replace("px", ""))
+            - Number($(".breadcrumbs").height()) - Number($(".navbar").height());
+        $(".page-content").css("max-height", max_height);
+    </script>
     <!-- BEGIN: Vendor JS-->
     <script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
     <!-- BEGIN Vendor JS-->

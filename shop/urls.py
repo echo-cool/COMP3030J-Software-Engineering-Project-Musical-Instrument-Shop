@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.urls import path, reverse
 
-from .views import model_view, index, cart, product_details, model_design, leave_review, \
+from .views import index, cart, product_details, model_design, leave_review, \
     product_details_test_model, wishlist, personal_profile, \
     checkout, model_design2, home, image_upload, \
     orders, product_search, product_search_by_category, category_view, personal_profile, \
@@ -20,12 +20,13 @@ urlpatterns = [
     path("leave_review/<int:instrument_id>", leave_review, name="leave_review"),
     path("personal_profile/", personal_profile, name="personal_profile"),
     path('checkout/', checkout, name='checkout'),
-    path('checkout/single/<int:instrument_id>', checkout_single_instrument, name='checkout_single_instrument'),
+    path('checkout/single/<int:instrument_id>/<int:instrument_number>', checkout_single_instrument,
+         name='checkout_single_instrument'),
     path('checkout/success/', checkout_success, name='checkout_success'),
 
     path('shipping_details/<int:uncompletedOrder_id>', shipping_details, name='shipping_details'),
     # path('confirm/', confirm, name='confirm'),
-    path("model_view/<int:product_id>", model_view, name='model_view'),
+    # path("model_view/<int:product_id>", model_view, name='model_view'),
     path('cart/', cart, name='cart'),
     path('model_post_checkout/', model_post_checkout, name='model_post_checkout'),
     path('model_checkout/', model_checkout, name='model_checkout'),
