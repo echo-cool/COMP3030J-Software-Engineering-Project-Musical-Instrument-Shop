@@ -107,7 +107,7 @@ def post(request):
                 author=request.user
             )
             new_post.save()
-            return redirect(reverse('blog:index'))
+            return redirect(reverse('blog:view', args=(new_post.id,)))
         else:
             return render(request, 'blog_templates/post-blogs.html', {
                 'form': f
