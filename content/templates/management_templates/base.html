@@ -88,7 +88,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="/" class="navbar-brand">
+            <a href="{% url 'management:index' %}" class="navbar-brand">
                 <small><i class="fa fa-leaf"></i>{% trans "Admin" %}</small>
             </a>
         </div>
@@ -290,7 +290,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#"><i class="ace-icon fa fa-power-off"></i>{% trans "Logout" %}</a>
+                            <a href="{% url "api:logout" %}"><i class="ace-icon fa fa-power-off"></i>{% trans "Logout" %}</a>
                         </li>
                     </ul>
                 </li>
