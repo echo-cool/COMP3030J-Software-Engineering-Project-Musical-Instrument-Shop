@@ -78,10 +78,13 @@ def view(request, post_id):
     else:
         part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
     if request.method == 'POST':
-        comment_text = request.POST.get('comment')
-        comment = Comment(body=comment_text, post=post, author=request.user)
-        comment.save()
-        return redirect(reverse('blog:view', args=(post_id,)))
+        if request.user.is_authenticated:
+            comment_text = request.POST.get('comment')
+            comment = Comment(body=comment_text, post=post, author=request.user)
+            comment.save()
+            return redirect(reverse('blog:view', args=(post_id,)))
+        else:
+            return redirect(reverse('accounts:log_in'))
     return render(request, 'blog_templates/blog-details.html', {
         'post': post,
         'comments': comments,
@@ -104,6 +107,7 @@ def post(request):
                 author=request.user
             )
             new_post.save()
+            return redirect(reverse('blog:index'))
         else:
             return render(request, 'blog_templates/post-blogs.html', {
                 'form': f

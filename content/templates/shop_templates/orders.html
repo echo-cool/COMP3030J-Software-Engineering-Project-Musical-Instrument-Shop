@@ -215,16 +215,26 @@
                             <article class="card">
                                 <header class="card-header"> My Orders / Tracking</header>
                                 <div class="card-body">
-                                    <h6>Order ID: {{ order.id }}</h6>
+                                    <h6>Order ID: #{{ order.id }}</h6>
                                     <article class="card">
                                         <div class="card-body row">
                                             <div class="col"><strong>Placed time:</strong> <br>{{ order.created_at }}
                                             </div>
-                                            <div class="col"><strong>Shipping BY:</strong> <br> BLUEDART, | <i
-                                                    class="fa fa-phone"></i> +1598675986
+                                            <div class="col"><strong>Address:</strong> <br> {{ order.address | truncatechars:13 }}
+                                                <i class="fa fa-home" aria-hidden="true"></i> {{ order.apartment | truncatechars:13 }}
                                             </div>
-                                            <div class="col"><strong>Status:</strong> <br> Picked by the courier</div>
-                                            <div class="col"><strong>Tracking #:</strong> <br> BD045903594059</div>
+                                            <div class="col"><strong>Zip Code:</strong> <br> {{ order.zip_Code }} ({{ order.city }}, {{ order.state }}, {{ order.country }})</div>
+                                            <div class="col"><strong>Total Price:</strong> <br>
+                                                {% widthratio 0 1 0 as total %}
+                                                {% for order_item in order.items.all %}
+                                                    {% if not forloop.last %}
+                                                        {% widthratio order_item.instrument.price 1 order_item.quantity as price %}
+                                                        {% widthratio total|add:price 1 1 as total %}
+                                                    {% else %}
+                                                        {% widthratio order_item.instrument.price 1 order_item.quantity as price %}
+                                                        ${% widthratio total|add:price 1 1 %}
+                                                    {% endif %}
+                                                {% endfor %}</div>
                                         </div>
                                     </article>
                                     <div class="track">
