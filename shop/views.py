@@ -430,7 +430,7 @@ def wishlist(request):
 
 
 @login_required
-def checkout_single_instrument(request, instrument_id):
+def checkout_single_instrument(request, instrument_id, instrument_number):
     # get or post
     checkout_form = CheckoutForm()
     if request.method == "POST":
@@ -461,7 +461,7 @@ def checkout_single_instrument(request, instrument_id):
             uncompletedOrderItem = UncompletedOrderItem(
                 uncompleted_order=uncompletedOrder,
                 instrument=Instrument.objects.get(id=instrument_id),
-                quantity=1
+                quantity=instrument_number
             )
             uncompletedOrderItem.save()
 
@@ -485,7 +485,7 @@ def checkout_single_instrument(request, instrument_id):
                 self.count = count
                 self.created_at = time.strftime("%d/%m/%Y")
 
-        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), 1)]
+        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), instrument_number)]
         for item in cart_items:
             subtotal += item.instrument.price * item.count
 

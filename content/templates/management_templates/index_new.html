@@ -786,23 +786,26 @@
     <script>
         jQuery(function ($) {
 
-            let revenue_data;
-            $.ajax({
-                url: "/api/revenue_month/",
-                method: 'GET',
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                async: false,
-                success: function (data) {
-                    data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];
-                    revenue_data = data
-                },
-                error: function () {
-                    alert('Error! Check console!');
-                }
+            function ajaxFetchRevenue() {
+                let revenue_data;
+                $.ajax({
+                    url: "/api/revenue_month/",
+                    method: 'GET',
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    async: false,
+                    success: function (data) {
+                        {#data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];#}
+                        revenue_data = data[0]
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
 
-            });
+                });
+                return revenue_data
+            }
 
             // We calculate the function for ARIMA Model, So we just use the formula with parameters
             function ARIMA_PREDICT(input_list) {
@@ -842,8 +845,8 @@
                 return revenue_predict;
             }
 
-            let fetch_revenue = [0, 0, 12500.0, 53940.0, 70855.98999999999, 273391.93, 0, 0, 0, 0, 0, 0]
-
+            {#let fetch_revenue = [0, 0, 12500.0, 53940.0, 70855.98999999999, 273391.93, 0, 0, 0, 0, 0, 0]#}
+            let fetch_revenue = ajaxFetchRevenue();
 
             console.log(ARIMA_PREDICT(fetch_revenue), fetch_revenue);
             {#let all_product1 = [0, 0, 680, 1400, 1800, 3600, 8000, 16000, 18000, 20000, 24000, 28000]#}
