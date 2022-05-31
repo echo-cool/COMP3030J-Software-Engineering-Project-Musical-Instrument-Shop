@@ -364,7 +364,7 @@
                                         <button type="button"
                                                 class="shopify-payment-button__button"
                                                 data-testid="Checkout-button"
-                                                onclick="window.location.href='{% url "shop:checkout_single_instrument" instrument_id=instrument.id %}'">
+                                                onclick="directToCheck()">
                                             {% trans 'Buy it now' %}
                                         </button>
                                     {% else %}
@@ -1015,11 +1015,13 @@
             // Add or subtract from the current quantity
             if ($el.hasClass('js-qty__adjust--plus')) {
                 qty += 1;
-                console.log(qty);
+                $(".js-qty__num").attr("value", qty);
+                {#console.log(qty);#}
                 {#updatePricingQty(qty);#}
             } else {
                 qty -= 1;
                 if (qty <= 1) qty = 1;
+                $(".js-qty__num").attr("value", qty);
                 {#updatePricingQty(qty);#}
             }
 
@@ -1161,5 +1163,14 @@
             })
         });
 
+        $(".js-qty__num").bind('input propertychange', function (e) {
+            $(".js-qty__num").attr("value", $(this).val());
+        })
+
+        function directToCheck() {
+            let quantity_number = $(".js-qty__num").attr("value");
+            window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
+            {#'{% url "shop:checkout_single_instrument" instrument_id=instrument.id instrument_number=8 %}';#}
+        }
     </script>
 {% endblock %}
