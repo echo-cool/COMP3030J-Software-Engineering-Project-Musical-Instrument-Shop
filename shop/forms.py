@@ -23,6 +23,9 @@ class ReviewForm(forms.Form):
     # main_image = forms.ImageField(required=False)
 
 
+wordsNotAllowed = ["BJUT", "Beijing University of Technology"]
+
+
 class CheckoutForm(forms.Form):
     # Saved_Address = forms.Select(choices=[(1, 'China'), (2, 'Ireland'), (3, 'Japan')])
     First_Name = forms.CharField(max_length=50, required=True)
@@ -33,3 +36,13 @@ class CheckoutForm(forms.Form):
     # Country = forms.CharField(max_length=100, required=True)
     # State = forms.CharField(max_length=100, required=True)
     Zip_Code = forms.CharField(max_length=100, required=True)
+
+    def is_valid(self):
+        if super().is_valid():
+            terms = str(self.cleaned_data.get('Address')).split(" ")
+            for i in terms:
+                if i in wordsNotAllowed:
+                    self.add_error('Address', ValidationError('This area has been disabled by the admin.'))
+                    return False
+            return True
+        return False
