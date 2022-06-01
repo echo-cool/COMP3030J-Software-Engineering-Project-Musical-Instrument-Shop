@@ -1209,7 +1209,7 @@
             let quantity_number = $(".js-qty__num").attr("value");
             if (quantity_allow === false) {
                 let hulla = new hullabaloo();
-                hulla.send("{% trans "Item quantity exceeds available stock!" %}", "danger");
+                hulla.send("{% trans "Instrument quantity exceeds available stock!" %}", "danger");
             } else {
                 window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
             }

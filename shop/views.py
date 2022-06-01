@@ -275,7 +275,8 @@ def product_details(request, product_id):
                     messages.success(request, "Add Successfully")
                     return redirect('shop:product_details', product_id=product_id)
                 else:
-                    messages.add_message(request, messages.INFO, "Quantity exceed")
+                    messages.add_message(request, messages.INFO,
+                                         "Instrument quantity exceeds available stock: " + str(instrument.quantity))
                     response = redirect('shop:product_details', product_id=product_id)
                     return response
             return redirect('accounts:log_in')
@@ -556,7 +557,8 @@ def checkout(request):
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
         else:
-            messages.warning(request, "You have errors in your form or this area has been disabled by the shop due to the pandemic.")
+            messages.warning(request,
+                             "Sorry, your area doesn't support order delivery due to the pandemic.")
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect(reverse('shop:login'))
