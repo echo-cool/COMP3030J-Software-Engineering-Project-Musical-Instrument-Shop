@@ -252,17 +252,13 @@
 
                                 <form>
                                     <fieldset>
-                                            <textarea class="width-100" resize="none"
+                                            <textarea class="width-100 send_messag" resize="none" id="send_message__{{ order_item.id }}"
                                                       placeholder="Type something…"></textarea>
                                     </fieldset>
 
                                     <div class="hr hr-dotted"></div>
 
                                     <div class="clearfix">
-                                        <label class="pull-left">
-                                            <input type="checkbox" class="ace">
-                                            <span class="lbl">{% trans "Email me a copy" %}</span>
-                                        </label>
 
                                         <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
                                                 type="button">{% trans "Submit" %}<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
