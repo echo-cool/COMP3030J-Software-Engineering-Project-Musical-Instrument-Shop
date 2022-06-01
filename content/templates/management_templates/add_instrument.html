@@ -141,7 +141,9 @@
             {#overwriteInitial: false,#}
             uploadAsync: false,
             maxFileCount: 5,
-            initialCaption: "Select or Drag images for musical instruments... (max: 5)",
+            {#initialCaption: "Select or Drag images for musical instruments... (max: 5)",#}
+            dropZoneEnabled: false,
+            msgPlaceholder: "Select Files of the Instrument (Max: 5)",
             headers: {
                 'X-CSRF-TOKEN': $('#csrfmiddlewaretoken').attr('content')
             },
