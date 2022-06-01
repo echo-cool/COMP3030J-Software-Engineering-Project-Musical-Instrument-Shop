@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+    {#    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">#}
 
     <!-- BASE CSS -->
     <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
@@ -342,9 +342,7 @@
                                                 <span class="fa fa-minus"></span>
                                             </button>
                                             <input type="text" class="js-qty__num" value="1" min="1"
-                                                   onchange="
-            changeNumber();
-        "
+                                                   onchange="changeNumber();"
                                                    max="{{ instrument.quantity }}" data-id=""
                                                    aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
                                             <button type="button"
@@ -1133,7 +1131,8 @@
                 method: 'POST',
                 data: {
                     instrument_id: this.id.split("__")[1],
-                    count: $(this).prev().find('input').val(),
+                    {#count: $(this).prev().find('input').val(),#}
+                    count: 1
                 },
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
@@ -1173,7 +1172,7 @@
 
             })
         });
-
+        let quantity_allow = true;
         let max_number = 1;
         {% if instrument.quantity != 0 %}
             max_number =  {{ instrument.quantity }};
@@ -1195,10 +1194,12 @@
             console.log("DSADAS", Number(input.val()), {{ instrument.quantity }})
             if (Number(input.val()) <= max_number) {
                 input.attr("value", input.val());
+                quantity_allow = true;
             } else {
                 let hulla_for_quantity = new hullabaloo();
                 hulla_for_quantity.send("{% trans "Sorry, now the instrument's quantity is "%} {{ instrument.quantity}}", "warning");
                 input.attr("value", max_number);
+                quantity_allow = false;
             }
         }
 
@@ -1206,7 +1207,12 @@
 
         function directToCheck() {
             let quantity_number = $(".js-qty__num").attr("value");
-            window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
+            if (quantity_allow === false) {
+                let hulla = new hullabaloo();
+                hulla.send("{% trans "Instrument quantity exceeds available stock!" %}", "danger");
+            } else {
+                window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
+            }
             {#'{% url "shop:checkout_single_instrument" instrument_id=instrument.id instrument_number=8 %}';#}
         }
 
