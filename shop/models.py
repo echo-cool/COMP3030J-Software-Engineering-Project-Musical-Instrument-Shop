@@ -155,6 +155,7 @@ class UncompletedOrderModelItem(models.Model):
     def __str__(self):
         return f'{self.instrument}<{self.quantity}>'
 
+
 class UncompletedOrderItem(models.Model):
     instrument = models.ForeignKey('Instrument', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
@@ -272,3 +273,13 @@ class Notification(models.Model):
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('order', 'is_confirm', 'created_at')
+
+
+class DisabledArea(models.Model):
+    area = models.CharField(max_length=2000, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+@admin.register(DisabledArea)
+class DisabledAreaAdmin(admin.ModelAdmin):
+    list_display = ('area', 'created_at')
