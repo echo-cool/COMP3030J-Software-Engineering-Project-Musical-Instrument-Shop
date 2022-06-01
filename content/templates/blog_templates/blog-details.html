@@ -3,10 +3,11 @@
 {% load static %}
 {% load i18n %}
 {% load bootstrap4 %}
-
+{% block title %} <title>{% trans "Blog Details" %}</title> {% endblock %}
 {% block style %}
 
     <!-- Favicon and touch Icons -->
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <link href="{% static '/assets/img_for_shop/images/favicon.png' %}" rel="shortcut icon" type="image/png">
     <link href="{% static '/assets/img_for_shop/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
     <link href="{% static '/assets/img_for_shop/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon"
