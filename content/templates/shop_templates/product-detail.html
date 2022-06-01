@@ -1172,5 +1172,21 @@
             window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
             {#'{% url "shop:checkout_single_instrument" instrument_id=instrument.id instrument_number=8 %}';#}
         }
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]);
+            return null;
+        }
+
+        console.log(getQueryString("status"))
+        if (getQueryString("status") === "review") {
+            $("a[href='#review']").click();
+            $(".tab-content #des").removeClass("active")
+            $(".tab-content #add").removeClass("active")
+            $(".tab-content #review").addClass("active")
+        }
+
     </script>
 {% endblock %}
