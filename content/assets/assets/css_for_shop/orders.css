@@ -129,7 +129,23 @@ nav ul li a .cart::after {
     padding: 10px;
     border-radius: 6px;
     width: 170px;
-    height: 90px
+    height: 90px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+#main-content .box:hover {
+    -webkit-transform: translateY(-3px) scale(1.02);
+    -moz-transform: translateY(-3px) scale(1.02);
+    -ms-transform: translateY(-3px) scale(1.02);
+    -o-transform: translateY(-3px) scale(1.02);
+    transform: translateY(-3px) scale(1.02);
+    -webkit-box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2);
+    box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2);
+    z-index: 999;
+    cursor: pointer;
 }
 
 #main-content .box img {
