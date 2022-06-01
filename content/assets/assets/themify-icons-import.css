@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'themify';
+    src: url('/static/assets/css_for_shop/fonts/themify.eot?-fvbane');
+    src: url('/static/assets/css_for_shop/fonts/themify.eot?#iefix-fvbane') format('embedded-opentype'),
+    url('/static/assets/css_for_shop/fonts/themify.woff?-fvbane') format('woff'),
+    url('/static/assets/css_for_shop/fonts/themify.ttf?-fvbane') format('truetype'),
+    url('/static/assets/css_for_shop/fonts/themify.svg?-fvbane#themify') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.ti-truck:before {
+    content: "\e66d";
+}
+
+.ti-help-alt:before {
+    content: "\e718";
+}
+
+.ti-user:before {
+    content: "\e602";
+}
+
+[class^="ti-"], [class*=" ti-"] {
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
