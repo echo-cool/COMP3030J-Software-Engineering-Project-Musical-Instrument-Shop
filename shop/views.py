@@ -555,6 +555,8 @@ def checkout(request):
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
+        else:
+            messages.warning(request, "You have errors in your form or this area has been disabled by the shop due to the pandemic.")
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect(reverse('shop:login'))

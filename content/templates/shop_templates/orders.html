@@ -465,7 +465,7 @@
                                         hulla.send("Change successfully!", "success");
                                     }, 300);
                                 }
-                            })
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
@@ -489,10 +489,25 @@
                             apartment: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "apartment",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
@@ -516,10 +531,25 @@
                             zip_Code: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "Zip Code",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
@@ -543,10 +573,25 @@
                             city: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "city",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
@@ -570,10 +615,25 @@
                             state: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "state",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
@@ -597,10 +657,25 @@
                             country: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "country",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
                         },
                         error: function () {
                             alert('Error! Check console!');
