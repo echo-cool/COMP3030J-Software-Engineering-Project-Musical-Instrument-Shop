@@ -60,3 +60,15 @@ def send_message_email(email, name, email_address, subject, message):
     }
 
     send_mail(email, 'send_message', context)
+
+
+def send_modify_email(email, username, order_id, modified_item, new_value):
+    context = {
+        'subject': "Order #" + order_id + " was modified",
+        'modified_item': modified_item,
+        'username': username,
+        'order_id': order_id,
+        'message': new_value
+    }
+
+    send_mail(email, 'modify_order', context)
