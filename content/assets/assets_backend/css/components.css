@@ -61,7 +61,7 @@ html body .content .content-wrapper .content-wrapper-before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    /*height: 120px;*/
     -webkit-transition: 300ms ease all;
     -o-transition: 300ms ease all;
     -moz-transition: 300ms ease all;
@@ -143,6 +143,15 @@ html body .pace .pace-progress {
 /*
 * Col 3 layout for detached and general type
 */
+@media (max-width: 992px) {
+    body .content-right {
+        width: -webkit-calc(70%);
+        width: -moz-calc(70%);
+        width: calc(70%);
+        float: right;
+    }
+}
+
 @media (min-width: 992px) {
     body .content-right {
         width: -webkit-calc(100% - 300px);
@@ -254,6 +263,12 @@ html body .pace .pace-progress {
     .sidebar {
         vertical-align: top;
         width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar-left {
+        width: 30%;
     }
 }
 
