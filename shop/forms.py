@@ -46,3 +46,11 @@ class CheckoutForm(forms.Form):
                     return False
             return True
         return False
+
+    def isInDisabledArea(self):
+        terms = str(self.cleaned_data.get('Address')).split(" ")
+        print(terms)
+        for i in terms:
+            if i in wordsNotAllowed:
+                return True
+        return False

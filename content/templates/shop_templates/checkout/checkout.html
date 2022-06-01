@@ -17,10 +17,12 @@
 
     <meta data-browser="firefox" data-browser-major="99">
     <meta data-body-font-family="Helvetica Neue" data-body-font-type="system">
-
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/new_bootstrap.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css_for_homepage/bootstrap-theme.css" %}"/>
     {#    <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/static/assets/checkout/digital_wallets/dialog">#}
+<script type="text/javascript" src="{% static "assets/js/jquery-2.1.4.min.js" %}"></script>
 
-
+    <script src="{% static "assets/js/hullabaloo.js" %}"></script>
     <meta name="shopify-checkout-authorization-token" content="4bcd5794b4c7144968cfd08ae426ec6f">
 
     <meta id="shopify-regional-checkout-config" name="shopify-regional-checkout-config"
@@ -1524,6 +1526,17 @@ for (var attr in meta) {
 
 };
 </script>
+
+<script>
+        {% if messages %}
+    {% for message in messages %}
+    setTimeout(function () {
+        let hulla = new hullabaloo();
+        hulla.send("{{ message }}", "{{ message.tags }}");
+    }, 300);
+    {% endfor %}{% endif %}
+</script>
+
 <script class="analytics">(function () {
     var customDocumentWrite = function (content) {
         var jquery = null;
