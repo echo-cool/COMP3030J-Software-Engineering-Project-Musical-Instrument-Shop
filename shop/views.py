@@ -6,6 +6,7 @@ import time
 from asgiref.sync import sync_to_async
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.utils.http import urlencode
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -356,6 +357,13 @@ def product_details(request, product_id):
         })
 
 
+def my_reverse(view_name, args=None, query_kwargs=None):
+    url = reverse(view_name, args=args)
+    if query_kwargs:
+        return f'{url}?{urlencode(query_kwargs)}'
+    return url
+
+
 @login_required
 def leave_review(request, instrument_id):
     form = ReviewForm()
@@ -377,7 +385,8 @@ def leave_review(request, instrument_id):
             )
             review.save()
             messages.success(request, "Review submitted successfully")
-            return redirect(reverse('shop:product_details', args=[instrument_id]))
+            return redirect(my_reverse('shop:product_details', args=[instrument_id],
+                                       query_kwargs={"status": "review"}))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form,
@@ -537,6 +546,8 @@ def checkout(request):
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
+        else:
+            messages.warning(request, "You have errors in your form or this area has been disabled by the shop due to the pandemic.")
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect(reverse('shop:login'))

@@ -36,7 +36,8 @@
                 <h2 class="">{% trans "Wishlist" %}</h2>
             </div>
             <div class="bread-crumb">
-                <a href="/" title="Back to the frontpage">{% trans "Home" %}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <a href="/" title="Back to the frontpage">{% trans "Home" %}<i class="fa fa-angle-right"
+                                                                               aria-hidden="true"></i></a>
                 <strong>{% trans "Your Wishlist" %}</strong>
             </div>
         </div>
@@ -69,13 +70,13 @@
 
                         <tr class="item_cart" id="wish-{{ wishlist.id }}">
                             <td class="product-photo">
-                                <a href="/product-detail/{{ wishlist.instrument.id }}">
+                                <a href="/product_details/{{ wishlist.instrument.id }}">
                                     <img class="img-fluid"
                                          src="{{ wishlist.instrument.image.url }}" alt=""/>
                                 </a>
                             </td>
                             <td class="produc-name">
-                                <a href="/product-detail/{{ wishlist.instrument.id }}">
+                                <a href="/product_details/{{ wishlist.instrument.id }}">
                                     <p id="fonthaha">{{ wishlist.instrument.name }}</p>
                                 </a>
                             </td>
@@ -85,7 +86,15 @@
                             <td class="product-price">
                                 <p>$ {{ wishlist.instrument.price }}</p>
                             </td>
-                            <td class="product-avai">{% trans "in stock" %}</td>
+                            <td class="product-avai">
+                                {% if wishlist.instrument.quantity != 0 %}
+                                    {{ wishlist.instrument.quantity }} {% trans "in stock" %}
+                                {% else %}
+                                    {% trans "out of stock" %}
+                                {% endif %}
+
+
+                            </td>
 
                             <td class="add-cart">
                                 <a class="link-product-add-cart" href="javascript:void(0)"

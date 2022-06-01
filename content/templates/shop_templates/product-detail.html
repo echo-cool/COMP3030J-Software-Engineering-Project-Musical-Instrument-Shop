@@ -341,7 +341,11 @@
                                                     data-id="" data-qty="0">
                                                 <span class="fa fa-minus"></span>
                                             </button>
-                                            <input type="text" class="js-qty__num" value="1" min="1" data-id=""
+                                            <input type="text" class="js-qty__num" value="1" min="1"
+                                                   onchange="
+            changeNumber();
+        "
+                                                   max="{{ instrument.quantity }}" data-id=""
                                                    aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
                                             <button type="button"
                                                     class="qty_plus js-qty__adjust js-qty__adjust--plus icon-fallback-text"
@@ -933,7 +937,7 @@
                 src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
         <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
         <script>
-            var model_url = String({{ model_url |safe}});
+            var model_url = String("{{ model_url |safe}}");
             console.log("model url:", model_url);
             $(".slider-two").ready(function () {
                 $(".item").click(function () {
@@ -959,6 +963,7 @@
                 }
             });
         </script>
+        {# TODO: #}
         <script type="text/javascript" src="{% static "assets/js_for_model/model_loader_detail2.js" %}"></script>
 
     {% else %}
@@ -1015,7 +1020,14 @@
             // Add or subtract from the current quantity
             if ($el.hasClass('js-qty__adjust--plus')) {
                 qty += 1;
-                $(".js-qty__num").attr("value", qty);
+                if (qty <= max_number) {
+                    $(".js-qty__num").attr("value", qty);
+                } else {
+                    qty -= 1;
+                    let hulla_for_quantity = new hullabaloo();
+                    hulla_for_quantity.send("{% trans "Sorry, now the instrument's quantity is "%} {{ instrument.quantity}}", "warning");
+
+                }
                 {#console.log(qty);#}
                 {#updatePricingQty(qty);#}
             } else {
@@ -1024,7 +1036,6 @@
                 $(".js-qty__num").attr("value", qty);
                 {#updatePricingQty(qty);#}
             }
-
             // Update the input's number
             $qtySelector.val(qty);
         });
@@ -1059,12 +1070,12 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your wishlist!", "warning");
+                            hulla.send("{% trans "The instrument is already in your wishlist!"%}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("Add successfully!", "success");
+                            hulla.send("{% trans "Add successfully!" %}", "success");
                         }, 300);
                     } else if (res === 300) {
                         alert("Error!")
@@ -1072,11 +1083,11 @@
                         window.location.href = "{% url 'accounts:log_in' %}"
                     }
 
+
                 },
                 error: function () {
                     alert('Error! Check console!');
                 }
-
             })
         });
 
@@ -1095,12 +1106,12 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your wishlist!", "warning");
+                            hulla.send("{% trans "The instrument is already in your wishlist!"%}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("Add successfully!", "success");
+                            hulla.send("{% trans "Add successfully!" %}", "success");
                         }, 300);
                     } else if (res === 300) {
                         alert("Error!")
@@ -1132,7 +1143,7 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your cart!", "warning");
+                            hulla.send("{% trans "The instrument is already in your cart!" %}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         $.ajax({
@@ -1163,14 +1174,56 @@
             })
         });
 
-        $(".js-qty__num").bind('input propertychange', function (e) {
-            $(".js-qty__num").attr("value", $(this).val());
-        })
+        let max_number = 1;
+        {% if instrument.quantity != 0 %}
+            max_number =  {{ instrument.quantity }};
+        {% else %}
+            $(".qty-cart").css("display", "none");
+            let string1 = "{% trans 'This item is out of stock!' %}";
+            let string2 = "{% trans 'We are restocking' %}";
+            $(".shopify-payment-button").html(
+                "<span style=\"color: #ffa380; font-size: 35px;\">" + string1 + "<br>" + string2 + "......<span>"
+            );
+            let hulla_for_quantity = new hullabaloo();
+            hulla_for_quantity.send("{% trans 'Sorry, This item is out of stock and we are restocking'%}");
+        {% endif %}
+
+
+        function changeNumber() {
+            let input = $(".js-qty__num");
+
+            console.log("DSADAS", Number(input.val()), {{ instrument.quantity }})
+            if (Number(input.val()) <= max_number) {
+                input.attr("value", input.val());
+            } else {
+                let hulla_for_quantity = new hullabaloo();
+                hulla_for_quantity.send("{% trans "Sorry, now the instrument's quantity is "%} {{ instrument.quantity}}", "warning");
+                input.attr("value", max_number);
+            }
+        }
+
+        {#$(".js-qty__num").bind('input propertychange', )#}
 
         function directToCheck() {
             let quantity_number = $(".js-qty__num").attr("value");
             window.location.href = '/checkout/single/{{ instrument.id }}/' + quantity_number;
             {#'{% url "shop:checkout_single_instrument" instrument_id=instrument.id instrument_number=8 %}';#}
         }
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]);
+            return null;
+        }
+
+        console.log(getQueryString("status"))
+        if (getQueryString("status") === "review") {
+            $("a[href='#review']").click();
+            $(".tab-content #des").removeClass("active")
+            $(".tab-content #add").removeClass("active")
+            $(".tab-content #review").addClass("active")
+        }
+
     </script>
 {% endblock %}
