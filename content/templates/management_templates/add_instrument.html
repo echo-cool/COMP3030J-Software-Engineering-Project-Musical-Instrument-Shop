@@ -91,7 +91,7 @@
     {#        <input type="hidden" id="csrf_token" name="_token" value="{{ csrf_token }}">#}
     {#    </iframe>#}
     {{ form.errors }}
-    <form id="upload_form" method="post" enctype="multipart/form-data" onsubmit="return false">
+    <form id="upload_form" action="{% url 'management:add_instrument' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="input-24">{% trans "Musical Instrument Images:" %}</label>
@@ -108,7 +108,7 @@
         </div>
 
 
-        <button class="btn btn-primary" onclick="Upload()">{% trans 'Submit' %}</button>
+        <button class="btn btn-primary">{% trans 'Submit' %}</button>
 
     </form>
 
@@ -206,31 +206,6 @@
         });
 
 
-        function Upload() {
-            let formData = new FormData(document.getElementById("upload_form"));
-            $.ajax({
-                {#cache: true,#}
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                method: "POST",
-                url: "/management/add_instrument/",
-                data: formData,
-                async: true,
-                contentType: false,
-                processData: false,
-                error: function (request) {
-                    alert("Connection error:" + request.error);
-                },
-                success: function (data) {
-                    console.log("SUCCESS!", window.frames[0]);
-                    let url = window.location.href;
-                    console.log(formData);
-                    window.location.href = String(url).replace("add_instrument", "instrument_management");
-                }
-            });
-            return false;
-        }
     </script>
 
 
