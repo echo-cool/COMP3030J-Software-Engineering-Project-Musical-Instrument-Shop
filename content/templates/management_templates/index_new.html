@@ -486,8 +486,11 @@
                                                 {% if compare_monthly.0 == 1 %}
                                                     +{{ compare_monthly.1 }}
                                                     <style>
-                                                        #Analytics-donut-chart .ct-label {
-                                                            transform: translateX(75px) translateY(192px) rotate(282deg);
+                                                        #Analytics-donut-chart svg {
+                                                            -moz-transform: scaleY(-1);
+                                                            -webkit-transform: scaleY(-1);
+                                                            -o-transform: scaleY(-1);
+                                                            transform: scaleY(-1);
                                                         }
 
                                                         .bg-gradient-directional-danger {
