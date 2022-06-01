@@ -657,52 +657,76 @@
             let orderID = $(this).attr("id").split("__")[1];
             $.ajax({
                 url: "/api/order/" + orderID + "/",
-                method: 'PATCH',
-                data: {
-                    "accepted": true,
-                    "packed": true,
-                    "shipped": true,
-                    "delivered": true
-                },
+                method: 'GET',
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
                 },
-                success: function (data) {
-                    $.ajax({
-                        url: "#",
-                        method: "GET",
-                        success: function (res) {
-                            $('#popup-quickview-' + orderID).html($(res).find('#popup-quickview-' + orderID)[0].innerHTML);
-                            $('#progressbar__' + orderID).html($(res).find('#progressbar__' + orderID)[0].innerHTML);
-                            $.ajax({
-                                url: "/api/notification/",
-                                method: "POST",
-                                data: {
-                                    "is_confirm": true,
-                                    "order": orderID
-                                },
-                                headers: {
-                                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                                },
-                                success: function (res) {
+                success: function (order) {
+                    if (order["delivered"]) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The delivery of this order has already been confirmed", "warning");
+                        }, 300);
+                    } else if (!order["accepted"]) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The shop owner haven't accepted your order!", "warning");
+                        }, 300);
+                    } else {
+                        $.ajax({
+                            url: "/api/order/" + orderID + "/",
+                            method: 'PATCH',
+                            data: {
+                                "accepted": true,
+                                "packed": true,
+                                "shipped": true,
+                                "delivered": true
+                            },
+                            headers: {
+                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                            },
+                            success: function (data) {
+                                $.ajax({
+                                    url: "#",
+                                    method: "GET",
+                                    success: function (res) {
+                                        $('#popup-quickview-' + orderID).html($(res).find('#popup-quickview-' + orderID)[0].innerHTML);
+                                        $('#progressbar__' + orderID).html($(res).find('#progressbar__' + orderID)[0].innerHTML);
+                                        $.ajax({
+                                            url: "/api/notification/",
+                                            method: "POST",
+                                            data: {
+                                                "is_confirm": true,
+                                                "order": orderID
+                                            },
+                                            headers: {
+                                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                                            },
+                                            success: function (res) {
 
-                                },
-                                error: function () {
-                                    alert('Error! Check console!');
-                                }
+                                            },
+                                            error: function () {
+                                                alert('Error! Check console!');
+                                            }
 
-                            });
-                        }
-                    });
-                    setTimeout(function () {
-                        let hulla = new hullabaloo();
-                        hulla.send("Confirm successfully!", "success");
-                    }, 300);
+                                        });
+                                    }
+                                });
+                                setTimeout(function () {
+                                    let hulla = new hullabaloo();
+                                    hulla.send("Confirm successfully!", "success");
+                                }, 300);
+                            },
+                            error: function () {
+                                alert('Error! Check console!');
+                            }
+                        });
+                    }
                 },
                 error: function () {
                     alert('Error! Check console!');
                 }
-            });
+            })
         });
 
     </script>
