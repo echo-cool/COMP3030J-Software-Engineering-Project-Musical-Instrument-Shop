@@ -27,8 +27,7 @@
     {#    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">#}
 
     <!-- default icons used in the plugin are from Bootstrap 5.x icon library (which can be enabled by loading CSS below) -->
-    <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap-icons.min.css' %}"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap-icons.min.css' %}">
     {#     <link href="{% static 'vendor/bootstrap/css/bootstrap.ic' %}" rel="stylesheet">#}
 
     <!-- alternatively you can use the font awesome icon library if using with `fas` theme (or Bootstrap 4.x) by uncommenting below. -->
@@ -146,9 +145,9 @@
             headers: {
                 'X-CSRF-TOKEN': $('#csrfmiddlewaretoken').attr('content')
             },
-            {#removeIcon: '<i class="fa fa-trash"></i>',   // 删除图标#}
-            {#uploadIcon: '<i class="fa fa-upload"></i>',     // 上传图标#}
-            {#uploadRetryIcon: '<i class="fa fa-repeat"></i>'  // 重试图标#}
+            removeIcon: '<i class="fa fa-trash"></i>',   // 删除图标
+            uploadIcon: '<i class="fa fa-upload"></i>',     // 上传图标
+            browseIcon: '<i class="fa fa-folder-open-o"></i> ',
         });
 
         {#file_input.on('change', function (event) {#}
