@@ -10,7 +10,7 @@ import blog.models
 from blog.models import Post
 from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem, \
-    Notification
+    Notification, DisabledArea
 
 
 class InstrumentSerializer(serializers.ModelSerializer):
@@ -40,6 +40,12 @@ class OrderItemSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
+        fields = "__all__"
+
+
+class DisabledAreaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DisabledArea
         fields = "__all__"
 
 
