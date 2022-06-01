@@ -1409,7 +1409,7 @@ def update_blog_category(request, category_id):
         return redirect(reverse('management:blog_category_management'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
-        category = shop.models.Category.objects.get(id=category_id)
+        category = blog.models.Category.objects.filter(id=category_id).first()
         f = BlogCategoryForm(instance=category)
         return render(request, 'management_templates/update_blog_category.html', {
             'form': f,

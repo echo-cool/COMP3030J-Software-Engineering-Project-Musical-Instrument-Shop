@@ -25,7 +25,7 @@
     $.fn.fileinputBsVersion = '5.x.x';
     $.fn.fileinputThemes.bs5 = {
         fileActionSettings: {
-            removeIcon: '<i class="bi-trash"></i>',
+            removeIcon: '<i class="fa fa-trash"></i>',
             uploadIcon: '<i class="bi-upload"></i>',
             uploadRetryIcon: '<i class="bi-arrow-clockwise"></i>',
             downloadIcon: '<i class="bi-download"></i>',
@@ -50,7 +50,7 @@
         },
         previewFileIcon: '<i class="bi-file-earmark-fill"></i>',
         browseIcon: '<i class="bi-folder2-open"></i> ',
-        removeIcon: '<i class="bi-trash"></i>',
+        removeIcon: '<i class="fa fa-trash"></i>',
         cancelIcon: '<i class="bi-slash-circle"></i>',
         pauseIcon: '<i class="bi-pause-fill"></i>',
         uploadIcon: '<i class="bi-upload"></i>',
