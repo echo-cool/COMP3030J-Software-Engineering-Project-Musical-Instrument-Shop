@@ -226,7 +226,7 @@
                     console.log("SUCCESS!", window.frames[0]);
                     let url = window.location.href;
                     console.log(formData);
-                    {#window.location.href = String(url).replace("add_instrument", "instrument_management");#}
+                    window.location.href = String(url).replace("add_instrument", "instrument_management");
                 }
             });
             return false;
