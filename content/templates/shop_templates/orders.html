@@ -447,10 +447,25 @@
                             address: newValue
                         },
                         success: function (data) {
-                            setTimeout(function () {
-                                let hulla = new hullabaloo();
-                                hulla.send("Change successfully!", "success");
-                            }, 300);
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "address",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            })
                         },
                         error: function () {
                             alert('Error! Check console!');
