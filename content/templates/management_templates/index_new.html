@@ -242,7 +242,6 @@
         .total-card {
             cursor: pointer;
         }
-
     </style>
 {% endblock %}
 
@@ -1278,4 +1277,43 @@
 
         $('li:contains(Dashboard)').attr("class", "active");
     </script>
+
+    <style>
+
+
+        .pull-right[href="/management/instrument_management/"] {
+            line-height: 1;
+            padding: 0.5rem 1rem !important;
+            -webkit-box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+            box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+        }
+
+        {% if compare_monthly.0 == 0 %}
+            .pull-right[href="/management/order_management/all/"] {
+                background-color: #ffffff !important;
+                color: #fd6471 !important;
+                font-size: .875rem;
+                line-height: 1;
+                padding: 0.5rem 1rem !important;
+                border-radius: 20px !important;
+                border: #f7650e !important;
+                -webkit-box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+                box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+            }
+        {% else %}
+            .pull-right[href="/management/order_management/all/"] {
+                background-color: #f7650e !important;
+                color: #fff !important;
+                font-size: .875rem;
+                line-height: 1;
+                padding: 0.5rem 1rem !important;
+                border-radius: 20px !important;
+                border: #f7650e !important;
+                -webkit-box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+                box-shadow: 0 7px 12px 0 rgb(62 57 107 / 16%) !important;
+            }
+        {% endif %}
+    </style>
+
 {% endblock %}
+
