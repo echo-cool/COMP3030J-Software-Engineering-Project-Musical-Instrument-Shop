@@ -719,7 +719,11 @@
                                             </ul>
                                         </div>
                                         <div class="m-shape">
+                                            {% if instrument.image1.url != "/media/default.jpg" %}
                                             <img src="{{ instrument.image1.url }}" alt="">
+                                            {% else %}
+                                            <img src="{{ instrument.image.url }}" alt="">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
