@@ -19,9 +19,9 @@ from app.utils import staff_required
 from blog.models import Post
 from chat.models import MessageModel
 from management.forms import OrderForm, InstrumentForm, ReviewForm, PostForm, CartForm, WishlistForm, \
-    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm
+    InstrumentCategoryForm, BlogCategoryForm, OrderItemForm, InstrumentWithIForm, DisabledAreaFrom
 from shop.models import Order, Instrument, Profile, Category, Review, Cart, Wishlist, OrderItem, UncompletedOrder, \
-    Notification
+    Notification, DisabledArea
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -1004,6 +1004,122 @@ def review_management(request):
         "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
         'messages': messages
     })
+
+
+@login_required
+@staff_required
+def disabled_area_management(request):
+    search = request.GET.get("search")
+    if search is not None:
+        review_list = DisabledArea.objects.filter(Q(area__contains=search))
+    else:
+        review_list = DisabledArea.objects.all()
+    paginator = Paginator(review_list, 10, 0)
+    page = request.GET.get("page")
+    try:
+        reviews = paginator.page(page)
+    except PageNotAnInteger:
+        reviews = paginator.page(1)
+    except EmptyPage:
+        reviews = paginator.page(paginator.num_pages)
+
+    part_num = 9
+    p = int(page or 1)
+    if paginator.num_pages <= part_num:
+        part_pages = [i for i in range(1, paginator.num_pages + 1)]
+    elif p <= int(part_num / 2) + 1:
+        part_pages = [i for i in range(1, part_num + 1)]
+    elif p + int((part_num - 1) / 2) >= paginator.num_pages:
+        part_pages = [i for i in range(paginator.num_pages - part_num + 1, paginator.num_pages + 1)]
+    else:
+        part_pages = [i for i in range(p - int(part_num / 2), p + int((part_num - 1) / 2) + 1)]
+
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    return render(request, 'management_templates/disabledAreaManagement.html', {
+        'reviews': reviews,
+        'profile': Profile.objects.filter(user=request.user.id).first(),
+        'part_pages': part_pages,
+        "new_order_notifications": Notification.objects.filter(is_confirm=False),
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        'messages': messages
+    })
+
+
+@login_required
+@staff_required
+def update_disabled_area(request, review_id):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    if request.method == "POST":
+        review = DisabledArea.objects.filter(id=review_id).first()
+        f = DisabledAreaFrom(request.POST, request.FILES, instance=review)
+        if f.is_valid():
+            f.save()
+        return redirect(reverse('management:disabled_area_management'))
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        print(review_id)
+        review = DisabledArea.objects.get(id=review_id)
+        f = DisabledAreaFrom(instance=review)
+        return render(request, 'management_templates/update_disabled_area.html', {
+            'form': f,
+            'messages': messages,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        })
+
+
+@login_required
+@staff_required
+def add_disabled_area(request):
+    messages = MessageModel.objects.filter(recipient=request.user, read=False).values("user").annotate(
+        time=Max("timestamp")).exclude(user=request.user).order_by("time")
+
+    users = User.objects.all()
+
+    for message in messages:
+        body = MessageModel.objects.get(user_id=message['user'], recipient=request.user, timestamp=message['time']).body
+        message['user'] = users.get(id=message['user'])
+        message['body'] = body
+
+    if request.method == "POST":
+        f = DisabledAreaFrom(request.POST, request.FILES)
+        if f.is_valid():
+            f.save()
+        else:
+            return render(request, 'management_templates/update_disabled_area.html', {
+                'form': f,
+                'messages': messages,
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            })
+        return redirect(reverse('management:disabled_area_management'))
+    else:
+        f = DisabledAreaFrom()
+        return render(request, 'management_templates/update_disabled_area.html', {
+            'form': f,
+            'messages': messages,
+            "new_order_notifications": Notification.objects.filter(is_confirm=False),
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+        })
+
 
 
 @login_required
