@@ -27,9 +27,17 @@
 
     <script src="{% static '/assets/js_for_shop/js/jquery-3.2.1.min.js' %} "></script>
 
+    <link href="{% static '/assets/themify-icons-import.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block content %}
+    <style>
+        .modal-content table,
+        .modal-content table td,
+        .modal-content table th {
+            border: 0px !important;
+        }
+    </style>
     <!-- pointer start -->
     <div class="pointer bnz-pointer" id="bnz-pointer"></div>
 
@@ -85,7 +93,9 @@
                                         </div>
                                         <div class="post_tag" data-aos="fade-up" data-aos-duration="900">
                                             <ul class="tag_list">
-                                                <li><a href="/blog/?category={{ post.category_id }}">#{{ post.category.category }}</a></li>
+                                                <li>
+                                                    <a href="/blog/?category={{ post.category_id }}">#{{ post.category.category }}</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -99,7 +109,7 @@
                                 </div>
                                 <div class="author-block" style="margin-top: 2rem;">
                                     <h5 class="author_name">{{ post.author.username }}</h5>
-{#                                    <p class="author_intro">{% trans "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum" %}<br/>{% trans "exercitatonem mosequatu autem vel eum ivenia." %}</p>#}
+                                    {#                                    <p class="author_intro">{% trans "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum" %}<br/>{% trans "exercitatonem mosequatu autem vel eum ivenia." %}</p>#}
                                     <div class="social_media">
                                         <ul class="social_list">
                                             <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
@@ -122,22 +132,22 @@
                                 <div class="more_posts">
                                     <div class="row">
                                         {% for post in similar_posts %}
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
-                                                <div class="post_img" data-aos="overlay-left">
-                                                    <a href="{% url 'blog:view' post_id=post.id %}"><img
-                                                            src="{{ post.main_image.url }}"
-                                                            alt="blog"></a>
-                                                </div>
-                                                <div class="post_content">
-                                                    <div class="post_header">
-                                                        <h2 class="post_title">
-                                                            <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:53 }}</a>
-                                                        </h2>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <article class="blog_post" data-aos="fade-up" data-aos-duration="700">
+                                                    <div class="post_img" data-aos="overlay-left">
+                                                        <a href="{% url 'blog:view' post_id=post.id %}"><img
+                                                                src="{{ post.main_image.url }}"
+                                                                alt="blog"></a>
                                                     </div>
-                                                </div>
-                                            </article>
-                                        </div>
+                                                    <div class="post_content">
+                                                        <div class="post_header">
+                                                            <h2 class="post_title">
+                                                                <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:53 }}</a>
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -174,7 +184,8 @@
                                                     <span aria-current="page"
                                                           class="page-numbers page-number current">{{ pg }}</span>
                                                 {% else %}
-                                                    <a class="page-numbers page-number" href="javascript:void(0)">{{ pg }}</a>
+                                                    <a class="page-numbers page-number"
+                                                       href="javascript:void(0)">{{ pg }}</a>
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
@@ -222,7 +233,9 @@
                                     <h4 class="widget_title">{% trans "About Author" %}</h4>
                                     <div class="sidebar_author">
                                         <img src="{{ post.author.profile.image.url }}" alt="img">
-                                        <p class="intro"><a href="{% url 'chat:index_new' to=post.author.id %}"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>{% trans "Communicate With Him/Her" %}</a></p>
+                                        <p class="intro"><a href="{% url 'chat:index_new' to=post.author.id %}"><i
+                                                class="fa fa-paper-plane-o"
+                                                aria-hidden="true"></i>{% trans "Communicate With Him/Her" %}</a></p>
 
                                         <div class="social_profile">
                                             <div class="social_media">
@@ -257,7 +270,9 @@
                                     <div class="sidebar_recent_posts">
                                         <ul>
                                             {% for post in recent_posts %}
-                                                <li><a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:37 }}</a></li>
+                                                <li>
+                                                    <a href="{% url 'blog:view' post_id=post.id %}">{{ post.title | truncatechars:37 }}</a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -274,7 +289,8 @@
                                     <div class="sidebar_categories">
                                         <ul class="category_list">
                                             {% for category in categories %}
-                                               <li><a href="/blog/?category={{ category.id }}">{{ category.category }} ({{ category.posts.all.count }})</a></li>
+                                                <li><a href="/blog/?category={{ category.id }}">{{ category.category }}
+                                                    ({{ category.posts.all.count }})</a></li>
                                             {% endfor %}
                                         </ul>
                                     </div>

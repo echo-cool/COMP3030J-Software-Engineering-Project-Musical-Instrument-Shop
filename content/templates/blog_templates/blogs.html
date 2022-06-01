@@ -39,6 +39,8 @@
             border: 0px !important;
         }
     </style>
+
+    <link href="{% static '/assets/themify-icons-import.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block content %}
@@ -104,7 +106,8 @@
                                         <article class="blog_post">
                                             <div class="post_img">
                                                 <div class="calendar">
-                                                    <a href="{% url 'blog:view' post_id=post.id %}"><span class="date">{{ post.created_on.day }}</span><br
+                                                    <a href="{% url 'blog:view' post_id=post.id %}"><span
+                                                            class="date">{{ post.created_on.day }}</span><br
                                                     >{{ post.created_on | date:"M" }}</a>
                                                 </div>
                                             </div>
@@ -139,21 +142,21 @@
                         <div class="swiper-container slider_posts">
                             <div class="swiper-wrapper">
                                 {% for post in index_posts %}
-                                <div class="swiper-slide">
-                                    <div class="slide_img" data-swiper="overlay-left">
-                                        <img style="max-width: 42rem;" src="{{ post.main_image.url }}" alt="img">
+                                    <div class="swiper-slide">
+                                        <div class="slide_img" data-swiper="overlay-left">
+                                            <img style="max-width: 42rem;" src="{{ post.main_image.url }}" alt="img">
+                                        </div>
                                     </div>
-                                </div>
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="slide_img" data-swiper="overlay-left">#}
-{#                                        <img src="{% static 'assets/images/home_1/blog/blog13.jpg' %}" alt="img">#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="slide_img" data-swiper="overlay-left">#}
-{#                                        <img src="{% static 'assets/images/home_1/blog/blog14.jpg' %}" alt="img">#}
-{#                                    </div>#}
-{#                                </div>#}
+                                    {#                                <div class="swiper-slide">#}
+                                    {#                                    <div class="slide_img" data-swiper="overlay-left">#}
+                                    {#                                        <img src="{% static 'assets/images/home_1/blog/blog13.jpg' %}" alt="img">#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
+                                    {#                                <div class="swiper-slide">#}
+                                    {#                                    <div class="slide_img" data-swiper="overlay-left">#}
+                                    {#                                        <img src="{% static 'assets/images/home_1/blog/blog14.jpg' %}" alt="img">#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
                                 {% endfor %}
                             </div>
                         </div>

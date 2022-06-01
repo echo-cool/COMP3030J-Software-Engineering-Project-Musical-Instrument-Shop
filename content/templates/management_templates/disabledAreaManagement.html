@@ -1,0 +1,524 @@
+{% extends 'management_templates/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block location %}
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">{% trans "Home" %}</a>
+        </li>
+        <li>
+            <a href="#">{% trans "Manage Reviews" %}</a>
+        </li>
+    </ul><!-- /.breadcrumb -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search" id="review-search">
+            <span class="input-icon">
+                <input type="text" placeholder="Search ..." class="nav-search-input"
+                       id="nav-search-input" autocomplete="off"/>
+                <i class="ace-icon fa fa-search nav-search-icon"></i>
+            </span>
+        </form>
+        <script src="{% static 'assets/js/add_url.js' %}"></script>
+        <script>
+
+            $('#review-search').on('submit', function () {
+                window.location.href = addUrlPara(window.location.href, 'search', $('#nav-search-input').val())
+                return false;
+            })
+        </script>
+    </div><!-- /.nav-search -->
+{% endblock %}
+
+{% block page_header %}
+    <div class="row page-header">
+        <h1 class="col-md-10">
+            Disabled Area Management
+        </h1>
+        <button class="btn btn-xs btn-success pull-right"
+                onclick="window.location.href='{% url 'management:add_disabled_area' %}'">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <table id="simple-table" class="table  table-bordered table-hover">
+        <thead>
+        <tr>
+            <th class="center">
+                <label class="pos-rel">
+                    <input type="checkbox" class="ace">
+                    <span class="lbl"></span>
+                </label>
+            </th>
+{#            <th class="detail-col">{% trans "Details" %}</th>#}
+            <th>{% trans "Area" %}</th>
+{#            <th>{% trans "Rating" %}</th>#}
+{#            <th class="hidden-480">#}
+{#                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Posted by" %}</th>#}
+{##}
+            <th>
+                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
+{#            <th class="hidden-480">{% trans "Content" %}</th>#}
+
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for review in reviews %}
+            <tr>
+                <td class="center">
+                    <label class="pos-rel">
+                        <input type="checkbox" class="ace">
+                        <span class="lbl"></span>
+                    </label>
+                </td>
+
+{#                <td class="center">#}
+{#                    <div class="action-buttons">#}
+{#                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">#}
+{#                            <i class="ace-icon fa fa-angle-double-down"></i>#}
+{#                            <span class="sr-only">{% trans "Details" %}</span>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </td>#}
+
+                <td>
+                    <a href="#">
+                        {{ review.area }}
+                    </a>
+                </td>
+{#                <td>{{ review.rating }}</td>#}
+{#                <td class="hidden-480">{{ review.user.username }}</td>#}
+                <td>{{ review.created_at }}</td>
+{##}
+{#                <td class="hidden-480">#}
+{#                    {{ review.review_text }}#}
+{#                </td>#}
+
+                <td>
+                    <div class="hidden-sm hidden-xs btn-group">
+
+                        <button class="btn btn-xs btn-info"
+                                onclick="window.location.href='{% url 'management:update_disabled_area' review.id %}'">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button>
+
+
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ review.id }}">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
+                        <script>
+                            $("#delete_button-{{ review.id }}").on("click", function (res) {
+                                $("#dialog-delete").removeClass('hide').dialog({
+                                    resizable: false,
+                                    width: '320',
+                                    modal: true,
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
+                                    title_html: true,
+                                    buttons: [
+                                        {
+                                            html: "<i class='ace-icon fa fa-trash-o bigger-120'></i>  Delete the Item",
+                                            "class": "btn btn-danger btn-minier",
+                                            click: function () {
+                                                $.ajax({
+                                                    url: "/api/disabledArea/{{ review.id }}/",
+                                                    method: "DELETE",
+                                                    headers: {
+                                                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                                                    },
+                                                    success: function (res) {
+                                                        $.ajax({
+                                                            url: "#",
+                                                            method: "GET",
+                                                            success: function (res) {
+                                                                $('#simple-table').html($(res).find('#simple-table')[0].innerHTML)
+                                                                table_events()
+                                                                {#alert("Success!");#}
+
+                                                            }
+                                                        });
+
+                                                        console.log(res);
+                                                    }
+                                                })
+                                                $(this).dialog("close");
+
+                                            }
+                                        }
+                                        ,
+                                        {
+                                            html: "<i class='ace-icon fa fa-times bigger-110'></i>Cancel",
+                                            "class": "btn btn-minier",
+                                            click: function () {
+                                                $(this).dialog("close");
+                                            }
+                                        }
+                                    ]
+                                });
+
+                            });
+
+                        </script>
+
+                        <button class="btn btn-xs btn-warning">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
+                        </button>
+                    </div>
+
+                    <div class="hidden-md hidden-lg">
+                        <div class="inline pos-rel">
+                            <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    data-position="auto">
+                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#" class="tooltip-info" data-rel="tooltip" title=""
+                                       data-original-title="View">
+                                        <span class="blue">
+                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="tooltip-success" data-rel="tooltip" title=""
+                                       data-original-title="Edit">
+                                        <span class="green">
+                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#" class="tooltip-error" data-rel="tooltip" title=""
+                                       data-original-title="Delete">
+                                        <span class="red">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="detail-row">
+                <td colspan="8">
+                    <div class="table-detail">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2">
+                                <div class="text-center">
+                                    <img height="150" class="thumbnail inline no-margin-bottom"
+                                         alt="Domain Owner's Avatar"
+                                         src="/media/{{ review.order.instrument.image }}">
+                                    <br>
+                                    <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                        <div class="inline position-relative">
+                                            <a class="user-title-label" href="#">
+                                                <i class="ace-icon fa fa-circle light-green"></i>
+                                                &nbsp;
+                                                <span class="white">{{ review.order.instrument.name }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-7">
+                                <div class="space visible-xs"></div>
+
+                                <div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "Posted by" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <span>{{ review.user.username }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "Location" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                            <span>{% trans "Netherlands, Amsterdam" %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "Age" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <span>38</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "Joined" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <span>{% trans "2010/06/20" %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "Last Online" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <span>{% trans "3 hours ago" %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">{% trans "About Me" %}</div>
+
+                                        <div class="profile-info-value">
+                                            <span>{% trans "Bio" %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {#                            <div class="col-xs-12 col-sm-3">#}
+                            {#                                <div class="space visible-xs"></div>#}
+                            {#                                <h4 class="header blue lighter less-margin">Send a message#}
+                            {#                                    to {{ order_item.user.username }}</h4>#}
+                            {##}
+                            {#                                <div class="space-6"></div>#}
+                            {##}
+                            {#                                <form>#}
+                            {#                                    <fieldset>#}
+                            {#                                        <textarea class="width-100" resize="none"#}
+                            {#                                                  placeholder="Type something…"></textarea>#}
+                            {#                                    </fieldset>#}
+                            {##}
+                            {#                                    <div class="hr hr-dotted"></div>#}
+                            {##}
+                            {#                                    <div class="clearfix">#}
+                            {#                                        <label class="pull-left">#}
+                            {#                                            <input type="checkbox" class="ace">#}
+                            {#                                            <span class="lbl"> Email me a copy</span>#}
+                            {#                                        </label>#}
+                            {##}
+                            {#                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round"#}
+                            {#                                                type="button">#}
+                            {#                                            Submit#}
+                            {#                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>#}
+                            {#                                        </button>#}
+                            {#                                    </div>#}
+                            {#                                </form>#}
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        {% endfor %}
+        <div class="row align-center justify-center" style="margin-bottom: 0.7%">
+            <span class="bigger-150 border-light justify-center align-center font-weight-bold"
+            >{% trans "Page: " %}{{ reviews.number }} {% trans "Total: " %}{{ reviews.paginator.num_pages }}</span>
+            {% if reviews.has_previous %}
+                <button id="first_page" class="btn btn-round btn-success">{% trans "First Page" %}</button>
+                <button id="prev_page" class="btn btn-round btn-info">{% trans "Previous Page" %}</button>
+            {% endif %}
+
+            {% for pg in part_pages %}
+                {% if pg == reviews.number %}
+                    <button class="btn btn-round btn-pink page-button">{{ pg }}</button>
+                {% else %}
+                    <button class="btn btn-round page-button">{{ pg }}</button>
+                {% endif %}
+            {% endfor %}
+
+
+            {% if reviews.has_next %}
+                <button id="next_page" class="btn btn-round btn-info">{% trans "Next Page" %}</button>
+
+                <button id="last_page" class="btn btn-round btn-danger">{% trans "Last Page" %}</button>
+            {% endif %}
+
+        </div>
+        <script>
+            $("#prev_page").on('click', function (res) {
+                {% if reviews.has_previous %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.previous_page_number }})
+                {% endif %}
+
+            })
+            $("#next_page").on('click', function (res) {
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.next_page_number }})
+                {% endif %}
+
+            })
+            $("#first_page").on('click', function (res) {
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', 1)
+                {% endif %}
+            })
+            $("#last_page").on('click', function (res) {
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.paginator.num_pages }})
+                {% endif %}
+            })
+            $(".page-button").on('click', function (res) {
+                window.location.href = addUrlPara(window.location.href, 'page', $(this).text())
+            })
+            $("#first_page").on('click', function (res) {
+                window.location.href = addUrlPara(window.location.href, 'page', 1)
+            })
+        </script>
+
+        </tbody>
+    </table>
+
+    <div id="dialog-delete" class="hide">
+        <div class="alert alert-info bigger-110">{% trans "The review will be deleted and the operation can not be revoked" %}</div>
+
+        <div class="space-6"></div>
+
+        <p class="bigger-110 bolder center grey">
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>{% trans "Are you sure?" %}</p>
+    </div><!-- #dialog-confirm -->
+
+{% endblock %}
+
+{% block scripts %}
+
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    {#        <script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/jquery.dataTables.bootstrap.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="{% static 'assets/js/dataTables.buttons.min.js' %}"></script>#}
+    {#        <script src="/static/assets/js/buttons.flash.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.html5.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.print.min.js"></script>#}
+    {#        <script src="/static/assets/js/buttons.colVis.min.js"></script>#}
+    {#        <script src="/static/assets/js/dataTables.select.min.js"></script>#}
+    {#        		<script src="/static/assets/js/jquery-ui.min.js"></script>#}
+    {#        <script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>#}
+    {#    <script src="/static/assets/js/ace-elements.min.js"></script>#}
+    {#        <script src="/static/assets/js/ace.min.js"></script>#}
+
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+
+        function table_events() {
+
+
+            //initiate dataTables plugin
+
+            $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+
+            //And for the first simple table, which doesn't have TableTools or dataTables
+            //select/deselect all rows according to table header checkbox
+            var active_class = 'active';
+            $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+                var th_checked = this.checked;//checkbox inside "TH" table header
+
+                $(this).closest('table').find('tbody > tr').each(function () {
+                    var row = this;
+                    if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                    else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+                });
+            });
+
+            //select/deselect a row when the checkbox is checked/unchecked
+            $('#simple-table').on('click', 'td input[type=checkbox]', function () {
+                var $row = $(this).closest('tr');
+                if ($row.is('.detail-row ')) return;
+                if (this.checked) $row.addClass(active_class);
+                else $row.removeClass(active_class);
+            });
+
+
+            /********************************/
+            //add tooltip for small view action buttons in dropdown menu
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+
+            //tooltip placement on right or left
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+                return 'left';
+            }
+
+
+            /***************/
+            $('.show-details-btn').on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('tr').next().toggleClass('open');
+                $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+            });
+            /***************/
+
+
+            /**
+             //add horizontal scrollbars to a simple table
+             $('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+             {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+             ).css('padding-top', '12px');
+             */
+
+        }
+
+        function dialog() {
+
+
+            //override dialog's title function to allow for HTML titles
+            $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+                _title: function (title) {
+                    var $title = this.options.title || '&nbsp;'
+                    if (("title_html" in this.options) && this.options.title_html == true)
+                        title.html($title);
+                    else title.text($title);
+                }
+            }));
+
+
+        }
+
+        jQuery(function ($) {
+            table_events();
+            dialog();
+
+        })
+
+        $('li:contains(Reviews)').attr("class", "active");
+
+    </script>
+
+{% endblock %}
