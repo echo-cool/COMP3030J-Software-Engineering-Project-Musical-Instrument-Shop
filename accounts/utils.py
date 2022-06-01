@@ -68,7 +68,7 @@ def send_modify_email(email, username, order_id, modified_item, new_value):
         'modified_item': modified_item,
         'username': username,
         'order_id': order_id,
-        'message': new_value
+        'new_value': new_value
     }
 
     send_mail(email, 'modify_order', context)
