@@ -128,7 +128,7 @@
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
-                                                    url: "/api/review/{{ review.id }}/",
+                                                    url: "/api/disabledArea/{{ review.id }}/",
                                                     method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
