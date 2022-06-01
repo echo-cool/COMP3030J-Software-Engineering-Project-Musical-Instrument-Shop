@@ -1,8 +1,10 @@
 from django.urls import path
 from rest_framework import routers
+
+from shop.models import DisabledArea
 from .api import InstrumentsViewSet, CategoryViewSet, OrderViewSet, ReviewViewSet, InstrumentDetailViewSet, \
     ProfileViewSet, UserViewSet, CartViewSet, WishlistViewSet, MessageModelViewSet, PostViewSet, BlogCategoryViewSet, \
-    OrderItemViewSet, NotificationViewSet
+    OrderItemViewSet, NotificationViewSet, DisabledAreaViewSet
 from .view import login, logout, rank_user_list, add_wishlist, add_cart, all_read, revenue_month, analyze_image, \
     EditorUploadImage, max_order_priority, search_user, send_company_message, order_data, send_modify_order
 
@@ -14,6 +16,7 @@ router.register('category', CategoryViewSet, 'category')
 router.register('order', OrderViewSet, 'order')
 router.register('order_item', OrderItemViewSet, 'order_item')
 router.register('review', ReviewViewSet, 'review')
+router.register('disabledArea', DisabledAreaViewSet, 'disabledArea')
 router.register('instrumentDetail', InstrumentDetailViewSet, 'instrumentDetail')
 router.register('profile', ProfileViewSet, 'profile')
 router.register('user', UserViewSet, basename='user')

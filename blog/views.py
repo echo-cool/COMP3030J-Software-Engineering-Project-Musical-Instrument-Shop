@@ -48,7 +48,7 @@ def index(request):
 
     return render(request, 'blog_templates/blogs.html', {
         'index_posts': posts[:3],
-        'posts': posts,
+        'posts': all_posts,
         'part_pages': part_pages,
         'category_number': category_number
         # 'latest3Posts': latest3Posts,

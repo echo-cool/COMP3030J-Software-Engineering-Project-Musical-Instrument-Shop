@@ -4,18 +4,17 @@
 {% load static %}
 
 {% block location %}
-
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="{% url 'management:index' %}">{% trans "Home" %}</a>
+            <a href="#">{% trans "Home" %}</a>
         </li>
         <li>
-            <a href="#">{% trans "Manage Instruments" %}</a>
+            <a href="#">{% trans "Manage Reviews" %}</a>
         </li>
     </ul><!-- /.breadcrumb -->
     <div class="nav-search" id="nav-search">
-        <form class="form-search" id="instrument-search">
+        <form class="form-search" id="review-search">
             <span class="input-icon">
                 <input type="text" placeholder="Search ..." class="nav-search-input"
                        id="nav-search-input" autocomplete="off"/>
@@ -25,7 +24,7 @@
         <script src="{% static 'assets/js/add_url.js' %}"></script>
         <script>
 
-            $('#instrument-search').on('submit', function () {
+            $('#review-search').on('submit', function () {
                 window.location.href = addUrlPara(window.location.href, 'search', $('#nav-search-input').val())
                 return false;
             })
@@ -35,9 +34,11 @@
 
 {% block page_header %}
     <div class="row page-header">
-        <h1 class="col-md-10">{% trans "Instrument Management" %}</h1>
+        <h1 class="col-md-10">
+            Disabled Area Management
+        </h1>
         <button class="btn btn-xs btn-success pull-right"
-                onclick="window.location.href='{% url 'management:add_instrument' %}'">
+                onclick="window.location.href='{% url 'management:add_disabled_area' %}'">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
@@ -54,15 +55,15 @@
                     <span class="lbl"></span>
                 </label>
             </th>
-            <th class="detail-col">{% trans "Details" %}</th>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Price" %}</th>
-            <th class="hidden-480">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Inventory" %}</th>
-
+{#            <th class="detail-col">{% trans "Details" %}</th>#}
+            <th>{% trans "Area" %}</th>
+{#            <th>{% trans "Rating" %}</th>#}
+{#            <th class="hidden-480">#}
+{#                <i class="fa fa-user-circle-o" aria-hidden="true"></i>{% trans "Posted by" %}</th>#}
+{##}
             <th>
                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>{% trans "Created At" %}</th>
-            <th class="hidden-480">{% trans "Category" %}</th>
+{#            <th class="hidden-480">{% trans "Content" %}</th>#}
 
             <th></th>
         </tr>
@@ -70,7 +71,7 @@
 
         <tbody>
 
-        {% for instrument in instruments %}
+        {% for review in reviews %}
             <tr>
                 <td class="center">
                     <label class="pos-rel">
@@ -79,47 +80,47 @@
                     </label>
                 </td>
 
-                <td class="center">
-                    <div class="action-buttons">
-                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                            <i class="ace-icon fa fa-angle-double-down"></i>
-                            <span class="sr-only">{% trans "Details" %}</span>
-                        </a>
-                    </div>
-                </td>
+{#                <td class="center">#}
+{#                    <div class="action-buttons">#}
+{#                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">#}
+{#                            <i class="ace-icon fa fa-angle-double-down"></i>#}
+{#                            <span class="sr-only">{% trans "Details" %}</span>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </td>#}
 
                 <td>
                     <a href="#">
-                        {{ instrument.name | truncatewords:3 }}
+                        {{ review.area }}
                     </a>
                 </td>
-                <td>${{ instrument.price }}</td>
-                <td class="hidden-480">{{ instrument.quantity }}</td>
-                <td>{{ instrument.created_at }}</td>
-
-                <td class="hidden-480">
-                    {{ instrument.category }}
-                </td>
+{#                <td>{{ review.rating }}</td>#}
+{#                <td class="hidden-480">{{ review.user.username }}</td>#}
+                <td>{{ review.created_at }}</td>
+{##}
+{#                <td class="hidden-480">#}
+{#                    {{ review.review_text }}#}
+{#                </td>#}
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
 
                         <button class="btn btn-xs btn-info"
-                                onclick="window.location.href='{% url 'management:update_instrument' instrument.id %}'">
+                                onclick="window.location.href='{% url 'management:update_disabled_area' review.id %}'">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 
 
-                        <button class="btn btn-xs btn-danger" id="delete_button-{{ instrument.id }}">
+                        <button class="btn btn-xs btn-danger" id="delete_button-{{ review.id }}">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                         <script>
-                            $("#delete_button-{{ instrument.id }}").on("click", function (res) {
+                            $("#delete_button-{{ review.id }}").on("click", function (res) {
                                 $("#dialog-delete").removeClass('hide').dialog({
                                     resizable: false,
-                                    width: '300',
+                                    width: '320',
                                     modal: true,
-                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the operation?</h4></div>",
+                                    title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Confirm the order?</h4></div>",
                                     title_html: true,
                                     buttons: [
                                         {
@@ -127,7 +128,7 @@
                                             "class": "btn btn-danger btn-minier",
                                             click: function () {
                                                 $.ajax({
-                                                    url: "/api/instruments/{{ instrument.id }}/",
+                                                    url: "/api/disabledArea/{{ review.id }}/",
                                                     method: "DELETE",
                                                     headers: {
                                                         'X-CSRFTOKEN': '{{ csrf_token }}'
@@ -166,6 +167,9 @@
 
                         </script>
 
+                        <button class="btn btn-xs btn-warning">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
+                        </button>
                     </div>
 
                     <div class="hidden-md hidden-lg">
@@ -217,14 +221,14 @@
                                 <div class="text-center">
                                     <img height="150" class="thumbnail inline no-margin-bottom"
                                          alt="Domain Owner's Avatar"
-                                         src="/media/{{ instrument.image }}">
+                                         src="/media/{{ review.order.instrument.image }}">
                                     <br>
                                     <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                         <div class="inline position-relative">
                                             <a class="user-title-label" href="#">
                                                 <i class="ace-icon fa fa-circle light-green"></i>
                                                 &nbsp;
-                                                <span class="white">{{ instrument.name | truncatewords:3 }}</span>
+                                                <span class="white">{{ review.order.instrument.name }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -236,51 +240,51 @@
 
                                 <div class="profile-user-info profile-user-info-striped">
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Name" %}</div>
+                                        <div class="profile-info-name">{% trans "Posted by" %}</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ instrument.name }}</span>
+                                            <span>{{ review.user.username }}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Price" %}</div>
+                                        <div class="profile-info-name">{% trans "Location" %}</div>
 
                                         <div class="profile-info-value">
                                             <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                            <span>${{ instrument.price }}</span>
+                                            <span>{% trans "Netherlands, Amsterdam" %}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Old Price" %}</div>
+                                        <div class="profile-info-name">{% trans "Age" %}</div>
 
                                         <div class="profile-info-value">
-                                            <span>${{ instrument.old_price }}</span>
+                                            <span>38</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Category" %}</div>
+                                        <div class="profile-info-name">{% trans "Joined" %}</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ instrument.category }}</span>
+                                            <span>{% trans "2010/06/20" %}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Created At" %}</div>
+                                        <div class="profile-info-name">{% trans "Last Online" %}</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ instrument.created_at }}</span>
+                                            <span>{% trans "3 hours ago" %}</span>
                                         </div>
                                     </div>
 
                                     <div class="profile-info-row">
-                                        <div class="profile-info-name">{% trans "Description" %}</div>
+                                        <div class="profile-info-name">{% trans "About Me" %}</div>
 
                                         <div class="profile-info-value">
-                                            <span>{{ instrument.details }}</span>
+                                            <span>{% trans "Bio" %}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -323,16 +327,14 @@
         {% endfor %}
         <div class="row align-center justify-center" style="margin-bottom: 0.7%">
             <span class="bigger-150 border-light justify-center align-center font-weight-bold"
-            >{% trans "Page: " %}{{ instruments.number }}{% trans " Total: " %}{{ instruments.paginator.num_pages }}
-            </span>
-            {% if instruments.has_previous %}
+            >{% trans "Page: " %}{{ reviews.number }} {% trans "Total: " %}{{ reviews.paginator.num_pages }}</span>
+            {% if reviews.has_previous %}
                 <button id="first_page" class="btn btn-round btn-success">{% trans "First Page" %}</button>
                 <button id="prev_page" class="btn btn-round btn-info">{% trans "Previous Page" %}</button>
             {% endif %}
 
-
             {% for pg in part_pages %}
-                {% if pg == instruments.number %}
+                {% if pg == reviews.number %}
                     <button class="btn btn-round btn-pink page-button">{{ pg }}</button>
                 {% else %}
                     <button class="btn btn-round page-button">{{ pg }}</button>
@@ -340,7 +342,7 @@
             {% endfor %}
 
 
-            {% if instruments.has_next %}
+            {% if reviews.has_next %}
                 <button id="next_page" class="btn btn-round btn-info">{% trans "Next Page" %}</button>
 
                 <button id="last_page" class="btn btn-round btn-danger">{% trans "Last Page" %}</button>
@@ -349,25 +351,25 @@
         </div>
         <script>
             $("#prev_page").on('click', function (res) {
-                {% if instruments.has_previous %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.previous_page_number }})
+                {% if reviews.has_previous %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.previous_page_number }})
                 {% endif %}
 
             })
             $("#next_page").on('click', function (res) {
-                {% if instruments.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.next_page_number }})
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.next_page_number }})
                 {% endif %}
 
             })
             $("#first_page").on('click', function (res) {
-                {% if instruments.has_next %}
+                {% if reviews.has_next %}
                     window.location.href = addUrlPara(window.location.href, 'page', 1)
                 {% endif %}
             })
             $("#last_page").on('click', function (res) {
-                {% if instruments.has_next %}
-                    window.location.href = addUrlPara(window.location.href, 'page', {{ instruments.paginator.num_pages }})
+                {% if reviews.has_next %}
+                    window.location.href = addUrlPara(window.location.href, 'page', {{ reviews.paginator.num_pages }})
                 {% endif %}
             })
             $(".page-button").on('click', function (res) {
@@ -382,7 +384,7 @@
     </table>
 
     <div id="dialog-delete" class="hide">
-        <div class="alert alert-info bigger-110">{% trans "The instrument will be deleted and the operation can not be revoked" %}</div>
+        <div class="alert alert-info bigger-110">{% trans "The review will be deleted and the operation can not be revoked" %}</div>
 
         <div class="space-6"></div>
 
@@ -515,7 +517,7 @@
 
         })
 
-        $('li:contains(Instruments)').attr("class", "active");
+        $('li:contains(Reviews)').attr("class", "active");
 
     </script>
 

@@ -53,7 +53,7 @@
                                     <div class="post_info">
                                         <small>{{ post.created_on }}</small>
                                         <h2><a href="{% url "blog:view" post_id=post.id %}">{{ post.title }}</a></h2>
-                                        <p>{{ post.body }}</p>
+                                        <p>{{ post.body | safe }}</p>
                                         <ul>
                                             <li>
                                                 <div class="thumb"><img src="img/avatar.jpg" alt=""></div>

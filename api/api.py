@@ -12,10 +12,11 @@ from app import settings
 from blog.models import Post
 from chat.models import MessageModel
 from shop.models import Instrument, Category, Order, Review, Profile, InstrumentDetail, Cart, Wishlist, OrderItem, \
-    Notification
+    Notification, DisabledArea
 from .serializers import InstrumentSerializer, CategorySerializer, OrderSerializer, ReviewSerializer, ProfileSerializer, \
     InstrumentDetailSerializer, UserSerializer, CartSerializer, WishlistSerializer, MessageModelSerializer, \
-    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer, NotificationSerializer
+    UserModelSerializer, PostModelSerializer, BlogCategorySerializer, OrderItemSerializer, NotificationSerializer, \
+    DisabledAreaSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -67,6 +68,15 @@ class ReviewViewSet(viewsets.ModelViewSet):
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 
+class DisabledAreaViewSet(viewsets.ModelViewSet):
+    queryset = DisabledArea.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = DisabledAreaSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     permission_classes = [
@@ -95,7 +105,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['username', 'email', 'id']
-
 
 
 class CartViewSet(viewsets.ModelViewSet):

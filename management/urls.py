@@ -47,4 +47,9 @@ urlpatterns = [
     path('add_wishlist/', views.add_wishlist, name='add_wishlist'),
     path('view_log', views.view_log, name='view_log'),
     path('upload_ins', views.upload_ins, name='upload_ins'),
+
+    path('disabled_area_management', views.disabled_area_management, name='disabled_area_management'),
+    path('update_disabled_area/<int:review_id>/', views.update_disabled_area, name='update_disabled_area'),
+    path('add_disabled_area/', views.add_disabled_area, name='add_disabled_area'),
+
 ]
