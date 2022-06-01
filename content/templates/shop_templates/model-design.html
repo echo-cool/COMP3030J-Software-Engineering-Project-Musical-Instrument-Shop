@@ -1200,6 +1200,7 @@
                 data: JSON.stringify({
                     "price": Number(String($(".model-price").html()).replace(/[^\d.]/g, "")),
                     "count": $(".input-text").val(),
+                    {#"size": $(".form-control").val(),#}
                     "screenshots": model_img_list.join("&&&&&"),
                 }),
                 headers: {
