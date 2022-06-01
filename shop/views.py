@@ -260,15 +260,24 @@ def product_details(request, product_id):
             exist_cart = Cart.objects.filter(user=request.user, instrument_id=product_id).first()
             if exist_cart:
                 print(exist_cart)
-                exist_cart.count = exist_cart.count + quantity
-                exist_cart.save()
+                if exist_cart.count + quantity > instrument.quantity:
+                    messages.error(request, "Quantity exceed")
+                else:
+                    exist_cart.count = exist_cart.count + quantity
+                    exist_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
             else:
-                new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
-                print(new_cart)
-                new_cart.save()
-            messages.success(request, "Add Successfully")
-            return redirect('shop:product_details', product_id=product_id)
-        else:
+                if quantity <= instrument.quantity:
+                    new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+                    print(new_cart)
+                    new_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
+                else:
+                    messages.add_message(request, messages.INFO, "Quantity exceed")
+                    response = redirect('shop:product_details', product_id=product_id)
+                    return response
             return redirect('accounts:log_in')
     else:
         categories = Category.objects.all()
