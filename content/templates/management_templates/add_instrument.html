@@ -173,6 +173,7 @@
             for (const file of Object.entries(upload_images)) {
                 data.push(file[1]);
             }
+            console.log($(this)[0].files[0]);
 
             upload_images = data;
             {#console.log("芜湖，文件选择后有这些图片:", upload_images);#}
@@ -225,7 +226,8 @@
                 success: function (data) {
                     console.log("SUCCESS!", window.frames[0]);
                     let url = window.location.href;
-                    window.location.href = String(url).replace("add_instrument", "instrument_management");
+                    console.log(formData);
+                    {#window.location.href = String(url).replace("add_instrument", "instrument_management");#}
                 }
             });
             return false;

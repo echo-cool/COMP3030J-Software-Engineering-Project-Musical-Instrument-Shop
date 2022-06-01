@@ -159,14 +159,14 @@
                     <div class="content-header row">
                     </div>
                     <div class="content-body">
-                        <section class="chat-app-window">
+                        <section class="chat-app-window" id="chat-app-window">
                             <div class="mb-1 secondary text-bold-700">{% trans "Chat History" %}</div>
                             <div class="chats">
                                 <div class="chats" id="messages">
                                 </div>
                             </div>
                         </section>
-                        <section class="chat-app-form">
+                        <section class="chat-app-form" id="chat-app-form">
                             <input type="file" style="display: none;" id="chat_image_upload" accept="image/*">
                             <form class="chat-app-input d-flex" onsubmit="return false">
                                 <fieldset class="col-10 m-0">
@@ -226,6 +226,7 @@
         let chat_with;
         let chat_with_current;
         let current_user_id;
+        let chatWindow = $("chat-app-window");
 
         function select(id, username) {
             current_user_id = id;
@@ -453,7 +454,8 @@
                     'X-CSRFTOKEN': '{{ csrf_token }}'
                 },
                 success: function (res) {
-                    updateUserList()
+                    updateUserList();
+                    chatWindow.animate({scrollTop: $("#chat-app-form").position().top});
                 },
                 error: function () {
                     alert('Error! Check console!');
