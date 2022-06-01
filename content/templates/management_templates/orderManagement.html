@@ -27,9 +27,9 @@
 {% block page_header %}
     <div class="row page-header">
         <h1 class="col-md-10">{% trans "Order Management" %}<small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                {% trans 'All Orders' %}
-            </small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            {% trans 'All Orders' %}
+        </small>
         </h1>
         <button class="btn btn-xs btn-success pull-right"
                 onclick="window.location.href='{% url 'management:add_order' %}'">
@@ -351,20 +351,18 @@
 
                                 <form>
                                     <fieldset>
-                                            <textarea class="width-100" resize="none"
+                                            <textarea class="width-100 send_message" resize="none"
                                                       placeholder="Type something…"></textarea>
                                     </fieldset>
 
                                     <div class="hr hr-dotted"></div>
 
                                     <div class="clearfix">
-                                        <label class="pull-left">
-                                            <input type="checkbox" class="ace">
-                                            <span class="lbl"> Email me a copy</span>
-                                        </label>
 
-                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                type="button">{% trans "Submit" %}<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                        <button class="btn btn-sm btn-primary btn-white btn-round send_button"
+                                                id="send_button__{{ order_item.user.username }}"
+                                                type="button">{% trans "Submit" %}<i
+                                                class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -513,6 +511,30 @@
         jQuery(function ($) {
             table_events();
             dialog();
+
+            $(".send_button").on("click", function () {
+                let recipientID = $(this).attr("id").split("__")[1];
+                let textarea = $(this).parent().prev().prev().children().eq(0);
+                if (textarea.val() !== ""){
+                    $.ajax({
+                        url: "/api/message/",
+                        method: 'POST',
+                        data: {
+                            recipient: recipientID,
+                            body: textarea.val()
+                        },
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        success: function (res) {
+                            textarea.val("");
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
 
         })
         {% if mode == 0 %}
