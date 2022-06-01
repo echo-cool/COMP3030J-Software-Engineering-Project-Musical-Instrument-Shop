@@ -14,6 +14,7 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static "assets/css_for_shop/custom.css" %}" rel="stylesheet">
+    <link href="{% static '/assets/themify-icons-import.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 
@@ -40,7 +41,8 @@
                                 <li><a href="#"><i class="ti-folder"></i>{% trans "Category" %}</a></li>
                                 <li><i class="ti-calendar"></i> {{ post.created_on }}</li>
                                 <li><a href="#"><i class="ti-user"></i>{% trans "Admin" %}</a></li>
-                                <li><a href="#"><i class="ti-comment"></i> ({{ comments.count }}){% trans " Comments" %}</a></li>
+                                <li><a href="#"><i class="ti-comment"></i> ({{ comments.count }}){% trans " Comments" %}
+                                </a></li>
                             </ul>
                         </div>
                         <!-- /post meta -->
