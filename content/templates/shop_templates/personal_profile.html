@@ -3,10 +3,11 @@
 
 {% load i18n %}
 {% load bootstrap4 %}
-
+{% block title %} <title>{% trans "Personal Accounts" %}</title> {% endblock %}
 {% block head_link %}
     <!-- Favicons-->
-    <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    {#    <link rel="shortcut icon" href="{% static "assets/img_for_shop/favicon.ico" %}" type="image/x-icon">#}
     <link rel="apple-touch-icon" type="image/x-icon"
           href="{% static "assets/img_for_shop/apple-touch-icon-57x57-precomposed.png" %}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
