@@ -1025,7 +1025,7 @@
                 } else {
                     qty -= 1;
                     let hulla_for_quantity = new hullabaloo();
-                    hulla_for_quantity.send("Sorry, the instrument's quantity is {{ instrument.quantity}} now", "warning");
+                    hulla_for_quantity.send("{% trans "Sorry, now the instrument's quantity is "%} {{ instrument.quantity}}", "warning");
 
                 }
                 {#console.log(qty);#}
@@ -1070,12 +1070,12 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your wishlist!", "warning");
+                            hulla.send("{% trans "The instrument is already in your wishlist!"%}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("Add successfully!", "success");
+                            hulla.send("{% trans "Add successfully!" %}", "success");
                         }, 300);
                     } else if (res === 300) {
                         alert("Error!")
@@ -1106,12 +1106,12 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your wishlist!", "warning");
+                            hulla.send("{% trans "The instrument is already in your wishlist!"%}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("Add successfully!", "success");
+                            hulla.send("{% trans "Add successfully!" %}", "success");
                         }, 300);
                     } else if (res === 300) {
                         alert("Error!")
@@ -1143,7 +1143,7 @@
                     if (res === 100) {
                         setTimeout(function () {
                             let hulla = new hullabaloo();
-                            hulla.send("The instrument is already in your cart!", "warning");
+                            hulla.send("{% trans "The instrument is already in your cart!" %}", "warning");
                         }, 300);
                     } else if (res === 200) {
                         $.ajax({
@@ -1197,7 +1197,7 @@
                 input.attr("value", input.val());
             } else {
                 let hulla_for_quantity = new hullabaloo();
-                hulla_for_quantity.send("Sorry, the instrument's quantity is {{ instrument.quantity}} now", "warning");
+                hulla_for_quantity.send("{% trans "Sorry, now the instrument's quantity is "%} {{ instrument.quantity}}", "warning");
                 input.attr("value", max_number);
             }
         }
