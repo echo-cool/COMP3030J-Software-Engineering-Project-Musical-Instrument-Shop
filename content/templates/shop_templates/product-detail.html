@@ -150,11 +150,18 @@
                                              src="{{ instrument.image.url }}"
                                              alt="">
                                     </div>
-                                    <div>
-                                        <img class="item active"
-                                             src="{{ instrument.image1.url }}"
-                                             alt="">
-                                    </div>
+{#                                    <div>#}
+{#                                        <img class="item active"#}
+{#                                             src="{{ instrument.image1.url }}"#}
+{#                                             alt="">#}
+{#                                    </div>#}
+                                    {% if instrument.image1.url != "/media/default.jpg" %}
+                                        <div>
+                                            <img class="item active"
+                                                 src="{{ instrument.image2.url }}"
+                                                 alt="">
+                                        </div>
+                                    {% endif %}
                                     {% if instrument.image2.url != "/media/default.jpg" %}
                                         <div>
                                             <img class="item active"
