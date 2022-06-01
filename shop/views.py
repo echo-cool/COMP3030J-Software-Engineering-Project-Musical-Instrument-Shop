@@ -655,6 +655,7 @@ def model_post_checkout(request):
         screenshots = request_dict.get('screenshots')
         price = request_dict.get('price')
         count = request_dict.get('count')
+        # size = request_dict.get('size')
         custom = CustomModel(
             user=user,
             price=price,
