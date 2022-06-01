@@ -1178,7 +1178,7 @@
             max_number =  {{ instrument.quantity }};
         {% else %}
             $(".qty-cart").css("display", "none");
-            let string1 = "{% trans 'This item is out of stock!' %}";
+            let string1 = "{% trans 'Sorry, it is out of stock!' %}";
             let string2 = "{% trans 'We are restocking' %}";
             $(".shopify-payment-button").html(
                 "<span style=\"color: #ffa380; font-size: 35px;\">" + string1 + "<br>" + string2 + "......<span>"
