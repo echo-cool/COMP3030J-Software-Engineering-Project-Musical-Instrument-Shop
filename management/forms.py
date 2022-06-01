@@ -102,4 +102,10 @@ class SearchForm(forms.Form):
     search_name = forms.CharField(max_length=20, widget=widgets.TextInput(
         {'placeholder': '"Search over 10.000 products', }))
 
+
 # type=CharField(min_length=1,max_length=4,required=True,widget=Select(choices=(('0','P'),('1','M'))),)
+
+class DisabledAreaFrom(forms.ModelForm):
+    class Meta:
+        model = shop.models.DisabledArea
+        fields = "__all__"
