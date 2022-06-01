@@ -260,15 +260,25 @@ def product_details(request, product_id):
             exist_cart = Cart.objects.filter(user=request.user, instrument_id=product_id).first()
             if exist_cart:
                 print(exist_cart)
-                exist_cart.count = exist_cart.count + quantity
-                exist_cart.save()
+                if exist_cart.count + quantity > instrument.quantity:
+                    messages.error(request, "Quantity exceed")
+                else:
+                    exist_cart.count = exist_cart.count + quantity
+                    exist_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
             else:
-                new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
-                print(new_cart)
-                new_cart.save()
-            messages.success(request, "Add Successfully")
-            return redirect('shop:product_details', product_id=product_id)
-        else:
+                if quantity <= instrument.quantity:
+                    new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+                    print(new_cart)
+                    new_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
+                else:
+                    messages.add_message(request, messages.INFO,
+                                         "Instrument quantity exceeds available stock: " + str(instrument.quantity))
+                    response = redirect('shop:product_details', product_id=product_id)
+                    return response
             return redirect('accounts:log_in')
     else:
         categories = Category.objects.all()
@@ -547,7 +557,8 @@ def checkout(request):
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
         else:
-            messages.warning(request, "You have errors in your form or this area has been disabled by the shop due to the pandemic.")
+            messages.warning(request,
+                             "Sorry, your area doesn't support order delivery due to the pandemic.")
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect(reverse('shop:login'))
@@ -644,6 +655,7 @@ def model_post_checkout(request):
         screenshots = request_dict.get('screenshots')
         price = request_dict.get('price')
         count = request_dict.get('count')
+        # size = request_dict.get('size')
         custom = CustomModel(
             user=user,
             price=price,
