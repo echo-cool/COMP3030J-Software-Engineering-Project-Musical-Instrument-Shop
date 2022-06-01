@@ -382,15 +382,39 @@
                             <article class="card">
                                 <header class="card-header"> My Orders / Tracking</header>
                                 <div class="card-body">
-                                    <h6>Order ID: {{ order.id }}</h6>
+                                    <h6>Order ID: #{{ order.id }}</h6>
                                     <article class="card">
                                         <div class="card-body row">
                                             <div class="col"><strong>Placed time:</strong> <br>{{ order.created_at }}
                                             </div>
-                                            <div class="col"><strong>Address:</strong> <br> {{ order.address | truncatechars:13 }}
-                                                <i class="fa fa-home" aria-hidden="true"></i> {{ order.apartment | truncatechars:13 }}
-                                            </div>
-                                            <div class="col"><strong>Zip Code:</strong> <br> {{ order.zip_Code }} ({{ order.city }}, {{ order.state }}, {{ order.country }})</div>
+                                            {% if not order.delivered %}
+                                                <div class="col"><strong>Address:</strong>
+                                                    <br><span class="editable address"
+                                                              id="editable__{{ order.id }}">{{ order.address | truncatechars:13 }}</span>
+                                                    <i class="fa fa-home"
+                                                       aria-hidden="true"></i><span class="editable apartment"
+                                                                                    id="editable__{{ order.id }}">{{ order.apartment | truncatechars:13 }}</span>
+                                                </div>
+                                                <div class="col"><strong>Zip Code:</strong> <br> <span
+                                                        class="editable zip"
+                                                        id="editable__{{ order.id }}"> {{ order.zip_Code }} </span>
+                                                    (<span class="editable city"
+                                                           id="editable__{{ order.id }}">{{ order.city }}</span>,
+                                                    <span class="editable state"
+                                                          id="editable__{{ order.id }}">{{ order.state }}</span>,
+                                                    <span class="editable country"
+                                                          id="editable__{{ order.id }}">{{ order.country }}</span>)
+                                                </div>
+                                            {% else %}
+                                                <div class="col"><strong>Address:</strong>
+                                                    <br>{{ order.address | truncatechars:13 }}
+                                                    <i class="fa fa-home"
+                                                       aria-hidden="true"></i>{{ order.apartment | truncatechars:13 }}
+                                                </div>
+                                                <div class="col"><strong>Zip Code:</strong> <br> {{ order.zip_Code }}
+                                                    ({{ order.city }}, {{ order.state }}, {{ order.country }})
+                                                </div>
+                                            {% endif %}
                                             <div class="col"><strong>Total Price:</strong> <br>
                                                 {% widthratio 0 1 0 as total %}
                                                 {% for order_item in order.items.all %}
@@ -651,6 +675,259 @@
                     allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
                 });
             });
+
+            $('.address').editable({
+                type: 'text',
+                name: 'address',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            address: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "address",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.apartment').editable({
+                type: 'text',
+                name: 'apartment',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            apartment: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "apartment",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.zip').editable({
+                type: 'text',
+                name: 'zip',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            zip_Code: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "Zip Code",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.city').editable({
+                type: 'text',
+                name: 'city',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            city: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "city",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.state').editable({
+                type: 'text',
+                name: 'state',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            state: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "state",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.country').editable({
+                type: 'text',
+                name: 'country',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            country: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "country",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
         })
 
         $(".confirm-delivery").on("click", function () {
