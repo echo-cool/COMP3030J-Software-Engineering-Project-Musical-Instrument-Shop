@@ -756,6 +756,7 @@ def add_instrument(request):
                 elif i == 4:
                     instrument.image4 = images
                 instrument.save()
+            return redirect(reverse('management:instrument_management'))
         else:
             ret = {'status': True, 'error': None, 'data': None}
 
