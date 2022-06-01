@@ -190,7 +190,7 @@
                         console.log(xhr_1.status);
                         if (xhr_1.status === 200) {
                             let height = $('.grid-image-box').height();
-                            console.log("HEIGHT", $('.img-height').get(0).offsetHeight);
+                            {#console.log("HEIGHT", $('.img-height').get(0).offsetHeight);#}
                             $('.grid-text-box').height(height - 1);
                             $('.grid-text-box').hover(function () {
                                 $('.grid-text-box.active').removeClass('active');
@@ -199,7 +199,15 @@
                             });
                         }
                     }
+                    xhr_2.onreadystatechange = function () {
+                        console.log(xhr_1.status);
+                        if (xhr_1.status === 200) {
+                            let height = $('.grid-image-box').height();
+                            {#console.log("HEIGHT", $('.img-height').get(0).offsetHeight);#}
+                            $('.grid-text-box').height(height - 1);
 
+                        }
+                    }
 
                     window.onresize = function () {
                         throttle(resizehandler, window);
@@ -949,6 +957,9 @@
             return height;
         }
 
+        let height = $('.grid-image-box').height();
+        console.log("HEIGHT", $('.img-height').get(0).offsetHeight);
+        $('.grid-text-box').height(height - 1);
 
     </script>
 

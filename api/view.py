@@ -18,7 +18,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from accounts.utils import send_message_email
+from accounts.utils import send_message_email, send_modify_email
 from app import settings
 from chat.models import MessageModel
 from image_search.models import ImageSearchData
@@ -178,7 +178,7 @@ def rank_user_list(request):
                              'latest_message': MessageModel.objects.get(timestamp=sender_rank[i]['max'],
                                                                         user=user).body})
         data = sorted(data, key=lambda x: x['time'], reverse=True)
-        if to != -1 and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
+        if to != -1 and to != request.user.id and messages.filter(Q(recipient_id=to) | Q(user_id=to)).count() == 0:
             user = users.get(id=to)
             profile = profiles.filter(user=user).first()
             if profile:
@@ -397,3 +397,11 @@ def send_company_message(request):
             return JsonResponse({"code": 100}, safe=False, json_dumps_params={'ensure_ascii': False})
         except:
             return JsonResponse({"code": 200}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def send_modify_order(request):
+    if request.method == "POST":
+        send_modify_email(settings.DEFAULT_FROM_EMAIL, request.POST.get("username"), request.POST.get("order_id"),
+                          request.POST.get("modified_item"), request.POST.get("new_value"))
+        return JsonResponse({"code": 100}, safe=False, json_dumps_params={'ensure_ascii': False})
+

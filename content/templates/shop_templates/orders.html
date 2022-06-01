@@ -5,12 +5,33 @@
 {% load bootstrap4 %}
 
 {% block head_link %}
-    <!-- BASE CSS -->
-    <link href="{% static 'assets/css_for_shop/bootstrap.custom.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/css_for_shop/style.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
 
-    <link href="{% static 'assets/css_for_shop/orders.css' %}" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{% static "assets/css_for_shop/bootstrap.custom.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css_for_shop/style.css" %}" rel="stylesheet">
+    <link href="{% static 'assets/font-awesome/fontawesome-free-5.15.4-web/css/all.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'assets/css/ace.min.css' %}" rel="stylesheet" class="ace-main-stylesheet" id="main-ace-style">
+    <link href="{% static "assets/css_for_shop/orders.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-editable.min.css" %}"/>
+
+    <style>
+        .header-v2-h2 .navbar {
+            background: inherit !important;
+        }
+
+        .header-v2-h2 nav ul li {
+            padding: 0 !important;
+        }
+
+        .menu_scroll_v2 .navbar {
+            background: inherit !important;
+        }
+    </style>
+
 {% endblock %}
 
 {% block content %}
@@ -70,24 +91,26 @@
                         {% endif %}
                     </div>
                     <div class="d-flex my-4 flex-wrap">
-                        <div class="box me-4 my-1 bg-light"><img
-                                src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
+                        <div class="box me-4 my-1 bg-light" onclick="window.location.href = {% url 'shop:orders' %}">
+                            <img
+                                    src="{% static 'assets/images/icons/cardboard-box.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Orders place" %}</div>
+                                <div class="tag">{% trans "Orders placed" %}</div>
                                 <div class="ms-auto number">{{ count.order }}</div>
                             </div>
                         </div>
-                        <div class="box me-4 my-1 bg-light"><img
+                        <div class="box me-4 my-1 bg-light" onclick="window.location.href = {% url 'shop:cart' %}"><img
                                 src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Items in Car" %}</div>
+                                <div class="tag">{% trans "Items in Cart" %}</div>
                                 <div class="ms-auto number">{{ count.cart }}</div>
                             </div>
                         </div>
-                        <div class="box me-4 my-1 bg-light"><img src="{% static 'assets/images/icons/love-heart.png' %}"
-                                                                 alt="">
+                        <div class="box me-4 my-1 bg-light" onclick="window.location.href = {% url 'shop:wishlist' %}">
+                            <img src="{% static 'assets/images/icons/love-heart.png' %}"
+                                 alt="">
                             <div class="d-flex align-items-center mt-2">
-                                <div class="tag">{% trans "Wishlis" %}</div>
+                                <div class="tag">{% trans "Wishlist" %}</div>
                                 <div class="ms-auto number">{{ count.wishlist }}</div>
                             </div>
                         </div>
@@ -215,16 +238,50 @@
                             <article class="card">
                                 <header class="card-header"> My Orders / Tracking</header>
                                 <div class="card-body">
-                                    <h6>Order ID: {{ order.id }}</h6>
+                                    <h6>Order ID: #{{ order.id }}</h6>
                                     <article class="card">
                                         <div class="card-body row">
                                             <div class="col"><strong>Placed time:</strong> <br>{{ order.created_at }}
                                             </div>
-                                            <div class="col"><strong>Shipping BY:</strong> <br> BLUEDART, | <i
-                                                    class="fa fa-phone"></i> +1598675986
-                                            </div>
-                                            <div class="col"><strong>Status:</strong> <br> Picked by the courier</div>
-                                            <div class="col"><strong>Tracking #:</strong> <br> BD045903594059</div>
+                                            {% if not order.delivered %}
+                                                <div class="col"><strong>Address:</strong>
+                                                    <br><span class="editable address"
+                                                              id="editable__{{ order.id }}">{{ order.address | truncatechars:13 }}</span>
+                                                    <i class="fa fa-home"
+                                                       aria-hidden="true"></i><span class="editable apartment"
+                                                                                    id="editable__{{ order.id }}">{{ order.apartment | truncatechars:13 }}</span>
+                                                </div>
+                                                <div class="col"><strong>Zip Code:</strong> <br> <span
+                                                        class="editable zip"
+                                                        id="editable__{{ order.id }}"> {{ order.zip_Code }} </span>
+                                                    (<span class="editable city"
+                                                           id="editable__{{ order.id }}">{{ order.city }}</span>,
+                                                    <span class="editable state"
+                                                          id="editable__{{ order.id }}">{{ order.state }}</span>,
+                                                    <span class="editable country"
+                                                          id="editable__{{ order.id }}">{{ order.country }}</span>)
+                                                </div>
+                                            {% else %}
+                                                <div class="col"><strong>Address:</strong>
+                                                    <br>{{ order.address | truncatechars:13 }}
+                                                    <i class="fa fa-home"
+                                                       aria-hidden="true"></i>{{ order.apartment | truncatechars:13 }}
+                                                </div>
+                                                <div class="col"><strong>Zip Code:</strong> <br> {{ order.zip_Code }}
+                                                    ({{ order.city }}, {{ order.state }}, {{ order.country }})
+                                                </div>
+                                            {% endif %}
+                                            <div class="col"><strong>Total Price:</strong> <br>
+                                                {% widthratio 0 1 0 as total %}
+                                                {% for order_item in order.items.all %}
+                                                    {% if not forloop.last %}
+                                                        {% widthratio order_item.instrument.price 1 order_item.quantity as price %}
+                                                        {% widthratio total|add:price 1 1 as total %}
+                                                    {% else %}
+                                                        {% widthratio order_item.instrument.price 1 order_item.quantity as price %}
+                                                        ${% widthratio total|add:price 1 1 %}
+                                                    {% endif %}
+                                                {% endfor %}</div>
                                         </div>
                                     </article>
                                     <div class="track">
@@ -353,53 +410,351 @@
 
     <script src="{% static 'assets/assets_for_bees/js/bootstrap.bundle.min.js' %}"></script>
 
+    <!-- COMMON SCRIPTS -->
+    <script src="{% static "assets/js_for_shop/common_scripts.min.js" %}"></script>
+    <script src="{% static "assets/js_for_shop/main.js" %}"></script>
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="{% static "assets/js_for_shop/carousel_with_thumbs.js" %}"></script>
+    <script src="/static/assets/js/bootstrap-editable.min.js"></script>
+    <script src="/static/assets/js/ace-editable.min.js"></script>
+    <script src="{% static 'assets/js/ace-elements.min.js' %}"></script>
+    <script src="{% static 'assets/js/ace.min.js' %}"></script>
+
     <script>
+
+        jQuery(function ($) {
+            //editables on first profile page
+            $.fn.editable.defaults.mode = 'inline';
+            $.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
+            $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>' +
+                '<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';
+
+
+            //editables
+            $('.address').editable({
+                type: 'text',
+                name: 'address',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            address: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "address",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.apartment').editable({
+                type: 'text',
+                name: 'apartment',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            apartment: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "apartment",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.zip').editable({
+                type: 'text',
+                name: 'zip',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            zip_Code: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "Zip Code",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.city').editable({
+                type: 'text',
+                name: 'city',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            city: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "city",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.state').editable({
+                type: 'text',
+                name: 'state',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            state: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "state",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+            $('.country').editable({
+                type: 'text',
+                name: 'country',
+                success: function (response, newValue) {
+                    let orderID = $(this).attr("id").split("__")[1];
+                    $.ajax({
+                        url: "/api/order/" + orderID + "/",
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRFTOKEN': '{{ csrf_token }}'
+                        },
+                        data: {
+                            country: newValue
+                        },
+                        success: function (data) {
+                            $.ajax({
+                                url: "/api/send_modify_order/",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                                },
+                                data: {
+                                    "username": "{{ request.user.username }}",
+                                    "order_id": orderID,
+                                    "modified_item": "country",
+                                    "new_value": newValue
+                                },
+                                success: function () {
+                                    setTimeout(function () {
+                                        let hulla = new hullabaloo();
+                                        hulla.send("Change successfully!", "success");
+                                    }, 300);
+                                }
+                            });
+                        },
+                        error: function () {
+                            alert('Error! Check console!');
+                        }
+                    });
+                }
+            });
+
+        });
 
         $(".confirm-delivery").on("click", function () {
             let orderID = $(this).attr("id").split("__")[1];
             $.ajax({
                 url: "/api/order/" + orderID + "/",
-                method: 'PATCH',
-                data: {
-                    "accepted": true,
-                    "packed": true,
-                    "shipped": true,
-                    "delivered": true
-                },
+                method: 'GET',
                 headers: {
                     'X-CSRFTOKEN': '{{ csrf_token }}'
                 },
-                success: function (data) {
-                    $.ajax({
-                        url: "#",
-                        method: "GET",
-                        success: function (res) {
-                            $('#popup-quickview-' + orderID).html($(res).find('#popup-quickview-' + orderID)[0].innerHTML);
-                            $('#progressbar__' + orderID).html($(res).find('#progressbar__' + orderID)[0].innerHTML);
-                            $.ajax({
-                                url: "/api/notification/",
-                                method: "POST",
-                                data: {
-                                    "is_confirm": true,
-                                    "order": orderID
-                                },
-                                headers: {
-                                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                                },
-                                success: function (res) {
+                success: function (order) {
+                    if (order["delivered"]) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The delivery of this order has already been confirmed", "warning");
+                        }, 300);
+                    } else if (!order["accepted"]) {
+                        setTimeout(function () {
+                            let hulla = new hullabaloo();
+                            hulla.send("The shop owner haven't accepted your order!", "warning");
+                        }, 300);
+                    } else {
+                        $.ajax({
+                            url: "/api/order/" + orderID + "/",
+                            method: 'PATCH',
+                            data: {
+                                "accepted": true,
+                                "packed": true,
+                                "shipped": true,
+                                "delivered": true
+                            },
+                            headers: {
+                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                            },
+                            success: function (data) {
+                                $.ajax({
+                                    url: "#",
+                                    method: "GET",
+                                    success: function (res) {
+                                        $('#popup-quickview-' + orderID).html($(res).find('#popup-quickview-' + orderID)[0].innerHTML);
+                                        $('#progressbar__' + orderID).html($(res).find('#progressbar__' + orderID)[0].innerHTML);
+                                        $.ajax({
+                                            url: "/api/notification/",
+                                            method: "POST",
+                                            data: {
+                                                "is_confirm": true,
+                                                "order": orderID
+                                            },
+                                            headers: {
+                                                'X-CSRFTOKEN': '{{ csrf_token }}'
+                                            },
+                                            success: function (res) {
 
-                                },
-                                error: function () {
-                                    alert('Error! Check console!');
-                                }
+                                            },
+                                            error: function () {
+                                                alert('Error! Check console!');
+                                            }
 
-                            });
-                        }
-                    });
-                    setTimeout(function () {
-                        let hulla = new hullabaloo();
-                        hulla.send("Confirm successfully!", "success");
-                    }, 300);
+                                        });
+                                    }
+                                });
+                                setTimeout(function () {
+                                    let hulla = new hullabaloo();
+                                    hulla.send("Confirm successfully!", "success");
+                                }, 300);
+                            },
+                            error: function () {
+                                alert('Error! Check console!');
+                            }
+                        });
+                    }
                 },
                 error: function () {
                     alert('Error! Check console!');

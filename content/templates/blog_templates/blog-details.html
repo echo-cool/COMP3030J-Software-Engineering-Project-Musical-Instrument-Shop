@@ -60,7 +60,7 @@
                                 <div class="post_content">
                                     <div class="post_header">
                                         <h2 class="post_title">
-                                            <a href="#">{% trans "Live with no excuses and travel with no regrets" %}</a>
+                                            <a href="javascript:void(0)">{{ post.title }}</a>
                                         </h2>
                                     </div>
                                     <div class="post_fulltext">
@@ -97,9 +97,9 @@
                                     <img alt="img" src="{{ post.author.profile.image.url }}"
                                          class="avatar">
                                 </div>
-                                <div class="author-block">
-                                    <h5 class="author_name">{% trans "Patricia Doe" %}</h5>
-                                    <p class="author_intro">{% trans "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum" %}<br/>{% trans "exercitatonem mosequatu autem vel eum ivenia." %}</p>
+                                <div class="author-block" style="margin-top: 2rem;">
+                                    <h5 class="author_name">{{ post.author.username }}</h5>
+{#                                    <p class="author_intro">{% trans "Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam, quis nostrum" %}<br/>{% trans "exercitatonem mosequatu autem vel eum ivenia." %}</p>#}
                                     <div class="social_media">
                                         <ul class="social_list">
                                             <li data-aos="fade-up" data-aos-duration="500"><a href="#"><i
@@ -274,7 +274,7 @@
                                     <div class="sidebar_categories">
                                         <ul class="category_list">
                                             {% for category in categories %}
-                                               <li><a href="/blog/category={{ category.id }}">{{ category.category }} ({{ category.posts.all.count }})</a></li>
+                                               <li><a href="/blog/?category={{ category.id }}">{{ category.category }} ({{ category.posts.all.count }})</a></li>
                                             {% endfor %}
                                         </ul>
                                     </div>

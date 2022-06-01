@@ -15,6 +15,10 @@
         .product-quantity {
             width: 14%;
         }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 {% endblock %}
 
@@ -68,7 +72,7 @@
                                              data-src="{{ cart.instrument.image.url }}" class="lazy" alt="Image">
                                     </div>
                                 </td>
-                                <td class="produc-name"><a href="#" title="">
+                                <td class="produc-name"><a href="/product_details/{{ cart.instrument.id }}" title="">
                                     <span class="item_cart">{{ cart.instrument.name }}</span>
                                 </a></td>
                                 <td class="description">{% trans 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' %}
@@ -173,9 +177,10 @@
                             <h3>{% trans 'Cart totals' %}</h3>
                         </div>
                         <ul>
-                            <li id="subtotal-all"><span class="text">{% trans 'Cart Subtotal' %}</span><span
+                            <li class="hidden" id="subtotal-all"><span
+                                    class="text">{% trans 'Cart Subtotal' %}</span><span
                                     class="number">$ 1,990.00</span></li>
-                            <li><span class="text">{% trans 'Shipping and Handling' %}</span><span
+                            <li class="hidden"><span class="text">{% trans 'Shipping and Handling' %}</span><span
                                     class="number">$ 50.00</span></li>
                             <li id="all-total"><span class="text">{% trans 'Cart Totals' %}</span><span
                                     class="number">$ 2,040.00</span></li>
@@ -188,14 +193,14 @@
                             <button class="btn link-button" href="#" disabled="disabled" id="hulala-show-tip"
                                     title="Proceed to checkout">{% trans 'Proceed to checkout' %}
                             </button>
-{#                            <script>#}
-{#                                var button = document.getElementById("hulala-show-tip");#}
-{#                                button.onclick = function () {#}
-{#                                    console.log("aaa");#}
-{#                                    let hulla = new hullabaloo();#}
-{#                                    hulla.send("Confirm successfully!", "success");#}
-{#                                }#}
-{#                            </script>#}
+                            {#                            <script>#}
+                            {#                                var button = document.getElementById("hulala-show-tip");#}
+                            {#                                button.onclick = function () {#}
+                            {#                                    console.log("aaa");#}
+                            {#                                    let hulla = new hullabaloo();#}
+                            {#                                    hulla.send("Confirm successfully!", "success");#}
+                            {#                                }#}
+                            {#                            </script>#}
                         {% endif %}
                     </div>
                     <!-- End col-md-4 -->

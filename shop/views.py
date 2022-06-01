@@ -6,6 +6,7 @@ import time
 from asgiref.sync import sync_to_async
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.utils.http import urlencode
 from django.views.decorators.clickjacking import xframe_options_exempt
 import json
 import random
@@ -259,15 +260,25 @@ def product_details(request, product_id):
             exist_cart = Cart.objects.filter(user=request.user, instrument_id=product_id).first()
             if exist_cart:
                 print(exist_cart)
-                exist_cart.count = exist_cart.count + quantity
-                exist_cart.save()
+                if exist_cart.count + quantity > instrument.quantity:
+                    messages.error(request, "Quantity exceed")
+                else:
+                    exist_cart.count = exist_cart.count + quantity
+                    exist_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
             else:
-                new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
-                print(new_cart)
-                new_cart.save()
-            messages.success(request, "Add Successfully")
-            return redirect('shop:product_details', product_id=product_id)
-        else:
+                if quantity <= instrument.quantity:
+                    new_cart = Cart(user=request.user, instrument=instrument, count=quantity, user_id=request.user.id)
+                    print(new_cart)
+                    new_cart.save()
+                    messages.success(request, "Add Successfully")
+                    return redirect('shop:product_details', product_id=product_id)
+                else:
+                    messages.add_message(request, messages.INFO,
+                                         "Instrument quantity exceeds available stock: " + str(instrument.quantity))
+                    response = redirect('shop:product_details', product_id=product_id)
+                    return response
             return redirect('accounts:log_in')
     else:
         categories = Category.objects.all()
@@ -356,6 +367,13 @@ def product_details(request, product_id):
         })
 
 
+def my_reverse(view_name, args=None, query_kwargs=None):
+    url = reverse(view_name, args=args)
+    if query_kwargs:
+        return f'{url}?{urlencode(query_kwargs)}'
+    return url
+
+
 @login_required
 def leave_review(request, instrument_id):
     form = ReviewForm()
@@ -377,7 +395,8 @@ def leave_review(request, instrument_id):
             )
             review.save()
             messages.success(request, "Review submitted successfully")
-            return redirect(reverse('shop:product_details', args=[instrument_id]))
+            return redirect(my_reverse('shop:product_details', args=[instrument_id],
+                                       query_kwargs={"status": "review"}))
     return render(request, 'shop_templates/leave-review.html', {
         "instrument": Instrument.objects.get(id=instrument_id),
         "form": form,
@@ -430,7 +449,7 @@ def wishlist(request):
 
 
 @login_required
-def checkout_single_instrument(request, instrument_id):
+def checkout_single_instrument(request, instrument_id, instrument_number):
     # get or post
     checkout_form = CheckoutForm()
     if request.method == "POST":
@@ -461,7 +480,7 @@ def checkout_single_instrument(request, instrument_id):
             uncompletedOrderItem = UncompletedOrderItem(
                 uncompleted_order=uncompletedOrder,
                 instrument=Instrument.objects.get(id=instrument_id),
-                quantity=1
+                quantity=instrument_number
             )
             uncompletedOrderItem.save()
 
@@ -485,7 +504,7 @@ def checkout_single_instrument(request, instrument_id):
                 self.count = count
                 self.created_at = time.strftime("%d/%m/%Y")
 
-        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), 1)]
+        cart_items = [CartItem(Instrument.objects.get(id=instrument_id), instrument_number)]
         for item in cart_items:
             subtotal += item.instrument.price * item.count
 
@@ -537,6 +556,9 @@ def checkout(request):
             return redirect(reverse('shop:shipping_details', kwargs={
                 'uncompletedOrder_id': uncompletedOrder.id
             }))
+        else:
+            messages.warning(request,
+                             "Sorry, your area doesn't support order delivery due to the pandemic.")
     # check if user is not logged in
     if not request.user.is_authenticated:
         return redirect(reverse('shop:login'))
@@ -633,6 +655,7 @@ def model_post_checkout(request):
         screenshots = request_dict.get('screenshots')
         price = request_dict.get('price')
         count = request_dict.get('count')
+        # size = request_dict.get('size')
         custom = CustomModel(
             user=user,
             price=price,

@@ -9,7 +9,9 @@
 <head>
     <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}"/>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+
     {% block title %} <title>{% trans "Index" %}</title> {% endblock %}
 
     {#	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'/>#}
@@ -854,7 +856,7 @@
                                 {% if request.user %}
                                     {% if not request.user.is_staff %}
                                         <li class="nav-item dropdown">
-                                            <a href="{% url 'chat:index_new' to=1 %}" title="CHAT"
+                                            <a href="{% url 'chat:index_new' to=15 %}" title="CHAT"
                                                class="delay03 relative nav-link  menu_lv1 ">{% trans "CHAT" %}</a>
                                         </li>
                                     {% endif %}
@@ -2369,9 +2371,11 @@
                 success: function (res) {
                     window.location.href = ("/image_search/" + res['key']);
                     image_upload.val(null);
-                    search_title.text("Start typing and hit Enter")
+                    search_title.text("Start typing and hit Enter");
                 },
                 error: function () {
+                    image_upload.val(null);
+                    search_title.text("Start typing and hit Enter");
                     alert('Error! Check console!');
                 }
             })

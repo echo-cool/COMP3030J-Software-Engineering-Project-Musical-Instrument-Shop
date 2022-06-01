@@ -455,48 +455,14 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <div id="progress-stats-line-chart1" class="progress-stats-shadow">
-                                        <div class="chartist-tooltip" style="top: -26.1625px; left: 155.013px;"><span
-                                                class="chartist-tooltip-value">80</span></div>
-                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%"
-                                             height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
-                                            <g class="ct-grids"></g>
-                                            <g>
-                                                <g class="ct-series ct-series-a">
-                                                    <path d="M10,100C54.086,100,54.086,55,98.173,55C142.259,55,142.259,80,186.345,80C230.431,80,230.431,40,274.518,40C318.604,40,318.604,80,362.69,80C406.776,80,406.776,50,450.863,50"
-                                                          class="ct-line"></path>
-                                                    <circle cx="10" cy="100" ct:value="100" r="5"
-                                                            class="ct-point ct-point-circle-transperent"></circle>
-                                                    <circle cx="98.17250366210938" cy="55" ct:value="55" r="5"
-                                                            class="ct-point ct-point-circle-transperent"></circle>
-                                                    <circle cx="186.34500732421876" cy="80" ct:value="80" r="5"
-                                                            class="ct-point ct-point-circle-transperent"></circle>
-                                                    <circle cx="274.51751098632815" cy="40" ct:value="40" r="5"
-                                                            class="ct-point ct-point-circle"></circle>
-                                                    <circle cx="362.6900146484375" cy="80" ct:value="80" r="5"
-                                                            class="ct-point ct-point-circle-transperent"></circle>
-                                                    <circle cx="450.8625183105469" cy="50" ct:value="50" r="5"
-                                                            class="ct-point ct-point-circle-transperent"></circle>
-                                                </g>
-                                            </g>
-                                            <g class="ct-labels"></g>
-                                            <defs>
-                                                <linearGradient id="lineLinearStats1" x1="0" y1="0" x2="1" y2="0">
-                                                    <stop offset="0%" stop-color="rgba(0,230,175,0.1)"></stop>
-                                                    <stop offset="10%" stop-color="rgba(0,230,175,1)"></stop>
-                                                    <stop offset="80%" stop-color="rgba(0,206,249, 1)"></stop>
-                                                    <stop offset="98%" stop-color="rgba(0,206,249, 0.1)"></stop>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                    </div>
+                                    <div id="progress-stats-line-chart1" class="progress-stats-shadow"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card pull-up bg-gradient-directional-danger">
                             <div class="card-header bg-hexagons-danger">
-                                <h4 class="card-title white">{% trans "Daily Order Analytics" %}</h4>
+                                <h4 class="card-title white">{% trans "Monthly Order Analytics" %}</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -516,10 +482,30 @@
                                             <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
                                         </div>
                                         <div class="media-body text-right mt-1">
-                                            {# #TODO: 每日对比 #}
-                                            <h3 class="font-large-2 white">-{{ finished_orders.count }}5</h3>
+                                            <h3 class="font-large-2 white">
+                                                {% if compare_monthly.0 == 1 %}
+                                                    +{{ compare_monthly.1 }}
+                                                    <style>
+                                                        #Analytics-donut-chart .ct-label {
+                                                            transform: translateX(75px) translateY(192px) rotate(282deg);
+                                                        }
+
+                                                        .bg-gradient-directional-danger {
+                                                            background-image: linear-gradient(45deg, #f65b00, #ffdab4);
+                                                        }
+
+                                                        .bg-hexagons-danger {
+                                                            background-image: none;
+                                                        }
+                                                    </style>
+                                                {% else %}
+                                                    {{ compare_monthly.1 }}
+                                                {% endif %}
+
+                                            </h3>
                                             <h6 class="mt-1"><span class="text-muted white">{% trans "Compared " %}<br>
-                                               <a href="#" class="darken-2 white"> to last day</a></span>
+                                               <a href="#"
+                                                  class="darken-2 white">{% trans " to last month" %}</a></span>
                                             </h6>
                                         </div>
                                     </div>
@@ -783,26 +769,59 @@
     </script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
+{% endblock %}
+
+
+{% block dashboard_js %}
+    {#    <script src="{% static 'assets/js/jquery-ui.custom.min.js' %}"></script>#}
+    <script>
+        // fix index bottom black
+        var myIdElement = document.getElementById("main-container");
+        var beforeStyle = window.getComputedStyle(myIdElement, ":before").height;
+        {#console.log(Number(beforeStyle.replace("px", "")));#}
+        {#console.log($(".breadcrumbs").height())#}
+        let max_height = Number(beforeStyle.replace("px", ""))
+            - Number($(".breadcrumbs").height()) - Number($(".navbar").height());
+        $(".page-content").css("max-height", max_height);
+    </script>
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static "assets_backend/js/core/app-menu.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/js/core/app.js" %}" type="text/javascript"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static "assets_backend/vendors/js/charts/chartist.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "assets_backend/vendors/js/charts/chartist-plugin-tooltip.js" %}"
+            type="text/javascript"></script>
+    <!-- END: Page Vendor JS-->
+
     <script>
         jQuery(function ($) {
 
-            let revenue_data;
-            $.ajax({
-                url: "/api/revenue_month/",
-                method: 'GET',
-                headers: {
-                    'X-CSRFTOKEN': '{{ csrf_token }}'
-                },
-                async: false,
-                success: function (data) {
-                    data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];
-                    revenue_data = data
-                },
-                error: function () {
-                    alert('Error! Check console!');
-                }
+            function ajaxFetchRevenue() {
+                let revenue_data;
+                $.ajax({
+                    url: "/api/revenue_month/",
+                    method: 'GET',
+                    headers: {
+                        'X-CSRFTOKEN': '{{ csrf_token }}'
+                    },
+                    async: false,
+                    success: function (data) {
+                        {#data[2] = [0, 0, 0, 230689, 0, 0, 0, 0, 0, 0, 0, 0];#}
+                        revenue_data = data[0]
+                    },
+                    error: function () {
+                        alert('Error! Check console!');
+                    }
 
-            });
+                });
+                return revenue_data
+            }
 
             // We calculate the function for ARIMA Model, So we just use the formula with parameters
             function ARIMA_PREDICT(input_list) {
@@ -842,8 +861,8 @@
                 return revenue_predict;
             }
 
-            let fetch_revenue = [0, 0, 12500.0, 53940.0, 70855.98999999999, 273391.93, 0, 0, 0, 0, 0, 0]
-
+            {#let fetch_revenue = [0, 0, 12500.0, 53940.0, 70855.98999999999, 273391.93, 0, 0, 0, 0, 0, 0]#}
+            let fetch_revenue = ajaxFetchRevenue();
 
             console.log(ARIMA_PREDICT(fetch_revenue), fetch_revenue);
             {#let all_product1 = [0, 0, 680, 1400, 1800, 3600, 8000, 16000, 18000, 20000, 24000, 28000]#}
@@ -1169,196 +1188,91 @@
             });
 
 
-            /*************************************************
-             *               Project Income               *
-             *************************************************/
-
-            var projectIncomeBar = new Chartist.Bar('#project-income-chart', {
-                labels: ['2017', '2016', '2015', '2014', '2013', '2012'],
-                series: [
-                    [8000, 12000, 14000, 13000, 9000, 7000],
-                ]
-            }, {
-                axisY: {
-                    labelInterpolationFnc: function (value) {
-                        return (value / 1000) + 'k';
-                    },
-                    scaleMinSpace: 50,
-                    showGrid: false
-                },
+            let weekday_order = [];
+            {% for i in weekday_order %}
+                weekday_order.push(Number({{ i }}));
+            {% endfor %}
+            let weekday_order_max = 0;
+            weekday_order.forEach(item => weekday_order_max = item > weekday_order_max ? item : weekday_order_max)
+            var lineOptions = {
                 axisX: {
-                    showGrid: false
+                    showLabel: false,
+                    showGrid: false,
+
                 },
-                plugins: [
-                    Chartist.plugins.tooltip({
-                        appendToBody: true,
-                        pointClass: 'ct-point'
-                    })
-                ],
-            });
-            projectIncomeBar.on('draw', function (data) {
-                if (data.type === 'bar') {
-                    data.element.attr({
-                        style: 'stroke-width: 30px',
-                        y1: 400,
-                        x1: data.x1 + 0.001
-                    });
-                    data.group.append(new Chartist.Svg('circle', {
-                        cx: data.x2,
-                        cy: data.y2,
-                        r: 15
-                    }, 'ct-slice-pie'));
-                }
-            });
-            projectIncomeBar.on('created', function (data) {
-                var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
-                defs.elem('linearGradient', {
-                    id: 'barGradient2',
-                    x1: 0,
-                    y1: 0,
-                    x2: 0,
-                    y2: 1
-                }).elem('stop', {
-                    offset: '10%',
-                    'stop-color': 'rgba(249,111,155,0.9)'
-                }).parent().elem('stop', {
-                    offset: '90%',
-                    'stop-color': 'rgba(105,103,206,0.8)'
-                });
-                return defs;
-            });
-
-            /*************************************************
-             *               New Projects               *
-             *************************************************/
-
-            var newProjects = new Chartist.Line('#new-projects', {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-                series: [
-                    [90, 325, 225, 600, 200],
-                    [590, 90, 300, 150, 500]
-                ]
-            }, {
-                low: 0,
-                fullWidth: true,
-                onlyInteger: true,
                 axisY: {
+                    showLabel: false,
+                    showGrid: false,
                     low: 0,
-                    scaleMinSpace: 50,
+                    high: weekday_order_max,
+                    offset: 0
                 },
-                axisX: {
-                    showGrid: false
-                },
-                chartPadding: {
-                    right: 25
-                },
-                lineSmooth: Chartist.Interpolation.simple({
+                lineSmooth: new Chartist.Interpolation.simple({
                     divisor: 2
                 }),
                 plugins: [
                     Chartist.plugins.tooltip({
-                        appendToBody: true,
-                        pointClass: 'ct-point-circle'
+                        appendToBody: false,
+                        pointClass: 'ct-point'
                     })
+                ],
+                fullWidth: true
+            };
+            var ProjectStatsLine1 = new Chartist.Line('#progress-stats-line-chart1', {
+                series: [
+                    weekday_order
                 ]
+            }, lineOptions);
 
-            });
-            newProjects.on('created', function (data) {
+            ProjectStatsLine1.on('created', function (data) {
                 var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
                 defs.elem('linearGradient', {
-                    id: 'linear6',
+                    id: 'lineLinearStats1',
                     x1: 0,
-                    y1: 1,
-                    x2: 0,
-                    y2: 0
-                }).elem('stop', {
-                    offset: 0,
-                    'stop-color': 'rgba(45,121,255,0.7)'
-                }).parent().elem('stop', {
-                    offset: 1,
-                    'stop-color': 'rgba(249,81,255, 0.7)'
-                });
-
-                defs.elem('linearGradient', {
-                    id: 'linear7',
-                    x1: 0,
-                    y1: 1,
+                    y1: 0,
                     x2: 1,
                     y2: 0
                 }).elem('stop', {
-                    offset: 0,
-                    'stop-color': 'rgba(247,214,142,1)'
+                    offset: '0%',
+                    'stop-color': 'rgba(0,230,175,0.1)'
                 }).parent().elem('stop', {
-                    offset: 1,
-                    'stop-color': 'rgba(248,120,131, 1)'
+                    offset: '10%',
+                    'stop-color': 'rgba(0,230,175,1)'
+                }).parent().elem('stop', {
+                    offset: '80%',
+                    'stop-color': 'rgba(0,206,249, 1)'
+                }).parent().elem('stop', {
+                    offset: '98%',
+                    'stop-color': 'rgba(0,206,249, 0.1)'
                 });
 
                 return defs;
 
 
             }).on('draw', function (data) {
-                var circleRadius = 10;
+                var circleRadius = 5;
                 if (data.type === 'point') {
                     var circle = new Chartist.Svg('circle', {
                         cx: data.x,
                         cy: data.y,
                         'ct:value': data.y,
                         r: circleRadius,
-                        class: data.value.y === 600 ? 'ct-point-circle' : 'ct-point-circle-transperent'
+                        class: data.value.y === 15 ? 'ct-point ct-point-circle' : 'ct-point ct-point-circle-transperent'
                     });
                     data.element.replace(circle);
                 }
-                if (data.type === 'line') {
-                    data.element.animate({
-                        d: {
-                            begin: 1000,
-                            dur: 1000,
-                            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                            to: data.path.clone().stringify(),
-                            easing: Chartist.Svg.Easing.easeOutQuint
-                        }
-                    });
-                }
             });
 
-            // Chat scrollbar
 
+            // Chat scrollbar
             var sidebar_fixed = new PerfectScrollbar(".chats", {
                 wheelPropagation: false
             });
 
+
         })
+
 
         $('li:contains(Dashboard)').attr("class", "active");
     </script>
-
-{% endblock %}
-
-
-{% block dashboard_js %}
-    <script src="{% static 'assets/js/jquery-ui.custom.min.js' %}"></script>
-    <script>
-        // fix index bottom black
-        var myIdElement = document.getElementById("main-container");
-        var beforeStyle = window.getComputedStyle(myIdElement, ":before").height;
-        {#console.log(Number(beforeStyle.replace("px", "")));#}
-        {#console.log($(".breadcrumbs").height())#}
-        let max_height = Number(beforeStyle.replace("px", ""))
-            - Number($(".breadcrumbs").height()) - Number($(".navbar").height());
-        $(".page-content").css("max-height", max_height);
-    </script>
-    <!-- BEGIN: Vendor JS-->
-    <script src="{% static "assets_backend/vendors/js/vendors.min.js" %}" type="text/javascript"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="{% static "assets_backend/vendors/js/charts/chartist.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "assets_backend/vendors/js/charts/chartist-plugin-tooltip.min.js" %}"
-            type="text/javascript"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="{% static "assets_backend/js/core/app-menu.js" %}" type="text/javascript"></script>
-    <script src="{% static "assets_backend/js/core/app.js" %}" type="text/javascript"></script>
-    <!-- END: Theme JS-->
 {% endblock %}

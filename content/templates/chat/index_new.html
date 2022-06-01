@@ -4,6 +4,8 @@
 {% load i18n %}
 {% load bootstrap4 %}
 
+{% block title %} <title>{% trans "Chat" %}</title> {% endblock %}
+
 {% block head_link %}
     <link href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}"
           rel="stylesheet">
@@ -80,6 +82,7 @@
 
         .chat-application .sidebar-left {
             height: calc(100% - 0px);
+            margin-top: -10px;
         }
 
         .chat-application .users-list-padding {
@@ -115,6 +118,11 @@
             position: relative;
             top: 120px;
         }
+
+        #basic-addon3 {
+            font-size: 1.6rem;
+        }
+
     </style>
 
 {% endblock %}
@@ -125,7 +133,7 @@
         <div class="app-content content">
             <div class="sidebar-left sidebar-fixed">
                 <div class="sidebar">
-                    <div class="sidebar-content card d-none d-lg-block">
+                    <div class="sidebar-content card d-lg-block">
                         <div class="card-body chat-fixed-search">
                             <fieldset class="form-group position-relative has-icon-left m-0  w-75 display-inline">
                                 <input type="text" class="form-control round" id="searchUser" placeholder="Search user">
@@ -145,8 +153,8 @@
                     </div>
                 </div>
             </div>
-            <div class="content-right" style="height: 630px;">
-                <div class="content-wrapper" style="height: 630px;">
+            <div class="content-right" style="height: 85.7vh;">
+                <div class="content-wrapper">
                     <div class="content-wrapper-before"></div>
                     <div class="content-header row">
                     </div>
@@ -604,7 +612,7 @@
                             'X-CSRFTOKEN': '{{ csrf_token }}'
                         },
                         success: function (res) {
-                            sendMessage(currentRecipient,"<img alt='' width='100rem' src="+res["data"][0]["url"]+" />" );
+                            sendMessage(currentRecipient, "<img alt='' width='100rem' src=" + res["data"][0]["url"] + " />");
                         },
                         error: function () {
                             alert('Error! Check console!');
