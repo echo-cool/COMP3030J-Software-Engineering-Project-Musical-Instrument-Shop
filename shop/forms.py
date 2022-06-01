@@ -8,6 +8,8 @@
 from django import forms
 from django.forms import ValidationError
 
+from shop.models import DisabledArea
+
 
 class UpdateProfileForm(forms.Form):
     username = forms.CharField(max_length=50, required=False)
@@ -23,7 +25,7 @@ class ReviewForm(forms.Form):
     # main_image = forms.ImageField(required=False)
 
 
-wordsNotAllowed = ["BJUT", "Beijing University of Technology"]
+# wordsNotAllowed = ["BJUT", "Beijing University of Technology"]
 
 
 class CheckoutForm(forms.Form):
@@ -38,6 +40,7 @@ class CheckoutForm(forms.Form):
     Zip_Code = forms.CharField(max_length=100, required=True)
 
     def is_valid(self):
+        wordsNotAllowed = [i.area for i in DisabledArea.objects.all()]
         if super().is_valid():
             terms = str(self.cleaned_data.get('Address')).split(" ")
             for i in terms:
@@ -47,10 +50,10 @@ class CheckoutForm(forms.Form):
             return True
         return False
 
-    def isInDisabledArea(self):
-        terms = str(self.cleaned_data.get('Address')).split(" ")
-        print(terms)
-        for i in terms:
-            if i in wordsNotAllowed:
-                return True
-        return False
+    # def isInDisabledArea(self):
+    #     terms = str(self.cleaned_data.get('Address')).split(" ")
+    #     print(terms)
+    #     for i in terms:
+    #         if i in wordsNotAllowed:
+    #             return True
+    #     return False
