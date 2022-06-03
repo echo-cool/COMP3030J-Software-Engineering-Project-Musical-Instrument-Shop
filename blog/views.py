@@ -30,6 +30,8 @@ def index(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
+    posts.count = all_posts.count()
+
     part_num = 3
     p = int(page or 1)
     if paginator.num_pages <= part_num:
@@ -48,7 +50,7 @@ def index(request):
 
     return render(request, 'blog_templates/blogs.html', {
         'index_posts': posts[:3],
-        'posts': all_posts,
+        'posts': posts,
         'part_pages': part_pages,
         'category_number': category_number
         # 'latest3Posts': latest3Posts,
