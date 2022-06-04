@@ -32,7 +32,9 @@ class ProfileAdmin(admin.ModelAdmin):
 
 class Instrument(models.Model):
     name = models.CharField(max_length=200, default="")
-    old_price = models.FloatField(max_length=200, default=100)
+    old_price = models.FloatField(max_length=200, default=100, validators=[
+        MinValueValidator(0.01)
+    ])
     price = models.FloatField(max_length=200, default=100)
     details = models.TextField(max_length=3000, default="")
     image = models.ImageField(upload_to='uploads/instrument/image/', default='default.jpg', null=True)
