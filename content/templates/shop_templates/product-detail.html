@@ -942,7 +942,7 @@
                 src="{% static "assets/js_for_model/TrackballControls_with_range.js" %}"></script>
         <script type="text/javascript" src="{% static "assets/js_for_model/Detector.js" %}"></script>
         <script>
-            var model_url = String("{{ model_url |safe}}");
+            var model_url = String({{ model_url |safe}});
             console.log("model url:", model_url);
             $(".slider-two").ready(function () {
                 $(".item").click(function () {

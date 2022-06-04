@@ -85,6 +85,16 @@
             xhr15.send('');
             xhr16.open('get', "/static/assets/design_model/model_design_guitar1.bin");
             xhr16.send('');
+
+            xhr1.onreadystatechange = function () {
+                console.log(xhr1.status);
+                if (xhr1.status === 200) {
+                    let height = $('.grid-image-box').height();
+                    {#console.log("HEIGHT", $('.img-height').get(0).offsetHeight);#}
+                    $('.grid-text-box').height(height - 1);
+
+                }
+            }
         }
     </script>
     <style>
@@ -720,9 +730,9 @@
                                         </div>
                                         <div class="m-shape">
                                             {% if instrument.image1.url != "/media/default.jpg" %}
-                                            <img src="{{ instrument.image1.url }}" alt="">
+                                                <img src="{{ instrument.image1.url }}" alt="">
                                             {% else %}
-                                            <img src="{{ instrument.image.url }}" alt="">
+                                                <img src="{{ instrument.image.url }}" alt="">
                                             {% endif %}
                                         </div>
                                     </div>
