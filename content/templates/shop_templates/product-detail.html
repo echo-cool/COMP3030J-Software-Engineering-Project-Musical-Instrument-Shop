@@ -97,7 +97,7 @@
                                                                                            aria-hidden="true"></i></a>
                             {#                            <a href="/collections/hot-deal">{% trans 'hot deal' %} <i class="fa fa-angle-right"#}
                             {#                                                                                      aria-hidden="true"></i></a>#}
-                            <strong>{% trans 'YC Combo Organ' %}</strong>
+                            <strong>{% trans instrument.name %}</strong>
 
                         </div>
                     </div>
@@ -150,11 +150,11 @@
                                              src="{{ instrument.image.url }}"
                                              alt="">
                                     </div>
-{#                                    <div>#}
-{#                                        <img class="item active"#}
-{#                                             src="{{ instrument.image1.url }}"#}
-{#                                             alt="">#}
-{#                                    </div>#}
+                                    {#                                    <div>#}
+                                    {#                                        <img class="item active"#}
+                                    {#                                             src="{{ instrument.image1.url }}"#}
+                                    {#                                             alt="">#}
+                                    {#                                    </div>#}
                                     {% if instrument.image1.url != "/media/default.jpg" %}
                                         <div>
                                             <img class="item active"
