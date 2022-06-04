@@ -92,7 +92,10 @@ def _index(request):
         },
     }
     for i in instruments:
-        i.percentage = round(i.price * 100 / i.old_price, 2)
+        if i.old_price > 0:
+            i.percentage = round(i.price * 100 / i.old_price, 2)
+        else:
+            i.percentage = 0
 
     return render(request, 'shop_templates/index.html', {
         "instruments": instruments,
