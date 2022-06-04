@@ -208,7 +208,7 @@ def order_management_all(request):
         'messages': messages,
         'mode': 0,
         "new_order_notifications": Notification.objects.filter(is_confirm=False),
-        "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+        "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
     })
 
 
@@ -485,6 +485,7 @@ def add_order_item(request, order_id):
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect('management:order_item_management', order_id=order_id)
     else:
@@ -494,6 +495,7 @@ def add_order_item(request, order_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -526,6 +528,7 @@ def update_order_item(request, order_item_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -557,6 +560,7 @@ def update_order(request, order_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -685,6 +689,7 @@ def update_instrument(request, instrument_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -758,16 +763,13 @@ def add_instrument(request):
                 instrument.save()
             return redirect(reverse('management:instrument_management'))
         else:
-            ret = {'status': True, 'error': None, 'data': None}
-
-            print(f.errors)
-            print(f.errors.as_json())
-            # ret['error'] = f.errors['mobile'][0]
-            ret['status'] = False
-            return HttpResponse(json.dumps(ret))
-        return HttpResponse(status=204)
-        # return {"code": 200}
-        # return redirect(reverse('management:instrument_management'))
+            return render(request, 'management_templates/add_instrument.html', {
+                'form': f,
+                'messages': messages,
+                "new_order_notifications": Notification.objects.filter(is_confirm=False),
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
+            })
     else:
         f = InstrumentWithIForm()
         return render(request, 'management_templates/add_instrument.html', {
@@ -775,6 +777,7 @@ def add_instrument(request):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -857,6 +860,7 @@ def update_instrument_category(request, category_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -883,6 +887,7 @@ def add_instrument_category(request):
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect(reverse('management:instrument_category_management'))
     else:
@@ -892,6 +897,7 @@ def add_instrument_category(request):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -917,7 +923,8 @@ def add_order(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-                "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect(reverse('management:order_management_all'))
         # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -927,7 +934,8 @@ def add_order(request):
             'form': f,
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1084,6 +1092,7 @@ def update_disabled_area(request, review_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1110,6 +1119,7 @@ def add_disabled_area(request):
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect(reverse('management:disabled_area_management'))
     else:
@@ -1119,6 +1129,7 @@ def add_disabled_area(request):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1152,6 +1163,7 @@ def update_review(request, review_id):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1178,6 +1190,7 @@ def add_review(request):
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect(reverse('management:review_management'))
     else:
@@ -1187,6 +1200,7 @@ def add_review(request):
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1298,6 +1312,7 @@ def update_post(request, post_id):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 
@@ -1325,6 +1340,7 @@ def add_post(request):
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
                 'messages': messages
             })
         return redirect(reverse('management:post_management'))
@@ -1334,6 +1350,7 @@ def add_post(request):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 
@@ -1416,6 +1433,7 @@ def update_blog_category(request, category_id):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 
@@ -1442,6 +1460,7 @@ def add_blog_category(request):
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
                 'messages': messages
             })
         return redirect(reverse('management:blog_category_management'))
@@ -1451,6 +1470,7 @@ def add_blog_category(request):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 
@@ -1530,7 +1550,8 @@ def update_cart(request, cart_id):
             'form': f,
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1556,7 +1577,8 @@ def add_cart(request):
                 'form': f,
                 'messages': messages,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
-                "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+                "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
             })
         return redirect(reverse('management:cart_management'))
     else:
@@ -1565,7 +1587,8 @@ def add_cart(request):
             'form': f,
             'messages': messages,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
-            "confirm_order_notifications": Notification.objects.filter(is_confirm=True)
+            "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
         })
 
 
@@ -1645,6 +1668,7 @@ def update_wishlist(request, wishlist_id):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 
@@ -1671,6 +1695,7 @@ def add_wishlist(request):
                 'form': f,
                 "new_order_notifications": Notification.objects.filter(is_confirm=False),
                 "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+                'profile': Profile.objects.filter(user=request.user.id).first(),
                 'messages': messages
             })
         return redirect(reverse('management:wishlist_management'))
@@ -1680,6 +1705,7 @@ def add_wishlist(request):
             'form': f,
             "new_order_notifications": Notification.objects.filter(is_confirm=False),
             "confirm_order_notifications": Notification.objects.filter(is_confirm=True),
+            'profile': Profile.objects.filter(user=request.user.id).first(),
             'messages': messages
         })
 

@@ -90,7 +90,6 @@
 
     {#        <input type="hidden" id="csrf_token" name="_token" value="{{ csrf_token }}">#}
     {#    </iframe>#}
-    {{ form.errors }}
     <form id="upload_form" action="{% url 'management:add_instrument' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
