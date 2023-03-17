@@ -35,6 +35,9 @@ Recent years have witnessed the mushroom growth of online shopping due to the pa
 ## 3D Instruments Customization
 ![7.png](images%2F7.png)
 
+## Employee Portal
+![dash.png](images%2Fdash.png)
+
 # Project Introduction
 
 In the context of the pandemic, the family-owned instruments local shop
