@@ -13,6 +13,8 @@ python3 manage.py runserver 0.0.0.0:5008
 # Abstract
 Recent years have witnessed the mushroom growth of online shopping due to the pandemic. This report documents our overall system, the solution to users' requirements, the system's design, the plan for each project phase, the process of developing software, and how our group works together to complete the team-based project. Now this system documentation will explore these in detail.
 
+![flowchart.png](images%2Fflowchart.png)
+
 # Project Introduction
 
 In the context of the pandemic, the family-owned instruments local shop
