@@ -247,12 +247,10 @@ and **Natural Language Processing**.
 
 ### Modify Existing Orders
 
-::: itemize
-[**User story**: As a customer, I would like to modify the address of
+**User story**: As a customer, I would like to modify the address of
 existing orders so that I can better manage my
-orders.]{style="color: red"}
+orders.
 
-::: {style="color: red"}
 **Motivation and design**: The reason for our implementation is that we
 want to give customers more freedom to change the delivery address of
 existing orders that have not been completed.
@@ -265,8 +263,6 @@ information of an order should be reasonable for a customer to make
 changes on. Therefore, a separate page for the modification seemed
 redundant. We import the editable plugin to support customers to make
 changes on the orders directly to solve that problem.
-:::
-:::
 
 ### 3D Instruments Preview
 
