@@ -18,7 +18,7 @@ RUN mkdir db/
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py collectstatic --noinput
-RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@echo.cool', '123456')" | python manage.py shell
+#RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@echo.cool', '123456')" | python manage.py shell
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8080
