@@ -1,0 +1,59 @@
+name: Docker-compose build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
+
+jobs:
+#  generateBuildMatrix:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 10
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Generate matrix with all modules of WhatTheHack repository
+#        id: set-matrix
+#        run: |
+#          echo "::set-output name=matrix::$(docker-compose config --services | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+#    outputs:
+#      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+#    needs: generateBuildMatrix
+#    strategy:
+#       matrix:
+#         service: ${{ fromJson(needs.generateBuildMatrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker-compose --version
+      - name: Build with docker-compose
+        run: docker-compose build --parallel
+#        run: docker-compose build ${{ matrix.service }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          username: echocool
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker-compose push
+#  deploy:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 10
+#    needs: [generateBuildMatrix, build-docker]
+#    steps:
+#      - uses: actions/checkout@v3
+#      - run: mkdir -p ~/.ssh && echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa && ssh-keyscan "${{ secrets.HOST }}" >> ~/.ssh/known_hosts
+#      - run: ssh -C ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
+#          rm -rf ~/tmp/;
+#          mkdir -p ~/tmp/;
+#          cd ~/tmp/;
+#          git clone git@github.com:echo-cool/COMP3032J-Degree-Project-Offer-Master-Group-7.git;
+#          cd ~/tmp/COMP3032J-Degree-Project-Offer-Master-Group-7/;
+#          pwd;
+#          ls;
+#          bash update_and_deploy.sh;"
+

@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  comp3030j_software_engineering_project_musical_instrument_shop:
+    image: echocool/comp3030j_software_engineering_project_musical_instrument_shop:${VERSION:-latest}
+    container_name: comp3030j_software_engineering_project_musical_instrument_shop
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    restart: on-failure
