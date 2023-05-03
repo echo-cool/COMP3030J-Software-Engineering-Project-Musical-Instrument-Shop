@@ -11,6 +11,7 @@ RUN apt update
 RUN apt install gcc g++ -y
 #RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.python.org -r requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --trusted-host pypi.python.org uwsgi
 #ARG pip_source
 #RUN if [[ -z "$pip_source" ]] ; then pip install --trusted-host pypi.python.org -r requirements.txt ; else pip install -i $pip_source --trusted-host pypi.python.org -r requirements.txt  ; fi
 RUN rm -rf db/
