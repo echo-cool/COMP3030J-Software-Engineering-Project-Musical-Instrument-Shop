@@ -6,6 +6,23 @@ services:
     container_name: comp3030j_software_engineering_project_musical_instrument_shop
     build:
       context: .
+    networks:
+      - comp3030j_software_engineering_project_musical_instrument_shop_network
     ports:
       - "8080:8080"
     restart: on-failure
+    
+ comp3030j_software_engineering_project_musical_instrument_shop_rasa:
+   image: echocool/comp3030j_software_engineering_project_musical_instrument_shop_rasa:${VERSION:-latest}
+   container_name: comp3030j_software_engineering_project_musical_instrument_shop_rasa
+   ports:
+     - "5005:5005"
+   expose:
+     - "5005"
+   networks:
+     - comp3030j_software_engineering_project_musical_instrument_shop_network
+   restart: on-failure
+
+
+networks:
+  comp3030j_software_engineering_project_musical_instrument_shop_network:
