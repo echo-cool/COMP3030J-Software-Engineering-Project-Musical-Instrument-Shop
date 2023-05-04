@@ -65,7 +65,7 @@ def _rasa_chat(request):
         message = request.POST.get('message')
         message: str = str(message)
         print(message)
-        url = 'http://127.0.0.1:18888/webhooks/rest/webhook'
+        url = 'http://comp3030j_software_engineering_project_musical_instrument_shop_rasa:5005/webhooks/rest/webhook'
         if request.user.is_authenticated:
             data = {
                 'sender': request.user.username,
