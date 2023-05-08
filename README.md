@@ -3,6 +3,15 @@
 Your software engineering team has been hired to meet the needs of a client, a local Musical Instrument Shop. This shop is family-owned and has sold musical instruments locally for years. All of their business to-date is walk-in retail customers.
 
 # Start the project
+### Update - Using docker-compose
+
+```shell
+git clone git@github.com:echo-cool/COMP3030J-Software-Engineering-Project-Musical-Instrument-Shop.git
+cd COMP3030J-Software-Engineering-Project-Musical-Instrument-Shop/
+docker-compose pull
+docker-compose up -d
+```
+
 ```shell
 python3 -m pip install -r requirements.txt
 python3 manage.py makemigrations
