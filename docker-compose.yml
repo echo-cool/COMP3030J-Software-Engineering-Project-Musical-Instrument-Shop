@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  comp3030j_software_engineering_project_musical_instrument_shop:
+  instrument_shop:
     image: echocool/comp3030j_software_engineering_project_musical_instrument_shop:${VERSION:-latest}
     container_name: comp3030j_software_engineering_project_musical_instrument_shop
     build:
       context: .
     networks:
-      - comp3030j_software_engineering_project_musical_instrument_shop_network
+      - net
     ports:
       - "8080:8080"
     restart: on-failure
@@ -20,9 +20,9 @@ services:
     expose:
       - "5005"
     networks:
-      - comp3030j_software_engineering_project_musical_instrument_shop_network
+      - net
     restart: on-failure
 
 
 networks:
-  comp3030j_software_engineering_project_musical_instrument_shop_network:
+  net:
