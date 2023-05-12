@@ -12,7 +12,7 @@ services:
       - "8080:8080"
     restart: on-failure
     
-  comp3030j_software_engineering_project_musical_instrument_shop_rasa:
+  rasa:
     image: echocool/comp3030j_software_engineering_project_musical_instrument_shop_rasa:${VERSION:-latest}
     container_name: comp3030j_software_engineering_project_musical_instrument_shop_rasa
     ports:
