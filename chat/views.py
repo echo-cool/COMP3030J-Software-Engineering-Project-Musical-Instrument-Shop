@@ -78,14 +78,16 @@ def _rasa_chat(request):
             }
         print(data)
         try:
-            response = requests.post(url, json=data, timeout=2)
+            response = requests.post(url, json=data, timeout=10)
             print(response.text)
             print(response.json())
-            action = response.json()[0]['text']
-            print(action)
-            time.sleep(0.8)
-            if action in action_list.keys():
-                return action_list[action](request)
+            try:
+                action = response.json()[0]['text']
+                print(action)
+                if action in action_list.keys():
+                    return action_list[action](request)
+            except Exception as e:
+                pass
             return JsonResponse(response.json(), safe=False, json_dumps_params={'ensure_ascii': False})
         except Exception as e:
             print(e)
